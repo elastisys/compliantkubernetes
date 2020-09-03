@@ -1,1 +1,30 @@
-site_name: My Docs
+site_name: Compliant Kubernetes
+site_url: https://compliantkubernetes.io
+site_description: >-
+  Compliant Kubernetes is a Kubernetes distribution that reduces the burden
+  for complying with HIPAA, Swedish Healthcare (Patientdatalagen), GDPR and
+  ISO 27001.
+site_author: Elastisys AB
+copyright: Copyright © 2020 Elastisys AB
+
+repo_url: https://github.com/elastisys/compliantkubernetes
+
+google_analytics:
+  - TODO
+  - auto
+
+theme:
+  name: material
+  custom_dir: overrides
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed
+
+nav:
+  - Home: 'index.md'
