@@ -1,17 +1,10 @@
-# Welcome to MkDocs
+# Welcome to Compliant Kubernetes
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Compliant Kubernetes is a [Kubernetes](https://kubernetes.io/) distribution, i.e., an opinionated way of packaging and configuring Kubernetes together with other projects. Compliant Kubernetes reduces the compliant burden, as required to comply with:
 
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+* [Health Insurance Portability and Accountability Act (HIPAA)](https://elastisys.com/hipaa-compliance-kubernetes-privacy-rule/)
+* [Swedish Healthcare (Patientdatalagen)](https://elastisys.com/how-to-use-kubernetes-in-swedish-healthcare/)
+* General Data Protection Regulation (GDPR)
+* Payment Card Industry Data Security Standard (PCI DSS)
+* Finansinspektionen's Regulatory Code (e.g., FFFS 2014:7)
+* Other regulations that map to information security standards, such as ISO 27001
