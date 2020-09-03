@@ -28,4 +28,18 @@ markdown_extensions:
   - pymdownx.tabbed
 
 nav:
-  - Home: 'index.md'
+  - Overview: 'index.md'
+  - 'Compliance Basics': 'compliance.md'
+  - 'Core Concepts': 'concepts.md'
+  - 'Getting Started': 'getting-started.md'
+  - 'User Guide':
+    - 'Overview': 'user-guide/index.md'
+    - 'Dashboard': 'user-guide/dashboard.md'
+  - 'Operator Manual':
+    - 'Overview': 'operator-manual/index.md'
+  - 'Developer Guide':
+    - 'Overview': 'operator-manual/index.md'
+  - 'FAQ': 'faq.md'
+  - 'Roadmap': 'roadmap.md'
+  - 'Support ⧉': 'https://compliantkubernetes.com/'
+  - 'Blog ⧉': 'https://elastisys.com/blog/'
