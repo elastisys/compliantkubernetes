@@ -1,0 +1,78 @@
+digraph compliance_basics {
+    graph[labeljust="l"];
+
+    subgraph cluster_regulations {
+        label="Regulations";
+        node[width=1, shape=box, style=rounded];
+
+        HIPAA
+        PDL
+        GDPR
+        CCPA
+    }
+
+    subgraph cluster_isms {
+        label="Information Security Standards"
+        node[width=1, shape=rounded];
+
+        "ISO 27001"
+        "SOC-2"
+        "PCI-DSS"
+    }
+
+    subgraph cluster_policies {
+        label="Policies"
+        node[width=1, shape=circle];
+
+        { HIPAA, PDL, GDPR, CCPA } -> Controls
+        { "ISO 27001", "PCI-DSS", "SOC-2" } -> Controls
+
+        node[width=1, shape=box, style=rounded];
+        Controls -> {
+            supplier[label="Supplier\nmanagement"]
+            access[label="Access\ncontrol"]
+            "Logging"
+            "Backups"
+            incident[label="Incident\nmanagement"]
+            vulnerability[label="Vulnerability\nmanagement"]
+            intrusion[label="Intrusion\ndetection"]
+            network[label="Communication\nsecurity"]
+            crypto[label="Use of\ncryptography"]
+        }
+    }
+
+    subgraph cluster_implementation {
+        label="Compliant Kubernetes"
+
+        node[shape=none, label="", imagescale=height, width=1.5, height=1, fixedsize=true];
+
+        supplier -> { kubernetes[image="kubernetes.png",height=0.5] }
+        access -> { dex[image="dex.svg"] }
+        "Backups" -> { velero[image="velero.svg"] }
+        "Logging" -> { elasticsearch[image="elasticsearch.svg"] }
+        incident -> { prometheus[image="prometheus.svg"] }
+        vulnerability
+            -> { harbor[image="harbor.svg"] }
+            -> { trivy[image="trivy.svg",height=1.5,width=1] }
+        intrusion -> { falco[image="falco.svg"] }
+        network -> { calico[image="project-calico.svg"] }
+        crypto
+            -> { certmanager[image="cert-manager.png",width=0.7,height=0.7] }
+            -> { letsencrypt[image="letsencrypt.png"] }
+    }
+
+    subgraph cluster_provider {
+        label="Compliant Cloud Provider"
+
+        node[shape=none, label="", imagescale=height, width=1.5, height=1, fixedsize=true];
+
+        kubernetes -> {
+            aws[image="aws.svg"]
+            citycloud[image="citycloud.png"]
+            exoscale[image="exoscale.svg"]
+            safespring[image="safespring.png"]
+            vmware[image="v-mware-v-sphere.svg"]
+            byom[label="Bring\nYour Own\nMetal",shape=box]
+        }
+    }
+}
