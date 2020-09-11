@@ -1,16 +1,8 @@
-compliance-basics.svg: \
-		compliance-basics.dot \
-		logos/cert-manager.png \
-		logos/dex.png \
-		logos/elasticsearch.png \
-		logos/falco.png \
-		logos/harbor.png \
-		logos/letsencrypt.png \
-		logos/kubernetes.png \
-		logos/project-calico.png \
-		logos/prometheus.png \
-		logos/trivy.png \
-		logos/velero.png
+all: \
+		compliance-basics.svg \
+		ck8s-c4model-level1.svg
+
+%.svg: %.dot
 	dot -Tsvg $< > $@
 
 logos/%.png:
