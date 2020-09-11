@@ -1,14 +1,16 @@
 digraph system {
-  rankdir="LR";
+  rankdir=LR
   node [shape=box, width="4pt"];
+  edge [minlen="0pt", style="invis"];
 
-  "Your application"
+  "Your application" -> {
   "Compliant Kubernetes"[
     image="logo.png",
     imagepos="ml",
-    imagescale="height",
+    imagescale=true,
     fixedsize=true
-  ]
-  "Compliant Cloud Provider"
+  ] } -> {
+    "Compliant Cloud Provider"
+  }
 }
 

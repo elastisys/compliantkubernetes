@@ -8,13 +8,21 @@ This is the main repository for documentation about the Compliant Kubernetes pro
 pip3 install mkdocs mkdocs-material
 ```
 
+For generating figures, please install:
+
+```
+sudo apt-get install graphviz make
+```
+
 ## Usage
 
 * To view locally: `mkdocs serve`.
 * To publish on GitHub Pages: `mkdocs gh-deploy`.
+* To re-generate figures: `make -C docs/assets`. **For simplicity, please commit generated figures.**
 
 ## Tech Stack
 
 * [mkdocs](https://www.mkdocs.org/)
 * [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
 * [GitHub Pages](https://pages.github.com/)
+* [Graphviz](https://graphviz.org/)
