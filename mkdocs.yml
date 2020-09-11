@@ -15,8 +15,8 @@ google_analytics:
 
 theme:
   name: material
-  logo: 'assets/logo.png'
-  favicon: 'assets/favicon.png'
+  logo: 'img/logo.png'
+  favicon: 'img/favicon.png'
 
 markdown_extensions:
   - admonition
