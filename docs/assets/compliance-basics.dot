@@ -1,5 +1,6 @@
 digraph compliance_basics {
-    graph[labeljust="l"];
+    compound=true;
+    graph[labeljust="l", fontsize=20];
 
     subgraph cluster_regulations {
         label="Regulations";
@@ -23,31 +24,37 @@ digraph compliance_basics {
     graph[width="4pt"];
     subgraph cluster_policies {
         label="Policies"
-        node[width=1, shape=circle];
+        node[width=1, shape=circle, fixedsize=true];
 
         { HIPAA, PDL, GDPR, CCPA } -> Controls
         { "ISO 27001", "PCI-DSS", "SOC-2" } -> Controls
 
         node[width=1, shape=box, style=rounded];
         Controls -> {
-            supplier[label="Supplier\nmanagement"]
+            supplier[label="Supplier\nmanagement",fontsize=12]
             access[label="Access\ncontrol"]
             "Logging"
             "Backups"
-            incident[label="Incident\nmanagement"]
-            vulnerability[label="Vulnerability\nmanagement"]
+            incident[label="Incident\nmanagement",fontsize=12]
+            vulnerability[label="Vulnerability\nmanagement",fontsize=12]
             intrusion[label="Intrusion\ndetection"]
-            network[label="Communication\nsecurity"]
-            crypto[label="Use of\ncryptography"]
+            network[label="Network\nsecurity"]
+            crypto[label="Use of\ncryptography",fontsize=12]
         }
     }
 
     subgraph cluster_implementation {
         label="Compliant Kubernetes"
 
-        node[shape=none, label=""];
+        node[
+            shape=none,
+            label="",
+            width=1,
+            height=1,
+            fixedsize=true,
+            imagescale=true
+        ];
 
-        //supplier -> { kubernetes[image="logos/kubernetes.png",height=0.5] }
         access -> { dex[image="logos/dex.png"] }
         "Backups" -> { velero[image="logos/velero.png"] }
         "Logging" -> { elasticsearch[image="logos/elasticsearch.png"] }
@@ -65,15 +72,30 @@ digraph compliance_basics {
     subgraph cluster_provider {
         label="Compliant Cloud Provider"
 
-        node[shape=none, label=""];
+        node[shape=none, label="", width=1, height=1, fixedsize=true, imagescale=true];
+        edge[style=invis];
 
-        supplier -> {
+        // Special note to attach supplier management to.
+        cloud_provider[width=0, height=0, margin=0];
+
+        cloud_provider -> {
             aws[image="logos/cloud-providers/aws.png"];
             citycloud[image="logos/cloud-providers/citycloud.png"]
             exoscale[image="logos/cloud-providers/exoscale.png"]
             safespring[image="logos/cloud-providers/safespring.png"]
             vmware[image="logos/cloud-providers/vsphere.png"]
-            byom[label="Bring\nYour Own\nMetal",shape=box]
         }
+        cloud_provider -> {
+            byom[label="Bring\nYour Own\nMetal",shape=box]
+        }[weight=1000];
+    }
+
+    // Make sure the rank of cloud providers is below those of
+    // Compliant Kubernetes components.
+    {
+        node[shape=none, label="", style="invis", height="0", width="0"];
+        edge[arrowhead=none];
+        supplier -> supplier2 -> supplier3;
+        supplier3 -> cloud_provider[arrowhead=normal, lhead=cluster_provider];
     }
 }
