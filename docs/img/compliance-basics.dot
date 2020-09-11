@@ -10,6 +10,7 @@ digraph compliance_basics {
         PDL
         GDPR
         CCPA
+        FFFS
     }
 
     subgraph cluster_isms {
@@ -26,7 +27,7 @@ digraph compliance_basics {
         label="Policies"
         node[width=1, shape=circle, fixedsize=true];
 
-        { HIPAA, PDL, GDPR, CCPA } -> Controls
+        { HIPAA, PDL, GDPR, CCPA, FFFS } -> Controls
         { "ISO 27001", "PCI-DSS", "SOC-2" } -> Controls
 
         node[width=1, shape=box, style=rounded];
