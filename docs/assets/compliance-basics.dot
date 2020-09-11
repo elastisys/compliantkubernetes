@@ -20,6 +20,7 @@ digraph compliance_basics {
         "PCI-DSS"
     }
 
+    graph[width="4pt"];
     subgraph cluster_policies {
         label="Policies"
         node[width=1, shape=circle];
@@ -64,14 +65,14 @@ digraph compliance_basics {
     subgraph cluster_provider {
         label="Compliant Cloud Provider"
 
-        node[shape=none, label="", imagescale=height, width=1.5, height=1, fixedsize=true];
+        node[shape=none, label=""];
 
         supplier -> {
-            aws[image="aws.svg"]
-            citycloud[image="citycloud.png"]
-            exoscale[image="exoscale.svg"]
-            safespring[image="safespring.png"]
-            vmware[image="v-mware-v-sphere.svg"]
+            aws[image="logos/cloud-providers/aws.png"];
+            citycloud[image="logos/cloud-providers/citycloud.png"]
+            exoscale[image="logos/cloud-providers/exoscale.png"]
+            safespring[image="logos/cloud-providers/safespring.png"]
+            vmware[image="logos/cloud-providers/vsphere.png"]
             byom[label="Bring\nYour Own\nMetal",shape=box]
         }
     }
