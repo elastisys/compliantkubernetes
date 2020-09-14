@@ -18,7 +18,8 @@ sudo apt-get install graphviz make
 
 * To view locally: `mkdocs serve`.
 * To publish on GitHub Pages: `mkdocs gh-deploy`.
-* To re-generate figures: `make -C docs/assets`. **For simplicity, please commit generated figures. Prefer PNG (width <= 1200px), to facilitate embedded logos.**
+* To re-generate figures: `make -C docs/img`. **For simplicity, please commit generated figures. Prefer PNG (width <= 1200px), to facilitate embedded logos.**
+* For continous preview of figures: `make -C docs/img preview`.
 
 ## Tech Stack
 
