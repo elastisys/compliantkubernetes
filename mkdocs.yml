@@ -34,11 +34,17 @@ nav:
   - 'Getting Started': 'getting-started.md'
   - 'User Guide':
     - 'Overview': 'user-guide/index.md'
+    - 'Container Registry (Harbor)': 'user-guide/harbor.md'
+    - 'Kubernetes API': 'user-guide/kubernetes-api.md'
+    - 'Elasticsearch/Kibana': 'user-guide/elasticsearch.md'
+    - 'Prometheus/Grafana': 'user-guide/prometheus.md'
     - 'Dashboard': 'user-guide/dashboard.md'
   - 'Operator Manual':
     - 'Overview': 'operator-manual/index.md'
-  - 'Developer Guide':
-    - 'Overview': 'operator-manual/index.md'
+    - 'Getting Started': 'operator-manual/getting-started.md'
+    - 'Creating/Destroying/Upgrading a Cluster': 'operator-manual/lifecycle.md'
+    - 'Configuring a Cluster': 'operator-manual/configuring.md'
+    - 'Breaking the Glass': 'operator-manual/break-glass.md'
   - 'FAQ': 'faq.md'
   - 'Roadmap': 'roadmap.md'
   - 'Support ⧉': 'https://compliantkubernetes.com/'
