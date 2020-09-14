@@ -16,5 +16,6 @@ jobs:
           ls -l
           id -u
           id -g
+          pip3 install setuptools
           pip3 install mkdocs
           mkdocs gh-deploy
