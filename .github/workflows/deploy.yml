@@ -10,12 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run a multi-line script
-        run: |
-          pwd
-          ls -l
-          id -u
-          id -g
-          pip3 install setuptools
-          pip3 install mkdocs
-          mkdocs gh-deploy
+        
+      - name: Deploy docs
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
