@@ -34,7 +34,7 @@ nav:
   - 'Getting Started': 'getting-started.md'
   - 'User Guide':
     - 'Overview': 'user-guide/index.md'
-    - 'Container Registry (Harbor)': 'user-guide/harbor.md'
+    - 'Harbor': 'user-guide/harbor.md'
     - 'Kubernetes API': 'user-guide/kubernetes-api.md'
     - 'Elasticsearch/Kibana': 'user-guide/elasticsearch.md'
     - 'Prometheus/Grafana': 'user-guide/prometheus.md'
