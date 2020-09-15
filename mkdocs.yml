@@ -44,6 +44,7 @@ nav:
     - 'Getting Started': 'operator-manual/getting-started.md'
     - 'Creating/Destroying/Upgrading a Cluster': 'operator-manual/lifecycle.md'
     - 'Configuring a Cluster': 'operator-manual/configuring.md'
+    - 'Disaster Recovery': 'operator-manual/disaster-recovery.md'
     - 'Breaking the Glass': 'operator-manual/break-glass.md'
   - 'FAQ': 'faq.md'
   - 'Roadmap': 'roadmap.md'
