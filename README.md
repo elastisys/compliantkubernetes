@@ -17,8 +17,7 @@ sudo apt-get install graphviz make
 ## Usage
 
 * To view locally: `mkdocs serve`.
-* To publish on GitHub Pages: `mkdocs gh-deploy`.
-* To re-generate figures: `make -C docs/img`. **For simplicity, please commit generated figures. Prefer PNG (width <= 1200px), to facilitate embedded logos.**
+* To re-generate figures: `make -C docs/img`. **For simplicity, please commit generated figures. Prefer PNG (width == 1200px), to facilitate embedded logos.**
 * For continous preview of figures: `make -C docs/img preview`.
 
 ## Tech Stack
@@ -37,8 +36,13 @@ sudo apt-get install graphviz make
 > (Pretty inappropriate programmer humor.)
 
 * Done today is better than perfect tomorrow.
-* A picture is worth a 1000 words. Use Graphviz, Terminal screenshots or GIFs. Focus on the content, leave aesthetics for another day.
+* A picture is worth a 1000 words. Use Graphviz, Terminal screenshots or GIFs. Focus on the content, leave aesthetics for another day. Prefer PNG with width of 1200px.
+* Perspective: Put yourself in the shoes of the user or operator. What documentation would you like to read as a newcomer?
 * Use "we" for the writer(s). Use "you" for the reader.
 * Write in [plain English](http://www.plainenglish.co.uk/how-to-write-in-plain-english.html).
-* Aim for the happy flow: How would a first-time user/operator interact with the system?
+* Ordering of ideas: Aim for the happy flow: How would a first-time user/operator interact with the system? In what order would they do things?
 * Link to relevant upstream documentation.
+
+## Deployment
+
+GitHub Actions will deploy the `master` branch automatically.
