@@ -36,12 +36,14 @@ sudo apt-get install graphviz make
 > (Pretty inappropriate programmer humor.)
 
 * Done today is better than perfect tomorrow.
+* Write for the project, not the company.
 * A picture is worth a 1000 words. Use Graphviz, Terminal screenshots or GIFs. Focus on the content, leave aesthetics for another day. Prefer PNG with width of 1200px.
 * Perspective: Put yourself in the shoes of the user or operator. What documentation would you like to read as a newcomer?
 * Use "we" for the writer(s). Use "you" for the reader.
 * Write in [plain English](http://www.plainenglish.co.uk/how-to-write-in-plain-english.html).
 * Ordering of ideas: Aim for the happy flow: How would a first-time user/operator interact with the system? In what order would they do things?
 * Link to relevant upstream documentation.
+* Please contribute in a branch and create a PR.
 
 ## Deployment
 
