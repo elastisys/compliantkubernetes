@@ -1,5 +1,5 @@
 ---
-description: Learn how to explore the benefits of the Compliant Kubernetes platform, helping you reach compliance targets as well as high agile development.
+description: Learn how to explore the benefits of the Compliant Kubernetes platform, helping you reach compliance targets as well as agile software development.
 ---
 
 # Exploring the benefits of Compliant Kubernetes
