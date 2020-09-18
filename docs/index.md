@@ -1,6 +1,6 @@
 # Welcome to Compliant Kubernetes
 
-Compliant Kubernetes is a [Kubernetes](https://kubernetes.io/) distribution, i.e., an opinionated way of packaging and configuring Kubernetes together with other projects. Compliant Kubernetes reduces the compliance burden, as required to comply with:
+Compliant Kubernetes is a [Certified Kubernetes](https://landscape.cncf.io/organization=elastisys&selected=elastisys-compliant-kubernetes) distribution, i.e., an opinionated way of packaging and configuring Kubernetes together with other projects. Compliant Kubernetes reduces the compliance burden, as required to comply with:
 
 * [Health Insurance Portability and Accountability Act (HIPAA)](https://elastisys.com/hipaa-compliance-kubernetes-privacy-rule/)
 * [Swedish Healthcare (Patientdatalagen)](https://elastisys.com/how-to-use-kubernetes-in-swedish-healthcare/)
