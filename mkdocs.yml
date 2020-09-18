@@ -33,7 +33,7 @@ nav:
   - 'Compliance Basics': 'compliance.md'
   - 'Core Concepts': 'concepts.md'
   - 'Getting Started': 'getting-started.md'
-  - 'Exploring benefits': 'benefits.md'
+  - 'Exploring Benefits': 'benefits.md'
   - 'User Guide':
     - 'Overview': 'user-guide/index.md'
     - 'Harbor': 'user-guide/harbor.md'
