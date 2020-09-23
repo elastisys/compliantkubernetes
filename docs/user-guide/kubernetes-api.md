@@ -25,8 +25,7 @@ User access to the Kubernetes API may need to be restricted from case to case to
 
 [](<!-- Please show step-by-step how to use kubectl, including auth flow via Dex and Terminal screenshots. -->)
 
-This focuses on using the User access kubeconfig.
-To use the operator kubeconfig files, see the [Operator Manual](../operator-manual/index.md).
+This section focuses on using the kubeconfig.
 
 ### Using the kubeconfig file
 
@@ -43,8 +42,8 @@ The kubeconfig file can be used with `kubectl` by:
 
 ### Authenticating to the Kubernetes API
 
-Make sure you have installed the [oidc-login](https://github.com/int128/kubelogin) plugin (also known as kubelogin) in `kubectl`.
-With the plugin installed, run a `kubectl` command and the plugin will launch a browser where you log in to the cluster.
+To authenticate to the Kubernetes API, run a `kubectl` command.
+The `oidc-login` plugin will launch a browser where you log in to the cluster.
 Your credentials will then be used by the Kubernetes API to make sure you are authorized.
 Once you have logged in through the browser, you are authenticated to the cluster.
 
