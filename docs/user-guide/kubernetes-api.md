@@ -2,19 +2,10 @@
 
 [](<!-- How does the kubeconfig of a Compliant Kubernetes cluster typically look? How does a user install/merge it with their existing kubeconfig? -->)
 
-To access the Kubernetes APIs in Compliant Kubernetes, you will need at least one [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file.
-Compliant Kubernetes comes with three kinds of kubeconfig files:
+The Kubernetes API is the entrypoint to managing your Kubernetes resources.
+Your Compliant Kubernetes administrator will provide you with a kubeconfig file upon onboarding, which is required to access the API.
 
-* Service cluster administrator access
-* Workload cluster administrator access
-* User access
-
-For user workload management, the User access kubeconfig file should be used.
-This access is further described in the [User access](#user-access) section.
-
-The service and workload cluster administrator kubeconfig files have full access to their respective clusters.
-These kubeconfig files should only be used by the operators to install and maintain Compliant Kubernetes.
-For more information on operating Compliant Kubernetes, see the [Operator Manual](../operator-manual/index.md).
+The following sections describe how to access the cluster in order to manage your Kubernetes resources.
 
 ## User access
 
