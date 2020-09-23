@@ -7,18 +7,19 @@ Your Compliant Kubernetes administrator will provide you with a kubeconfig file 
 
 The following sections describe how to access the cluster in order to manage your Kubernetes resources.
 
-## User access
+## Authentication and Access Control in Compliant Kubernetes
 
 [](<!-- What Kubernetes roles does a user have by default? What is allowed and what is disallowed? Why? -->)
 
-The User access kubeconfig file provides individual access to the Kubernetes API through [dex](https://github.com/dexidp/dex).
-Normally, you should authenticate using your organizations identity provider connected to dex, but it is also possible for operators to configure static usernames and passwords.
+In order to facilitate access control and audit logging, Compliant Kubernetes imposes a certain way to access the Kubernetes API.
+The kubeconfig file provides individual access to the Kubernetes API through [dex](https://github.com/dexidp/dex).
+Normally, you should authenticate using your organizations identity provider connected to dex, but it is also possible for your administrator to configure static usernames and passwords.
 
-The authorization is done by the Kubernetes API based on [Kubernetes role-based access controls](https://kubernetes.io/docs/reference/access-authn-authz/rbac/), and a cluster operator has to grant you permission.
-If you are authorized to log in to the cluster, you will have administrator access to the user workload namespaces by default.
+The authorization is done by the Kubernetes API based on [Kubernetes role-based access controls](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
+Your cluster administrator will grant you permissions as part of onboarding.
+You have administrator access to the user workload Kubernetes Namespaces by default.
 In order to follow [the principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege), you as an user should only have sufficient access to manage resources required by your application.
 User access to the Kubernetes API may need to be restricted from case to case to follow the principle of least privilege.
-These access controls are configurable by the cluster operators.
 
 ## Usage guide
 
