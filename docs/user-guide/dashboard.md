@@ -28,20 +28,21 @@ The *Namespaces* tab provides information about the different namespaces in the 
 
 To get information about namespaces:
 
-1. Select the *Namespaces* tab under cluster dashboard. A panel with list of namespaces in the cluster with their status and how long they have been created will be displayed.  The panel looks like the figure below.
+Select the *Namespaces* tab under cluster dashboard. A panel with list of namespaces in the cluster with their status and how long they have been created will be displayed.  The panel looks like the figure below.
 
-![CK8S Namespaces](../img/namespaces.png)
+  ![CK8S Namespaces](../img/namespaces.png)
 
-  1. To get different metric information about each namepace,  hover your mouse on the *options* dropdown menu on the top left side under *Namespaces* tab (i,e., labeled *capabilities* in the figure above) and click *Open in Grafana*. You will be redirected to grafana website. By default different visualizations about the first namespace, *argocd* in this example, will be loaded by Grafana. You can change the namespace you if want to see for a different namespace. The following figure shows one of the visualizations loaded by grafana.
+To get different metric information about each namepace,  hover your mouse on the *options* dropdown menu on the top left side under *Namespaces* tab (i,e., labeled *capabilities* in the figure above) and click *Open in Grafana*. You will be redirected to grafana website. By default different visualizations about the first namespace, *argocd* in this example, will be loaded by Grafana. You can change the namespace you if want to see for a different namespace. The following figure shows one of the visualizations loaded by grafana.
 
   ![Grafana example](../img/grafana_under_ns.png)
 
-  1. To get further information about each namespace, click on the namespace you want to get more information. Depending on your privilege, you will get one of the following pages
-    1. If you do not have privilege, you will get the following error message
+To get further information about each namespace, click on the namespace you want to get more information. Depending on your privilege, you will get one of the following pages.
 
-        ![No Privilege](../img/no_privilege.png)
+  1. If you do not have privilege, you will get the following error message
 
-    1. If you have privilege to access the namespace, you will get the following page with different panels.
+      ![No Privilege](../img/no_privilege.png)
+
+  1. If you have privilege to access the namespace, you will get the following page with different panels.
 
       ![Namespace access example](../img/privileged_ns.png)
 
