@@ -1,15 +1,11 @@
 # Kubernetes API
 
-[](<!-- How does the kubeconfig of a Compliant Kubernetes cluster typically look? How does a user install/merge it with their existing kubeconfig? -->)
-
 The Kubernetes API is the entrypoint to managing your Kubernetes resources.
 Your Compliant Kubernetes administrator will provide you with a kubeconfig file upon onboarding, which is required to access the API.
 
 The following sections describe how to access the cluster in order to manage your Kubernetes resources.
 
 ## Authentication and Access Control in Compliant Kubernetes
-
-[](<!-- What Kubernetes roles does a user have by default? What is allowed and what is disallowed? Why? -->)
 
 In order to facilitate access control and audit logging, Compliant Kubernetes imposes a certain way to access the Kubernetes API.
 The kubeconfig file provides individual access to the Kubernetes API through [dex](https://github.com/dexidp/dex).
@@ -22,8 +18,6 @@ In order to follow [the principle of least privilege](https://en.wikipedia.org/w
 User access to the Kubernetes API may need to be restricted from case to case to follow the principle of least privilege.
 
 ## Usage guide
-
-[](<!-- Please show step-by-step how to use kubectl, including auth flow via Dex and Terminal screenshots. -->)
 
 This section focuses on using the kubeconfig.
 
@@ -57,8 +51,6 @@ Your credentials will then be used by the Kubernetes API to make sure you are au
 You are now logged in and can use kubectl to manage your Kubernetes resources!
 
 ## Further reading
-
-[](<!-- Further reading: Dex, Kubernetes Tutorial, other relevant documentation -->)
 
 * [dex on GitHub](https://github.com/dexidp/dex)
 * [oidc-login/kubelogin on GitHub](https://github.com/int128/kubelogin)
