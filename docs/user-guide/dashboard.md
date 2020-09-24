@@ -1,4 +1,4 @@
-#Compliant Kubernetes (CK8S) Dashboard
+# Compliant Kubernetes (CK8S) Dashboard
 
 The CK8S Dashboard provides different visualizations regarding the state of the cluster. It has set of panels organized and arranged into one or more rows. Each panel visualizes different aspect of the system. The different visualizations can be broadly divided into the following five categories.
 
@@ -14,7 +14,7 @@ Once you logged into CK8S dahsboard, you will get the main page similar to the f
 
 The left panel in the figure shows the link to the five categories, i.e., 1) cluster 2) Falco 3) Grafana 4) Elastic and 5) Harbor. The central part presents different panels with summary information, e.g., number of nodes, pods, CPU and RAM usage, etc, about the cluster.
 
-##Cluster: How to get detail information about the cluster
+## Cluster: How to get detail information about the cluster
 
 To get information about the state of the cluster, please click the *Cluster* icon  from the left panel in the main page. You will get a page similar to the one shown below.
 
@@ -49,7 +49,7 @@ To get information about namespaces:
 
    If you want to zoom in further and get more information about pods, you can select one pod at a time and get a detailed information.
 
-##Falco: How to get runtime security issues
+## Falco: How to get runtime security issues
 
 To get information about security issues, if any, please click the *Falco* icon from the left panel in the main page. You will get a page similar to the one shown below.
 
@@ -80,7 +80,7 @@ The *Macro* panel shows the different Falco Macros in the system. Note that *Mac
 ![Falco Macros](../img/falco_macros.png)
 
 
-##Grafana: Metrics visualization and analysis
+## Grafana: Metrics visualization and analysis
 
 Grafana is used to provide visualizations about the system based on different metrics collected from the system. To get such visualization, please click the *Grafana* icon from the left panel in the main page. You will be redirected to grafana website. You will land to a page similar to the figure shown below.
 
@@ -88,7 +88,7 @@ Grafana is used to provide visualizations about the system based on different me
 
 To learn more on how to explore the Grafana dashboard, please visit the official [Grafana](https://grafana.com/docs/grafana/latest/features/dashboard/) website.
 
-##Elasticsearch: Log visualization and analysis
+## Elasticsearch: Log visualization and analysis
 Open Distro for Elasticsearch is used for logs visualization and analytics. To  visualization and analytics logs, please click the *Elastic* icon from the left panel in the main page. You will be redirected to grafana website.
 **Open Distro for Elasticsearch doesn't work OIDC.. This should be fixed**
 
