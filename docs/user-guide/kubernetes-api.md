@@ -33,19 +33,28 @@ The kubeconfig file can be used with `kubectl` by:
 
 * Setting and exporting the `KUBECONFIG` environment variable:
 
-  ```bash
-  export KUBECONFIG=/path/to/kubeconfig
-  kubectl get pods
-  ```
+  ![Setting KUBECONFIG in terminal](img/kubeconfig-terminal.png)
 
 * Merging the configuration with your existing kubeconfig file, see [Kubernetes documentation on merging kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files).
 
 ### Authenticating to the Kubernetes API
 
 To authenticate to the Kubernetes API, run a `kubectl` command.
-The `oidc-login` plugin will launch a browser where you log in to the cluster.
+The `oidc-login` plugin will launch a browser where you log in to the cluster:
+
+![Dex login page](img/dex-login.png)
+
+This page contains the authentication options provided by your administrator.
+Select your log in method and log in:
+
+![User authentication page](img/user-login.png)
+
+Once you have logged in through the browser, you are authenticated to the cluster:
+
+![Successful login](img/dex-authenticated.png)
+
 Your credentials will then be used by the Kubernetes API to make sure you are authorized.
-Once you have logged in through the browser, you are authenticated to the cluster.
+You are now logged in and can use kubectl to manage your Kubernetes resources!
 
 ## Further reading
 
