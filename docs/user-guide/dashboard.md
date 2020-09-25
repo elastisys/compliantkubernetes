@@ -1,5 +1,7 @@
 # Compliant Kubernetes (CK8s) Dashboard
 
+To facilitate continous compliance, Compliant Kubernetes comes with a "single pane of glass" to present all aspects of the cluster that are relevant for internal or external auditing.
+
 The CK8s Dashboard provides different visualizations regarding the state of the cluster. It has a set of panels organized and arranged into one or more rows. Each panel visualizes different aspect of the system. The different visualizations can be broadly divided into the following five categories.
 
 1. Cluster: Information regarding the state of the state
@@ -112,14 +114,13 @@ Grafana is used to provide visualizations about the system based on different me
 To learn more on how to explore the Grafana dashboard, please visit the official [Grafana](https://grafana.com/docs/grafana/latest/features/dashboard/) website.
 
 ## Elasticsearch: Log visualization and analysis
-Open Distro for Elasticsearch is used for logs visualization and analytics. To  visualization and analytics logs, please click the *Elastic* icon from the left panel in the main page. You will be redirected to grafana website.
+
+Open Distro for Elasticsearch is used for logs visualization and analytics. To  visualization and analytics logs, please click the *Elastic* icon from the left panel in the main page. You will be redirected to Kibana website.
+
+For more details, see [Elasticsearch/Kibana](../elasticsearch).
 
 ## Harbor: Log visualization and analysis
 
 Harbor is used to manage and scan container images to ensure that there no any vulnerability. To access Harbor, please click the *Harbor* icon from the left panel in the main page. You will be redirected to Harbor website.
 
-You will land to a page similar to the figure shown below. Currently nothing is displayed since there is no data.
-
-![Harbor home](../img/harbor.png)
-
-To learn more on how to manage and work with Harbor, please visit the official [Harbor](https://goharbor.io/docs/2.1.0/working-with-projects/create-projects/) website.
+For more details, see [Harbor](../harbor).
