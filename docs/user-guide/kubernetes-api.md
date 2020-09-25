@@ -17,6 +17,10 @@ You have administrator access to the user workload Kubernetes Namespaces by defa
 In order to follow [the principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege), you as an user should only have sufficient access to manage resources required by your application.
 User access to the Kubernetes API may need to be restricted from case to case to follow the principle of least privilege.
 
+!!!note
+    Regardless of your privilege, you will not be able to see components such as Harbor and Elasticsearch via the Kubernetes API. This is in order to comply with common logging policies, which requires logging to be sent to a tamper-proof environment. The tamper-proof environment needs to be separated from the production cluster.
+
+
 ## Usage guide
 
 This section focuses on using the kubeconfig.
