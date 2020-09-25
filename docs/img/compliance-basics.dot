@@ -84,11 +84,12 @@ digraph compliance_basics {
         cloud_provider[width=0, height=0, margin=0];
 
         cloud_provider -> {
-            //aws[image="logos/cloud-providers/aws.png"];
-            //citycloud[image="logos/cloud-providers/citycloud.png"]
+            aws[image="logos/cloud-providers/aws.png"];
+            citycloud[image="logos/cloud-providers/citycloud.png"]
             exoscale[image="logos/cloud-providers/exoscale.png"]
-            //safespring[image="logos/cloud-providers/safespring.png"]
-            //vmware[image="logos/cloud-providers/vsphere.png"]
+            safespring[image="logos/cloud-providers/safespring.png"]
+            openstack[image="logos/cloud-providers/openstack.png"]
+            vmware[image="logos/cloud-providers/vsphere.png"]
         }
         cloud_provider -> {
             byom[label="Bring\nYour Own\nMetal",shape=box]
