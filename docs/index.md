@@ -37,3 +37,13 @@ To achieve this, Compliant Kubernetes is implemented as two Kubernetes cluster
 * A **service cluster**, which hosts services for monitoring, logging and vulnerability management.
 
 ![C4 Model, Level 2 Diagram](img/ck8s-c4model-level2.png)
+
+!!!note
+    Due to technical limitations, some compliance-related components still need to run in the workload cluster. These are visible when inspecting the workload cluster, for example, via the [Kubernetes API](user-guide/kubernetes-api.md). Currently, these components are:
+
+    * Falco, for intrusion detection;
+    * Prometheus, for collecting metrics;
+    * Fluentd, for collecting logs;
+    * OpenPolicyAgent, for enforcing Kubernetes API policies.
+
+    Note that, the logs, metrics and alerts produced by these components are immediately pushed into the tamper-proof logging environment, hence this technical limitation does not weaken compliance.
