@@ -56,12 +56,12 @@ Compliant Kubernetes deploys Grafana with a selection of dashboards by default. 
 #### Node health
 The Nodes dashboard (Nodes) gives a quick overview of the status (health) of a node in the cluster. By selecting an instance in the "instance" dropdown metrics for CPU, Load, Memory, Disk and Network I/O is showed for that node. The time frame can be changed either by using the time dropdown or selecting directly in the graphs.
 
-![Node Health](../../img/node_health.png  "Nodes dashboard")
+![Node Health](../img/node_health.png  "Nodes dashboard")
 
 #### Pod health
 The Pods dashboard (Kubernetes/Compute resources/Pods) gives a quick overview of the status (health) of a pod in the cluster. By selecting a pod in the "pod" dropdown metrics for CPU, Memory, and Network I/O is showed for that node. The time frame can be changed either by using the time dropdown or selecting directly in the graphs.
 
-![Pod health](../../img/pod_health.png  "Pod health")
+![Pod health](../img/pod_health.png  "Pod health")
 
 ### Further reading
 For more information please refer to the official [Prometheus](https://prometheus.io/docs/) and [Grafana](https://grafana.com/docs/grafana/latest/) documentation.
