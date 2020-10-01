@@ -42,6 +42,7 @@ sudo apt-get install graphviz make
 * Use "we" for the writer(s). Use "you" for the reader.
 * Write in [plain English](http://www.plainenglish.co.uk/how-to-write-in-plain-english.html).
 * Ordering of ideas: Aim for the happy flow: How would a first-time user/operator interact with the system? In what order would they do things?
+* Please capitalize Kubernetes concepts (Pod, Volume, etc.) for consistency with the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/pods/).
 * Link to relevant upstream documentation.
 * Please contribute in a branch and create a PR.
 
