@@ -9,6 +9,8 @@ copyright: Copyright © 2020 Elastisys AB
 
 repo_url: https://github.com/elastisys/compliantkubernetes
 
+strict: true
+
 google_analytics:
   - UA-68368435-4
   - auto
