@@ -2,7 +2,8 @@ all: \
 		compliance-basics.png \
 		ck8s-c4model-level1.png \
 		ck8s-c4model-level2.png \
-		user-overview.png
+		user-overview.png \
+		harbor-usage.png
 
 preview:
 		echo "Performing continuous preview ..." >&2
