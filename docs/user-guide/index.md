@@ -3,7 +3,7 @@
 This guide is for users who manage application on top of Compliant Kubernetes.
 
 !!! note
-    Please make sure you've completed the [getting started guide](../getting_started.md).
+    Please make sure you've completed the [getting started guide](../getting-started.md).
 
 A user can be described via the following user stories:
 
