@@ -1,6 +1,13 @@
-# Work in progress
+# Disaster Recovery
 
-Please check back soon!
+This document details disaster recovery procedures for Compliant Kubernetes. These procedures must be executed by the operator.
+
+## Compliant Need
+
+Disaster recovery is mandated by several regulations and information security standards. For example, in ISO 27001:2013, the annexes that mostly concerns disaster recovery are:
+
+- [A.12.3.1 Information Backup](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
+- [A.17.1.1 Planning Information Security Continuity](https://www.isms.online/iso-27001/annex-a-17-information-security-aspects-of-business-continuity-management/)
 
 ## Elasticsearch
 
