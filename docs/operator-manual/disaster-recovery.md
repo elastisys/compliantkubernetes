@@ -26,9 +26,9 @@ To take a snapshot on-demand, execute
 
 Set the following variables
 
-- `user` - elasticsearch user with permissions to manage snapshots, usually `snapshotter`
+- `user` - Eelasticsearch user with permissions to manage snapshots, usually `snapshotter`
 - `password` - password for the above user
-- `es_url` - url to elasticsearch
+- `es_url` - url to Elasticsearch
 
 List snapshot repositories
 
@@ -121,7 +121,7 @@ Read the [API](https://www.elastic.co/guide/en/elasticsearch/reference/current/r
 
 This process is very similar to the one described above, but there are a few extra steps to carry out.
 
-Before you install elasticsearch you can preferably disable the initial index creation by setting
+Before you install Elasticsearch you can preferably disable the initial index creation by setting
 
 ```bash
 configurer.createIndices: false
@@ -129,7 +129,7 @@ configurer.createIndices: false
 
 in the values file for opendistro. This will make the restore process leaner.
 
-Install the elasticsearch suite
+Install the Elasticsearch suite:
 
 ```bash
 ./bin/ck8s ops helmfile sc -l app=opendistro apply
@@ -144,9 +144,9 @@ If you want to restore all indices, use the following `indices` variable
 indices="kubernetes-*,kubeaudit-*,other-*"
 ```
 
-**Note**, this process assumes that you are using the same s3 bucket as your previous cluster.
-If you aren't
+!!!note
+    This process assumes that you are using the same S3 bucket as your previous cluster. If you aren't:
 
-- Register a new s3 snapshot repository to the old bucket as per https://www.elastic.co/guide/en/elasticsearch/plugins/7.9/repository-s3-usage.html#repository-s3-usage
-- Use the newly registered snapshot repository in the restore process
+    - Register a new S3 snapshot repository to the old bucket as [described here](https://www.elastic.co/guide/en/elasticsearch/plugins/7.9/repository-s3-usage.html#repository-s3-usage)
+    - Use the newly registered snapshot repository in the restore process
 
