@@ -17,7 +17,7 @@ In Compliant Kubernetes, Elasticsearch is separate from the production workload,
 
 Raw logs in CK8S are normalized, filtered, and processed by [fluentd](https://www.fluentd.org/) and shipped to Elasticsearch for storage and analysis. CK8S uses fully open source version of Elasticsearch called  [Open Distro for Elasticsearch](https://logz.io/blog/open-distro-for-elasticsearch/).
 
-Open Distro for Elasticsearch provides a powerful, easy-to-use event monitoring and alerting system, enabling you to monitor, search, visualize your dataamong other things. Kibana is used as visualization and analysis interface  for Elasticsearch for all your logs.
+Open Distro for Elasticsearch provides a powerful, easy-to-use event monitoring and alerting system, enabling you to monitor, search, visualize your data among other things. Kibana is used as visualization and analysis interface  for Elasticsearch for all your logs.
 
 ## Visualization using Kibana
 Kibana is used as a data visualization and exploration tool for log time-series  and aggregate analytics. It offers powerful and easy-to-use features such as histograms, line graphs, pie charts, heat maps, and built-in geospatial support.
