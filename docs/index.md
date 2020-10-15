@@ -25,13 +25,13 @@ Let us start with the system context.
 
 ![C4 Model, Level 1 Diagram](img/ck8s-c4model-level1.png)
 
-Compliance imposes restrictions on all levels of the teck stack. Your compliance focus should mostly lie on your application. Compliant Kubernetes ensures that the platform hosting your application is compliant. Finally, you need to the whole software stack on a hardware that is managed in a compliant way, either via an ISO 27001-certified cloud provider or using on-prem hardware.
+Compliance imposes restrictions on all levels of the teck stack. Your compliance focus should mostly lie on your application. Compliant Kubernetes ensures that the platform hosting your application is compliant. Finally, you need the whole software stack on a hardware that is managed in a compliant way, either via an ISO 27001-certified cloud provider or using on-prem hardware.
 
 ### Level 2: Clusters
 
-Most regulations require logging to a tamper-proof environment. This is usually interpreted as an attacker gaining access to your application should not be able to delete logs showing their attack and the harm cause by their attack.
+Most regulations require logging to a tamper-proof environment. This is usually interpreted as an attacker gaining access to your application should not be able to delete logs showing their attack and the harm caused by their attack.
 
-To achieve this, Compliant Kubernetes is implemented as two Kubernetes cluster
+To achieve this, Compliant Kubernetes is implemented as two Kubernetes clusters
 
 * A **workload cluster**, which hosts your application, and
 * A **service cluster**, which hosts services for monitoring, logging and vulnerability management.
