@@ -76,34 +76,13 @@ To get further information about each namespace, click on the namespace you want
 
 ## Falco: How to get runtime security issues
 
+Falco is a cloud-native runtime security system that monitors file changes, network activity, the process table, and other data for suspicious behavior. It inspects events at the system call level of a host through a kernel module or an extended BPF probe. Falco contains a rich set of rules that you can edit for flagging specific abnormal behaviors and for creating allow lists for normal computer operations.
 To get information about security issues, if any, please click the *Falco* icon from the left panel in the main page. You will get a page similar to the one shown below.
 
 ![Falco Dashboard](../img/falco.png)
 
-The Falco dashboard contains five tabs, namely *Overview*, *Logs*, *Files*, *Rules* and *Macros* which are located on the top right side aligned horizontally (i,e., labeled *Tabs* in the figure). By default the *Overview* tab is selected when you click the Falco icon from the main left panel. Similar to the *Cluster* dashboard, to distinguish the selected tab from the rest the color of the selected tab label is  *blue* along with *blue* underline.
 
-The *Overview* tab has multiple panels displaying aggregate information about different issues such as *Emergencies*,  *Alerts*, *Critical*, *Errors*, *Warnings*, etc that happened in the past 24 hours.
-
-To get detail information about the issue, click on the graph inside the panel. For example, the following screen shows part of the information displayed when we click inside the graph in the *Warnings* panel.
-
-![Falco Warning](../img/falco_warning.png)
-
-The *Logs* panel provides all logs for all issues collected by Falco in the system. The figure below shows a sample screenshot from the *Logs* panel.
-
-![Falco Logs](../img/falco_logs.png)
-
-The *Files* panel shows Falco configuration files along with their content. The screenshot below shows a sample list of configuration files in the *Files* panel.
-
-![Falco Files](../img/falco_files.png)
-
-The *Rules* panel shows the different Falco rules in the system. The screenshot below shows a sample list of rules in the *Rules* panel.
-
-![Falco Rules](../img/falco_rules.png)
-
-The *Macro* panel shows the different Falco Macros in the system. Note that *Macros* in Falco are rules that are re-usable ([For more](https://falco.org/docs/rules/)). The screenshot below shows a sample list of rules in the *Rules* panel.
-
-![Falco Macros](../img/falco_macros.png)
-
+For more details, see [Falco](../falco).
 
 ## Grafana: Metrics visualization and analysis
 
@@ -119,7 +98,7 @@ Open Distro for Elasticsearch is used for logs visualization and analytics. To  
 
 For more details, see [Elasticsearch/Kibana](../elasticsearch).
 
-## Harbor: Log visualization and analysis
+## Harbor: private container registry
 
 Harbor is used to manage and scan container images to ensure that there no any vulnerability. To access Harbor, please click the *Harbor* icon from the left panel in the main page. You will be redirected to Harbor website.
 
