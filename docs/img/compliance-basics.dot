@@ -85,6 +85,7 @@ digraph compliance_basics {
 
         cloud_provider -> {
             aws[image="logos/cloud-providers/aws.png"];
+            azure[image="logos/cloud-providers/azure.png"];
             citycloud[image="logos/cloud-providers/citycloud.png"]
             exoscale[image="logos/cloud-providers/exoscale.png"]
             safespring[image="logos/cloud-providers/safespring.png"]
