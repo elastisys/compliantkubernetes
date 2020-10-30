@@ -34,6 +34,9 @@ digraph compliance_basics {
         { HIPAA, PDL, GDPR, CCPA, FFFS } -> Controls
         { iso27k, soc2, pcidss } -> Controls
 
+        // Special node for alignment
+        controls2[width=0, height=0, margin=0, style="invis"];
+
         node[width=1, shape=box, style=rounded];
         Controls -> {
             supplier[label="Supplier\nmanagement",fontsize=12]
@@ -80,7 +83,7 @@ digraph compliance_basics {
         node[shape=none, label="", width=1, height=1, fixedsize=true, imagescale=true];
         edge[style=invis];
 
-        // Special note to attach supplier management to.
+        // Special node to attach supplier management to.
         cloud_provider[width=0, height=0, margin=0];
 
         cloud_provider -> {
@@ -90,11 +93,9 @@ digraph compliance_basics {
             exoscale[image="logos/cloud-providers/exoscale.png"]
             safespring[image="logos/cloud-providers/safespring.png"]
             openstack[image="logos/cloud-providers/openstack.png"]
-        }
-        cloud_provider -> {
             byovm[label="Bring\nYour Own\nVMs",shape=box]
             byom[label="Bring\nYour Own\nMetal",shape=box]
-        }[weight=1000];
+        }
     }
 
     // Make sure the rank of cloud providers is below those of
@@ -105,4 +106,8 @@ digraph compliance_basics {
         supplier -> supplier2 -> supplier3;
         supplier3 -> cloud_provider[arrowhead=normal, lhead=cluster_provider];
     }
+
+    // Ensure alignment
+    FFFS -> controls2 -> access[weight=1000,style="invis"];
+    cloud_provider -> byom[weight=1000,style="invis"];
 }
