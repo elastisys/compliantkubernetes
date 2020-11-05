@@ -65,7 +65,9 @@ digraph compliance_basics {
 
         access -> { dex[image="logos/dex.png"] }
         "Backups" -> { velero[image="logos/velero.png"] }
-        "Logging" -> { elasticsearch[image="logos/elasticsearch.png"] }
+        "Logging" 
+            -> { elasticsearch[image="logos/elasticsearch.png"] }
+            -> { kibana[image="logos/kibana.png"] }
         incident 
             -> { prometheus[image="logos/prometheus.png"] }
             -> { grafana[image="logos/grafana.png"] }
