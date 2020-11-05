@@ -8,7 +8,7 @@ digraph compliance_basics {
 
     subgraph cluster_regulations {
         label="Regulations";
-        node[width=1.2, shape=box, style=rounded];
+        node[width=1, shape=box, style=rounded];
 
         HIPAA
         PDL
@@ -19,7 +19,7 @@ digraph compliance_basics {
 
     subgraph cluster_isms {
         label="Information Security Standards"
-        node[width=1.2, shape=box, style=rounded];
+        node[width=1, shape=box, style=rounded];
 
         iso27k[label="ISO 27001"];
         soc2[label="SOC 2"];
@@ -29,7 +29,7 @@ digraph compliance_basics {
     graph[width="4pt"];
     subgraph cluster_policies {
         label="Policies"
-        node[width=1.2, shape=circle, fixedsize=true];
+        node[width=1, shape=circle, fixedsize=true];
 
         { HIPAA, PDL, GDPR, CCPA, FFFS } -> Controls
         { iso27k, soc2, pcidss } -> Controls
@@ -37,13 +37,12 @@ digraph compliance_basics {
         // Special node for alignment
         controls2[width=0, height=0, margin=0, style="invis"];
 
-        node[width=1.2, shape=box, style=rounded];
+        node[width=1, shape=box, style=rounded];
         Controls -> {
             supplier[label="Supplier\nmanagement",fontsize=12]
             access[label="Access\ncontrol"]
             "Logging"
             "Backups"
-            "Monitoring"
             incident[label="Incident\nmanagement",fontsize=12]
             vulnerability[label="Vulnerability\nmanagement",fontsize=12]
             intrusion[label="Intrusion\ndetection"]
@@ -58,7 +57,7 @@ digraph compliance_basics {
         node[
             shape=none,
             label="",
-            width=1.385,
+            width=1,
             height=1,
             fixedsize=true,
             imagescale=true
@@ -67,10 +66,9 @@ digraph compliance_basics {
         access -> { dex[image="logos/dex.png"] }
         "Backups" -> { velero[image="logos/velero.png"] }
         "Logging" -> { elasticsearch[image="logos/elasticsearch.png"] }
-        "Monitoring" 
+        incident 
             -> { prometheus[image="logos/prometheus.png"] }
             -> { grafana[image="logos/grafana.png"] }
-        incident -> { prometheus[image="logos/prometheus.png"] }
         vulnerability
             -> { harbor[image="logos/harbor.png"] }
             -> { trivy[image="logos/trivy.png"] }
@@ -84,7 +82,7 @@ digraph compliance_basics {
     subgraph cluster_provider {
         label="Compliant Cloud Provider"
 
-        node[shape=none, label="", width=1.2, height=1, fixedsize=true, imagescale=true];
+        node[shape=none, label="", width=1, height=1, fixedsize=true, imagescale=true];
         edge[style=invis];
 
         // Special node to attach supplier management to.
