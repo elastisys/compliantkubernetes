@@ -50,6 +50,8 @@ nav:
     - 'Configuring a Cluster': 'operator-manual/configuring.md'
     - 'Disaster Recovery': 'operator-manual/disaster-recovery.md'
     - 'Breaking the Glass': 'operator-manual/break-glass.md'
+  - 'Developer Guide':
+    - 'Architectural Decision Log': 'adr/index.md'
   - 'FAQ': 'faq.md'
   - 'Roadmap': 'roadmap.md'
   - 'Support ⧉': 'https://compliantkubernetes.com/'
