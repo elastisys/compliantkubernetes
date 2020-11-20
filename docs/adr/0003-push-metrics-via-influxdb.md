@@ -44,6 +44,6 @@ We chose to push metrics from the workload cluster to the service cluster via In
 
 ## Pros and Cons of the Options
 
-Both Thanos and Cortex seems worthy protect to replace InfluxDB. At the time of this writing, they were both having CNCF Incubating status. The two projects feature a healthy collaboration and are likely to merge in the future.
+Both Thanos and Cortex seems worthy projects to replace InfluxDB. At the time of this writing, they were both having CNCF Incubating status. The two projects feature a healthy collaboration and are likely to merge in the future.
 
 However, right now, migrating away from InfluxDB feels like it adds more cost than benefits. We will reevaluate this decision when InfluxDB is no longer sufficient for our needs.
