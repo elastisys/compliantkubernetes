@@ -80,7 +80,7 @@ Once you download ck8s-cluster, please follow the steps below.
       "node_type": "master",
       "size": "t3.small",
       "image": {
-        "name":  \textcolor{red} {"ami-0188237ecf1a71032"}
+        "name":   "ami-0188237ecf1a71032"
       },
       "provider_settings": null
     }
