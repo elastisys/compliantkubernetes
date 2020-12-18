@@ -45,6 +45,9 @@ sudo apt-get install graphviz make
 * Please capitalize Kubernetes concepts (Pod, Volume, etc.) for consistency with the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/pods/).
 * Link to relevant upstream documentation.
 * Please contribute in a branch and create a PR.
+* Capitalize all letters of acronyms: DNS, TCP, AWS.
+* Capitalize proper nouns, in particular names of projects, companies and products: Kubernetes, Amazon, Azure.
+* Capitalize Kubernetes concepts: Pod, Node, Service.
 
 ## Deployment
 
