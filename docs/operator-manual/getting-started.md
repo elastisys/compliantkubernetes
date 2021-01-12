@@ -207,20 +207,92 @@ Once the cluster is ready, please follow the instructions below to install the c
   ```bash
   ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
   ```
+3. Prepare all the required domains.
+  You will need to set up the following DNS entries (replace example.com with your domain).
 
-3. Initialization of Compliant Kubernetes apps.
+  Point these domains to the workload cluster ingress controller:
+
+  `*.example.com`
+
+  `prometheus.ops.example.com`
+
+  Point these domains to the service cluster ingress controller:
+
+  `*.ops.example.com`
+
+  `grafana.example.com`
+
+  `harbor.example.com`
+
+  `kibana.example.com`
+
+  `dex.example.com`
+
+  `notary.harbor.example.com`
+
+5. Edit the kubeconfig files
+ Two encrypted kubeconfig files were created when the  two kubernetes clusters(i.e, sc, wc) were created  above. The two files are  `~/.ck8s/aws/.state/kube_config_sc.yaml` for  `sc` cluster and `~/.ck8s/aws/.state/kube_config_wc.yaml` for `wc` cluster.  
+
+  Please copy the URL of the load balancer from inventory file
+ (i.e., ~/.ck8s/aws/<sc|wc>-config/inventory.ini) and
+ paste this URL into the server parameter in kubeconfig. Do not overwrite the port (see the example presented above).
+6. Initialization of Compliant Kubernetes apps.
 
     Run the following command to initialize the compliant kubernetes apps. Note that this will not overwrite existing values, but it will append to existing files.
 
     ```bash
+    export CK8S_ENVIRONMENT_NAME=aws
+    #export CK8S_FLAVOR=[dev|prod] # defaults to dev
     export CK8S_CONFIG_PATH=~/.ck8s/aws
     export CK8S_CLOUD_PROVIDER=aws
-    export CK8S_ENVIRONMENT_NAME=<put Environment name>
+    export CK8S_PGP_FP=<PGP-fingerprint>
     ./bin/ck8s init
     ```
     Three  files, `sc-config.yaml` and `wc-config.yaml`, and `secrets.yaml`, are generated in `~/.ck8s/aws/` directory.
 
-    Edit the configuration files  `~/.ck8s/aws/sc-config.yaml`, `~/.ck8s/aws/wc-config.yaml` and `~/.ck8s/aws/secrets.yaml` and set the approriate values for some of the configuration fields, especially these fields whose values contain  `set-me`. Make sure also that the `objectStorage` values are set in `~/.ck8s/aws/sc-config.yaml`, `~/.ck8s/aws/wc-config.yaml` and `~/.ck8s/aws/secrets.yaml` according to your `objectStorage.type` (so `objectStorage.s3.*` if you are using S3 or `objectStorage.gcs.*` if you are using GCS.).
+    Edit the configuration files  `~/.ck8s/aws/sc-config.yaml`, `~/.ck8s/aws/wc-config.yaml` and `~/.ck8s/aws/secrets.yaml` and set the approriate values for some of the configuration fields. The following are the  minimum change you should to do.
+
+  1. Changes in `~/.ck8s/aws/sc-config.yaml`:
+
+       ```
+       global:
+        baseDomain: "set-me" #based on the above domain example this is set to example.com
+        opsDomain: "set-me" #based on the above domain example this is set to ops.example.com
+
+      objectStorage:
+        type: "s3" # assumes that you are using s3
+        s3:
+          region: "set-me" #put the region, e.g, west-1
+          regionAddress: "set-me" #put the region address, e.g, s3.us-west-1.amazonaws.com
+          regionEndpoint: "set-me"#put the region endpoint, e.g., https://s3.us-west-1.amazonaws.com
+
+      fluentd:
+       useRegionEndpoint: "set-me" # set it to either true or false
+       ```
+   2. Changes in `~/.ck8s/aws/sc-config.yaml`:
+
+     ```
+     global:
+      baseDomain: "set-me" #based on the above domain example this is set to example.com
+      opsDomain: "set-me" #based on the above domain example this is set to ops.example.com
+
+    objectStorage:
+      type: "s3" # assumes that you are using s3
+      s3:
+        region: "set-me" #put the region, e.g, west-1
+        regionAddress: "set-me" #put the region address, e.g, s3.us-west-1.amazonaws.com
+        regionEndpoint: "set-me" #put the region endpoint, e.g., https://s3.us-west-1.amazonaws.com
+     ```
+   3. Changes in `~/.ck8s/aws/secrets.yaml`:
+
+   ```
+   objectStorage:
+    s3:
+        accessKey: "set-me" #put your s3 accesskey
+        secretKey: "set-me" #put your s3 secretKey
+   ```
+
+
 
 4. Installing Compliant Kubernetes apps.
 
