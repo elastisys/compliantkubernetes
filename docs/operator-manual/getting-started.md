@@ -87,7 +87,7 @@ Once you download ck8s-cluster, please follow the steps below.
 
   Please make sure that you copy `../../../inventory/hosts` or use a different name before you create the second cluster. Otherwise, it will be overwritten. It  will be needed to deploy the kubernetes cluster later.
 
-## Deploying sc|wc cluster with Kubespray.
+### Deploying sc|wc cluster with Kubespray.
 
 With the infrastructure provisioned, we can now deploy both the  sc and wc Kubernetes clusters using kubespray. Before trying any of the steps, make sure you are in the repo's root folder.
 
@@ -185,7 +185,7 @@ With the infrastructure provisioned, we can now deploy both the  sc and wc Kuber
       user:
           client-certificate-data: xxx
           client-key-data: xxx
-    ```
+  ```
 
 
 
