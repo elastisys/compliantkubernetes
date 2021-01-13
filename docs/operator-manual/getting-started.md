@@ -3,15 +3,15 @@
 This document describes how to set up Compliant Kubernetes on AWS. The setup has two major parts: Kubernetes cluster setup and Compliant Kubernetes applications setup. The following sections present the necessary steps to set up both parts.
 
 ##  Kubernetes Cluster set up
-In order to set up the kubernetes clusters, you need to clone the [Elastisys Compliant Kubernetes Kubespray](https://github.com/elastisys/compliantkubernetes-kubespray.git)  repo first.
+We suggest to set up Kubernetes clusters using kubespray. Clone the [Elastisys Compliant Kubernetes Kubespray](https://github.com/elastisys/compliantkubernetes-kubespray.git) repo first.
 
 ```bash
 git clone --recursive https://github.com/elastisys/compliantkubernetes-kubespray.git
 # cd to the cloned repo
 cd compliantkubernetes-kubespray
 ```
-Once you download ck8s-cluster, please follow the steps below.
-### Infrastructure setup using terraform
+
+### Infrastructure setup using Terraform
 
 1. Setup Terraform Cloud.
 
@@ -21,7 +21,7 @@ Once you download ck8s-cluster, please follow the steps below.
 
   You need to set your Terraform credentials and update the default  AWS cluster values.
 
-  1. Setting  Terraform credentials.
+  1. Configure  Terraform credentials.
 
     You can either export the variables for your AWS credentials or edit `kubespray/contrib/terraform/aws/credentials.tfvars`:
 
@@ -35,15 +35,15 @@ Once you download ck8s-cluster, please follow the steps below.
         export AWS_SSH_KEY_NAME=<An SSH key set up on AWS>
         export AWS_DEFAULT_REGION=<put your aws region-name>
         ```
-        Note: Pleased download the private key  when creating ssh key pair in AWS as it will be needed later.
+        Note: Pleased download the private key when creating SSH key pair in AWS as it will be needed later.
   2. Customize your infrastructure.
 
-    Edit `terraform.tfvars` and change the values according to your requirements. Since we need to create two different clusters (service and workload), you should  set `aws_cluster_name` to  `sc` when creating service cluster and `wc` when creating workload cluster.
+    Edit `terraform.tfvars` and change the values according to your requirements. Since we need to create two different clusters (service and workload), you should set `aws_cluster_name` to `sc` when creating service cluster and `wc` when creating workload cluster.
 
     Below is an example configuration.
       ```
       #Global Vars
-      aws_cluster_name = "sc|wc" #service cluster or workload cluster
+      aws_cluster_name = "sc|wc" # service cluster or workload cluster
 
       #VPC Vars
       aws_vpc_cidr_block       = "10.250.192.0/18"
@@ -75,36 +75,39 @@ Once you download ck8s-cluster, please follow the steps below.
         #  Product = "kubernetes"
       }
 
-      inventory_file = "../../../inventory/hosts"
+      inventory_file = "../../../inventory/hosts-sc|wc" # service cluster or workload cluster
       ```
-  3. initialize and apply terraform.
+3. Initialize and apply Terraform.
 
-    Once you are done with Terraform configuration, it is now time to create the cluster two clusters.
-    ```bash
-    terraform  init
-    terraform apply -state-out=<sc|wc state path>
-  ```
+  Once you are done with Terraform configuration, it is now time to create the cluster two clusters.
 
-  Please make sure that you copy `../../../inventory/hosts` or use a different name before you create the second cluster. Otherwise, it will be overwritten. It  will be needed to deploy the kubernetes cluster later.
+  ```bash
+  terraform init
+  terraform apply -state-out=<sc|wc state path>
+ ```
+
 
 ### Deploying sc|wc cluster with Kubespray.
 
-With the infrastructure provisioned, we can now deploy both the  sc and wc Kubernetes clusters using kubespray. Before trying any of the steps, make sure you are in the repo's root folder.
+With the infrastructure provisioned, we can now deploy both the sc and wc Kubernetes clusters using kubespray. Before trying any of the steps, make sure you are in the repo's root folder.
 
 1. Init the kubespray config in your config path.
+
   ```bash
   export CK8S_CONFIG_PATH=~/.ck8s/aws
   export CK8S_PGP_FP=<put your GPG-key here>
+
   #Use the AWS private key you downloaded above when you create SSH key pair.
-  bin/ck8s-kubespray init sc default <AWS private-key>
+  ./bin/ck8s-kubespray init sc|wc default <AWS private-key>
   ```
 
   If you don't have a GPG key already, then you need to generate GPG key. This is because  secrets in Compliant Kubernetes are are encrypted using [SOPS](https://github.com/mozilla/sops). To generate your own PGP key, run the command below:
   ```bash
   gpg --full-generate-key
   ```
-2. Copy the content of `../../../inventory/hosts` file (see step-3 under Terraform in case you use a different file) and paste it to `~/.ck8s/aws/inventory.ini`.
-   The following shows a sample content for `~/.ck8s/aws/inventory.ini`.
+
+2. Copy the content of `../../../inventory/hosts-sc|wc` file (see step-3 under Terraform in case you use a different file) and paste it to `~/.ck8s/aws/sc|wc-config/inventory.ini`.
+   The following shows a sample content for `~/.ck8s/aws/sc-config/inventory.ini`.
 
    ```bash
    [all]
@@ -142,15 +145,17 @@ With the infrastructure provisioned, we can now deploy both the  sc and wc Kuber
     ansible_python_interpreter=/usr/bin/python3
     ansible_user=ubuntu
    ```
+
 3. Run kubespray to set up the kubernetes cluster.
   ```
-  #please comment out lines with "---" in ~/.ck8s/aws/<sc|wc>-config/group_vars/all/all.yml and  ~/.ck8s/aws/<sc|wc>-config/group_vars/k8s-cluster/k8s-cluster.yml  as they may sometimes cause an error.
+
   ./bin/ck8s-kubespray apply <sc|wc>  --flush-cache
   ```
 4. Done. You should now have a working kubernetes cluster. You should also have an encrypted kubeconfig at `~/.ck8s/aws/.state/kube_config_<sc|wc>.yaml` that you can use to access the cluster.
 
 5. Accessing the clusters.
- Please copy the content of your  kubeconfig and save it, for example, in your working directory
+  Please copy the content of your kubeconfig and save it, for example, in your working directory.
+
  ```
  #open the encrypted kubeconfig for your cluster and copy the content
  sops ~/.ck8s/aws/.state/kube_config_<sc|wc>.yaml
@@ -191,11 +196,11 @@ With the infrastructure provisioned, we can now deploy both the  sc and wc Kuber
 
 ## Compliant Kubernetes Applications' Configurations and Installations on AWS
 
-Now the kubernetes clusters are up and running, we are ready to install the compliant kubernetes apps.
+Now that the Kubernetes clusters are up and running, we are ready to install the Compliant Kubernetes applications.
 
-Once the cluster is ready, please follow the instructions below to install the compliant Kubernetes-apps. For more information about compliant kubernetes apps, please check the compliant kubernetes apps repo [here](https://github.com/elastisys/compliantkubernetes-apps).
+Once the clusters are ready, please follow the instructions below to install the Compliant Kubernetes applications. For more information, please check the Compliant Kubernetes repo [here](https://github.com/elastisys/compliantkubernetes-apps).
 
-1. Clone the compliant kubernetes apps repo.
+1. Clone the Compliant Kubernetes apps repo.
 
   ```bash
   git clone https://github.com/elastisys/compliantkubernetes-apps.git
@@ -210,25 +215,23 @@ Once the cluster is ready, please follow the instructions below to install the c
 3. Prepare all the required domains.
   You will need to set up the following DNS entries (replace example.com with your domain).
 
-  Point these domains to the workload cluster ingress controller:
+  Point these domains to the workload cluster load balancer fronting the Ingress controller:
 
-  `*.example.com`
+    ```
+    *.example.com`
+    prometheus.ops.example.com
+    ```
 
-  `prometheus.ops.example.com`
+  Point these domains to the service cluster load balancer fronting the Ingress controller:
 
-  Point these domains to the service cluster ingress controller:
-
-  `*.ops.example.com`
-
-  `grafana.example.com`
-
-  `harbor.example.com`
-
-  `kibana.example.com`
-
-  `dex.example.com`
-
-  `notary.harbor.example.com`
+  ```
+  *.ops.example.com
+  grafana.example.com
+  harbor.example.com
+  kibana.example.com
+  dex.example.com
+  notary.harbor.example.com
+  ```
 
 5. Edit the kubeconfig files
  Two encrypted kubeconfig files were created when the  two kubernetes clusters(i.e, sc, wc) were created  above. The two files are  `~/.ck8s/aws/.state/kube_config_sc.yaml` for  `sc` cluster and `~/.ck8s/aws/.state/kube_config_wc.yaml` for `wc` cluster.  
@@ -238,7 +241,7 @@ Once the cluster is ready, please follow the instructions below to install the c
  paste this URL into the server parameter in kubeconfig. Do not overwrite the port (see the example presented above).
 6. Initialization of Compliant Kubernetes apps.
 
-    Run the following command to initialize the compliant kubernetes apps. Note that this will not overwrite existing values, but it will append to existing files.
+     Run the following command to initialize the Compliant Kubernetes apps. Note that this will not overwrite existing values, but it will append to existing files.
 
     ```bash
     export CK8S_ENVIRONMENT_NAME=aws
@@ -294,7 +297,7 @@ Once the cluster is ready, please follow the instructions below to install the c
 
 6. Installing Compliant Kubernetes apps.
 
-    This step assumes the ck8s-cluster setup above is up and running. To install the sc and wc clusters run the following commands.
+  Run the following commands:
 
     ```bash
     ./bin/ck8s apply sc
