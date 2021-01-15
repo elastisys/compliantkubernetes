@@ -72,6 +72,12 @@ cd compliantkubernetes-kubespray
 
     **NOTE: The Terraform state is stored in `kubespray/inventory/tfstate-*`. It is precious. Consider backing it up our using [Terraform Cloud](https://www.terraform.io/docs/cloud/index.html).**
 
+4. Check that the Ansible inventory was properly generated.
+
+    ```bash
+    ls -l kubespray/inventory/hosts-*
+    ```
+
 ### Deploying vanilla Kubernetes clusters using Kubespray.
 
 With the infrastructure provisioned, we can now deploy both the sc and wc Kubernetes clusters using kubespray. Before trying any of the steps, make sure you are in the repo's root folder.
