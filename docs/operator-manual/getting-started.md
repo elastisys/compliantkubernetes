@@ -34,4 +34,18 @@ cd compliantkubernetes-apps
 ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
 ```
 
-# 
+## Misc
+
+Compliant Kubernetes relies on SSH for accessing nodes. If you haven't already done so, generate an SSH key as follows:
+
+```bash
+ssh-keygen
+```
+
+Configuration secrets in Compliant Kubernetes are encrypted using [SOPS](https://github.com/mozilla/sops).
+We currently only support using PGP when encrypting secrets.
+If you haven't already done so, generate your own PGP key as follows:
+
+```bash
+gpg --full-generate-key
+```
