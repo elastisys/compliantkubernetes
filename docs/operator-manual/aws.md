@@ -67,9 +67,9 @@ cd compliantkubernetes-kubespray
     terraform init
     for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
         terraform apply \
-            -var-file=../../../inventory/terraform-$SERVICE_CLUSTER.tfvars \
+            -var-file=../../../inventory/terraform-$CLUSTER.tfvars \
             -auto-approve \
-            -state-out=$CLUSTER
+            -state-out=../../../inventory/tfstate-$CLUSTER.tfstate
     done
     popd
     ```
