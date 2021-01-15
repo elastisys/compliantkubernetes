@@ -3,7 +3,7 @@
 This document describes how to set up Compliant Kubernetes on AWS. The setup has two major parts:
 
 1. Deploying at least two vanilla Kubernetes clusters
-2. Deploying Compliant Kubernetes applications
+2. Deploying Compliant Kubernetes apps
 
 Before starting, make sure you have [all necessary tools](getting-started.md).
 
@@ -138,112 +138,98 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
     done
     ```
 
-## Compliant Kubernetes Applications' Configurations and Installations on AWS
+## Deploying Compliant Kubernetes Apps
 
-Now that the Kubernetes clusters are up and running, we are ready to install the Compliant Kubernetes applications.
+Now that the Kubernetes clusters are up and running, we are ready to install the Compliant Kubernetes apps.
 
-Once the clusters are ready, please follow the instructions below to install the Compliant Kubernetes applications. For more information, please check the Compliant Kubernetes repo [here](https://github.com/elastisys/compliantkubernetes-apps).
-
-1. Clone the Compliant Kubernetes apps repo.
+1. If you haven't done so already, clone the Compliant Kubernetes apps repo and install pre-requisites.
 
       ```bash
       git clone https://github.com/elastisys/compliantkubernetes-apps.git
-      ```
-2. Installation of prerequisite tools.
-  To install the prerequisites please run the command below (assumes you are under `compliantkubernetes-apps` directory.). For more information please check the requirements section [here](https://github.com/elastisys/compliantkubernetes-apps#requirements).
-
-      ```bash
+      cd compliantkubernetes-apps
       ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
       ```
-3. Prepare all the required domains.
-  You will need to set up the following DNS entries (replace example.com with your domain).
 
-    Point these domains to the workload cluster load balancer fronting the Ingress controller:
-
-      ```
-        *.example.com
-        prometheus.ops.example.com
-      ```
-
-    Point these domains to the service cluster load balancer fronting the Ingress controller:
-
-      ```
-      *.ops.example.com
-      grafana.example.com
-      harbor.example.com
-      kibana.example.com
-      dex.example.com
-      notary.harbor.example.com
-      ```
-
-4. Edit the kubeconfig files
- Two encrypted kubeconfig files were created when the  two kubernetes clusters(i.e, sc, wc) were created  above. The two files are  `~/.ck8s/aws/.state/kube_config_sc.yaml` for  `sc` cluster and `~/.ck8s/aws/.state/kube_config_wc.yaml` for `wc` cluster.  
-
-      Please copy the URL of the load balancer from inventory file
-     (i.e., ~/.ck8s/aws/<sc|wc>-config/inventory.ini) and
-     paste this URL into the server parameter in kubeconfig. Do not overwrite the port (see the example presented above).
-5. Initialization of Compliant Kubernetes apps.
-     Run the following command to initialize the Compliant Kubernetes apps. Note that this will not overwrite existing values, but it will append to existing files.
+2. Initialize the apps configuration.
 
     ```bash
     export CK8S_ENVIRONMENT_NAME=aws
     #export CK8S_FLAVOR=[dev|prod] # defaults to dev
     export CK8S_CONFIG_PATH=~/.ck8s/aws
     export CK8S_CLOUD_PROVIDER=aws
-    export CK8S_PGP_FP=<PGP-fingerprint>
+    export CK8S_PGP_FP=<your GPG key ID>  # retrieve with gpg --list-secret-keys
     ./bin/ck8s init
     ```
-    Three  files, `sc-config.yaml` and `wc-config.yaml`, and `secrets.yaml`, are generated in `~/.ck8s/aws/` directory.
 
-    Edit the configuration files  `~/.ck8s/aws/sc-config.yaml`, `~/.ck8s/aws/wc-config.yaml` and `~/.ck8s/aws/secrets.yaml` and set the approriate values for some of the configuration fields. The following are the  minimum change you should to do.
+    Three  files, `sc-config.yaml` and `wc-config.yaml`, and `secrets.yaml`, were generated in the `~/.ck8s/aws/` directory.
 
-      1. Changes in `~/.ck8s/aws/sc-config.yaml`:
+3. Configure the apps.
 
-           ```
-           global:
-            baseDomain: "set-me" #based on the above domain example this is set to example.com
-            opsDomain: "set-me" #based on the above domain example this is set to ops.example.com
-
-          objectStorage:
-            type: "s3" # assumes that you are using s3
-            s3:
-              region: "set-me" #put the region, e.g, west-1
-              regionAddress: "set-me" #put the region address, e.g, s3.us-west-1.amazonaws.com
-              regionEndpoint: "set-me"#put the region endpoint, e.g., https://s3.us-west-1.amazonaws.com
-
-          fluentd:
-           useRegionEndpoint: "set-me" # set it to either true or false
-           ```
-       2. Changes in `~/.ck8s/aws/sc-config.yaml`:
-
-             ```
-           global:
-            baseDomain: "set-me" #based on the above domain example this is set to example.com
-            opsDomain: "set-me" #based on the above domain example this is set to ops.example.com
-
-          objectStorage:
-            type: "s3" # assumes that you are using s3
-            s3:
-              region: "set-me" #put the region, e.g, west-1
-              regionAddress: "set-me" #put the region address, e.g, s3.us-west-1.amazonaws.com
-              regionEndpoint: "set-me"#put the region endpoint, e.g., https://s3.us-west-1.amazonaws.com
-           ```
-       3. Changes in `~/.ck8s/aws/secrets.yaml`:
-
-           ```
-           objectStorage:
-            s3:
-                accessKey: "set-me" #put your s3 accesskey
-                secretKey: "set-me" #put your s3 secretKey
-           ```
-
-6. Installing Compliant Kubernetes apps.
-  Run the following commands:
+    Edit the configuration files `~/.ck8s/aws/sc-config.yaml`, `~/.ck8s/aws/wc-config.yaml` and `~/.ck8s/aws/secrets.yaml` and set the approriate values for some of the configuration fields. Note that, the latter is encrypted.
 
     ```bash
-    ./bin/ck8s apply sc
-    ./bin/ck8s apply wc
+    vim ~/.ck8s/aws/sc-config.yaml
+    vim ~/.ck8s/aws/wc-config.yaml
+    sops ~/.ck8s/aws/secrets.yaml
     ```
+
+    The following are the minimum change you should perform:
+
+    ```
+    # ~/.ck8s/aws/sc-config.yaml and ~/.ck8s/aws/wc-config.yaml
+    global:
+      baseDomain: "set-me"  # set to a domain you control, e.g., example.com
+      opsDomain: "set-me"  # set to a domain you control, e.g., ops.example.com
+      issuer: letsencrypt-prod
+    objectStorage:
+      type: "s3"
+      s3:
+        region: "set-me"  # Region for S3 buckets, e.g, eu-central-1
+        regionAddress: "set-me"  # Region address, e.g, s3.eu-central-1.amazonaws.com
+        regionEndpoint: "set-me"  # e.g., https://s3.us-west-1.amazonaws.com
+    fluentd:
+      forwarder:
+        useRegionEndpoint: "set-me"  # set it to either true or false
+    ```
+    
+    ```
+    # ~/.ck8s/aws/secrets.yaml
+    objectStorage:
+      s3:
+        accessKey: "set-me" #put your s3 accesskey
+        secretKey: "set-me" #put your s3 secretKey
+    ```
+
+4. Installing Compliant Kubernetes apps.
+
+    ```bash
+    ln -sf /home/cklein/.ck8s/aws/.state/kube_config_${SERVICE_CLUSTER}.yaml /home/cklein/.ck8s/aws/.state/kube_config_sc.yaml
+    # TODO: Document multiple workload clusters
+    ln -sf /home/cklein/.ck8s/aws/.state/kube_config_${WORKLOAD_CLUSTERS}.yaml /home/cklein/.ck8s/aws/.state/kube_config_wc.yaml
+    ./bin/ck8s apply sc  # Respond "n" if you get a WARN
+    ./bin/ck8s apply wc  # Respond "n" if you get a WARN
+    ```
+
+5. Setup required DNS entries.
+
+    You will need to set up the following DNS entries (replace example.com with your domain). Determine the public IP of the load-balancer fronting the Ingress controller of the *service cluster*:
+
+    ```
+    sops exec-file ~/.ck8s/aws/.state/kube_config_sc.yaml 'kubectl --kubeconfig {} get -n ingress-nginx svc'
+    ```
+
+    Then point these domains to it:
+
+    ```
+    *.ops.example.com
+    grafana.example.com
+    harbor.example.com
+    kibana.example.com
+    dex.example.com
+    notary.harbor.example.com
+    ```
+
+6. Testing:
 
     After completing the installation step you can test if the apps are properly installed and ready using the commands below.
 
@@ -251,4 +237,10 @@ Once the clusters are ready, please follow the instructions below to install the
     ./bin/ck8s test sc
     ./bin/ck8s test wc
     ```
- More detail configurations option can be found [here](https://github.com/elastisys/compliantkubernetes-apps#elastisys-compliant-kubernetes-apps).
+
+Done. Navigate to `kibana.example.com`, `harbor.example.com`, etc. to discover Compliant Kubernetes's features.
+
+## Further Reading
+
+* [Compliant Kubernetes apps repo](https://github.com/elastisys/compliantkubernetes-apps)
+* [Configurations option](https://github.com/elastisys/compliantkubernetes-apps#elastisys-compliant-kubernetes-apps)
