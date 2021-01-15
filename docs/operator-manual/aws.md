@@ -1,103 +1,83 @@
-# Compliant Kubernetes Setup and Installations on AWS
+# Compliant Kubernetes Deployment on AWS
 
-This document describes how to set up Compliant Kubernetes on AWS. The setup has two major parts: Kubernetes cluster setup and Compliant Kubernetes applications setup. The following sections present the necessary steps to set up both parts.
+This document describes how to set up Compliant Kubernetes on AWS. The setup has two major parts:
 
-##  Kubernetes Cluster set up
-We suggest to set up Kubernetes clusters using kubespray. Clone the [Elastisys Compliant Kubernetes Kubespray](https://github.com/elastisys/compliantkubernetes-kubespray.git) repo first.
+1. Deploying at least two vanilla Kubernetes clusters
+2. Deploying Compliant Kubernetes applications
+
+Before starting, make sure you have [all necessary tools](getting-started.md).
+
+## Deploying vanilla Kubernetes clusters
+
+We suggest to set up Kubernetes clusters using kubespray. If you haven't done so already, clone the Elastisys Compliant Kubernetes Kubespray repo as follows:
 
 ```bash
-git clone --recursive https://github.com/elastisys/compliantkubernetes-kubespray.git
-# cd to the cloned repo
+git clone --recursive https://github.com/elastisys/compliantkubernetes-kubespray
 cd compliantkubernetes-kubespray
 ```
 
-### Infrastructure setup using Terraform
+### Infrastructure Setup using Terraform
 
-1. Setup Terraform Cloud.
+1. Optional: Setup Terraform Cloud.
 
-   Add your Terraform Cloud authentication token in the ` ~/.terraformrc` file. Please refer [Terraform Cloud](https://learn.hashicorp.com/tutorials/terraform/cloud-sign-up#configure-access-for-the-terraform-cli) section for further information. Please also check the the [requirements](https://github.com/kubernetes-sigs/kubespray/tree/master/contrib/terraform/aws#kubernetes-on-aws-with-terraform) section for the specific Terraform version.
+    We suggest storing Terraform state in Terraform Cloud. To this end, add your Terraform Cloud authentication token in the ` ~/.terraformrc` file. Please refer [Terraform Cloud](https://learn.hashicorp.com/tutorials/terraform/cloud-sign-up#configure-access-for-the-terraform-cli) for further information. Please also check the the [requirements](https://github.com/kubernetes-sigs/kubespray/tree/master/contrib/terraform/aws#kubernetes-on-aws-with-terraform) section for the specific Terraform version.
 
-2. Update Terraform variables.
-  You need to set your Terraform credentials and update the default  AWS cluster values.
-    1. Configure  Terraform credentials.
-    You can either export the variables for your AWS credentials or edit `kubespray/contrib/terraform/aws/credentials.tfvars`:
-          ```bash
-          cd kubespray/contrib/terraform/aws/
-          cp credentials.tfvars.example credentials.tfvars
-          export AWS_ACCESS_KEY_ID=<put your access-key>
-          export AWS_SECRET_ACCESS_KEY=<put your secret-key>
-          #please check the the link on how to create ssh key pair
-          #https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
-          export AWS_SSH_KEY_NAME=<An SSH key set up on AWS>
-          export AWS_DEFAULT_REGION=<put your aws region-name>
-          ```
-          Note: Pleased download the private key when creating SSH key pair in AWS as it will be needed later.
+2. Expose AWS credentials to Terraform.
 
-    2. Customize your infrastructure.
-    Edit `terraform.tfvars` and change the values according to your requirements. Since we need to create two different clusters (service and workload), you should set `aws_cluster_name` to `sc` when creating service cluster and `wc` when creating workload cluster.
-    Below is an example configuration.
-        ```
-        #Global Vars
-        aws_cluster_name = "sc|wc" # service cluster or workload cluster
+    We suggest exposing AWS credentials to Terraform via environment variables, so they are not accidently left on the file-system:
 
-        #VPC Vars
-        aws_vpc_cidr_block       = "10.250.192.0/18"
-        aws_cidr_subnets_private = ["10.250.192.0/20", "10.250.208.0/20"]
-        aws_cidr_subnets_public  = ["10.250.224.0/20", "10.250.240.0/20"]
+    ```shell
+    export TF_VAR_AWS_ACCESS_KEY_ID="www"
+    export TF_VAR_AWS_SECRET_ACCESS_KEY="xxx"
+    export TF_VAR_AWS_SSH_KEY_NAME="yyy"
+    export TF_VAR_AWS_DEFAULT_REGION="zzz"
+    ```
 
-        #Bastion Host
-        aws_bastion_size = "t2.medium"
+3. Customize your infrastructure.
 
-        #Kubernetes Cluster
+    Create a configuration for the service cluster and the workload cluster:
 
-        aws_kube_master_num  = 3
-        aws_kube_master_size = "t2.medium"
+    ```bash
+    pushd kubespray
+    for CLUSTER in test-sc test-wc0; do
+        cat contrib/terraform/aws/terraform.tfvars \
+        | sed \
+            -e "s@^aws_cluster_name =.*@aws_cluster_name = \"$CLUSTER\"@" \
+            -e "s@^inventory_file =.*@inventory_file = \"inventory/hosts-$CLUSTER\"@" \
+        > inventory/terraform-$CLUSTER.tfvars
+    done
+    popd
+    ```
 
-        aws_etcd_num  = 3
-        aws_etcd_size = "t2.medium"
+    Review and, if needed, adjust the files in `kubespray/inventory/`.
 
-        aws_kube_worker_num  = 4
-        aws_kube_worker_size = "t2.medium"
+3. Initialize and Apply Terraform.
 
-        #Settings AWS ELB
+    ```bash
+    pushd kubespray/contrib/terraform/aws
+    terraform init && \
+    terraform apply -var-file=../../../inventory/terraform-test-sc.tfvars && \
+    terraform apply -var-file=../../../inventory/terraform-test-wc0.tfvars && \
+    popd
+    ```
 
-        aws_elb_api_port                = 6443
-        k8s_secure_api_port             = 6443
-        kube_insecure_apiserver_address = "0.0.0.0"
+    Check each plan and confirm.
 
-        default_tags = {
-          #  Env = "devtest"
-          #  Product = "kubernetes"
-        }
-       inventory_file = "../../../inventory/hosts-sc|wc" # service cluster or workload cluster
-       ```
-
-3. Initialize and apply Terraform.
-  Once you are done with Terraform configuration, it is now time to create the cluster two clusters.
-
-      ```bash
-      terraform init
-      terraform apply -state-out=<sc|wc state path>
-     ```
-
-
-### Deploying srvice cluster (sc) and workload cluster (wc) with Kubespray.
+### Deploying vanilla Kubernetes clusters using Kubespray.
 
 With the infrastructure provisioned, we can now deploy both the sc and wc Kubernetes clusters using kubespray. Before trying any of the steps, make sure you are in the repo's root folder.
 
 1. Init the kubespray config in your config path.
-      ```bash
-      export CK8S_CONFIG_PATH=~/.ck8s/aws
-      export CK8S_PGP_FP=<put your GPG-key here>
 
-      #Use the AWS private key you downloaded above when you create SSH key pair.
-      ./bin/ck8s-kubespray init sc|wc default <AWS private-key>
-      ```
+    ```bash
+    export CK8S_CONFIG_PATH=~/.ck8s/aws
+    export CK8S_PGP_FP=<put your GPG-key here>
 
-      If you don't have a GPG key already, then you need to generate GPG key. This is because  secrets in Compliant Kubernetes are are encrypted using [SOPS](https://github.com/mozilla/sops). To generate your own PGP key, run the command below:
-      ```bash
-      gpg --full-generate-key
-      ```
+    for CLUSTER in test-sc test-wc0; do
+        ./bin/ck8s-kubespray init $CLUSTER default ~/.ssh/id_rsa.pub
+    done
+    ```
+
 
 2. Copy the content of `../../../inventory/hosts-sc|wc` file (see step-3 under Terraform in case you use a different file) and paste it to `~/.ck8s/aws/sc|wc-config/inventory.ini`.
    The following shows a sample content for `~/.ck8s/aws/sc-config/inventory.ini`.
