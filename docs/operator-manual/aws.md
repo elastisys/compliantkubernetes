@@ -7,6 +7,15 @@ This document describes how to set up Compliant Kubernetes on AWS. The setup has
 
 Before starting, make sure you have [all necessary tools](getting-started.md).
 
+## Setup
+
+Choose names for your service cluster and workload clusters:
+
+```bash
+SERVICE_CLUSTER="testsc"
+WORKLOAD_CLUSTERS="testwc0"
+```
+
 ## Deploying vanilla Kubernetes clusters
 
 We suggest to set up Kubernetes clusters using kubespray. If you haven't done so already, clone the Elastisys Compliant Kubernetes Kubespray repo as follows:
@@ -39,11 +48,11 @@ cd compliantkubernetes-kubespray
 
     ```bash
     pushd kubespray
-    for CLUSTER in test-sc test-wc0; do
+    for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
         cat contrib/terraform/aws/terraform.tfvars \
         | sed \
             -e "s@^aws_cluster_name =.*@aws_cluster_name = \"$CLUSTER\"@" \
-            -e "s@^inventory_file =.*@inventory_file = \"inventory/hosts-$CLUSTER\"@" \
+            -e "s@^inventory_file =.*@inventory_file = \"../../../inventory/hosts-$CLUSTER\"@" \
         > inventory/terraform-$CLUSTER.tfvars
     done
     popd
@@ -55,13 +64,15 @@ cd compliantkubernetes-kubespray
 
     ```bash
     pushd kubespray/contrib/terraform/aws
-    terraform init && \
-    terraform apply -var-file=../../../inventory/terraform-test-sc.tfvars && \
-    terraform apply -var-file=../../../inventory/terraform-test-wc0.tfvars && \
+    terraform init
+    for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
+        terraform apply \
+            -var-file=../../../inventory/terraform-$SERVICE_CLUSTER.tfvars \
+            -auto-approve \
+            -state-out=$CLUSTER
+    done
     popd
     ```
-
-    Check each plan and confirm.
 
 ### Deploying vanilla Kubernetes clusters using Kubespray.
 
