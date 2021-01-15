@@ -69,7 +69,7 @@ cd compliantkubernetes-kubespray
         terraform apply \
             -var-file=../../../inventory/terraform-$CLUSTER.tfvars \
             -auto-approve \
-            -state-out=../../../inventory/tfstate-$CLUSTER.tfstate
+            -state=../../../inventory/tfstate-$CLUSTER.tfstate
     done
     popd
     ```
