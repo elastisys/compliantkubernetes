@@ -1,4 +1,6 @@
-# Multitenancy with ck8s-cluster
+# Multitenancy with ck8s-cluster on Exoscale
+
+**NOTE: ck8s-cluster is about to be deprecated.**
 
 This document contains sample instructions on how to setup one service cluster together with multiple workload clusters. As stated, the instructions below are just samples, you need update them according to your situation and requirements. You will find more details on the commands executed in the cluster and apps repos. The sample instructions are shown for the exoscale cloud provider and the [exoscale cli](https://github.com/exoscale/cli/releases/tag/v1.21.0) is used to manage DNS. If you are using any other cloud provider use their corresponding tool for managing DNS.
 
