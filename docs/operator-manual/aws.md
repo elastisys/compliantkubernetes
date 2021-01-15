@@ -27,11 +27,7 @@ cd compliantkubernetes-kubespray
 
 ### Infrastructure Setup using Terraform
 
-1. Optional: Setup Terraform Cloud.
-
-    We suggest storing Terraform state in Terraform Cloud. To this end, add your Terraform Cloud authentication token in the ` ~/.terraformrc` file. Please refer [Terraform Cloud](https://learn.hashicorp.com/tutorials/terraform/cloud-sign-up#configure-access-for-the-terraform-cli) for further information. Please also check the the [requirements](https://github.com/kubernetes-sigs/kubespray/tree/master/contrib/terraform/aws#kubernetes-on-aws-with-terraform) section for the specific Terraform version.
-
-2. Expose AWS credentials to Terraform.
+1. Expose AWS credentials to Terraform.
 
     We suggest exposing AWS credentials to Terraform via environment variables, so they are not accidently left on the file-system:
 
@@ -42,7 +38,7 @@ cd compliantkubernetes-kubespray
     export TF_VAR_AWS_DEFAULT_REGION="zzz"
     ```
 
-3. Customize your infrastructure.
+2. Customize your infrastructure.
 
     Create a configuration for the service cluster and the workload cluster:
 
@@ -73,6 +69,8 @@ cd compliantkubernetes-kubespray
     done
     popd
     ```
+
+    **NOTE: The Terraform state is stored in `kubespray/inventory/tfstate-*`. It is precious. Consider backing it up our using [Terraform Cloud](https://www.terraform.io/docs/cloud/index.html).**
 
 ### Deploying vanilla Kubernetes clusters using Kubespray.
 
