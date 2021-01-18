@@ -9,11 +9,12 @@ Before starting, make sure you have [all necessary tools](getting-started.md).
 
 ## Setup
 
-Choose names for your service cluster and workload clusters:
+Choose names for your service cluster and workload clusters, as well as the DNS domain to expose the services inside the service cluster:
 
 ```bash
 SERVICE_CLUSTER="testsc"
 WORKLOAD_CLUSTERS="testwc0"
+BASE_DOMAIN="example.com"
 ```
 
 ## Deploying vanilla Kubernetes clusters
@@ -200,7 +201,20 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
         secretKey: "set-me" #put your s3 secretKey
     ```
 
-4. Installing Compliant Kubernetes apps.
+4. Create placeholder DNS entries.
+
+    To avoid negative caching and other surprises. Create two placeholders as follows (feel free to use the "Import zone" feature of AWS Route53):
+
+    ```
+    echo "
+    *.$BASE_DOMAIN     60s A 203.0.113.123
+    *.ops.$BASE_DOMAIN 60s A 203.0.113.123
+    "
+    ```
+
+    NOTE: 203.0.113.123 is in [TEST-NET-3](https://en.wikipedia.org/wiki/Reserved_IP_addresses) and okey to use as placeholder.
+
+5. Installing Compliant Kubernetes apps.
 
     ```bash
     ln -sf /home/cklein/.ck8s/aws/.state/kube_config_${SERVICE_CLUSTER}.yaml /home/cklein/.ck8s/aws/.state/kube_config_sc.yaml
@@ -215,18 +229,20 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
     You will need to set up the following DNS entries (replace example.com with your domain). Determine the public IP of the load-balancer fronting the Ingress controller of the *service cluster*:
 
     ```
-    sops exec-file ~/.ck8s/aws/.state/kube_config_sc.yaml 'kubectl --kubeconfig {} get -n ingress-nginx svc'
+    SC_INGRESS_LB_IP=$(sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml 'kubectl --kubeconfig {} get -n ingress-nginx svc -o jsonpath={.status.loadBalancer.ingress[0].ip}')
+    echo $SC_INGRESS_LB_IP
     ```
 
-    Then point these domains to it:
+    Then, import the following zone in AWS Route53:
 
     ```
-    *.ops.example.com
-    grafana.example.com
-    harbor.example.com
-    kibana.example.com
-    dex.example.com
-    notary.harbor.example.com
+    echo """
+    *.ops.$BASE_DOMAIN    60s A $SC_INGRESS_LB_IP
+    dex.$BASE_DOMAIN      60s A $SC_INGRESS_LB_IP
+    grafana.$BASE_DOMAIN  60s A $SC_INGRESS_LB_IP
+    harbor.$BASE_DOMAIN   60s A $SC_INGRESS_LB_IP
+    kibana.$BASE_DOMAIN   60s A $SC_INGRESS_LB_IP
+    """
     ```
 
 6. Testing:
