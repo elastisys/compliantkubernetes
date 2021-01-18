@@ -280,7 +280,7 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
     done
     ```
 
-Done. Navigate to `kibana.$BASE_DOMAIN`, `harbor.$BASE_DOMAIN`, etc. to discover Compliant Kubernetes's features.
+Done. Navigate to `grafana.$BASE_DOMAIN`, `kibana.$BASE_DOMAIN`, `harbor.$BASE_DOMAIN`, etc. to discover Compliant Kubernetes's features.
 
 ## Further Reading
 
