@@ -99,6 +99,11 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
         sed -e 's@^---$@@' -i $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/k8s-cluster.yml
         sed -e 's@^etcd_kubeadm_enabled:.*@#etcd_kubeadm_enabled: false@' -i $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/all/all.yml
         echo 'ansible_user: ubuntu' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/all/all.yml
+        sed -e 's@.*[^_]cloud_provider:.*@cloud_provider: aws@' -i $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/all/all.yml
+        sed -e "s@.*kube_oidc_auth:.*@kube_oidc_auth: true@" -i $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/k8s-cluster.yml
+        sed -e "s@.*kube_oidc_url:.*@kube_oidc_url: https://dex.$BASE_DOMAIN@" -i $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/k8s-cluster.yml
+        sed -e "s@.*kube_oidc_client_id:.*@kube_oidc_client_id: kubelogin@" -i $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/k8s-cluster.yml
+        sed -e "s@.*kube_oidc_username_claim:.*@kube_oidc_username_claim: email@" -i $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/k8s-cluster.yml
     done
     ```
 
