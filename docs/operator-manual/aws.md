@@ -127,11 +127,17 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
 
 4. Correct the Kubernetes API IP addresses.
 
+    Find the DNS names of the load balancers fronting the API servers:
+
+    ```bash
+    grep apiserver_loadbalancer $CK8S_CONFIG_PATH/*-config/inventory.ini
+    ```
+
     Locate the encrypted kubeconfigs in `~/.ck8s/aws/.state/kube_config_*.yaml` and edit them using sops. Copy the URL of the load balancer from inventory files `~/.ck8s/aws/*-config/inventory.ini` into `~/.ck8s/aws/.state/kube_config_*.yaml`. Do not overwrite the port.
 
     ```bash
     for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
-        sops ~/.ck8s/aws/.state/kube_config_$CLUSTER.yaml
+        sops $CK8S_CONFIG_PATH/.state/kube_config_$CLUSTER.yaml
     done
     ```
 
@@ -167,16 +173,20 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
     ./bin/ck8s init
     ```
 
-    Three  files, `sc-config.yaml` and `wc-config.yaml`, and `secrets.yaml`, were generated in the `~/.ck8s/aws/` directory.
+    Three  files, `sc-config.yaml` and `wc-config.yaml`, and `secrets.yaml`, were generated in the `$CK8S_CONFIG_PATH` directory.
+
+    ```bash
+    ls -l $CK8S_CONFIG_PATH
+    ```
 
 3. Configure the apps.
 
-    Edit the configuration files `~/.ck8s/aws/sc-config.yaml`, `~/.ck8s/aws/wc-config.yaml` and `~/.ck8s/aws/secrets.yaml` and set the approriate values for some of the configuration fields. Note that, the latter is encrypted.
+    Edit the configuration files `sc-config.yaml`, `wc-config.yaml` and `secrets.yaml` and set the approriate values for some of the configuration fields. Note that, the latter is encrypted.
 
     ```bash
-    vim ~/.ck8s/aws/sc-config.yaml
-    vim ~/.ck8s/aws/wc-config.yaml
-    sops ~/.ck8s/aws/secrets.yaml
+    vim $CK8S_CONFIG_PATH/sc-config.yaml
+    vim $CK8S_CONFIG_PATH/wc-config.yaml
+    sops $CK8S_CONFIG_PATH/secrets.yaml
     ```
 
     The following are the minimum change you should perform:
@@ -184,8 +194,8 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
     ```
     # ~/.ck8s/aws/sc-config.yaml and ~/.ck8s/aws/wc-config.yaml
     global:
-      baseDomain: "set-me"  # set to a domain you control, e.g., example.com
-      opsDomain: "set-me"  # set to a domain you control, e.g., ops.example.com
+      baseDomain: "set-me"  # set to $BASE_DOMAIN
+      opsDomain: "set-me"  # set to ops.$BASE_DOMAIN
       issuer: letsencrypt-prod
     objectStorage:
       type: "s3"
