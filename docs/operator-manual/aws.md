@@ -251,7 +251,8 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
     You will need to set up the following DNS entries. First, determine the public IP of the load-balancer fronting the Ingress controller of the *service cluster*:
 
     ```
-    SC_INGRESS_LB_IP=$(sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml 'kubectl --kubeconfig {} get -n ingress-nginx svc -o jsonpath={.status.loadBalancer.ingress[0].ip}')
+    SC_INGRESS_LB_HOSTNAME=$(sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml 'kubectl --kubeconfig {} get -n ingress-nginx svc ingress-nginx-controller -o jsonpath={.status.loadBalancer.ingress[0].hostname}')
+    SC_INGRESS_LB_IP=$(dig +short $SC_INGRESS_LB_HOSTNAME | head -1)
     echo $SC_INGRESS_LB_IP
     ```
 
