@@ -71,7 +71,7 @@ cd compliantkubernetes-kubespray
     popd
     ```
 
-    **NOTE: The Terraform state is stored in `kubespray/inventory/tfstate-*`. It is precious. Consider backing it up our using [Terraform Cloud](https://www.terraform.io/docs/cloud/index.html).**
+    **NOTE: The Terraform state is stored in `kubespray/inventory/tfstate-*`. It is precious. Consider backing it up or using [Terraform Cloud](https://www.terraform.io/docs/cloud/index.html).**
 
 4. Check that the Ansible inventory was properly generated.
 
