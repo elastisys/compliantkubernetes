@@ -274,7 +274,10 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
 
     ```bash
     ./bin/ck8s test sc
-    ./bin/ck8s test wc
+    for CLUSTER in $WORKLOAD_CLUSTERS; do
+        ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
+        ./bin/ck8s test wc
+    done
     ```
 
 Done. Navigate to `kibana.$BASE_DOMAIN`, `harbor.$BASE_DOMAIN`, etc. to discover Compliant Kubernetes's features.
