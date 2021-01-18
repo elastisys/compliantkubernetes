@@ -111,7 +111,7 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
 
     ```bash
     for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
-        cp kubespray/inventory/hosts-$CLUSTER ~/.ck8s/aws/$CLUSTER-config/inventory.ini
+        cp kubespray/inventory/hosts-$CLUSTER $CK8S_CONFIG_PATH/$CLUSTER-config/inventory.ini
     done
     ```
 
@@ -133,7 +133,7 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
     grep apiserver_loadbalancer $CK8S_CONFIG_PATH/*-config/inventory.ini
     ```
 
-    Locate the encrypted kubeconfigs in `~/.ck8s/aws/.state/kube_config_*.yaml` and edit them using sops. Copy the URL of the load balancer from inventory files `~/.ck8s/aws/*-config/inventory.ini` into `~/.ck8s/aws/.state/kube_config_*.yaml`. Do not overwrite the port.
+    Locate the encrypted kubeconfigs `kube_config_*.yaml` and edit them using sops. Copy the URL of the load balancer from inventory files shown above into `kube_config_*.yaml`. Do not overwrite the port.
 
     ```bash
     for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
@@ -145,7 +145,7 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
 
     ```bash
     for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
-        sops exec-file ~/.ck8s/aws/.state/kube_config_$CLUSTER.yaml \
+        sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_$CLUSTER.yaml \
             'kubectl --kubeconfig {} get nodes'
     done
     ```
@@ -192,7 +192,7 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
     The following are the minimum change you should perform:
 
     ```
-    # ~/.ck8s/aws/sc-config.yaml and ~/.ck8s/aws/wc-config.yaml
+    # sc-config.yaml and wc-config.yaml
     global:
       baseDomain: "set-me"  # set to $BASE_DOMAIN
       opsDomain: "set-me"  # set to ops.$BASE_DOMAIN
@@ -209,7 +209,7 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
     ```
     
     ```
-    # ~/.ck8s/aws/secrets.yaml
+    # secrets.yaml
     objectStorage:
       s3:
         accessKey: "set-me" #put your s3 accesskey
