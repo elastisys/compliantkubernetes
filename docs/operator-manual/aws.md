@@ -231,12 +231,19 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
 
 5. Installing Compliant Kubernetes apps.
 
+    Start with the service cluster:
+
     ```bash
-    ln -sf /home/cklein/.ck8s/aws/.state/kube_config_${SERVICE_CLUSTER}.yaml /home/cklein/.ck8s/aws/.state/kube_config_sc.yaml
-    # TODO: Document multiple workload clusters
-    ln -sf /home/cklein/.ck8s/aws/.state/kube_config_${WORKLOAD_CLUSTERS}.yaml /home/cklein/.ck8s/aws/.state/kube_config_wc.yaml
+    ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml
     ./bin/ck8s apply sc  # Respond "n" if you get a WARN
-    ./bin/ck8s apply wc  # Respond "n" if you get a WARN
+    ```
+
+    Then the workload clusters:
+    ```
+    for CLUSTER in $WORKLOAD_CLUSTERS; do
+        ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
+        ./bin/ck8s apply wc  # Respond "n" if you get a WARN
+    done
     ```
 
 5. Setup required DNS entries.
