@@ -241,7 +241,7 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
 
 5. Setup required DNS entries.
 
-    You will need to set up the following DNS entries (replace example.com with your domain). Determine the public IP of the load-balancer fronting the Ingress controller of the *service cluster*:
+    You will need to set up the following DNS entries. First, determine the public IP of the load-balancer fronting the Ingress controller of the *service cluster*:
 
     ```
     SC_INGRESS_LB_IP=$(sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml 'kubectl --kubeconfig {} get -n ingress-nginx svc -o jsonpath={.status.loadBalancer.ingress[0].ip}')
@@ -269,7 +269,7 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
     ./bin/ck8s test wc
     ```
 
-Done. Navigate to `kibana.example.com`, `harbor.example.com`, etc. to discover Compliant Kubernetes's features.
+Done. Navigate to `kibana.$BASE_DOMAIN`, `harbor.$BASE_DOMAIN`, etc. to discover Compliant Kubernetes's features.
 
 ## Further Reading
 
