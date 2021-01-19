@@ -297,6 +297,8 @@ for CLUSTER in $WORKLOAD_CLUSTERS $SERVICE_CLUSTER; do
         'kubectl --kubeconfig {} delete --all-namespaces --all ingress,service,deployment,statefulset,daemonset,cronjob,job,pod,sa,secret,configmap'
 done
 
+# Feel free to skips this step, but remember to remove EBS volumes manually
+# from the AWS Console, after Terraform teardown.
 for CLUSTER in $WORKLOAD_CLUSTERS $SERVICE_CLUSTER; do
     sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_$CLUSTER.yaml \
         'kubectl --kubeconfig {} delete --all-namespaces --all pvc,pv'
