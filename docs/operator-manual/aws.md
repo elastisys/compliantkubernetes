@@ -80,6 +80,10 @@ cd compliantkubernetes-kubespray
     ls -l kubespray/inventory/hosts-*
     ```
 
+    You may also want to check the AWS Console if the infrastructure was created correctly:
+
+    ![Kubespray AWS Console](../img/kubespray-aws-console.png)
+
 ### Deploying vanilla Kubernetes clusters using Kubespray.
 
 With the infrastructure provisioned, we can now deploy both the sc and wc Kubernetes clusters using kubespray. Before trying any of the steps, make sure you are in the repo's root folder.
