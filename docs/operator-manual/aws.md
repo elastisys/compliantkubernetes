@@ -289,6 +289,31 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
 
 Done. Navigate to `grafana.$BASE_DOMAIN`, `kibana.$BASE_DOMAIN`, `harbor.$BASE_DOMAIN`, etc. to discover Compliant Kubernetes's features.
 
+## Teardown
+
+```bash
+for CLUSTER in $WORKLOAD_CLUSTERS $SERVICE_CLUSTER; do
+    sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_$CLUSTER.yaml \
+        'kubectl --kubeconfig {} delete --all-namespaces --all ingress,service,deployment,statefulset,daemonset,cronjob,job,pod,sa,secret,configmap'
+done
+
+for CLUSTER in $WORKLOAD_CLUSTERS $SERVICE_CLUSTER; do
+    sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_$CLUSTER.yaml \
+        'kubectl --kubeconfig {} delete --all-namespaces --all pvc,pv'
+done
+```
+
+```bash
+cd ../compliantkubernetes-kubespray
+pushd kubespray/contrib/terraform/aws
+for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
+    terraform destroy \
+        -auto-approve \
+        -state=../../../inventory/tfstate-$CLUSTER.tfstate
+done
+popd
+```
+
 ## Further Reading
 
 * [Compliant Kubernetes apps repo](https://github.com/elastisys/compliantkubernetes-apps)
