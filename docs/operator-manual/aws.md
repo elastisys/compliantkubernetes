@@ -253,6 +253,8 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
     done
     ```
 
+    **NOTE: Leave sufficient time for the system to settle, e.g., request TLS certificates from LetsEncrypt, perhaps as much as 20 minutes.**
+
 5. Setup required DNS entries.
 
     You will need to set up the following DNS entries. First, determine the public IP of the load-balancer fronting the Ingress controller of the *service cluster*:
