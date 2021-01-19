@@ -50,6 +50,7 @@ cd compliantkubernetes-kubespray
         | sed \
             -e "s@^aws_cluster_name =.*@aws_cluster_name = \"$CLUSTER\"@" \
             -e "s@^inventory_file =.*@inventory_file = \"../../../inventory/hosts-$CLUSTER\"@" \
+            -e "s@^aws_kube_worker_size =.*@aws_kube_worker_size = \"t3.large\"@" \
         > inventory/terraform-$CLUSTER.tfvars
     done
     popd
