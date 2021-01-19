@@ -9,11 +9,12 @@ Before starting, make sure you have [all necessary tools](getting-started.md).
 
 ## Setup
 
-Choose names for your service cluster and workload clusters:
+Choose names for your service cluster and workload clusters, as well as the DNS domain to expose the services inside the service cluster:
 
 ```bash
 SERVICE_CLUSTER="testsc"
 WORKLOAD_CLUSTERS="testwc0"
+BASE_DOMAIN="example.com"
 ```
 
 ## Deploying vanilla Kubernetes clusters
@@ -49,6 +50,7 @@ cd compliantkubernetes-kubespray
         | sed \
             -e "s@^aws_cluster_name =.*@aws_cluster_name = \"$CLUSTER\"@" \
             -e "s@^inventory_file =.*@inventory_file = \"../../../inventory/hosts-$CLUSTER\"@" \
+            -e "s@^aws_kube_worker_size =.*@aws_kube_worker_size = \"t3.large\"@" \
         > inventory/terraform-$CLUSTER.tfvars
     done
     popd
@@ -70,7 +72,7 @@ cd compliantkubernetes-kubespray
     popd
     ```
 
-    **NOTE: The Terraform state is stored in `kubespray/inventory/tfstate-*`. It is precious. Consider backing it up our using [Terraform Cloud](https://www.terraform.io/docs/cloud/index.html).**
+    **NOTE: The Terraform state is stored in `kubespray/inventory/tfstate-*`. It is precious. Consider backing it up or using [Terraform Cloud](https://www.terraform.io/docs/cloud/index.html).**
 
 4. Check that the Ansible inventory was properly generated.
 
@@ -98,6 +100,11 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
         sed -e 's@^---$@@' -i $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/k8s-cluster.yml
         sed -e 's@^etcd_kubeadm_enabled:.*@#etcd_kubeadm_enabled: false@' -i $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/all/all.yml
         echo 'ansible_user: ubuntu' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/all/all.yml
+        sed -e 's@.*[^_]cloud_provider:.*@cloud_provider: aws@' -i $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/all/all.yml
+        sed -e "s@.*kube_oidc_auth:.*@kube_oidc_auth: true@" -i $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/k8s-cluster.yml
+        sed -e "s@.*kube_oidc_url:.*@kube_oidc_url: https://dex.$BASE_DOMAIN@" -i $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/k8s-cluster.yml
+        sed -e "s@.*kube_oidc_client_id:.*@kube_oidc_client_id: kubelogin@" -i $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/k8s-cluster.yml
+        sed -e "s@.*kube_oidc_username_claim:.*@kube_oidc_username_claim: email@" -i $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/k8s-cluster.yml
     done
     ```
 
@@ -105,7 +112,7 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
 
     ```bash
     for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
-        cp kubespray/inventory/hosts-$CLUSTER ~/.ck8s/aws/$CLUSTER-config/inventory.ini
+        cp kubespray/inventory/hosts-$CLUSTER $CK8S_CONFIG_PATH/$CLUSTER-config/inventory.ini
     done
     ```
 
@@ -121,11 +128,17 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
 
 4. Correct the Kubernetes API IP addresses.
 
-    Locate the encrypted kubeconfigs in `~/.ck8s/aws/.state/kube_config_*.yaml` and edit them using sops. Copy the URL of the load balancer from inventory files `~/.ck8s/aws/*-config/inventory.ini` into `~/.ck8s/aws/.state/kube_config_*.yaml`. Do not overwrite the port.
+    Find the DNS names of the load balancers fronting the API servers:
+
+    ```bash
+    grep apiserver_loadbalancer $CK8S_CONFIG_PATH/*-config/inventory.ini
+    ```
+
+    Locate the encrypted kubeconfigs `kube_config_*.yaml` and edit them using sops. Copy the URL of the load balancer from inventory files shown above into `kube_config_*.yaml`. Do not overwrite the port.
 
     ```bash
     for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
-        sops ~/.ck8s/aws/.state/kube_config_$CLUSTER.yaml
+        sops $CK8S_CONFIG_PATH/.state/kube_config_$CLUSTER.yaml
     done
     ```
 
@@ -133,7 +146,7 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
 
     ```bash
     for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
-        sops exec-file ~/.ck8s/aws/.state/kube_config_$CLUSTER.yaml \
+        sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_$CLUSTER.yaml \
             'kubectl --kubeconfig {} get nodes'
     done
     ```
@@ -161,72 +174,107 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
     ./bin/ck8s init
     ```
 
-    Three  files, `sc-config.yaml` and `wc-config.yaml`, and `secrets.yaml`, were generated in the `~/.ck8s/aws/` directory.
+    Three  files, `sc-config.yaml` and `wc-config.yaml`, and `secrets.yaml`, were generated in the `$CK8S_CONFIG_PATH` directory.
+
+    ```bash
+    ls -l $CK8S_CONFIG_PATH
+    ```
 
 3. Configure the apps.
 
-    Edit the configuration files `~/.ck8s/aws/sc-config.yaml`, `~/.ck8s/aws/wc-config.yaml` and `~/.ck8s/aws/secrets.yaml` and set the approriate values for some of the configuration fields. Note that, the latter is encrypted.
+    Edit the configuration files `sc-config.yaml`, `wc-config.yaml` and `secrets.yaml` and set the approriate values for some of the configuration fields. Note that, the latter is encrypted.
 
     ```bash
-    vim ~/.ck8s/aws/sc-config.yaml
-    vim ~/.ck8s/aws/wc-config.yaml
-    sops ~/.ck8s/aws/secrets.yaml
+    vim $CK8S_CONFIG_PATH/sc-config.yaml
+    vim $CK8S_CONFIG_PATH/wc-config.yaml
+    sops $CK8S_CONFIG_PATH/secrets.yaml
     ```
 
     The following are the minimum change you should perform:
 
     ```
-    # ~/.ck8s/aws/sc-config.yaml and ~/.ck8s/aws/wc-config.yaml
+    # sc-config.yaml and wc-config.yaml
     global:
-      baseDomain: "set-me"  # set to a domain you control, e.g., example.com
-      opsDomain: "set-me"  # set to a domain you control, e.g., ops.example.com
+      baseDomain: "set-me"  # set to $BASE_DOMAIN
+      opsDomain: "set-me"  # set to ops.$BASE_DOMAIN
       issuer: letsencrypt-prod
+
     objectStorage:
       type: "s3"
       s3:
         region: "set-me"  # Region for S3 buckets, e.g, eu-central-1
         regionAddress: "set-me"  # Region address, e.g, s3.eu-central-1.amazonaws.com
         regionEndpoint: "set-me"  # e.g., https://s3.us-west-1.amazonaws.com
+
     fluentd:
       forwarder:
         useRegionEndpoint: "set-me"  # set it to either true or false
+
+    issuers:
+      letsencrypt:
+        email: "set-me"  # set this to an email to receive LetsEncrypt notifications
     ```
     
     ```
-    # ~/.ck8s/aws/secrets.yaml
+    # secrets.yaml
     objectStorage:
       s3:
         accessKey: "set-me" #put your s3 accesskey
         secretKey: "set-me" #put your s3 secretKey
     ```
 
-4. Installing Compliant Kubernetes apps.
+4. Create placeholder DNS entries.
+
+    To avoid negative caching and other surprises. Create two placeholders as follows (feel free to use the "Import zone" feature of AWS Route53):
+
+    ```
+    echo "
+    *.$BASE_DOMAIN     60s A 203.0.113.123
+    *.ops.$BASE_DOMAIN 60s A 203.0.113.123
+    "
+    ```
+
+    NOTE: 203.0.113.123 is in [TEST-NET-3](https://en.wikipedia.org/wiki/Reserved_IP_addresses) and okey to use as placeholder.
+
+5. Installing Compliant Kubernetes apps.
+
+    Start with the service cluster:
 
     ```bash
-    ln -sf /home/cklein/.ck8s/aws/.state/kube_config_${SERVICE_CLUSTER}.yaml /home/cklein/.ck8s/aws/.state/kube_config_sc.yaml
-    # TODO: Document multiple workload clusters
-    ln -sf /home/cklein/.ck8s/aws/.state/kube_config_${WORKLOAD_CLUSTERS}.yaml /home/cklein/.ck8s/aws/.state/kube_config_wc.yaml
+    ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml
     ./bin/ck8s apply sc  # Respond "n" if you get a WARN
-    ./bin/ck8s apply wc  # Respond "n" if you get a WARN
     ```
+
+    Then the workload clusters:
+    ```
+    for CLUSTER in $WORKLOAD_CLUSTERS; do
+        ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
+        ./bin/ck8s apply wc  # Respond "n" if you get a WARN
+    done
+    ```
+
+    **NOTE: Leave sufficient time for the system to settle, e.g., request TLS certificates from LetsEncrypt, perhaps as much as 20 minutes.**
 
 5. Setup required DNS entries.
 
-    You will need to set up the following DNS entries (replace example.com with your domain). Determine the public IP of the load-balancer fronting the Ingress controller of the *service cluster*:
+    You will need to set up the following DNS entries. First, determine the public IP of the load-balancer fronting the Ingress controller of the *service cluster*:
 
     ```
-    sops exec-file ~/.ck8s/aws/.state/kube_config_sc.yaml 'kubectl --kubeconfig {} get -n ingress-nginx svc'
+    SC_INGRESS_LB_HOSTNAME=$(sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml 'kubectl --kubeconfig {} get -n ingress-nginx svc ingress-nginx-controller -o jsonpath={.status.loadBalancer.ingress[0].hostname}')
+    SC_INGRESS_LB_IP=$(dig +short $SC_INGRESS_LB_HOSTNAME | head -1)
+    echo $SC_INGRESS_LB_IP
     ```
 
-    Then point these domains to it:
+    Then, import the following zone in AWS Route53:
 
     ```
-    *.ops.example.com
-    grafana.example.com
-    harbor.example.com
-    kibana.example.com
-    dex.example.com
-    notary.harbor.example.com
+    echo """
+    *.ops.$BASE_DOMAIN    60s A $SC_INGRESS_LB_IP
+    dex.$BASE_DOMAIN      60s A $SC_INGRESS_LB_IP
+    grafana.$BASE_DOMAIN  60s A $SC_INGRESS_LB_IP
+    harbor.$BASE_DOMAIN   60s A $SC_INGRESS_LB_IP
+    kibana.$BASE_DOMAIN   60s A $SC_INGRESS_LB_IP
+    """
     ```
 
 6. Testing:
@@ -235,10 +283,40 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
 
     ```bash
     ./bin/ck8s test sc
-    ./bin/ck8s test wc
+    for CLUSTER in $WORKLOAD_CLUSTERS; do
+        ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
+        ./bin/ck8s test wc
+    done
     ```
 
-Done. Navigate to `kibana.example.com`, `harbor.example.com`, etc. to discover Compliant Kubernetes's features.
+Done. Navigate to `grafana.$BASE_DOMAIN`, `kibana.$BASE_DOMAIN`, `harbor.$BASE_DOMAIN`, etc. to discover Compliant Kubernetes's features.
+
+## Teardown
+
+```bash
+for CLUSTER in $WORKLOAD_CLUSTERS $SERVICE_CLUSTER; do
+    sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_$CLUSTER.yaml \
+        'kubectl --kubeconfig {} delete --all-namespaces --all ingress,service,deployment,statefulset,daemonset,cronjob,job,pod,sa,secret,configmap'
+done
+
+# Feel free to skips this step, but remember to remove EBS volumes manually
+# from the AWS Console, after Terraform teardown.
+for CLUSTER in $WORKLOAD_CLUSTERS $SERVICE_CLUSTER; do
+    sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_$CLUSTER.yaml \
+        'kubectl --kubeconfig {} delete --all-namespaces --all pvc,pv'
+done
+```
+
+```bash
+cd ../compliantkubernetes-kubespray
+pushd kubespray/contrib/terraform/aws
+for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
+    terraform destroy \
+        -auto-approve \
+        -state=../../../inventory/tfstate-$CLUSTER.tfstate
+done
+popd
+```
 
 ## Further Reading
 
