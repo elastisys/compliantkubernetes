@@ -13,4 +13,4 @@ The easier is to request a demo environment from a [managed Compliant Kubernetes
 * A [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file for configuring kubectl access to the cluster.
 * (Optionally) Static username and password. Normally, you should log in via a username and a password of your organizations identity provider.
 
-If you want to setup your own Compliant Kubernetes installation, head to the [Operator Manual](../operator-manual).
+If you want to setup your own Compliant Kubernetes installation, head to the [Operator Manual](../docs/operator-manual).
