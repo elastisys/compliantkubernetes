@@ -39,10 +39,10 @@ cd compliantkubernetes-kubespray
     We suggest exposing AWS credentials to Terraform via environment variables, so they are not accidently left on the file-system:
 
     ```shell
-    export TF_VAR_AWS_ACCESS_KEY_ID="www" # Access key for AWS
-    export TF_VAR_AWS_SECRET_ACCESS_KEY="xxx" # Secret key for AWS
+    export TF_VAR_AWS_ACCESS_KEY_ID="xyz" # Access key for AWS
+    export TF_VAR_AWS_SECRET_ACCESS_KEY="zyx" # Secret key for AWS
     export TF_VAR_AWS_SSH_KEY_NAME="~/.ssh/id_rsa.pub" # Name of the AWS keypair to use for the EC2 instances
-    export TF_VAR_AWS_DEFAULT_REGION="zzz" # Region to use for all AWS resources
+    export TF_VAR_AWS_DEFAULT_REGION="foo" # Region to use for all AWS resources
     ```
 
     !!! tip
@@ -102,7 +102,7 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
 
     ```bash
     export CK8S_CONFIG_PATH=~/.ck8s/aws
-    export CK8S_PGP_FP=<your GPG key ID>  # retrieve with gpg --list-secret-keys
+    export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
     ```
 
     ```
@@ -176,7 +176,7 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
     #export CK8S_FLAVOR=[dev|prod] # defaults to dev
     export CK8S_CONFIG_PATH=~/.ck8s/aws
     export CK8S_CLOUD_PROVIDER=aws
-    export CK8S_PGP_FP=<your GPG key ID>  # retrieve with gpg --list-secret-keys
+    export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
     ./bin/ck8s init
     ```
 
