@@ -33,6 +33,21 @@ Currently, we create per-cluster SSH keypairs, which are shared among operators.
 
 We will managed SSH keys via an Ansible role, since it allows rotating/adding/deleting keys without rebooting nodes. Also, it caters to more environments, e.g., BYO-VMs and BYO-metal. The public SSH keys of all operators will be put in a file in `https://github.com/elastisys/compliantkubernetes-kubespray`, one key per line. The comment of the key needs to clearly identify the owner.
 
+### Bootstrapping
+
+The above decision raises a chicken-and-egg problem: Ansible needs SSH access to the nodes, but the SSH access is managed via Ansible. This issue is solved as follows.
+
+For cloud deployments, all Terraform providers support injecting at least one public SSH key via cloud-init:
+
+* [AWS](https://github.com/kubernetes-sigs/kubespray/blob/release-2.15/contrib/terraform/aws/variables.tf#L9)
+* [Exoscale](https://github.com/kubernetes-sigs/kubespray/blob/master/contrib/terraform/exoscale/variables.tf#L24)
+* [GCP](https://github.com/kubernetes-sigs/kubespray/blob/release-2.15/contrib/terraform/gcp/variables.tf#L57)
+* [OpenStack](https://github.com/kubernetes-sigs/kubespray/blob/release-2.15/contrib/terraform/openstack/variables.tf#L81)
+
+The operator who creates the cluster bootstraps SSH access by providing their own public SSH key via cloud-init. Then, the Ansible role adds the public SSH keys of the other operators.
+
+BYO-VM and BYO-metal deployments are handled similarly, except that the initial public SSH key is delivered by email/Slack to the VM/metal operator.
+
 ## Links
 
 * [ansible.posix.authorized_key Ansible Module](https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html)
