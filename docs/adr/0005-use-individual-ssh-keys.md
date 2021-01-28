@@ -31,7 +31,9 @@ Currently, we create per-cluster SSH keypairs, which are shared among operators.
 
 ## Decision Outcome
 
-We will managed SSH keys via an Ansible role, since it allows rotating/adding/deleting keys without rebooting nodes. Also, it caters to more environments, e.g., BYO-VMs and BYO-metal. The public SSH keys of all operators will be put in a file in `https://github.com/elastisys/compliantkubernetes-kubespray`, one key per line. The comment of the key needs to clearly identify the owner.
+We will manage SSH keys via an Ansible role, since it allows rotating/adding/deleting keys without rebooting nodes. Also, it caters to more environments, e.g., BYO-VMs and BYO-metal. The public SSH keys of all operators will be put in a file in [`ck8s-ops`](https://github.com/elastisys/ck8s-ops), one key per line. The comment of the key needs to clearly identify the owner.
+
+The [compliantkubernetes-kubespray](https://github.com/elastisys/compliantkubernetes-kubespray) project will make it easy to configure SSH keys. Operator logs (be it stand-alone documents, git or GitOps-like repositories) will clearly list the SSH keys and identities of the operators configured for each environment.
 
 ### Bootstrapping
 
