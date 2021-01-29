@@ -1,29 +1,37 @@
 digraph compliance_basics {
-    graph [fontname = "helvetica"];
-    node [fontname = "helvetica"];
-    edge [fontname = "helvetica"];
+    graph [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"];
+    node [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"];
+    edge [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"];
 
     compound=true;
     graph[labeljust="l", fontsize=20];
+
+    title[
+        shape="none",
+        label="compliantkubernetes.io",
+        target="_top",
+        fontcolor="#4651b4",
+        URL="https://compliantkubernetes.io"];
 
     subgraph cluster_regulations {
         label="Regulations";
         node[width=1, shape=box, style=rounded];
 
-        HIPAA
-        PDL
-        GDPR
-        CCPA
-        FFFS
+        HIPAA[URL="https://www.cdc.gov/phlp/publications/topic/hipaa.html"];
+        PDL[URL="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355"];
+        GDPR[URL="https://gdpr.eu/"];
+        CCPA[URL="https://oag.ca.gov/privacy/ccpa"];
+        FFFS[URL="https://www.fi.se/en/our-registers/search-fffs/2014/20145/"];
     }
 
     subgraph cluster_isms {
         label="Information Security Standards"
+        node[target="_blank"];
         node[width=1, shape=box, style=rounded];
 
-        iso27k[label="ISO 27001"];
-        soc2[label="SOC 2"];
-        pcidss[label="PCI DSS"];
+        iso27k[label="ISO 27001", URL="https://www.isms.online/iso-27001/"];
+        soc2[label="SOC 2", URL="https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html"];
+        pcidss[label="PCI DSS", URL="https://www.pcisecuritystandards.org/"];
     }
 
     graph[width="4pt"];
@@ -35,19 +43,28 @@ digraph compliance_basics {
         { iso27k, soc2, pcidss } -> Controls
 
         // Special node for alignment
-        controls2[width=0, height=0, margin=0, style="invis"];
+        controls2[width=0, height=0, margin=0, style="invis", label=""];
 
         node[width=1, shape=box, style=rounded];
+        node[target="_top"];
         Controls -> {
             supplier[label="Supplier\nmanagement",fontsize=12]
             access[label="Access\ncontrol"]
             "Logging"
-            "Backups"
-            incident[label="Incident\nmanagement",fontsize=12]
+            "Backups"[
+                URL="/ciso-guide/backup/",
+                fontcolor="#4651b4"
+            ];
+            incident[label="Continuous\ncompliance",fontsize=12]
             vulnerability[label="Vulnerability\nmanagement",fontsize=12]
             intrusion[label="Intrusion\ndetection"]
             network[label="Network\nsecurity"]
-            crypto[label="Use of\ncryptography",fontsize=12]
+            crypto[
+                label="Use of\ncryptography",
+                URL="/ciso-guide/cryptography/",
+                fontcolor="#4651b4",
+                fontsize=12,
+            ]
         }
     }
 
@@ -65,10 +82,10 @@ digraph compliance_basics {
 
         access -> { dex[image="logos/dex.png"] }
         "Backups" -> { velero[image="logos/velero.png"] }
-        "Logging" 
+        "Logging"
             -> { elasticsearch[image="logos/elasticsearch.png"] }
             -> { kibana[image="logos/kibana.png"] }
-        incident 
+        incident
             -> { prometheus[image="logos/prometheus.png"] }
             -> { grafana[image="logos/grafana.png"] }
         vulnerability
@@ -114,4 +131,5 @@ digraph compliance_basics {
     // Ensure alignment
     FFFS -> controls2 -> access[weight=1000,style="invis"];
     cloud_provider -> byom[weight=1000,style="invis"];
+    byom -> title[weight=1000,style="invis"];
 }
