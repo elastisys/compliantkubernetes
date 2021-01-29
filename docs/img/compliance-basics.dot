@@ -46,19 +46,25 @@ digraph compliance_basics {
         controls2[width=0, height=0, margin=0, style="invis", label=""];
 
         node[width=1, shape=box, style=rounded];
+        node[target="_top"];
         Controls -> {
             supplier[label="Supplier\nmanagement",fontsize=12]
             access[label="Access\ncontrol"]
             "Logging"
             "Backups"[
                 URL="/ciso-guide/backup/",
-                target="_top",
-                fontcolor="#4651b4"];
+                fontcolor="#4651b4"
+            ];
             incident[label="Continuous\ncompliance",fontsize=12]
             vulnerability[label="Vulnerability\nmanagement",fontsize=12]
             intrusion[label="Intrusion\ndetection"]
             network[label="Network\nsecurity"]
-            crypto[label="Use of\ncryptography",fontsize=12]
+            crypto[
+                label="Use of\ncryptography",
+                URL="/ciso-guide/cryptography/",
+                fontcolor="#4651b4",
+                fontsize=12,
+            ]
         }
     }
 
