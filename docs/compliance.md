@@ -8,7 +8,7 @@ Compliance will vary widely depending on:
 
 The following is meant to offer an overview of compliance focusing on information security, and how Compliant Kubernetes reduces compliance burden.
 
-![Compliance Basics](img/compliance-basics.png)
+<embed src="../img/compliance-basics.svg" alt="Compliance Basics" width="100%" />
 
 ## Compliance: The Societal Perspective
 
