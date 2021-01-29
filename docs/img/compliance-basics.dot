@@ -6,6 +6,13 @@ digraph compliance_basics {
     compound=true;
     graph[labeljust="l", fontsize=20];
 
+    title[
+        shape="none",
+        label="compliantkubernetes.io",
+        target="_top",
+        fontcolor="#4651b4",
+        URL="https://compliantkubernetes.io"];
+
     subgraph cluster_regulations {
         label="Regulations";
         node[width=1, shape=box, style=rounded];
@@ -114,4 +121,5 @@ digraph compliance_basics {
     // Ensure alignment
     FFFS -> controls2 -> access[weight=1000,style="invis"];
     cloud_provider -> byom[weight=1000,style="invis"];
+    byom -> title[weight=1000,style="invis"];
 }
