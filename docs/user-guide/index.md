@@ -9,7 +9,6 @@ A user can be described via the following user stories:
 
 * As a Continuous Delivery (CD) pipeline I want to push changes to the Compliant Kubernetes cluster, so that the new version of the application is running.
 * As an application developer, I want to inspect how my application is running, so that I can take better development decisions.
-* An an information security officer, I want to audit the Compliant Kubernetes cluster, so as to comply with continuous compliance policies.
 
 ![Overview of User Roles and Stories](../img/user-overview.png)
 

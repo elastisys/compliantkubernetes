@@ -44,6 +44,8 @@ nav:
     - 'Prometheus/Grafana': 'user-guide/prometheus.md'
     - 'Dashboard': 'user-guide/dashboard.md'
     - 'Backups': 'user-guide/backup.md'
+  - 'CISO Guide':
+    - 'Overview': 'ciso-guide/index.md'
   - 'Operator Manual':
     - 'Overview': 'operator-manual/index.md'
     - 'Getting Started': 'operator-manual/getting-started.md'
