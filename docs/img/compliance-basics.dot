@@ -1,7 +1,7 @@
 digraph compliance_basics {
-    graph [fontname = "helvetica"];
-    node [fontname = "helvetica"];
-    edge [fontname = "helvetica"];
+    graph [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"];
+    node [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"];
+    edge [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"];
 
     compound=true;
     graph[labeljust="l", fontsize=20];
