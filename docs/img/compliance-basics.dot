@@ -17,20 +17,21 @@ digraph compliance_basics {
         label="Regulations";
         node[width=1, shape=box, style=rounded];
 
-        HIPAA
-        PDL
-        GDPR
-        CCPA
-        FFFS
+        HIPAA[URL="https://www.cdc.gov/phlp/publications/topic/hipaa.html"];
+        PDL[URL="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355"];
+        GDPR[URL="https://gdpr.eu/"];
+        CCPA[URL="https://oag.ca.gov/privacy/ccpa"];
+        FFFS[URL="https://www.fi.se/en/our-registers/search-fffs/2014/20145/"];
     }
 
     subgraph cluster_isms {
         label="Information Security Standards"
+        node[target="_blank"];
         node[width=1, shape=box, style=rounded];
 
-        iso27k[label="ISO 27001"];
-        soc2[label="SOC 2"];
-        pcidss[label="PCI DSS"];
+        iso27k[label="ISO 27001", URL="https://www.isms.online/iso-27001/"];
+        soc2[label="SOC 2", URL="https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html"];
+        pcidss[label="PCI DSS", URL="https://www.pcisecuritystandards.org/"];
     }
 
     graph[width="4pt"];
@@ -42,15 +43,18 @@ digraph compliance_basics {
         { iso27k, soc2, pcidss } -> Controls
 
         // Special node for alignment
-        controls2[width=0, height=0, margin=0, style="invis"];
+        controls2[width=0, height=0, margin=0, style="invis", label=""];
 
         node[width=1, shape=box, style=rounded];
         Controls -> {
             supplier[label="Supplier\nmanagement",fontsize=12]
             access[label="Access\ncontrol"]
             "Logging"
-            "Backups"
-            incident[label="Incident\nmanagement",fontsize=12]
+            "Backups"[
+                URL="/ciso-guide/backup/",
+                target="_top",
+                fontcolor="#4651b4"];
+            incident[label="Continuous\ncompliance",fontsize=12]
             vulnerability[label="Vulnerability\nmanagement",fontsize=12]
             intrusion[label="Intrusion\ndetection"]
             network[label="Network\nsecurity"]
