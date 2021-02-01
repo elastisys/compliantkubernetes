@@ -49,6 +49,7 @@ nav:
     - 'Backup': 'ciso-guide/backup.md'
     - 'Cryptography': 'ciso-guide/cryptography.md'
     - 'Intrusion Detection': 'ciso-guide/intrusion-detection.md'
+    - 'Policy-as-Code': 'ciso-guide/policy-as-code.md'
   - 'Operator Manual':
     - 'Overview': 'operator-manual/index.md'
     - 'Getting Started': 'operator-manual/getting-started.md'

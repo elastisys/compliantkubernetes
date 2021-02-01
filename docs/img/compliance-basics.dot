@@ -55,7 +55,12 @@ digraph compliance_basics {
                 URL="/ciso-guide/backup/",
                 fontcolor="#4651b4"
             ];
-            incident[label="Continuous\ncompliance",fontsize=12]
+            incident[
+                label="Continuous\ncompliance",
+                URL="/ciso-guide/policy-as-code/",
+                fontcolor="#4651b4",
+                fontsize=12
+            ]
             vulnerability[label="Vulnerability\nmanagement",fontsize=12]
             intrusion[
                 label="Intrusion\ndetection",

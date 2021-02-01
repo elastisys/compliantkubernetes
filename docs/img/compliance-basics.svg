@@ -226,9 +226,12 @@
 <!-- incident -->
 <g id="node16" class="node">
 <title>incident</title>
+<g id="a_node16"><a xlink:href="/ciso-guide/policy-as-code/" xlink:title="Continuous\ncompliance" target="_top">
 <path fill="none" stroke="black" d="M346,-505C346,-505 298,-505 298,-505 292,-505 286,-499 286,-493 286,-493 286,-481 286,-481 286,-475 292,-469 298,-469 298,-469 346,-469 346,-469 352,-469 358,-475 358,-481 358,-481 358,-493 358,-493 358,-499 352,-505 346,-505"/>
-<text text-anchor="middle" x="322" y="-490.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00">Continuous</text>
-<text text-anchor="middle" x="322" y="-477.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00">compliance</text>
+<text text-anchor="middle" x="322" y="-490.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00" fill="#4651b4">Continuous</text>
+<text text-anchor="middle" x="322" y="-477.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00" fill="#4651b4">compliance</text>
+</a>
+</g>
 </g>
 <!-- Controls&#45;&gt;incident -->
 <g id="edge13" class="edge">
