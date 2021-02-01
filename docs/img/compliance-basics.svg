@@ -252,9 +252,12 @@
 <!-- intrusion -->
 <g id="node18" class="node">
 <title>intrusion</title>
+<g id="a_node18"><a xlink:href="/ciso-guide/intrusion-detection/" xlink:title="Intrusion\ndetection" target="_top">
 <path fill="none" stroke="black" d="M526,-505C526,-505 478,-505 478,-505 472,-505 466,-499 466,-493 466,-493 466,-481 466,-481 466,-475 472,-469 478,-469 478,-469 526,-469 526,-469 532,-469 538,-475 538,-481 538,-481 538,-493 538,-493 538,-499 532,-505 526,-505"/>
-<text text-anchor="middle" x="502" y="-490.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">Intrusion</text>
-<text text-anchor="middle" x="502" y="-475.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">detection</text>
+<text text-anchor="middle" x="502" y="-490.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">Intrusion</text>
+<text text-anchor="middle" x="502" y="-475.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">detection</text>
+</a>
+</g>
 </g>
 <!-- Controls&#45;&gt;intrusion -->
 <g id="edge15" class="edge">

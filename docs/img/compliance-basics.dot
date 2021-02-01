@@ -57,7 +57,11 @@ digraph compliance_basics {
             ];
             incident[label="Continuous\ncompliance",fontsize=12]
             vulnerability[label="Vulnerability\nmanagement",fontsize=12]
-            intrusion[label="Intrusion\ndetection"]
+            intrusion[
+                label="Intrusion\ndetection",
+                URL="/ciso-guide/intrusion-detection/",
+                fontcolor="#4651b4",
+            ]
             network[label="Network\nsecurity"]
             crypto[
                 label="Use of\ncryptography",
