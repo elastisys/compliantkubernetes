@@ -1,6 +1,6 @@
 # Use Individual SSH Keys
 
-* Status: proposed
+* Status: accepted
 * Deciders: Cristian, Fredrik, Olle, Johan
 * Date: 2021-01-28
 
