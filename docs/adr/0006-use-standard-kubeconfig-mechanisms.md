@@ -1,8 +1,8 @@
 # Use Standard Kubeconfig Mechanisms
 
-* Status: proposed
-* Deciders: TBD
-* Date: 2021-01-28
+* Status: accepted
+* Deciders: Compliant Kubernetes Architecture Meeing
+* Date: 2021-02-02
 
 ## Context and Problem Statement
 
