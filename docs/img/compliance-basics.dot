@@ -7,11 +7,12 @@ digraph compliance_basics {
     graph[labeljust="l", fontsize=20];
 
     title[
-        shape="none",
-        label="compliantkubernetes.io",
-        target="_top",
-        fontcolor="#4651b4",
-        URL="https://compliantkubernetes.io"];
+        shape="none"
+        label="compliantkubernetes.io"
+        target="_top"
+        fontcolor="#4651b4"
+        URL="https://compliantkubernetes.io"
+    ];
 
     subgraph cluster_regulations {
         label="Regulations";
