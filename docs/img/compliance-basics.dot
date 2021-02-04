@@ -84,13 +84,21 @@ digraph compliance_basics {
             shape=none,
             label="",
             width=1,
-            height=1,
+            height=1.3,
+            labelloc=b,
             fixedsize=true,
-            imagescale=true
+            imagescale=true,
+            imagepos=tc,
+            fontsize=16,
+            target="_blank"
         ];
 
         access -> { dex[image="logos/dex.png"] }
-        "Backups" -> { velero[image="logos/velero.png"] }
+        "Backups" -> { velero[
+            image="logos/project-icons/velero.svg",
+            label="Velero",
+            URL="https://velero.io"
+        ] }
         "Logging"
             -> { elasticsearch[image="logos/elasticsearch.png"] }
             -> { kibana[image="logos/kibana.png"] }
@@ -101,7 +109,11 @@ digraph compliance_basics {
             -> { harbor[image="logos/harbor.png"] }
             -> { trivy[image="logos/trivy.png"] }
         intrusion -> { falco[image="logos/falco.png"] }
-        network -> { calico[image="logos/project-calico.png"] }
+        network -> { calico[
+            image="logos/project-icons/calico.svg",
+            label="Calico",
+            URL="https://www.projectcalico.org/"
+        ] }
         crypto
             -> { certmanager[image="logos/cert-manager.png"] }
             -> { letsencrypt[image="logos/letsencrypt.png"] }
