@@ -6,13 +6,17 @@ digraph compliance_basics {
     compound=true;
     graph[labeljust="l", fontsize=20];
 
-    title[
-        shape="none"
-        label="compliantkubernetes.io"
-        target="_top"
-        fontcolor="#4651b4"
-        URL="https://compliantkubernetes.io"
-    ];
+    subgraph cluster_header {
+        style="invis";
+        title[
+            shape="none"
+            label="compliantkubernetes.io"
+            target="_top"
+            fontcolor="#4651b4"
+            URL="https://compliantkubernetes.io"
+            width=11
+        ];
+    }
 
     subgraph cluster_regulations {
         label="Regulations";
@@ -49,14 +53,13 @@ digraph compliance_basics {
         node[width=1, shape=box, style=rounded];
         node[target="_top"];
         Controls -> {
-            supplier[label="Supplier\nmanagement",fontsize=12]
             access[label="Access\ncontrol"]
             "Logging"
             "Backups"[
                 URL="/ciso-guide/backup/",
                 fontcolor="#4651b4"
             ];
-            incident[
+            continuous[
                 label="Continuous\ncompliance",
                 URL="/ciso-guide/policy-as-code/",
                 fontcolor="#4651b4",
@@ -75,6 +78,7 @@ digraph compliance_basics {
                 fontcolor="#4651b4",
                 fontsize=12,
             ]
+            supplier[label="Supplier\nmanagement",fontsize=12]
         }
     }
 
@@ -85,7 +89,7 @@ digraph compliance_basics {
             shape=none,
             label="",
             width=1,
-            height=1.3,
+            height=1.4,
             labelloc=b,
             fixedsize=true,
             imagescale=true,
@@ -94,30 +98,89 @@ digraph compliance_basics {
             target="_blank"
         ];
 
-        access -> { dex[image="logos/dex.png"] }
+        access -> { dex[
+            image="logos/project-icons/dex.svg",
+            label="Dex",
+            URL="https://dexidp.io/"
+        ] }
         "Backups" -> { velero[
             image="logos/project-icons/velero.svg",
             label="Velero",
             URL="https://velero.io"
         ] }
-        "Logging"
-            -> { elasticsearch[image="logos/elasticsearch.png"] }
-            -> { kibana[image="logos/kibana.png"] }
-        incident
-            -> { prometheus[image="logos/prometheus.png"] }
-            -> { grafana[image="logos/grafana.png"] }
+        "Logging" -> { elasticsearch[
+            image="logos/project-icons/opendistro.svg",
+            label="Elasticsearch",
+            URL="https://opendistro.github.io/for-elasticsearch/"
+            fontsize=14
+        ] }
+        continuous -> { opa[
+            image="logos/project-icons/opa.svg",
+            label="OPA",
+            URL="https://open-policy-agent.github.io/gatekeeper/website/docs/"
+        ] }
         vulnerability
-            -> { harbor[image="logos/harbor.png"] }
-            -> { trivy[image="logos/trivy.png"] }
-        intrusion -> { falco[image="logos/falco.png"] }
+            //-> { harbor[image="logos/harbor.png"] }
+            -> { trivy[
+            image="logos/project-icons/trivy.svg"
+            label="Trivy"
+            URL="https://github.com/aquasecurity/trivy"
+        ] }
+        intrusion -> { falco[
+            image="logos/project-icons/falco.svg",
+            label="Falco",
+            URL="https://falco.org/",
+        ] }
         network -> { calico[
             image="logos/project-icons/calico.svg",
             label="Calico",
             URL="https://www.projectcalico.org/"
         ] }
-        crypto
-            -> { certmanager[image="logos/cert-manager.png"] }
-            -> { letsencrypt[image="logos/letsencrypt.png"] }
+        crypto -> { certmanager[
+            image="logos/project-icons/cert-manager.svg"
+            label="Cert Manager"
+            URL="https://cert-manager.io/"
+            fontsize=14
+        ] }
+    }
+
+    subgraph cluster_audit {
+        label="Compliant Kubernetes Dashboard"
+        node[
+            shape=none,
+            label="",
+            width=1,
+            height=1.4,
+            labelloc=b,
+            fixedsize=true,
+            imagescale=true,
+            imagepos=tc,
+            fontsize=16,
+            target="_blank"
+        ];
+        prometheus[
+            image="logos/project-icons/prometheus.svg",
+            label="Prometheus",
+            fontsize=12,
+            URL="https://prometheus.io/"
+        ]
+        grafana[
+            image="logos/project-icons/grafana.svg"
+            label="Grafana",
+            URL="https://github.com/grafana/grafana"
+        ]
+
+        edge[lhead=cluster_audit]
+        dex->prometheus
+        elasticsearch->grafana
+
+        // Alignment: We create a lot of invisible nodes "auditNA*" for alignment.
+        velero->auditNA1
+        opa->auditNA2
+        trivy->auditNA3
+        falco->auditNA4
+        calico->auditNA5
+        certmanager->auditNA6
     }
 
     subgraph cluster_provider {
@@ -144,14 +207,16 @@ digraph compliance_basics {
     // Make sure the rank of cloud providers is below those of
     // Compliant Kubernetes components.
     {
-        node[shape=none, label="", style="invis", height="0", width="0"];
+        node[shape=none, label="", height="0", width="0"];
         edge[arrowhead=none];
         supplier -> supplier2 -> supplier3;
         supplier3 -> cloud_provider[arrowhead=normal, lhead=cluster_provider];
     }
 
-    // Ensure alignment
-    FFFS -> controls2 -> access[weight=1000,style="invis"];
-    cloud_provider -> byom[weight=1000,style="invis"];
-    byom -> title[weight=1000,style="invis"];
+    // Alignment
+    edge[weight=1000,style="invis"];
+
+    FFFS -> controls2 -> access -> dex;
+    cloud_provider -> byom;
+    title -> HIPAA;
 }
