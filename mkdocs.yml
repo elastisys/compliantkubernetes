@@ -55,7 +55,7 @@ nav:
     - 'Getting Started': 'operator-manual/getting-started.md'
     - 'Creating/Destroying/Upgrading a Cluster':
       - 'On AWS': 'operator-manual/aws.md'
-      - 'On Exoscale': 'operator-manual/exoscale.md'
+      - 'On Exoscale': 'operator-manual/exoscale-kubespray.md'
     - 'Configuring a Cluster': 'operator-manual/configuring.md'
     - 'Disaster Recovery': 'operator-manual/disaster-recovery.md'
     - 'Breaking the Glass': 'operator-manual/break-glass.md'
