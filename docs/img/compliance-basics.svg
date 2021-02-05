@@ -536,8 +536,9 @@
 <!-- aws -->
 <g id="node37" class="node">
 <title>aws</title>
-<g id="a_node37"><a xlink:href="/operator-manual/aws/" target="_top">
+<g id="a_node37"><a xlink:href="/operator-manual/aws/" xlink:title="AWS" target="_top">
 <image xlink:href="logos/cloud-providers/aws.svg" width="72px" height="43.2px" preserveAspectRatio="xMinYMin meet" x="16" y="-106"/>
+<text text-anchor="middle" x="52" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00" fill="#4651b4">AWS</text>
 </a>
 </g>
 </g>
@@ -561,7 +562,7 @@
 <title>exoscale</title>
 <g id="a_node40"><a xlink:href="/operator-manual/exoscale/" xlink:title="Exoscale" target="_top">
 <image xlink:href="logos/cloud-providers/exoscale.svg" width="72px" height="62.4906px" preserveAspectRatio="xMinYMin meet" x="286" y="-106"/>
-<text text-anchor="middle" x="322" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">Exoscale</text>
+<text text-anchor="middle" x="322" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00" fill="#4651b4">Exoscale</text>
 </a>
 </g>
 </g>

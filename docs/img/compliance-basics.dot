@@ -221,8 +221,10 @@ digraph compliance_basics {
         ]
 
         aws[
+            label="AWS"
             image="logos/cloud-providers/aws.svg"
             URL="/operator-manual/aws/"
+            fontcolor="#4651b4"
         ]
         azure[
             label="Azure"
@@ -236,6 +238,7 @@ digraph compliance_basics {
             label="Exoscale"
             image="logos/cloud-providers/exoscale.svg"
             URL="/operator-manual/exoscale/"
+            fontcolor="#4651b4"
         ]
         ovh[
             label="OVHcloud"
