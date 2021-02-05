@@ -4,7 +4,7 @@ digraph compliance_basics {
     edge  [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"]
 
     compound=true
-    graph[labeljust="l", fontsize=20]
+    graph[labeljust="l", fontsize=20, ranksep=1]
 
     node[target="_top"]  // Open links in same tab
     subgraph cluster_header {
