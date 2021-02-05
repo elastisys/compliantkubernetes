@@ -28,6 +28,9 @@ Hence, forwarders are subject to the following tensions:
 * We want to monitor the storage system.
 * We want VM-template-based rendering of the workload cluster, which implies no cloud native storage integration.
 * We want to make it easier to "cleanup and start from a known good state".
+* We want to have self-healing and avoid manual actions after failure.
+* We want to be able to find the root cause of an incident quickly.
+* We want to run as many components non-root as possible and tightly integrate with [securityContext](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#configure-volume-permission-and-ownership-change-policy-for-pods).
 
 ## Considered Options
 
@@ -38,44 +41,61 @@ Hence, forwarders are subject to the following tensions:
 
 ## Decision Outcome
 
-Chosen option: "[option 1]", because [justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force force | … | comes out best (see below)].
+Chosen option: emptyDir, because it is the only solution that both allows monitoring of the storage system and can redeploy automatically after node failure.
 
-### Positive Consequences <!-- optional -->
+### Positive Consequences
 
-* [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
-* …
+* We can monitor the storage system.
+* Failure of the storage system does not affect monitoring forwarder.
+* Forwarder can be easier deployed "fresh".
 
-### Negative Consequences <!-- optional -->
+### Negative Consequences
 
-* [e.g., compromising quality attribute, follow-up decisions required, …]
-* …
+* Buffered monitoring information is lost if node is lost.
 
 ## Pros and Cons of the Options
 
 ### Use underlying storage provider
 
-* ✅ Good, because the forwarder can run on any node.
-* ✅ Good, because the buffer can be unlimited.
-* ✅ Good, because no buffered monitoring information is lost if a node goes down.
+* Good, because the forwarder can be restarted on any node.
+* Good, because the buffer can be large.
+* Good, because no buffered monitoring information is lost if a node goes down.
+* Good, because buffered monitoring information is preserved if the forwarder is redeployed.
 * Bad, because non-node-local storage is generally slower.
-* Bad, because forwarder will fail if storage provider goes down. This is especially problematic for Exoscale, bare-metal and BYO-VMs.
+* Bad, because the forwarder will fail if storage provider goes down. This is especially problematic for Exoscale, bare-metal and BYO-VMs.
+* Bad, because the forwarder cannot monitor the storage provider (circular dependency).
+* Bad, because setting right ownership requires init containers or [alpha features](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#configure-volume-permission-and-ownership-change-policy-for-pods).
 
 ### Use Local Persistent Volumes
 
-* Good, because it preserves the same mechanisms as PVCs, but storage is node local.
-* Good, because the forwarder survives failure of the underlying stoorage.
-* Good, because the forwarder can monitor the storage provider.
-* Bad, because "[i]f a node becomes unhealthy, then the local volume becomes inaccessible by the pod. The pod using this volume is unable to run.".
+* Bad, because the forwarder cannot be restarted on any node without manual action: "[i]f a node becomes unhealthy, then the local volume becomes inaccessible by the pod. The pod using this volume is unable to run.".
 * Bad, because the amount of forwarding depends on the node's local disk size.
+* Bad, because buffered monitoring information is lost if the forwarder's node goes down.
+* Good, because buffered monitoring information is preserved if the forwarder is redeployed.
+* Good, because node-local storage is generally faster.
+* Good, because the forwarder will survive failure of storage provider.
+* Good, because the forwarder can monitor the storage provider (no circular dependency).
 * Bad, because local persistent storage requires an additional configuration step.
+* Bad, because setting right ownership requires init containers or [alpha features](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#configure-volume-permission-and-ownership-change-policy-for-pods).
 
 ### Use emptyDir
 
-* Good, because forwarder can run on any node.
-* Good, because the forwarder survives failure of the underlying stoorage.
-* Good, because the forwarder can monitor the storage provider.
+* Good, because the forwarder can be restarted on any node without manual action.
 * Bad, because the amount of forwarding depends on the node's local disk size.
-* Bad, because
+* Bad, because buffered monitoring information is lost if the forwarder's node goes down.
+* Bad, because buffered monitoring information is lost if the forwarder is (not carefully enough) redeployed.
+* Good, because node-local storage is generally faster.
+* Good, because the forwarder will survive failure of storage provider.
+* Good, because the forwarder can monitor the storage provider (no circular dependency).
+* Good, because works out of the box.
+* Good, because it integrates nicely with `securityContext`.
+
+### Use hostPath
+
+Similar to Local Persistent Volumes, but
+
+* Worse, because if the forwarder is redeployed on a new node, buffering information may appear/disappear.
+* Better, because it requires no extra storage provider configuration.
 
 ## Links
 
