@@ -61,7 +61,7 @@ Chosen option: emptyDir, because it is the only solution that both allows monito
 * Good, because the buffer can be large.
 * Good, because no buffered monitoring information is lost if a node goes down.
 * Good, because buffered monitoring information is preserved if the forwarder is redeployed.
-* Bad, because non-node-local storage is generally slower.
+* Bad, because non-node-local storage is generally slower. Note, however, that at least SafeSpring and CityCloud use a central Ceph storage cluster for the VM's boot disk, which wipes out node-local's storage advantage.)
 * Bad, because the forwarder will fail if storage provider goes down. This is especially problematic for Exoscale, bare-metal and BYO-VMs.
 * Bad, because the forwarder cannot monitor the storage provider (circular dependency).
 * Bad, because setting right ownership requires init containers or [alpha features](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#configure-volume-permission-and-ownership-change-policy-for-pods).
