@@ -256,7 +256,7 @@ To deploy the Compliant Kubernetes apps, please go to the `compliantkubernetes-a
 Done. Navigate to the endpoints, for example `grafana.<environment_name>.$DOMAIN`, `kibana.<environment_name>.$DOMAIN`, `harbor.<environment_name>.$DOMAIN`, etc. to discover Compliant Kubernetes's features.
 
 
-### Teardown
+## Teardown
 To teardown the infrastructure, please switch to the root directoy of the exoscale branch of the Kubespray repo (see the Terraform section).
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
