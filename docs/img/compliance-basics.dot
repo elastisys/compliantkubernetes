@@ -6,18 +6,19 @@ digraph compliance_basics {
     compound=true
     graph[labeljust="l", fontsize=20]
 
+    node[target="_top"]  // Open links in same tab
     subgraph cluster_header {
-        style="invis";
+        style="invis"
         title[
             shape="none"
             label="compliantkubernetes.io"
-            target="_top"
             fontcolor="#4651b4"
             URL="https://compliantkubernetes.io"
             width=11
         ]
     }
 
+    node[target="_blank"]  // Open links in new tab
     subgraph cluster_regulations {
         label="Regulations"
 
@@ -33,7 +34,7 @@ digraph compliance_basics {
     subgraph cluster_isms {
         label="Information Security Standards"
 
-        node[width=1, shape=box, style=rounded, target="_blank"];
+        node[width=1, shape=box, style=rounded]
 
         iso27k[
             label="ISO 27001"
@@ -49,10 +50,11 @@ digraph compliance_basics {
         ]
     }
 
+    node[target="_top"]  // Open links in same tab
     subgraph cluster_policies {
         label="Policies"
 
-        node[width=1, shape=circle, fixedsize=true];
+        node[width=1, shape=circle, fixedsize=true]
 
         { HIPAA, PDL, GDPR, CCPA, FFFS } -> Controls
         { iso27k, soc2, pcidss } -> Controls
@@ -61,7 +63,6 @@ digraph compliance_basics {
             width=1
             shape=box
             style=rounded
-            target="_top"
         ]
         Controls -> {
             access[label="Access\ncontrol"]
@@ -105,6 +106,7 @@ digraph compliance_basics {
         controls2[style=invis]
     }
 
+    node[target="_blank"]  // Open links in new tab
     subgraph cluster_implementation {
         label="Compliant Kubernetes"
 
@@ -118,7 +120,6 @@ digraph compliance_basics {
             imagescale=true
             imagepos=tc
             fontsize=16
-            target="_blank"
         ]
 
         access -> { dex[
@@ -177,17 +178,16 @@ digraph compliance_basics {
             imagescale=true,
             imagepos=tc,
             fontsize=16,
-            target="_blank"
-        ];
+        ]
         prometheus[
-            image="logos/project-icons/prometheus.svg",
-            label="Prometheus",
-            fontsize=12,
+            image="logos/project-icons/prometheus.svg"
+            label="Prometheus"
+            fontsize=12
             URL="https://prometheus.io/"
         ]
         grafana[
             image="logos/project-icons/grafana.svg"
-            label="Grafana",
+            label="Grafana"
             URL="https://github.com/grafana/grafana"
         ]
 
@@ -204,6 +204,7 @@ digraph compliance_basics {
         certmanager->auditNA6
     }
 
+    node[target="_top"]  // Open links in same tab
     subgraph cluster_provider {
         label="Compliant Cloud Provider"
 
@@ -217,11 +218,11 @@ digraph compliance_basics {
             imagescale=true
             imagepos=tc
             fontsize=16
-            target="_blank"
         ]
 
         aws[
             image="logos/cloud-providers/aws.svg"
+            URL="/operator-manual/aws/"
         ]
         azure[
             label="Azure"
@@ -234,6 +235,7 @@ digraph compliance_basics {
         exoscale[
             label="Exoscale"
             image="logos/cloud-providers/exoscale.svg"
+            URL="/operator-manual/exoscale/"
         ]
         ovh[
             label="OVHcloud"

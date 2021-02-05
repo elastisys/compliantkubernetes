@@ -53,7 +53,7 @@
 <!-- HIPAA -->
 <g id="node2" class="node">
 <title>HIPAA</title>
-<g id="a_node2"><a xlink:href="https://www.cdc.gov/phlp/publications/topic/hipaa.html" xlink:title="HIPAA">
+<g id="a_node2"><a xlink:href="https://www.cdc.gov/phlp/publications/topic/hipaa.html" xlink:title="HIPAA" target="_blank">
 <path fill="none" stroke="black" d="M436,-704C436,-704 388,-704 388,-704 382,-704 376,-698 376,-692 376,-692 376,-680 376,-680 376,-674 382,-668 388,-668 388,-668 436,-668 436,-668 442,-668 448,-674 448,-680 448,-680 448,-692 448,-692 448,-698 442,-704 436,-704"/>
 <text text-anchor="middle" x="412" y="-682.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">HIPAA</text>
 </a>
@@ -75,7 +75,7 @@
 <!-- PDL -->
 <g id="node3" class="node">
 <title>PDL</title>
-<g id="a_node3"><a xlink:href="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355" xlink:title="PDL">
+<g id="a_node3"><a xlink:href="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355" xlink:title="PDL" target="_blank">
 <path fill="none" stroke="black" d="M346,-704C346,-704 298,-704 298,-704 292,-704 286,-698 286,-692 286,-692 286,-680 286,-680 286,-674 292,-668 298,-668 298,-668 346,-668 346,-668 352,-668 358,-674 358,-680 358,-680 358,-692 358,-692 358,-698 352,-704 346,-704"/>
 <text text-anchor="middle" x="322" y="-682.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">PDL</text>
 </a>
@@ -90,7 +90,7 @@
 <!-- GDPR -->
 <g id="node4" class="node">
 <title>GDPR</title>
-<g id="a_node4"><a xlink:href="https://gdpr.eu/" xlink:title="GDPR">
+<g id="a_node4"><a xlink:href="https://gdpr.eu/" xlink:title="GDPR" target="_blank">
 <path fill="none" stroke="black" d="M256,-704C256,-704 208,-704 208,-704 202,-704 196,-698 196,-692 196,-692 196,-680 196,-680 196,-674 202,-668 208,-668 208,-668 256,-668 256,-668 262,-668 268,-674 268,-680 268,-680 268,-692 268,-692 268,-698 262,-704 256,-704"/>
 <text text-anchor="middle" x="232" y="-682.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">GDPR</text>
 </a>
@@ -105,7 +105,7 @@
 <!-- CCPA -->
 <g id="node5" class="node">
 <title>CCPA</title>
-<g id="a_node5"><a xlink:href="https://oag.ca.gov/privacy/ccpa" xlink:title="CCPA">
+<g id="a_node5"><a xlink:href="https://oag.ca.gov/privacy/ccpa" xlink:title="CCPA" target="_blank">
 <path fill="none" stroke="black" d="M166,-704C166,-704 118,-704 118,-704 112,-704 106,-698 106,-692 106,-692 106,-680 106,-680 106,-674 112,-668 118,-668 118,-668 166,-668 166,-668 172,-668 178,-674 178,-680 178,-680 178,-692 178,-692 178,-698 172,-704 166,-704"/>
 <text text-anchor="middle" x="142" y="-682.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">CCPA</text>
 </a>
@@ -120,7 +120,7 @@
 <!-- FFFS -->
 <g id="node6" class="node">
 <title>FFFS</title>
-<g id="a_node6"><a xlink:href="https://www.fi.se/en/our-registers/search-fffs/2014/20145/" xlink:title="FFFS">
+<g id="a_node6"><a xlink:href="https://www.fi.se/en/our-registers/search-fffs/2014/20145/" xlink:title="FFFS" target="_blank">
 <path fill="none" stroke="black" d="M76,-704C76,-704 28,-704 28,-704 22,-704 16,-698 16,-692 16,-692 16,-680 16,-680 16,-674 22,-668 28,-668 28,-668 76,-668 76,-668 82,-668 88,-674 88,-680 88,-680 88,-692 88,-692 88,-698 82,-704 76,-704"/>
 <text text-anchor="middle" x="52" y="-682.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">FFFS</text>
 </a>
@@ -536,7 +536,10 @@
 <!-- aws -->
 <g id="node37" class="node">
 <title>aws</title>
+<g id="a_node37"><a xlink:href="/operator-manual/aws/" target="_top">
 <image xlink:href="logos/cloud-providers/aws.svg" width="72px" height="43.2px" preserveAspectRatio="xMinYMin meet" x="16" y="-106"/>
+</a>
+</g>
 </g>
 <!-- prometheus&#45;&gt;aws -->
 <!-- azure -->
@@ -556,8 +559,11 @@
 <!-- exoscale -->
 <g id="node40" class="node">
 <title>exoscale</title>
+<g id="a_node40"><a xlink:href="/operator-manual/exoscale/" xlink:title="Exoscale" target="_top">
 <image xlink:href="logos/cloud-providers/exoscale.svg" width="72px" height="62.4906px" preserveAspectRatio="xMinYMin meet" x="286" y="-106"/>
 <text text-anchor="middle" x="322" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">Exoscale</text>
+</a>
+</g>
 </g>
 <!-- citycloud&#45;&gt;exoscale -->
 <!-- openstack -->
