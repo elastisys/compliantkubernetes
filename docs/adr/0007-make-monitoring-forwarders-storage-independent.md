@@ -41,7 +41,7 @@ Hence, forwarders are subject to the following tensions:
 
 ## Decision Outcome
 
-Chosen option: emptyDir, because it is the only solution that both allows monitoring of the storage system and can redeploy automatically after node failure.
+Chosen option: emptyDir, because it allows monitoring of the storage system in some cases (e.g. Rook) and can redeploy automatically after node failure. It also keeps the complexity down without much risk of data loss.
 
 ### Positive Consequences
 
@@ -52,6 +52,7 @@ Chosen option: emptyDir, because it is the only solution that both allows monito
 ### Negative Consequences
 
 * Buffered monitoring information is lost if node is lost.
+* emptyDir can cause disk pressure. This can be handled by alerting on low disk space.
 
 ## Pros and Cons of the Options
 
