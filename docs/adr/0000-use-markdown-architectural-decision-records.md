@@ -14,5 +14,5 @@ Which format and structure should these records follow?
 
 Chosen option: "MADR 2.1.2", because
 
-* We need to start somewhere, and it's better to have some format that no format.
+* We need to start somewhere, and it's better to have some format than no format.
 * MADR seems to be good enough for our current needs.
