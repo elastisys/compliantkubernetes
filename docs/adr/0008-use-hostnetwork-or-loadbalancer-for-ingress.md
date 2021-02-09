@@ -1,14 +1,14 @@
 # Use HostNetwork or LoadBalancer for Ingress
 
-* Status: proposed
-* Deciders: TBD
-* Date: 2021-02-08
+* Status: accepted
+* Deciders: Axel, Cristian, Fredrik, Johan, Olle, Viktor
+* Date: 2021-02-09
 
 Technical Story: [Ingress configuration](https://github.com/elastisys/compliantkubernetes-kubespray/issues/25)
 
 ## Context and Problem Statement
 
-Many regulations require traffic to be encrypted over public Internet. Compliant Kubernetes solves this problem via an [Ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) and [cert-manager](https://github.com/jetstack/cert-manager). As of February 2021, Compliant Kubernetes comes by default with [nginx-ingress](https://kubernetes.github.io/ingress-nginx/), but [Ambassador](https://www.getambassador.io/docs/latest/topics/running/ingress-controller/) may also be used. The question is, how does traffic arrive at the Ingress controller?
+Many regulations require traffic to be encrypted over public Internet. Compliant Kubernetes solves this problem via an [Ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) and [cert-manager](https://github.com/jetstack/cert-manager). As of February 2021, Compliant Kubernetes comes by default with [nginx-ingress](https://kubernetes.github.io/ingress-nginx/), but [Ambassador](https://www.getambassador.io/docs/latest/topics/running/ingress-controller/) is planned as an alternative. The question is, how does traffic arrive at the Ingress controller?
 
 ## Decision Drivers
 
@@ -48,12 +48,12 @@ Additional considerations: This means that, generally, it will not be possible t
 ### Positive Consequences
 
 * We make the best of each cloud provider.
-* Reduces principle of least astonishment.
+* Obeys principle of least astonishment.
 * We do not add a load balancer "just because".
 
 ### Negative Consequences
 
-* We increases complexity: There will be two ways to get traffic into a cluster.
+* Complexity is a bit increased, however, this feels like essential complexity.
 
 ## Links
 
