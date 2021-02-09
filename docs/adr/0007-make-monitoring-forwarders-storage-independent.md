@@ -1,8 +1,8 @@
 # Make Monitoring Forwarders Storage Independent
 
-* Status: proposed
-* Deciders: Cristian
-* Date: 2021-02-05
+* Status: accepted
+* Deciders: Axel, Cristian, Fredrik, Johan, Olle, Viktor
+* Date: 2021-02-09
 
 ## Context and Problem Statement
 
