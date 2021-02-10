@@ -32,23 +32,21 @@ cd compliantkubernetes-kubespray
   If you haven't done so already, please install and configure [azure-cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 2. Login with azure-cli.
-  ```bash
-  az login
-  ```
+    ```bash
+    az login
+    ```
 3. Customize your infrastructure.
 
     Create a configuration for the service cluster and the workload cluster:
-
     ```bash
     pushd kubespray/contrib/azurerm/
     for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTER; do
       az group create -g $CLUSTER -l northeurope
       mkdir $CLUSTER
       mkdir $CLUSTER/inventory
-
-  done
-  popd
-  ```
+    done
+    popd
+    ```
 
     NOTE:  Please specify the value for the `ssh_public_keys` variable in `kubespray/contrib/azurerm/group_vars/all` and it must be your ssh public key to access your azure virtual machines.   Besides, the value for the `cluster_name` variable must be globally unique due to some restrictions in Azure. Make sure that `$SERVICE_CLUSTER` and `$SERVICE_CLUSTER` are unique.
 
