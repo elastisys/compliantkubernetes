@@ -198,10 +198,10 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
 2. Initialize the apps configuration.
 
     ```bash
-    export CK8S_ENVIRONMENT_NAME=aws
+    export CK8S_ENVIRONMENT_NAME=azure
     #export CK8S_FLAVOR=[dev|prod] # defaults to dev
-    export CK8S_CONFIG_PATH=~/.ck8s/aws
-    export CK8S_CLOUD_PROVIDER=aws
+    export CK8S_CONFIG_PATH=~/.ck8s/azure
+    export CK8S_CLOUD_PROVIDER=azure
     export CK8S_PGP_FP=<your GPG key ID>  # retrieve with gpg --list-secret-keys
     ./bin/ck8s init
     ```
@@ -326,29 +326,17 @@ Done. Navigate to `grafana.$BASE_DOMAIN`, `kibana.$BASE_DOMAIN`, `harbor.$BASE_D
 ## Teardown
 
 ```bash
-for CLUSTER in $WORKLOAD_CLUSTERS $SERVICE_CLUSTER; do
-    sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_$CLUSTER.yaml \
-        'kubectl --kubeconfig {} delete --all-namespaces --all ingress,service,deployment,statefulset,daemonset,cronjob,job,pod,sa,secret,configmap'
-done
-
-# Feel free to skips this step, but remember to remove EBS volumes manually
-# from the AWS Console, after Terraform teardown.
-for CLUSTER in $WORKLOAD_CLUSTERS $SERVICE_CLUSTER; do
-    sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_$CLUSTER.yaml \
-        'kubectl --kubeconfig {} delete --all-namespaces --all pvc,pv'
-done
-```
-
-```bash
-cd ../compliantkubernetes-kubespray
-pushd kubespray/contrib/terraform/aws
-for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
-    terraform destroy \
-        -auto-approve \
-        -state=../../../inventory/tfstate-$CLUSTER.tfstate
+pushd kubespray/contrib/azurerm
+for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS;; do
+  ansible-playbook generate-templates.yml
+  az group deployment create -g "$CLUSTER" --template-file ./$CLUSTER/.generated/clear-rg.json --mode Complete
 done
 popd
+
+done
 ```
+
+
 
 ## Further Reading
 
