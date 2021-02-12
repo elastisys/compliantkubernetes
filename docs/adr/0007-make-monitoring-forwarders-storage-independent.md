@@ -69,7 +69,7 @@ Chosen option: emptyDir, because it allows monitoring of the storage system in s
 
 ### Use Local Persistent Volumes
 
-* Bad, because the forwarder cannot be restarted on any node without manual action: "[i]f a node becomes unhealthy, then the local volume becomes inaccessible by the pod. The pod using this volume is unable to run.".
+* Bad, because the forwarder cannot be restarted on any node without manual action: "if a node becomes unhealthy, then the local volume becomes inaccessible by the pod. The pod using this volume is unable to run.".
 * Bad, because the amount of forwarding depends on the node's local disk size.
 * Bad, because buffered monitoring information is lost if the forwarder's node goes down.
 * Good, because buffered monitoring information is preserved if the forwarder is redeployed.
