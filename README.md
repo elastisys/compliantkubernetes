@@ -18,7 +18,7 @@ sudo apt-get install graphviz make
 
 * To view locally: `mkdocs serve`.
 * To re-generate figures: `make -C docs/img`. **For simplicity, please commit generated figures. Prefer PNG (width == 1200px), to facilitate embedded logos.**
-* For continous preview of figures: `make -C docs/img preview`.
+* For continuous preview of figures: `make -C docs/img preview`.
 
 ## Tech Stack
 
@@ -37,16 +37,16 @@ sudo apt-get install graphviz make
 
 * Done today is better than perfect tomorrow.
 * Write for the project, not the company.
-* A picture is worth a 1000 words. Use Graphviz, Terminal screenshots or GIFs. Focus on the content, leave aesthetics for another day. Prefer PNG with width of 1200px.
+* A picture is worth 1000 words. Use Graphviz, Terminal screenshots, or GIFs. Focus on the content, leave aesthetics for another day. Prefer PNG with a width of 1200px.
 * Perspective: Put yourself in the shoes of the user or operator. What documentation would you like to read as a newcomer?
 * Use "we" for the writer(s). Use "you" for the reader.
 * Write in [plain English](http://www.plainenglish.co.uk/how-to-write-in-plain-english.html).
 * Ordering of ideas: Aim for the happy flow: How would a first-time user/operator interact with the system? In what order would they do things?
 * Please capitalize Kubernetes concepts (Pod, Volume, etc.) for consistency with the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/pods/).
 * Link to relevant upstream documentation.
-* Please contribute in a branch and create a PR.
+* Please contribute to a branch and create a PR.
 * Capitalize all letters of acronyms: DNS, TCP, AWS.
-* Capitalize proper nouns, in particular names of projects, companies and products: Kubernetes, Amazon, Azure.
+* Capitalize proper nouns, in particular, names of projects, companies, and products: Kubernetes, Amazon, Azure.
 * Capitalize Kubernetes concepts: Pod, Node, Service.
 
 ## Deployment
