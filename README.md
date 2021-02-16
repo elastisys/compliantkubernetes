@@ -51,4 +51,4 @@ sudo apt-get install graphviz make
 
 ## Deployment
 
-GitHub Actions will deploy the `master` branch automatically.
+GitHub Actions will deploy the `main` branch automatically.
