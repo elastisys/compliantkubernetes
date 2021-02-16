@@ -32,7 +32,7 @@ Prometheus and Grafana can help with this by making it easier to:
 ###Prometheus
 Compliant Kubernetes installs the prometheus-operator by default. The Prometheus Operator for Kubernetes provides easy monitoring definitions for Kubernetes services and deployment and management of Prometheus instances as it can create/configure/manage Prometheus clusters atop Kubernetes. The following CRDs are installed by default.
 
-| crd | apigroup | kind | used by | description | 
+| crd | apigroup | kind | used by | description |
 | :-- | :-- | :-- | :-- | :-- |
 | alertmanagers	| monitoring.coreos.com | Alertmanager | prometheus-alerts | |
 | podmonitors | monitoring.coreos.com | PodMonitor | customer-rbac | |
@@ -49,7 +49,7 @@ The web interface is not exposed by default in Compliant Kubernetes. In order to
 Depending on your Compliant Kubernetes settings, access to the Prometheus server might have been disabled by the operator.
 
 ###Grafana
-Grafana can be accessed at the endpoint provided by the compliant kubernetes install scripts. If you have configured dex you can login with a connected account. 
+Grafana can be accessed at the endpoint provided by the compliant kubernetes install scripts. If you have configured dex you can login with a connected account.
 
 Compliant Kubernetes deploys Grafana with a selection of dashboards by default. Dashboards are accessed by clicking the Dashboard icon (for squares) at the lefthand side of the grafana window and selecting Manage. Some examples of useful dashboards are listed below.
 

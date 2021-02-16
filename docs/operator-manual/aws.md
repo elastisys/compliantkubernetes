@@ -225,7 +225,7 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
       letsencrypt:
         email: "set-me"  # set this to an email to receive LetsEncrypt notifications
     ```
-    
+
     ```
     # secrets.yaml
     objectStorage:
