@@ -50,4 +50,3 @@ For more ways to install the Nginx Ingress controller see <https://kubernetes.gi
 
 The Ingress resource is used to later route traffic to the desired Service. For more information about this
 see the official [documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/).
- 
