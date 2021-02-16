@@ -30,7 +30,7 @@ cd compliantkubernetes-kubespray
 
 1. Expose AWS credentials to Terraform.
 
-    We suggest exposing AWS credentials to Terraform via environment variables, so they are not accidently left on the file-system:
+    We suggest exposing AWS credentials to Terraform via environment variables, so they are not accidentally left on the file-system:
 
     ```shell
     export TF_VAR_AWS_ACCESS_KEY_ID="www"
@@ -193,7 +193,7 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
 
 3. Configure the apps.
 
-    Edit the configuration files `sc-config.yaml`, `wc-config.yaml` and `secrets.yaml` and set the approriate values for some of the configuration fields. Note that, the latter is encrypted.
+    Edit the configuration files `sc-config.yaml`, `wc-config.yaml` and `secrets.yaml` and set the appropriate values for some of the configuration fields. Note that, the latter is encrypted.
 
     ```bash
     vim $CK8S_CONFIG_PATH/sc-config.yaml
@@ -225,7 +225,7 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
       letsencrypt:
         email: "set-me"  # set this to an email to receive LetsEncrypt notifications
     ```
-    
+
     ```
     # secrets.yaml
     objectStorage:

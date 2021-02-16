@@ -12,4 +12,3 @@ digraph system {
     "Workload cluster" -> "Service cluster"
   }
 }
-

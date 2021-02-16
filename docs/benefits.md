@@ -12,7 +12,7 @@ The following are suggested aspects to investigate, which also help building an 
 
 As a Kubernetes-based platform distribution of software, any containerized application will of course do. However, to get the best possible understanding of the Compliant Kubernetes platform's features, we suggest that your application has:
 
- - a publicly facing front end part, which connects to 
+ - a publicly facing front end part, which connects to
  - a back end business logic application, which connects to
  - a database system.
 
@@ -44,13 +44,13 @@ Create a couple of alerts that make sense for your application based on the data
 
 ### Image vulnerability scanning for known threats
 
-Upload your container images to the Compliant Kubernetes Harbor image registry. Verify that scanning takes place, and see if your images are secure. 
+Upload your container images to the Compliant Kubernetes Harbor image registry. Verify that scanning takes place, and see if your images are secure.
 
 How about intentionally pushing an image based on some old base image to see the list populate fast!
 
 ### Intrusion detection system for unknown threats
 
-Make your application do unsafe things to trigger Falco, the intrusion detection system. Try to write something to the `/etc` directory! 
+Make your application do unsafe things to trigger Falco, the intrusion detection system. Try to write something to the `/etc` directory!
 
 ### Policies and automatic enforcement
 
@@ -67,7 +67,7 @@ Set up standard Kubernetes [Network Policies](https://kubernetes.io/docs/concept
  - the back end can only be connected to from the front end (no other components running in other namespaces);
  - the back end only gets to initiate connections to the database;
  - nothing besides the back end application gets to connect to the database; and
- - the database may never initiate connections to anything on its own. 
+ - the database may never initiate connections to anything on its own.
 
 Doing this shows that not only do you have network isolation/segregation up and running, but also, you have significantly reduced your attack surface. Should code get exploited in either component, it will still be limited in what damage it can do to the overall system.
 
