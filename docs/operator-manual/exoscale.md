@@ -257,7 +257,7 @@ Done. Navigate to the endpoints, for example `grafana.<environment_name>.$DOMAIN
 
 
 ## Teardown
-To teardown the infrastructure, please switch to the root directoy of the exoscale branch of the Kubespray repo (see the Terraform section).
+To teardown the infrastructure, please switch to the root directory of the exoscale branch of the Kubespray repo (see the Terraform section).
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
      terraform destroy \

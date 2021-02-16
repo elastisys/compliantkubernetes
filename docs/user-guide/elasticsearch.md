@@ -45,7 +45,7 @@ Let us dive into Kibana then.
 
 ### Data Visualization and Exploration in Kibana
 
-As you can see in the figure above, data visualzation and expoloration in Kibana has three components: **Discover**, **Visualize** and **Dashboard**.  The following section discribes each components using examples.
+As you can see in the figure above, data visualzation and expoloration in Kibana has three components: **Discover**, **Visualize** and **Dashboard**.  The following section describes each components using examples.
 
 #### Discover
 

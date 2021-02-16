@@ -1,6 +1,6 @@
 # Compliant Kubernetes (CK8s) Dashboard
 
-To facilitate continous compliance, Compliant Kubernetes comes with a "single pane of glass" to present all aspects of the cluster that are relevant for internal or external auditing.
+To facilitate continuous compliance, Compliant Kubernetes comes with a "single pane of glass" to present all aspects of the cluster that are relevant for internal or external auditing.
 
 The CK8s Dashboard provides different visualizations regarding the state of the cluster. It has a set of panels organized and arranged into one or more rows. Each panel visualizes different aspect of the system. The different visualizations can be broadly divided into the following five categories.
 
@@ -56,7 +56,7 @@ Select the *Namespaces* tab under cluster dashboard. A panel with list of namesp
 
   ![CK8S Namespaces](../img/namespaces.png)
 
-To get different metric information about each namepace,  hover your mouse on the *options* dropdown menu on the top left side under *Namespaces* tab (i.e., labeled *capabilities* in the figure above) and click *Open in Grafana*. You will be redirected to grafana website. By default different visualizations about the first namespace, *argocd* in this example, will be loaded by Grafana. You can change the namespace you if want to see for a different namespace. The following figure shows one of the visualizations loaded by grafana.
+To get different metric information about each namespace,  hover your mouse on the *options* dropdown menu on the top left side under *Namespaces* tab (i.e., labeled *capabilities* in the figure above) and click *Open in Grafana*. You will be redirected to grafana website. By default different visualizations about the first namespace, *argocd* in this example, will be loaded by Grafana. You can change the namespace you if want to see for a different namespace. The following figure shows one of the visualizations loaded by grafana.
 
   ![Grafana example](../img/grafana_under_ns.png)
 

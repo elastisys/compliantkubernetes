@@ -100,7 +100,7 @@ curl -k -u "${user}:${password}" "${es_url}/_snapshot/${snapshot_repo}/_all?pret
 
 ```
 
-You usually select the latest snapshot continaing the indices you want to restore.
+You usually select the latest snapshot containing the indices you want to restore.
 Restore one or multiple indices from a snapshot
 
 ```bash

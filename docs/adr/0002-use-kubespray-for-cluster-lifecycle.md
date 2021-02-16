@@ -13,7 +13,7 @@ Compliant Kubernetes promises: "Multi-cloud. Open source. Compliant". So far, we
 * We want to differentiate on top of vanilla Kubernetes cluster.
 * We want to be able to run Compliant Kubernetes on top of as many cloud providers as possible.
 * We promise building on top of best-of-breeds open source projets.
-* We want to reduce burden with developing and maintaing our in-house tooling for cluster life-cycle management.
+* We want to reduce burden with developing and maintaining our in-house tooling for cluster life-cycle management.
 
 ## Considered Options
 

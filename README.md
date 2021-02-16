@@ -18,7 +18,7 @@ sudo apt-get install graphviz make
 
 * To view locally: `mkdocs serve`.
 * To re-generate figures: `make -C docs/img`. **For simplicity, please commit generated figures. Prefer PNG (width == 1200px), to facilitate embedded logos.**
-* For continous preview of figures: `make -C docs/img preview`.
+* For continuous preview of figures: `make -C docs/img preview`.
 
 ## Tech Stack
 
