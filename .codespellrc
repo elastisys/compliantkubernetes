@@ -1,0 +1,4 @@
+[codespell]
+count =
+summary =
+skip = ./site,*.svg,*.dot
