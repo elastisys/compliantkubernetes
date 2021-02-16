@@ -11,4 +11,4 @@ jobs:
     - uses: pre-commit/action@v2.0.0
     - uses: codespell-project/actions-codespell@master
     - name: Test mkdocs build
-      uses: jnanadarshan/mkdocs-build-action@v1
+      uses: jnanadarshan/mkdocs-build-action@v0.24
