@@ -58,6 +58,7 @@ nav:
       - 'On AWS': 'operator-manual/aws.md'
       - 'On Azure': 'operator-manual/azure.md'
       - 'On Exoscale': 'operator-manual/exoscale.md'
+      - 'On GCP': 'operator-manual/gcp.md'
       - 'Remove Compliant Kubernetes Apps': 'operator-manual/clean-up.md'
     - 'Configuring a Cluster':
       - 'Overview' : 'operator-manual/overview.md'
