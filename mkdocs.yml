@@ -57,7 +57,7 @@ nav:
     - 'Creating/Destroying/Upgrading a Cluster':
       - 'On AWS': 'operator-manual/aws.md'
       - 'On Exoscale': 'operator-manual/exoscale.md'
-    - 'Configuring a Cluster': 
+    - 'Configuring a Cluster':
       - 'Overview' : 'operator-manual/overview.md'
       - 'Ingress': 'operator-manual/ingress.md'
     - 'Disaster Recovery': 'operator-manual/disaster-recovery.md'
