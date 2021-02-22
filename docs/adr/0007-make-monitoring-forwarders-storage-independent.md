@@ -41,7 +41,9 @@ Hence, forwarders are subject to the following tensions:
 
 ## Decision Outcome
 
-Chosen option: emptyDir, because it allows monitoring of the storage system in some cases (e.g. Rook) and can redeploy automatically after node failure. It also keeps the complexity down without much risk of data loss.
+Chosen option: emptyDir for Prometheus as forwarder, because it allows monitoring of the storage system in some cases (e.g. Rook) and can redeploy automatically after node failure. It also keeps the complexity down without much risk of data loss.
+
+Fluentd as forwarder is deployed via DaemonSet. Both, emptyDir and hostPath can be used.
 
 ### Positive Consequences
 
