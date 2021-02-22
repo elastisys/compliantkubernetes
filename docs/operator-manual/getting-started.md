@@ -36,10 +36,12 @@ ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-p
 
 ## Misc
 
-Compliant Kubernetes relies on SSH for accessing nodes. If you haven't already done so, generate an SSH key as follows:
+Compliant Kubernetes relies on SSH for accessing nodes. If you haven't already done so, generate SSH key and set Agent Forwarding as follows:
 
-```bash
+```python
 ssh-keygen
+
+ssh-add ~/.ssh/id_rsa
 ```
 
 Configuration secrets in Compliant Kubernetes are encrypted using [SOPS](https://github.com/mozilla/sops).
