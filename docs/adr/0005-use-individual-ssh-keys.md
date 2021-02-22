@@ -31,12 +31,7 @@ Currently, we create per-cluster SSH key pairs, which are shared among operators
 
 ## Decision Outcome
 
-We will manage SSH keys via an Ansible role, since it allows rotating/adding/deleting keys without rebooting nodes. Also, it caters to more environments, e.g., BYO-VMs and BYO-metal. The public SSH keys of all operators will be put in a file in [`ck8s-ops`](https://github.com/elastisys/ck8s-ops), one key per line. The comment of the key needs to clearly identify the owner.
-
-The [compliantkubernetes-kubespray](https://github.com/elastisys/compliantkubernetes-kubespray) project will make it easy to configure SSH keys. Operator logs (be it stand-alone documents, git or GitOps-like repositories) will clearly list the SSH keys and identities of the operators configured for each environment. Usually, the operators of each environment will be the members of the Elastisys Ops team. However, there could be exceptions:
-
-* For development, PoC or demo environments, we might want to give access to more people;
-* If the Elastisys Ops team acts as second-line operations, we might need to give access to first-line operators too.
+We will manage SSH keys via an Ansible role, since it allows rotating/adding/deleting keys without rebooting nodes. Also, it caters to more environments, e.g., BYO-VMs and BYO-metal. The [compliantkubernetes-kubespray](https://github.com/elastisys/compliantkubernetes-kubespray) project will make it easy to configure SSH keys.
 
 ### Bootstrapping
 
@@ -52,6 +47,15 @@ For cloud deployments, all Terraform providers support injecting at least one pu
 The operator who creates the cluster bootstraps SSH access by providing their own public SSH key via cloud-init. Then, the Ansible role adds the public SSH keys of the other operators.
 
 BYO-VM and BYO-metal deployments are handled similarly, except that the initial public SSH key is delivered by email/Slack to the VM/metal operator.
+
+## Recomendations to Operators
+
+* Operators should devise procedures for onboarding and offboarding member of the on-call team, as well as rotating SSH keys.
+
+* The public SSH keys of all on-call operators could be stored in a repository in a single file with one key per line.
+The comment of the key should clearly identify the owner.
+
+* Operator logs (be it stand-alone documents, git or GitOps-like repositories) should clearly list the SSH keys and identities of the operators configured for each environment.
 
 ## Links
 
