@@ -48,7 +48,7 @@ The operator who creates the cluster bootstraps SSH access by providing their ow
 
 BYO-VM and BYO-metal deployments are handled similarly, except that the initial public SSH key is delivered by email/Slack to the VM/metal operator.
 
-## Recomendations to Operators
+## Recommendations to Operators
 
 * Operators should devise procedures for onboarding and offboarding member of the on-call team, as well as rotating SSH keys.
 
