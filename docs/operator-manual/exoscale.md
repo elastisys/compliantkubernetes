@@ -284,36 +284,47 @@ objectStorage:
     secretKey: "set-me" #set to your s3 secretKey
 ```
 
-### Bootstrap
-
-To deploy the Compliant Kubernetes apps, please go to the `compliantkubernetes-apps` repo root directory and run the following.
-
-```bash
-export CK8S_CONFIG_PATH=~/.ck8s/exoscale
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-    ./bin/ck8s bootstrap $CLUSTER
-done
-```
-
 ### Install Compliant Kubernetes apps
 
-To deploy the Compliant Kubernetes apps, please go to the `compliantkubernetes-apps` repo root directory and run the following.
+Start with the service cluster:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-    ./bin/ck8s apps $CLUSTER
+ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml
+./bin/ck8s apply sc  # Respond "n" if you get a WARN
+```
+
+Then the workload clusters:
+
+```
+for CLUSTER in $WORKLOAD_CLUSTERS; do
+    ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
+    ./bin/ck8s apply wc  # Respond "n" if you get a WARN
 done
 ```
+
+!!!important
+    Leave sufficient time for the system to settle, e.g., request TLS certificates from LetsEncrypt, perhaps as much as 20 minutes.
 
 ### Testing
 
 After completing the installation step you can test if the apps are properly installed and ready using the commands below.
 
+Start with the service cluster:
+
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-    ./bin/ck8s test $CLUSTER
+ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml
+./bin/ck8s test sc  # Respond "n" if you get a WARN
+```
+
+Then the workload clusters:
+
+```
+for CLUSTER in $WORKLOAD_CLUSTERS; do
+    ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
+    ./bin/ck8s test wc  # Respond "n" if you get a WARN
 done
 ```
+
 
 Done. Navigate to the endpoints, for example `grafana.<environment_name>.$DOMAIN`, `kibana.<environment_name>.$DOMAIN`, `harbor.<environment_name>.$DOMAIN`, etc. to discover Compliant Kubernetes's features.
 
