@@ -295,15 +295,37 @@ ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG
 
 Then the workload clusters:
 
-```
-for CLUSTER in $WORKLOAD_CLUSTERS; do
+```bash
+for CLUSTER in ${WORKLOAD_CLUSTERS[@]}; do
     ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
     ./bin/ck8s apply wc  # Respond "n" if you get a WARN
 done
 ```
 
+### Settling
+
 !!!important
     Leave sufficient time for the system to settle, e.g., request TLS certificates from LetsEncrypt, perhaps as much as 20 minutes.
+
+You can check if the system settled as follows:
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
+        'kubectl --kubeconfig {} get --all-namespaces pods'
+done
+```
+
+Check the output of the command above. All Pods needs to be Running or Completed.
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
+        'kubectl --kubeconfig {} get certificates --all-namespaces'
+done
+```
+
+Check the output of the command above. All Certificates need to have the Ready column True.
 
 ### Testing
 
@@ -319,7 +341,7 @@ ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG
 Then the workload clusters:
 
 ```
-for CLUSTER in $WORKLOAD_CLUSTERS; do
+for CLUSTER in ${WORKLOAD_CLUSTERS[@]}; do
     ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
     ./bin/ck8s test wc  # Respond "n" if you get a WARN
 done
