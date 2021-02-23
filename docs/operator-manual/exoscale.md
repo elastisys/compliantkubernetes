@@ -8,7 +8,7 @@ This document contains instructions on how to setup a  service cluster and a wor
 4. Deploying Rook Storage Orchestration Service
 5. Deploying Compliant Kubernetes apps
 
- The instructions below are just samples, you need to update them according to your requirements. Besides, the [exoscale cli](https://github.com/exoscale/cli/releases/tag/v1.21.0) is used to manage DNS. If you are using any other DNS service provider for managing your DNS you can skip it.
+The instructions below are just samples, you need to update them according to your requirements. Besides, the [exoscale cli](https://github.com/exoscale/cli/releases/tag/v1.21.0) is used to manage DNS. If you are using any other DNS service provider for managing your DNS you can skip it.
 
 
 Before starting, make sure you have [all necessary tools](getting-started.md).
@@ -22,12 +22,7 @@ SERVICE_CLUSTER="testsc"
 WORKLOAD_CLUSTERS=( "testwc0" )
 ```
 
-## Deploying Compliant Kubernetes clusters
-
-In this section the steps for infrastructure setup, Compliant Kubernetes deployment, and DNS record creation will be presented.
-
-
-### Infrastructure Setup using Terraform
+## Infrastructure Setup using Terraform
 
 Before trying any of the steps, clone the Elastisys Compliant Kubernetes Kubespray repo as follows:
 
@@ -41,53 +36,61 @@ cd compliantkubernetes-kubespray/kubespray
 
     Please run `git checkout master` to use the non-release Kubespray.
 
-1. Expose Exoscale credentials to Terraform.
-  For authentication create the file  `~/.cloudstack.ini` and put your Exoscale credentials in it. The file should look like something like this:
-    ```
-    [cloudstack]
-    key = <API key>
-    secret = <API secret>
-    ```
+### Expose Exoscale credentials to Terraform
 
-2. Customize your infrastructure.
-    Create a configuration for the service and the workload clusters:
-    ```bash
-    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-      cp -r inventory/sample inventory/$CLUSTER
-      cp contrib/terraform/exoscale/default.tfvars inventory/$CLUSTER/
-    done
-    ```
-    Review and, if needed, adjust the files in `inventory/$CLUSTER/default.tfvars`, where `$CLUSTER` is the cluster name. Please use different value for the `prefix` field in `/default.tfvars`for the two clusters. Failing to do so will result in name conflict. Besides please also set a non-zero value for `ceph_partition_size` field, e.g., `"ceph_partition_size": 50`,  as it will be used by Rook storage service to provide local disk storage. To use whitelisting, replace "0.0.0.0/0" with the IP(s) you want to whitelist. Note that exoscale only allows one key pair of the same ssh-key. This means that for in least one of inventory/$CLUSTER/default.tfvars you need to specify another key in the "ssh_pub_key" field.
+For authentication create the file  `~/.cloudstack.ini` and put your Exoscale credentials in it. The file should look like something like this:
+
+```
+[cloudstack]
+key = <API key>
+secret = <API secret>
+```
+
+### Customize your infrastructure
+
+Create a configuration for the service and the workload clusters:
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+  cp -r inventory/sample inventory/$CLUSTER
+  cp contrib/terraform/exoscale/default.tfvars inventory/$CLUSTER/
+done
+```
+
+Review and, if needed, adjust the files in `inventory/$CLUSTER/default.tfvars`, where `$CLUSTER` is the cluster name. Please use different value for the `prefix` field in `/default.tfvars`for the two clusters. Failing to do so will result in name conflict. Besides please also set a non-zero value for `ceph_partition_size` field, e.g., `"ceph_partition_size": 50`,  as it will be used by Rook storage service to provide local disk storage. To use whitelisting, replace "0.0.0.0/0" with the IP(s) you want to whitelist. Note that exoscale only allows one key pair of the same ssh-key. This means that for in least one of inventory/$CLUSTER/default.tfvars you need to specify another key in the "ssh_pub_key" field.
 
 
-3. Initialize and Apply Terraform.
-    ```bash
-    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-        pushd inventory/$CLUSTER
-        terraform init ../../contrib/terraform/exoscale
-        terraform apply \
-            -var-file default.tfvars \
-            -auto-approve \
-            -state=tfstate-$CLUSTER.tfstate  \
-            ../../contrib/terraform/exoscale
-        popd
-    done
-    ```
+### Initialize and Apply Terraform
 
-    **NOTE: The Terraform state is stored in `inventory/$CLUSTER/tfstate-$CLUSTER.tfstate`, where `$CLUSTER` is the cluster name. It is precious. Consider backing it up our using [Terraform Cloud](https://www.terraform.io/docs/cloud/index.html).**
-    You should now have  inventory file named `inventory/$CLUSTER/inventory.ini` for each cluster that you can use with kubespray.
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    pushd inventory/$CLUSTER
+    terraform init ../../contrib/terraform/exoscale
+    terraform apply \
+        -var-file default.tfvars \
+        -auto-approve \
+        -state=tfstate-$CLUSTER.tfstate  \
+        ../../contrib/terraform/exoscale
+    popd
+done
+```
 
-4. Test access to all nodes as follows:
+!!!important
+    The Terraform state is stored in `inventory/$CLUSTER/tfstate-$CLUSTER.tfstate`, where `$CLUSTER` is the cluster name. It is precious. Consider backing it up our using [Terraform Cloud](https://www.terraform.io/docs/cloud/index.html).
 
-    ```bash
-    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-        pushd inventory/$CLUSTER
-        ANSIBLE_HOST_KEY_CHECKING=False ansible all -i inventory.ini -m ping
-        popd
-    done
-    ```
+You should now have  inventory file named `inventory/$CLUSTER/inventory.ini` for each cluster that you can use with kubespray.
 
-### Deploying Compliant Kubernetes clusters using Kubespray
+### Test access to all nodes
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    pushd inventory/$CLUSTER
+    ANSIBLE_HOST_KEY_CHECKING=False ansible all -i inventory.ini -m ping
+    popd
+done
+```
+
+## Deploying Compliant Kubernetes clusters using Kubespray
 
 With the infrastructure provisioned, we can now deploy Kubernetes using kubespray. First, change to the `compliantkubernetes-kubespray` root directory.
 
@@ -95,199 +98,224 @@ With the infrastructure provisioned, we can now deploy Kubernetes using kubespra
 cd ..
 ```
 
-1. Init the Kubespray config in your config path.
-    ```bash
-    export DOMAIN=<your_domain> # DNS domain to expose the services inside the service cluster i.e. "example.com"
-    export CK8S_CONFIG_PATH=~/.ck8s/exoscale
-    export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
+### Init the Kubespray config in your config path.
 
-    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-        ./bin/ck8s-kubespray init $CLUSTER default $CK8S_PGP_FP
-    done
-    ```
-2. Copy the inventory files generated by Terraform above in the right place.
+```bash
+export DOMAIN=<your_domain> # DNS domain to expose the services inside the service cluster i.e. "example.com"
+export CK8S_CONFIG_PATH=~/.ck8s/exoscale
+export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
 
-    Please copy the two inventory files, `{CK8S_CONFIG_PATH}/$CLUSTER-config/inventory.ini`, generated by Terraform for the three clusters to `${CK8S_CONFIG_PATH}/$CLUSTER-config/`, where $CLUSTER the name of each cluster (i.e., `testsc`, `testwc0`).
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    ./bin/ck8s-kubespray init $CLUSTER default $CK8S_PGP_FP
+done
+```
 
-3. Run kubespray to deploy the Kubernetes clusters.
-    ```bash
-    mkdir -p ${CK8S_CONFIG_PATH}/.state
-    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-        ./bin/ck8s-kubespray apply $CLUSTER
-    done
-    ```
-    This may take up to 10 minutes for each cluster, 20 minutes in total.
+### Copy the inventory files generated by Terraform
 
-4. Correct the Kubernetes API IP addresses.
+Please copy the two inventory files, `{CK8S_CONFIG_PATH}/$CLUSTER-config/inventory.ini`, generated by Terraform for the three clusters to `${CK8S_CONFIG_PATH}/$CLUSTER-config/`, where $CLUSTER the name of each cluster (i.e., `testsc`, `testwc0`).
 
-    Locate the encrypted kubeconfigs in `${CK8S_CONFIG_PATH}/.state/kube_config_*.yaml` and edit them using sops. Copy the public IP address of the load balancer from inventory files `${CK8S_CONFIG_PATH}/*-config/inventory.ini`  and replace the private IP address for the `server` field in `${CK8S_CONFIG_PATH}/.state/kube_config_*.yaml`.
-    ```bash
-    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-        sops ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml
-    done
-    ```
+### Run kubespray to deploy the Kubernetes clusters
 
-5. Test access to the clusters as follows:
+```bash
+mkdir -p ${CK8S_CONFIG_PATH}/.state
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    ./bin/ck8s-kubespray apply $CLUSTER
+done
+```
+This may take up to 10 minutes for each cluster, 20 minutes in total.
 
-    ```bash
-    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-        sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
-            'kubectl --kubeconfig {} get nodes'
-    done
-    ```
+### Correct the Kubernetes API IP addresses
 
-6. Create the DNS Records
+Locate the encrypted kubeconfigs in `${CK8S_CONFIG_PATH}/.state/kube_config_*.yaml` and edit them using sops. Copy the public IP address of the load balancer from inventory files `${CK8S_CONFIG_PATH}/*-config/inventory.ini`  and replace the private IP address for the `server` field in `${CK8S_CONFIG_PATH}/.state/kube_config_*.yaml`.
 
-    You will need to setup a number of DNS entries for traffic to be routed correctly. Determine the public IP of the load-balancer fronting the Ingress controller of the clusters from the Terraform state file generated during infrastructure setup.
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    sops ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml
+done
+```
 
-    To get the load-balancer IP, run the following command:
+### Test access to the clusters as follows:
 
-    ```bash
-    SC_INGRESS_LB_IP_ADDRESS=$(terraform output -state kubespray/inventory/$SERVICE_CLUSTER/tfstate-$SERVICE_CLUSTER.tfstate ingress_controller_lb_ip_address)
-    echo $SC_INGRESS_LB_IP_ADDRESS
-    ```
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
+        'kubectl --kubeconfig {} get nodes'
+done
+```
 
-    Then point these domains to the service cluster using 'exoscale cli' as follows:
+### Create the DNS Records
 
-    ```bash
-    exo dns add A $DOMAIN -a $SC_INGRESS_LB_IP_ADDRESS -n *.ops.$SERVICE_CLUSTER
-    exo dns add A $DOMAIN -a $SC_INGRESS_LB_IP_ADDRESS -n *.$SERVICE_CLUSTER
-    ```
+You will need to setup a number of DNS entries for traffic to be routed correctly. Determine the public IP of the load-balancer fronting the Ingress controller of the clusters from the Terraform state file generated during infrastructure setup.
 
-7. Deploy Rook
+To get the load-balancer IP, run the following command:
 
-    To deploy Rook, please go to the `compliantkubernetes-kubespray` repo root directory and run the following.
-     ```bash
-     cd rook
-     for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-        sops --decrypt ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $CLUSTER.yaml
-        export KUBECONFIG=$CLUSTER.yaml
-        ./deploy-rook.sh
-     done
-     ```
+```bash
+SC_INGRESS_LB_IP_ADDRESS=$(terraform output -state kubespray/inventory/$SERVICE_CLUSTER/tfstate-$SERVICE_CLUSTER.tfstate ingress_controller_lb_ip_address)
+echo $SC_INGRESS_LB_IP_ADDRESS
+```
 
-8. Test Rook
+Then point these domains to the service cluster using 'exoscale cli' as follows:
 
-    To test Rook, proceed as follows:
+```bash
+exo dns add A $DOMAIN -a $SC_INGRESS_LB_IP_ADDRESS -n *.ops.$SERVICE_CLUSTER
+exo dns add A $DOMAIN -a $SC_INGRESS_LB_IP_ADDRESS -n *.$SERVICE_CLUSTER
+```
 
-    ```bash
-    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-        sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} apply -f https://raw.githubusercontent.com/rook/rook/release-1.5/cluster/examples/kubernetes/ceph/csi/rbd/pvc.yaml';
-    done
+### Deploy Rook
 
-    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-        sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} get pvc';
-    done
-    ```
+To deploy Rook, please go to the `compliantkubernetes-kubespray` repo root directory and run the following.
 
-    You should see PVCs in Bound state. If you want to clean the previously created PVCs:
+```bash
+pushd rook
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    sops --decrypt ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $CLUSTER.yaml
+    export KUBECONFIG=$CLUSTER.yaml
+    ./deploy-rook.sh
+done
+```
 
-    ```bash
-    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-        sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} delete pvc rbd-pvc';
-    done
-    ```
+### Test Rook
+
+To test Rook, proceed as follows:
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} apply -f https://raw.githubusercontent.com/rook/rook/release-1.5/cluster/examples/kubernetes/ceph/csi/rbd/pvc.yaml';
+done
+
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} get pvc';
+done
+```
+
+You should see PVCs in Bound state. If you want to clean the previously created PVCs:
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} delete pvc rbd-pvc';
+done
+```
 
 ## Deploying Compliant Kubernetes Apps
+
 Now that the Kubernetes clusters are up and running, we are ready to install the Compliant Kubernetes apps and the Rook storage orchestration service.
 
-1. If you haven't done so already, clone the `compliantkubernetes-apps` repo and install pre-requisites.
-      ```bash
-      git clone https://github.com/elastisys/compliantkubernetes-apps.git
-      cd compliantkubernetes-apps
-      ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
-      ```
-2. Initialize the apps configuration.
-    ```bash
-    export CK8S_ENVIRONMENT_NAME=exoscale
-    #export CK8S_FLAVOR=[dev|prod] # defaults to dev
-    export CK8S_CONFIG_PATH=~/.ck8s/exoscale
-    export CK8S_CLOUD_PROVIDER=exoscale
-    export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
-    ./bin/ck8s init
-    ```
-    Three  files, `sc-config.yaml` and `wc-config.yaml`, and `secrets.yaml`, were generated in the `${CK8S_CONFIG_PATH}` directory.
-3. Configure the apps.
-    Edit the configuration files `${CK8S_CONFIG_PATH}/sc-config.yaml`, `${CK8S_CONFIG_PATH}/wc-config.yaml` and `${CK8S_CONFIG_PATH}/secrets.yaml` and set the appropriate values for some of the configuration fields. Note that, the latter is encrypted.
-    ```bash
-    vim ${CK8S_CONFIG_PATH}/sc-config.yaml
-    vim ${CK8S_CONFIG_PATH}/wc-config.yaml
-    sops ${CK8S_CONFIG_PATH}/secrets.yaml
-    ```
-    The following are the minimum change you should perform:
-    ```
-    # ${CK8S_CONFIG_PATH}/sc-config.yaml and ${CK8S_CONFIG_PATH}/wc-config.yaml
-    global:
-      baseDomain: "set-me"  # set to <enovironment_name>.$DOMAIN
-      opsDomain: "set-me"  # set to ops.<environment_name>.$DOMAIN
-      issuer: letsencrypt-prod
-    objectStorage:
-      type: "s3"
-      s3:
-        region: "set-me"  # Region for S3 buckets, e.g, west-1
-        regionAddress: "set-me"  # Region address, e.g, s3.us-west-1.amazonaws.com
-        regionEndpoint: "set-me"  # e.g., https://s3.us-west-1.amazonaws.com
+### Clone `compliantkubernetes-apps` and Install Pre-requisites
 
-    storageClasses:
-      default:  rook-ceph-block
-      nfs:
-        enabled: false
-      cinder:
-        enabled: false
-      local:
-        enabled: false
-      ebs:
-        enabled: false
-    ```
-    ```
-    # ${CK8S_CONFIG_PATH}/sc-config.yaml (in addition to the changes above)
-    fluentd:
-      forwarder:
-        useRegionEndpoint: "set-me"  # set it to either true or false
+If you haven't done so already, clone the `compliantkubernetes-apps` repo and install pre-requisites.
 
-    elasticsearch:
-      dataNode:
-        storageClass: rook-ceph-block
-    ```
-    ```
-    # ${CK8S_CONFIG_PATH}/secrets.yaml
-    objectStorage:
-      s3:
-        accessKey: "set-me" #set to your s3 accesskey
-        secretKey: "set-me" #set to your s3 secretKey
-    ```
-4. Bootstrapping
+```bash
+git clone https://github.com/elastisys/compliantkubernetes-apps.git
+cd compliantkubernetes-apps
+ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
+```
+
+### Initialize the apps configuration
+
+```bash
+export CK8S_ENVIRONMENT_NAME=exoscale
+#export CK8S_FLAVOR=[dev|prod] # defaults to dev
+export CK8S_CONFIG_PATH=~/.ck8s/exoscale
+export CK8S_CLOUD_PROVIDER=exoscale
+export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
+./bin/ck8s init
+```
+
+Three files, `sc-config.yaml` and `wc-config.yaml`, and `secrets.yaml`, were generated in the `${CK8S_CONFIG_PATH}` directory.
+
+### Configure the apps
+
+Edit the configuration files `${CK8S_CONFIG_PATH}/sc-config.yaml`, `${CK8S_CONFIG_PATH}/wc-config.yaml` and `${CK8S_CONFIG_PATH}/secrets.yaml` and set the appropriate values for some of the configuration fields. Note that, the latter is encrypted.
+
+```bash
+vim ${CK8S_CONFIG_PATH}/sc-config.yaml
+vim ${CK8S_CONFIG_PATH}/wc-config.yaml
+sops ${CK8S_CONFIG_PATH}/secrets.yaml
+```
+
+The following are the minimum change you should perform:
+
+```
+# ${CK8S_CONFIG_PATH}/sc-config.yaml and ${CK8S_CONFIG_PATH}/wc-config.yaml
+global:
+  baseDomain: "set-me"  # set to <enovironment_name>.$DOMAIN
+  opsDomain: "set-me"  # set to ops.<environment_name>.$DOMAIN
+  issuer: letsencrypt-prod
+objectStorage:
+  type: "s3"
+  s3:
+    region: "set-me"  # Region for S3 buckets, e.g, west-1
+    regionAddress: "set-me"  # Region address, e.g, s3.us-west-1.amazonaws.com
+    regionEndpoint: "set-me"  # e.g., https://s3.us-west-1.amazonaws.com
+
+storageClasses:
+  default:  rook-ceph-block
+  nfs:
+    enabled: false
+  cinder:
+    enabled: false
+  local:
+    enabled: false
+  ebs:
+    enabled: false
+```
+
+```
+# ${CK8S_CONFIG_PATH}/sc-config.yaml (in addition to the changes above)
+fluentd:
+  forwarder:
+    useRegionEndpoint: "set-me"  # set it to either true or false
+
+elasticsearch:
+  dataNode:
+    storageClass: rook-ceph-block
+```
+
+```
+# ${CK8S_CONFIG_PATH}/secrets.yaml
+objectStorage:
+  s3:
+    accessKey: "set-me" #set to your s3 accesskey
+    secretKey: "set-me" #set to your s3 secretKey
+```
+
+### Bootstrap
+
 To deploy the Compliant Kubernetes apps, please go to the `compliantkubernetes-apps` repo root directory and run the following.
 
-      ```bash
-      export CK8S_CONFIG_PATH=~/.ck8s/exoscale
-      for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-         ./bin/ck8s bootstrap $CLUSTER
-      done
-      ```
+```bash
+export CK8S_CONFIG_PATH=~/.ck8s/exoscale
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    ./bin/ck8s bootstrap $CLUSTER
+done
+```
 
-6. Installing Compliant Kubernetes apps.
-    To deploy the Compliant Kubernetes apps, please go to the `compliantkubernetes-apps` repo root directory and run the following.
+### Install Compliant Kubernetes apps
 
-      ```bash
-      for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-         ./bin/ck8s apps $CLUSTER
-      done
-      ```
-7. Testing:
-    After completing the installation step you can test if the apps are properly installed and ready using the commands below.
+To deploy the Compliant Kubernetes apps, please go to the `compliantkubernetes-apps` repo root directory and run the following.
 
-      ```bash
-      for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-         ./bin/ck8s test $CLUSTER
-      done
-      ```
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    ./bin/ck8s apps $CLUSTER
+done
+```
+
+### Testing
+
+After completing the installation step you can test if the apps are properly installed and ready using the commands below.
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+    ./bin/ck8s test $CLUSTER
+done
+```
 
 Done. Navigate to the endpoints, for example `grafana.<environment_name>.$DOMAIN`, `kibana.<environment_name>.$DOMAIN`, `harbor.<environment_name>.$DOMAIN`, etc. to discover Compliant Kubernetes's features.
 
 
 ## Teardown
 To teardown the infrastructure, please switch to the root directory of the exoscale branch of the Kubespray repo (see the Terraform section).
+
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
     terraform init contrib/terraform/exoscale
@@ -298,15 +326,11 @@ for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
         contrib/terraform/exoscale
 done
 
-# Remove dns records
-exo dns remove $DOMAIN *.ops.<environment_name>
-exo dns remove $DOMAIN grafana.<environment_name>
-exo dns remove $DOMAIN harbor.<environment_name>
-exo dns remove $DOMAIN kibana.<environment_name>
-exo dns remove $DOMAIN dex.<environment_name>
-exo dns remove $DOMAIN notary.harbor.<environment_name>
-exo dns remove $DOMAIN *.<environment_name>
+# Remove DNS records
+exo dns remove $DOMAIN *.ops.$SERVICE_CLUSTER
+exo dns remove $DOMAIN *.$SERVICE_CLUSTER
 ```
+
 ## Further Reading
 
 * [Elastisys Compliant Kubernetes Kubespray](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/README.md)
