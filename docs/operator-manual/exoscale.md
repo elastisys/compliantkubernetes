@@ -57,8 +57,12 @@ for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
 done
 ```
 
-Review and, if needed, adjust the files in `inventory/$CLUSTER/default.tfvars`, where `$CLUSTER` is the cluster name. Please use different value for the `prefix` field in `/default.tfvars`for the two clusters. Failing to do so will result in name conflict. Besides please also set a non-zero value for `ceph_partition_size` field, e.g., `"ceph_partition_size": 50`,  as it will be used by Rook storage service to provide local disk storage. To use whitelisting, replace "0.0.0.0/0" with the IP(s) you want to whitelist. Note that exoscale only allows one key pair of the same ssh-key. This means that for in least one of inventory/$CLUSTER/default.tfvars you need to specify another key in the "ssh_pub_key" field.
+Review and, if needed, adjust the files in `inventory/$CLUSTER/default.tfvars`, where `$CLUSTER` is the cluster name:
 
+* Use different value for the `prefix` field in `/default.tfvars` for the two clusters. Failing to do so will result in name conflict.
+* Set a non-zero value for `ceph_partition_size` field, e.g., `"ceph_partition_size": 50`, as it will be used by Rook storage service to provide local disk storage.
+* To security harden your cluster, set `ssh_whitelist` and `api_server_whitelist` to the IP addresses from which you expect to operate the cluster.
+* Make sure you configure your SSH keys in `ssh_public_keys`.
 
 ### Initialize and Apply Terraform
 
