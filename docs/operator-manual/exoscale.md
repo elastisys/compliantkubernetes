@@ -176,6 +176,7 @@ for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
     export KUBECONFIG=$CLUSTER.yaml
     ./deploy-rook.sh
 done
+popd rook
 ```
 
 ### Test Rook
