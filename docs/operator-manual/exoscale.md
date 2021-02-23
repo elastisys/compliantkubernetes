@@ -166,6 +166,28 @@ cd ..
      done
      ```
 
+8. Test Rook
+
+    To test Rook, proceed as follows:
+
+    ```bash
+    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+        sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} apply -f https://raw.githubusercontent.com/rook/rook/release-1.5/cluster/examples/kubernetes/ceph/csi/rbd/pvc.yaml';
+    done
+
+    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+        sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} get pvc';
+    done
+    ```
+
+    You should see PVCs in Bound state. If you want to clean the previously created PVCs:
+
+    ```bash
+    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+        sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} delete pvc rbd-pvc';
+    done
+    ```
+
 ## Deploying Compliant Kubernetes Apps
 Now that the Kubernetes clusters are up and running, we are ready to install the Compliant Kubernetes apps and the Rook storage orchestration service.
 
