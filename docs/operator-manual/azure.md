@@ -1,6 +1,6 @@
 # Compliant Kubernetes Deployment on Azure
 
-This document describes how to set up Compliant Kubernetes on AWS. The setup has two major parts:
+This document describes how to set up Compliant Kubernetes on Azure. The setup has two major parts:
 
 1. Deploying at least two vanilla Kubernetes clusters
 2. Deploying Compliant Kubernetes apps
@@ -56,14 +56,13 @@ cd compliantkubernetes-kubespray
 
     ```bash
     pushd kubespray/contrib/azurerm/
+    tmp=""
     for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTER; do
-       tmp=""
        cat group_vars/all \
        | sed \
            -e "s@^cluster_name:.*@cluster_name: \"$CLUSTER\"@" \
        > group_vars/all1
        cat group_vars/all1 > group_vars/all
-       #cat group_vars/all1 > $CLUSTER/group_vars/all
        rm group_vars/all1
        if [ -z $tmp ]
        then
@@ -92,6 +91,8 @@ cd compliantkubernetes-kubespray
        tmp=$CLUSTER
      done
      sed -i "s/{{ playbook_dir }}\/$tmp/{{ playbook_dir }}/g"  roles/generate-templates/tasks/main.yml
+     sed -i "s/{{ playbook_dir }}\/$tmp/{{ playbook_dir }}/g"  roles/generate-inventory_2/tasks/main.yml
+     sed -i "s/{{ playbook_dir }}\/$tmp/{{ playbook_dir }}/g"  roles/generate-inventory/tasks/main.yml
     popd
     ```
 
@@ -131,10 +132,10 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
 1. Init the Kubespray config in your config path.
 
     ```bash
-    export CK8S_CONFIG_PATH=~/.ck8s/aws
+    export CK8S_CONFIG_PATH=~/.ck8s/azure
     export CK8S_PGP_FP=<your GPG key ID>  # retrieve with gpg --list-secret-keys
 
-    for CLUSTER in sc-test0 wc-test0; do
+    for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
       ./bin/ck8s-kubespray init $CLUSTER default ~/.ssh/id_rsa.pub
     done
     ```
@@ -143,11 +144,20 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
     ```bash
     for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
         cp kubespray/contrib/azurerm/$CLUSTER/inventory/inventory.j2 $CK8S_CONFIG_PATH/$CLUSTER-config/inventory.ini
+        #add ansible_user ubuntu   (note that this assumes you have set admin_username in azurerm/group_vars/all to ubuntu)
+        echo -e 'ansible_user: ubuntu' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/ck8s-k8s-cluster.yaml
+
+        #get the  IP address of  master-0 (to be added in kubadmin certSANs list which will be used for kubectl)
+        ip=$(grep -m 1  "master-0" $CK8S_CONFIG_PATH/$CLUSTER-config/inventory.ini | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | head -n 1)
+
+        echo 'supplementary_addresses_in_ssl_keys: ["'$ip'"]' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/ck8s-k8s-cluster.yaml
+
     done
     ```
 
 3. Run kubespray to deploy the Kubernetes clusters.
 
+Before you running kubespray please set all the [azure parameters](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/azure.md).
     ```bash
     for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
         ./bin/ck8s-kubespray apply $CLUSTER --flush-cache
@@ -156,15 +166,24 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
 
     This may take up to 20 minutes.
 
-4. Correct the Kubernetes API IP addresses.
-
-    Find the DNS names of the load balancers fronting the API servers:
-
-    ```bash
-    grep apiserver_loadbalancer $CK8S_CONFIG_PATH/*-config/inventory.ini
+    Please increase the value for timeout, e.g `timeout=30`, in `kubespray/ansible.cfg` if you face the following issue while running step-3.
+    ```
+    TASK [bootstrap-os : Fetch /etc/os-release] **************************************************************************************************************************************************************************************
+    fatal: [minion-0]: FAILED! => {"msg": "Timeout (12s) waiting for privilege escalation prompt: "}
+    fatal: [minion-1]: FAILED! => {"msg": "Timeout (12s) waiting for privilege escalation prompt: "}
+    fatal: [minion-2]: FAILED! => {"msg": "Timeout (12s) waiting for privilege escalation prompt: "}
+    fatal: [master-0]: FAILED! => {"msg": "Timeout (12s) waiting for privilege escalation prompt: "}
     ```
 
-    Locate the encrypted kubeconfigs `kube_config_*.yaml` and edit them using sops. Copy the URL of the load balancer from inventory files shown above into `kube_config_*.yaml`. Do not overwrite the port.
+4. Correct the Kubernetes API IP addresses.
+
+    Find one of the public IP addresses of the master nodes:
+
+    ```bash
+    grep -m 1  "master-0" $CK8S_CONFIG_PATH/*-config/inventory.ini | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | head -n 1
+    ```
+
+    Locate the encrypted kubeconfigs `kube_config_*.yaml` and edit them using sops. Copy the IP above from inventory files shown above into `kube_config_*.yaml`. Do not overwrite the port.
 
     ```bash
     for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
@@ -180,7 +199,18 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
             'kubectl --kubeconfig {} get nodes'
     done
     ```
+Deploy Rook
 
+To deploy Rook, please go to the `compliantkubernetes-kubespray` repo root directory and run the following.
+
+  ```bash
+  cd rook
+  for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+     sops --decrypt ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $CLUSTER.yaml
+     export KUBECONFIG=$CLUSTER.yaml
+  ./deploy-rook.sh
+  done
+```
 ## Deploying Compliant Kubernetes Apps
 
 Now that the Kubernetes clusters are up and running, we are ready to install the Compliant Kubernetes apps.
@@ -223,26 +253,36 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
     The following are the minimum change you should perform:
 
     ```
-    # sc-config.yaml and wc-config.yaml
+    # ${CK8S_CONFIG_PATH}/sc-config.yaml and ${CK8S_CONFIG_PATH}/wc-config.yaml
     global:
-      baseDomain: "set-me"  # set to $BASE_DOMAIN
-      opsDomain: "set-me"  # set to ops.$BASE_DOMAIN
+      baseDomain: "set-me"  # set to <enovironment_name>.$DOMAIN
+      opsDomain: "set-me"  # set to ops.<environment_name>.$DOMAIN
       issuer: letsencrypt-prod
-
     objectStorage:
       type: "s3"
       s3:
-        region: "set-me"  # Region for S3 buckets, e.g, eu-central-1
-        regionAddress: "set-me"  # Region address, e.g, s3.eu-central-1.amazonaws.com
+        region: "set-me"  # Region for S3 buckets, e.g, west-1
+        regionAddress: "set-me"  # Region address, e.g, s3.us-west-1.amazonaws.com
         regionEndpoint: "set-me"  # e.g., https://s3.us-west-1.amazonaws.com
 
-    fluentd:
-      forwarder:
-        useRegionEndpoint: "set-me"  # set it to either true or false
+    storageClasses:
+      default:  rook-ceph-block
+      nfs:
+        enabled: false
+      cinder:
+        enabled: false
+      local:
+        enabled: false
+      ebs:
+        enabled: false
+    ```
 
-    issuers:
-      letsencrypt:
-        email: "set-me"  # set this to an email to receive LetsEncrypt notifications
+    ```
+    # ${CK8S_CONFIG_PATH}/sc-config.yaml (in addition to the changes above)
+
+    elasticsearch:
+      dataNode:
+        storageClass: rook-ceph-block
     ```
 
     ```
@@ -253,76 +293,34 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
         secretKey: "set-me" #put your s3 secretKey
     ```
 
-4. Create placeholder DNS entries.
-
-    To avoid negative caching and other surprises. Create two placeholders as follows (feel free to use the "Import zone" feature of AWS Route53):
+4. Bootstrapping To deploy the Compliant Kubernetes apps, please go to the `compliantkubernetes-apps` repo root directory and run the following.
 
     ```
-    echo "
-    *.$BASE_DOMAIN     60s A 203.0.113.123
-    *.ops.$BASE_DOMAIN 60s A 203.0.113.123
-    "
-    ```
-
-    NOTE: 203.0.113.123 is in [TEST-NET-3](https://en.wikipedia.org/wiki/Reserved_IP_addresses) and okey to use as placeholder.
-
-5. Installing Compliant Kubernetes apps.
-
-    Start with the service cluster:
-
-    ```bash
-    ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml
-    ./bin/ck8s apply sc  # Respond "n" if you get a WARN
-    ```
-
-    Then the workload clusters:
-    ```
-    for CLUSTER in $WORKLOAD_CLUSTERS; do
-        ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
-        ./bin/ck8s apply wc  # Respond "n" if you get a WARN
+    export CK8S_CONFIG_PATH=~/.ck8s/azure
+    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+       ./bin/ck8s bootstrap $CLUSTER
     done
     ```
 
-    **NOTE: Leave sufficient time for the system to settle, e.g., request TLS certificates from LetsEncrypt, perhaps as much as 20 minutes.**
-
-5. Setup required DNS entries.
-
-    You will need to set up the following DNS entries. First, determine the public IP of the load-balancer fronting the Ingress controller of the *service cluster*:
-
-    ```
-    SC_INGRESS_LB_HOSTNAME=$(sops exec-file $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml 'kubectl --kubeconfig {} get -n ingress-nginx svc ingress-nginx-controller -o jsonpath={.status.loadBalancer.ingress[0].hostname}')
-    SC_INGRESS_LB_IP=$(dig +short $SC_INGRESS_LB_HOSTNAME | head -1)
-    echo $SC_INGRESS_LB_IP
-    ```
-
-    Then, import the following zone in AWS Route53:
-
-    ```
-    echo """
-    *.ops.$BASE_DOMAIN    60s A $SC_INGRESS_LB_IP
-    dex.$BASE_DOMAIN      60s A $SC_INGRESS_LB_IP
-    grafana.$BASE_DOMAIN  60s A $SC_INGRESS_LB_IP
-    harbor.$BASE_DOMAIN   60s A $SC_INGRESS_LB_IP
-    kibana.$BASE_DOMAIN   60s A $SC_INGRESS_LB_IP
-    """
-    ```
-
-6. Testing:
-
-    After completing the installation step you can test if the apps are properly installed and ready using the commands below.
+5. Installing Compliant Kubernetes apps. To deploy the Compliant Kubernetes apps, please go to the `compliantkubernetes-apps` repo root directory and run the following.
 
     ```bash
-    ./bin/ck8s test sc
-    for CLUSTER in $WORKLOAD_CLUSTERS; do
-        ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
-        ./bin/ck8s test wc
+    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+       ./bin/ck8s apps $CLUSTER
     done
     ```
 
+6. Testing: After completing the installation step you can test if the apps are properly installed and ready using the commands below.
+
+    ```
+    for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+       ./bin/ck8s test $CLUSTER
+    done
+    ```
 Done. Navigate to `grafana.$BASE_DOMAIN`, `kibana.$BASE_DOMAIN`, `harbor.$BASE_DOMAIN`, etc. to discover Compliant Kubernetes's features.
 
 ## Teardown
-
+To teardown the cluster , please go to the `compliantkubernetes-kubespray` repo root directory and run the following.
 ```bash
 pushd kubespray/contrib/azurerm
 for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS;; do
@@ -330,8 +328,6 @@ for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS;; do
   az group deployment create -g "$CLUSTER" --template-file ./$CLUSTER/.generated/clear-rg.json --mode Complete
 done
 popd
-
-done
 ```
 
 
