@@ -321,20 +321,11 @@ Check the output of the command above. All Pods needs to be Running or Completed
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
-        'kubectl --kubeconfig {} get --all-namespaces issuers,clusterissuers'
+        'kubectl --kubeconfig {} get --all-namespaces issuers,clusterissuers,certificates'
 done
 ```
 
-Check the output of the command above. All Certificates need to have the Ready column True.
-
-```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
-        'kubectl --kubeconfig {} get certificates --all-namespaces'
-done
-```
-
-Check the output of the command above. All Certificates need to have the Ready column True.
+Check the output of the command above. All resources need to have the Ready column True.
 
 ### Testing
 
