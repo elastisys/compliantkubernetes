@@ -126,6 +126,7 @@ cd ..
         sops ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml
     done
     ```
+
 5. Test access to the clusters as follows:
 
     ```bash
@@ -134,6 +135,7 @@ cd ..
             'kubectl --kubeconfig {} get nodes'
     done
     ```
+
 6. Create the DNS Records
 
     You will need to setup a number of DNS entries for traffic to be routed correctly. Determine the public IP of the load-balancer fronting the Ingress controller of the clusters from the Terraform state file generated during infrastructure setup.
@@ -147,10 +149,10 @@ cd ..
 
     Then point these domains to the service cluster using 'exoscale cli' as follows:
 
-     ```bash
-     exo dns add A $DOMAIN -a $SC_INGRESS_LB_IP_ADDRESS -n *.ops.$SERVICE_CLUSTER
-     exo dns add A $DOMAIN -a $SC_INGRESS_LB_IP_ADDRESS -n *.$SERVICE_CLUSTER
-     ```
+    ```bash
+    exo dns add A $DOMAIN -a $SC_INGRESS_LB_IP_ADDRESS -n *.ops.$SERVICE_CLUSTER
+    exo dns add A $DOMAIN -a $SC_INGRESS_LB_IP_ADDRESS -n *.$SERVICE_CLUSTER
+    ```
 
 7. Deploy Rook
 
