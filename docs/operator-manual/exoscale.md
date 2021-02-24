@@ -32,7 +32,7 @@ cd compliantkubernetes-kubespray/kubespray
 ```
 
 !!!note
-    The Terraform code for Exoscale is pushed to Kubespray upstream, but is not yet release (see [this issue](https://github.com/elastisys/compliantkubernetes-kubespray/issues/56)
+    The Terraform code for Exoscale is pushed to Kubespray upstream, but is not yet released (see [this issue](https://github.com/elastisys/compliantkubernetes-kubespray/issues/56)
 
     Please run `git checkout master` to use the non-release Kubespray.
 
