@@ -357,12 +357,14 @@ To teardown the infrastructure, please switch to the root directory of the exosc
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-    terraform init contrib/terraform/exoscale
+    pushd inventory/$CLUSTER
+    terraform init ../../contrib/terraform/exoscale
     terraform destroy \
-        -var-file inventory/$CLUSTER/default.tfvars \
+        -var-file default.tfvars \
         -auto-approve \
-        -state=inventory/$CLUSTER/tfstate-$CLUSTER.tfstate  \
-        contrib/terraform/exoscale
+        -state=tfstate-$CLUSTER.tfstate  \
+        ../../contrib/terraform/exoscale
+    popd
 done
 
 # Remove DNS records
