@@ -59,7 +59,7 @@ done
 
 Review and, if needed, adjust the files in `inventory/$CLUSTER/default.tfvars`, where `$CLUSTER` is the cluster name:
 
-* Use different value for the `prefix` field in `/default.tfvars` for the two clusters. Failing to do so will result in name conflict.
+* Use different value for the `prefix` field in `/default.tfvars` for the two clusters. Failing to do so will result in a name conflict.
 * Set a non-zero value for `ceph_partition_size` field, e.g., `"ceph_partition_size": 50`, as it will be used by Rook storage service to provide local disk storage.
 * To security harden your cluster, set `ssh_whitelist` and `api_server_whitelist` to the IP addresses from which you expect to operate the cluster.
 * Make sure you configure your SSH keys in `ssh_public_keys`.
