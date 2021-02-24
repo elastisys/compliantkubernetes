@@ -34,7 +34,9 @@ cd compliantkubernetes-kubespray/kubespray
 !!!note
     The Terraform code for Exoscale is pushed to Kubespray upstream, but is not yet released (see [this issue](https://github.com/elastisys/compliantkubernetes-kubespray/issues/56)
 
-    Please run `git checkout master` to use the non-release Kubespray.
+    Please run `git checkout b77460ec` to use the non-release Kubespray.
+
+    After the infrastructure setup setp, switch back to Kubespray v2.15.0: `git checkout v2.15.0`.
 
 ### Expose Exoscale credentials to Terraform
 
