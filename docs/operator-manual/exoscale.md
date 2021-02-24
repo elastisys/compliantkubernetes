@@ -175,6 +175,7 @@ for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
     sops --decrypt ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $CLUSTER.yaml
     export KUBECONFIG=$CLUSTER.yaml
     ./deploy-rook.sh
+    shred -zu $CLUSTER.yaml
 done
 popd rook
 ```
