@@ -80,7 +80,7 @@ done
 ```
 
 !!!important
-    The Terraform state is stored in `inventory/$CLUSTER/tfstate-$CLUSTER.tfstate`, where `$CLUSTER` is the cluster name. It is precious. Consider backing it up our using [Terraform Cloud](https://www.terraform.io/docs/cloud/index.html).
+    The Terraform state is stored in `inventory/$CLUSTER/tfstate-$CLUSTER.tfstate`, where `$CLUSTER` is the cluster name. It is precious. Consider backing it up or using [Terraform Cloud](https://www.terraform.io/docs/cloud/index.html).
 
 You should now have  inventory file named `inventory/$CLUSTER/inventory.ini` for each cluster that you can use with kubespray.
 
