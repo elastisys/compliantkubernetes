@@ -229,6 +229,8 @@ digraph compliance_basics {
         azure[
             label="Azure"
             image="logos/cloud-providers/azure.svg"
+            URL="/operator-manual/azure/"
+            fontcolor="#4651b4"
         ]
         citycloud[
             label="CityCloud"
