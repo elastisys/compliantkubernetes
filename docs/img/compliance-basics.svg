@@ -546,8 +546,11 @@
 <!-- azure -->
 <g id="node38" class="node">
 <title>azure</title>
+<g id="a_node38"><a xlink:href="/operator-manual/azure/" xlink:title="Azure" target="_top">
 <image xlink:href="logos/cloud-providers/azure.svg" width="72px" height="55.2857px" preserveAspectRatio="xMinYMin meet" x="106" y="-106"/>
-<text text-anchor="middle" x="142" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">Azure</text>
+<text text-anchor="middle" x="142" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00" fill="#4651b4">Azure</text>
+</a>
+</g>
 </g>
 <!-- aws&#45;&gt;azure -->
 <!-- citycloud -->

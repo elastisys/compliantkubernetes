@@ -56,6 +56,7 @@ nav:
     - 'Getting Started': 'operator-manual/getting-started.md'
     - 'Creating/Destroying/Upgrading a Cluster':
       - 'On AWS': 'operator-manual/aws.md'
+      - 'On Azure': 'operator-manual/azure.md'
       - 'On Exoscale': 'operator-manual/exoscale.md'
     - 'Configuring a Cluster':
       - 'Overview' : 'operator-manual/overview.md'
