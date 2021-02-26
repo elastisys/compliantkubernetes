@@ -236,7 +236,7 @@ for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
 done
 popd
 ```
-Please restart the operator pod, `rook-ceph-operator*`, if some pods stalls in initailization state as shown below:
+Please restart the operator pod, `rook-ceph-operator*`, if some pods stalls in initialization state as shown below:
 ```
 rook-ceph     rook-ceph-crashcollector-minion-0-b75b9fc64-tv2vg    0/1     Init:0/2   0          24m
 rook-ceph     rook-ceph-crashcollector-minion-1-5cfb88b66f-mggrh   0/1     Init:0/2   0          36m
