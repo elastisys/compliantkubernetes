@@ -2,3 +2,4 @@
 count =
 summary =
 skip = ./site,*.svg,*.dot
+ignore-words-list = aks,

@@ -22,7 +22,7 @@ Tools that behave as such include:
 
 * Compliant Kubernetes needs to observe the Principle of Least Astonishment.
 * Compliant Kubernetes needs to be compatible with various "underlying" vanilla Kubernetes tools.
-* Compliant Kubernetes needs to be usuable with various tools "on top".
+* Compliant Kubernetes needs to be usable with various tools "on top".
 
 ## Considered Options
 
