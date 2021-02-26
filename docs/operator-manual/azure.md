@@ -11,6 +11,7 @@ This document contains instructions on how to setup a service cluster and a work
 The instructions below are just samples, you need to update them according to your requirements. Besides, the [exoscale cli](https://github.com/exoscale/cli/releases/tag/v1.21.0) is used to manage DNS. If you are using any other DNS service provider for managing your DNS you can skip it.
 
 
+
 Before starting, make sure you have [all necessary tools](getting-started.md).
 
 ## Setup
@@ -159,21 +160,24 @@ done
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
-    cp kubespray/contrib/azurerm/$CLUSTER/inventory/inventory.j2 $CK8S_CONFIG_PATH/$CLUSTER-config/inventory.ini
+  #add calico to the inventory file
+  cat kubespray/contrib/azurerm/$CLUSTER/inventory/inventory.j2 \
+        | sed  '/\[k8s-cluster:children\]/i \[calico-rr\]' \
+        > $CK8S_CONFIG_PATH/$CLUSTER-config/inventory.ini
+echo "calico-rr" >> $CK8S_CONFIG_PATH/$CLUSTER-config/inventory.ini $CK8S_CONFIG_PATH/$CLUSTER-config/inventory.ini
     #add ansible_user ubuntu   (note that this assumes you have set admin_username in azurerm/group_vars/all to ubuntu)
     echo -e 'ansible_user: ubuntu' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/ck8s-k8s-cluster.yaml
 
-    #get the  IP address of  master-0 (to be added in kubadmin certSANs list which will be used for kubectl)
-    ip=$(grep -m 1  "master-0" $CK8S_CONFIG_PATH/$CLUSTER-config/inventory.ini | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | head -n 1)
-
+    #get the  IP address of the loadbalancer (to be added in kubadmin certSANs list which will be used for kubectl)
+    ip=$(grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' kubespray/contrib/azurerm/$CLUSTER/loadbalancer_vars.yml)
     echo 'supplementary_addresses_in_ssl_keys: ["'$ip'"]' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/ck8s-k8s-cluster.yaml
+    echo -e 'nameservers:\n  - 1.1.1.1' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/ck8s-k8s-cluster.yaml
+    echo 'resolvconf_mode: host_resolvconf' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/ck8s-k8s-cluster.yaml
 
 done
 ```
 
 ### Run kubespray to deploy the Kubernetes clusters
-
-Before you running kubespray please set all the [Azure parameters](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/azure.md).
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
@@ -181,7 +185,7 @@ for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
 done
 ```
 
-This may take up to 10 minutes for each cluster, 20 minutes in total.
+This may take up to 30 minutes per cluster.
 
 Please increase the value for timeout, e.g `timeout=30`, in `kubespray/ansible.cfg` if you face the following issue while running step-3.
 
@@ -195,13 +199,13 @@ fatal: [master-0]: FAILED! => {"msg": "Timeout (12s) waiting for privilege escal
 
 ### Correct the Kubernetes API IP addresses
 
-Find one of the public IP addresses of the master nodes:
+Get the public IP address of the loadbalancer:
 
 ```bash
-grep -m 1  "master-0" $CK8S_CONFIG_PATH/*-config/inventory.ini | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | head -n 1
+grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' kubespray/contrib/azurerm/$CLUSTER/loadbalancer_vars.yml
 ```
 
-Locate the encrypted kubeconfigs `kube_config_*.yaml` and edit them using sops. Copy the IP above from inventory files shown above into `kube_config_*.yaml`. Do not overwrite the port.
+Locate the encrypted kubeconfigs `kube_config_*.yaml` and edit them using sops. Copy the IP shown above into `kube_config_*.yaml`. Do not overwrite the port.
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
@@ -232,6 +236,14 @@ for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
 done
 popd
 ```
+Please restart the operator pod, `rook-ceph-operator*`, if some pods stalls in initialization state as shown below:
+```
+rook-ceph     rook-ceph-crashcollector-minion-0-b75b9fc64-tv2vg    0/1     Init:0/2   0          24m
+rook-ceph     rook-ceph-crashcollector-minion-1-5cfb88b66f-mggrh   0/1     Init:0/2   0          36m
+rook-ceph     rook-ceph-crashcollector-minion-2-5c74ffffb6-jwk55   0/1     Init:0/2   0          14m
+```
+
+Note: pods in pending state usually indicate resource shortage. In such cases you need to use bigger instances.
 
 ### Test Rook
 
