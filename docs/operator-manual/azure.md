@@ -185,7 +185,7 @@ for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
 done
 ```
 
-This may take upto 30 minutes per cluster.
+This may take up to 30 minutes per cluster.
 
 Please increase the value for timeout, e.g `timeout=30`, in `kubespray/ansible.cfg` if you face the following issue while running step-3.
 
