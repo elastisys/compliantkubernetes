@@ -74,7 +74,6 @@ for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
     terraform init ../../contrib/terraform/exoscale
     terraform apply \
         -var-file default.tfvars \
-        -auto-approve \
         -state=tfstate-$CLUSTER.tfstate  \
         ../../contrib/terraform/exoscale
     popd
@@ -367,7 +366,6 @@ for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
     terraform init ../../contrib/terraform/exoscale
     terraform destroy \
         -var-file default.tfvars \
-        -auto-approve \
         -state=tfstate-$CLUSTER.tfstate  \
         ../../contrib/terraform/exoscale
     popd
