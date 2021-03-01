@@ -60,6 +60,7 @@ nav:
       - 'On Azure': 'operator-manual/azure.md'
       - 'On Exoscale': 'operator-manual/exoscale.md'
       - 'On GCP': 'operator-manual/gcp.md'
+      - 'On OVH Managed Kubernetes': 'operator-manual/ovh-managed-kubernetes.md'
       - 'Remove Compliant Kubernetes Apps': 'operator-manual/clean-up.md'
     - 'Configuring a Cluster':
       - 'Overview' : 'operator-manual/overview.md'
