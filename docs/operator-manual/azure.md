@@ -8,10 +8,6 @@ This document contains instructions on how to setup a service cluster and a work
 4. Deploying Rook Storage Orchestration Service
 5. Deploying Compliant Kubernetes apps
 
-The instructions below are just samples, you need to update them according to your requirements. Besides, the [exoscale cli](https://github.com/exoscale/cli/releases/tag/v1.21.0) is used to manage DNS. If you are using any other DNS service provider for managing your DNS you can skip it.
-
-
-
 Before starting, make sure you have [all necessary tools](getting-started.md).
 
 ## Setup
