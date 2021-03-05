@@ -267,9 +267,12 @@
 <!-- network -->
 <g id="node17" class="node">
 <title>network</title>
+<g id="a_node17"><a xlink:href="/ciso-guide/network-security/" xlink:title="Network\nsecurity" target="_top">
 <path fill="none" stroke="black" d="M616,-560C616,-560 568,-560 568,-560 562,-560 556,-554 556,-548 556,-548 556,-536 556,-536 556,-530 562,-524 568,-524 568,-524 616,-524 616,-524 622,-524 628,-530 628,-536 628,-536 628,-548 628,-548 628,-554 622,-560 616,-560"/>
-<text text-anchor="middle" x="592" y="-545.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">Network</text>
-<text text-anchor="middle" x="592" y="-530.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">security</text>
+<text text-anchor="middle" x="592" y="-545.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">Network</text>
+<text text-anchor="middle" x="592" y="-530.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">security</text>
+</a>
+</g>
 </g>
 <!-- Controls&#45;&gt;network -->
 <g id="edge15" class="edge">

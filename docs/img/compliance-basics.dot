@@ -89,7 +89,11 @@ digraph compliance_basics {
                 URL="/ciso-guide/intrusion-detection/"
                 fontcolor="#4651b4"
             ]
-            network[label="Network\nsecurity"]
+            network[
+                label="Network\nsecurity"
+                URL="/ciso-guide/network-security/"
+                fontcolor="#4651b4"
+            ]
             crypto[
                 label="Use of\ncryptography"
                 URL="/ciso-guide/cryptography/"
