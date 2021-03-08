@@ -18,7 +18,7 @@ BASE_DOMAIN="example.com"
 ```
 
 !!! Note
-    If you want to set up multiple workload clusters you can add more names.  
+    If you want to set up multiple workload clusters you can add more names.
     E.g. `WORKLOAD_CLUSTERS="testwc0 testwc1 testwc2"`
 
     `SERVICE_CLUSTER` and each entry in `WORKLOAD_CLUSTERS` must be maximum 17 characters long.
