@@ -41,7 +41,7 @@ cd compliantkubernetes-kubespray
     ```shell
     export TF_VAR_AWS_ACCESS_KEY_ID="xyz" # Access key for AWS
     export TF_VAR_AWS_SECRET_ACCESS_KEY="zyx" # Secret key for AWS
-    export TF_VAR_AWS_SSH_KEY_NAME="foo" # Name of the AWS keypair to use for the EC2 instances
+    export TF_VAR_AWS_SSH_KEY_NAME="foo" # Name of the AWS key pair to use for the EC2 instances
     export TF_VAR_AWS_DEFAULT_REGION="bar" # Region to use for all AWS resources
     ```
 
