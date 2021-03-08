@@ -107,7 +107,7 @@ With the infrastructure provisioned, we can now deploy both the sc and wc Kubern
 
     ```
     for CLUSTER in $SERVICE_CLUSTER $WORKLOAD_CLUSTERS; do
-        ./bin/ck8s-kubespray init $CLUSTER aws ~/.ssh/id_rsa
+        ./bin/ck8s-kubespray init $CLUSTER aws $CK8S_PGP_FP
     done
     ```
 

@@ -55,7 +55,7 @@ Click **Discover** in the main Kibana page to access the features provided by it
 
   ![Kibana](../img/discover.png)
 
-As yopu can see in the above figure, the **kubeaudit** index logs are loaded by default. If you want to explore logs from either of the other two log indices please select the right index under the dropdown menu marked *log index category*.
+As you can see in the above figure, the **kubeaudit** index logs are loaded by default. If you want to explore logs from either of the other two log indices please select the right index under the dropdown menu marked *log index category*.
 
 To appreciate Kibana's searching and filtering capability, let us get data for the following question:
 
