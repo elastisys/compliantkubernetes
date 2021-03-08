@@ -53,7 +53,7 @@ secret = <API secret>
 Create a configuration for the service and the workload clusters:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
   cp -r inventory/sample inventory/$CLUSTER
   cp contrib/terraform/exoscale/default.tfvars inventory/$CLUSTER/
 done
@@ -69,7 +69,7 @@ Review and, if needed, adjust the files in `inventory/$CLUSTER/default.tfvars`, 
 ### Initialize and Apply Terraform
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     pushd inventory/$CLUSTER
     terraform init ../../contrib/terraform/exoscale
     terraform apply \
@@ -88,7 +88,7 @@ You should now have  inventory file named `inventory/$CLUSTER/inventory.ini` for
 ### Test access to all nodes
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     pushd inventory/$CLUSTER
     ANSIBLE_HOST_KEY_CHECKING=False ansible all -i inventory.ini -m ping
     popd
@@ -110,7 +110,7 @@ export DOMAIN=<your_domain> # DNS domain to expose the services inside the servi
 export CK8S_CONFIG_PATH=~/.ck8s/exoscale
 export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
 
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     ./bin/ck8s-kubespray init $CLUSTER default $CK8S_PGP_FP
 done
 ```
@@ -122,8 +122,7 @@ Please copy the two inventory files, `kubespray/inventory/$CLUSTER/inventory.ini
 ### Run kubespray to deploy the Kubernetes clusters
 
 ```bash
-mkdir -p ${CK8S_CONFIG_PATH}/.state
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     ./bin/ck8s-kubespray apply $CLUSTER --flush-cache
 done
 ```
@@ -134,7 +133,7 @@ This may take up to 10 minutes for each cluster, 20 minutes in total.
 Locate the encrypted kubeconfigs in `${CK8S_CONFIG_PATH}/.state/kube_config_*.yaml` and edit them using sops. Copy the public IP address of the load balancer from inventory files `${CK8S_CONFIG_PATH}/*-config/inventory.ini`  and replace the private IP address for the `server` field in `${CK8S_CONFIG_PATH}/.state/kube_config_*.yaml`.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml
 done
 ```
@@ -142,7 +141,7 @@ done
 ### Test access to the clusters as follows:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
         'kubectl --kubeconfig {} get nodes'
 done
@@ -172,7 +171,7 @@ To deploy Rook, please go to the `compliantkubernetes-kubespray` repo root direc
 
 ```bash
 pushd rook
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops --decrypt ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $CLUSTER.yaml
     export KUBECONFIG=$CLUSTER.yaml
     ./deploy-rook.sh
@@ -186,11 +185,11 @@ popd
 To test Rook, proceed as follows:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} apply -f https://raw.githubusercontent.com/rook/rook/release-1.5/cluster/examples/kubernetes/ceph/csi/rbd/pvc.yaml';
 done
 
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} get pvc';
 done
 ```
@@ -198,7 +197,7 @@ done
 You should see PVCs in Bound state. If you want to clean the previously created PVCs:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} delete pvc rbd-pvc';
 done
 ```
@@ -302,7 +301,7 @@ ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG
 Then the workload clusters:
 
 ```bash
-for CLUSTER in ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in "${WORKLOAD_CLUSTERS[@]}"; do
     ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
     ./bin/ck8s apply wc  # Respond "n" if you get a WARN
 done
@@ -316,7 +315,7 @@ done
 You can check if the system settled as follows:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
         'kubectl --kubeconfig {} get --all-namespaces pods'
 done
@@ -325,7 +324,7 @@ done
 Check the output of the command above. All Pods needs to be Running or Completed.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
         'kubectl --kubeconfig {} get --all-namespaces issuers,clusterissuers,certificates'
 done
@@ -347,7 +346,7 @@ ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG
 Then the workload clusters:
 
 ```
-for CLUSTER in ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in "${WORKLOAD_CLUSTERS[@]}"; do
     ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
     ./bin/ck8s test wc  # Respond "n" if you get a WARN
 done
@@ -361,7 +360,7 @@ Done. Navigate to the endpoints, for example `grafana.<environment_name>.$DOMAIN
 To teardown the infrastructure, please switch to the root directory of the exoscale branch of the Kubespray repo (see the Terraform section).
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     pushd inventory/$CLUSTER
     terraform init ../../contrib/terraform/exoscale
     terraform destroy \

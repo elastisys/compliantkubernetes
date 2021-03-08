@@ -45,10 +45,9 @@ Create a configuration for the service and the workload clusters:
 
 ```bash
 pushd kubespray/contrib/azurerm/
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     az group create -g $CLUSTER -l northeurope
-    mkdir $CLUSTER
-    mkdir $CLUSTER/inventory
+    mkdir -p $CLUSTER/inventory
 done
 popd
 ```
@@ -63,7 +62,7 @@ Review and, if needed, adjust the files in `kubespray/contrib/azurerm/group_vars
 ```bash
 pushd kubespray/contrib/azurerm/
 tmp=""
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
    cat group_vars/all \
    | sed \
        -e "s@^cluster_name:.*@cluster_name: \"$CLUSTER\"@" \
@@ -107,7 +106,7 @@ popd
 ```bash
 pushd kubespray/contrib/azurerm/
 tmp=""
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
  if [ -z $tmp ]
    then
          sed -i "s/{{ playbook_dir }}/{{ playbook_dir }}\/$CLUSTER/g"  roles/generate-inventory_2/tasks/main.yml
@@ -147,7 +146,7 @@ cd ..
 export CK8S_CONFIG_PATH=~/.ck8s/azure
 export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
 
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     ./bin/ck8s-kubespray init $CLUSTER default $CK8S_PGP_FP
 done
 ```
@@ -176,7 +175,7 @@ done
 ### Run kubespray to deploy the Kubernetes clusters
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     ./bin/ck8s-kubespray apply $CLUSTER --flush-cache
 done
 ```
@@ -204,7 +203,7 @@ grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' kubespray/contr
 Locate the encrypted kubeconfigs `kube_config_*.yaml` and edit them using sops. Copy the IP shown above into `kube_config_*.yaml`. Do not overwrite the port.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml
 done
 ```
@@ -212,7 +211,7 @@ done
 ### Test access to the clusters as follows:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
         'kubectl --kubeconfig {} get nodes'
 done
@@ -224,7 +223,7 @@ To deploy Rook, please go to the `compliantkubernetes-kubespray` repo root direc
 
 ```bash
 pushd rook
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops --decrypt ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $CLUSTER.yaml
     export KUBECONFIG=$CLUSTER.yaml
     ./deploy-rook.sh
@@ -246,11 +245,11 @@ Note: pods in pending state usually indicate resource shortage. In such cases yo
 To test Rook, proceed as follows:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} apply -f https://raw.githubusercontent.com/rook/rook/release-1.5/cluster/examples/kubernetes/ceph/csi/rbd/pvc.yaml';
 done
 
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} get pvc';
 done
 ```
@@ -258,7 +257,7 @@ done
 You should see PVCs in Bound state. If you want to clean the previously created PVCs:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} delete pvc rbd-pvc';
 done
 ```
@@ -359,7 +358,7 @@ ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG
 Then the workload clusters:
 
 ```bash
-for CLUSTER in ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in "${WORKLOAD_CLUSTERS[@]}"; do
     ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
     ./bin/ck8s apply wc  # Respond "n" if you get a WARN
 done
@@ -373,7 +372,7 @@ done
 You can check if the system settled as follows:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
         'kubectl --kubeconfig {} get --all-namespaces pods'
 done
@@ -382,7 +381,7 @@ done
 Check the output of the command above. All Pods needs to be Running or Completed.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
         'kubectl --kubeconfig {} get --all-namespaces issuers,clusterissuers,certificates'
 done
@@ -404,7 +403,7 @@ ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG
 Then the workload clusters:
 
 ```
-for CLUSTER in ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in "${WORKLOAD_CLUSTERS[@]}"; do
     ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
     ./bin/ck8s test wc  # Respond "n" if you get a WARN
 done
@@ -420,7 +419,7 @@ To teardown the cluster, please go to the `compliantkubernetes-kubespray` repo r
 
 ```bash
 pushd kubespray/contrib/azurerm
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     ansible-playbook generate-templates.yml
     az group deployment create -g "$CLUSTER" --template-file ./$CLUSTER/.generated/clear-rg.json --mode Complete
 done
