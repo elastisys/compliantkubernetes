@@ -20,7 +20,11 @@
 
 ![Network Security Dashboard](img/network-security.png)
 
-The Compliant Kubernetes Network Security Dashboard allows to audit violations of NetworkPolicies (i.e., "firewall rules"). In the best case, denied traffic indicates a misconfiguration. In worst case, denied traffic indicates an ongoing security attack. Therefore, this dashboard should be regularly reviewed, perhaps even daily.
+The Compliant Kubernetes Network Security Dashboard allows to audit violations of NetworkPolicies (i.e., "firewall rules"). In the best case, denied traffic indicates a misconfiguration. In worst case, denied traffic indicates an ongoing security attack.
+
+Significant or unexpected increases of allowed traffic should also be closely monitored. In best case, these may indicate inefficient application code which may cause capacity issues later. In worst case, these may indicate an attempt to exfiltrate large amounts of data or to use the cluster as a reflector for an [amplification attack](https://en.wikipedia.org/wiki/Denial-of-service_attack#Amplification).
+
+Therefore, this dashboard should be regularly reviewed, perhaps even daily.
 
 ## Handling Non-Compliance
 
