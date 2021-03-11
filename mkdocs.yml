@@ -62,6 +62,7 @@ nav:
       - 'On GCP': 'operator-manual/gcp.md'
       - 'On OVH Managed Kubernetes': 'operator-manual/ovh-managed-kubernetes.md'
       - 'Remove Compliant Kubernetes Apps': 'operator-manual/clean-up.md'
+    - 'QA': 'operator-manual/qa.md'
     - 'Configuring a Cluster':
       - 'Overview' : 'operator-manual/overview.md'
       - 'Ingress': 'operator-manual/ingress.md'
