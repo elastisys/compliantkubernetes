@@ -24,7 +24,8 @@ git checkout v1-19-eks-1
 Follow the instructions in [Getting Started with kOps on AWS](https://kops.sigs.k8s.io/getting_started/aws/#getting-started-with-kops-on-aws) up until you reach [Creating your first cluster](https://kops.sigs.k8s.io/getting_started/aws/#creating-your-first-cluster).
 Unless you have very specific requirements you shouldn't need to take any action when it comes to the [DNS configuration](https://kops.sigs.k8s.io/getting_started/aws/#configure-dns).
 
-If you followed the instructions you should have
+If you followed the instructions you should have:
+
 - An IAM user for kOps with the correct permissions.
 - Set AWS credentials and any other AWS environment variables you require in your shell.
 - An S3 bucket for storing the kOps cluster state.
