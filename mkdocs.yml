@@ -61,6 +61,7 @@ nav:
       - 'On Exoscale': 'operator-manual/exoscale.md'
       - 'On GCP': 'operator-manual/gcp.md'
       - 'On OVH Managed Kubernetes': 'operator-manual/ovh-managed-kubernetes.md'
+      - 'On EKS-D': 'operator-manual/eksd.md'
       - 'Remove Compliant Kubernetes Apps': 'operator-manual/clean-up.md'
     - 'QA': 'operator-manual/qa.md'
     - 'Configuring a Cluster':
