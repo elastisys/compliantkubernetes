@@ -100,6 +100,10 @@ digraph compliance_basics {
                 fontcolor="#4651b4"
                 fontsize=12
             ]
+            capacity[
+                label="Capacity\nmanagement"
+                fontsize=11
+            ]
             supplier[
                 label="Supplier\nmanagement"
                 fontsize=12
@@ -168,6 +172,12 @@ digraph compliance_basics {
             URL="https://cert-manager.io/"
             fontsize=14
         ] }
+        capacity -> { kubernetes[
+            image="logos/project-icons/kubernetes.svg"
+            label="Kubernetes"
+            URL="https://kubernetes.io/"
+            fontsize=14
+        ]}
     }
 
     subgraph cluster_audit {
@@ -206,6 +216,7 @@ digraph compliance_basics {
         falco->auditNA4
         calico->auditNA5
         certmanager->auditNA6
+        kubernetes->auditNA7
     }
 
     node[target="_top"]  // Open links in same tab
@@ -246,6 +257,12 @@ digraph compliance_basics {
             URL="/operator-manual/exoscale/"
             fontcolor="#4651b4"
         ]
+        gcp[
+            label="GCP"
+            image="logos/cloud-providers/gcp.svg"
+            URL="/operator-manual/gcp/"
+            fontcolor="#4651b4"
+        ]
         ovh[
             label="OVHcloud"
             image="logos/cloud-providers/ovh.svg"
@@ -266,7 +283,7 @@ digraph compliance_basics {
             edge[style=invis]
             rank=same
             rankdir=LR
-            aws -> azure -> citycloud -> exoscale -> openstack -> ovh -> safespring -> byovm -> byom
+            aws -> azure -> citycloud -> exoscale -> gcp -> openstack -> ovh -> safespring -> byovm -> byom
         }
     }
 
