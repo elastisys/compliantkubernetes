@@ -209,7 +209,6 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
       type: "s3"
       s3:
         region: "set-me"  # Region for S3 buckets, e.g, eu-central-1
-        regionAddress: "set-me"  # Region address, e.g, s3.eu-central-1.amazonaws.com
         regionEndpoint: "set-me"  # e.g., https://s3.us-west-1.amazonaws.com
 
     fluentd:

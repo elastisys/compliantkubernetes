@@ -247,7 +247,6 @@ objectStorage:
   type: "s3"
   s3:
     region: "set-me"          # e.g. eu-north-1
-    regionAddress: "set-me"   # e.g. s3.eu-north-1.amazonaws.com
     regionEndpoint: "set-me"  # e.g. https://s3.eu-north-1.amazonaws.com
 
 issuers:
@@ -279,7 +278,6 @@ objectStorage:
   type: "s3"
   s3:
     region: "set-me"          # e.g. eu-north-1
-    regionAddress: "set-me"   # e.g. s3.eu-north-1.amazonaws.com
     regionEndpoint: "set-me"  # e.g. https://s3.eu-north-1.amazonaws.com
 
 

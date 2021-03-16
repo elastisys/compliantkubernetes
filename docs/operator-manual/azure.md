@@ -315,7 +315,6 @@ objectStorage:
   type: "s3"
   s3:
     region: "set-me"  # Region for S3 buckets, e.g, west-1
-    regionAddress: "set-me"  # Region address, e.g, s3.us-west-1.amazonaws.com
     regionEndpoint: "set-me"  # e.g., https://s3.us-west-1.amazonaws.com
 
 storageClasses:

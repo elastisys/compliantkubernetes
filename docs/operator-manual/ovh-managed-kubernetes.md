@@ -125,7 +125,6 @@ yq write --inplace sc-config.yaml storageClasses.default "csi-cinder-high-speed"
 yq write --inplace sc-config.yaml storageClasses.local.enabled "false"
 
 yq write --inplace sc-config.yaml objectStorage.s3.region "${REGION}"
-yq write --inplace sc-config.yaml objectStorage.s3.regionAddress "s3.${REGION}.cloud.ovh.net"
 yq write --inplace sc-config.yaml objectStorage.s3.regionEndpoint "https://s3.${REGION}.cloud.ovh.net/"
 
 yq write --inplace sc-config.yaml fluentd.forwarder.useRegionEndpoint "false"
@@ -154,7 +153,6 @@ yq write --inplace wc-config.yaml storageClasses.default "csi-cinder-high-speed"
 yq write --inplace wc-config.yaml storageClasses.local.enabled "false"
 
 yq write --inplace wc-config.yaml objectStorage.s3.region "${REGION}"
-yq write --inplace wc-config.yaml objectStorage.s3.regionAddress "s3.${REGION}.cloud.ovh.net"
 yq write --inplace wc-config.yaml objectStorage.s3.regionEndpoint "https://s3.${REGION}.cloud.ovh.net/"
 
 yq write --inplace wc-config.yaml ingressNginx.controller.useHostPort "false"
