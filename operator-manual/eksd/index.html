@@ -1,0 +1,1726 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Compliant Kubernetes is a Kubernetes distribution that reduces the burden for complying with HIPAA, Swedish Healthcare (Patientdatalagen), GDPR and ISO 27001.">
+      
+      
+      
+        <meta name="author" content="Elastisys AB">
+      
+      
+        <link rel="canonical" href="https://compliantkubernetes.io/operator-manual/eksd/">
+      
+      <link rel="icon" href="../../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.6">
+    
+    
+      
+        <title>On EKS-D - Compliant Kubernetes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2c0c5eaf.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-68368435-4","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#compliant-kubernetes-on-eks-d-based-clusters" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Compliant Kubernetes" class="md-header__button md-logo" aria-label="Compliant Kubernetes" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Compliant Kubernetes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              On EKS-D
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/elastisys/compliantkubernetes/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Compliant Kubernetes" class="md-nav__button md-logo" aria-label="Compliant Kubernetes" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Compliant Kubernetes
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/elastisys/compliantkubernetes/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance/" class="md-nav__link">
+        Compliance Basics
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/" class="md-nav__link">
+        Core Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../benefits/" class="md-nav__link">
+        Exploring Benefits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        User Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="User Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/kubernetes-api/" class="md-nav__link">
+        Kubernetes API
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/elasticsearch/" class="md-nav__link">
+        Elasticsearch/Kibana
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/prometheus/" class="md-nav__link">
+        Prometheus/Grafana
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/dashboard/" class="md-nav__link">
+        Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/backup/" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        CISO Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="CISO Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          CISO Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/backup/" class="md-nav__link">
+        Backup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/cryptography/" class="md-nav__link">
+        Cryptography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/intrusion-detection/" class="md-nav__link">
+        Intrusion Detection
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/policy-as-code/" class="md-nav__link">
+        Policy-as-Code
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/network-security/" class="md-nav__link">
+        Network Security
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      <label class="md-nav__link" for="__nav_8">
+        Operator Manual
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Operator Manual" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Operator Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" checked>
+      
+      <label class="md-nav__link" for="__nav_8_3">
+        Creating/Destroying/Upgrading a Cluster
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Creating/Destroying/Upgrading a Cluster" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_3">
+          <span class="md-nav__icon md-icon"></span>
+          Creating/Destroying/Upgrading a Cluster
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/" class="md-nav__link">
+        On AWS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure/" class="md-nav__link">
+        On Azure
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exoscale/" class="md-nav__link">
+        On Exoscale
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gcp/" class="md-nav__link">
+        On GCP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ovh-managed-kubernetes/" class="md-nav__link">
+        On OVH Managed Kubernetes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          On EKS-D
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        On EKS-D
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-and-kubernetes" class="md-nav__link">
+    Infrastructure and Kubernetes
+  </a>
+  
+    <nav class="md-nav" aria-label="Infrastructure and Kubernetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-eks-d" class="md-nav__link">
+    Get EKS-D
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-your-aws-environment" class="md-nav__link">
+    Configure your AWS environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-initial-kops-cluster-configurations" class="md-nav__link">
+    Create initial kOps cluster configurations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify-kops-cluster-configurations" class="md-nav__link">
+    Modify kOps cluster configurations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-clusters" class="md-nav__link">
+    Create clusters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compliant-kubernetes-apps" class="md-nav__link">
+    Compliant Kubernetes Apps
+  </a>
+  
+    <nav class="md-nav" aria-label="Compliant Kubernetes Apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-compliant-kubernetes-apps" class="md-nav__link">
+    Get Compliant Kubernetes Apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-requirements" class="md-nav__link">
+    Install requirements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialize-configuration" class="md-nav__link">
+    Initialize configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-configuration-files" class="md-nav__link">
+    Edit configuration files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#psp-and-rbac" class="md-nav__link">
+    PSP and RBAC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-placeholder-dns-records" class="md-nav__link">
+    Create placeholder DNS records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-s3-buckets" class="md-nav__link">
+    Create S3 buckets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prepare-kubeconfigs" class="md-nav__link">
+    Prepare kubeconfigs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-apps" class="md-nav__link">
+    Install apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-dns-records" class="md-nav__link">
+    Update DNS records
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teardown" class="md-nav__link">
+    Teardown
+  </a>
+  
+    <nav class="md-nav" aria-label="Teardown">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compliant-kubernetes-apps_1" class="md-nav__link">
+    Compliant Kubernetes Apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure-and-kubernetes_1" class="md-nav__link">
+    Infrastructure and Kubernetes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clean-up/" class="md-nav__link">
+        Remove Compliant Kubernetes Apps
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qa/" class="md-nav__link">
+        QA
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_5" type="checkbox" id="__nav_8_5" >
+      
+      <label class="md-nav__link" for="__nav_8_5">
+        Configuring a Cluster
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Configuring a Cluster" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_5">
+          <span class="md-nav__icon md-icon"></span>
+          Configuring a Cluster
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ingress/" class="md-nav__link">
+        Ingress
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../disaster-recovery/" class="md-nav__link">
+        Disaster Recovery
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../break-glass/" class="md-nav__link">
+        Breaking the Glass
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Developer Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Developer Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Developer Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/" class="md-nav__link">
+        Architectural Decision Log
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        Roadmap
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://compliantkubernetes.com/" class="md-nav__link">
+        Support ⧉
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/blog/" class="md-nav__link">
+        Blog ⧉
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-and-kubernetes" class="md-nav__link">
+    Infrastructure and Kubernetes
+  </a>
+  
+    <nav class="md-nav" aria-label="Infrastructure and Kubernetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-eks-d" class="md-nav__link">
+    Get EKS-D
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-your-aws-environment" class="md-nav__link">
+    Configure your AWS environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-initial-kops-cluster-configurations" class="md-nav__link">
+    Create initial kOps cluster configurations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify-kops-cluster-configurations" class="md-nav__link">
+    Modify kOps cluster configurations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-clusters" class="md-nav__link">
+    Create clusters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compliant-kubernetes-apps" class="md-nav__link">
+    Compliant Kubernetes Apps
+  </a>
+  
+    <nav class="md-nav" aria-label="Compliant Kubernetes Apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-compliant-kubernetes-apps" class="md-nav__link">
+    Get Compliant Kubernetes Apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-requirements" class="md-nav__link">
+    Install requirements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialize-configuration" class="md-nav__link">
+    Initialize configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-configuration-files" class="md-nav__link">
+    Edit configuration files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#psp-and-rbac" class="md-nav__link">
+    PSP and RBAC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-placeholder-dns-records" class="md-nav__link">
+    Create placeholder DNS records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-s3-buckets" class="md-nav__link">
+    Create S3 buckets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prepare-kubeconfigs" class="md-nav__link">
+    Prepare kubeconfigs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-apps" class="md-nav__link">
+    Install apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-dns-records" class="md-nav__link">
+    Update DNS records
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teardown" class="md-nav__link">
+    Teardown
+  </a>
+  
+    <nav class="md-nav" aria-label="Teardown">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compliant-kubernetes-apps_1" class="md-nav__link">
+    Compliant Kubernetes Apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure-and-kubernetes_1" class="md-nav__link">
+    Infrastructure and Kubernetes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/elastisys/compliantkubernetes/edit/main/docs/operator-manual/eksd.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="compliant-kubernetes-on-eks-d-based-clusters">Compliant Kubernetes on EKS-D based clusters</h1>
+<p>This document contains instructions on how to install <a href="https://github.com/elastisys/compliantkubernetes-apps">Compliant Kubernetes</a> on <a href="https://aws.amazon.com/?nc2=h_lg">AWS</a> using <a href="https://github.com/aws/eks-distro">EKS-D</a>.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>An AWS account with billing enabled.</li>
+<li>A hosted zone in Route53.</li>
+<li><code>yq v3.4.1</code> installed on you machine.</li>
+<li><code>gpg2</code> installed on your machine with at least one key available.</li>
+<li><code>kubectl</code> installed on your machine.</li>
+</ul>
+<h2 id="infrastructure-and-kubernetes">Infrastructure and Kubernetes</h2>
+<h3 id="get-eks-d">Get EKS-D</h3>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/aws/eks-distro.git
+cd eks-distro/development/kops
+git checkout v1-19-eks-1
+</code></pre></div>
+<h3 id="configure-your-aws-environment">Configure your AWS environment</h3>
+<p>Follow the instructions in <a href="https://kops.sigs.k8s.io/getting_started/aws/#getting-started-with-kops-on-aws">Getting Started with kOps on AWS</a> up until you reach <a href="https://kops.sigs.k8s.io/getting_started/aws/#creating-your-first-cluster">Creating your first cluster</a>.
+Unless you have very specific requirements you shouldn't need to take any action when it comes to the <a href="https://kops.sigs.k8s.io/getting_started/aws/#configure-dns">DNS configuration</a>.</p>
+<p>If you followed the instructions you should have:</p>
+<ul>
+<li>An IAM user for kOps with the correct permissions.</li>
+<li>Set AWS credentials and any other AWS environment variables you require in your shell.</li>
+<li>An S3 bucket for storing the kOps cluster state.</li>
+</ul>
+<h3 id="create-initial-kops-cluster-configurations">Create initial kOps cluster configurations</h3>
+<div class="highlight"><pre><span></span><code>export AWS_REGION=&lt;region where you want the infrastructure to be created&gt;
+export KOPS_STATE_STORE=s3://&lt;name of the bucket you created in previous step&gt;
+
+SERVICE_CLUSTER=&quot;&lt;xyz, e.g. test-sc&gt;.&lt;your hosted zone in Route53, e.g. example.com&gt;&quot;
+WORKLOAD_CLUSTER=&quot;&lt;xyz, e.g. test-wc&gt;.&lt;your hosted zone in Route53, e.g. example.com&gt;&quot;
+
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
+    export KOPS_CLUSTER_NAME=${CLUSTER}
+    ./create_values_yaml.sh
+    ./create_configuration.sh
+done
+</code></pre></div>
+<h3 id="modify-kops-cluster-configurations">Modify kOps cluster configurations</h3>
+<div class="highlight"><pre><span></span><code>for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
+echo &#39;
+---
+- command: update
+  path: spec.etcdClusters[0].manager
+  value:
+    env:
+    - name: ETCD_LISTEN_METRICS_URLS
+      value: http://0.0.0.0:8081
+    - name: ETCD_METRICS
+      value: basic
+
+- command: update
+  path: spec.networking
+  value:
+    calico:
+      encapsulationMode: ipip
+
+- command: update
+  path: spec.metricsServer.enabled
+  value:
+    false
+
+- command: update
+  path: spec.kubeAPIServer
+  value:
+    image: public.ecr.aws/eks-distro/kubernetes/kube-apiserver:v1.19.6-eks-1-19-1
+    auditLogMaxAge: 7
+    auditLogMaxBackups: 1
+    auditLogMaxSize: 100
+    auditLogPath: /var/log/kubernetes/audit/kube-apiserver-audit.log
+    auditPolicyFile: /srv/kubernetes/audit/policy-config.yaml
+    enableAdmissionPlugins:
+    - &quot;PodSecurityPolicy&quot;
+    - &quot;NamespaceLifecycle&quot;
+    - &quot;LimitRanger&quot;
+    - &quot;ServiceAccount&quot;
+    - &quot;DefaultStorageClass&quot;
+    - &quot;DefaultTolerationSeconds&quot;
+    - &quot;MutatingAdmissionWebhook&quot;
+    - &quot;ValidatingAdmissionWebhook&quot;
+    - &quot;ResourceQuota&quot;
+    - &quot;NodeRestriction&quot;
+
+- command: update
+  path: spec.fileAssets
+  value:
+  - name: audit-policy-config
+    path: /srv/kubernetes/audit/policy-config.yaml
+    roles:
+    - Master
+    content: |
+      apiVersion: audit.k8s.io/v1
+      kind: Policy
+      rules:
+      - level: RequestResponse
+        resources:
+        - group: &quot;&quot;
+          resources: [&quot;pods&quot;]
+      - level: Metadata
+        resources:
+        - group: &quot;&quot;
+          resources: [&quot;pods/log&quot;, &quot;pods/status&quot;]
+      - level: None
+        resources:
+        - group: &quot;&quot;
+          resources: [&quot;configmaps&quot;]
+          resourceNames: [&quot;controller-leader&quot;]
+      - level: None
+        users: [&quot;system:kube-proxy&quot;]
+        verbs: [&quot;watch&quot;]
+        resources:
+        - group: &quot;&quot; # core API group
+          resources: [&quot;endpoints&quot;, &quot;services&quot;]
+      - level: None
+        userGroups: [&quot;system:authenticated&quot;]
+        nonResourceURLs:
+        - &quot;/api*&quot; # Wildcard matching.
+        - &quot;/version&quot;
+      - level: Request
+        resources:
+        - group: &quot;&quot; # core API group
+          resources: [&quot;configmaps&quot;]
+        namespaces: [&quot;kube-system&quot;]
+      - level: Metadata
+        resources:
+        - group: &quot;&quot; # core API group
+          resources: [&quot;secrets&quot;, &quot;configmaps&quot;]
+      - level: Request
+        resources:
+        - group: &quot;&quot; # core API group
+        - group: &quot;extensions&quot; # Version of group should NOT be included.
+      - level: Metadata
+        omitStages:
+          - &quot;RequestReceived&quot;
+&#39; | yq w -i -s - ${CLUSTER}/${CLUSTER}.yaml
+done
+
+# Configure OIDC flags for kube-apiserver.
+for CLUSTER in ${WORKLOAD_CLUSTERS}; do
+    yq w -i ${CLUSTER}/${CLUSTER}.yaml &#39;spec.kubeAPIServer.oidcIssuerURL&#39; https://dex.${SERVICE_CLUSTER}
+    yq w -i ${CLUSTER}/${CLUSTER}.yaml &#39;spec.kubeAPIServer.oidcUsernameClaim&#39; email
+    yq w -i ${CLUSTER}/${CLUSTER}.yaml &#39;spec.kubeAPIServer.oidcClientID&#39; kubelogin
+done
+
+# Use bigger machines for service cluster worker nodes.
+yq w -i -d2 ${SERVICE_CLUSTER}/${SERVICE_CLUSTER}.yaml &#39;spec.machineType&#39; t3.large
+
+# Update kOps cluster configurations in state bucket.
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
+    ./bin/kops-1-19 replace -f &quot;./${CLUSTER}/${CLUSTER}.yaml&quot;
+done
+</code></pre></div>
+<h3 id="create-clusters">Create clusters</h3>
+<div class="highlight"><pre><span></span><code>for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
+    export KOPS_CLUSTER_NAME=${CLUSTER}
+    ./create_cluster.sh
+done
+</code></pre></div>
+<p>The creation of the clusters might take anywhere from 5 minutes to 20 minutes.
+You should run the <code>./cluster_wait.sh</code> script against all of your clusters as it creates a configmap needed by the <code>aws-iam-authenticator</code> pod, e.g.</p>
+<div class="highlight"><pre><span></span><code>for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
+    export KOPS_CLUSTER_NAME=${CLUSTER}
+    kubectl config use-context ${CLUSTER}
+    timeout 600 ./cluster_wait.sh
+done
+</code></pre></div>
+<h2 id="compliant-kubernetes-apps">Compliant Kubernetes Apps</h2>
+<h3 id="get-compliant-kubernetes-apps">Get Compliant Kubernetes Apps</h3>
+<div class="highlight"><pre><span></span><code>git clone git@github.com:elastisys/compliantkubernetes-apps
+cd compliantkubernetes-apps
+git checkout v0.11.0
+</code></pre></div>
+<h3 id="install-requirements">Install requirements</h3>
+<div class="highlight"><pre><span></span><code>ansible-playbook -e &#39;ansible_python_interpreter=/usr/bin/python3&#39; --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
+</code></pre></div>
+<h3 id="initialize-configuration">Initialize configuration</h3>
+<div class="highlight"><pre><span></span><code>export CK8S_ENVIRONMENT_NAME=aws-eks-d
+#export CK8S_FLAVOR=[dev|prod] # defaults to dev
+export CK8S_CONFIG_PATH=~/.ck8s/aws-eks-d
+export CK8S_CLOUD_PROVIDER=aws
+export CK8S_PGP_FP=&lt;your GPG key ID&gt;  # retrieve with gpg --list-secret-keys
+./bin/ck8s init
+</code></pre></div>
+<p>Three files, <code>sc-config.yaml</code> and <code>wc-config.yaml</code>, and <code>secrets.yaml</code>, were generated in the <code>${CK8S_CONFIG_PATH}</code> directory.</p>
+<div class="highlight"><pre><span></span><code>ls -l ${CK8S_CONFIG_PATH}
+</code></pre></div>
+<h3 id="edit-configuration-files">Edit configuration files</h3>
+<p>Edit the configuration files <code>sc-config.yaml</code>, <code>wc-config.yaml</code> and <code>secrets.yaml</code> and set the appropriate values for some of the configuration fields. Note that, the latter is encrypted.</p>
+<div class="highlight"><pre><span></span><code>vim ${CK8S_CONFIG_PATH}/sc-config.yaml
+vim ${CK8S_CONFIG_PATH}/wc-config.yaml
+sops ${CK8S_CONFIG_PATH}/secrets.yaml
+</code></pre></div>
+<p>You should perform the following changes:</p>
+<div class="highlight"><pre><span></span><code># sc-config.yaml
+global:
+  baseDomain: &quot;set-me&quot;     # Set to ${SERVICE_CLUSTER}
+  opsDomain: &quot;set-me&quot;      # Set to ops.${SERVICE_CLUSTER}
+  issuer: letsencrypt-prod
+  verifyTls: true
+  clusterDNS: 100.64.0.10
+
+storageClasses:
+  default: kops-ssd-1-17
+  nfs:
+    enabled: false
+  cinder:
+    enabled: false
+  local:
+    enabled: false
+  ebs:
+    enabled: false
+
+objectStorage:
+  type: &quot;s3&quot;
+  s3:
+    region: &quot;set-me&quot;          # e.g. eu-north-1
+    regionEndpoint: &quot;set-me&quot;  # e.g. https://s3.eu-north-1.amazonaws.com
+
+issuers:
+  letsencrypt:
+    email: &quot;set-me&quot;  # Set to a valid email address
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># wc-config.yaml
+global:
+  baseDomain: &quot;set-me&quot;     # Set to ${WORKLOAD_CLUSTER}
+  opsDomain: &quot;set-me&quot;      # Set to ops.${SERVICE_CLUSTER}
+  issuer: letsencrypt-prod
+  verifyTls: true
+  clusterDNS: 100.64.0.10
+
+storageClasses:
+  default: kops-ssd-1-17
+  nfs:
+    enabled: false
+  cinder:
+    enabled: false
+  local:
+    enabled: false
+  ebs:
+    enabled: false
+
+objectStorage:
+  type: &quot;s3&quot;
+  s3:
+    region: &quot;set-me&quot;          # e.g. eu-north-1
+    regionEndpoint: &quot;set-me&quot;  # e.g. https://s3.eu-north-1.amazonaws.com
+
+
+opa:
+  enabled: false # Does not work with k8s 1.19+
+
+issuers:
+  letsencrypt:
+    email: &quot;set-me&quot;  # Set to a valid email address
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># secrets.yaml
+objectStorage:
+  s3:
+    accessKey: &quot;set-me&quot; # Set to your AWS S3 accesskey
+    secretKey: &quot;set-me&quot; # Set to your AWS S3 secretKey
+</code></pre></div>
+<h3 id="psp-and-rbac">PSP and RBAC</h3>
+<p>Since we've enabled the PodSecurityPolicy admission plugin in the kube-apiserver we'll need to create some basic PSPs and RBAC rules that both you and Compliant Kubernetes Apps will need to run workloads.</p>
+<div class="highlight"><pre><span></span><code>for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
+kubectl config use-context ${CLUSTER}
+
+# Install &#39;restricted&#39; and &#39;privileged&#39; podSecurityPolicies.
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/policy/privileged-psp.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/policy/restricted-psp.yaml
+
+# Install RBAC so authenticated users are be able to use the &#39;restricted&#39; psp.
+echo &#39;
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    addonmanager.kubernetes.io/mode: Reconcile
+  name: psp:restricted
+rules:
+- apiGroups:
+  - policy
+  resourceNames:
+  - restricted
+  resources:
+  - podsecuritypolicies
+  verbs:
+  - use
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: psp:any:restricted
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: psp:restricted
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: system:authenticated
+&#39; | kubectl apply -f -
+done
+</code></pre></div>
+<h3 id="create-placeholder-dns-records">Create placeholder DNS records</h3>
+<p>To avoid negative caching and other surprises.
+Create the following records using your favorite tool or you can use the <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating-import.html">Import zone file</a> feature in Route53:</p>
+<div class="highlight"><pre><span></span><code>echo &quot;
+*.${SERVICE_CLUSTER}     60s A 203.0.113.123
+*.${WORKLOAD_CLUSTER}    60s A 203.0.113.123
+*.ops.${SERVICE_CLUSTER} 60s A 203.0.113.123
+&quot;
+</code></pre></div>
+<h3 id="create-s3-buckets">Create S3 buckets</h3>
+<p>Depending on you configuration you may want to create S3 buckets.
+Create the following buckets using your favorite tool or via the AWS console:</p>
+<div class="highlight"><pre><span></span><code># List bucket names.
+{ yq r ${CK8S_CONFIG_PATH}/wc-config.yaml &#39;objectStorage.buckets.*&#39;;\
+    yq r ${CK8S_CONFIG_PATH}/sc-config.yaml &#39;objectStorage.buckets.*&#39;; } | sort | uniq
+
+# Create buckets using the AWS CLI.
+# Assumes that the same bucket is used for velero in both service and workload cluster.
+for BUCKET in $(yq r ${CK8S_CONFIG_PATH}/sc-config.yaml &#39;objectStorage.buckets.*&#39;); do
+    aws s3api create-bucket\
+        --bucket ${BUCKET} \
+        --create-bucket-configuration LocationConstraint=${AWS_REGION}
+done
+</code></pre></div>
+<h3 id="prepare-kubeconfigs">Prepare kubeconfigs</h3>
+<p>Compliant Kubernetes Apps demands that the kube contexts for the workload and service cluster are found in separate files encrypted with sops.</p>
+<div class="highlight"><pre><span></span><code>kubectl config view --minify --flatten --context=${SERVICE_CLUSTER} &gt; ${CK8S_CONFIG_PATH}/.state/kube_config_sc.yaml
+sops -e -i --config ${CK8S_CONFIG_PATH}/.sops.yaml ${CK8S_CONFIG_PATH}/.state/kube_config_sc.yaml
+
+kubectl config view --minify --flatten --context=${WORKLOAD_CLUSTER} &gt; ${CK8S_CONFIG_PATH}/.state/kube_config_wc.yaml
+sops -e -i --config ${CK8S_CONFIG_PATH}/.sops.yaml ${CK8S_CONFIG_PATH}/.state/kube_config_wc.yaml
+</code></pre></div>
+<h3 id="install-apps">Install apps</h3>
+<p>You can install apps in parallel, although it is recommended to install the service cluster before the workload cluster.</p>
+<div class="highlight"><pre><span></span><code># Service cluster
+./bin/ck8s apply sc # Respond &quot;n&quot; if you get a WARN
+
+# Workload cluster
+./bin/ck8s apply wc # Respond &quot;n&quot; if you get a WARN
+</code></pre></div>
+<p>Run the following to get metrics from etcd-manager
+<div class="highlight"><pre><span></span><code># Service cluster
+./bin/ck8s ops helmfile sc -l app=kube-prometheus-stack apply --skip-deps --set kubeEtcd.service.selector.k8s-app=etcd-manager-main --set kubeEtcd.service.targetPort=8081
+
+# Workload cluster
+./bin/ck8s ops helmfile wc -l app=kube-prometheus-stack apply --skip-deps --set kubeEtcd.service.selector.k8s-app=etcd-manager-main --set kubeEtcd.service.targetPort=8081
+</code></pre></div></p>
+<h3 id="update-dns-records">Update DNS records</h3>
+<p>Now that we've installed all applications, the loadbalancer fronting the ingress controller should be ready.
+Run the following commands and update the A records in Route53.</p>
+<div class="highlight"><pre><span></span><code>sc_lb=$(./bin/ck8s ops kubectl sc -n ingress-nginx get svc ingress-nginx-controller -ojsonpath={.status.loadBalancer.ingress[0].hostname})
+wc_lb=$(./bin/ck8s ops kubectl wc -n ingress-nginx get svc ingress-nginx-controller -ojsonpath={.status.loadBalancer.ingress[0].hostname})
+sc_lb_ip=$(dig +short ${sc_lb} | head -1)
+wc_lb_ip=$(dig +short ${wc_lb} | head -1)
+
+echo &quot;
+*.${SERVICE_CLUSTER}     60s A ${sc_lb_ip}
+*.${WORKLOAD_CLUSTER}    60s A ${wc_lb_ip}
+*.ops.${SERVICE_CLUSTER} 60s A ${sc_lb_ip}
+&quot;
+</code></pre></div>
+<h2 id="teardown">Teardown</h2>
+<h3 id="compliant-kubernetes-apps_1">Compliant Kubernetes Apps</h3>
+<p>This step is optional.
+If this is not run you'll have to check and manually remove any leftover cloud resources like S3 buckets, ELBs, and EBS volumes.</p>
+<div class="highlight"><pre><span></span><code>git checkout 6f2e386
+timeout 180 ./scripts/clean-wc.sh
+timeout 180 ./scripts/clean-sc.sh
+
+# Delete buckets
+for BUCKET in $(yq r ${CK8S_CONFIG_PATH}/sc-config.yaml &#39;objectStorage.buckets.*&#39;); do
+    aws s3 rb --force s3://${BUCKET}
+done
+
+# Delete config repo
+rm -rf ${CK8S_CONFIG_PATH}
+</code></pre></div>
+<p>Remember to also remove the A records from Route53.</p>
+<h3 id="infrastructure-and-kubernetes_1">Infrastructure and Kubernetes</h3>
+<p>Enter <code>eks-distro/development/kops</code> and run:</p>
+<div class="highlight"><pre><span></span><code># Destroy clusters and local cluster configurations.
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
+    export KOPS_CLUSTER_NAME=${CLUSTER}
+    ./delete_cluster.sh
+    rm -rf ${CLUSTER}
+done
+</code></pre></div>
+<p>You'll have to manually remove the leftover kOps A records from Route53.</p>
+<div class="highlight"><pre><span></span><code># Get names of the A records to be removed.
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
+    echo kops-controller.internal.${CLUSTER}
+done
+</code></pre></div>
+<p>Finally, you'll also need to remove the <code>${KOPS_STATE_STORE}</code> from S3 and the IAM user that you used for this guide.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../ovh-managed-kubernetes/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              On OVH Managed Kubernetes
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../clean-up/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Remove Compliant Kubernetes Apps
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright © 2020 Elastisys AB
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a1c7c35e.min.js"></script>
+      
+    
+  </body>
+</html>

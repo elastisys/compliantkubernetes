@@ -1,0 +1,1227 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Compliant Kubernetes is a Kubernetes distribution that reduces the burden for complying with HIPAA, Swedish Healthcare (Patientdatalagen), GDPR and ISO 27001.">
+      
+      
+      
+        <meta name="author" content="Elastisys AB">
+      
+      
+        <link rel="canonical" href="https://compliantkubernetes.io/operator-manual/gcp/">
+      
+      <link rel="icon" href="../../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.6">
+    
+    
+      
+        <title>On GCP - Compliant Kubernetes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2c0c5eaf.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-68368435-4","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#compliant-kubernetes-deployment-on-gcp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Compliant Kubernetes" class="md-header__button md-logo" aria-label="Compliant Kubernetes" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Compliant Kubernetes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              On GCP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/elastisys/compliantkubernetes/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Compliant Kubernetes" class="md-nav__button md-logo" aria-label="Compliant Kubernetes" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Compliant Kubernetes
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/elastisys/compliantkubernetes/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance/" class="md-nav__link">
+        Compliance Basics
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/" class="md-nav__link">
+        Core Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../benefits/" class="md-nav__link">
+        Exploring Benefits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        User Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="User Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/kubernetes-api/" class="md-nav__link">
+        Kubernetes API
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/elasticsearch/" class="md-nav__link">
+        Elasticsearch/Kibana
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/prometheus/" class="md-nav__link">
+        Prometheus/Grafana
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/dashboard/" class="md-nav__link">
+        Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/backup/" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        CISO Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="CISO Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          CISO Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/backup/" class="md-nav__link">
+        Backup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/cryptography/" class="md-nav__link">
+        Cryptography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/intrusion-detection/" class="md-nav__link">
+        Intrusion Detection
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/policy-as-code/" class="md-nav__link">
+        Policy-as-Code
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/network-security/" class="md-nav__link">
+        Network Security
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      <label class="md-nav__link" for="__nav_8">
+        Operator Manual
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Operator Manual" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Operator Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" checked>
+      
+      <label class="md-nav__link" for="__nav_8_3">
+        Creating/Destroying/Upgrading a Cluster
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Creating/Destroying/Upgrading a Cluster" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_3">
+          <span class="md-nav__icon md-icon"></span>
+          Creating/Destroying/Upgrading a Cluster
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/" class="md-nav__link">
+        On AWS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure/" class="md-nav__link">
+        On Azure
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exoscale/" class="md-nav__link">
+        On Exoscale
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          On GCP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        On GCP
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#initial-setup" class="md-nav__link">
+    Initial setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cluster-setup" class="md-nav__link">
+    Cluster setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apps-setup" class="md-nav__link">
+    Apps setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Apps setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ovh-managed-kubernetes/" class="md-nav__link">
+        On OVH Managed Kubernetes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eksd/" class="md-nav__link">
+        On EKS-D
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clean-up/" class="md-nav__link">
+        Remove Compliant Kubernetes Apps
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qa/" class="md-nav__link">
+        QA
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_5" type="checkbox" id="__nav_8_5" >
+      
+      <label class="md-nav__link" for="__nav_8_5">
+        Configuring a Cluster
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Configuring a Cluster" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_5">
+          <span class="md-nav__icon md-icon"></span>
+          Configuring a Cluster
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ingress/" class="md-nav__link">
+        Ingress
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../disaster-recovery/" class="md-nav__link">
+        Disaster Recovery
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../break-glass/" class="md-nav__link">
+        Breaking the Glass
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Developer Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Developer Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Developer Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/" class="md-nav__link">
+        Architectural Decision Log
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        Roadmap
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://compliantkubernetes.com/" class="md-nav__link">
+        Support ⧉
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/blog/" class="md-nav__link">
+        Blog ⧉
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#initial-setup" class="md-nav__link">
+    Initial setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cluster-setup" class="md-nav__link">
+    Cluster setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apps-setup" class="md-nav__link">
+    Apps setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Apps setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/elastisys/compliantkubernetes/edit/main/docs/operator-manual/gcp.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="compliant-kubernetes-deployment-on-gcp">Compliant Kubernetes Deployment on GCP</h1>
+<p>This document contains instructions on how to set up a Compliant Kubernetes environment (consisting of a service cluster and one or more workload clusters) on GCP. The document is split into two parts:</p>
+<ul>
+<li>Cluster setup (Setting up infrastructure and the Kubernetes clusters)</li>
+<li>Apps setup (including information about limitations)</li>
+</ul>
+<p>Before starting, make sure you have <a href="../getting-started/">all necessary tools</a>. In addition to these general tools, you will also need:</p>
+<ul>
+<li>A GCP project</li>
+<li>JSON keyfile for your project</li>
+<li>SSH key that you will use to access GCP, which you have <a href="https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys">added to the metadata in your GCP project</a>.</li>
+</ul>
+<h2 id="initial-setup">Initial setup</h2>
+<p>Choose names for your service cluster and workload cluster(s):</p>
+<div class="highlight"><pre><span></span><code><span class="nv">SERVICE_CLUSTER</span><span class="o">=</span><span class="s2">&quot;testsc&quot;</span>
+<span class="nv">WORKLOAD_CLUSTERS</span><span class="o">=(</span> <span class="s2">&quot;testwc0&quot;</span> <span class="o">)</span>
+</code></pre></div>
+<h2 id="cluster-setup">Cluster setup</h2>
+<ol>
+<li>Clone the <a href="https://github.com/elastisys/compliantkubernetes-kubespray">compliantkubernetes-kubespray</a> repository:
+<div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/elastisys/compliantkubernetes-kubespray
+<span class="nb">cd</span> compliantkubernetes-kubespray
+</code></pre></div>
+For all commands in the cluster setup part of this guide, your working directory is assumed to be the root directory of this repository.</li>
+<li>In <code>config/gcp/group_vars/all/ck8s-gcp.yml</code>, set the value of <code>gcp_pd_csi_sa_cred_file</code> to the path of your JSON keyfile.</li>
+<li>Modify <code>kubespray/contrib/terraform/gcp/tfvars.json</code> in the following way:<ul>
+<li>Set <code>gcp_project_id</code> to the ID of your GCP project.</li>
+<li>Set <code>keyfile_location</code> to the location of your JSON keyfile.</li>
+<li>Set <code>ssh_pub_key</code> to the path of your public SSH key.</li>
+<li>In <code>ssh_whitelist</code>, <code>api_server_whitelist</code> and <code>nodeport_whitelist</code>, add IP address(es) that you want to be able to access the cluster.</li>
+</ul>
+</li>
+<li>
+<p>Set up the nodes by performing the following steps:</p>
+<ol>
+<li>Make copies of the terraform variables, one for each cluster:
+<div class="highlight"><pre><span></span><code><span class="nb">pushd</span> kubespray/contrib/terraform/gcp
+<span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+  cp tfvars.json <span class="nv">$CLUSTER</span>-tfvars.json
+<span class="k">done</span>
+<span class="nb">popd</span>
+</code></pre></div></li>
+<li>
+<p>Set up the nodes with terraform. If desired, first modify <code>"machines"</code> in <code>kubespray/contrib/terraform/gcp/$CLUSTER-tfvars.json</code> to add/remove nodes, change node sizes, etc. (For setting up compliantkubernetes-apps in the service cluster, one <code>n1-standard-8</code> worker and one <code>n1-standard-4</code> worker is enough.)
+<div class="highlight"><pre><span></span><code><span class="nb">pushd</span> kubespray/contrib/terraform/gcp
+<span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+    terraform init
+    terraform apply -var-file <span class="nv">$CLUSTER</span>-tfvars.json -auto-approve -state <span class="nv">$CLUSTER</span>.tfstate -var <span class="nv">prefix</span><span class="o">=</span><span class="nv">$CLUSTER</span>
+<span class="k">done</span>
+<span class="nb">popd</span>
+</code></pre></div>
+Save the outputs from <code>apply</code>. (Alternatively, get them later by running <code>terraform output -state $CLUSTER.tfstate</code> in the folder with the state file)</p>
+</li>
+<li>
+<p>Generate inventory file:
+<div class="highlight"><pre><span></span><code><span class="nb">pushd</span> kubespray/contrib/terraform/gcp
+<span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+    ./generate-inventory.sh <span class="nv">$CLUSTER</span>.tfstate &gt; <span class="nv">$CLUSTER</span>-inventory.ini
+<span class="k">done</span>
+<span class="nb">popd</span>
+</code></pre></div></p>
+</li>
+<li>Initialize the config:
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">CK8S_CONFIG_PATH</span><span class="o">=</span>~/.ck8s/&lt;environment-name&gt;
+./bin/ck8s-kubespray init <span class="nv">$CLUSTER</span> gcp &lt;path to SSH key&gt; <span class="o">[</span>&lt;SOPS fingerprint&gt;<span class="o">]</span>
+</code></pre></div></li>
+<li><code>path to SSH key</code> should point to your private SSH key. It will be copied into your config path and encrypted with SOPS, the original file left as it were.</li>
+<li><code>SOPS fingerprint</code> is the gpg fingerprint that will be used for SOPS encryption. You need to set this or the environment variable <code>CK8S_PGP_FP</code> the first time SOPS is used in your specified config path.</li>
+<li>Copy the inventory files:
+<div class="highlight"><pre><span></span><code><span class="nb">pushd</span> kubespray/contrib/terraform/gcp
+<span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+    mv <span class="nv">$CLUSTER</span>-inventory.ini <span class="nv">$CK8S_CONFIG_PATH</span>/<span class="nv">$CLUSTER</span>-config/inventory.ini
+<span class="k">done</span>
+<span class="nb">popd</span>
+</code></pre></div></li>
+<li>Run kubespray to set up the kubernetes cluster:
+    <div class="highlight"><pre><span></span><code>./bin/ck8s-kubespray apply <span class="nv">$CLUSTER</span>
+</code></pre></div></li>
+<li>In your config path, open <code>.state/kube_config_$CLUSTER.yaml</code> with SOPS and change <code>clusters.cluster.server</code> to the <code>control_plane_lb_ip_address</code> you got from <code>terraform apply</code>.</li>
+</ol>
+</li>
+</ol>
+<h2 id="apps-setup">Apps setup</h2>
+<p>The following instructions were made for release v0.9.0 of compliantkubernetes-apps. There may be discrepancies with newer versions.</p>
+<h3 id="limitations">Limitations</h3>
+<p>Note that there are a few limitations when using compliantkubernetes-apps on GCP at the moment, due to lack of support for certain features:</p>
+<ul>
+<li>Backup retention for InfluxDB is disabled due to it only being supported with S3 as object storage. If you want to circumvent this, consider using S3 as object storage or deploying <a href="https://docs.min.io/docs/minio-gateway-for-gcs.html">Minio</a> as a gateway.</li>
+<li>Fluentd does not work due to a missing output plugin. If you want to circumvent this, consider using S3 as object storage or deploying <a href="https://docs.min.io/docs/minio-gateway-for-gcs.html">Minio</a> as a gateway. Alternatively, Fluentd can be disabled in the compliantkubernetes-apps configuration, which has the consequence of no logs being saved from the service cluster.</li>
+</ul>
+<p>For information on how to modify the configuration to use S3 as object storage, refer to the operator manual for <a href="../aws/">AWS</a> or <a href="../exoscale/">Exoscale</a>, in the section for apps configuration.</p>
+<h3 id="setup">Setup</h3>
+<ol>
+<li>
+<p>Set up your DNS entries on a provider of your choice, using the <code>ingress_controller_lb_ip_address</code> from <code>terraform apply</code> as your loadbalancer IPs. You need the following entries:
+    <div class="highlight"><pre><span></span><code>*.ops.&lt;environment_name&gt;.<span class="nv">$DOMAIN</span>            A &lt;service_cluster_lb_ip&gt;
+grafana.&lt;environment_name&gt;.<span class="nv">$DOMAIN</span>          A &lt;service_cluster_lb_ip&gt;
+harbor.&lt;environment_name&gt;.<span class="nv">$DOMAIN</span>           A &lt;service_cluster_lb_ip&gt;
+kibana.&lt;environment_name&gt;.<span class="nv">$DOMAIN</span>           A &lt;service_cluster_lb_ip&gt;
+dex.&lt;environment_name&gt;.<span class="nv">$DOMAIN</span>              A &lt;service_cluster_lb_ip&gt;
+notary.harbor.&lt;environment_name&gt;.<span class="nv">$DOMAIN</span>    A &lt;service_cluster_lb_ip&gt;
+</code></pre></div></p>
+<p>Optionally, if alertmanager is enabled in the workload cluster, create the following DNS record:</p>
+<div class="highlight"><pre><span></span><code>*.&lt;environment_name&gt;.<span class="nv">$DOMAIN</span>    A &lt;workload_cluster_lb_ip&gt;
+</code></pre></div>
+</li>
+<li>
+<p>In <code>compliantkubernetes-apps</code>, run:
+    <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">CK8S_ENVIRONMENT_NAME</span><span class="o">=</span>&lt;environment-name&gt;
+<span class="nb">export</span> <span class="nv">CK8S_CLOUD_PROVIDER</span><span class="o">=</span>baremetal
+./bin/ck8s init
+</code></pre></div></p>
+</li>
+<li>
+<p>You will need to modify <code>secrets.yaml</code>, <code>sc-config.yaml</code> and <code>wc-config.yaml</code> in your config path.</p>
+<ul>
+<li><code>secrets.yaml</code><ul>
+<li>Uncomment <code>objectStorage.gcs.keyfileData</code> and paste the contents of your JSON keyfile as the value.</li>
+</ul>
+</li>
+<li><code>sc-config.yaml</code> AND <code>wc-config.yaml</code><ul>
+<li>Set <code>global.baseDomain</code> to <code>&lt;environment-name&gt;.&lt;dns-domain&gt;</code> and <code>global.opsDomain</code> to <code>ops.&lt;environment-name&gt;.&lt;dns-domain&gt;</code>.</li>
+<li>Set <code>storageClasses.default</code> to <code>csi-gce-pd</code>. Also set any <code>storageClasses.*.enabled</code> that are set to <code>null</code> to <code>false</code>.</li>
+<li>Set <code>objectStorage.type</code> to <code>"gcs"</code>.</li>
+<li>Uncomment <code>objectStorage.gcs.project</code> and set it to the name of your GCP project.</li>
+<li>Set <code>issuers.letsencrypt.prod.email</code> and <code>issuers.letsencrypt.staging.email</code> to email addresses of choice.</li>
+</ul>
+</li>
+<li><code>sc-config.yaml</code><ul>
+<li>Set <code>influxDB.backupRetention.enabled</code> to <code>false</code>.</li>
+<li>Set <code>elasticsearch.dataNode.storageClass</code> to <code>csi-gce-pd</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Create buckets for storage on GCP (found under "Storage"). The names must match the bucket names found in your <code>sc-config.yaml</code> and <code>wc-config.yaml</code> in the config path.</p>
+</li>
+<li>Set the default storageclass by running the following command:
+    <div class="highlight"><pre><span></span><code>bin/ck8s ops kubectl sc <span class="s2">&quot;patch storageclass csi-gce-pd -p &#39;{\&quot;metadata\&quot;: {\&quot;annotations\&quot;:{\&quot;storageclass.kubernetes.io/is-default-class\&quot;:\&quot;true\&quot;}}}&#39;&quot;</span>
+bin/ck8s ops kubectl wc <span class="s2">&quot;patch storageclass csi-gce-pd -p &#39;{\&quot;metadata\&quot;: {\&quot;annotations\&quot;:{\&quot;storageclass.kubernetes.io/is-default-class\&quot;:\&quot;true\&quot;}}}&#39;&quot;</span>
+</code></pre></div></li>
+<li>Apply the apps:
+    <div class="highlight"><pre><span></span><code>bin/ck8s apply sc
+bin/ck8s apply wc
+</code></pre></div></li>
+</ol>
+<p>Done. You should now have a functioning Compliant Kubernetes environment.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../exoscale/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              On Exoscale
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../ovh-managed-kubernetes/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              On OVH Managed Kubernetes
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright © 2020 Elastisys AB
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a1c7c35e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,296 @@
+digraph compliance_basics {
+    graph [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"]
+    node  [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"]
+    edge  [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"]
+
+    compound=true
+    graph[labeljust="l", fontsize=20, ranksep=1]
+
+    node[target="_top"]  // Open links in same tab
+    subgraph cluster_header {
+        style="invis"
+        title[
+            shape="none"
+            label="compliantkubernetes.io"
+            fontcolor="#4651b4"
+            URL="https://compliantkubernetes.io"
+            width=11
+        ]
+    }
+
+    node[target="_blank"]  // Open links in new tab
+    subgraph cluster_regulations {
+        label="Regulations"
+
+        node[width=1, shape=box, style=rounded]
+
+        HIPAA[URL="https://www.cdc.gov/phlp/publications/topic/hipaa.html"]
+        PDL[URL="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355"]
+        GDPR[URL="https://gdpr.eu/"]
+        CCPA[URL="https://oag.ca.gov/privacy/ccpa"]
+        FFFS[URL="https://www.fi.se/en/our-registers/search-fffs/2014/20145/"]
+    }
+
+    subgraph cluster_isms {
+        label="Information Security Standards"
+
+        node[width=1, shape=box, style=rounded]
+
+        iso27k[
+            label="ISO 27001"
+            URL="https://www.isms.online/iso-27001/"
+        ]
+        soc2[
+            label="SOC 2"
+            URL="https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html"
+        ]
+        pcidss[
+            label="PCI DSS"
+            URL="https://www.pcisecuritystandards.org/"
+        ]
+    }
+
+    node[target="_top"]  // Open links in same tab
+    subgraph cluster_policies {
+        label="Policies"
+
+        node[width=1, shape=circle, fixedsize=true]
+
+        { HIPAA, PDL, GDPR, CCPA, FFFS } -> Controls
+        { iso27k, soc2, pcidss } -> Controls
+
+        node[
+            width=1
+            shape=box
+            style=rounded
+        ]
+        Controls -> {
+            access[label="Access\ncontrol"]
+            logging[
+                label="Logging"
+            ]
+            backups[
+                label="Backup"
+                URL="/ciso-guide/backup/"
+                fontcolor="#4651b4"
+            ]
+            continuous[
+                label="Continuous\ncompliance"
+                URL="/ciso-guide/policy-as-code/"
+                fontcolor="#4651b4"
+                fontsize=12
+            ]
+            vulnerability[
+                label="Vulnerability\nmanagement"
+                fontsize=12
+            ]
+            intrusion[
+                label="Intrusion\ndetection"
+                URL="/ciso-guide/intrusion-detection/"
+                fontcolor="#4651b4"
+            ]
+            network[
+                label="Network\nsecurity"
+                URL="/ciso-guide/network-security/"
+                fontcolor="#4651b4"
+            ]
+            crypto[
+                label="Use of\ncryptography"
+                URL="/ciso-guide/cryptography/"
+                fontcolor="#4651b4"
+                fontsize=12
+            ]
+            capacity[
+                label="Capacity\nmanagement"
+                fontsize=11
+            ]
+            supplier[
+                label="Supplier\nmanagement"
+                fontsize=12
+            ]
+        }
+
+        // SPECIAL NODES FOR ALIGNMENT
+        controls2[style=invis]
+    }
+
+    node[target="_blank"]  // Open links in new tab
+    subgraph cluster_implementation {
+        label="Compliant Kubernetes"
+
+        node[
+            shape=none
+            label=""
+            width=1
+            height=1.4
+            labelloc=b
+            fixedsize=true
+            imagescale=true
+            imagepos=tc
+            fontsize=16
+        ]
+
+        access -> { dex[
+            image="logos/project-icons/dex.svg"
+            label="Dex"
+            URL="https://dexidp.io/"
+        ] }
+        backups -> { velero[
+            image="logos/project-icons/velero.svg"
+            label="Velero"
+            URL="https://velero.io"
+        ] }
+        logging -> { elasticsearch[
+            image="logos/project-icons/opendistro.svg"
+            label="Elasticsearch"
+            URL="https://opendistro.github.io/for-elasticsearch/"
+            fontsize=14
+        ] }
+        continuous -> { opa[
+            image="logos/project-icons/opa.svg"
+            label="OPA"
+            URL="https://open-policy-agent.github.io/gatekeeper/website/docs/"
+        ] }
+        vulnerability -> { trivy[
+            image="logos/project-icons/trivy.svg"
+            label="Trivy"
+            URL="https://github.com/aquasecurity/trivy"
+        ] }
+        intrusion -> { falco[
+            image="logos/project-icons/falco.svg"
+            label="Falco"
+            URL="https://falco.org/"
+        ] }
+        network -> { calico[
+            image="logos/project-icons/calico.svg"
+            label="Calico"
+            URL="https://www.projectcalico.org/"
+        ] }
+        crypto -> { certmanager[
+            image="logos/project-icons/cert-manager.svg"
+            label="Cert Manager"
+            URL="https://cert-manager.io/"
+            fontsize=14
+        ] }
+        capacity -> { kubernetes[
+            image="logos/project-icons/kubernetes.svg"
+            label="Kubernetes"
+            URL="https://kubernetes.io/"
+            fontsize=14
+        ]}
+    }
+
+    subgraph cluster_audit {
+        label="Compliant Kubernetes Dashboard"
+        node[
+            shape=none,
+            label="",
+            width=1,
+            height=1.4,
+            labelloc=b,
+            fixedsize=true,
+            imagescale=true,
+            imagepos=tc,
+            fontsize=16,
+        ]
+        prometheus[
+            image="logos/project-icons/prometheus.svg"
+            label="Prometheus"
+            fontsize=12
+            URL="https://prometheus.io/"
+        ]
+        grafana[
+            image="logos/project-icons/grafana.svg"
+            label="Grafana"
+            URL="https://github.com/grafana/grafana"
+        ]
+
+        edge[lhead=cluster_audit]
+        dex->prometheus
+        elasticsearch->grafana
+
+        // Alignment: We create a lot of invisible nodes "auditNA*" for alignment.
+        velero->auditNA1
+        opa->auditNA2
+        trivy->auditNA3
+        falco->auditNA4
+        calico->auditNA5
+        certmanager->auditNA6
+        kubernetes->auditNA7
+    }
+
+    node[target="_top"]  // Open links in same tab
+    subgraph cluster_provider {
+        label="Compliant Cloud Provider"
+
+        node[
+            shape=none
+            label=""
+            width=1
+            height=1.25
+            labelloc=b
+            fixedsize=true
+            imagescale=true
+            imagepos=tc
+            fontsize=16
+        ]
+
+        aws[
+            label="AWS"
+            image="logos/cloud-providers/aws.svg"
+            URL="/operator-manual/aws/"
+            fontcolor="#4651b4"
+        ]
+        azure[
+            label="Azure"
+            image="logos/cloud-providers/azure.svg"
+            URL="/operator-manual/azure/"
+            fontcolor="#4651b4"
+        ]
+        citycloud[
+            label="CityCloud"
+            image="logos/cloud-providers/citycloud.png"
+        ]
+        exoscale[
+            label="Exoscale"
+            image="logos/cloud-providers/exoscale.svg"
+            URL="/operator-manual/exoscale/"
+            fontcolor="#4651b4"
+        ]
+        gcp[
+            label="GCP"
+            image="logos/cloud-providers/gcp.svg"
+            URL="/operator-manual/gcp/"
+            fontcolor="#4651b4"
+        ]
+        ovh[
+            label="OVHcloud"
+            image="logos/cloud-providers/ovh.svg"
+        ]
+        safespring[
+            label="SafeSpring"
+            image="logos/cloud-providers/safespring.svg"
+        ]
+        openstack[
+            label="OpenStack"
+            image="logos/cloud-providers/openstack.svg"
+        ]
+        byovm[label="Bring\nYour Own\nVMs",shape=box]
+        byom[label="Bring\nYour Own\nMetal",shape=box]
+
+        {
+            // ORDERING
+            edge[style=invis]
+            rank=same
+            rankdir=LR
+            aws -> azure -> citycloud -> exoscale -> gcp -> openstack -> ovh -> safespring -> byovm -> byom
+        }
+    }
+
+    supplier -> byom
+
+    // ALIGNMENT
+    edge[weight=1000,style="invis"]
+    FFFS -> controls2 -> access -> dex -> prometheus -> aws
+    title -> HIPAA
+}

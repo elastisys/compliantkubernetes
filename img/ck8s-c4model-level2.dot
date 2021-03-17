@@ -1,0 +1,14 @@
+digraph system {
+  graph [fontname = "helvetica"];
+  node [fontname = "helvetica"];
+  edge [fontname = "helvetica"];
+
+  node [shape=box, width="2pt"];
+  edge [minlen="0pt", style="invis"];
+
+  subgraph cluster_ck8s {
+    label="Compliant Kubernetes"
+
+    "Workload cluster" -> "Service cluster"
+  }
+}

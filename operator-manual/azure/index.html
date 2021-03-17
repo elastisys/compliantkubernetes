@@ -1,0 +1,1681 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Compliant Kubernetes is a Kubernetes distribution that reduces the burden for complying with HIPAA, Swedish Healthcare (Patientdatalagen), GDPR and ISO 27001.">
+      
+      
+      
+        <meta name="author" content="Elastisys AB">
+      
+      
+        <link rel="canonical" href="https://compliantkubernetes.io/operator-manual/azure/">
+      
+      <link rel="icon" href="../../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.6">
+    
+    
+      
+        <title>On Azure - Compliant Kubernetes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2c0c5eaf.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-68368435-4","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#compliant-kubernetes-deployment-on-azure" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Compliant Kubernetes" class="md-header__button md-logo" aria-label="Compliant Kubernetes" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Compliant Kubernetes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              On Azure
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/elastisys/compliantkubernetes/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Compliant Kubernetes" class="md-nav__button md-logo" aria-label="Compliant Kubernetes" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Compliant Kubernetes
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/elastisys/compliantkubernetes/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance/" class="md-nav__link">
+        Compliance Basics
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/" class="md-nav__link">
+        Core Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../benefits/" class="md-nav__link">
+        Exploring Benefits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        User Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="User Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/kubernetes-api/" class="md-nav__link">
+        Kubernetes API
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/elasticsearch/" class="md-nav__link">
+        Elasticsearch/Kibana
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/prometheus/" class="md-nav__link">
+        Prometheus/Grafana
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/dashboard/" class="md-nav__link">
+        Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/backup/" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        CISO Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="CISO Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          CISO Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/backup/" class="md-nav__link">
+        Backup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/cryptography/" class="md-nav__link">
+        Cryptography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/intrusion-detection/" class="md-nav__link">
+        Intrusion Detection
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/policy-as-code/" class="md-nav__link">
+        Policy-as-Code
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/network-security/" class="md-nav__link">
+        Network Security
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      <label class="md-nav__link" for="__nav_8">
+        Operator Manual
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Operator Manual" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Operator Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" checked>
+      
+      <label class="md-nav__link" for="__nav_8_3">
+        Creating/Destroying/Upgrading a Cluster
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Creating/Destroying/Upgrading a Cluster" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_3">
+          <span class="md-nav__icon md-icon"></span>
+          Creating/Destroying/Upgrading a Cluster
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/" class="md-nav__link">
+        On AWS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          On Azure
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        On Azure
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-setup-using-azurerm" class="md-nav__link">
+    Infrastructure Setup using AzureRM
+  </a>
+  
+    <nav class="md-nav" aria-label="Infrastructure Setup using AzureRM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-azure-cli" class="md-nav__link">
+    Install azure-cli
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login-with-azure-cli" class="md-nav__link">
+    Login with azure-cli.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customize-your-infrastructure" class="md-nav__link">
+    Customize your infrastructure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-and-apply-the-templates" class="md-nav__link">
+    Generate and apply the templates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-an-inventory-for-kubespray" class="md-nav__link">
+    Generating an inventory for kubespray
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-vanilla-kubernetes-clusters-using-kubespray" class="md-nav__link">
+    Deploying vanilla Kubernetes clusters using Kubespray
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying vanilla Kubernetes clusters using Kubespray">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init-the-kubespray-config-in-your-config-path" class="md-nav__link">
+    Init the Kubespray config in your config path.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-the-generated-inventory-files-in-the-right-location" class="md-nav__link">
+    Copy the generated inventory files in the right location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-kubespray-to-deploy-the-kubernetes-clusters" class="md-nav__link">
+    Run kubespray to deploy the Kubernetes clusters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correct-the-kubernetes-api-ip-addresses" class="md-nav__link">
+    Correct the Kubernetes API IP addresses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-access-to-the-clusters-as-follows" class="md-nav__link">
+    Test access to the clusters as follows:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-rook" class="md-nav__link">
+    Deploy Rook
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-rook" class="md-nav__link">
+    Test Rook
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-compliant-kubernetes-apps" class="md-nav__link">
+    Deploying Compliant Kubernetes Apps
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Compliant Kubernetes Apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-compliantkubernetes-apps-and-install-pre-requisites" class="md-nav__link">
+    Clone compliantkubernetes-apps and Install Pre-requisites
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialize-the-apps-configuration" class="md-nav__link">
+    Initialize the apps configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-apps" class="md-nav__link">
+    Configure the apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-compliant-kubernetes-apps" class="md-nav__link">
+    Install Compliant Kubernetes apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settling" class="md-nav__link">
+    Settling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teardown" class="md-nav__link">
+    Teardown
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further Reading
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exoscale/" class="md-nav__link">
+        On Exoscale
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gcp/" class="md-nav__link">
+        On GCP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ovh-managed-kubernetes/" class="md-nav__link">
+        On OVH Managed Kubernetes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eksd/" class="md-nav__link">
+        On EKS-D
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clean-up/" class="md-nav__link">
+        Remove Compliant Kubernetes Apps
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qa/" class="md-nav__link">
+        QA
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_5" type="checkbox" id="__nav_8_5" >
+      
+      <label class="md-nav__link" for="__nav_8_5">
+        Configuring a Cluster
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Configuring a Cluster" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_5">
+          <span class="md-nav__icon md-icon"></span>
+          Configuring a Cluster
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ingress/" class="md-nav__link">
+        Ingress
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../disaster-recovery/" class="md-nav__link">
+        Disaster Recovery
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../break-glass/" class="md-nav__link">
+        Breaking the Glass
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Developer Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Developer Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Developer Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/" class="md-nav__link">
+        Architectural Decision Log
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        Roadmap
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://compliantkubernetes.com/" class="md-nav__link">
+        Support ⧉
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/blog/" class="md-nav__link">
+        Blog ⧉
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-setup-using-azurerm" class="md-nav__link">
+    Infrastructure Setup using AzureRM
+  </a>
+  
+    <nav class="md-nav" aria-label="Infrastructure Setup using AzureRM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-azure-cli" class="md-nav__link">
+    Install azure-cli
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login-with-azure-cli" class="md-nav__link">
+    Login with azure-cli.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customize-your-infrastructure" class="md-nav__link">
+    Customize your infrastructure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-and-apply-the-templates" class="md-nav__link">
+    Generate and apply the templates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-an-inventory-for-kubespray" class="md-nav__link">
+    Generating an inventory for kubespray
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-vanilla-kubernetes-clusters-using-kubespray" class="md-nav__link">
+    Deploying vanilla Kubernetes clusters using Kubespray
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying vanilla Kubernetes clusters using Kubespray">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init-the-kubespray-config-in-your-config-path" class="md-nav__link">
+    Init the Kubespray config in your config path.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-the-generated-inventory-files-in-the-right-location" class="md-nav__link">
+    Copy the generated inventory files in the right location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-kubespray-to-deploy-the-kubernetes-clusters" class="md-nav__link">
+    Run kubespray to deploy the Kubernetes clusters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correct-the-kubernetes-api-ip-addresses" class="md-nav__link">
+    Correct the Kubernetes API IP addresses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-access-to-the-clusters-as-follows" class="md-nav__link">
+    Test access to the clusters as follows:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-rook" class="md-nav__link">
+    Deploy Rook
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-rook" class="md-nav__link">
+    Test Rook
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-compliant-kubernetes-apps" class="md-nav__link">
+    Deploying Compliant Kubernetes Apps
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Compliant Kubernetes Apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-compliantkubernetes-apps-and-install-pre-requisites" class="md-nav__link">
+    Clone compliantkubernetes-apps and Install Pre-requisites
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialize-the-apps-configuration" class="md-nav__link">
+    Initialize the apps configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-apps" class="md-nav__link">
+    Configure the apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-compliant-kubernetes-apps" class="md-nav__link">
+    Install Compliant Kubernetes apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settling" class="md-nav__link">
+    Settling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teardown" class="md-nav__link">
+    Teardown
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further Reading
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/elastisys/compliantkubernetes/edit/main/docs/operator-manual/azure.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="compliant-kubernetes-deployment-on-azure">Compliant Kubernetes Deployment on Azure</h1>
+<p>This document contains instructions on how to setup a service cluster and a workload cluster in Azure.  The following are the main tasks addressed in this document:</p>
+<ol>
+<li>Infrastructure setup for two clusters: one service and one workload cluster</li>
+<li>Deploying Compliant Kubernetes on top of the two clusters.</li>
+<li>Creating DNS Records</li>
+<li>Deploying Rook Storage Orchestration Service</li>
+<li>Deploying Compliant Kubernetes apps</li>
+</ol>
+<p>Before starting, make sure you have <a href="../getting-started/">all necessary tools</a>.</p>
+<h2 id="setup">Setup</h2>
+<p>Choose names for your service cluster and workload clusters, as well as the DNS domain to expose the services inside the service cluster:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">SERVICE_CLUSTER</span><span class="o">=</span><span class="s2">&quot;sc-test&quot;</span>
+<span class="nv">WORKLOAD_CLUSTERS</span><span class="o">=(</span> <span class="s2">&quot;wc-test0&quot;</span> <span class="o">)</span>
+<span class="nv">BASE_DOMAIN</span><span class="o">=</span><span class="s2">&quot;example.com&quot;</span>
+</code></pre></div>
+<h2 id="infrastructure-setup-using-azurerm">Infrastructure Setup using AzureRM</h2>
+<p>We suggest to set up Kubernetes clusters using kubespray. If you haven't done so already, clone the Elastisys Compliant Kubernetes Kubespray repo as follows:</p>
+<div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/elastisys/compliantkubernetes-kubespray
+<span class="nb">cd</span> compliantkubernetes-kubespray
+</code></pre></div>
+<h3 id="install-azure-cli">Install azure-cli</h3>
+<p>If you haven't done so already, please install and configure <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest">azure-cli</a>.</p>
+<h3 id="login-with-azure-cli">Login with azure-cli.</h3>
+<div class="highlight"><pre><span></span><code>az login
+</code></pre></div>
+<h3 id="customize-your-infrastructure">Customize your infrastructure</h3>
+<p>Create a configuration for the service and the workload clusters:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">pushd</span> kubespray/contrib/azurerm/
+<span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    az group create -g <span class="nv">$CLUSTER</span> -l northeurope
+    mkdir -p <span class="nv">$CLUSTER</span>/inventory
+<span class="k">done</span>
+<span class="nb">popd</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please specify the value for the <code>ssh_public_keys</code> variable in <code>kubespray/contrib/azurerm/group_vars/all</code>. It must be your SSH public key to access your Azure virtual machines.  Besides, the value for the <code>cluster_name</code> variable must be globally unique due to some restrictions in Azure. Make sure that <code>$SERVICE_CLUSTER</code> and <code>$WORKLOAD_CLUSTERS</code> are unique.</p>
+</div>
+<p>Review and, if needed, adjust the files in <code>kubespray/contrib/azurerm/group_vars/all</code> accordingly.</p>
+<h3 id="generate-and-apply-the-templates">Generate and apply the templates</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">pushd</span> kubespray/contrib/azurerm/
+<span class="nv">tmp</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+   cat group_vars/all <span class="se">\</span>
+   <span class="p">|</span> sed <span class="se">\</span>
+       -e <span class="s2">&quot;s@^cluster_name:.*@cluster_name: \&quot;</span><span class="nv">$CLUSTER</span><span class="s2">\&quot;@&quot;</span> <span class="se">\</span>
+   &gt; group_vars/all1
+   cat group_vars/all1 &gt; group_vars/all
+   rm group_vars/all1
+   <span class="k">if</span> <span class="o">[</span> -z <span class="nv">$tmp</span> <span class="o">]</span>
+   <span class="k">then</span>
+           sed -i <span class="s2">&quot;s/{{ playbook_dir }}/{{ playbook_dir }}\/</span><span class="nv">$CLUSTER</span><span class="s2">/g&quot;</span>  roles/generate-templates/tasks/main.yml
+
+           ansible-playbook generate-templates.yml
+
+           az deployment group create --template-file ./<span class="nv">$CLUSTER</span>/.generated/network.json -g <span class="nv">$CLUSTER</span>
+           az deployment group create --template-file ./<span class="nv">$CLUSTER</span>/.generated/storage.json -g <span class="nv">$CLUSTER</span>
+           az deployment group create --template-file ./<span class="nv">$CLUSTER</span>/.generated/availability-sets.json -g <span class="nv">$CLUSTER</span>
+           az deployment group create --template-file ./<span class="nv">$CLUSTER</span>/.generated/bastion.json -g <span class="nv">$CLUSTER</span>
+           az deployment group create --template-file ./<span class="nv">$CLUSTER</span>/.generated/masters.json -g <span class="nv">$CLUSTER</span>
+           az deployment group create --template-file ./<span class="nv">$CLUSTER</span>/.generated/minions.json -g <span class="nv">$CLUSTER</span>
+   <span class="k">else</span>
+           sed -i <span class="s2">&quot;s/{{ playbook_dir }}\/</span><span class="nv">$tmp</span><span class="s2">/{{ playbook_dir }}\/</span><span class="nv">$CLUSTER</span><span class="s2">/g&quot;</span>  roles/generate-templates/tasks/main.yml
+
+           ansible-playbook generate-templates.yml
+
+           az deployment group create --template-file ./<span class="nv">$CLUSTER</span>/.generated/network.json -g <span class="nv">$CLUSTER</span>
+           az deployment group create --template-file ./<span class="nv">$CLUSTER</span>/.generated/storage.json -g <span class="nv">$CLUSTER</span>
+           az deployment group create --template-file ./<span class="nv">$CLUSTER</span>/.generated/availability-sets.json -g <span class="nv">$CLUSTER</span>
+           az deployment group create --template-file ./<span class="nv">$CLUSTER</span>/.generated/bastion.json -g <span class="nv">$CLUSTER</span>
+           az deployment group create --template-file ./<span class="nv">$CLUSTER</span>/.generated/masters.json -g <span class="nv">$CLUSTER</span>
+           az deployment group create --template-file ./<span class="nv">$CLUSTER</span>/.generated/minions.json -g <span class="nv">$CLUSTER</span>
+   <span class="k">fi</span>
+   <span class="nv">tmp</span><span class="o">=</span><span class="nv">$CLUSTER</span>
+ <span class="k">done</span>
+ sed -i <span class="s2">&quot;s/{{ playbook_dir }}\/</span><span class="nv">$tmp</span><span class="s2">/{{ playbook_dir }}/g&quot;</span>  roles/generate-templates/tasks/main.yml
+ sed -i <span class="s2">&quot;s/{{ playbook_dir }}\/</span><span class="nv">$tmp</span><span class="s2">/{{ playbook_dir }}/g&quot;</span>  roles/generate-inventory_2/tasks/main.yml
+ sed -i <span class="s2">&quot;s/{{ playbook_dir }}\/</span><span class="nv">$tmp</span><span class="s2">/{{ playbook_dir }}/g&quot;</span>  roles/generate-inventory/tasks/main.yml
+<span class="nb">popd</span>
+</code></pre></div>
+<h3 id="generating-an-inventory-for-kubespray">Generating an inventory for kubespray</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">pushd</span> kubespray/contrib/azurerm/
+<span class="nv">tmp</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+ <span class="k">if</span> <span class="o">[</span> -z <span class="nv">$tmp</span> <span class="o">]</span>
+   <span class="k">then</span>
+         sed -i <span class="s2">&quot;s/{{ playbook_dir }}/{{ playbook_dir }}\/</span><span class="nv">$CLUSTER</span><span class="s2">/g&quot;</span>  roles/generate-inventory_2/tasks/main.yml
+         sed -i <span class="s2">&quot;s/{{ playbook_dir }}/{{ playbook_dir }}\/</span><span class="nv">$CLUSTER</span><span class="s2">/g&quot;</span>  roles/generate-inventory/tasks/main.yml
+         ./generate-inventory.sh <span class="nv">$CLUSTER</span>
+
+   <span class="k">else</span>
+           sed -i <span class="s2">&quot;s/{{ playbook_dir }}\/</span><span class="nv">$tmp</span><span class="s2">/{{ playbook_dir }}\/</span><span class="nv">$CLUSTER</span><span class="s2">/g&quot;</span>  roles/generate-inventory_2/tasks/main.yml
+           sed -i <span class="s2">&quot;s/{{ playbook_dir }}\/</span><span class="nv">$tmp</span><span class="s2">/{{ playbook_dir }}\/</span><span class="nv">$CLUSTER</span><span class="s2">/g&quot;</span>  roles/generate-inventory/tasks/main.yml
+           ./generate-inventory.sh <span class="nv">$CLUSTER</span>
+    <span class="k">fi</span>
+    <span class="nv">tmp</span><span class="o">=</span><span class="nv">$CLUSTER</span>
+<span class="k">done</span>
+sed -i <span class="s2">&quot;s/{{ playbook_dir }}\/</span><span class="nv">$tmp</span><span class="s2">/{{ playbook_dir }}/g&quot;</span>  roles/generate-inventory_2/tasks/main.yml
+sed -i <span class="s2">&quot;s/{{ playbook_dir }}\/</span><span class="nv">$tmp</span><span class="s2">/{{ playbook_dir }}/g&quot;</span>  roles/generate-inventory/tasks/main.yml
+<span class="nb">popd</span>
+</code></pre></div>
+<p>The inventory files for for cluster will be created under <code>*/inventory/</code>. Besides, two <code>loadBalancer_vars.yaml</code> files will be created, one for each cluster.</p>
+<p>You may also want to check the Azure portal if the infrastructure was created correctly. The figure below shows for <code>wc-test0</code>.</p>
+<p><img alt="Kubespray Azure for wc-test0" src="../../img/kubespray-azure-wc-sample.png" /></p>
+<h2 id="deploying-vanilla-kubernetes-clusters-using-kubespray">Deploying vanilla Kubernetes clusters using Kubespray</h2>
+<p>With the infrastructure provisioned, we can now deploy Kubernetes using kubespray. First, change to the <code>compliantkubernetes-kubespray</code> root directory.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ..
+</code></pre></div>
+<h3 id="init-the-kubespray-config-in-your-config-path">Init the Kubespray config in your config path.</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">CK8S_CONFIG_PATH</span><span class="o">=</span>~/.ck8s/azure
+<span class="nb">export</span> <span class="nv">CK8S_PGP_FP</span><span class="o">=</span>&lt;your GPG key fingerprint&gt;  <span class="c1"># retrieve with gpg --list-secret-keys</span>
+
+<span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    ./bin/ck8s-kubespray init <span class="nv">$CLUSTER</span> default <span class="nv">$CK8S_PGP_FP</span>
+<span class="k">done</span>
+</code></pre></div>
+<h3 id="copy-the-generated-inventory-files-in-the-right-location">Copy the generated inventory files in the right location</h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+  <span class="c1">#add calico to the inventory file</span>
+  cat kubespray/contrib/azurerm/<span class="nv">$CLUSTER</span>/inventory/inventory.j2 <span class="se">\</span>
+        <span class="p">|</span> sed  <span class="s1">&#39;/\[k8s-cluster:children\]/i \[calico-rr\]&#39;</span> <span class="se">\</span>
+        &gt; <span class="nv">$CK8S_CONFIG_PATH</span>/<span class="nv">$CLUSTER</span>-config/inventory.ini
+<span class="nb">echo</span> <span class="s2">&quot;calico-rr&quot;</span> &gt;&gt; <span class="nv">$CK8S_CONFIG_PATH</span>/<span class="nv">$CLUSTER</span>-config/inventory.ini <span class="nv">$CK8S_CONFIG_PATH</span>/<span class="nv">$CLUSTER</span>-config/inventory.ini
+    <span class="c1">#add ansible_user ubuntu   (note that this assumes you have set admin_username in azurerm/group_vars/all to ubuntu)</span>
+    <span class="nb">echo</span> -e <span class="s1">&#39;ansible_user: ubuntu&#39;</span> &gt;&gt; <span class="nv">$CK8S_CONFIG_PATH</span>/<span class="nv">$CLUSTER</span>-config/group_vars/k8s-cluster/ck8s-k8s-cluster.yaml
+
+    <span class="c1">#get the  IP address of the loadbalancer (to be added in kubadmin certSANs list which will be used for kubectl)</span>
+    <span class="nv">ip</span><span class="o">=</span><span class="k">$(</span>grep -o <span class="s1">&#39;[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}&#39;</span> kubespray/contrib/azurerm/<span class="nv">$CLUSTER</span>/loadbalancer_vars.yml<span class="k">)</span>
+    <span class="nb">echo</span> <span class="s1">&#39;supplementary_addresses_in_ssl_keys: [&quot;&#39;</span><span class="nv">$ip</span><span class="s1">&#39;&quot;]&#39;</span> &gt;&gt; <span class="nv">$CK8S_CONFIG_PATH</span>/<span class="nv">$CLUSTER</span>-config/group_vars/k8s-cluster/ck8s-k8s-cluster.yaml
+    <span class="nb">echo</span> -e <span class="s1">&#39;nameservers:\n  - 1.1.1.1&#39;</span> &gt;&gt; <span class="nv">$CK8S_CONFIG_PATH</span>/<span class="nv">$CLUSTER</span>-config/group_vars/k8s-cluster/ck8s-k8s-cluster.yaml
+    <span class="nb">echo</span> <span class="s1">&#39;resolvconf_mode: host_resolvconf&#39;</span> &gt;&gt; <span class="nv">$CK8S_CONFIG_PATH</span>/<span class="nv">$CLUSTER</span>-config/group_vars/k8s-cluster/ck8s-k8s-cluster.yaml
+
+<span class="k">done</span>
+</code></pre></div>
+<h3 id="run-kubespray-to-deploy-the-kubernetes-clusters">Run kubespray to deploy the Kubernetes clusters</h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    ./bin/ck8s-kubespray apply <span class="nv">$CLUSTER</span> --flush-cache
+<span class="k">done</span>
+</code></pre></div>
+<p>This may take up to 30 minutes per cluster.</p>
+<p>Please increase the value for timeout, e.g <code>timeout=30</code>, in <code>kubespray/ansible.cfg</code> if you face the following issue while running step-3.</p>
+<div class="highlight"><pre><span></span><code>TASK [bootstrap-os : Fetch /etc/os-release] **************************************************************************************************************************************************************************************
+fatal: [minion-0]: FAILED! =&gt; {&quot;msg&quot;: &quot;Timeout (12s) waiting for privilege escalation prompt: &quot;}
+fatal: [minion-1]: FAILED! =&gt; {&quot;msg&quot;: &quot;Timeout (12s) waiting for privilege escalation prompt: &quot;}
+fatal: [minion-2]: FAILED! =&gt; {&quot;msg&quot;: &quot;Timeout (12s) waiting for privilege escalation prompt: &quot;}
+fatal: [master-0]: FAILED! =&gt; {&quot;msg&quot;: &quot;Timeout (12s) waiting for privilege escalation prompt: &quot;}
+</code></pre></div>
+<h3 id="correct-the-kubernetes-api-ip-addresses">Correct the Kubernetes API IP addresses</h3>
+<p>Get the public IP address of the loadbalancer:</p>
+<div class="highlight"><pre><span></span><code>grep -o <span class="s1">&#39;[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}&#39;</span> kubespray/contrib/azurerm/<span class="nv">$CLUSTER</span>/loadbalancer_vars.yml
+</code></pre></div>
+<p>Locate the encrypted kubeconfigs <code>kube_config_*.yaml</code> and edit them using sops. Copy the IP shown above into <code>kube_config_*.yaml</code>. Do not overwrite the port.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    sops <span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="nv">$CLUSTER</span>.yaml
+<span class="k">done</span>
+</code></pre></div>
+<h3 id="test-access-to-the-clusters-as-follows">Test access to the clusters as follows:</h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    sops exec-file <span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="nv">$CLUSTER</span>.yaml <span class="se">\</span>
+        <span class="s1">&#39;kubectl --kubeconfig {} get nodes&#39;</span>
+<span class="k">done</span>
+</code></pre></div>
+<h3 id="deploy-rook">Deploy Rook</h3>
+<p>To deploy Rook, please go to the <code>compliantkubernetes-kubespray</code> repo root directory and run the following.</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">pushd</span> rook
+<span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    sops --decrypt <span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="nv">$CLUSTER</span>.yaml &gt; <span class="nv">$CLUSTER</span>.yaml
+    <span class="nb">export</span> <span class="nv">KUBECONFIG</span><span class="o">=</span><span class="nv">$CLUSTER</span>.yaml
+    ./deploy-rook.sh
+    shred -zu <span class="nv">$CLUSTER</span>.yaml
+<span class="k">done</span>
+<span class="nb">popd</span>
+</code></pre></div>
+Please restart the operator pod, <code>rook-ceph-operator*</code>, if some pods stalls in initialization state as shown below:
+<div class="highlight"><pre><span></span><code>rook-ceph     rook-ceph-crashcollector-minion-0-b75b9fc64-tv2vg    0/1     Init:0/2   0          24m
+rook-ceph     rook-ceph-crashcollector-minion-1-5cfb88b66f-mggrh   0/1     Init:0/2   0          36m
+rook-ceph     rook-ceph-crashcollector-minion-2-5c74ffffb6-jwk55   0/1     Init:0/2   0          14m
+</code></pre></div></p>
+<p>Note: pods in pending state usually indicate resource shortage. In such cases you need to use bigger instances.</p>
+<h3 id="test-rook">Test Rook</h3>
+<p>To test Rook, proceed as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    sops exec-file <span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="nv">$CLUSTER</span>.yaml <span class="s1">&#39;kubectl --kubeconfig {} apply -f https://raw.githubusercontent.com/rook/rook/release-1.5/cluster/examples/kubernetes/ceph/csi/rbd/pvc.yaml&#39;</span><span class="p">;</span>
+<span class="k">done</span>
+
+<span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    sops exec-file <span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="nv">$CLUSTER</span>.yaml <span class="s1">&#39;kubectl --kubeconfig {} get pvc&#39;</span><span class="p">;</span>
+<span class="k">done</span>
+</code></pre></div>
+<p>You should see PVCs in Bound state. If you want to clean the previously created PVCs:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    sops exec-file <span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="nv">$CLUSTER</span>.yaml <span class="s1">&#39;kubectl --kubeconfig {} delete pvc rbd-pvc&#39;</span><span class="p">;</span>
+<span class="k">done</span>
+</code></pre></div>
+<h2 id="deploying-compliant-kubernetes-apps">Deploying Compliant Kubernetes Apps</h2>
+<p>Now that the Kubernetes clusters are up and running, we are ready to install the Compliant Kubernetes apps.</p>
+<h3 id="clone-compliantkubernetes-apps-and-install-pre-requisites">Clone <code>compliantkubernetes-apps</code> and Install Pre-requisites</h3>
+<p>If you haven't done so already, clone the <code>compliantkubernetes-apps</code> repo and install pre-requisites.</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/elastisys/compliantkubernetes-apps.git
+<span class="nb">cd</span> compliantkubernetes-apps
+ansible-playbook -e <span class="s1">&#39;ansible_python_interpreter=/usr/bin/python3&#39;</span> --ask-become-pass --connection <span class="nb">local</span> --inventory <span class="m">127</span>.0.0.1, get-requirements.yaml
+</code></pre></div>
+<h3 id="initialize-the-apps-configuration">Initialize the apps configuration</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">CK8S_ENVIRONMENT_NAME</span><span class="o">=</span>azure
+<span class="c1">#export CK8S_FLAVOR=[dev|prod] # defaults to dev</span>
+<span class="nb">export</span> <span class="nv">CK8S_CONFIG_PATH</span><span class="o">=</span>~/.ck8s/azure
+<span class="nb">export</span> <span class="nv">CK8S_CLOUD_PROVIDER</span><span class="o">=</span>azure
+<span class="nb">export</span> <span class="nv">CK8S_PGP_FP</span><span class="o">=</span>&lt;your GPG key fingerprint&gt;  <span class="c1"># retrieve with gpg --list-secret-keys</span>
+./bin/ck8s init
+</code></pre></div>
+<p>Three files, <code>sc-config.yaml</code> and <code>wc-config.yaml</code>, and <code>secrets.yaml</code>, were generated in the <code>${CK8S_CONFIG_PATH}</code> directory.</p>
+<div class="highlight"><pre><span></span><code>ls -l <span class="nv">$CK8S_CONFIG_PATH</span>
+</code></pre></div>
+<h3 id="configure-the-apps">Configure the apps</h3>
+<p>Edit the configuration files <code>${CK8S_CONFIG_PATH}/sc-config.yaml</code>, <code>${CK8S_CONFIG_PATH}/wc-config.yaml</code> and <code>${CK8S_CONFIG_PATH}/secrets.yaml</code> and set the appropriate values for some of the configuration fields. Note that, the latter is encrypted.</p>
+<div class="highlight"><pre><span></span><code>vim <span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/sc-config.yaml
+vim <span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/wc-config.yaml
+sops <span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/secrets.yaml
+</code></pre></div>
+<p>The following are the minimum change you should perform:</p>
+<div class="highlight"><pre><span></span><code># ${CK8S_CONFIG_PATH}/sc-config.yaml and ${CK8S_CONFIG_PATH}/wc-config.yaml
+global:
+  baseDomain: &quot;set-me&quot;  # set to &lt;enovironment_name&gt;.$DOMAIN
+  opsDomain: &quot;set-me&quot;  # set to ops.&lt;environment_name&gt;.$DOMAIN
+  issuer: letsencrypt-prod
+objectStorage:
+  type: &quot;s3&quot;
+  s3:
+    region: &quot;set-me&quot;  # Region for S3 buckets, e.g, west-1
+    regionEndpoint: &quot;set-me&quot;  # e.g., https://s3.us-west-1.amazonaws.com
+
+storageClasses:
+  default:  rook-ceph-block
+  nfs:
+    enabled: false
+  cinder:
+    enabled: false
+  local:
+    enabled: false
+  ebs:
+    enabled: false
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># ${CK8S_CONFIG_PATH}/sc-config.yaml (in addition to the changes above)
+
+elasticsearch:
+  dataNode:
+    storageClass: rook-ceph-block
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># ${CK8S_CONFIG_PATH}/secrets.yaml
+objectStorage:
+  s3:
+    accessKey: &quot;set-me&quot; #set to your s3 accesskey
+    secretKey: &quot;set-me&quot; #set to your s3 secretKey
+</code></pre></div>
+<h3 id="install-compliant-kubernetes-apps">Install Compliant Kubernetes apps</h3>
+<p>Start with the service cluster:</p>
+<div class="highlight"><pre><span></span><code>ln -sf <span class="nv">$CK8S_CONFIG_PATH</span>/.state/kube_config_<span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span>.yaml <span class="nv">$CK8S_CONFIG_PATH</span>/.state/kube_config_sc.yaml
+./bin/ck8s apply sc  <span class="c1"># Respond &quot;n&quot; if you get a WARN</span>
+</code></pre></div>
+<p>Then the workload clusters:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> CLUSTER <span class="k">in</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    ln -sf <span class="nv">$CK8S_CONFIG_PATH</span>/.state/kube_config_<span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span>.yaml <span class="nv">$CK8S_CONFIG_PATH</span>/.state/kube_config_wc.yaml
+    ./bin/ck8s apply wc  <span class="c1"># Respond &quot;n&quot; if you get a WARN</span>
+<span class="k">done</span>
+</code></pre></div>
+<h3 id="settling">Settling</h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Leave sufficient time for the system to settle, e.g., request TLS certificates from LetsEncrypt, perhaps as much as 20 minutes.</p>
+</div>
+<p>You can check if the system settled as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    sops exec-file <span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="nv">$CLUSTER</span>.yaml <span class="se">\</span>
+        <span class="s1">&#39;kubectl --kubeconfig {} get --all-namespaces pods&#39;</span>
+<span class="k">done</span>
+</code></pre></div>
+<p>Check the output of the command above. All Pods needs to be Running or Completed.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    sops exec-file <span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="nv">$CLUSTER</span>.yaml <span class="se">\</span>
+        <span class="s1">&#39;kubectl --kubeconfig {} get --all-namespaces issuers,clusterissuers,certificates&#39;</span>
+<span class="k">done</span>
+</code></pre></div>
+<p>Check the output of the command above. All resources need to have the Ready column True.</p>
+<h3 id="testing">Testing</h3>
+<p>After completing the installation step you can test if the apps are properly installed and ready using the commands below.</p>
+<p>Start with the service cluster:</p>
+<div class="highlight"><pre><span></span><code>ln -sf <span class="nv">$CK8S_CONFIG_PATH</span>/.state/kube_config_<span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span>.yaml <span class="nv">$CK8S_CONFIG_PATH</span>/.state/kube_config_sc.yaml
+./bin/ck8s <span class="nb">test</span> sc  <span class="c1"># Respond &quot;n&quot; if you get a WARN</span>
+</code></pre></div>
+<p>Then the workload clusters:</p>
+<div class="highlight"><pre><span></span><code>for CLUSTER in &quot;${WORKLOAD_CLUSTERS[@]}&quot;; do
+    ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
+    ./bin/ck8s test wc  # Respond &quot;n&quot; if you get a WARN
+done
+</code></pre></div>
+<p>Done. Navigate to the endpoints, for example <code>grafana.$BASE_DOMAIN</code>, <code>kibana.$BASE_DOMAIN</code>, <code>harbor.$BASE_DOMAIN</code>, etc. to discover Compliant Kubernetes's features.</p>
+<h2 id="teardown">Teardown</h2>
+<p>To teardown the cluster, please go to the <code>compliantkubernetes-kubespray</code> repo root directory and run the following.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">pushd</span> kubespray/contrib/azurerm
+<span class="k">for</span> CLUSTER <span class="k">in</span> <span class="si">${</span><span class="nv">SERVICE_CLUSTER</span><span class="si">}</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKLOAD_CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    ansible-playbook generate-templates.yml
+    az group deployment create -g <span class="s2">&quot;</span><span class="nv">$CLUSTER</span><span class="s2">&quot;</span> --template-file ./<span class="nv">$CLUSTER</span>/.generated/clear-rg.json --mode Complete
+<span class="k">done</span>
+<span class="nb">popd</span>
+</code></pre></div>
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/README.md">Elastisys Compliant Kubernetes Kubespray</a></li>
+<li><a href="https://github.com/elastisys/compliantkubernetes-apps">Compliant Kubernetes apps repo</a></li>
+<li><a href="https://github.com/elastisys/compliantkubernetes-apps#elastisys-compliant-kubernetes-apps">Configurations option</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../aws/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              On AWS
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../exoscale/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              On Exoscale
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright © 2020 Elastisys AB
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a1c7c35e.min.js"></script>
+      
+    
+  </body>
+</html>

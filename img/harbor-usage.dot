@@ -1,0 +1,29 @@
+digraph compliance_basics {
+    compound=true;
+    graph[labeljust="l", fontsize=20];
+
+    subgraph cluster_harbor_usage {
+        label="Container image workflow";
+        node[width=1, shape=box];
+        node[
+            shape=box,
+            label="",
+            width=1.5,
+            height=1,
+            fixedsize=true,
+            style=rounded
+            imagescale=true
+        ];
+
+        cd[label="CI/CD pipeline"]
+        dev[label="Application\nDeveloper"]
+        kubernetes[image="logos/kubernetes.png"];
+        harbor[image="logos/harbor.png"];
+    }
+
+    dev -> cd[label="1. create/change\ndocker image",constraint=false];
+    cd -> cd[label="2. build\nimage"];
+    cd -> harbor[label="3. push\nimage"];
+    cd -> kubernetes[label="4. rollout\nchanges"];
+    kubernetes -> harbor[label="5. pull new\nimage"];
+}

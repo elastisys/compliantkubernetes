@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 250.00001 249.99999"
+   xml:space="preserve"
+   sodipodi:docname="opendistro.svg"
+   width="250"
+   height="250"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"><metadata
+   id="metadata83"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs81" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="3696"
+   inkscape:window-height="2018"
+   id="namedview79"
+   showgrid="false"
+   fit-margin-top="0"
+   fit-margin-left="0"
+   fit-margin-right="0"
+   fit-margin-bottom="0"
+   inkscape:zoom="2"
+   inkscape:cx="0.38191635"
+   inkscape:cy="-139.33584"
+   inkscape:window-x="144"
+   inkscape:window-y="68"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:#36499B;}
+	.st1{fill:#0081C3;}
+	.st2{fill:#67CFEE;}
+	.st3{fill:#9D7AD1;}
+	.st4{fill:#FF5892;}
+	.st5{fill:#E470C0;}
+</style>
+
+<g
+   id="g76"
+   transform="matrix(9.578544,0,0,9.6153846,-69.92269,-47.115385)">
+	<g
+   id="g64">
+		<path
+   class="st0"
+   d="m 21.1,26 c 4.1,-0.4 7.3,-3.9 7.3,-8.1 0,-4.2 -3.2,-7.7 -7.3,-8.1 V 4.9 c 6.8,0.4 12.3,6.1 12.3,13 0,6.9 -5.4,12.6 -12.3,13 z"
+   id="path62"
+   inkscape:connector-curvature="0"
+   style="fill:#36499b" />
+	</g>
+	<circle
+   class="st1"
+   cx="17"
+   cy="28"
+   r="2.4000001"
+   id="circle66"
+   style="fill:#0081c3" />
+	<circle
+   class="st2"
+   cx="11.7"
+   cy="24.1"
+   r="2.4000001"
+   id="circle68"
+   style="fill:#67cfee" />
+	<circle
+   class="st3"
+   cx="9.6999998"
+   cy="18"
+   r="2.4000001"
+   id="circle70"
+   style="fill:#9d7ad1" />
+	<circle
+   class="st4"
+   cx="11.7"
+   cy="11.8"
+   r="2.4000001"
+   id="circle72"
+   style="fill:#ff5892" />
+	<circle
+   class="st5"
+   cx="17"
+   cy="7.8000002"
+   r="2.4000001"
+   id="circle74"
+   style="fill:#e470c0" />
+</g>
+</svg>

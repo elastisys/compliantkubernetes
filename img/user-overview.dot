@@ -1,0 +1,43 @@
+digraph compliance_basics {
+    compound=true;
+    graph[labeljust="l", fontsize=20];
+
+    subgraph cluster_user_roles {
+        label="User Roles";
+        node[width=1, shape=box, style=rounded];
+
+        cd[label="Continuous Delivery Pipeline\n(CD)"]
+        dev[label="Application Developer\n(dev)"]
+        ciso[label="Information Security Officer\n(CISO)"]
+    }
+
+    idp[label="Identity Provider\n(IdP)",shape=box];
+
+    subgraph cluster_compliant_kubernetes {
+        label="Compliant Kubernetes"
+
+        node[
+            shape=none,
+            label="",
+            width=1.5,
+            height=1,
+            fixedsize=true,
+            imagescale=true
+        ];
+
+        dashboard[label="Dashboard", shape=box];
+        kubernetes[image="logos/kubernetes.png"];
+        elasticsearch[image="logos/elasticsearch.png"];
+        prometheus[image="logos/prometheus.png"];
+        harbor[image="logos/harbor.png"];
+    }
+
+    dev -> cd[label="make changes",constraint=false];
+
+    { cd } -> harbor[label="push\nimages"];
+    { cd } -> kubernetes[label="rollout\nchanges"];
+    { dev } -> { elasticsearch, kubernetes, prometheus }[label="inspect"];
+    { ciso } -> dashboard[label="audit"];
+
+    { dev, ciso } -> idp[style=dashed];
+}
