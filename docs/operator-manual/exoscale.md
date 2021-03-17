@@ -273,7 +273,7 @@ storageClasses:
 # ${CK8S_CONFIG_PATH}/sc-config.yaml (in addition to the changes above)
 fluentd:
   forwarder:
-    useRegionEndpoint: "set-me"  # set it to 'true' if you are using exoscale S3, 'false' if you are using AWS S3
+    useRegionEndpoint: "set-me"  # set it to 'true' if you are using Exoscale S3, 'false' if you are using AWS S3
 
 elasticsearch:
   dataNode:
