@@ -213,7 +213,7 @@ Now that the Kubernetes clusters are up and running, we are ready to install the
 
     fluentd:
       forwarder:
-        useRegionEndpoint: "set-me"  # set it to 'true'
+        useRegionEndpoint: "set-me"  # set it to 'false'
 
     issuers:
       letsencrypt:
