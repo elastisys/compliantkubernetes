@@ -2,13 +2,15 @@
 
 ## Relevant Regulations
 
-* [GDPR Article X](https://gdpr-info.eu/):
+* [GDPR Article 32](https://gdpr-info.eu/art-32-gdpr/):
 
-    > Lorem ipsum
+    > The ability to ensure the ongoing confidentiality, integrity, **availability and resilience** of processing systems and services; [highlights added]
 
 ## Mapping to ISO 27001 Controls
 
-* [A.YY.Z.N Some regulation](https://www.isms.online/iso-27001/)
+* [A.12.1.3 Capacity Management](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
+
+    > The use of resources must be monitored, tuned and projections made of future capacity requirements to ensure the required system performance to meet the business objectives.
 
 ## Compliant Kubernetes Intrusion Detection Dashboard
 
