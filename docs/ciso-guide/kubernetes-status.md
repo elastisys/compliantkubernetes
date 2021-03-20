@@ -12,7 +12,7 @@
 
     > The use of resources must be monitored, tuned and projections made of future capacity requirements to ensure the required system performance to meet the business objectives.
 
-## Compliant Kubernetes Intrusion Detection Dashboard
+## Compliant Kubernetes Status Dashboard
 
 ![Kubernetes Status Dashboard](img/kubernetes-status.png)
 
