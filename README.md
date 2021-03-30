@@ -8,7 +8,7 @@ This is the main repository for documentation about the Compliant Kubernetes pro
 ## Prerequisites
 
 ```
-pip3 install mkdocs mkdocs-material
+pip3 install mkdocs mkdocs-material mkdocs-include-markdown-plugin
 ```
 
 For generating figures, please install:
