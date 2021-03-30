@@ -21,6 +21,9 @@ theme:
   logo: 'img/logo.png'
   favicon: 'img/favicon.png'
 
+plugins:
+  - include-markdown
+
 markdown_extensions:
   - admonition
   - meta
