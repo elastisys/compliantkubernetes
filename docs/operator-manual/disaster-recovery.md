@@ -9,6 +9,18 @@ Disaster recovery is mandated by several regulations and information security st
 - [A.12.3.1 Information Backup](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
 - [A.17.1.1 Planning Information Security Continuity](https://www.isms.online/iso-27001/annex-a-17-information-security-aspects-of-business-continuity-management/)
 
+## Object storage providers
+
+### Feature matrix
+
+Provider       | Write-only credentials
+-------------  | -------------
+AWS S3         | Yes
+Citycloud S3   | No
+Exoscale S3    | Yes
+GCP            | Yes
+Safespring S3  | Yes
+
 ## Elasticsearch
 
 ### Backup
