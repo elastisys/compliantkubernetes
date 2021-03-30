@@ -8,8 +8,9 @@ This document contains instructions on how to set up a Compliant Kubernetes envi
 Before starting, make sure you have [all necessary tools](getting-started.md). In addition to these general tools, you will also need:
 
 - A GCP project
-- JSON keyfile for your project
+- A [JSON keyfile](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) for [running Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/getting_started#adding-credentials).
 - SSH key that you will use to access GCP, which you have [added to the metadata in your GCP project](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys).
+- (Optional) Another JSON keyfile for the [GCP Persistent Disk CSI Driver](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/gcp-pd-csi.md). It is possible (but not recommended) to reuse the same JSON keyfile as you use for Terraform.
 
 ## Initial setup
 
@@ -28,14 +29,14 @@ git clone --recursive https://github.com/elastisys/compliantkubernetes-kubespray
 cd compliantkubernetes-kubespray
 ```
 For all commands in the cluster setup part of this guide, your working directory is assumed to be the root directory of this repository.
-2. In `config/gcp/group_vars/all/ck8s-gcp.yml`, set the value of `gcp_pd_csi_sa_cred_file` to the path of your JSON keyfile.
+2. In `config/gcp/group_vars/all/ck8s-gcp.yml`, set the value of `gcp_pd_csi_sa_cred_file` to the path of your JSON keyfile for GCP Persistent Disk CSI Driver.
 3. Modify `kubespray/contrib/terraform/gcp/tfvars.json` in the following way:
     - Set `gcp_project_id` to the ID of your GCP project.
-    - Set `keyfile_location` to the location of your JSON keyfile.
+    - Set `keyfile_location` to the location of your JSON keyfile. This will be used as credentials for accessing the GCP API when running Terraform.
     - Set `ssh_pub_key` to the path of your public SSH key.
     - In `ssh_whitelist`, `api_server_whitelist` and `nodeport_whitelist`, add IP address(es) that you want to be able to access the cluster.
 4. Set up the nodes by performing the following steps:
-    1. Make copies of the terraform variables, one for each cluster:
+    1. Make copies of the Terraform variables, one for each cluster:
     ```bash
     pushd kubespray/contrib/terraform/gcp
     for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
@@ -43,7 +44,7 @@ For all commands in the cluster setup part of this guide, your working directory
     done
     popd
     ```
-    2. Set up the nodes with terraform. If desired, first modify `"machines"` in `kubespray/contrib/terraform/gcp/$CLUSTER-tfvars.json` to add/remove nodes, change node sizes, etc. (For setting up compliantkubernetes-apps in the service cluster, one `n1-standard-8` worker and one `n1-standard-4` worker is enough.)
+    2. Set up the nodes with Terraform. If desired, first modify `"machines"` in `kubespray/contrib/terraform/gcp/$CLUSTER-tfvars.json` to add/remove nodes, change node sizes, etc. (For setting up compliantkubernetes-apps in the service cluster, one `n1-standard-8` worker and one `n1-standard-4` worker is enough.)
     ```bash
     pushd kubespray/contrib/terraform/gcp
     for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
