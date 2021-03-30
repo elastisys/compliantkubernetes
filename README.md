@@ -50,7 +50,6 @@ sudo apt-get install graphviz make
 * Please contribute to a branch and create a PR.
 * Capitalize all letters of acronyms: DNS, TCP, AWS.
 * Capitalize proper nouns, in particular, names of projects, companies, and products: Kubernetes, Amazon, Azure.
-* Capitalize Kubernetes concepts: Pod, Node, Service.
 
 ## Deployment
 
