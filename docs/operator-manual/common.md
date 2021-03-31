@@ -22,7 +22,8 @@ rook-ceph     rook-ceph-crashcollector-minion-1-5cfb88b66f-mggrh   0/1     Init:
 rook-ceph     rook-ceph-crashcollector-minion-2-5c74ffffb6-jwk55   0/1     Init:0/2   0          14m
 ```
 
-Note: pods in pending state usually indicate resource shortage. In such cases you need to use bigger instances.
+!!!important
+    Pods in pending state usually indicate resource shortage. In such cases you need to use bigger instances.
 <!--deploy-rook-stop-->
 
 <!--test-rook-start-->
