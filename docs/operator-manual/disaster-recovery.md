@@ -46,12 +46,12 @@ List snapshot repositories
 
 ```bash
 # Simple
-❯ curl -k -u "${user}:${password}" "${es_url}/_cat/repositories?v"
+❯ curl -kL -u "${user}:${password}" "${es_url}/_cat/repositories?v"
 id              type
 s3_exoscale_7.x   s3
 
 # Detailed
-❯ curl -k -u "${user}:${password}" "${es_url}/_snapshot/?pretty"
+❯ curl -kL -u "${user}:${password}" "${es_url}/_snapshot/?pretty"
 {
   "s3_exoscale_7.x" : {
     "type" : "s3",
@@ -69,17 +69,17 @@ List available snapshots
 snapshot_repo=<name/id from previous step>
 
 # Simple
-❯ curl -k -u "${user}:${password}" "${es_url}/_cat/snapshots/${snapshot_repo}?v&s=id"
+❯ curl -kL -u "${user}:${password}" "${es_url}/_cat/snapshots/${snapshot_repo}?v&s=id"
 id                         status start_epoch start_time end_epoch  end_time duration indices successful_shards failed_shards total_shards
 snapshot-20200929_093941z SUCCESS 1601372382  09:39:42   1601372390 09:39:50     8.4s       6                 6             0            6
 snapshot-20200930_000008z SUCCESS 1601424008  00:00:08   1601424035 00:00:35    27.4s      20                20             0           20
 snapshot-20201001_000006z SUCCESS 1601510407  00:00:07   1601510530 00:02:10       2m      75                75             0           75
 
 # Detailed list of all snapshots
-curl -k -u "${user}:${password}" "${es_url}/_snapshot/${snapshot_repo}/_all?pretty"
+curl -kL -u "${user}:${password}" "${es_url}/_snapshot/${snapshot_repo}/_all?pretty"
 
 # Detailed list of specific snapshot
-❯ curl -k -u "${user}:${password}" "${es_url}/_snapshot/${snapshot_repo}/snapshot-20201001_000006z?pretty"
+❯ curl -kL -u "${user}:${password}" "${es_url}/_snapshot/${snapshot_repo}/snapshot-20201001_000006z?pretty"
 {
   "snapshots" : [
     {
@@ -115,11 +115,13 @@ curl -k -u "${user}:${password}" "${es_url}/_snapshot/${snapshot_repo}/_all?pret
 You usually select the latest snapshot containing the indices you want to restore.
 Restore one or multiple indices from a snapshot
 
+!!!note You cannot restore a write index (the latest index) if you already have a write index connected to the same index alias (which will happen if you have started to receive logs).
+
 ```bash
 snapshot_name=<Snapshot name from previous step>
 indices="<list of comma separated indices/index patterns>"
 
-curl -k -u "${user}:${password}" -X POST "${es_url}/_snapshot/${snapshot_repo}/${snapshot_name}/_restore?pretty" -H 'Content-Type: application/json' -d'
+curl -kL -u "${user}:${password}" -X POST "${es_url}/_snapshot/${snapshot_repo}/${snapshot_name}/_restore?pretty" -H 'Content-Type: application/json' -d'
 {
   "indices": "'${indices}'"
 }
