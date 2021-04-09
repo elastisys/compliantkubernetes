@@ -58,6 +58,7 @@ Code snippets should be written in a way that is transparent, predictable and fl
 * Separate config snippets (which includes init snippets), apply snippets and test snippets.
 * Apply snippets should not execute when copy-pasted, i.e., they should allow the operator to review the command, potentially edit the command, before confirming execution by typing ENTER.
 * Apply snippets should be idempotent, i.e., running apply multiple times should give the same result as applying only once.
+* Avoid auto-approve in apply snippets. Encourage (but don't force) dry-running.
 * Include test snippets after every major apply step. These should allow the operator to confirm that the previous apply step succeeded. The test should be as realistic as possible, e.g., "I can run a Pod", "PVCs I create are bound", etc. Tests should both confirm that the operator can proceed with the next step and serve as troubleshooting.
 * Test snippets should be non-destructive. If this is not possible, add big warnings.
 
