@@ -61,6 +61,49 @@ Code snippets should be written in a way that is transparent, predictable and fl
 * Include test snippets after every major apply step. These should allow the operator to confirm that the previous apply step succeeded. The test should be as realistic as possible, e.g., "I can run a Pod", "PVCs I create are bound", etc. Tests should both confirm that the operator can proceed with the next step and serve as troubleshooting.
 * Test snippets should be non-destructive. If this is not possible, add big warnings.
 
+Examples:
+
+```
+## Config snippet, almost always requires human input
+export CK8S_ENVIRONMENT_NAME=my-environment-name
+#export CK8S_FLAVOR=[dev|prod] # defaults to dev
+export CK8S_CONFIG_PATH=~/.ck8s/my-cluster-path
+export CK8S_CLOUD_PROVIDER=# [exoscale|safespring|citycloud|aws|baremetal]
+export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
+./bin/ck8s init
+
+## Apply snippets
+# Good, because operator can review command, change command as necessary, review its effects and approves those effects
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+    pushd inventory/$CLUSTER
+    terraform init ../../contrib/terraform/exoscale
+    terraform apply \
+        -var-file default.tfvars \
+        -state=tfstate-$CLUSTER.tfstate  \
+        ../../contrib/terraform/exoscale
+    popd
+done
+
+# Okay
+ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml
+./bin/ck8s apply sc  # Respond "n" if you get a WARN
+
+# Bad, because the effects are difficult to predict and adjust
+for x in arr; do
+    pushd $x
+    sops exec-file secrets "command --auto-approve $complicated_unexplained_arguments | yq r 'a.b.c' | xarg somthing-something"
+    popd
+done
+
+## Test snippet
+# Good
+kubectl get my-resource -o wide
+curl https://example.com/
+
+# Bad
+kubectl delete all --all --all-namespaces
+```
+
 ## Deployment
 
 GitHub Actions will deploy the `main` branch automatically.
