@@ -60,14 +60,14 @@ Set up a policy that makes sense for your application and watch as OPA immediate
 
 ### Network isolation/segregation
 
-Set up standard Kubernetes [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/) such that:
+Set up standard Kubernetes [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/) such that all inbound and outbound traffic is restricted to that which is necessary for the application to work, and other traffic is specifically denied:
 
  - only the front end is publicly exposed;
  - the front end can only initiate connections to the back end;
  - the back end can only be connected to from the front end (no other components running in other namespaces);
- - the back end only gets to initiate connections to the database;
- - nothing besides the back end application gets to connect to the database; and
- - the database may never initiate connections to anything on its own.
+ - the back end only gets to initiate connections to the database and to the known external endpoints;
+ - nothing besides the back end application gets to connect to the database;
+ - the database may never initiate connections to anything on its own; 
 
 Doing this shows that not only do you have network isolation/segregation up and running, but also, you have significantly reduced your attack surface. Should code get exploited in either component, it will still be limited in what damage it can do to the overall system.
 
