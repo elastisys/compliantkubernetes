@@ -2,6 +2,9 @@
 
 This document contains instructions on how to install [Compliant Kubernetes](https://github.com/elastisys/compliantkubernetes-apps) on [AWS](https://aws.amazon.com/?nc2=h_lg) using [EKS-D](https://github.com/aws/eks-distro).
 
+!!!note
+    This guide is written for compliantkubernetes-apps [v0.13.0](https://github.com/elastisys/compliantkubernetes-apps/tree/v0.13.0)
+
 ## Requirements
 
 - An AWS account with billing enabled.
@@ -188,7 +191,7 @@ done
 ```ShellSession
 git clone git@github.com:elastisys/compliantkubernetes-apps
 cd compliantkubernetes-apps
-git checkout v0.11.0
+git checkout v0.13.0
 ```
 
 ### Install requirements

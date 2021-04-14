@@ -10,6 +10,9 @@ The instructions below are just samples, you need to update them according to yo
 
 Before starting, make sure you have [all necessary tools](getting-started.md).
 
+!!!note
+    This guide is written for compliantkubernetes-apps [v0.13.0](https://github.com/elastisys/compliantkubernetes-apps/tree/v0.13.0)
+
 ## Setup
 
 Create two Kubernetes clusters in OVH, follow [this guide](https://docs.ovh.com/gb/en/kubernetes/creating-a-cluster/).
@@ -105,7 +108,7 @@ Download Compliant Kubernetes and checkout the latest version.
 ```ShellSession
 git clone git@github.com:elastisys/compliantkubernetes-apps.git
 cd compliantkubernetes-apps
-git checkout v0.11.0
+git checkout v0.13.0
 ```
 
 Initialize the config.

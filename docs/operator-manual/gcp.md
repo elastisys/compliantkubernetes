@@ -12,6 +12,9 @@ Before starting, make sure you have [all necessary tools](getting-started.md). I
 - SSH key that you will use to access GCP, which you have [added to the metadata in your GCP project](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys).
 - (Optional) Another JSON keyfile for the [GCP Persistent Disk CSI Driver](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/gcp-pd-csi.md). It is possible (but not recommended) to reuse the same JSON keyfile as you use for Terraform.
 
+!!!note
+    This guide is written for compliantkubernetes-apps [v0.13.0](https://github.com/elastisys/compliantkubernetes-apps/tree/v0.13.0)
+
 ## Initial setup
 
 Choose names for your service cluster and workload cluster(s):
@@ -86,7 +89,7 @@ For all commands in the cluster setup part of this guide, your working directory
 
 ## Apps setup
 
-The following instructions were made for release v0.9.0 of compliantkubernetes-apps. There may be discrepancies with newer versions.
+The following instructions were made for release v0.13.0 of compliantkubernetes-apps. There may be discrepancies with newer versions.
 
 ### Limitations
 
@@ -128,13 +131,16 @@ For information on how to modify the configuration to use S3 as object storage, 
         - Uncomment `objectStorage.gcs.keyfileData` and paste the contents of your JSON keyfile as the value.
     - `sc-config.yaml` AND `wc-config.yaml`
         - Set `global.baseDomain` to `<environment-name>.<dns-domain>` and `global.opsDomain` to `ops.<environment-name>.<dns-domain>`.
-        - Set `storageClasses.default` to `csi-gce-pd`. Also set any `storageClasses.*.enabled` that are set to `null` to `false`.
+        - Set `global.issuer` to `letsencrypt-prod`.
+        - Set `storageClasses.default` to `csi-gce-pd`. Also set all `storageClasses.*.enabled` to `false`.
         - Set `objectStorage.type` to `"gcs"`.
         - Uncomment `objectStorage.gcs.project` and set it to the name of your GCP project.
         - Set `issuers.letsencrypt.prod.email` and `issuers.letsencrypt.staging.email` to email addresses of choice.
     - `sc-config.yaml`
         - Set `influxDB.backupRetention.enabled` to `false`.
-        - Set `elasticsearch.dataNode.storageClass` to `csi-gce-pd`.
+        - Set `ingressNginx.controller.service.type` to `this-is-not-used`
+        - Set `ingressNginx.controller.service.annotations` to `this-is-not-used`
+        - Set `harbor.oidc.groupClaimName` to  `set-me`
 
 4. Create buckets for storage on GCP (found under "Storage"). The names must match the bucket names found in your `sc-config.yaml` and `wc-config.yaml` in the config path.
 5. Set the default storageclass by running the following command:

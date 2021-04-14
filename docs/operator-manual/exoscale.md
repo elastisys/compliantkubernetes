@@ -15,6 +15,9 @@ If you are using any other DNS service provider for managing your DNS you can sk
 
 Before starting, make sure you have [all necessary tools](getting-started.md).
 
+!!!note
+    This guide is written for compliantkubernetes-apps [v0.13.0](https://github.com/elastisys/compliantkubernetes-apps/tree/v0.13.0)
+
 ## Setup
 
 Choose names for your service cluster and workload cluster, as well as a name for your environment:
@@ -219,6 +222,7 @@ global:
   baseDomain: "set-me"  # set to $CK8S_ENVIRONMENT_NAME.$DOMAIN
   opsDomain: "set-me"  # set to ops.$CK8S_ENVIRONMENT_NAME.$DOMAIN
   issuer: letsencrypt-prod
+
 objectStorage:
   type: "s3"
   s3:
@@ -235,17 +239,24 @@ storageClasses:
     enabled: false
   ebs:
     enabled: false
+
+issuers:
+  letsencrypt:
+    prod:
+      email: "set-me"  # set this to an email to receive LetsEncrypt notifications
 ```
 
 ```yaml
 # ${CK8S_CONFIG_PATH}/sc-config.yaml (in addition to the changes above)
-fluentd:
-  forwarder:
-    useRegionEndpoint: "set-me"  # set it to 'true' if you are using Exoscale S3, 'false' if you are using AWS S3
+ingressNginx:
+    controller:
+      service:
+        type: "this-is-not-used"
+        annotations: "this-is-not-used"
 
-elasticsearch:
-  dataNode:
-    storageClass: rook-ceph-block
+harbor:
+  oidc:
+    groupClaimName: "set-me" # set to group clain name used by OIDC provider
 ```
 
 ```yaml
