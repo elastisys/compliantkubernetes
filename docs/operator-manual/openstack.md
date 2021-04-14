@@ -13,6 +13,9 @@ Before starting, make sure you have [all necessary tools](getting-started.md). I
 
 - [Openstack credentials](https://github.com/kubernetes-sigs/kubespray/tree/master/contrib/terraform/openstack#openstack-access-and-credentials) (either using `openrc` or the `clouds.yaml` configuration file) for setting up the infrastructure.
 
+!!!note
+    This guide is written for compliantkubernetes-apps [v0.13.0](https://github.com/elastisys/compliantkubernetes-apps/tree/v0.13.0)
+
 ## Initialize configuration folder
 
 Choose names for your service cluster and workload cluster(s):
