@@ -218,7 +218,7 @@ To take a backup on-demand, execute
 
 ### Restore
 When restoring the data, InfluxDB must not already contain the databases that are going to be restored. This will make sure that the databases are not created.
-- If you are planning on restoring InfluxDB on a new installation, then before installing InfluxDB set `influxDB.createdb: false` in `sc-config.yaml`. 
+- If you are planning on restoring InfluxDB on a new installation, then before installing InfluxDB set `influxDB.createdb: false` in `sc-config.yaml`.
 - If you are restoring to an existing InfluxDB instance, then first drop the databases:
   ```bash
   # Enter the InfluxDB container
@@ -280,4 +280,3 @@ You can also restore Grafana by setting `restore.velero` in your `{CK8S_CONFIG_P
 .bin/ck8s apply sc
 ```
  This will go through the same steps as above. By default, the latest daily backup is chosen; to restore from a different backup, set `restore.veleroBackupName` to the desired backup name.
-
