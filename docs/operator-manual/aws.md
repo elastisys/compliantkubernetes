@@ -201,11 +201,6 @@ objectStorage:
   s3:
     region: "set-me"  # Region for S3 buckets, e.g, eu-central-1
     regionEndpoint: "set-me"  # e.g., https://s3.us-west-1.amazonaws.com
-
-issuers:
-  letsencrypt:
-    prod:
-      email: "set-me"  # set this to an email to receive LetsEncrypt notifications
 ```
 
 ```yaml
@@ -213,6 +208,13 @@ issuers:
 harbor:
   oidc:
     groupClaimName: "set-me" # set to group claim name used by OIDC provider
+
+issuers:
+  letsencrypt:
+    prod:
+      email: "set-me"  # set this to an email to receive LetsEncrypt notifications
+    staging:
+      email: "set-me"  # set this to an email to receive LetsEncrypt notifications
 ```
 
 ```yaml
