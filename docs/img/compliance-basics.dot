@@ -93,6 +93,7 @@ digraph compliance_basics {
             exoscale[image="logos/cloud-providers/exoscale.png"]
             safespring[image="logos/cloud-providers/safespring.png"]
             openstack[image="logos/cloud-providers/openstack.png"]
+            upcloud[image="logos/cloud-providers/upcloud.png"]
             byovm[label="Bring\nYour Own\nVMs",shape=box]
             byom[label="Bring\nYour Own\nMetal",shape=box]
         }
