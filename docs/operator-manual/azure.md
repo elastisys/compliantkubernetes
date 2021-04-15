@@ -307,7 +307,7 @@ ingressNginx:
 
 harbor:
   oidc:
-    groupClaimName: "set-me" # set to group clain name used by OIDC provider
+    groupClaimName: "set-me" # set to group claim name used by OIDC provider
 ```
 
 ```yaml
