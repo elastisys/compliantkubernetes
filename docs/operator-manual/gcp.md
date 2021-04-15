@@ -135,12 +135,12 @@ For information on how to modify the configuration to use S3 as object storage, 
         - Set `storageClasses.default` to `csi-gce-pd`. Also set all `storageClasses.*.enabled` to `false`.
         - Set `objectStorage.type` to `"gcs"`.
         - Uncomment `objectStorage.gcs.project` and set it to the name of your GCP project.
-        - Set `issuers.letsencrypt.prod.email` and `issuers.letsencrypt.staging.email` to email addresses of choice.
     - `sc-config.yaml`
         - Set `influxDB.backupRetention.enabled` to `false`.
         - Set `ingressNginx.controller.service.type` to `this-is-not-used`
         - Set `ingressNginx.controller.service.annotations` to `this-is-not-used`
         - Set `harbor.oidc.groupClaimName` to  `set-me`
+        - Set `issuers.letsencrypt.prod.email` and `issuers.letsencrypt.staging.email` to email addresses of choice.
 
 4. Create buckets for storage on GCP (found under "Storage"). The names must match the bucket names found in your `sc-config.yaml` and `wc-config.yaml` in the config path.
 5. Set the default storageclass by running the following command:

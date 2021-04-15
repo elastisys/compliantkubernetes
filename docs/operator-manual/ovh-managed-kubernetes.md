@@ -163,9 +163,6 @@ yq write --inplace wc-config.yaml ingressNginx.controller.service.enabled "true"
 yq write --inplace wc-config.yaml ingressNginx.controller.service.type "LoadBalancer"
 yq write --inplace wc-config.yaml ingressNginx.controller.service.annotations ""
 
-yq write --inplace wc-config.yaml issuers.letsencrypt.prod.email "${ISSUER_MAIL}"
-yq write --inplace wc-config.yaml issuers.letsencrypt.staging.email "${ISSUER_MAIL}"
-
 yq write --inplace wc-config.yaml metricsServer.enabled "false"
 ```
 

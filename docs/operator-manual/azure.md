@@ -290,11 +290,6 @@ storageClasses:
     enabled: false
   ebs:
     enabled: false
-
-issuers:
-  letsencrypt:
-    prod:
-      email: "set-me"  # set this to an email to receive LetsEncrypt notifications
 ```
 
 ```yaml
@@ -308,6 +303,13 @@ ingressNginx:
 harbor:
   oidc:
     groupClaimName: "set-me" # set to group claim name used by OIDC provider
+
+issuers:
+  letsencrypt:
+    prod:
+      email: "set-me"  # set this to an email to receive LetsEncrypt notifications
+    staging:
+      email: "set-me"  # set this to an email to receive LetsEncrypt notifications
 ```
 
 ```yaml

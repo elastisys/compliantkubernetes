@@ -254,7 +254,10 @@ objectStorage:
 
 issuers:
   letsencrypt:
-    email: "set-me"  # Set to a valid email address
+    prod:
+      email: "set-me"  # Set to a valid email address
+    staging:
+      email: "set-me"  # Set to a valid email address
 ```
 
 ```ShellSession
@@ -286,10 +289,6 @@ objectStorage:
 
 opa:
   enabled: false # Does not work with k8s 1.19+
-
-issuers:
-  letsencrypt:
-    email: "set-me"  # Set to a valid email address
 ```
 
 ```ShellSession
