@@ -17,11 +17,12 @@ Before starting, make sure you have [all necessary tools](getting-started.md).
 
 ## Setup
 
-Choose names for your service cluster and workload cluster:
+Choose names for your service cluster and workload cluster, as well as a name for your environment:
 
 ```bash
 SERVICE_CLUSTER="testsc"
 WORKLOAD_CLUSTERS=( "testwc0" )
+CK8S_ENVIRONMENT_NAME=my-environment-name
 ```
 
 ## Infrastructure Setup using Terraform
@@ -169,8 +170,8 @@ echo $SC_INGRESS_LB_IP_ADDRESS
 Then point these domains to the service cluster using 'exoscale cli' as follows:
 
 ```bash
-exo dns add A $DOMAIN -a $SC_INGRESS_LB_IP_ADDRESS -n *.ops.$SERVICE_CLUSTER
-exo dns add A $DOMAIN -a $SC_INGRESS_LB_IP_ADDRESS -n *.$SERVICE_CLUSTER
+exo dns add A $DOMAIN -a $SC_INGRESS_LB_IP_ADDRESS -n *.ops.$CK8S_ENVIRONMENT_NAME
+exo dns add A $DOMAIN -a $SC_INGRESS_LB_IP_ADDRESS -n *.$CK8S_ENVIRONMENT_NAME
 ```
 
 {%
@@ -215,8 +216,8 @@ The following are the minimum change you should perform:
 ```yaml
 # ${CK8S_CONFIG_PATH}/sc-config.yaml and ${CK8S_CONFIG_PATH}/wc-config.yaml
 global:
-  baseDomain: "set-me"  # set to <enovironment_name>.$DOMAIN
-  opsDomain: "set-me"  # set to ops.<environment_name>.$DOMAIN
+  baseDomain: "set-me"  # set to $CK8S_ENVIRONMENT_NAME.$DOMAIN
+  opsDomain: "set-me"  # set to ops.$CK8S_ENVIRONMENT_NAME.$DOMAIN
   issuer: letsencrypt-prod
 objectStorage:
   type: "s3"
@@ -301,8 +302,8 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
 done
 
 # Remove DNS records
-exo dns remove $DOMAIN *.ops.$SERVICE_CLUSTER
-exo dns remove $DOMAIN *.$SERVICE_CLUSTER
+exo dns remove $DOMAIN *.ops.$CK8S_ENVIRONMENT_NAME
+exo dns remove $DOMAIN *.$CK8S_ENVIRONMENT_NAME
 ```
 
 ## Further Reading
