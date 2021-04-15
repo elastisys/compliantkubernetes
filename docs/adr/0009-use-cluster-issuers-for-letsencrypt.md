@@ -27,7 +27,7 @@ There are two ways to configure Let's Encrypt as an issuers for cert-manager: [I
 
 ## Decision Outcome
 
-Chosen option: "Use ClusterIssuer in both service cluster and workload cluster(s)", because it reduces fragility, clarifies responsibilities, makes it easy to get started securely.
+Chosen option: "Use ClusterIssuers in the service cluster; optionally enable ClusterIssuers in the workload cluster(s)", because it reduces fragility, clarifies responsibilities, makes it easy to get started securely.
 
 Each cluster is configured with an optional ClusterIssuer called `letsencrypt-prod` for LetsEncrypt production and `letsencrypt-staging` for LetsEncrypt staging. The email address for the ClusterIssuers is configured by the operator.
 
