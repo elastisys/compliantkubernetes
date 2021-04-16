@@ -217,6 +217,36 @@ This will make sure that the databases are not created.
     exit
     ```
 
+You will then create a kubernetes job that will restore InfluxDB.
+Run the following from root of `comliantkubernetes-apps`.:
+
+```bash
+export INFLUX_BACKUP_NAME="<name of your backup>"
+export INFLUX_ADDR="influxdb.influxdb-prometheus.svc:8088"
+export S3_INFLUX_BUCKET_NAME=$(yq read "${CK8S_CONFIG_PATH}/sc-config.yaml" objectStorage.buckets.influxDB)
+export S3_REGION_ENDPOINT=$(yq read "${CK8S_CONFIG_PATH}/sc-config.yaml" objectStorage.s3.regionEndpoint)
+export S3_REGION=$(yq read "${CK8S_CONFIG_PATH}/sc-config.yaml" objectStorage.s3.region)
+export S3_ACCESS_KEY=$(sops -d "${CK8S_CONFIG_PATH}/secrets.yaml" | yq read - objectStorage.s3.accessKey)
+export S3_SECRET_KEY=$(sops -d "${CK8S_CONFIG_PATH}/secrets.yaml" | yq read - objectStorage.s3.secretKey)
+envsubst < manifests/restore/restore-influx.yaml | ./bin/ck8s ops kubectl sc apply -n influxdb-prometheus -f -
+```
+
+Then make sure that out influxDB users have the correct permissions (this assumes you are using default usernames for the prometheus writers):
+
+```bash
+# Enter the InfluxDB container
+./bin/ck8s ops kubectl sc exec -n influxdb-prometheus influxdb-0 -it -- bash
+# Start the influx CLI
+influx -username ${INFLUXDB_ADMIN_USER} -password ${INFLUXDB_ADMIN_PASSWORD} -precision rfc3339
+# Update permissions
+GRANT WRITE ON service_cluster TO scWriter
+GRANT WRITE ON workload_cluster TO wcWriter
+# Exit the influx CLI
+exit
+# Exit the InfluxDB container
+exit
+```
+
 ## Velero
 
 These instructions make use of the Velero CLI, you can download it here: <https://github.com/vmware-tanzu/velero/releases/tag/v1.5.3> (version 1.5.3).
