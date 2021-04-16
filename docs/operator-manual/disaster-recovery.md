@@ -115,7 +115,8 @@ curl -kL -u "${user}:${password}" "${es_url}/_snapshot/${snapshot_repo}/_all?pre
 You usually select the latest snapshot containing the indices you want to restore.
 Restore one or multiple indices from a snapshot
 
-!!!note You cannot restore a write index (the latest index) if you already have a write index connected to the same index alias (which will happen if you have started to receive logs).
+!!!note
+    You cannot restore a write index (the latest index) if you already have a write index connected to the same index alias (which will happen if you have started to receive logs).
 
 ```bash
 snapshot_name=<Snapshot name from previous step>
@@ -168,7 +169,8 @@ indices="kubernetes-*,kubeaudit-*,other-*"
 
 ### Backup
 
-Harbor is set up to store backups of the database in an S3 bucket (note that this does not include the actual images, since those are already stored in S3 by default). There is a CronJob called `harbor-backup-cronjob` in the cluster that is taking a database dump and uploading it to a S3 bucket.
+Harbor is set up to store backups of the database in an S3 bucket (note that this does not include the actual images, since those are already stored in S3 by default).
+There is a CronJob called `harbor-backup-cronjob` in the cluster that is taking a database dump and uploading it to a S3 bucket.
 
 To take a backup on-demand, execute
 
@@ -184,7 +186,8 @@ Instructions for how to restore Harbor can be found in `compliantkubernetes-apps
 
 ### Backup
 
-InfluxDB is set up to store backups of the data in an S3 bucket. There is a CronJob called `influxdb-backup` in the cluster that is invoking influxDB's backup function and uploading the backup to a S3 bucket.
+InfluxDB is set up to store backups of the data in an S3 bucket.
+There is a CronJob called `influxdb-backup` in the cluster that is invoking influxDB's backup function and uploading the backup to a S3 bucket.
 
 To take a backup on-demand, execute
 
@@ -194,37 +197,51 @@ To take a backup on-demand, execute
 
 ### Restore
 
-When restoring the data, InfluxDB must not already contain the databases that are going to be restored. This will make sure that the databases are not created.
+When restoring the data, InfluxDB must not already contain the databases that are going to be restored.
+This will make sure that the databases are not created.
+
 - If you are planning on restoring InfluxDB on a new installation, then before installing InfluxDB set `influxDB.createdb: false` in `sc-config.yaml`.
 - If you are restoring to an existing InfluxDB instance, then first drop the databases:
 
-  ```bash
-  # Enter the InfluxDB container
-  ./bin/ck8s ops kubectl sc exec -n influxdb-prometheus influxdb-0 -it -- bash
-  # Start the influx CLI
-  influx -username ${INFLUXDB_ADMIN_USER} -password ${INFLUXDB_ADMIN_PASSWORD} -precision rfc3339
-  # Drop the databases
-  DROP DATABASE service_cluster
-  DROP DATABASE workload_cluster
-  # Exit the influx CLI
-  exit
-  # Exit the InfluxDB container
-  exit
-  ```
+    ```bash
+    # Enter the InfluxDB container
+    ./bin/ck8s ops kubectl sc exec -n influxdb-prometheus influxdb-0 -it -- bash
+    # Start the influx CLI
+    influx -username ${INFLUXDB_ADMIN_USER} -password ${INFLUXDB_ADMIN_PASSWORD} -precision rfc3339
+    # Drop the databases
+    DROP DATABASE service_cluster
+    DROP DATABASE workload_cluster
+    # Exit the influx CLI
+    exit
+    # Exit the InfluxDB container
+    exit
+    ```
 
 ## Velero
 
-These instructions make use of the Velero CLI, you can download it here: https://github.com/vmware-tanzu/velero/releases/tag/v1.5.3 (version 1.5.3). The CLI needs the env variable `KUBECONFIG` set to the path of a decrypted kubeconfig.
-Read more about Velero here: https://compliantkubernetes.io/user-guide/backup/
+These instructions make use of the Velero CLI, you can download it here: <https://github.com/vmware-tanzu/velero/releases/tag/v1.5.3> (version 1.5.3).
+The CLI needs the env variable `KUBECONFIG` set to the path of a decrypted kubeconfig.
+Read more about Velero here: <https://compliantkubernetes.io/user-guide/backup/>
+
+!!!note
+    This documentation uses the Velero CLI, as opposed to Velero CRDs, since that is what is encouraged by upstream documentation.
 
 ### Backup
 
-Velero is set up to take daily backups and store them in an S3 bucket. The daily backup will not take backups of everything in a kubernetes cluster, it will instead look for certain labels and annotations. Read more about those labels and annotations here: https://compliantkubernetes.io/user-guide/backup/#backing-up
+Velero is set up to take daily backups and store them in an S3 bucket.
+The daily backup will not take backups of everything in a kubernetes cluster, it will instead look for certain labels and annotations.
+Read more about those labels and annotations here: <https://compliantkubernetes.io/user-guide/backup/#backing-up>
 
-It is also possible to take on-demand backups. Then you can freely chose what to backup and do not have to base it on the same labels. A basic example with the Velero CLI would be `velero backup create manual-backup`, which would take a backup of all kubernetes resources (though not the data in the volumes by default). Check which arguments you can use by running `velero backup create --help`.
+It is also possible to take on-demand backups.
+Then you can freely chose what to backup and do not have to base it on the same labels.
+A basic example with the Velero CLI would be `velero backup create manual-backup`, which would take a backup of all kubernetes resources (though not the data in the volumes by default).
+Check which arguments you can use by running `velero backup create --help`.
+
 ### Restore
 
-Restoring from a backup with Velero is meant to be a type of disaster recovery. **Velero will not overwrite existing Resources when restoring.** As such, if you want to restore the state of a Resource that is still running, the Resource must be deleted first.
+Restoring from a backup with Velero is meant to be a type of disaster recovery.
+**Velero will not overwrite existing Resources when restoring.**
+As such, if you want to restore the state of a Resource that is still running, the Resource must be deleted first.
 
 To restore the state from the latest daily backup, run:
 
@@ -232,9 +249,16 @@ To restore the state from the latest daily backup, run:
 velero restore create --from-schedule velero-daily-backup --wait
 ```
 
-This command will wait until the restore has finished. You can also do partial restorations, e.g. just restoring one namespace, by using different arguments. You can also restore from manual backups by using the flag `--from-backup <backup-name>`
+This command will wait until the restore has finished.
+You can also do partial restorations, e.g. just restoring one namespace, by using different arguments.
+You can also restore from manual backups by using the flag `--from-backup <backup-name>`
 
-Persistent Volumes are only restored if a Pod with the backup annotation is restored. Multiple Pods can have an annotation for the same Persistent Volume. When restoring the Persistent Volume it will overwrite any existing files with the same names as the files to be restored. Any other files will be left as they were before the restoration started. So a restore will not wipe the volume clean and then restore. If a clean wipe is the desired behavior, then the volume must be wiped manually before restoring.
+Persistent Volumes are only restored if a Pod with the backup annotation is restored.
+Multiple Pods can have an annotation for the same Persistent Volume.
+When restoring the Persistent Volume it will overwrite any existing files with the same names as the files to be restored.
+Any other files will be left as they were before the restoration started.
+So a restore will not wipe the volume clean and then restore.
+If a clean wipe is the desired behavior, then the volume must be wiped manually before restoring.
 
 ## Grafana
 
@@ -242,24 +266,27 @@ This refers to the user Grafana, not the ops Grafana.
 
 ### Backup
 
-Grafana is set up to be included in the daily Velero backup. We then include the Grafana deployment, pod, and PVC (including the data). Manual backups can be taken using velero (include the same resources).
+Grafana is set up to be included in the daily Velero backup.
+We then include the Grafana deployment, pod, and PVC (including the data).
+Manual backups can be taken using velero (include the same resources).
 
 ### Restore
 
 To restore the Grafana backup you must:
+
 - Have Grafana installed
 - Delete the grafana deployment, PVC and PV
 
-  ```bash
-  kubectl delete deploy -n monitoring user-grafana
-  kubectl delete pvc -n monitoring user-grafana
-  ```
+    ```bash
+    kubectl delete deploy -n monitoring user-grafana
+    kubectl delete pvc -n monitoring user-grafana
+    ```
 
 - Restore the velero backup
 
-  ```bash
-  velero restore create --from-schedule velero-daily-backup --wait
-  ```
+    ```bash
+    velero restore create --from-schedule velero-daily-backup --wait
+    ```
 
 You can also restore Grafana by setting `restore.velero` in your `{CK8S_CONFIG_PATH}/sc-config.yaml` to `true`, and then reapply the service cluster apps:
 
@@ -267,4 +294,5 @@ You can also restore Grafana by setting `restore.velero` in your `{CK8S_CONFIG_P
 .bin/ck8s apply sc
 ```
 
- This will go through the same steps as above. By default, the latest daily backup is chosen; to restore from a different backup, set `restore.veleroBackupName` to the desired backup name.
+ This will go through the same steps as above.
+ By default, the latest daily backup is chosen; to restore from a different backup, set `restore.veleroBackupName` to the desired backup name.
