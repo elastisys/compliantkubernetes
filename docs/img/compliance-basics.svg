@@ -19,13 +19,13 @@
 </g>
 <g id="clust3" class="cluster">
 <title>cluster_isms</title>
-<polygon fill="none" stroke="black" points="464,-768 464,-850 759,-850 759,-768 464,-768"/>
-<text text-anchor="middle" x="611.5" y="-830" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Information Security Standards</text>
+<polygon fill="none" stroke="black" points="464,-768 464,-850 755,-850 755,-768 464,-768"/>
+<text text-anchor="middle" x="609.5" y="-830" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Information Security Standards</text>
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_policies</title>
 <polygon fill="none" stroke="black" points="8,-516 8,-742 906,-742 906,-516 8,-516"/>
-<text text-anchor="middle" x="51" y="-722" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Policies</text>
+<text text-anchor="middle" x="50.5" y="-722" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Policies</text>
 </g>
 <g id="clust8" class="cluster">
 <title>cluster_implementation</title>
@@ -40,7 +40,7 @@
 <g id="clust19" class="cluster">
 <title>cluster_provider</title>
 <polygon fill="none" stroke="black" points="8,-8 8,-144 906,-144 906,-8 8,-8"/>
-<text text-anchor="middle" x="129" y="-124" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Compliant Cloud Provider</text>
+<text text-anchor="middle" x="130" y="-124" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Compliant Cloud Provider</text>
 </g>
 <!-- title -->
 <g id="node1" class="node">
@@ -138,16 +138,16 @@
 <g id="node7" class="node">
 <title>iso27k</title>
 <g id="a_node7"><a xlink:href="https://www.isms.online/iso-27001/" xlink:title="ISO 27001" target="_blank">
-<path fill="none" stroke="black" d="M720,-812C720,-812 664,-812 664,-812 658,-812 652,-806 652,-800 652,-800 652,-788 652,-788 652,-782 658,-776 664,-776 664,-776 720,-776 720,-776 726,-776 732,-782 732,-788 732,-788 732,-800 732,-800 732,-806 726,-812 720,-812"/>
-<text text-anchor="middle" x="692" y="-790.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">ISO 27001</text>
+<path fill="none" stroke="black" d="M722,-812C722,-812 664,-812 664,-812 658,-812 652,-806 652,-800 652,-800 652,-788 652,-788 652,-782 658,-776 664,-776 664,-776 722,-776 722,-776 728,-776 734,-782 734,-788 734,-788 734,-800 734,-800 734,-806 728,-812 722,-812"/>
+<text text-anchor="middle" x="693" y="-790.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">ISO 27001</text>
 </a>
 </g>
 </g>
 <!-- iso27k&#45;&gt;Controls -->
 <g id="edge6" class="edge">
 <title>iso27k&#45;&gt;Controls</title>
-<path fill="none" stroke="black" d="M659.2,-775.89C653.82,-773.19 648.27,-770.47 643,-768 578.08,-737.57 501.34,-705.42 454.69,-686.29"/>
-<polygon fill="black" stroke="black" points="455.79,-682.96 445.21,-682.41 453.14,-689.44 455.79,-682.96"/>
+<path fill="none" stroke="black" d="M659.51,-775.92C654.02,-773.21 648.37,-770.49 643,-768 577.96,-737.84 501.25,-705.61 454.64,-686.39"/>
+<polygon fill="black" stroke="black" points="455.75,-683.06 445.17,-682.5 453.08,-689.54 455.75,-683.06"/>
 </g>
 <!-- soc2 -->
 <g id="node8" class="node">
@@ -621,26 +621,27 @@
 </g>
 </g>
 <!-- exoscale&#45;&gt;gcp -->
-<!-- openstack -->
-<g id="node47" class="node">
-<title>openstack</title>
-<image xlink:href="logos/cloud-providers/openstack.svg" width="72px" height="70.4432px" preserveAspectRatio="xMinYMin meet" x="466" y="-106"/>
-<text text-anchor="middle" x="502" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">OpenStack</text>
-</g>
-<!-- gcp&#45;&gt;openstack -->
 <!-- ovh -->
 <g id="node45" class="node">
 <title>ovh</title>
-<image xlink:href="logos/cloud-providers/ovh.svg" width="72px" height="42.7826px" preserveAspectRatio="xMinYMin meet" x="556" y="-106"/>
-<text text-anchor="middle" x="592" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">OVHcloud</text>
+<image xlink:href="logos/cloud-providers/ovh.svg" width="72px" height="42.7826px" preserveAspectRatio="xMinYMin meet" x="466" y="-106"/>
+<text text-anchor="middle" x="502" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">OVHcloud</text>
 </g>
+<!-- gcp&#45;&gt;ovh -->
 <!-- safespring -->
 <g id="node46" class="node">
 <title>safespring</title>
-<image xlink:href="logos/cloud-providers/safespring.svg" width="72px" height="55.218px" preserveAspectRatio="xMinYMin meet" x="646" y="-106"/>
-<text text-anchor="middle" x="682" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">SafeSpring</text>
+<image xlink:href="logos/cloud-providers/safespring.svg" width="72px" height="55.218px" preserveAspectRatio="xMinYMin meet" x="556" y="-106"/>
+<text text-anchor="middle" x="592" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">SafeSpring</text>
 </g>
 <!-- ovh&#45;&gt;safespring -->
+<!-- upcloud -->
+<g id="node47" class="node">
+<title>upcloud</title>
+<image xlink:href="logos/cloud-providers/upcloud.svg" width="72px" height="29.1892px" preserveAspectRatio="xMinYMin meet" x="646" y="-106"/>
+<text text-anchor="middle" x="682" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">UpCloud</text>
+</g>
+<!-- safespring&#45;&gt;upcloud -->
 <!-- byovm -->
 <g id="node48" class="node">
 <title>byovm</title>
@@ -649,8 +650,7 @@
 <text text-anchor="middle" x="772" y="-39.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">Your Own</text>
 <text text-anchor="middle" x="772" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">VMs</text>
 </g>
-<!-- safespring&#45;&gt;byovm -->
-<!-- openstack&#45;&gt;ovh -->
+<!-- upcloud&#45;&gt;byovm -->
 <!-- byovm&#45;&gt;byom -->
 </g>
 </svg>
