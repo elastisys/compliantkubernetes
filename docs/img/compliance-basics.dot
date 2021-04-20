@@ -1,5 +1,8 @@
 digraph compliance_basics {
-    graph [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"]
+    graph [
+        fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"
+        style=rounded
+    ]
     node  [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"]
     edge  [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"]
 
@@ -14,39 +17,31 @@ digraph compliance_basics {
             label="compliantkubernetes.io"
             fontcolor="#4651b4"
             URL="https://compliantkubernetes.io"
-            width=11
         ]
     }
 
     node[target="_blank"]  // Open links in new tab
-    subgraph cluster_regulations {
-        label="Regulations"
+    subgraph cluster_personaldata_regulations {
+        label="Personal Data Regulations"
 
-        node[width=1, shape=box, style=rounded]
+        node[width=2.5, shape=box, style=rounded]
 
-        HIPAA[URL="https://www.cdc.gov/phlp/publications/topic/hipaa.html"]
-        PDL[URL="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355"]
-        GDPR[URL="https://gdpr.eu/"]
         CCPA[URL="https://oag.ca.gov/privacy/ccpa"]
-        FFFS[URL="https://www.fi.se/en/our-registers/search-fffs/2014/20145/"]
+        GDPR[URL="https://gdpr.eu/"]
+
+        // special node for alignment
+        regulation2[shape=none,label="",width=0]
     }
 
-    subgraph cluster_isms {
-        label="Information Security Standards"
+    subgraph cluster_healthtech_regulations {
+        label="Healthcare Regulations"
 
-        node[width=1, shape=box, style=rounded]
+        node[width=2.5, shape=box, style=rounded]
 
-        iso27k[
-            label="ISO 27001"
-            URL="https://www.isms.online/iso-27001/"
-        ]
-        soc2[
-            label="SOC 2"
-            URL="https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html"
-        ]
-        pcidss[
-            label="PCI DSS"
-            URL="https://www.pcisecuritystandards.org/"
+        HIPAA[URL="https://www.cdc.gov/phlp/publications/topic/hipaa.html"]
+        PDL[
+            label="Patient data law\n(HSLF-FS 2016:40)"
+            URL="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355"
         ]
     }
 
@@ -56,8 +51,12 @@ digraph compliance_basics {
 
         node[width=1, shape=circle, fixedsize=true]
 
-        { HIPAA, PDL, GDPR, CCPA, FFFS } -> Controls
-        { iso27k, soc2, pcidss } -> Controls
+        Controls[
+            label="ISO 27001\nControls"
+            width=1.4
+        ]
+
+        { HIPAA, PDL, GDPR, CCPA } -> Controls
 
         node[
             width=1
@@ -295,6 +294,6 @@ digraph compliance_basics {
 
     // ALIGNMENT
     edge[weight=1000,style="invis"]
-    FFFS -> controls2 -> access -> dex -> prometheus -> aws
-    title -> HIPAA
+    regulation2 -> controls2 -> access -> dex -> prometheus -> aws
+    title -> CCPA
 }
