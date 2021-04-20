@@ -646,9 +646,9 @@
 <g id="node48" class="node">
 <title>byovm</title>
 <polygon fill="none" stroke="black" points="808,-106 736,-106 736,-16 808,-16 808,-106"/>
-<text text-anchor="middle" x="772" y="-57.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">Bring</text>
-<text text-anchor="middle" x="772" y="-39.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">Your Own</text>
-<text text-anchor="middle" x="772" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">VMs</text>
+<text text-anchor="middle" x="772" y="-49.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">On&#45;prem</text>
+<text text-anchor="middle" x="772" y="-34.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">VMware</text>
+<text text-anchor="middle" x="772" y="-19.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">OpenStack</text>
 </g>
 <!-- upcloud&#45;&gt;byovm -->
 <!-- byovm&#45;&gt;byom -->
