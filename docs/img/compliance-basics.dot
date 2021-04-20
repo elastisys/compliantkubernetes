@@ -271,9 +271,9 @@ digraph compliance_basics {
             label="SafeSpring"
             image="logos/cloud-providers/safespring.svg"
         ]
-        openstack[
-            label="OpenStack"
-            image="logos/cloud-providers/openstack.svg"
+        upcloud[
+            label="UpCloud"
+            image="logos/cloud-providers/upcloud.svg"
         ]
         byovm[label="Bring\nYour Own\nVMs",shape=box]
         byom[label="Bring\nYour Own\nMetal",shape=box]
@@ -283,7 +283,7 @@ digraph compliance_basics {
             edge[style=invis]
             rank=same
             rankdir=LR
-            aws -> azure -> citycloud -> exoscale -> gcp -> openstack -> ovh -> safespring -> byovm -> byom
+            aws -> azure -> citycloud -> exoscale -> gcp -> ovh -> safespring -> upcloud -> byovm -> byom
         }
     }
 
