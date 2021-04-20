@@ -275,7 +275,11 @@ digraph compliance_basics {
             label="UpCloud"
             image="logos/cloud-providers/upcloud.svg"
         ]
-        byovm[label="Bring\nYour Own\nVMs",shape=box]
+        byovm[
+            label="On-prem\nVMware\nOpenStack"
+            shape=box
+            fontsize=14
+        ]
         byom[label="Bring\nYour Own\nMetal",shape=box]
 
         {
