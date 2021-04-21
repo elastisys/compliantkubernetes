@@ -76,6 +76,7 @@ nav:
     - 'Breaking the Glass': 'operator-manual/break-glass.md'
   - 'Developer Guide':
     - 'Tech Radar': 'developer-guide/tech-radar/index.html'
+    - 'Contributor guide': 'developer-guide/contributor-guide.md'
     - 'Architectural Decision Log': 'adr/index.md'
   - 'FAQ': 'faq.md'
   - 'Roadmap': 'roadmap.md'
