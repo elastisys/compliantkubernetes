@@ -1,6 +1,6 @@
 # Ingress
 
-Compliant Kubernetes (CK8S) uses the Nginx Ingress controller to route external traffic to the correct Service inside the cluster. CK8S can configure the Ingress controller in two different ways depending on the underlying infrastructure.
+Compliant Kubernetes (CK8s) uses the Nginx Ingress controller to route external traffic to the correct Service inside the cluster. CK8s can configure the Ingress controller in two different ways depending on the underlying infrastructure.
 
 ## Using a Service of type LoadBalancer
 
@@ -9,7 +9,7 @@ controller can be exposed with a Service of type LoadBalancer. This will create 
 provider with an external ip-address. Any dns records should be pointed to the ip-address of the load balancer.
 
 !!!note
-    This is only currently supported in CK8S for AWS. It is however possible to configure this for Azure and Google cloud as well
+    This is only currently supported in CK8s for AWS. It is however possible to configure this for Azure and Google cloud as well
     but it's not done by default
 
 ## Using the host network

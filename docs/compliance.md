@@ -20,7 +20,7 @@ Organizations in certain sectors, such as BioTech, FinTech, MedTech, and those p
 * Any organization dealing with personal data is scrutinized by the Swedish Data Protection Authority (Datainspektionen) and needs to comply with GDPR.
 * Any organization handling patient data needs to comply with HIPAA in the US or Patientdatalagen (PDL) in Sweden.
 
-Such regulation is not only aspirational, but is actually checked as often as yearly by an external auditor. If an organization is found to be non-compliant it may pay heavy fines or even lose is license to operate.
+Such regulation is not only aspirational, but is actually checked as often as yearly by an external auditor. If an organization is found to be non-compliant it may pay heavy fines or even lose its license to operate.
 
 ## Compliance: The Engineering Perspective
 
@@ -28,6 +28,6 @@ Translating legalese into code involves several steps. First a Compliance Office
 
 The resulting policies need to be interpreted and implemented by each department. Some of these can be supported by, or entirely implemented by, technology. Compliant Kubernetes includes software to do just that, and thus, **Compliant Kubernetes addresses the needs of the infrastructure team.**
 
-In essence, Compliant Kubernetes are carefully configured Kubernetes clusters together with other open-source components. It reduces compliance burden by allowing an organization to focus on making their processes and application compliant, knowing that the underlying platform is compliant.
+In essence, Compliant Kubernetes are carefully configured Kubernetes clusters together with other open-source components. They reduce compliance burden by allowing an organization to focus on making their processes and application compliant, knowing that the underlying platform is compliant.
 
 As far as getting certification, a key aspect is the ability to point to documentation that clearly states that your tech stack fulfils all stipulated requirements. By relying on Compliant Kubernetes, the majority of this work is already done for you.

@@ -6,13 +6,13 @@ Prometheus is an open-source solution for monitoring and alerting. It works by c
 
 Grafana is the most widely used technology for visualization of metrics and analytics. It supports a multitude of data sources and it is easy to create custom dashboards. Grafana is created by Grafana Labs, a CNCF Silver Member.
 
-##Compliance needs
+## Compliance needs
 The requirements to comply with ISO 27001 are stated in ISO [27001:2013](https://www.isms.online/iso-27001/) The annexes that mostly concerns monitoring and alerting are [Annex 12](https://www.isms.online/iso-27001/annex-a-12-operations-security/), article A.12.1.3 "capacity management", and [Annex 16](https://www.isms.online/iso-27001/annex-a-16-information-security-incident-management/) which deals with incident management.
 
 ### Capacity management
 Article A.12.1.3 states that "The use of resources must be monitored, tuned and projections made of future capacity requirements to ensure the required system performance to meet the business objectives."
 
-* Promethus and Grafana helps with this as the resource usage, such as storage capacity, cpu, and network usage can be monitored. Using visualization in Grafana, projections can be made as to future capacity requirements.
+* Promethus and Grafana helps with this as the resource usage, such as storage capacity, CPU, and network usage can be monitored. Using visualization in Grafana, projections can be made as to future capacity requirements.
 
 The article goes on to say that "Capacity management also needs to be: Pro-active – for example, using capacity considerations as part of change management; Re-active – e.g. triggers and alerts for when capacity usage is reaching a critical point so that timely increases, temporary or permanent can be made."
 
@@ -29,7 +29,7 @@ Prometheus and Grafana can help with this by making it easier to:
 
 ## Prometheus and Grafana in Compliant Kubernetes
 
-###Prometheus
+### Prometheus
 Compliant Kubernetes installs the prometheus-operator by default. The Prometheus Operator for Kubernetes provides easy monitoring definitions for Kubernetes services and deployment and management of Prometheus instances as it can create/configure/manage Prometheus clusters atop Kubernetes. The following CRDs are installed by default.
 
 | crd | apigroup | kind | used by | description |
@@ -41,15 +41,15 @@ Compliant Kubernetes installs the prometheus-operator by default. The Prometheus
 | servicemonitors | monitoring.coreos.com | ServiceMonitor | customer-rbac, dex, grafana, kibana, elastisearch, influxdb | |
 | thanosrulers | monitoring.coreos.com | ThanosRuler | | |
 
-####Accessing Prometheus
+#### Accessing Prometheus
 The web interface is not exposed by default in Compliant Kubernetes. In order to access it, the most straight-forward way is to use port forwarding via the [Kubernetes API](../kubernetes-api).
 
 	kubectl -- -n monitoring port-forward prometheus-prometheus-operator-prometheus-0 9090:9090
 
 Depending on your Compliant Kubernetes settings, access to the Prometheus server might have been disabled by the operator.
 
-###Grafana
-Grafana can be accessed at the endpoint provided by the compliant kubernetes install scripts. If you have configured dex you can login with a connected account.
+### Grafana
+Grafana can be accessed at the endpoint provided by the Compliant Kubernetes install scripts. If you have configured dex you can login with a connected account.
 
 Compliant Kubernetes deploys Grafana with a selection of dashboards by default. Dashboards are accessed by clicking the Dashboard icon (for squares) at the lefthand side of the grafana window and selecting Manage. Some examples of useful dashboards are listed below.
 
