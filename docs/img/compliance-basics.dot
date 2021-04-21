@@ -24,7 +24,7 @@ digraph compliance_basics {
     subgraph cluster_personaldata_regulations {
         label="Personal Data Regulations"
 
-        node[width=2.5, shape=box, style=rounded]
+        node[width=2.2, shape=box, style=rounded]
 
         CCPA[URL="https://oag.ca.gov/privacy/ccpa"]
         GDPR[URL="https://gdpr.eu/"]
@@ -36,7 +36,7 @@ digraph compliance_basics {
     subgraph cluster_healthtech_regulations {
         label="Healthcare Regulations"
 
-        node[width=2.5, shape=box, style=rounded]
+        node[width=2.2, shape=box, style=rounded]
 
         HIPAA[URL="https://www.cdc.gov/phlp/publications/topic/hipaa.html"]
         PDL[
@@ -102,10 +102,6 @@ digraph compliance_basics {
             capacity[
                 label="Capacity\nmanagement"
                 fontsize=11
-            ]
-            supplier[
-                label="Supplier\nmanagement"
-                fontsize=12
             ]
         }
 
@@ -218,82 +214,8 @@ digraph compliance_basics {
         kubernetes->auditNA7
     }
 
-    node[target="_top"]  // Open links in same tab
-    subgraph cluster_provider {
-        label="Compliant Cloud Provider"
-
-        node[
-            shape=none
-            label=""
-            width=1
-            height=1.25
-            labelloc=b
-            fixedsize=true
-            imagescale=true
-            imagepos=tc
-            fontsize=16
-        ]
-
-        aws[
-            label="AWS"
-            image="logos/cloud-providers/aws.svg"
-            URL="/operator-manual/aws/"
-            fontcolor="#4651b4"
-        ]
-        azure[
-            label="Azure"
-            image="logos/cloud-providers/azure.svg"
-            URL="/operator-manual/azure/"
-            fontcolor="#4651b4"
-        ]
-        citycloud[
-            label="CityCloud"
-            image="logos/cloud-providers/citycloud.png"
-        ]
-        exoscale[
-            label="Exoscale"
-            image="logos/cloud-providers/exoscale.svg"
-            URL="/operator-manual/exoscale/"
-            fontcolor="#4651b4"
-        ]
-        gcp[
-            label="GCP"
-            image="logos/cloud-providers/gcp.svg"
-            URL="/operator-manual/gcp/"
-            fontcolor="#4651b4"
-        ]
-        ovh[
-            label="OVHcloud"
-            image="logos/cloud-providers/ovh.svg"
-        ]
-        safespring[
-            label="SafeSpring"
-            image="logos/cloud-providers/safespring.svg"
-        ]
-        upcloud[
-            label="UpCloud"
-            image="logos/cloud-providers/upcloud.svg"
-        ]
-        byovm[
-            label="On-prem\nVMware\nOpenStack"
-            shape=box
-            fontsize=14
-        ]
-        byom[label="Bring\nYour Own\nMetal",shape=box]
-
-        {
-            // ORDERING
-            edge[style=invis]
-            rank=same
-            rankdir=LR
-            aws -> azure -> citycloud -> exoscale -> gcp -> ovh -> safespring -> upcloud -> byovm -> byom
-        }
-    }
-
-    supplier -> byom
-
     // ALIGNMENT
     edge[weight=1000,style="invis"]
-    regulation2 -> controls2 -> access -> dex -> prometheus -> aws
+    regulation2 -> controls2 -> access -> dex -> prometheus
     title -> CCPA
 }
