@@ -20,7 +20,7 @@
 
 ![Cryptography Dashboard](img/cryptography.png)
 
-The Compliant Kubernetes Cryptography Dashboard allows to quickly audit the status of cryptography. It shows, amongst others, the public Internet endpoints (Ingresses) that are encrypted and the expiry time. Default Compliant Kubernetes configurations automatically review certificates before expiry.
+The Compliant Kubernetes Cryptography Dashboard allows to quickly audit the status of cryptography. It shows, amongst others, the public Internet endpoints (Ingresses) that are encrypted and the expiry time. Default Compliant Kubernetes configurations automatically renew certificates before expiry.
 
 ## Handling Non-Compliance
 

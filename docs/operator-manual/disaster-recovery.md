@@ -25,7 +25,7 @@ Safespring S3  | Yes
 
 ### Backup
 
-Elasticsearch is set up to store backups in an S3 bucket. There is a CronJob called `elasticsearch-backup` in the cluster that is invoking the snapshot process in elasticsearch.
+Elasticsearch is set up to store backups in an S3 bucket. There is a CronJob called `elasticsearch-backup` in the cluster that is invoking the snapshot process in Elasticsearch.
 
 To take a snapshot on-demand, execute
 
@@ -33,12 +33,11 @@ To take a snapshot on-demand, execute
 ./bin/ck8s ops kubectl sc -n elastic-system create job --from=cronjob/elasticsearch-backup <name-of-job>
 ```
 
-
 ### Restore
 
 Set the following variables
 
-- `user` - Eelasticsearch user with permissions to manage snapshots, usually `snapshotter`
+- `user` - Elasticsearch user with permissions to manage snapshots, usually `snapshotter`
 - `password` - password for the above user
 - `es_url` - url to Elasticsearch
 
