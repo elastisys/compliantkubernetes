@@ -46,7 +46,6 @@ nav:
     - 'Kubernetes API': 'user-guide/kubernetes-api.md'
     - 'Elasticsearch/Kibana': 'user-guide/elasticsearch.md'
     - 'Prometheus/Grafana': 'user-guide/prometheus.md'
-    - 'Dashboard': 'user-guide/dashboard.md'
     - 'Backups': 'user-guide/backup.md'
   - 'CISO Guide':
     - 'Overview': 'ciso-guide/index.md'
