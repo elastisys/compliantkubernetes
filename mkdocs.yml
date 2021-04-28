@@ -70,6 +70,7 @@ nav:
     - 'QA': 'operator-manual/qa.md'
     - 'Configuring a Cluster':
       - 'Overview' : 'operator-manual/overview.md'
+      - 'Sizing' : 'operator-manual/cluster-sizing.md'
       - 'Ingress': 'operator-manual/ingress.md'
     - 'Disaster Recovery': 'operator-manual/disaster-recovery.md'
     - 'Breaking the Glass': 'operator-manual/break-glass.md'
