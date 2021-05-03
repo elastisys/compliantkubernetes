@@ -52,6 +52,188 @@ done
 !!!note
     You really *must* edit the values in these files.
     There is no way to set sane defaults for what flavor to use, what availability zones or networks are available across providers.
+    In the section below some guidance and samples are provided but remember that they might be useless to you depending on your needs and setup.
+
+### Infrastructure guidance
+
+We recommend you to have at least three worker nodes with 4 cores and 8 GB memory each, and we recommend you to have at least 2 cores and 4 GB for your master nodes.
+
+Below is example `cluster.tfvars` for a few select openstack providers.
+The examples are copy-pastable, but you might want to change `cluster_name` and `network_name` (if neutron is used!).
+
+=== "Citycloud Kna1"
+
+    ``` hcl
+    # your Kubernetes cluster name here
+    cluster_name = "your-cluster-name"
+
+    # image to use for bastion, masters, standalone etcd instances, and nodes
+    image = "Ubuntu 20.04 Focal Fossa 20200423"
+
+    # 0|1 bastion nodes
+    number_of_bastions = 0
+
+    # standalone etcds
+    number_of_etcd = 0
+
+    # masters
+    number_of_k8s_masters = 1
+    number_of_k8s_masters_no_etcd = 0
+    number_of_k8s_masters_no_floating_ip = 0
+    number_of_k8s_masters_no_floating_ip_no_etcd = 0
+    flavor_k8s_master = "96c7903e-32f0-421d-b6a2-a45c97b15665"
+
+    # nodes
+    number_of_k8s_nodes = 3
+    number_of_k8s_nodes_no_floating_ip = 0
+    flavor_k8s_node = "572a3b2e-6329-4053-b872-aecb1e70d8a6"
+
+    # networking
+    # ssh access to nodes
+    k8s_allowed_remote_ips = ["0.0.0.0/0"]
+    worker_allowed_ports = [
+      { # Node ports
+        "protocol"         = "tcp"
+        "port_range_min"   = 30000
+        "port_range_max"   = 32767
+        "remote_ip_prefix" = "0.0.0.0/0"
+      },
+      { # HTTP
+        "protocol"         = "tcp"
+        "port_range_min"   = 80
+        "port_range_max"   = 80
+        "remote_ip_prefix" = "0.0.0.0/0"
+      },
+      { # HTTPS
+        "protocol"         = "tcp"
+        "port_range_min"   = 443
+        "port_range_max"   = 443
+        "remote_ip_prefix" = "0.0.0.0/0"
+      }
+    ]
+    network_name = "name-of-your-network"
+    external_net = "fba95253-5543-4078-b793-e2de58c31378"
+    floatingip_pool = "ext-net"
+    use_access_ip = 0
+    ```
+
+=== "Safespring sto1 (old)"
+
+    ``` hcl
+    # your Kubernetes cluster name here
+    cluster_name = "your-cluster-name"
+
+    # list of availability zones available in your OpenStack cluster
+    az_list = ["se-east-1"]
+    az_list_node = ["se-east-1"]
+
+    # image to use for bastion, masters, standalone etcd instances, and nodes
+    image = "ubuntu-20.40-server-cloudimg-amd64-20200423"
+
+    # 0|1 bastion nodes
+    number_of_bastions = 0
+
+    # standalone etcds
+    number_of_etcd = 0
+
+    # masters
+    number_of_k8s_masters = 1
+    number_of_k8s_masters_no_etcd = 0
+    number_of_k8s_masters_no_floating_ip = 0
+    number_of_k8s_masters_no_floating_ip_no_etcd = 0
+    flavor_k8s_master = "9d82d1ee-ca29-4928-a868-d56e224b92a1"
+
+    # nodes
+    number_of_k8s_nodes = 3
+    number_of_k8s_nodes_no_floating_ip = 0
+    flavor_k8s_node = "16d11558-62fe-4bce-b8de-f49a077dc881"
+
+    # networking
+    # ssh access to nodes
+    k8s_allowed_remote_ips = ["0.0.0.0/0"]
+    worker_allowed_ports = [
+      { # Node ports
+        "protocol"         = "tcp"
+        "port_range_min"   = 30000
+        "port_range_max"   = 32767
+        "remote_ip_prefix" = "0.0.0.0/0"
+      },
+      { # HTTP
+        "protocol"         = "tcp"
+        "port_range_min"   = 80
+        "port_range_max"   = 80
+        "remote_ip_prefix" = "0.0.0.0/0"
+      },
+      { # HTTPS
+        "protocol"         = "tcp"
+        "port_range_min"   = 443
+        "port_range_max"   = 443
+        "remote_ip_prefix" = "0.0.0.0/0"
+      }
+    ]
+    network_name = "your-network-name"
+    external_net = "71b10496-2617-47ae-abbc-36239f0863bb"
+    floatingip_pool = "public-v4"
+    use_access_ip = 0
+    dns_nameservers = ["8.8.8.8", "1.1.1.1"]
+    ```
+
+=== "Safespring sto1 (new)"
+
+    ``` hcl
+    # your Kubernetes cluster name here
+    cluster_name = "your-cluster-name"
+
+    # image to use for bastion, masters, standalone etcd instances, and nodes
+    image = "ubuntu-20.04-server-cloudimg-amd64-20201102"
+
+    # 0|1 bastion nodes
+    number_of_bastions = 0
+
+    use_neutron = 0
+
+    # standalone etcds
+    number_of_etcd = 0
+
+    # masters
+    number_of_k8s_masters = 0
+    number_of_k8s_masters_no_etcd = 0
+    number_of_k8s_masters_no_floating_ip = 1
+    number_of_k8s_masters_no_floating_ip_no_etcd = 0
+    flavor_k8s_master = "8a707999-0bce-4f2f-8243-b4253ba7c473"
+
+    # nodes
+    number_of_k8s_nodes = 0
+    number_of_k8s_nodes_no_floating_ip = 3
+    flavor_k8s_node = "5b40af67-9d11-45ed-a44f-e876766160a5"
+
+    # networking
+    # ssh access to nodes
+    k8s_allowed_remote_ips = ["0.0.0.0/0"]
+    worker_allowed_ports = [
+      { # Node ports
+        "protocol"         = "tcp"
+        "port_range_min"   = 30000
+        "port_range_max"   = 32767
+        "remote_ip_prefix" = "0.0.0.0/0"
+      },
+      { # HTTP
+        "protocol"         = "tcp"
+        "port_range_min"   = 80
+        "port_range_max"   = 80
+        "remote_ip_prefix" = "0.0.0.0/0"
+      },
+      { # HTTPS
+        "protocol"         = "tcp"
+        "port_range_min"   = 443
+        "port_range_max"   = 443
+        "remote_ip_prefix" = "0.0.0.0/0"
+      }
+    ]
+    external_net = "b19680b3-c00e-40f0-ad77-4448e81ae226"
+    use_access_ip = 1
+    network_name = "public"
+    ```
 
 ### Expose Openstack credentials to Terraform
 
@@ -88,6 +270,9 @@ Before we can run Kubespray, we will need to go through the relevant variables.
 Additionally we will need to expose some credentials so that Kubespray can set up cloud provider integration.
 
 You will need to change at least one value: `kube_oidc_url` in `group_vars/k8s-cluster/ck8s-k8s-cluster.yaml`.
+
+!!!note
+    If you have `use_access_ip = 0` in `cluster.tfvars`, you should add the public ip address of the master nodes to the variable `supplementary_addresses_in_ssl_keys = ["<master-0-ip-address>",...]` somewhere under `group_vars/`.
 
 For cloud provider integration, you have a few options [as described here](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/openstack.md#the-in-tree-cloud-provider).
 We will be going with the in-tree cloud provider and simply source the Openstack credentials.
