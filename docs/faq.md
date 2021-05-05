@@ -86,3 +86,14 @@ kubectl -n elastic-system exec opendistro-es-master-0 -- ./plugins/opendistro_se
 ```
 
 When you update things other than `config.yml` you will also need to rerun the Configurer Job (e.g. by making some small change to the resource requests and applying the chart again).
+
+## Will GrafanaLabs change to AGPL licenses affect the Compliant Kubernetes
+
+!!!note "TL;DR"
+    Users and operators of Compliant Kubernetes are unaffected.
+
+Part of Compliant Kubernetes -- specifically the CISO dashboards -- are built on top of Grafana, which recently [changed its license to AGPLv3](https://grafana.com/blog/2021/04/20/grafana-loki-tempo-relicensing-to-agplv3/). In brief, if Grafana is exposed via a network connection -- as is the case with Compliant Kubernetes -- then AGPLv3 requires all source code including modifications to be made available.
+
+The exact difference between "aggregate" and "modified version" is [somewhat unclear](https://www.gnu.org/licenses/gpl-faq.en.html#MereAggregation). Compliant Kubernetes only configures Grafana and does not change its source code. Hence, we determined that Compliant Kubernetes is an "aggregate" work and is unaffected by the ["viral" clauses](https://en.wikipedia.org/wiki/Viral_license) of AGPLv3.
+
+As a result, Compliant Kubernetes continues to be distributed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) as before.
