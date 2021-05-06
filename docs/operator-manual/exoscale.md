@@ -74,6 +74,10 @@ Review and, if needed, adjust the files in `inventory/$CLUSTER/default.tfvars`, 
 * To security harden your cluster, set `ssh_whitelist` and `api_server_whitelist` to the IP addresses from which you expect to operate the cluster.
 * Make sure you configure your SSH keys in `ssh_public_keys`.
 
+!!!important
+
+    The `Linux Ubuntu 20.04 LTS 64-bit` image on Exoscale is regularly upgraded, which might cause unexpected changes during `terraform apply`. Consider uploading your own dated Ubuntu image to reduce the risk of downtime.
+
 ### Initialize and Apply Terraform
 
 ```bash
