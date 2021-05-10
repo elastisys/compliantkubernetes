@@ -212,6 +212,26 @@ ssh ubuntu@$UNHEALTHY_NODE sudo reboot
 
 If using Rook make sure its health goes back to `HEALTH_OK`.
 
+## Node seems really not fine. I want a new one.
+
+Is it 2AM? Do not replace Nodes, instead simply add a new one. You might run out of capacity, you might lose redundancy, you might replace the wrong Node. Prefer to add a Node and see if that solves the problem.
+
+## Okay, I want to add a new Node.
+
+Prefer this option if you "quickly" need to add CPU, memory or storage (i.e., Rook) capacity.
+
+First, check for infrastructure drift, as shown [here](#how-do-i-check-if-infrastructure-drifted-due-to-manual-intervention).
+
+Depending on your provider:
+
+1. Add a new Node by editing the `*.tfvars`.
+2. Re-apply Terraform.
+3. Re-create the `inventory.ini`.
+4. Re-apply Kubespray.
+5. Re-fix the Kubernetes API URL.
+
+Check that the new Node joined the cluster, as shown [here](#are-the-kubernetes-clusters-doing-fine).
+
 ## Pod seems not fine
 
 Before starting, set up a handy environment:
@@ -271,7 +291,7 @@ FAILED_RELEASE=user-rbac
 FAILED_RELEASE_NAMESPACE=kube-system
 ```
 
-Just to make sure, do a drift check (see the other section).
+Just to make sure, do a drift check, as shown [here](#how-do-i-check-if-apps-drifted-due-to-manual-intervention).
 
 Remove the failed Release:
 ```bash
@@ -296,6 +316,10 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     popd
 done
 ```
+
+## How do I check if the Kubespray setup drifted due to manual intervention?
+
+At the time of this writing, this cannot be done, but [efforts are underway](https://github.com/cristiklein/kubespray/tree/make-check-work).
 
 ## How do I check if `apps` drifted due to manual intervention?
 
