@@ -280,6 +280,23 @@ helm uninstall -n $FAILED_RELEASE_NAMESPACE $FAILED_RELEASE
 
 Re-apply `apps` according to documentation.
 
+## How do I check if infrastructure drifted due to manual intervention?
+
+Go to the docs of the cloud provider and run Terraform `plan` instead of `apply`. For Exoscale, it looks as follows:
+
+```bash
+TF_SCRIPTS_DIR=../../compliantkubernetes-kubespray/kubespray/contrib/terraform/exoscale
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+    pushd inventory/$CLUSTER
+    terraform init $TF_SCRIPTS_DIR
+    terraform plan \
+        -var-file default.tfvars \
+        -state=tfstate-$CLUSTER.tfstate  \
+        $TF_SCRIPTS_DIR
+    popd
+done
+```
+
 ## How do I check if `apps` drifted due to manual intervention?
 
 ```bash
