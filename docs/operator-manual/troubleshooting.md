@@ -39,14 +39,6 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
 done
 ```
 
-Uptime should show high uptime (e.g., days) and low load (e.g., less than 3):
-
-```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    ansible -i $CK8S_CONFIG_PATH/inventory/$CLUSTER/inventory.ini all -m shell -a 'echo; hostname; uptime'
-done
-```
-
 Any process that uses too much CPU?
 
 ```bash
@@ -90,11 +82,47 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
 done
 ```
 
-Are all Pod fine? Pod should be `Running` or `Completed`?
+If Rook is installed, is Rook doing fine?
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
+        'kubectl --kubeconfig {} -n rook-ceph apply -f ./compliantkubernetes-kubespray/rook/toolbox-deploy.yaml'
+done
+
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+    CEPH_TOOLS_POD=$(
+        sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
+            'kubectl --kubeconfig {} -n rook-ceph get pod -l "app=rook-ceph-tools" -o name')
+    echo $CEPH_TOOLS_POD
+    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
+        'kubectl --kubeconfig {} -n rook-ceph exec '$CEPH_TOOLS_POD' -- ceph status'
+done
+```
+
+Are all Pod fine? Pods should be `Running` or `Completed`, and fully `Ready` (e.g., `1/1` or `6/6`)?
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
         'kubectl --kubeconfig {} get --all-namespaces pods'
+done
+```
+
+Are all Deployments fine? Deployments should show all Pods Ready, Up-to-date and Available (e.g., `2/2 2 2`).
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
+        'kubectl --kubeconfig {} get --all-namespaces deployments'
+done
+```
+
+Are all DaemonSets fine? DaemonSets should show as many Pods Desired, Current, Ready and Up-to-date, as Desired.
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
+        'kubectl --kubeconfig {} get --all-namespaces ds'
 done
 ```
