@@ -78,3 +78,23 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     ansible -i $CK8S_CONFIG_PATH/inventory/$CLUSTER/inventory.ini all -m shell -a 'echo; hostname; curl --silent  https://checkip.amazonaws.com'
 done
 ```
+
+### Are the Kubernetes clusters doing fine?
+
+Are the Nodes reporting in on Kubernetes? All Kubernetes Nodes, both control-plane and workers, should be `Ready`:
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
+        'kubectl --kubeconfig {} get nodes'
+done
+```
+
+Are all Pod fine? Pod should be `Running` or `Completed`?
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
+        'kubectl --kubeconfig {} get --all-namespaces pods'
+done
+```
