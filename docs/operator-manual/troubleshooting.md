@@ -82,7 +82,9 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
 done
 ```
 
-If Rook is installed, is Rook doing fine?
+### Is Rook doing fine?
+
+If Rook is installed, is Rook doing fine? You should see `HEALTH_OK`.
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
@@ -99,6 +101,8 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
         'kubectl --kubeconfig {} -n rook-ceph exec '$CEPH_TOOLS_POD' -- ceph status'
 done
 ```
+
+### Are Kubernetes resources doing fine?
 
 Are all Pod fine? Pods should be `Running` or `Completed`, and fully `Ready` (e.g., `1/1` or `6/6`)?
 
@@ -124,5 +128,27 @@ Are all DaemonSets fine? DaemonSets should show as many Pods Desired, Current, R
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
         'kubectl --kubeconfig {} get --all-namespaces ds'
+done
+```
+
+Are Helm Releases fine? All Releases should be `deployed`.
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+    KUBECONFIG=kube_config_$CLUSTER.yaml
+    sops -d ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $KUBECONFIG
+    helm list --all --all-namespaces
+    shred $KUBECONFIG
+done
+```
+
+Are (Cluster)Issuers fine? All Resources should have `Ready` equal `TRUE`.
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+    KUBECONFIG=kube_config_$CLUSTER.yaml
+    sops -d ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $KUBECONFIG
+    kubectl get clusterissuers,issuers,certificates --all-namespaces
+    shred $KUBECONFIG
 done
 ```
