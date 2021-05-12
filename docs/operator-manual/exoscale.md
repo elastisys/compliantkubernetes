@@ -16,7 +16,7 @@ If you are using any other DNS service provider for managing your DNS you can sk
 Before starting, make sure you have [all necessary tools](getting-started.md).
 
 !!!note
-    This guide is written for compliantkubernetes-apps [v0.13.0](https://github.com/elastisys/compliantkubernetes-apps/tree/v0.13.0)
+    This guide is written for compliantkubernetes-apps [v0.15.0](https://github.com/elastisys/compliantkubernetes-apps/tree/v0.15.0)
 
 ## Setup
 
@@ -38,11 +38,11 @@ cd compliantkubernetes-kubespray/kubespray
 ```
 
 !!!note
-    The Terraform code for Exoscale is pushed to Kubespray upstream, but is not yet released (see [this issue](https://github.com/elastisys/compliantkubernetes-kubespray/issues/56)
+    The Terraform code for Exoscale is pushed to Kubespray upstream, but is not yet released (see [this issue](https://github.com/elastisys/compliantkubernetes-kubespray/issues/56))
 
     Please run `git checkout b77460ec` to use the non-release Kubespray.
 
-    After the infrastructure setup setp, switch back to Kubespray v2.15.0: `git checkout v2.15.0`.
+    After the infrastructure setup step, switch back to Kubespray v2.15.0.
 
 ### Expose Exoscale credentials to Terraform
 
@@ -116,6 +116,11 @@ First, change to the `compliantkubernetes-kubespray` root directory.
 ```bash
 cd ..
 ```
+
+!!!note
+
+    Remember to switch back to Kubespray v2.15.0: `git checkout v2.15.0`.
+
 
 ### Init the Kubespray config in your config path
 
