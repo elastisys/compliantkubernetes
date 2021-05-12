@@ -183,3 +183,43 @@ They perform the following actions:
 
 Note: if user namespaces are managed by Compliant Kubernetes apps then they will also be deleted if you clean up the workload cluster.
 <!--clean-apps-stop-->
+
+<!--create-s3-buckets-start-->
+### Create S3 buckets
+
+You can use the following script to create required S3 buckets.
+The script uses `s3cmd` in the background and gets configuration and credentials for your S3 provider from `${HOME}/.s3cfg` file.
+
+```bash
+# Use your default s3cmd config file: ${HOME}/.s3cfg
+scripts/S3/entry.sh create
+```
+
+!!!important
+
+    You should not use your own credentials for S3.
+    Rather create a new set of credentials with write-only access, when supported by the object storage provider ([check a feature matrix](https://compliantkubernetes.io/operator-manual/disaster-recovery/#feature-matrix)).
+
+<!--create-s3-buckets-stop-->
+
+<!--test-s3-buckets-start-->
+### Test S3
+
+To ensure that you have configured S3 correctly, run the following snippet:
+
+```bash
+(
+    access_key=$(sops exec-file ${CK8S_CONFIG_PATH}/secrets.yaml 'yq r {} "objectStorage.s3.accessKey"')
+    secret_key=$(sops exec-file ${CK8S_CONFIG_PATH}/secrets.yaml 'yq r {} "objectStorage.s3.secretKey"')
+    region=$(yq r ${CK8S_CONFIG_PATH}/sc-config.yaml 'objectStorage.s3.region')
+    host=$(yq r ${CK8S_CONFIG_PATH}/sc-config.yaml 'objectStorage.s3.regionEndpoint')
+
+    for bucket in $(yq r ${CK8S_CONFIG_PATH}/sc-config.yaml 'objectStorage.buckets.*'); do
+        s3cmd --access_key=${access_key} --secret_key=${secret_key} \
+            --region=${region} --host=${host} \
+            ls s3://${bucket} > /dev/null
+        [ ${?} = 0 ] && echo "Bucket ${bucket} exists!"
+    done
+)
+```
+<!--test-s3-buckets-stop-->
