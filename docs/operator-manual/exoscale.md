@@ -276,6 +276,20 @@ objectStorage:
 
 {%
    include-markdown "common.md"
+   start="<!--create-s3-buckets-start-->"
+   end="<!--create-s3-buckets-stop-->"
+   comments=false
+%}
+
+{%
+   include-markdown "common.md"
+   start="<!--test-s3-buckets-start-->"
+   end="<!--test-s3-buckets-stop-->"
+   comments=false
+%}
+
+{%
+   include-markdown "common.md"
    start="<!--install-apps-start-->"
    end="<!--install-apps-stop-->"
    comments=false
