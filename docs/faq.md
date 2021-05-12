@@ -87,7 +87,7 @@ kubectl -n elastic-system exec opendistro-es-master-0 -- ./plugins/opendistro_se
 
 When you update things other than `config.yml` you will also need to rerun the Configurer Job (e.g. by making some small change to the resource requests and applying the chart again).
 
-## Will GrafanaLabs change to AGPL licenses affect the Compliant Kubernetes
+## Will GrafanaLabs change to AGPL licenses affect Compliant Kubernetes
 
 !!!note "TL;DR"
     Users and operators of Compliant Kubernetes are unaffected.
@@ -98,7 +98,7 @@ The exact difference between "aggregate" and "modified version" is [somewhat unc
 
 As a result, Compliant Kubernetes continues to be distributed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) as before.
 
-## Will Min.io change to AGPL licenses affect the Compliant Kubernetes
+## Will Min.io change to AGPL licenses affect Compliant Kubernetes
 
 !!!note "TL;DR"
     Users and operators of Compliant Kubernetes are unaffected.
