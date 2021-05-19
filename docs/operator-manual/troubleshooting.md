@@ -71,6 +71,14 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
 done
 ```
 
+Are the Nodes having the proper time? You should see `System clock synchronized: yes` and `NTP service: active`.
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+    ansible -i $CK8S_CONFIG_PATH/inventory/$CLUSTER/inventory.ini all -m shell -a 'echo; timedatectl status'
+done
+```
+
 ### Are the Kubernetes clusters doing fine?
 
 Are the Nodes reporting in on Kubernetes? All Kubernetes Nodes, both control-plane and workers, should be `Ready`:
@@ -196,6 +204,24 @@ exo vm reboot --force $UNHEALTHY_NODE
 ```
 
 If using Rook make sure its health goes back to `HEALTH_OK`.
+
+## A Node has incorrect time
+
+Incorrect time on a Node can have sever consequences with replication and monitoring. In fact, if you follow ISO 27001, [A.12.4.4 Clock Synchronisation](https://www.isms.online/iso-27001/annex-a-12-operations-security/) requires you to ensure clocks are synchronized.
+
+These days, Linux distributions should come out-of-the-box with [timesyncd](https://www.freedesktop.org/software/systemd/man/systemd-timesyncd.service.html) for time synchronization via NTP.
+
+To figure out what is wrong, SSH into the target Node and try the following:
+
+```bash
+sudo systemctl status systemd-timesyncd
+sudo journalctl --unit systemd-timesyncd
+sudo timedatectl status
+sudo timedatectl timesync-status
+sudo timedatectl show-timesync
+```
+
+Possible causes include incorrect NTP server settings, or NTP being blocked by firewall. For reminder, NTP works over UDP port 123.
 
 ## Node seems not fine
 
