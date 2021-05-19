@@ -285,6 +285,13 @@ UNHEALTHY_POD=prometheus-kube-prometheus-stack-prometheus-0
 UNHEALTHY_POD_NAMESPACE=monitoring
 ```
 
+Gather some "evidence" for later diagnostics, when the heat is over:
+
+```bash
+kubectl describe pod -n $UNHEALTHY_POD_NAMESPACE $UNHEALTHY_POD
+kubectl logs -n $UNHEALTHY_POD_NAMESPACE $UNHEALTHY_POD
+```
+
 Try to kill  and check if the underlying Deployment, StatefulSet or DaemonSet will restart it:
 
 ```bash
