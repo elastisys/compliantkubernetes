@@ -222,7 +222,8 @@ sudo timedatectl timesync-status
 sudo timedatectl show-timesync
 ```
 
-Possible causes include incorrect NTP server settings, or NTP being blocked by firewall. For reminder, NTP works over UDP port 123.
+Possible causes include incorrect NTP server settings, or NTP being blocked by firewall.
+For reminder, NTP works over UDP port 123.
 
 ## Node seems not fine
 
