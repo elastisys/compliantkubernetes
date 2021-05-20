@@ -122,7 +122,7 @@ Kubeconfig with OpenID Authentication
     * Investigations
     * "Simple" recovery
 * Misc:
-    * If these credentials become unusable, you are in a "break glass" situation. Use cloud provider credentials or SSH keys to initiate disaster recover.
+    * If these credentials become unusable, you are in a "break glass" situation. Use cloud provider credentials or SSH keys to initiate disaster recovery.
 
 Kubeconfig with Client Certificate Key
 --------------------------------------
