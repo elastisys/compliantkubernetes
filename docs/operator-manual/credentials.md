@@ -94,6 +94,14 @@ Backup and Long-Term Logging Credentials
 * Misc:
     * Ensure these credentials are **write-only**, if supported by the underlying cloud provider, to comply with [ISO 27001 A.12.3.1 Information Backup](https://www.isms.online/iso-27001/annex-a-12-operations-security/) and [ISO 27001 A.12.4.2 Protection of Log Information](https://www.isms.online/iso-27001/annex-a-12-operations-security/). As of 2021-05-20, this is supported by AWS S3, Exoscale S3, GCP and SafeSpring S3.
 
+Harbor Credentials
+------------------
+
+* Purpose:
+    * Allow Harbor to read and write container images, when configured with S3 backend. Note that Harbor can be configured to store container images on PersistentVolumes.
+* Misc:
+    * It is currently not possible to configure different credentials for Harbor, backup and logging. If Harbor is enabled, create read-write S3 credentials to be used by Harbor, logging and backup, and watch [this issue](https://github.com/elastisys/compliantkubernetes-apps/issues/452). Once that issue is fixed, please restrict Harbor access to logging and backup buckets, and create write-only credentials for logging and backups.
+
 OpsGenie Credentials
 --------------------
 
