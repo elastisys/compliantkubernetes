@@ -135,7 +135,7 @@ Kubeconfig with Client Certificate Key
     * Break glass
     * Disaster recovery
 * Do not use for:
-    * Routine maintainance or investigation. Use Kubeconfig with OpenID Authentication
+    * Routine maintenance or investigation. Use Kubeconfig with OpenID Authentication
 * Misc:
     * Such a Kubeconfig is available on all control plane Nodes at `/etc/kubernetes/admin.conf`. SSH into a control plane Node then type `sudo su` and you can readily use `kubectl` commands.
     * Unless absolutely necessary, avoid storing this file outside the control plane Nodes.
