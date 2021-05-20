@@ -13,7 +13,12 @@ Terminology
 Single Sign-On (SSO) Credentials
 --------------------------------
 
-* Purpose: identify a person with various system, e.g., email
+* Example: Company Google Accounts
+* Purpose: authenticate a person with various system, in particular
+    * Kubernetes API via Dex
+    * Grafana via Dex
+    * Kibana via Dex
+    * Harbor via Dex
 * Owner: individual person (user or operator)
 * Type: individual credentials
 * Use for: identifying yourself
