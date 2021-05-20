@@ -74,6 +74,7 @@ nav:
       - 'Ingress': 'operator-manual/ingress.md'
     - 'Disaster Recovery': 'operator-manual/disaster-recovery.md'
     - 'Breaking the Glass': 'operator-manual/break-glass.md'
+    - 'Use of Credentials': 'operator-manual/credentials.md'
     - 'Troubleshooting': 'operator-manual/troubleshooting.md'
   - 'Developer Guide':
     - 'Tech Radar': 'developer-guide/tech-radar/index.html'
