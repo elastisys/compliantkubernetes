@@ -75,6 +75,7 @@ Cloud Controller (Integration) Credentials
 * Do not use for:
     * AWS. Use [AWS IAM Node Roles](https://github.com/kubernetes-sigs/kubespray/blob/master/contrib/terraform/aws/modules/iam/main.tf) instead.
     * Exoscale. We currently don't integrate with Exoscale for LoadBalancer or PersistentVolumes.
+    * Terraform layer in Kubespray
 
 Backup and Long-Term Logging Credentials
 ----------------------------------------
