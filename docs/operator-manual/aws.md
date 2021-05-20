@@ -39,6 +39,9 @@ cd compliantkubernetes-kubespray
 
 ### Infrastructure Setup using Terraform
 
+!!! Note
+    This step will also create the [necessary IAM Roles](https://github.com/kubernetes-sigs/kubespray/blob/release-2.15/contrib/terraform/aws/modules/iam/main.tf) for control plane Nodes to make integration with the cloud provider work. This will ensure that both Service Type LoadBalancer and PersistentVolumes (backed by AWS EBS volumes) will work. The necessary credentials are pulled automatically by control plane Nodes via [AWS EC2 instance metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) and require no other configuration.
+
 #### Expose AWS credentials to Terraform
 
 We suggest exposing AWS credentials to Terraform via environment variables, so they are not accidentally left on the file-system:
