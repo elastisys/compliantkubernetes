@@ -260,6 +260,13 @@ Depending on your provider:
 
 Check that the new Node joined the cluster, as shown [here](#are-the-kubernetes-clusters-doing-fine).
 
+## Rook seems not fine
+
+Please check the following upstream documents:
+
+* [Rook Common Issues](https://github.com/rook/rook/blob/master/Documentation/common-issues.md)
+* [Ceph Common Issues](https://github.com/rook/rook/blob/master/Documentation/ceph-common-issues.md)
+
 ## Pod seems not fine
 
 Before starting, set up a handy environment:
