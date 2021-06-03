@@ -17,7 +17,7 @@ If you get lost, start checking from the "physical layer" and up.
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    ansible -i $CK8S_CONFIG_PATH/inventory/$CLUSTER/inventory.ini all -m ping
+    ansible -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini all -m ping
 done
 ```
 
@@ -27,7 +27,7 @@ Dmesg should not display unexpected messages. [OOM](https://en.wikipedia.org/wik
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    ansible -i $CK8S_CONFIG_PATH/inventory/$CLUSTER/inventory.ini all -m shell -a 'echo; hostname; dmesg | tail -n 10'
+    ansible -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; dmesg | tail -n 10'
 done
 ```
 
@@ -35,7 +35,7 @@ Uptime should show high uptime (e.g., days) and low load (e.g., less than 3):
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    ansible -i $CK8S_CONFIG_PATH/inventory/$CLUSTER/inventory.ini all -m shell -a 'echo; hostname; uptime'
+    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; uptime'
 done
 ```
 
@@ -43,7 +43,7 @@ Any process that uses too much CPU?
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    ansible -i $CK8S_CONFIG_PATH/inventory/$CLUSTER/inventory.ini all -m shell -a 'echo; hostname; ps -Ao user,uid,comm,pid,pcpu,tty --sort=-pcpu | head -n 6'
+    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; ps -Ao user,uid,comm,pid,pcpu,tty --sort=-pcpu | head -n 6'
 done
 ```
 
@@ -51,7 +51,7 @@ Is there enough disk space? All writeable file-systems should have at least 30% 
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    ansible -i $CK8S_CONFIG_PATH/inventory/$CLUSTER/inventory.ini all -m shell -a 'echo; hostname; df -h'
+    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; df -h'
 done
 ```
 
@@ -59,7 +59,7 @@ Is there enough available memory? There should be at least a few GB of available
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    ansible -i $CK8S_CONFIG_PATH/inventory/$CLUSTER/inventory.ini all -m shell -a 'echo; hostname; cat /proc/meminfo | grep Available'
+    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; cat /proc/meminfo | grep Available'
 done
 ```
 
@@ -67,7 +67,7 @@ Can Nodes access the Internet?
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    ansible -i $CK8S_CONFIG_PATH/inventory/$CLUSTER/inventory.ini all -m shell -a 'echo; hostname; curl --silent  https://checkip.amazonaws.com'
+    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; curl --silent  https://checkip.amazonaws.com'
 done
 ```
 
@@ -75,7 +75,7 @@ Are the Nodes having the proper time? You should see `System clock synchronized:
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    ansible -i $CK8S_CONFIG_PATH/inventory/$CLUSTER/inventory.ini all -m shell -a 'echo; timedatectl status'
+    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; timedatectl status'
 done
 ```
 
@@ -171,7 +171,7 @@ or
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    ansible-inventory -i $CK8S_CONFIG_PATH/inventory/$CLUSTER/inventory.ini --list all
+    ansible-inventory -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini --list all
 done
 ```
 
@@ -347,13 +347,14 @@ Re-apply `apps` according to documentation.
 Go to the docs of the cloud provider and run Terraform `plan` instead of `apply`. For Exoscale, it looks as follows:
 
 ```bash
-TF_SCRIPTS_DIR=../../compliantkubernetes-kubespray/kubespray/contrib/terraform/exoscale
+TF_SCRIPTS_DIR=$(readlink -f compliantkubernetes-kubespray/kubespray/contrib/terraform/exoscale)
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    pushd inventory/$CLUSTER
+    pushd ${CLUSTER}-config
+    export TF_VAR_inventory_file=${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini
     terraform init $TF_SCRIPTS_DIR
     terraform plan \
-        -var-file default.tfvars \
-        -state=tfstate-$CLUSTER.tfstate  \
+        -var-file=cluster.tfvars \
+        -state=cluster.tfstate  \
         $TF_SCRIPTS_DIR
     popd
 done
