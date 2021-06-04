@@ -354,7 +354,6 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     terraform init $TF_SCRIPTS_DIR
     terraform plan \
         -var-file=cluster.tfvars \
-        -state=cluster.tfstate  \
         $TF_SCRIPTS_DIR
     popd
 done
