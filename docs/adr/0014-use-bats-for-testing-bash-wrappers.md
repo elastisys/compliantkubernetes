@@ -23,7 +23,7 @@ How should we test these scripts?
 
 ## Decision Outcome
 
-Chosen option: "bats", because the benefit of using a standard and rather light tool outweights the cost of collective training on the new tool.
+Chosen option: "bats", because the benefit of using a standard and rather light tool outweighs the cost of collective training on the new tool.
 
 ### Positive Consequences
 
