@@ -79,6 +79,26 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
 done
 ```
 
+### Is the base OS doing fine?
+
+We generally run the latest [Ubuntu LTS](https://ubuntu.com/blog/what-is-an-ubuntu-lts-release), at the time of this writing Ubuntu 20.04 LTS.
+
+You can confirm this by doing:
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'cat /etc/lsb-release'
+done
+```
+
+Are systemd units running fine? You should see `running` and not `degraded`.
+
+```bash
+for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'systemctl is-system-running'
+done
+```
+
 ### Are the Kubernetes clusters doing fine?
 
 Are the Nodes reporting in on Kubernetes? All Kubernetes Nodes, both control-plane and workers, should be `Ready`:
@@ -259,6 +279,23 @@ Depending on your provider:
 5. Re-fix the Kubernetes API URL.
 
 Check that the new Node joined the cluster, as shown [here](#are-the-kubernetes-clusters-doing-fine).
+
+## A systemd unit failed
+
+SSH into the Node. Check which systemd unit is failing:
+
+```bash
+systemctl --failed
+```
+
+Gather more information:
+
+```bash
+FAILED_UNIT=fwupd-refresh.service
+
+systemctl status $FAILED_UNIT
+journalctl --unit $FAILED_UNIT
+```
 
 ## Rook seems not fine
 
