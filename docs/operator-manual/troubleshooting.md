@@ -386,12 +386,12 @@ Go to the docs of the cloud provider and run Terraform `plan` instead of `apply`
 ```bash
 TF_SCRIPTS_DIR=$(readlink -f compliantkubernetes-kubespray/kubespray/contrib/terraform/exoscale)
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    pushd ${CLUSTER}-config
+    pushd ${TF_SCRIPTS_DIR}
     export TF_VAR_inventory_file=${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini
-    terraform init $TF_SCRIPTS_DIR
+    terraform init
     terraform plan \
-        -var-file=cluster.tfvars \
-        $TF_SCRIPTS_DIR
+        -var-file=${CK8S_CONFIG_PATH}/${CLUSTER}-config/cluster.tfvars \
+        -state=${CK8S_CONFIG_PATH}/${CLUSTER}-config/terraform.tfstate
     popd
 done
 ```
