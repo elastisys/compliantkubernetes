@@ -28,6 +28,12 @@ Chosen option: "Rely on upstream", because it trims fat and reduces astonishment
 
 At installation, rely on upstream's approach to install CRDs (see below). At upgrade, propagate upstream migration steps in CK8s migration steps in each release notes. An [issue template](https://github.com/elastisys/compliantkubernetes-apps/pull/436) was created to ensure we won't forget.
 
+Since we "vendor in" all Charts, CRDs can be discovered using:
+
+```
+grep -R 'kind: CustomResourceDefinition'
+```
+
 ### Positive Consequences
 
 * Less astonishing, compared to installing Chart "by hand".
