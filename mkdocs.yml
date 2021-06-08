@@ -16,7 +16,6 @@ theme:
   name: material
   logo: 'img/logo.png'
   favicon: 'img/favicon.png'
-  custom_dir: overrides
 
 plugins:
   - include-markdown
