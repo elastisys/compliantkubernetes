@@ -12,14 +12,11 @@ edit_uri: edit/main/docs/
 
 strict: true
 
-google_analytics:
-  - UA-68368435-4
-  - auto
-
 theme:
   name: material
   logo: 'img/logo.png'
   favicon: 'img/favicon.png'
+  custom_dir: overrides
 
 plugins:
   - include-markdown
