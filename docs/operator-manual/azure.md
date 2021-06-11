@@ -167,17 +167,17 @@ done
 for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS[@]}; do
   #add calico to the inventory file
   cat kubespray/contrib/azurerm/$CLUSTER/inventory/inventory.j2 \
-        | sed  '/\[k8s-cluster:children\]/i \[calico-rr\]' \
+        | sed  '/\[k8s_cluster:children\]/i \[calico-rr\]' \
         > $CK8S_CONFIG_PATH/$CLUSTER-config/inventory.ini
 echo "calico-rr" >> $CK8S_CONFIG_PATH/$CLUSTER-config/inventory.ini $CK8S_CONFIG_PATH/$CLUSTER-config/inventory.ini
     # Add ansible_user ubuntu (note that this assumes you have set admin_username in azurerm/group_vars/all to ubuntu)
-    echo -e 'ansible_user: ubuntu' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/ck8s-k8s-cluster.yaml
+    echo -e 'ansible_user: ubuntu' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s_cluster/ck8s-k8s_cluster.yaml
 
     # Get the IP address of the loadbalancer (to be added in kubadmin certSANs list which will be used for kubectl)
     ip=$(grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' kubespray/contrib/azurerm/$CLUSTER/loadbalancer_vars.yml)
-    echo 'supplementary_addresses_in_ssl_keys: ["'$ip'"]' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/ck8s-k8s-cluster.yaml
-    echo -e 'nameservers:\n  - 1.1.1.1' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/ck8s-k8s-cluster.yaml
-    echo 'resolvconf_mode: host_resolvconf' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s-cluster/ck8s-k8s-cluster.yaml
+    echo 'supplementary_addresses_in_ssl_keys: ["'$ip'"]' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s_cluster/ck8s-k8s_cluster.yaml
+    echo -e 'nameservers:\n  - 1.1.1.1' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s_cluster/ck8s-k8s_cluster.yaml
+    echo 'resolvconf_mode: host_resolvconf' >> $CK8S_CONFIG_PATH/$CLUSTER-config/group_vars/k8s_cluster/ck8s-k8s_cluster.yaml
 
 done
 ```
