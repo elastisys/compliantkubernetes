@@ -37,13 +37,6 @@ git clone --recursive https://github.com/elastisys/compliantkubernetes-kubespray
 cd compliantkubernetes-kubespray/kubespray
 ```
 
-!!!note
-    The Terraform code for Exoscale is pushed to Kubespray upstream, but is not yet released (see [this issue](https://github.com/elastisys/compliantkubernetes-kubespray/issues/56))
-
-    Please run `git checkout b77460ec` to use the non-release Kubespray.
-
-    After the infrastructure setup step, switch back to Kubespray v2.15.0.
-
 ### Expose Exoscale credentials to Terraform
 
 For authentication create the file  `~/.cloudstack.ini` and put your Exoscale credentials in it.
@@ -116,11 +109,6 @@ First, change to the `compliantkubernetes-kubespray` root directory.
 ```bash
 cd ..
 ```
-
-!!!note
-
-    Remember to switch back to Kubespray v2.15.0: `git checkout v2.15.0`.
-
 
 ### Init the Kubespray config in your config path
 
