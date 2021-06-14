@@ -121,12 +121,8 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
 done
 
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    CEPH_TOOLS_POD=$(
-        sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
-            'kubectl --kubeconfig {} -n rook-ceph get pod -l "app=rook-ceph-tools" -o name')
-    echo $CEPH_TOOLS_POD
     sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
-        'kubectl --kubeconfig {} -n rook-ceph exec '$CEPH_TOOLS_POD' -- ceph status'
+        'kubectl --kubeconfig {} -n rook-ceph exec deploy/rook-ceph-tools -- ceph status'
 done
 ```
 
