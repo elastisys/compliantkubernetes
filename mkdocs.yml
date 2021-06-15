@@ -52,6 +52,7 @@ nav:
     - 'Policy-as-Code': 'ciso-guide/policy-as-code.md'
     - 'Network Security': 'ciso-guide/network-security.md'
     - 'Kubernetes Status': 'ciso-guide/kubernetes-status.md'
+    - 'Vulnerability Management': 'ciso-guide/vulnerability.md'
   - 'Operator Manual':
     - 'Overview': 'operator-manual/index.md'
     - 'Getting Started': 'operator-manual/getting-started.md'
