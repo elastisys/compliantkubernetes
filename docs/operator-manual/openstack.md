@@ -269,7 +269,7 @@ done
 Before we can run Kubespray, we will need to go through the relevant variables.
 Additionally we will need to expose some credentials so that Kubespray can set up cloud provider integration.
 
-You will need to change at least one value: `kube_oidc_url` in `group_vars/k8s_cluster/ck8s-k8s_cluster.yaml`.
+You will need to change at least one value: `kube_oidc_url` in `group_vars/k8s_cluster/ck8s-k8s_cluster.yaml`, normally this should be set to `https://dex.BASE_DOMAIN`.
 
 !!!note
     If you have `use_access_ip = 0` in `cluster.tfvars`, you should add the public ip address of the master nodes to the variable `supplementary_addresses_in_ssl_keys = ["<master-0-ip-address>",...]` somewhere under `group_vars/`.
