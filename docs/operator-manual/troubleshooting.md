@@ -126,9 +126,9 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
 done
 ```
 
-### Are Kubernetes resources doing fine?
+### Are Kubernetes Pods doing fine?
 
-Are all Pod fine? Pods should be `Running` or `Completed`, and fully `Ready` (e.g., `1/1` or `6/6`)?
+Pods should be `Running` or `Completed`, and fully `Ready` (e.g., `1/1` or `6/6`)?
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
@@ -155,7 +155,9 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
 done
 ```
 
-Are Helm Releases fine? All Releases should be `deployed`.
+### Are Helm Releases fine?
+
+All Releases should be `deployed`.
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
@@ -166,13 +168,15 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
 done
 ```
 
-Are (Cluster)Issuers fine? All Resources should have `Ready` equal `TRUE`.
+### Is cert-manager doing fine?
+
+Are (Cluster)Issuers fine? All Resources should be `READY=True` or `valid`.
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     export KUBECONFIG=kube_config_$CLUSTER.yaml
     sops -d ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $KUBECONFIG
-    kubectl get clusterissuers,issuers,certificates --all-namespaces
+    kubectl get clusterissuers,issuers,certificates,orders,challenges --all-namespaces
     shred $KUBECONFIG
 done
 ```
@@ -374,6 +378,13 @@ helm uninstall -n $FAILED_RELEASE_NAMESPACE $FAILED_RELEASE
 ```
 
 Re-apply `apps` according to documentation.
+
+## cert-manager is not fine
+
+Follow cert-manager's troubleshooting, specifically:
+
+* [Troubleshooting](https://cert-manager.io/docs/faq/troubleshooting/)
+* [Troubleshooting Issuing ACME Certificates](https://cert-manager.io/docs/faq/acme/)
 
 ## How do I check if infrastructure drifted due to manual intervention?
 
