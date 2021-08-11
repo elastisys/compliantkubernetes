@@ -9,7 +9,7 @@ The setup has two major parts:
 Before starting, make sure you have [all necessary tools](getting-started.md).
 
 !!!note
-    This guide is written for compliantkubernetes-apps [v0.13.0](https://github.com/elastisys/compliantkubernetes-apps/tree/v0.13.0)
+    This guide is written for compliantkubernetes-apps [v0.17.0](https://github.com/elastisys/compliantkubernetes-apps/tree/v0.17.0)
 
 ## Setup
 
