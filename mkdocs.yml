@@ -34,7 +34,6 @@ markdown_extensions:
 nav:
   - Overview: 'index.md'
   - 'Compliance Basics': 'compliance.md'
-  - 'Core Concepts': 'concepts.md'
   - 'Getting Started': 'getting-started.md'
   - 'Exploring Benefits': 'benefits.md'
   - 'User Guide':
@@ -80,6 +79,7 @@ nav:
     - 'Tech Radar': 'developer-guide/tech-radar/index.html'
     - 'Contributor guide': 'developer-guide/contributor-guide.md'
     - 'Architectural Decision Log': 'adr/index.md'
+  - 'Vocabulary': 'vocabulary.md'
   - 'FAQ': 'faq.md'
   - 'Roadmap': 'roadmap.md'
   - 'Support ⧉': 'https://compliantkubernetes.com/'
