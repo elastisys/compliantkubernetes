@@ -1,4 +1,4 @@
-# Concepts
+# Vocabulary
 
 This page introduces terminology used in the Compliant Kubernetes project. We assume that you are familiar with [Kubernetes concepts](https://kubernetes.io/docs/concepts/).
 
