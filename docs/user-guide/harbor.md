@@ -27,15 +27,14 @@ In Harbor you can then also restrict so that you can't pull down images that hav
 
 If you try to deploy a Pod that uses a vulnerable image it will fail to pull the image. When you then inspect the Pod with `kubectl describe` you will find an error message similar to this:
 
-```bash
+```Text
 Failed to pull image "harbor.test.compliantkubernetes.io/test/ubuntu": rpc error: code = Unknown desc = Error response from daemon: unknown: current image with 77 vulnerabilities cannot be pulled due to configured policy in 'Prevent images with vulnerability severity of "Medium" or higher from running.' To continue with pull, please contact your project administrator to exempt matched vulnerabilities through configuring the CVE whitelist.
 ```
 
 By default we also prevent you from running images from anywhere else than your Harbor instance. This is to ensure that you use all of these security features and don't accidentally pull down vulnerable images from other container registries. We are using Open Policy Agent and Gatekeeper to manage this prevention. If you try to deploy a Pod with an image from another registry you will get an error message similar to this:
 
-```bash
+```Text
 for: "unsafe-image.yaml": admission webhook "validation.gatekeeper.sh" denied the request: [denied by require-harbor-repo] container "unsafe-container" has an invalid image repo "unsafe.registry.io/ubuntu", allowed repos are ["harbor.test.compliantkubernetes.io"]
-
 ```
 
 ## Further reading
