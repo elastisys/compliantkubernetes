@@ -4,7 +4,7 @@ CI/CD Integration
 Compliant Kubernetes does not come with a [CI/CD](https://en.wikipedia.org/wiki/CI/CD) solution. Fortunately, it can be easily integrated with your existing CI/CD solution.
 
 !!!important
-    To help you pass audits, Compliant Kubernetes has put significant thought into how to do proper access control. Therefore, CI/CD solutions that require cluster-wide permissions and/or introduce their own notion of access control are highly discourage. Make sure you thoroughly evaluate your CI/CD solution with your CISO before investing in it.
+    Access control is an extremely important topic for passing an audit for compliance with data privacy and data security regulations. For example, Swedish patient data law requires all persons to be identified with individual credentials and that logs should capture who did what. Therefore, Compliant Kubernetes has put significant thought into how to do proper access control. As a consequence, CI/CD solutions that require cluster-wide permissions and/or introduce their own notion of access control are highly discouraged. Make sure you thoroughly evaluate your CI/CD solution with your CISO before investing in it.
 
 Background
 ----------
