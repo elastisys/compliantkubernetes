@@ -6,7 +6,9 @@ Setting up Compliant Kubernetes consists of two parts: setting up at least two v
 
 In theory, any vanilla Kubernetes cluster can be used for Compliant Kubernetes. We suggest the [kubespray](https://github.com/kubernetes-sigs/kubespray) way. To this end, you need:
 
-* [Terraform](https://www.terraform.io/)
+* [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [Python3 pip](https://packaging.python.org/guides/installing-using-linux-tools/#installing-pip-setuptools-wheel-with-linux-package-managers)
+* [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli#install-terraform)
 * [Ansible](https://ansible.com)
 
 Ansible is best installed as follows:
