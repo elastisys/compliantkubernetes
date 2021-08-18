@@ -13,7 +13,7 @@ This ADR clarifies one of the core values of the Compliant Kubernetes project, n
 ## Decision Drivers
 
 * We do not want to depend on the interests of any single company, be it small or large.
-* As our customers need to have a business continuity plan, we want to make it easy to "exit" Compliant Kubernetes and take over platform management.
+* Our customers need to have a business continuity plan, see [ISO 27001, Annex A.17](https://www.isms.online/iso-27001/annex-a-17-information-security-aspects-of-business-continuity-management/). Therefore, we want to make it easy to "exit" Compliant Kubernetes and take over platform management.
 * We want to use the best tools out there.
 
 ## Considered Options
