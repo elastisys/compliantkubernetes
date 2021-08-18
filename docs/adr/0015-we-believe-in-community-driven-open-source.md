@@ -31,7 +31,9 @@ Chosen option: "prefer community-driven open source solutions".
 * We do not depend on the interests of any single company.
 * Our customers do not depend on the interests of any single company.
 * Business continuity is significantly simplified for our customers.
+* We have better chances at influencing projects in a direction that is useful to us and our customers. The smaller the project, the easier to influence.
 
 ### Negative Consequences
 
 * Sometimes we might need to give up "that cool new feature" until the community-driven open source solution catches up with their closed source or single-company open source alternative. Alternatively, we might need to put extra time and effort to develop "that cool new feature" ourselves.
+* Since they are not bound by vendor liability -- e.g., end-of-life promises -- community-driven projects present a greater risk of being abandoned. The smaller the project, the higher the risk.
