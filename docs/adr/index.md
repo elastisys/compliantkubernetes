@@ -20,6 +20,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0013](0013-configure-alerts-in-omt.md) - Configure Alerts in On-call Management Tool (e.g., Opsgenie)
 * [ADR-0014](0014-use-bats-for-testing-bash-wrappers.md) - Use bats for testing bash wrappers
 * [ADR-0015](0015-we-believe-in-community-driven-open-source.md) - We believe in community-driven open source
+* [ADR-0016](0016-gid-0-is-okey-but-not-by-default.md) - gid=0 is okay, but not by default
 
 <!-- adrlogstop -->
 
