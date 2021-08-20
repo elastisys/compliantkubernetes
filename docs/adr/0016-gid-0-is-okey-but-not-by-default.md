@@ -27,6 +27,7 @@ What should Compliant Kubernetes do with the `gid=0` practice?
 
 * For user expectations, we want to make it easy to start with Compliant Kubernetes.
 * For better security and easier audits, we do not want to add unnecessary permissions.
+* [ID mapping in mounts][idmapping] has landed in Linux 5.12. Once this feature is used in container runtimes and Kubernetes, the `gid=0` problem will go away.
 
 ## Considered Options
 
@@ -50,9 +51,13 @@ Chosen option: "disallow `gid=0` by default". Enabling it on a case-by-case basi
 
 PodSecurityPolicies are deprecated in favor of [PodSecurity Admission][psa]. This decision will have to be revisited once PodSecurity Admission is stable.
 
-In case we notice that the `gid=0` practice is gaining significant uptake, we will have to revisit this decision.
+In case we notice that the `gid=0` practice is gaining significant uptake, we will have to revisit this decision to allow `gid=0` by default.
+
+In case [ID mapping][idmapping] is implemented in container runtimes and Kubernetes, this problem will likely go away. In that case, this decision might be revisited to never allow `gid=0`.
 
 [openshift-docs]: https://docs.openshift.com/container-platform/4.8/openshift_images/create-images.html
 [github-search]: https://github.com/search?l=Dockerfile&q=%22chgrp+-R%22&type=Code
 [cve]: https://nvd.nist.gov/vuln/detail/CVE-2020-8554
 [psa]: https://kubernetes.io/docs/concepts/security/pod-security-admission/
+[idmapping]: https://kernelnewbies.org/LinuxChanges#Linux_5.12.ID_mapping_in_mounts
+
