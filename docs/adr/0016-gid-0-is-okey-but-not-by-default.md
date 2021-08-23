@@ -1,8 +1,8 @@
 # gid=0 is okay, but not by default
 
 * Status: accepted
-* Deciders: Cristian (brought up by Olle)
-* Date: 2021-08-19
+* Deciders: Cristian, Lars, Olle
+* Date: 2021-08-23
 
 ## Context and Problem Statement
 
