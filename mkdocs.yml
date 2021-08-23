@@ -46,6 +46,7 @@ nav:
     - 'Prometheus/Grafana': 'user-guide/prometheus.md'
     - 'Backups': 'user-guide/backup.md'
     - 'CI/CD': 'user-guide/ci-cd.md'
+    - 'Can I?': 'user-guide/demarcation.md'
   - 'CISO Guide':
     - 'Overview': 'ciso-guide/index.md'
     - 'Backup': 'ciso-guide/backup.md'
