@@ -60,4 +60,3 @@ In case [ID mapping][idmapping] is implemented in container runtimes and Kuberne
 [cve]: https://nvd.nist.gov/vuln/detail/CVE-2020-8554
 [psa]: https://kubernetes.io/docs/concepts/security/pod-security-admission/
 [idmapping]: https://kernelnewbies.org/LinuxChanges#Linux_5.12.ID_mapping_in_mounts
-
