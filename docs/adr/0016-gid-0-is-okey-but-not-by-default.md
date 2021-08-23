@@ -1,6 +1,6 @@
 # gid=0 is okay, but not by default
 
-* Status: proposed
+* Status: accepted
 * Deciders: Cristian (brought up by Olle)
 * Date: 2021-08-19
 
