@@ -3,7 +3,9 @@ Demarcation
 
 > It's not that I don't trust you. Rather, I don't want you to worry.
 
-If you used Kubernetes before, especially if you acted as a Kubernetes administrator, then being a Compliant Kubernetes user might feel a bit limiting. For example, you might not be able to run containers with root (`uid=0`) as you were used to. These restrictions are not meant to be perceived as limitations. Rather they are safeguards to ensure you keep regulators happy. While pleasing regulators might not feel rewarding, they are there to ensure public trust in digitalization and the IT industry. Without public trust, customers would not use your application and stick to pen-and-paper instead.
+Compliant Kubernetes comes with a lot of safeguards to ensure you protect your business reputation and earn the trust of your customers. Furthermore, it is a good idea to keep regulators happy, since they bring public trust into digitalization. Public trust is necessary to shift customers away from pen-and-paper to drive usage of your amazing application.
+
+If you used Kubernetes before, especially if you acted as a Kubernetes administrator, then being a Compliant Kubernetes user might feel a bit limiting. For example, you might not be able to run containers with root (`uid=0`) as you were used to. Again, these are not limitations, rather safeguards.
 
 Why?
 ----
@@ -19,14 +21,16 @@ Compliant Kubernetes does not allow users to make any changes which may compromi
 
 Specifics
 ---------
-More technically, Compliant Kubernetes does not allow users:
+The following is a snapshot of the safeguards put in place in Compliant Kubernetes. This list may be updated in the future to take into account the fast evolving risk and technological landscape.
 
-* to change the Kubernetes API through [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) or [Dynamic Webhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks);
-* to gain more container execution permissions by mutating [PodSecurityPolicies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/); this implies that you cannot run container images as root or mount [hostPaths](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath);
-* to mutate ClusterRoles or Roles so as to [escalate privileges](https://v1-19.docs.kubernetes.io/docs/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping);
-* to mutate Kubernetes resources in operator-owned namespaces, such as `monitoring` or `kube-system`;
-* to re-configure system Pods, such as Prometheus or fluentd;
-* to access the hosts directly.
+More technically, Compliant Kubernetes does not allow users to:
+
+* change the Kubernetes API through [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) or [Dynamic Webhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks);
+* gain more container execution permissions by mutating [PodSecurityPolicies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/); this implies that you cannot run container images as root or mount [hostPaths](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath);
+* mutate ClusterRoles or Roles so as to [escalate privileges](https://v1-19.docs.kubernetes.io/docs/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping);
+* mutate Kubernetes resources in operator-owned namespaces, such as `monitoring` or `kube-system`;
+* re-configure system Pods, such as Prometheus or fluentd;
+* access the hosts directly.
 
 But what if I really need to?
 -----------------------------
