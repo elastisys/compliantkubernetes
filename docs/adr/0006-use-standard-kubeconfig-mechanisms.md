@@ -27,7 +27,7 @@ Tools that behave as such include:
 ## Considered Options
 
 * Current solution, i.e., scripts wrapping kubeconfigs in sops which then execute "fixed" commands, like `helmfile`, `helm` and `kubectl`.
-* "Lighter" scripts wrapping and unwrapping kubeconfig, allowing operators to run `helmfile`, `helm` and `kubectl` as the operator sees fit.
+* "Lighter" scripts wrapping and unwrapping kubeconfig, allowing administrators to run `helmfile`, `helm` and `kubectl` as the administrator sees fit.
 * Use standard kubeconfig mechanism.
 
 ## Decision Outcome

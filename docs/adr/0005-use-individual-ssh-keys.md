@@ -11,11 +11,11 @@ Technical Story:
 
 ## Context and Problem Statement
 
-Currently, we create per-cluster SSH key pairs, which are shared among operators. This is problematic from an information security perspective for a few reasons:
+Currently, we create per-cluster SSH key pairs, which are shared among administrators. This is problematic from an information security perspective for a few reasons:
 
 1. It reduces the auditability of various actions, e.g., who SSH-ed into the Kubernetes master.
-2. It makes credential management challenging, e.g., when onboarding/offboarding operators.
-3. It makes credential rotation challenging, e.g., the new SSH key pair needs to be transmitted to all operators.
+2. It makes credential management challenging, e.g., when onboarding/offboarding administrators.
+3. It makes credential rotation challenging, e.g., the new SSH key pair needs to be transmitted to all administrators.
 4. It encourages storing the SSH key pair without password protection.
 5. It makes it difficult to store SSH key pairs on an exfiltration-proof medium, such as a YubiKey.
 6. It violates the Principle of Least Astonishment.
@@ -44,18 +44,18 @@ For cloud deployments, all Terraform providers support injecting at least one pu
 * [GCP](https://github.com/kubernetes-sigs/kubespray/blob/release-2.15/contrib/terraform/gcp/variables.tf#L57)
 * [OpenStack](https://github.com/kubernetes-sigs/kubespray/blob/release-2.15/contrib/terraform/openstack/variables.tf#L81)
 
-The operator who creates the cluster bootstraps SSH access by providing their own public SSH key via cloud-init. Then, the Ansible role adds the public SSH keys of the other operators.
+The administrator who creates the cluster bootstraps SSH access by providing their own public SSH key via cloud-init. Then, the Ansible role adds the public SSH keys of the other administrators.
 
-BYO-VM and BYO-metal deployments are handled similarly, except that the initial public SSH key is delivered by email/Slack to the VM/metal operator.
+BYO-VM and BYO-metal deployments are handled similarly, except that the initial public SSH key is delivered by email/Slack to the VM/metal administrator.
 
 ## Recommendations to Operators
 
 * Operators should devise procedures for onboarding and offboarding member of the on-call team, as well as rotating SSH keys.
 
-* The public SSH keys of all on-call operators could be stored in a repository in a single file with one key per line.
+* The public SSH keys of all on-call administrators could be stored in a repository in a single file with one key per line.
 The comment of the key should clearly identify the owner.
 
-* Operator logs (be it stand-alone documents, git or GitOps-like repositories) should clearly list the SSH keys and identities of the operators configured for each environment.
+* Operator logs (be it stand-alone documents, git or GitOps-like repositories) should clearly list the SSH keys and identities of the administrators configured for each environment.
 
 ## Links
 

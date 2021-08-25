@@ -27,5 +27,5 @@ The Compliant Kubernetes Backup Dashboard allows to quickly audit the status of 
 
 In case there is a violation of backup policies:
 
-* Ask the operator to check the status of the [backup jobs](../operator-manual/disaster-recovery.md).
+* Ask the administrator to check the status of the [backup jobs](../operator-manual/disaster-recovery.md).
 * Ask the developers to check if they correctly marked Kubernetes resources with the necessary [backup annotations](../user-guide/backup.md).

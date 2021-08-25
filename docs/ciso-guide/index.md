@@ -15,4 +15,4 @@ The CISO only needs:
 * the URL to the Compliant Kubernetes dashboard (usually https://grafana.example.com);
 * credentials for the Compliant Kubernetes cluster.
 
-If in doubt, contact the Compliant Kubernetes operator.
+If in doubt, contact the Compliant Kubernetes administrator.

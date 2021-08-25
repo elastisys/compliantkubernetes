@@ -16,7 +16,7 @@ There are two ways to configure Let's Encrypt as an issuers for cert-manager: [I
 
 * We want to make compliantkubernetes-apps less fragile, and LetsEncrypt ratelimiting is a cause of fragility.
 * We want to make it easy for users to get started with Compliant Kubernetes in a "secure by default" manner.
-* We want to have a clear separation between user and operator resources, responsibilities and privileges.
+* We want to have a clear separation between user and administrator resources, responsibilities and privileges.
 * We want to keep the option open for "light" renderings, i.e., a single Kubernetes clusters that hosts both service cluster and workload cluster components.
 
 ## Considered Options
@@ -29,7 +29,7 @@ There are two ways to configure Let's Encrypt as an issuers for cert-manager: [I
 
 Chosen option: "Use ClusterIssuers in the service cluster; optionally enable ClusterIssuers in the workload cluster(s)", because it reduces fragility, clarifies responsibilities, makes it easy to get started securely.
 
-Each cluster is configured with an optional ClusterIssuer called `letsencrypt-prod` for LetsEncrypt production and `letsencrypt-staging` for LetsEncrypt staging. The email address for the ClusterIssuers is configured by the operator.
+Each cluster is configured with an optional ClusterIssuer called `letsencrypt-prod` for LetsEncrypt production and `letsencrypt-staging` for LetsEncrypt staging. The email address for the ClusterIssuers is configured by the administrator.
 
 ## Recommendations to Operators
 

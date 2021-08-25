@@ -19,7 +19,7 @@ Single Sign-On (SSO) Credentials
     * Grafana via Dex
     * Kibana via Dex
     * Harbor via Dex
-* Owner: individual person (user or operator)
+* Owner: individual person (user or administrator)
 * Type: individual credentials
 * Use for: identifying yourself
 * Do not use for:
@@ -31,7 +31,7 @@ Cloud Provider (Infrastructure) Credentials
 -------------------------------------------
 
 * Purpose: create infrastructure, e.g., VMs, load balancers, networks, buckets.
-* Owner: operator
+* Owner: administrator
 * Type: individual credentials
 * Use for:
     * Terraform layer in Kubespray
@@ -44,7 +44,7 @@ SSH Keys
 --------
 
 * Purpose: access Nodes for setup, break glass or disaster recovery
-* Owner: operator
+* Owner: administrator
 * Type: individual credentials
 * Use for:
     * Accessing Nodes via SSH
@@ -55,7 +55,7 @@ PGP Keys
 --------
 
 * Purpose: encrypt/decrypt sensitive information, e.g., service account credentials, customer names, incident reports, financial information, etc.
-* Owner: operator
+* Owner: administrator
 * Type: individual credentials
 * Use for:
     * Encrypting/decrypting sensitive information
@@ -110,7 +110,7 @@ Dex OpenID Client Secret
 
 * Purpose:
     * Complete the "OAuth dance" between Grafana, OpenSearch Dashboard, Harbor and kubectl, on one side, and Dex, on the other side.
-    * Used both by operators and users.
+    * Used both by administrators and users.
 * Owner: each Compliant Kubernetes cluster should have their own
 * Type: not secret
 * Misc:
@@ -120,7 +120,7 @@ Kubeconfig with OpenID Authentication
 -------------------------------------
 
 * Purpose: access the Kubernetes API in normal situations
-* Owner: shared between operators and users
+* Owner: shared between administrators and users
 * Type: not secret
 * Use for:
     * Routine checks
@@ -134,7 +134,7 @@ Kubeconfig with Client Certificate Key
 --------------------------------------
 
 * Purpose: access the Kubernetes API for disaster recovery, break glass or initial setup
-* Owner: shared between operators
+* Owner: shared between administrators
 * Type: special
 * Use for:
     * Initial setup

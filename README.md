@@ -41,10 +41,10 @@ sudo apt-get install graphviz make
 * Done today is better than perfect tomorrow.
 * Write for the project, not the company.
 * A picture is worth 1000 words. Use Graphviz, Terminal screenshots, or GIFs. Focus on the content, leave aesthetics for another day. Prefer PNG with a width of 1200px.
-* Perspective: Put yourself in the shoes of the user or operator. What documentation would you like to read as a newcomer?
+* Perspective: Put yourself in the shoes of the user or administrator. What documentation would you like to read as a newcomer?
 * Use "we" for the writer(s). Use "you" for the reader.
 * Write in [plain English](http://www.plainenglish.co.uk/how-to-write-in-plain-english.html).
-* Ordering of ideas: Aim for the happy flow: How would a first-time user/operator interact with the system? In what order would they do things?
+* Ordering of ideas: Aim for the happy flow: How would a first-time user/administrator interact with the system? In what order would they do things?
 * Please capitalize Kubernetes concepts (Pod, Volume, etc.) for consistency with the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/pods/).
 * Link to relevant upstream documentation.
 * Please contribute to a branch and create a PR.
@@ -53,13 +53,13 @@ sudo apt-get install graphviz make
 
 ### Code Snippets
 
-Code snippets should be written in a way that is transparent, predictable and flexible. They should be written with two roles in mind: devs and ops. Devs need commands that "mostly work", but need access to the underlying tools to select only the component they currently work on (e.g., Ansible `-t` or Helmfile `-l`). Ops need access to dry-run. Both these roles will be called "operator" below.
+Code snippets should be written in a way that is transparent, predictable and flexible. They should be written with two roles in mind: devs and ops. Devs need commands that "mostly work", but need access to the underlying tools to select only the component they currently work on (e.g., Ansible `-t` or Helmfile `-l`). Ops need access to dry-run. Both these roles will be called "administrator" below.
 
 * Separate pre-requisite installation snippets, config snippets (which includes init snippets), apply snippets and test snippets.
-* Apply snippets should not execute when copy-pasted, e.g., do not add a final newline. They should allow the operator to review the command, potentially edit the command, before confirming execution by typing ENTER.
+* Apply snippets should not execute when copy-pasted, e.g., do not add a final newline. They should allow the administrator to review the command, potentially edit the command, before confirming execution by typing ENTER.
 * Apply snippets should be idempotent, i.e., running apply multiple times should give the same result as applying only once.
 * Avoid auto-approve in apply snippets. Encourage (but don't force) dry-running.
-* Include test snippets after every major apply step. These should allow the operator to confirm that the previous apply step succeeded. The test should be as realistic as possible, e.g., "I can run a Pod", "PVCs I create are bound", etc. Tests should both confirm that the operator can proceed with the next step and serve as troubleshooting.
+* Include test snippets after every major apply step. These should allow the administrator to confirm that the previous apply step succeeded. The test should be as realistic as possible, e.g., "I can run a Pod", "PVCs I create are bound", etc. Tests should both confirm that the administrator can proceed with the next step and serve as troubleshooting.
 * Test snippets should be non-destructive. If this is not possible, add big warnings.
 
 Examples:
@@ -74,7 +74,7 @@ export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret
 ./bin/ck8s init
 
 ## Apply snippets
-# Good, because operator can review command, change command as necessary, review its effects and approves those effects
+# Good, because administrator can review command, change command as necessary, review its effects and approves those effects
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
     pushd inventory/$CLUSTER
     terraform init ../../contrib/terraform/exoscale

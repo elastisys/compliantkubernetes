@@ -26,5 +26,5 @@ The Compliant Kubernetes Cryptography Dashboard allows to quickly audit the stat
 
 In case there is a violation of cryptography policies:
 
-* If a certificate is expired and was not renewed, ask the operator to check the status of `cert-manager` and `ingress-controller` component.
+* If a certificate is expired and was not renewed, ask the administrator to check the status of `cert-manager` and `ingress-controller` component.
 * If an endpoint is not encrypted, ask the developers to set the necessary [Ingress annotations](https://cert-manager.io/docs/usage/ingress/).

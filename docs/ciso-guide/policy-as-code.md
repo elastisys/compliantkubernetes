@@ -21,4 +21,4 @@ Whatever your situation, the Compliant Kubernetes Policy-as-Code Dashboard allow
 
 If an application or user keeps violating a policy, start by reviewing the policy. If the policy seems well codified, contact the developer or the application owner to determine why policy violations occurs or need to be prevented by Compliant Kubernetes.
 
-If a policy is missing or too strict, contact the Compliant Kubernetes operators.
+If a policy is missing or too strict, contact the Compliant Kubernetes administrators.

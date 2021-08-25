@@ -11,7 +11,7 @@ Compliant Kubernetes has the vision to reduce the compliance burden on multiple 
 ## Decision Drivers
 
 * Storage Orchestrator needs to be popular and well maintained, so that developer can focus on adding value on top of Kubernetes clusters.
-* Storage Orchestrator needs to be easy to set up, easy to operate and battle-tested, so on-call operators are not constantly woken up.
+* Storage Orchestrator needs to be easy to set up, easy to operate and battle-tested, so on-call administrators are not constantly woken up.
 * Storage Orchestrator needs to have reasonable performance. (A local storage provider can deal with high-performance use-cases.)
 
 ## Considered Options

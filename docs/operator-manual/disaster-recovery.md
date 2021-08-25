@@ -1,6 +1,6 @@
 # Disaster Recovery
 
-This document details disaster recovery procedures for Compliant Kubernetes. These procedures must be executed by the operator.
+This document details disaster recovery procedures for Compliant Kubernetes. These procedures must be executed by the administrator.
 
 ## Compliant Need
 

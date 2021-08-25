@@ -98,7 +98,7 @@ Note that there are a few limitations when using compliantkubernetes-apps on GCP
 - Backup retention for InfluxDB is disabled due to it only being supported with S3 as object storage. If you want to circumvent this, consider using S3 as object storage or deploying [Minio](https://docs.min.io/docs/minio-gateway-for-gcs.html) as a gateway.
 - Fluentd does not work due to a missing output plugin. If you want to circumvent this, consider using S3 as object storage or deploying [Minio](https://docs.min.io/docs/minio-gateway-for-gcs.html) as a gateway. Alternatively, Fluentd can be disabled in the compliantkubernetes-apps configuration, which has the consequence of no logs being saved from the service cluster.
 
-For information on how to modify the configuration to use S3 as object storage, refer to the operator manual for [AWS](aws.md) or [Exoscale](exoscale.md), in the section for apps configuration.
+For information on how to modify the configuration to use S3 as object storage, refer to the administrator manual for [AWS](aws.md) or [Exoscale](exoscale.md), in the section for apps configuration.
 
 ### Setup
 

@@ -46,7 +46,7 @@ The web interface is not exposed by default in Compliant Kubernetes. In order to
 
 	kubectl -- -n monitoring port-forward prometheus-prometheus-operator-prometheus-0 9090:9090
 
-Depending on your Compliant Kubernetes settings, access to the Prometheus server might have been disabled by the operator.
+Depending on your Compliant Kubernetes settings, access to the Prometheus server might have been disabled by the administrator.
 
 ### Grafana
 Grafana can be accessed at the endpoint provided by the Compliant Kubernetes install scripts. If you have configured dex you can login with a connected account.

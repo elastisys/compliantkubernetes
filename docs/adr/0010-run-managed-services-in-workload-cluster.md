@@ -40,7 +40,7 @@ Chosen option: "run managed services in workload cluster".
 
 ## Negative Consequences
 
-* Blurs separation of responsibilities between user and operator.
+* Blurs separation of responsibilities between user and administrator.
 * The managed service is easier impacted by user misusage, e.g., bringing a Node into OOM.
 * Workload cluster can no longer be deployed with “free for all” security. Operators need to push and fight back against loose access control.
 

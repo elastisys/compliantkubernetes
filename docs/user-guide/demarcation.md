@@ -11,13 +11,13 @@ Why?
 ----
 As previously reported, [Kubernetes is not secure by default, nor by itself](https://searchitoperations.techtarget.com/news/252487963/Kubernetes-security-defaults-prompt-upstream-dilemma). This is due to the fact that Kubernetes prefers to keep its "wow, it just works" experience. This might be fine for a company that does not process personal data. However, if you are in a regulated industry, for example, because you process personal data or health information, your regulators will be extremely unhappy to learn that your platform does not conform to security best practices.
 
-In case of Compliant Kubernetes this implies a clear separation of roles and responsibilities between Compliant Kubernetes users and operators.
-The mission of operators is to make you, the Compliant Kubernetes user, succeed. Besides allowing you to develop features as fast as possible, the operator also needs to ensure that you build on top of a platform that lives up to regulatory requirements, specifically data privacy and data security regulations.
+In case of Compliant Kubernetes this implies a clear separation of roles and responsibilities between Compliant Kubernetes users and administrators.
+The mission of administrators is to make you, the Compliant Kubernetes user, succeed. Besides allowing you to develop features as fast as possible, the administrator also needs to ensure that you build on top of a platform that lives up to regulatory requirements, specifically data privacy and data security regulations.
 
 General Principle
 -----------------
 
-Compliant Kubernetes does not allow users to make any changes which may compromise the security of the platform. This includes compromising or working around access control, logging, monitoring, backups, alerting, etc. For example, accidental deletion of the CustomResourceDefinitions of Prometheus would prevent operators from getting alerts and fixing cluster issues before your application is impacted. Similarly, accidentally deleting fluentd Pods would make it impossible to capture the Kubernetes audit log and investigate data breaches.
+Compliant Kubernetes does not allow users to make any changes which may compromise the security of the platform. This includes compromising or working around access control, logging, monitoring, backups, alerting, etc. For example, accidental deletion of the CustomResourceDefinitions of Prometheus would prevent administrators from getting alerts and fixing cluster issues before your application is impacted. Similarly, accidentally deleting fluentd Pods would make it impossible to capture the Kubernetes audit log and investigate data breaches.
 
 Specifics
 ---------
@@ -28,10 +28,10 @@ More technically, Compliant Kubernetes does not allow users to:
 * change the Kubernetes API through [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) or [Dynamic Webhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks);
 * gain more container execution permissions by mutating [PodSecurityPolicies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/); this implies that you cannot run container images as root or mount [hostPaths](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath);
 * mutate ClusterRoles or Roles so as to [escalate privileges](https://v1-19.docs.kubernetes.io/docs/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping);
-* mutate Kubernetes resources in operator-owned namespaces, such as `monitoring` or `kube-system`;
+* mutate Kubernetes resources in administrator-owned namespaces, such as `monitoring` or `kube-system`;
 * re-configure system Pods, such as Prometheus or fluentd;
 * access the hosts directly.
 
 But what if I really need to?
 -----------------------------
-Unfortunately, many application asks for more permissions than Compliant Kubernetes allows by default. In such a case, ask your operator to make a risk-reward analysis. As long as they stick to the general principles, this should be fine. However, as much as they want to help, they might not be allowed to say "yes". Remember, operators are there to help you focus on application development, but at the same time they are responsible to protect your application against security risks.
+Unfortunately, many application asks for more permissions than Compliant Kubernetes allows by default. In such a case, ask your administrator to make a risk-reward analysis. As long as they stick to the general principles, this should be fine. However, as much as they want to help, they might not be allowed to say "yes". Remember, administrators are there to help you focus on application development, but at the same time they are responsible to protect your application against security risks.

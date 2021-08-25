@@ -20,7 +20,7 @@ Other priorities (e.g., P4 and below) are generally used for informational purpo
 Dealing with alerts correctly entails prioritizing them (e.g., P1, P2, P3), deciding if someone should be notified, who should be notified, how they should be notified (e.g., SMS or email) and when.
 "Who", "how" and "when" should include escalation, if the previous notification was not acknowledged within a pre-configured time interval, then the same person if notified via a different channel or a new person is notified.
 
-Under-alerting -- e.g., notifying an on-call person too late -- may lead to Service Level Agreement (SLA) violations and a general feeling of operator anxiety: "Is everything okay, or is alerting not working?".
+Under-alerting -- e.g., notifying an on-call person too late -- may lead to Service Level Agreement (SLA) violations and a general feeling of administrator anxiety: "Is everything okay, or is alerting not working?".
 Over-alerting -- e.g., notifying a person too often about low-priority alerts -- leads to alert fatigue and "crying wolf" where even important alerts are eventually ignored.
 Hence, configuring the right level of alerting -- in particular notifications -- is extremely important both for SLA fulfillment and a happy on-call team.
 
@@ -57,7 +57,7 @@ Configuration of alerts happens in the OMT.
 ## Recommendations to Operators
 
 * Operators should familiarize themselves with the capabilities of OMT, e.g., OpsGenie. This should be first done using a web UI, since that improves discoverability of such capabilities.
-* When alerting configuration becomes too complex and/or repetitive, operators should employ a configuration management tools, such as Terraform, to configure the OMT.
+* When alerting configuration becomes too complex and/or repetitive, administrators should employ a configuration management tools, such as Terraform, to configure the OMT.
 
 ## Links
 
