@@ -274,7 +274,7 @@ Depending on your provider:
 
 1. Add a new Node by editing the `*.tfvars`.
 2. Re-apply Terraform.
-3. Re-create the `inventory.ini`.
+3. Re-create the `inventory.ini` (skip this step if the cluster is using a dynamic inventory).
 4. Re-apply Kubespray.
 5. Re-fix the Kubernetes API URL.
 
