@@ -1,6 +1,10 @@
 # Compliant Kubernetes on Openstack
 
 This document contains instructions on how to set up a Compliant Kubernetes environment (consisting of a service cluster and one or more workload clusters) on Openstack.
+
+!!!note
+    This guide is written for compliantkubernetes-apps [v0.13.0](https://github.com/elastisys/compliantkubernetes-apps/tree/v0.13.0)
+
 TODO: The document is split into two parts:
 
 - Cluster setup (setting up infrastructure and the Kubernetes clusters).
@@ -14,7 +18,7 @@ Before starting, make sure you have [all necessary tools](getting-started.md). I
 - [Openstack credentials](https://github.com/kubernetes-sigs/kubespray/tree/master/contrib/terraform/openstack#openstack-access-and-credentials) (either using `openrc` or the `clouds.yaml` configuration file) for setting up the infrastructure.
 
 !!!note
-    This guide is written for compliantkubernetes-apps [v0.13.0](https://github.com/elastisys/compliantkubernetes-apps/tree/v0.13.0)
+    Although recommended OpenStack authentication method is `clouds.yaml` it is more convenient to use the `openrc` method with compliant kubernetes as it works both with kubespray and terraform. If you are using the `clouds.yaml` method, at the moment, kubespray will still expect you to set a few environment variables.
 
 ## Initialize configuration folder
 
