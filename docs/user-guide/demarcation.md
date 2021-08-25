@@ -1,5 +1,5 @@
-Demarcation
-===========
+Can I?
+======
 
 > It's not that I don't trust you. Rather, I don't want you to worry.
 
@@ -17,11 +17,11 @@ The mission of operators is to make you, the Compliant Kubernetes user, succeed.
 General Principle
 -----------------
 
-Compliant Kubernetes does not allow users to make any changes which may compromise the security of the platform. This includes compromising or working around access control, logging, monitoring, backups, alerting, etc.
+Compliant Kubernetes does not allow users to make any changes which may compromise the security of the platform. This includes compromising or working around access control, logging, monitoring, backups, alerting, etc. For example, accidental deletion of the CustomResourceDefinitions of Prometheus would prevent operators from getting alerts and fixing cluster issues before your application is impacted. Similarly, accidentally deleting fluentd Pods would make it impossible to capture the Kubernetes audit log and investigate data breaches.
 
 Specifics
 ---------
-The following is a snapshot of the safeguards put in place in Compliant Kubernetes. This list may be updated in the future to take into account the fast evolving risk and technological landscape.
+To stick to the general principles above, Compliant Kubernetes puts the following technical safeguards. This list may be updated in the future to take into account the fast evolving risk and technological landscape.
 
 More technically, Compliant Kubernetes does not allow users to:
 
@@ -34,4 +34,4 @@ More technically, Compliant Kubernetes does not allow users to:
 
 But what if I really need to?
 -----------------------------
-Unfortunately, many application asks for more permissions than Compliant Kubernetes allows by default. In such a case, ask your operator to make a risk-reward analysis. As long as they stick to the general principles, this should be fine. However, if you ask your operator to install a super-new, untested Kubernetes operator needing cluster-admin permissions, prepare to have your request denied. Remember, Compliant Kubernetes and its operators are there to safeguard you against compliance violations. [Don't shoot the messenger](https://en.wikipedia.org/wiki/Shooting_the_messenger).
+Unfortunately, many application asks for more permissions than Compliant Kubernetes allows by default. In such a case, ask your operator to make a risk-reward analysis. As long as they stick to the general principles, this should be fine. However, as much as they want to help, they might not be allowed to say "yes". Remember, operators are there to help you focus on application development, but at the same time they are responsible to protect your application against security risks.
