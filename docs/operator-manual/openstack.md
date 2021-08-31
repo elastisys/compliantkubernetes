@@ -221,9 +221,49 @@ You will need to change at least one value: `kube_oidc_url` in `group_vars/k8s_c
 !!!note
     If you have `use_access_ip = 0` in `cluster.tfvars`, you should add the public ip address of the master nodes to the variable `supplementary_addresses_in_ssl_keys = ["<master-0-ip-address>",...]` somewhere under `group_vars/`.
 
-For cloud provider integration, you have a few options [as described here](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/openstack.md#the-in-tree-cloud-provider).
-We will be going with the in-tree cloud provider and simply source the Openstack credentials.
-This doesn't require any changes to the variables as set up using this guide.
+For cloud provider integration, you have a few options [as described here](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/openstack.md#the-external-cloud-provider).
+We will be going with the external cloud provider and simply source the Openstack credentials.
+See below for how to modify the variables that need to be modified.
+
+### Setting up Kubespray variables
+
+In `${CK8S_CONFIG_PATH}/$CLUSTER-config/group_vars/k8s_cluster/ck8s-k8s-cluster-openstack.yaml`, the default variables should look like this:
+
+```yaml
+etcd_kubeadm_enabled: true
+
+cloud_provider: external
+external_cloud_provider: openstack
+calico_mtu: 1480
+
+external_openstack_cloud_controller_extra_args:
+  # Must be different for every cluster in the same openstack project
+  cluster-name: "set-me"
+```
+
+`cluster-name` should be set to a name that is unique in the Openstack project you're deploying your clusters in. If you don't have any other clusters in the project, just make sure that the service cluster and workload clusters have different names.
+
+If you want to set up LBaaS in your cluster, you can add the following config:
+
+```yaml
+external_openstack_lbaas_create_monitor: false
+external_openstack_lbaas_monitor_delay: "1m"
+external_openstack_lbaas_monitor_timeout: "30s"
+external_openstack_lbaas_monitor_max_retries: "3"
+external_openstack_lbaas_provider: octavia
+external_openstack_lbaas_use_octavia: true
+# external_openstack_lbaas_network_id: "Neutron network ID to create LBaaS VIP"
+external_openstack_lbaas_subnet_id: "Neutron subnet ID to create LBaaS VIP"
+external_openstack_lbaas_floating_network_id: "Neutron network ID to get floating IP from"
+# external_openstack_lbaas_floating_subnet_id: "Neutron subnet ID to get floating IP from"
+external_openstack_lbaas_method: "ROUND_ROBIN"
+external_openstack_lbaas_manage_security_groups: false
+external_openstack_lbaas_internal_lb: false
+```
+
+The `network_id` and `subnet_id` variables need to be set by you, depending on whether or not you used floating IP. `network_id` should match the `external_net` variable in your Terraform variables, whereas the `subnet_id` should match the subnet ID that Terraform outputs after it is applied.
+
+Additionally, when you later set up `compliantkubernetes-apps` in your cluster, you should set `ingressNginx.controller.service.enabled` to `true` and `ingressNginx.controller.service.type` to `LoadBalancer` in both your `sc-config.yaml` and `wc-config.yaml`. Use the IP of the `ingress-nginx-controller` service in your cluster when you set up your DNS.
 
 !!!note
     At this point if the cluster is running on Safespring and you are using `kubespray v2.17.0+` it is possible to create an application credential.
