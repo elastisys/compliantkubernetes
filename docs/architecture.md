@@ -2,6 +2,8 @@
 
 Below we present the architecture of Compliant Kubernetes, using the [C4 model](https://c4model.com/).
 
+For the nitty-gritty details, see [Architectural Decision Records](adr/index.md).
+
 ## Level 1: System Context
 
 Let us start with the system context.
