@@ -34,4 +34,12 @@ More technically, Compliant Kubernetes does not allow users to:
 
 But what if I really need to?
 -----------------------------
-Unfortunately, many application asks for more permissions than Compliant Kubernetes allows by default. In such a case, ask your administrator to make a risk-reward analysis. As long as they stick to the general principles, this should be fine. However, as much as they want to help, they might not be allowed to say "yes". Remember, administrators are there to help you focus on application development, but at the same time they are responsible to protect your application against security risks.
+Unfortunately, many application asks for more permissions than Compliant Kubernetes allows by default. When looking at the Kubernetes resources, the following are problematic:
+
+* ClusterRoles, ClusterRoleBindings
+* Too permissive Roles and RoleBindings
+* PodSecurityPolicy and/or use of `privileged` PodSecurityPolicy
+* CustomResourceDefinitions
+* WebhookConfiguration
+
+In such a case, ask your administrator to make a risk-reward analysis. As long as they stick to the general principles, this should be fine. However, as much as they want to help, they might not be allowed to say "yes". Remember, administrators are there to help you focus on application development, but at the same time they are responsible to protect your application against security risks.
