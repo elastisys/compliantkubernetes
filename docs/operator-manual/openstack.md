@@ -255,12 +255,12 @@ export OS_CLOUD=<name-of-openstack-cloud-environment>
 ```bash
 MODULE_PATH="$(pwd)/kubespray/contrib/terraform/openstack"
 
+pushd "${MODULE_PATH}"
 for CLUSTER in "${SERVICE_CLUSTER}" "${WORKLOAD_CLUSTERS[@]}"; do
-  pushd "${CK8S_CONFIG_PATH}/${CLUSTER}-config"
-  terraform init "${MODULE_PATH}"
-  terraform apply -var-file=cluster.tfvars "${MODULE_PATH}"
-  popd
+  terraform init
+  terraform apply -var-file="${CK8S_CONFIG_PATH}/${CLUSTER}-config/cluster.tfvars" -state="${CK8S_CONFIG_PATH}/${CLUSTER}-config/terraform.tfstate"
 done
+popd
 ```
 
 !!!warning
@@ -379,12 +379,13 @@ Destroy the infrastructure using Terraform, the same way you created it:
 
 ```bash
 MODULE_PATH="$(pwd)/kubespray/contrib/terraform/openstack"
+
+pushd "${MODULE_PATH}"
 for CLUSTER in "${SERVICE_CLUSTER}" "${WORKLOAD_CLUSTERS[@]}"; do
-  pushd "${CK8S_CONFIG_PATH}/${CLUSTER}-config"
-  terraform init "${MODULE_PATH}"
-  terraform destroy -var-file=cluster.tfvars "${MODULE_PATH}"
-  popd
+  terraform init
+  terraform destroy -var-file="${CK8S_CONFIG_PATH}/${CLUSTER}-config/cluster.tfvars" -state="${CK8S_CONFIG_PATH}/${CLUSTER}-config/terraform.tfstate"
 done
+popd
 ```
 
 Don't forget to remove any DNS records and object storage buckets that you may have created.
