@@ -6,9 +6,8 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
-    - uses: pre-commit/action@v2.0.0
-    - uses: codespell-project/actions-codespell@master
-    - name: Test mkdocs build
-      uses: jnanadarshan/mkdocs-build-action@v0.24
+      - uses: actions/checkout@v2
+      - uses: pre-commit/action@v2.0.0
+      - uses: codespell-project/actions-codespell@master
+      - name: Test docs
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
