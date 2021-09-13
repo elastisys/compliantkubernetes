@@ -304,6 +304,9 @@ kibana.$BASE_DOMAIN   60s A $SC_INGRESS_LB_IP
 
 ### Remove infrastructure
 
+!!!note
+    Even if you want to completely destroy the cluster with all its infrastructure, it is recommended to first execute the `clean` scripts described above, otherwise resources created by the cloud controller (e.g. volumes and loadbalancers) are not removed and `terraform destroy` might fail.
+
 ```bash
 pushd kubespray/contrib/terraform/aws
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
