@@ -119,6 +119,8 @@ The examples are copy-pastable, but you might want to change `cluster_name` and 
     external_net = "fba95253-5543-4078-b793-e2de58c31378"
     floatingip_pool = "ext-net"
     use_access_ip = 0
+
+    use_server_groups = true
     ```
 
 === "Safespring sto1"
@@ -128,7 +130,7 @@ The examples are copy-pastable, but you might want to change `cluster_name` and 
     cluster_name = "your-cluster-name"
 
     # image to use for bastion, masters, standalone etcd instances, and nodes
-    image = "ubuntu-20.04-server-cloudimg-amd64-20201102"
+    image = "ubuntu-20.04"
 
     # 0|1 bastion nodes
     number_of_bastions = 0
@@ -176,6 +178,8 @@ The examples are copy-pastable, but you might want to change `cluster_name` and 
     external_net = "b19680b3-c00e-40f0-ad77-4448e81ae226"
     use_access_ip = 1
     network_name = "public"
+
+    use_server_groups = true
     ```
 
 ### Expose Openstack credentials to Terraform
