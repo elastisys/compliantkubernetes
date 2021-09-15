@@ -121,68 +121,7 @@ The examples are copy-pastable, but you might want to change `cluster_name` and 
     use_access_ip = 0
     ```
 
-=== "Safespring sto1 (old)"
-
-    ``` hcl
-    # your Kubernetes cluster name here
-    cluster_name = "your-cluster-name"
-
-    # list of availability zones available in your OpenStack cluster
-    az_list = ["se-east-1"]
-    az_list_node = ["se-east-1"]
-
-    # image to use for bastion, masters, standalone etcd instances, and nodes
-    image = "ubuntu-20.40-server-cloudimg-amd64-20200423"
-
-    # 0|1 bastion nodes
-    number_of_bastions = 0
-
-    # standalone etcds
-    number_of_etcd = 0
-
-    # masters
-    number_of_k8s_masters = 1
-    number_of_k8s_masters_no_etcd = 0
-    number_of_k8s_masters_no_floating_ip = 0
-    number_of_k8s_masters_no_floating_ip_no_etcd = 0
-    flavor_k8s_master = "9d82d1ee-ca29-4928-a868-d56e224b92a1"
-
-    # nodes
-    number_of_k8s_nodes = 3
-    number_of_k8s_nodes_no_floating_ip = 0
-    flavor_k8s_node = "16d11558-62fe-4bce-b8de-f49a077dc881"
-
-    # networking
-    # ssh access to nodes
-    k8s_allowed_remote_ips = ["0.0.0.0/0"]
-    worker_allowed_ports = [
-      { # Node ports
-        "protocol"         = "tcp"
-        "port_range_min"   = 30000
-        "port_range_max"   = 32767
-        "remote_ip_prefix" = "0.0.0.0/0"
-      },
-      { # HTTP
-        "protocol"         = "tcp"
-        "port_range_min"   = 80
-        "port_range_max"   = 80
-        "remote_ip_prefix" = "0.0.0.0/0"
-      },
-      { # HTTPS
-        "protocol"         = "tcp"
-        "port_range_min"   = 443
-        "port_range_max"   = 443
-        "remote_ip_prefix" = "0.0.0.0/0"
-      }
-    ]
-    network_name = "your-network-name"
-    external_net = "71b10496-2617-47ae-abbc-36239f0863bb"
-    floatingip_pool = "public-v4"
-    use_access_ip = 0
-    dns_nameservers = ["8.8.8.8", "1.1.1.1"]
-    ```
-
-=== "Safespring sto1 (new)"
+=== "Safespring sto1"
 
     ``` hcl
     # your Kubernetes cluster name here
