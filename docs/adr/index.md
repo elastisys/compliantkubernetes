@@ -1,5 +1,36 @@
 # Architectural Decision Log
 
+## What are architectural decisions?
+
+Architectural decisions are high-level technical decisions that affect most stakeholders. A non-exhaustive list of architectural decisions is as follows:
+
+* Adding or removing tools
+* Adding or removing components
+* Changing that components talks to what other component
+* Major (in the [SemVer](https://semver.org/) sense) component upgrades
+
+Architectural decisions should be taken as directions to follow for future development and not issues to be fixed immediately.
+
+## What triggers an architectural decision?
+
+An architectural decision generally starts with one of the following:
+
+* A new features was requested by product management
+* An improvement was requested by engineering management
+* A new risk was discovered, usually by the architect, but also by any stakeholder
+* A new technology was discovered, that may help with a new feature, an improvement or to mitigate a risk
+
+## How are architectural decisions captured?
+
+Architectural decisions are captured via [Architectural Decision Records](#adrs) or the [tech radar](../developer-guide/tech-radar/).
+
+## How are architectural decisions taken?
+
+
+
+
+## ADRs
+
 This log lists the architectural decisions for Compliant Kubernetes.
 
 <!-- adrlog -- Regenerate the content by using "adr-log -i". You can install it via "npm install -g adr-log" -->
