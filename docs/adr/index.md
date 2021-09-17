@@ -2,12 +2,13 @@
 
 ## What are architectural decisions?
 
-Architectural decisions are high-level technical decisions that affect most stakeholders. A non-exhaustive list of architectural decisions is as follows:
+Architectural decisions are high-level technical decisions that affect most stakeholders, in particular Compliant Kubernetes developers, administrators and users.
+A non-exhaustive list of architectural decisions is as follows:
 
-* Adding or removing tools
-* Adding or removing components
-* Changing that components talks to what other component
-* Major (in the [SemVer](https://semver.org/) sense) component upgrades
+* adding or removing tools;
+* adding or removing components;
+* changing what component talks to what other component;
+* major (in the [SemVer](https://semver.org/) sense) component upgrades.
 
 Architectural decisions should be taken as directions to follow for future development and not issues to be fixed immediately.
 
@@ -15,19 +16,43 @@ Architectural decisions should be taken as directions to follow for future devel
 
 An architectural decision generally starts with one of the following:
 
-* A new features was requested by product management
-* An improvement was requested by engineering management
-* A new risk was discovered, usually by the architect, but also by any stakeholder
-* A new technology was discovered, that may help with a new feature, an improvement or to mitigate a risk
+* A new features was requested by product management.
+* An improvement was requested by engineering management.
+* A new risk was discovered, usually by the architect, but also by any stakeholder.
+* A new technology was discovered, that may help with a new feature, an improvement or to mitigate a risk.
 
 ## How are architectural decisions captured?
 
 Architectural decisions are captured via [Architectural Decision Records](#adrs) or the [tech radar](../developer-guide/tech-radar/).
+Both are stored in Git, hence a history of decisions is also captured as part of the Git commit messages.
 
 ## How are architectural decisions taken?
 
+Architectural decisions need to mitigate the following risks:
 
+* a component might not fulfill advertised expectations;
+* a component might be abandoned;
+* a component might change direction and deviate from expectations;
+* a component might require a lot of (initial or ongoing) training;
+* a component might not take security seriously;
+* a component might change its license, prohibiting its reuse or making its use expensive.
 
+## How are these risks mitigated?
+
+We prefer:
+
+* **community-driven open-source projects**, to reduce the risk of a component becoming abandoned, changing its license or changing direction in the interest of a single entity; as far as possible, we choose [CNCF projects](https://landscape.cncf.io/?project=hosted) (preferably graduated ones) or projects which are governed by at least 3 different entities;
+* **projects with a good security track record**, to avoid unexpected security vulnerabilities or delays in fixing security vulnerabilities; as far as possible, we choose projects with a clear security disclosure process and a clear security announcement process;
+* **projects that are popular**, both from a usage and contribution perspective; as far as possible, we choose projects featuring well-known users and many contributors;
+* **projects that rely on technologies that our team is already trained on**, to reduce the risk of requiring a lot of (initial or ongoing) training; as far as possible, we choose projects that overlap with the projects already on our [tech radar](../developer-guide/tech-radar);
+* **projects that are simple to install and manage**, to reduce required training and burden on administrators.
+
+Often, it is not possible to fulfill the above criteria. In that case, we take the following mitigations:
+
+* Architectural Decision Records include recommendations on training to be taken by administrators.
+* Closed-source or "as-a-Service" alternatives are used, if they are easy to replace thanks to broad API compatibility or standardization.
+
+These mitigations may be relaxed for components that are part of alpha or beta features, as these features -- and required components -- can be removed at our discretion.
 
 ## ADRs
 
