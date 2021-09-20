@@ -1,5 +1,9 @@
 # Architectural Decision Log
 
+## Mapping to ISO 27001 Controls
+
+* A.14.1.1 "Information security requirements analysis and specification"
+
 ## What are architectural decisions?
 
 Architectural decisions are high-level technical decisions that affect most stakeholders, in particular Compliant Kubernetes developers, administrators and users.
@@ -24,11 +28,11 @@ An architectural decision generally starts with one of the following:
 ## How are architectural decisions captured?
 
 Architectural decisions are captured via [Architectural Decision Records](#adrs) or the [tech radar](../developer-guide/tech-radar/).
-Both are stored in Git, hence a history of decisions is also captured as part of the Git commit messages.
+Both are stored in Git, hence a decision log is also captured as part of the Git commit messages.
 
 ## How are architectural decisions taken?
 
-Architectural decisions need to mitigate the following risks:
+Architectural decisions need to mitigate the following information security risks:
 
 * a component might not fulfill advertised expectations;
 * a component might be abandoned;
@@ -37,9 +41,11 @@ Architectural decisions need to mitigate the following risks:
 * a component might not take security seriously;
 * a component might change its license, prohibiting its reuse or making its use expensive.
 
+The Compliant Kubernetes architect is overall responsible for this risk.
+
 ## How are these risks mitigated?
 
-We prefer:
+Before taking in any new component to Compliant Kubernetes, we investigate and evaluate them. We prefer components that are:
 
 * **community-driven open-source projects**, to reduce the risk of a component becoming abandoned, changing its license or changing direction in the interest of a single entity; as far as possible, we choose [CNCF projects](https://landscape.cncf.io/?project=hosted) (preferably graduated ones) or projects which are governed by at least 3 different entities;
 * **projects with a good security track record**, to avoid unexpected security vulnerabilities or delays in fixing security vulnerabilities; as far as possible, we choose projects with a clear security disclosure process and a clear security announcement process;
