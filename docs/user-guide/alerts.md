@@ -4,7 +4,7 @@ Compliant Kubernetes (CK8S) includes alerts via [Alertmanager](https://prometheu
 
 !!!note
     This document specifically refers to user alerts or **application-level alerts**, i.e., alerts under the control and responsibility of the Compliant Kubernetes user.
-    
+
     Alerts that are due to the Compliant Kubernetes itself or the underlying infrastructure are under the control and responsibility of the Compliant Kubernetes administrator.
 
 ## Compliance needs
