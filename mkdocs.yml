@@ -45,6 +45,7 @@ nav:
     - 'Kubernetes API': 'user-guide/kubernetes-api.md'
     - 'Logs': 'user-guide/logs.md'
     - 'Metrics': 'user-guide/metrics.md'
+    - 'User Alerts': 'user-guide/alerts.md'
     - 'Backups': 'user-guide/backup.md'
     - 'CI/CD': 'user-guide/ci-cd.md'
     - 'Can I?': 'user-guide/demarcation.md'
