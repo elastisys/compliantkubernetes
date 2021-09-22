@@ -40,7 +40,7 @@ nav:
   - 'Exploring Benefits': 'benefits.md'
   - 'User Guide':
     - 'Overview': 'user-guide/index.md'
-    - 'Harbor': 'user-guide/harbor.md'
+    - 'Container registry': 'user-guide/registry.md'
     - 'Kubernetes API': 'user-guide/kubernetes-api.md'
     - 'Logs': 'user-guide/logs.md'
     - 'Metrics': 'user-guide/metrics.md'
