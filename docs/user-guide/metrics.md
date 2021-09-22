@@ -1,4 +1,4 @@
-# Prometheus and Grafana
+# Metrics
 This guide gives an introduction to Prometheus and Grafana and where they fit in Compliant Kubernetes, in terms of reducing the compliance burden.
 
 ## Why Prometheus and Grafana?
