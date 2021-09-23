@@ -6,7 +6,7 @@ When working in regulated industries, it is really important to have the bar hig
 
 1. **Code and documentation is merged on the main branch of upstream projects.** This may cause time delays which are outside your control. However, if we cannot convince upstream projects to take our contributions, then we better know about this as soon as possible. A Compliant Kubernetes relying on an abandoned upstream branch is unsustainable.
 2. **Code is merged in the Compliant Kubernetes project.**
-3. **Documentation is up-to-date.** IT systems used in regulated industries need to have documentation. (See [ISO 27001 A.12.1.1](A.12.1.1 Documented Operating Procedures)).
+3. **Documentation is up-to-date.** IT systems used in regulated industries need to have documentation. (See [ISO 27001 A.12.1.1 "Documented Operating Procedures"](https://www.isms.online/iso-27001/annex-a-12-operations-security/)).
 You may either point to upstream documentation -- if Compliant Kubernetes does not add any specifics -- or write a dedicated section/page. Prefer to refer to upstream documentation -- potentially updating that one -- instead of duplicating it in Compliant Kubernetes.
 4. **You provide evidence for completion.** This can be terminal output, screenshot or -- even better, but more time consuming -- a screencast with voice-over explanations. Ideally, these should be attached in the PR to convince the reviewer that the code and documentation are as intended.
 
