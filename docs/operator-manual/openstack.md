@@ -225,6 +225,21 @@ For cloud provider integration, you have a few options [as described here](https
 We will be going with the in-tree cloud provider and simply source the Openstack credentials.
 This doesn't require any changes to the variables as set up using this guide.
 
+!!!note
+    At this point if the cluster is running on Safespring and you are using `kubespray v2.17.0+` it is possible to create an application credential.
+    Which will give the cluster its own set of credentials instead of using your own.
+
+    To create a set of credentials use the following command:
+    `openstack application credential create <name>`
+
+    And set the following environment variables
+
+    ```console
+    export OS_APPLICATION_CREDENTIAL_NAME: <name>
+    export OS_APPLICATION_CREDENTIAL_ID: <project_id>
+    export OS_APPLICATION_CREDENTIAL_SECRET: <secret>
+    ```
+
 ### Run Kubespray
 
 Copy the script for generating dynamic ansible inventories:
