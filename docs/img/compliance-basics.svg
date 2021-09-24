@@ -14,25 +14,30 @@
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_personaldata_regulations</title>
-<path fill="none" stroke="black" d="M55,-636C55,-636 400,-636 400,-636 406,-636 412,-642 412,-648 412,-648 412,-706 412,-706 412,-712 406,-718 400,-718 400,-718 55,-718 55,-718 49,-718 43,-712 43,-706 43,-706 43,-648 43,-648 43,-642 49,-636 55,-636"/>
-<text text-anchor="middle" x="170" y="-698" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Personal Data Regulations</text>
+<path fill="none" stroke="black" d="M20,-636C20,-636 264,-636 264,-636 270,-636 276,-642 276,-648 276,-648 276,-706 276,-706 276,-712 270,-718 264,-718 264,-718 20,-718 20,-718 14,-718 8,-712 8,-706 8,-706 8,-648 8,-648 8,-642 14,-636 20,-636"/>
+<text text-anchor="middle" x="135" y="-698" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Personal Data Regulations</text>
 </g>
 <g id="clust3" class="cluster">
 <title>cluster_healthtech_regulations</title>
-<path fill="none" stroke="black" d="M432,-635C432,-635 758,-635 758,-635 764,-635 770,-641 770,-647 770,-647 770,-707 770,-707 770,-713 764,-719 758,-719 758,-719 432,-719 432,-719 426,-719 420,-713 420,-707 420,-707 420,-647 420,-647 420,-641 426,-635 432,-635"/>
-<text text-anchor="middle" x="532.5" y="-699" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Healthcare Regulations</text>
+<path fill="none" stroke="black" d="M296,-635C296,-635 546,-635 546,-635 552,-635 558,-641 558,-647 558,-647 558,-707 558,-707 558,-713 552,-719 546,-719 546,-719 296,-719 296,-719 290,-719 284,-713 284,-707 284,-707 284,-647 284,-647 284,-641 290,-635 296,-635"/>
+<text text-anchor="middle" x="396" y="-699" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Healthcare Regulations</text>
 </g>
 <g id="clust4" class="cluster">
+<title>cluster_best_practices</title>
+<path fill="none" stroke="black" d="M578,-636C578,-636 804,-636 804,-636 810,-636 816,-642 816,-648 816,-648 816,-706 816,-706 816,-712 810,-718 804,-718 804,-718 578,-718 578,-718 572,-718 566,-712 566,-706 566,-706 566,-648 566,-648 566,-642 572,-636 578,-636"/>
+<text text-anchor="middle" x="678" y="-698" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Security Best Practices</text>
+</g>
+<g id="clust5" class="cluster">
 <title>cluster_policies</title>
 <path fill="none" stroke="black" d="M20,-354C20,-354 804,-354 804,-354 810,-354 816,-360 816,-366 816,-366 816,-597 816,-597 816,-603 810,-609 804,-609 804,-609 20,-609 20,-609 14,-609 8,-603 8,-597 8,-597 8,-366 8,-366 8,-360 14,-354 20,-354"/>
-<text text-anchor="middle" x="50.5" y="-589" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Policies</text>
+<text text-anchor="middle" x="51" y="-589" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Policies</text>
 </g>
-<g id="clust7" class="cluster">
+<g id="clust8" class="cluster">
 <title>cluster_implementation</title>
 <path fill="none" stroke="black" d="M20,-181C20,-181 804,-181 804,-181 810,-181 816,-187 816,-193 816,-193 816,-316 816,-316 816,-322 810,-328 804,-328 804,-328 20,-328 20,-328 14,-328 8,-322 8,-316 8,-316 8,-193 8,-193 8,-187 14,-181 20,-181"/>
 <text text-anchor="middle" x="115" y="-308" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Compliant Kubernetes</text>
 </g>
-<g id="clust17" class="cluster">
+<g id="clust18" class="cluster">
 <title>cluster_audit</title>
 <path fill="none" stroke="black" d="M20,-8C20,-8 804,-8 804,-8 810,-8 816,-14 816,-20 816,-20 816,-143 816,-143 816,-149 810,-155 804,-155 804,-155 20,-155 20,-155 14,-155 8,-149 8,-143 8,-143 8,-20 8,-20 8,-14 14,-8 20,-8"/>
 <text text-anchor="middle" x="166.5" y="-135" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Compliant Kubernetes Dashboard</text>
@@ -41,87 +46,87 @@
 <g id="node1" class="node">
 <title>title</title>
 <g id="a_node1"><a xlink:href="https://compliantkubernetes.io" xlink:title="compliantkubernetes.io" target="_top">
-<text text-anchor="middle" x="325" y="-767.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">compliantkubernetes.io</text>
+<text text-anchor="middle" x="188" y="-767.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">compliantkubernetes.io</text>
 </a>
 </g>
 </g>
-<!-- CCPA -->
-<g id="node2" class="node">
-<title>CCPA</title>
-<g id="a_node2"><a xlink:href="https://oag.ca.gov/privacy/ccpa" xlink:title="CCPA" target="_blank">
-<path fill="none" stroke="black" d="M392,-680C392,-680 258,-680 258,-680 252,-680 246,-674 246,-668 246,-668 246,-656 246,-656 246,-650 252,-644 258,-644 258,-644 392,-644 392,-644 398,-644 404,-650 404,-656 404,-656 404,-668 404,-668 404,-674 398,-680 392,-680"/>
-<text text-anchor="middle" x="325" y="-658.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">CCPA</text>
+<!-- alignment_node_0 -->
+<!-- GDPR -->
+<g id="node5" class="node">
+<title>GDPR</title>
+<g id="a_node5"><a xlink:href="https://gdpr.eu/" xlink:title="GDPR" target="_blank">
+<path fill="none" stroke="black" d="M76,-680C76,-680 28,-680 28,-680 22,-680 16,-674 16,-668 16,-668 16,-656 16,-656 16,-650 22,-644 28,-644 28,-644 76,-644 76,-644 82,-644 88,-650 88,-656 88,-656 88,-668 88,-668 88,-674 82,-680 76,-680"/>
+<text text-anchor="middle" x="52" y="-658.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">GDPR</text>
 </a>
 </g>
 </g>
-<!-- title&#45;&gt;CCPA -->
+<!-- alignment_node_0&#45;&gt;GDPR -->
+<!-- alignment_node_1 -->
+<!-- alignment_node_2 -->
 <!-- Controls -->
-<g id="node7" class="node">
+<g id="node10" class="node">
 <title>Controls</title>
 <ellipse fill="none" stroke="black" cx="412" cy="-520.5" rx="50.5" ry="50.5"/>
 <text text-anchor="middle" x="412" y="-524.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">ISO 27001</text>
 <text text-anchor="middle" x="412" y="-509.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">Controls</text>
 </g>
-<!-- CCPA&#45;&gt;Controls -->
-<g id="edge1" class="edge">
-<title>CCPA&#45;&gt;Controls</title>
-<path fill="none" stroke="black" d="M335.67,-643.89C346.71,-626.19 364.49,-597.67 380.12,-572.62"/>
-<polygon fill="black" stroke="black" points="383.22,-574.26 385.54,-563.92 377.28,-570.56 383.22,-574.26"/>
-</g>
-<!-- GDPR -->
-<g id="node3" class="node">
-<title>GDPR</title>
-<g id="a_node3"><a xlink:href="https://gdpr.eu/" xlink:title="GDPR" target="_blank">
-<path fill="none" stroke="black" d="M216,-680C216,-680 82,-680 82,-680 76,-680 70,-674 70,-668 70,-668 70,-656 70,-656 70,-650 76,-644 82,-644 82,-644 216,-644 216,-644 222,-644 228,-650 228,-656 228,-656 228,-668 228,-668 228,-674 222,-680 216,-680"/>
-<text text-anchor="middle" x="149" y="-658.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">GDPR</text>
-</a>
-</g>
-</g>
 <!-- GDPR&#45;&gt;Controls -->
-<g id="edge2" class="edge">
+<g id="edge1" class="edge">
 <title>GDPR&#45;&gt;Controls</title>
-<path fill="none" stroke="black" d="M181.25,-643.89C225.46,-620.44 305.47,-578 358.67,-549.78"/>
-<polygon fill="black" stroke="black" points="360.43,-552.81 367.63,-545.04 357.15,-546.63 360.43,-552.81"/>
-</g>
-<!-- regulation2 -->
-<g id="node4" class="node">
-<title>regulation2</title>
+<path fill="none" stroke="black" d="M79.67,-643.98C85.31,-640.81 91.27,-637.66 97,-635 183.95,-594.61 289.61,-559.15 353.78,-539.04"/>
+<polygon fill="black" stroke="black" points="355.21,-542.26 363.71,-535.94 353.12,-535.58 355.21,-542.26"/>
 </g>
 <!-- controls2 -->
-<!-- regulation2&#45;&gt;controls2 -->
-<!-- HIPAA -->
-<g id="node5" class="node">
-<title>HIPAA</title>
-<g id="a_node5"><a xlink:href="https://www.cdc.gov/phlp/publications/topic/hipaa.html" xlink:title="HIPAA" target="_blank">
-<path fill="none" stroke="black" d="M750,-680C750,-680 616,-680 616,-680 610,-680 604,-674 604,-668 604,-668 604,-656 604,-656 604,-650 610,-644 616,-644 616,-644 750,-644 750,-644 756,-644 762,-650 762,-656 762,-656 762,-668 762,-668 762,-674 756,-680 750,-680"/>
-<text text-anchor="middle" x="683" y="-658.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">HIPAA</text>
-</a>
-</g>
-</g>
-<!-- HIPAA&#45;&gt;Controls -->
-<g id="edge3" class="edge">
-<title>HIPAA&#45;&gt;Controls</title>
-<path fill="none" stroke="black" d="M649.77,-643.89C603.94,-620.3 520.8,-577.51 465.99,-549.29"/>
-<polygon fill="black" stroke="black" points="467.26,-546.01 456.77,-544.55 464.06,-552.23 467.26,-546.01"/>
-</g>
+<!-- GDPR&#45;&gt;controls2 -->
+<!-- alignment_node_3 -->
 <!-- PDL -->
-<g id="node6" class="node">
+<g id="node7" class="node">
 <title>PDL</title>
-<g id="a_node6"><a xlink:href="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355" xlink:title="Patient data law\n(HSLF&#45;FS 2016:40)" target="_blank">
-<path fill="none" stroke="black" d="M574,-681C574,-681 440,-681 440,-681 434,-681 428,-675 428,-669 428,-669 428,-655 428,-655 428,-649 434,-643 440,-643 440,-643 574,-643 574,-643 580,-643 586,-649 586,-655 586,-655 586,-669 586,-669 586,-675 580,-681 574,-681"/>
-<text text-anchor="middle" x="507" y="-665.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">Patient data law</text>
-<text text-anchor="middle" x="507" y="-650.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">(HSLF&#45;FS 2016:40)</text>
+<g id="a_node7"><a xlink:href="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355" xlink:title="Patient data law\n(HSLF&#45;FS 2016:40)" target="_blank">
+<path fill="none" stroke="black" d="M411.5,-681C411.5,-681 304.5,-681 304.5,-681 298.5,-681 292.5,-675 292.5,-669 292.5,-669 292.5,-655 292.5,-655 292.5,-649 298.5,-643 304.5,-643 304.5,-643 411.5,-643 411.5,-643 417.5,-643 423.5,-649 423.5,-655 423.5,-655 423.5,-669 423.5,-669 423.5,-675 417.5,-681 411.5,-681"/>
+<text text-anchor="middle" x="358" y="-665.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">Patient data law</text>
+<text text-anchor="middle" x="358" y="-650.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">(HSLF&#45;FS 2016:40)</text>
 </a>
 </g>
 </g>
 <!-- PDL&#45;&gt;Controls -->
-<g id="edge4" class="edge">
+<g id="edge2" class="edge">
 <title>PDL&#45;&gt;Controls</title>
-<path fill="none" stroke="black" d="M494.58,-642.76C482.2,-624.58 462.63,-595.85 445.65,-570.92"/>
-<polygon fill="black" stroke="black" points="448.53,-568.92 440.01,-562.63 442.75,-572.87 448.53,-568.92"/>
+<path fill="none" stroke="black" d="M365.06,-642.76C371.49,-626.15 381.34,-600.72 390.35,-577.43"/>
+<polygon fill="black" stroke="black" points="393.67,-578.54 394.02,-567.95 387.14,-576.01 393.67,-578.54"/>
+</g>
+<!-- NSA -->
+<g id="node8" class="node">
+<title>NSA</title>
+<g id="a_node8"><a xlink:href="https://media.defense.gov/2021/Aug/03/2002820425/-1/-1/1/CTR_KUBERNETES%20HARDENING%20GUIDANCE.PDF" xlink:title="NSA" target="_blank">
+<path fill="none" stroke="black" d="M796,-680C796,-680 712,-680 712,-680 706,-680 700,-674 700,-668 700,-668 700,-656 700,-656 700,-650 706,-644 712,-644 712,-644 796,-644 796,-644 802,-644 808,-650 808,-656 808,-656 808,-668 808,-668 808,-674 802,-680 796,-680"/>
+<text text-anchor="middle" x="754" y="-658.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">NSA</text>
+</a>
+</g>
+</g>
+<!-- NSA&#45;&gt;Controls -->
+<g id="edge3" class="edge">
+<title>NSA&#45;&gt;Controls</title>
+<path fill="none" stroke="black" d="M712.67,-643.91C705.45,-640.93 698.01,-637.87 691,-635 613.93,-603.42 524.75,-567.2 468.37,-544.34"/>
+<polygon fill="black" stroke="black" points="469.51,-541.02 458.93,-540.51 466.88,-547.51 469.51,-541.02"/>
+</g>
+<!-- EDPB -->
+<g id="node9" class="node">
+<title>EDPB</title>
+<g id="a_node9"><a xlink:href="https://edpb.europa.eu/system/files/2021-06/edpb_recommendations_202001vo.2.0_supplementarymeasurestransferstools_en.pdf" xlink:title="EDPB" target="_blank">
+<path fill="none" stroke="black" d="M670,-680C670,-680 586,-680 586,-680 580,-680 574,-674 574,-668 574,-668 574,-656 574,-656 574,-650 580,-644 586,-644 586,-644 670,-644 670,-644 676,-644 682,-650 682,-656 682,-656 682,-668 682,-668 682,-674 676,-680 670,-680"/>
+<text text-anchor="middle" x="628" y="-658.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">EDPB</text>
+</a>
+</g>
+</g>
+<!-- EDPB&#45;&gt;Controls -->
+<g id="edge4" class="edge">
+<title>EDPB&#45;&gt;Controls</title>
+<path fill="none" stroke="black" d="M601.51,-643.89C567.08,-621.66 506.23,-582.36 462.77,-554.29"/>
+<polygon fill="black" stroke="black" points="464.62,-551.32 454.32,-548.83 460.82,-557.2 464.62,-551.32"/>
 </g>
 <!-- access -->
-<g id="node8" class="node">
+<g id="node11" class="node">
 <title>access</title>
 <path fill="none" stroke="black" d="M76,-398C76,-398 28,-398 28,-398 22,-398 16,-392 16,-386 16,-386 16,-374 16,-374 16,-368 22,-362 28,-362 28,-362 76,-362 76,-362 82,-362 88,-368 88,-374 88,-374 88,-386 88,-386 88,-392 82,-398 76,-398"/>
 <text text-anchor="middle" x="52" y="-383.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">Access</text>
@@ -134,7 +139,7 @@
 <polygon fill="black" stroke="black" points="98.79,-395.25 88.2,-394.93 96.27,-401.78 98.79,-395.25"/>
 </g>
 <!-- logging -->
-<g id="node9" class="node">
+<g id="node12" class="node">
 <title>logging</title>
 <path fill="none" stroke="black" d="M166,-398C166,-398 118,-398 118,-398 112,-398 106,-392 106,-386 106,-386 106,-374 106,-374 106,-368 112,-362 118,-362 118,-362 166,-362 166,-362 172,-362 178,-368 178,-374 178,-374 178,-386 178,-386 178,-392 172,-398 166,-398"/>
 <text text-anchor="middle" x="142" y="-376.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">Logging</text>
@@ -146,9 +151,9 @@
 <polygon fill="black" stroke="black" points="185.64,-399.45 175.15,-398 182.45,-405.68 185.64,-399.45"/>
 </g>
 <!-- backups -->
-<g id="node10" class="node">
+<g id="node13" class="node">
 <title>backups</title>
-<g id="a_node10"><a xlink:href="/ciso-guide/backup/" xlink:title="Backup" target="_top">
+<g id="a_node13"><a xlink:href="/ciso-guide/backup/" xlink:title="Backup" target="_top">
 <path fill="none" stroke="black" d="M256,-398C256,-398 208,-398 208,-398 202,-398 196,-392 196,-386 196,-386 196,-374 196,-374 196,-368 202,-362 208,-362 208,-362 256,-362 256,-362 262,-362 268,-368 268,-374 268,-374 268,-386 268,-386 268,-392 262,-398 256,-398"/>
 <text text-anchor="middle" x="232" y="-376.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">Backup</text>
 </a>
@@ -161,9 +166,9 @@
 <polygon fill="black" stroke="black" points="264.36,-401.49 254.3,-398.16 260.09,-407.03 264.36,-401.49"/>
 </g>
 <!-- continuous -->
-<g id="node11" class="node">
+<g id="node14" class="node">
 <title>continuous</title>
-<g id="a_node11"><a xlink:href="/ciso-guide/policy-as-code/" xlink:title="Continuous\ncompliance" target="_top">
+<g id="a_node14"><a xlink:href="/ciso-guide/policy-as-code/" xlink:title="Continuous\ncompliance" target="_top">
 <path fill="none" stroke="black" d="M346,-398C346,-398 298,-398 298,-398 292,-398 286,-392 286,-386 286,-386 286,-374 286,-374 286,-368 292,-362 298,-362 298,-362 346,-362 346,-362 352,-362 358,-368 358,-374 358,-374 358,-386 358,-386 358,-392 352,-398 346,-398"/>
 <text text-anchor="middle" x="322" y="-383.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00" fill="#4651b4">Continuous</text>
 <text text-anchor="middle" x="322" y="-370.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00" fill="#4651b4">compliance</text>
@@ -177,7 +182,7 @@
 <polygon fill="black" stroke="black" points="341.6,-404.74 333.21,-398.26 335.73,-408.55 341.6,-404.74"/>
 </g>
 <!-- vulnerability -->
-<g id="node12" class="node">
+<g id="node15" class="node">
 <title>vulnerability</title>
 <path fill="none" stroke="black" d="M436,-398C436,-398 388,-398 388,-398 382,-398 376,-392 376,-386 376,-386 376,-374 376,-374 376,-368 382,-362 388,-362 388,-362 436,-362 436,-362 442,-362 448,-368 448,-374 448,-374 448,-386 448,-386 448,-392 442,-398 436,-398"/>
 <text text-anchor="middle" x="412" y="-383.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00">Vulnerability</text>
@@ -190,9 +195,9 @@
 <polygon fill="black" stroke="black" points="415.5,-408.31 412,-398.31 408.5,-408.31 415.5,-408.31"/>
 </g>
 <!-- intrusion -->
-<g id="node13" class="node">
+<g id="node16" class="node">
 <title>intrusion</title>
-<g id="a_node13"><a xlink:href="/ciso-guide/intrusion-detection/" xlink:title="Intrusion\ndetection" target="_top">
+<g id="a_node16"><a xlink:href="/ciso-guide/intrusion-detection/" xlink:title="Intrusion\ndetection" target="_top">
 <path fill="none" stroke="black" d="M526,-398C526,-398 478,-398 478,-398 472,-398 466,-392 466,-386 466,-386 466,-374 466,-374 466,-368 472,-362 478,-362 478,-362 526,-362 526,-362 532,-362 538,-368 538,-374 538,-374 538,-386 538,-386 538,-392 532,-398 526,-398"/>
 <text text-anchor="middle" x="502" y="-383.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">Intrusion</text>
 <text text-anchor="middle" x="502" y="-368.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">detection</text>
@@ -206,9 +211,9 @@
 <polygon fill="black" stroke="black" points="488.27,-408.55 490.79,-398.26 482.4,-404.74 488.27,-408.55"/>
 </g>
 <!-- network -->
-<g id="node14" class="node">
+<g id="node17" class="node">
 <title>network</title>
-<g id="a_node14"><a xlink:href="/ciso-guide/network-security/" xlink:title="Network\nsecurity" target="_top">
+<g id="a_node17"><a xlink:href="/ciso-guide/network-security/" xlink:title="Network\nsecurity" target="_top">
 <path fill="none" stroke="black" d="M616,-398C616,-398 568,-398 568,-398 562,-398 556,-392 556,-386 556,-386 556,-374 556,-374 556,-368 562,-362 568,-362 568,-362 616,-362 616,-362 622,-362 628,-368 628,-374 628,-374 628,-386 628,-386 628,-392 622,-398 616,-398"/>
 <text text-anchor="middle" x="592" y="-383.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">Network</text>
 <text text-anchor="middle" x="592" y="-368.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">security</text>
@@ -222,9 +227,9 @@
 <polygon fill="black" stroke="black" points="563.91,-407.03 569.7,-398.16 559.64,-401.49 563.91,-407.03"/>
 </g>
 <!-- crypto -->
-<g id="node15" class="node">
+<g id="node18" class="node">
 <title>crypto</title>
-<g id="a_node15"><a xlink:href="/ciso-guide/cryptography/" xlink:title="Use of\ncryptography" target="_top">
+<g id="a_node18"><a xlink:href="/ciso-guide/cryptography/" xlink:title="Use of\ncryptography" target="_top">
 <path fill="none" stroke="black" d="M706,-398C706,-398 658,-398 658,-398 652,-398 646,-392 646,-386 646,-386 646,-374 646,-374 646,-368 652,-362 658,-362 658,-362 706,-362 706,-362 712,-362 718,-368 718,-374 718,-374 718,-386 718,-386 718,-392 712,-398 706,-398"/>
 <text text-anchor="middle" x="682" y="-383.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00" fill="#4651b4">Use of</text>
 <text text-anchor="middle" x="682" y="-370.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00" fill="#4651b4">cryptography</text>
@@ -238,7 +243,7 @@
 <polygon fill="black" stroke="black" points="641.55,-405.68 648.85,-398 638.36,-399.45 641.55,-405.68"/>
 </g>
 <!-- capacity -->
-<g id="node16" class="node">
+<g id="node19" class="node">
 <title>capacity</title>
 <path fill="none" stroke="black" d="M796,-398C796,-398 748,-398 748,-398 742,-398 736,-392 736,-386 736,-386 736,-374 736,-374 736,-368 742,-362 748,-362 748,-362 796,-362 796,-362 802,-362 808,-368 808,-374 808,-374 808,-386 808,-386 808,-392 802,-398 796,-398"/>
 <text text-anchor="middle" x="772" y="-383.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="11.00">Capacity</text>
@@ -251,9 +256,9 @@
 <polygon fill="black" stroke="black" points="727.73,-401.78 735.8,-394.93 725.21,-395.25 727.73,-401.78"/>
 </g>
 <!-- dex -->
-<g id="node18" class="node">
+<g id="node21" class="node">
 <title>dex</title>
-<g id="a_node18"><a xlink:href="https://dexidp.io/" xlink:title="Dex" target="_blank">
+<g id="a_node21"><a xlink:href="https://dexidp.io/" xlink:title="Dex" target="_blank">
 <image xlink:href="logos/project-icons/dex.svg" width="72px" height="71.301px" preserveAspectRatio="xMinYMin meet" x="16" y="-290"/>
 <text text-anchor="middle" x="52" y="-194.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">Dex</text>
 </a>
@@ -267,9 +272,9 @@
 </g>
 <!-- access&#45;&gt;dex -->
 <!-- elasticsearch -->
-<g id="node20" class="node">
+<g id="node23" class="node">
 <title>elasticsearch</title>
-<g id="a_node20"><a xlink:href="https://opendistro.github.io/for-elasticsearch/" xlink:title="Elasticsearch" target="_blank">
+<g id="a_node23"><a xlink:href="https://opendistro.github.io/for-elasticsearch/" xlink:title="Elasticsearch" target="_blank">
 <image xlink:href="logos/project-icons/opendistro.svg" width="72px" height="71.7131px" preserveAspectRatio="xMinYMin meet" x="106" y="-290"/>
 <text text-anchor="middle" x="142" y="-192.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">Elasticsearch</text>
 </a>
@@ -282,9 +287,9 @@
 <polygon fill="black" stroke="black" points="145.5,-300.22 142,-290.23 138.5,-300.23 145.5,-300.22"/>
 </g>
 <!-- velero -->
-<g id="node19" class="node">
+<g id="node22" class="node">
 <title>velero</title>
-<g id="a_node19"><a xlink:href="https://velero.io" xlink:title="Velero" target="_blank">
+<g id="a_node22"><a xlink:href="https://velero.io" xlink:title="Velero" target="_blank">
 <image xlink:href="logos/project-icons/velero.svg" width="72px" height="72px" preserveAspectRatio="xMinYMin meet" x="196" y="-290"/>
 <text text-anchor="middle" x="232" y="-194.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">Velero</text>
 </a>
@@ -297,9 +302,9 @@
 <polygon fill="black" stroke="black" points="235.5,-300.22 232,-290.23 228.5,-300.23 235.5,-300.22"/>
 </g>
 <!-- opa -->
-<g id="node21" class="node">
+<g id="node24" class="node">
 <title>opa</title>
-<g id="a_node21"><a xlink:href="https://open-policy-agent.github.io/gatekeeper/website/docs/" xlink:title="OPA" target="_blank">
+<g id="a_node24"><a xlink:href="https://open-policy-agent.github.io/gatekeeper/website/docs/" xlink:title="OPA" target="_blank">
 <image xlink:href="logos/project-icons/opa.svg" width="72px" height="83.5041px" preserveAspectRatio="xMinYMin meet" x="286" y="-290"/>
 <text text-anchor="middle" x="322" y="-194.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">OPA</text>
 </a>
@@ -312,9 +317,9 @@
 <polygon fill="black" stroke="black" points="325.5,-300.22 322,-290.23 318.5,-300.23 325.5,-300.22"/>
 </g>
 <!-- trivy -->
-<g id="node22" class="node">
+<g id="node25" class="node">
 <title>trivy</title>
-<g id="a_node22"><a xlink:href="https://github.com/aquasecurity/trivy" xlink:title="Trivy" target="_blank">
+<g id="a_node25"><a xlink:href="https://github.com/aquasecurity/trivy" xlink:title="Trivy" target="_blank">
 <image xlink:href="logos/project-icons/trivy.svg" width="72px" height="83.4545px" preserveAspectRatio="xMinYMin meet" x="376" y="-290"/>
 <text text-anchor="middle" x="412" y="-194.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">Trivy</text>
 </a>
@@ -327,9 +332,9 @@
 <polygon fill="black" stroke="black" points="415.5,-300.22 412,-290.23 408.5,-300.23 415.5,-300.22"/>
 </g>
 <!-- falco -->
-<g id="node23" class="node">
+<g id="node26" class="node">
 <title>falco</title>
-<g id="a_node23"><a xlink:href="https://falco.org/" xlink:title="Falco" target="_blank">
+<g id="a_node26"><a xlink:href="https://falco.org/" xlink:title="Falco" target="_blank">
 <image xlink:href="logos/project-icons/falco.svg" width="72px" height="81.8507px" preserveAspectRatio="xMinYMin meet" x="466" y="-290"/>
 <text text-anchor="middle" x="502" y="-194.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">Falco</text>
 </a>
@@ -342,9 +347,9 @@
 <polygon fill="black" stroke="black" points="505.5,-300.22 502,-290.23 498.5,-300.23 505.5,-300.22"/>
 </g>
 <!-- calico -->
-<g id="node24" class="node">
+<g id="node27" class="node">
 <title>calico</title>
-<g id="a_node24"><a xlink:href="https://www.projectcalico.org/" xlink:title="Calico" target="_blank">
+<g id="a_node27"><a xlink:href="https://www.projectcalico.org/" xlink:title="Calico" target="_blank">
 <image xlink:href="logos/project-icons/calico.svg" width="72px" height="69.6667px" preserveAspectRatio="xMinYMin meet" x="556" y="-290"/>
 <text text-anchor="middle" x="592" y="-194.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">Calico</text>
 </a>
@@ -357,9 +362,9 @@
 <polygon fill="black" stroke="black" points="595.5,-300.22 592,-290.23 588.5,-300.23 595.5,-300.22"/>
 </g>
 <!-- certmanager -->
-<g id="node25" class="node">
+<g id="node28" class="node">
 <title>certmanager</title>
-<g id="a_node25"><a xlink:href="https://cert-manager.io/" xlink:title="Cert Manager" target="_blank">
+<g id="a_node28"><a xlink:href="https://cert-manager.io/" xlink:title="Cert Manager" target="_blank">
 <image xlink:href="logos/project-icons/cert-manager.svg" width="72px" height="69.5303px" preserveAspectRatio="xMinYMin meet" x="646" y="-290"/>
 <text text-anchor="middle" x="682" y="-192.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">Cert Manager</text>
 </a>
@@ -372,9 +377,9 @@
 <polygon fill="black" stroke="black" points="685.5,-300.22 682,-290.23 678.5,-300.23 685.5,-300.22"/>
 </g>
 <!-- kubernetes -->
-<g id="node26" class="node">
+<g id="node29" class="node">
 <title>kubernetes</title>
-<g id="a_node26"><a xlink:href="https://kubernetes.io/" xlink:title="Kubernetes" target="_blank">
+<g id="a_node29"><a xlink:href="https://kubernetes.io/" xlink:title="Kubernetes" target="_blank">
 <image xlink:href="logos/project-icons/kubernetes.svg" width="72px" height="69.8182px" preserveAspectRatio="xMinYMin meet" x="736" y="-290"/>
 <text text-anchor="middle" x="772" y="-192.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">Kubernetes</text>
 </a>
@@ -388,9 +393,9 @@
 </g>
 <!-- controls2&#45;&gt;access -->
 <!-- prometheus -->
-<g id="node27" class="node">
+<g id="node30" class="node">
 <title>prometheus</title>
-<g id="a_node27"><a xlink:href="https://prometheus.io/" xlink:title="Prometheus" target="_blank">
+<g id="a_node30"><a xlink:href="https://prometheus.io/" xlink:title="Prometheus" target="_blank">
 <image xlink:href="logos/project-icons/prometheus.svg" width="72px" height="70.6479px" preserveAspectRatio="xMinYMin meet" x="16" y="-117"/>
 <text text-anchor="middle" x="52" y="-19.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00">Prometheus</text>
 </a>
@@ -403,20 +408,22 @@
 <polygon fill="black" stroke="black" points="48.81,-164.98 45.25,-155 41.81,-165.02 48.81,-164.98"/>
 </g>
 <!-- dex&#45;&gt;prometheus -->
-<!-- auditNA1 -->
-<g id="node29" class="node">
-<title>auditNA1</title>
+<!-- alerts -->
+<g id="node32" class="node">
+<title>alerts</title>
+<image xlink:href="alerts.svg" width="72px" height="72px" preserveAspectRatio="xMinYMin meet" x="196" y="-117"/>
+<text text-anchor="middle" x="232" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">Alerts</text>
 </g>
-<!-- velero&#45;&gt;auditNA1 -->
+<!-- velero&#45;&gt;alerts -->
 <g id="edge25" class="edge">
-<title>velero&#45;&gt;auditNA1</title>
+<title>velero&#45;&gt;alerts</title>
 <path fill="none" stroke="black" d="M232,-188.58C232,-181.14 232,-173.25 232,-165.22"/>
 <polygon fill="black" stroke="black" points="235.5,-165 232,-155 228.5,-165 235.5,-165"/>
 </g>
 <!-- grafana -->
-<g id="node28" class="node">
+<g id="node31" class="node">
 <title>grafana</title>
-<g id="a_node28"><a xlink:href="https://github.com/grafana/grafana" xlink:title="Grafana" target="_blank">
+<g id="a_node31"><a xlink:href="https://github.com/grafana/grafana" xlink:title="Grafana" target="_blank">
 <image xlink:href="logos/project-icons/grafana.svg" width="72px" height="75.0114px" preserveAspectRatio="xMinYMin meet" x="106" y="-117"/>
 <text text-anchor="middle" x="142" y="-21.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="16.00">Grafana</text>
 </a>
@@ -429,7 +436,7 @@
 <polygon fill="black" stroke="black" points="145.5,-165 142,-155 138.5,-165 145.5,-165"/>
 </g>
 <!-- auditNA2 -->
-<g id="node30" class="node">
+<g id="node33" class="node">
 <title>auditNA2</title>
 </g>
 <!-- opa&#45;&gt;auditNA2 -->
@@ -439,7 +446,7 @@
 <polygon fill="black" stroke="black" points="325.5,-165 322,-155 318.5,-165 325.5,-165"/>
 </g>
 <!-- auditNA3 -->
-<g id="node31" class="node">
+<g id="node34" class="node">
 <title>auditNA3</title>
 </g>
 <!-- trivy&#45;&gt;auditNA3 -->
@@ -449,7 +456,7 @@
 <polygon fill="black" stroke="black" points="415.5,-165 412,-155 408.5,-165 415.5,-165"/>
 </g>
 <!-- auditNA4 -->
-<g id="node32" class="node">
+<g id="node35" class="node">
 <title>auditNA4</title>
 </g>
 <!-- falco&#45;&gt;auditNA4 -->
@@ -459,7 +466,7 @@
 <polygon fill="black" stroke="black" points="505.5,-165 502,-155 498.5,-165 505.5,-165"/>
 </g>
 <!-- auditNA5 -->
-<g id="node33" class="node">
+<g id="node36" class="node">
 <title>auditNA5</title>
 </g>
 <!-- calico&#45;&gt;auditNA5 -->
@@ -469,7 +476,7 @@
 <polygon fill="black" stroke="black" points="595.5,-165 592,-155 588.5,-165 595.5,-165"/>
 </g>
 <!-- auditNA6 -->
-<g id="node34" class="node">
+<g id="node37" class="node">
 <title>auditNA6</title>
 </g>
 <!-- certmanager&#45;&gt;auditNA6 -->
@@ -479,7 +486,7 @@
 <polygon fill="black" stroke="black" points="685.5,-165 682,-155 678.5,-165 685.5,-165"/>
 </g>
 <!-- auditNA7 -->
-<g id="node35" class="node">
+<g id="node38" class="node">
 <title>auditNA7</title>
 </g>
 <!-- kubernetes&#45;&gt;auditNA7 -->

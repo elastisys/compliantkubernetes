@@ -18,30 +18,44 @@ digraph compliance_basics {
             fontcolor="#4651b4"
             URL="https://compliantkubernetes.io"
         ]
+        alignment_node_0[style="invis",width=1,label=""]
     }
 
     node[target="_blank"]  // Open links in new tab
     subgraph cluster_personaldata_regulations {
         label="Personal Data Regulations"
 
-        node[width=2.2, shape=box, style=rounded]
+        node[width=1, shape=box, style=rounded]
 
-        CCPA[URL="https://oag.ca.gov/privacy/ccpa"]
+        alignment_node_1[style=invis,label=""]
+        alignment_node_2[style=invis,label=""]
         GDPR[URL="https://gdpr.eu/"]
-
-        // special node for alignment
-        regulation2[shape=none,label="",width=0]
     }
 
     subgraph cluster_healthtech_regulations {
         label="Healthcare Regulations"
 
-        node[width=2.2, shape=box, style=rounded]
+        node[width=1.5, shape=box, style=rounded]
 
-        HIPAA[URL="https://www.cdc.gov/phlp/publications/topic/hipaa.html"]
+        alignment_node_3[style=invis,label=""]
         PDL[
             label="Patient data law\n(HSLF-FS 2016:40)"
             URL="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355"
+        ]
+    }
+
+    subgraph cluster_best_practices {
+        label="Security Best Practices"
+
+        node[width=1.5, shape=box, style=rounded]
+
+        NSA[
+            label="NSA"
+            URL="https://media.defense.gov/2021/Aug/03/2002820425/-1/-1/1/CTR_KUBERNETES%20HARDENING%20GUIDANCE.PDF"
+        ]
+        EDPB[
+            label="EDPB"
+            URL="https://edpb.europa.eu/system/files/2021-06/edpb_recommendations_202001vo.2.0_supplementarymeasurestransferstools_en.pdf"
         ]
     }
 
@@ -56,7 +70,7 @@ digraph compliance_basics {
             width=1.4
         ]
 
-        { HIPAA, PDL, GDPR, CCPA } -> Controls
+        { NSA, EDPB, PDL, GDPR } -> Controls
 
         node[
             width=1
@@ -199,13 +213,17 @@ digraph compliance_basics {
             label="Grafana"
             URL="https://github.com/grafana/grafana"
         ]
+        alerts[
+            image="alerts.svg"
+            label="Alerts"
+        ]
 
         edge[lhead=cluster_audit]
         dex->prometheus
         elasticsearch->grafana
+        velero->alerts
 
         // Alignment: We create a lot of invisible nodes "auditNA*" for alignment.
-        velero->auditNA1
         opa->auditNA2
         trivy->auditNA3
         falco->auditNA4
@@ -216,6 +234,5 @@ digraph compliance_basics {
 
     // ALIGNMENT
     edge[weight=1000,style="invis"]
-    regulation2 -> controls2 -> access -> dex -> prometheus
-    title -> CCPA
+    alignment_node_0 -> GDPR -> controls2 -> access -> dex -> prometheus
 }
