@@ -130,6 +130,23 @@ curl -kL -u "${user}:${password}" -X POST "${es_url}/_snapshot/${snapshot_repo}/
 
 Read the [API](https://www.elastic.co/guide/en/elasticsearch/reference/current/restore-snapshot-api.html#restore-snapshot-api-request-body) to see all parameters and their explanations.
 
+#### Restoring Kibana data
+
+Data in Kibana (saved searches, visualizations, dashboards, etc) is stored in the index `.kibana_1`. To restore that data you first need to delete the index and then do a restore.
+
+This will overwrite anything in the current `.kibana_1` index. If there is something new that should be saved, then [export](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_export) the saved objects and [import](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_import) them after the restore.
+
+```bash
+snapshot_name=<Snapshot name from previous step>
+
+curl -kL -u "${user}:${password}" -X DELETE "${es_url}/.kibana_1?pretty"
+
+curl -kL -u "${user}:${password}" -X POST "${es_url}/_snapshot/${snapshot_repo}/${snapshot_name}/_restore?pretty" -H 'Content-Type: application/json' -d'
+{
+  "indices": "'.kibana_1'"
+}
+'
+```
 
 ### Start new cluster from snapshot
 
