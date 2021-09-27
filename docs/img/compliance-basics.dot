@@ -1,4 +1,5 @@
 digraph compliance_basics {
+    splines=false;
     graph [
         fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"
         style=rounded
@@ -37,7 +38,7 @@ digraph compliance_basics {
 
         node[width=1.5, shape=box, style=rounded]
 
-        alignment_node_3[style=invis,label=""]
+        alignment_node_3[width=0.7,style=invis,label=""]
         PDL[
             label="Patient data law\n(HSLF-FS 2016:40)"
             URL="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355"
@@ -190,7 +191,7 @@ digraph compliance_basics {
     }
 
     subgraph cluster_audit {
-        label="Compliant Kubernetes Dashboard"
+        label="Compliant Kubernetes Visibility and Audit Dashboards"
         node[
             shape=none,
             label="",

@@ -11,6 +11,7 @@ preview:
 		while true; do \
 				make all; \
 				inotifywait -e close_write . ; \
+				sleep 0.5; \
 		done
 
 %.svg: %.dot

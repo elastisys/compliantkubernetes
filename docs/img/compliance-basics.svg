@@ -19,13 +19,13 @@
 </g>
 <g id="clust3" class="cluster">
 <title>cluster_healthtech_regulations</title>
-<path fill="none" stroke="black" d="M296,-635C296,-635 546,-635 546,-635 552,-635 558,-641 558,-647 558,-647 558,-707 558,-707 558,-713 552,-719 546,-719 546,-719 296,-719 296,-719 290,-719 284,-713 284,-707 284,-707 284,-647 284,-647 284,-641 290,-635 296,-635"/>
+<path fill="none" stroke="black" d="M296,-635C296,-635 496,-635 496,-635 502,-635 508,-641 508,-647 508,-647 508,-707 508,-707 508,-713 502,-719 496,-719 496,-719 296,-719 296,-719 290,-719 284,-713 284,-707 284,-707 284,-647 284,-647 284,-641 290,-635 296,-635"/>
 <text text-anchor="middle" x="396" y="-699" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Healthcare Regulations</text>
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_best_practices</title>
-<path fill="none" stroke="black" d="M578,-636C578,-636 804,-636 804,-636 810,-636 816,-642 816,-648 816,-648 816,-706 816,-706 816,-712 810,-718 804,-718 804,-718 578,-718 578,-718 572,-718 566,-712 566,-706 566,-706 566,-648 566,-648 566,-642 572,-636 578,-636"/>
-<text text-anchor="middle" x="678" y="-698" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Security Best Practices</text>
+<path fill="none" stroke="black" d="M528,-636C528,-636 754,-636 754,-636 760,-636 766,-642 766,-648 766,-648 766,-706 766,-706 766,-712 760,-718 754,-718 754,-718 528,-718 528,-718 522,-718 516,-712 516,-706 516,-706 516,-648 516,-648 516,-642 522,-636 528,-636"/>
+<text text-anchor="middle" x="628" y="-698" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Security Best Practices</text>
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_policies</title>
@@ -40,7 +40,7 @@
 <g id="clust18" class="cluster">
 <title>cluster_audit</title>
 <path fill="none" stroke="black" d="M20,-8C20,-8 804,-8 804,-8 810,-8 816,-14 816,-20 816,-20 816,-143 816,-143 816,-149 810,-155 804,-155 804,-155 20,-155 20,-155 14,-155 8,-149 8,-143 8,-143 8,-20 8,-20 8,-14 14,-8 20,-8"/>
-<text text-anchor="middle" x="166.5" y="-135" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Compliant Kubernetes Dashboard</text>
+<text text-anchor="middle" x="256.5" y="-135" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="20.00">Compliant Kubernetes Visibility and Audit Dashboards</text>
 </g>
 <!-- title -->
 <g id="node1" class="node">
@@ -73,8 +73,8 @@
 <!-- GDPR&#45;&gt;Controls -->
 <g id="edge1" class="edge">
 <title>GDPR&#45;&gt;Controls</title>
-<path fill="none" stroke="black" d="M79.67,-643.98C85.31,-640.81 91.27,-637.66 97,-635 183.95,-594.61 289.61,-559.15 353.78,-539.04"/>
-<polygon fill="black" stroke="black" points="355.21,-542.26 363.71,-535.94 353.12,-535.58 355.21,-542.26"/>
+<path fill="none" stroke="black" d="M88.17,-646.99C150.96,-622.65 280.59,-572.42 355.4,-543.43"/>
+<polygon fill="black" stroke="black" points="357.07,-546.54 365.13,-539.66 354.54,-540.01 357.07,-546.54"/>
 </g>
 <!-- controls2 -->
 <!-- GDPR&#45;&gt;controls2 -->
@@ -83,47 +83,47 @@
 <g id="node7" class="node">
 <title>PDL</title>
 <g id="a_node7"><a xlink:href="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355" xlink:title="Patient data law\n(HSLF&#45;FS 2016:40)" target="_blank">
-<path fill="none" stroke="black" d="M411.5,-681C411.5,-681 304.5,-681 304.5,-681 298.5,-681 292.5,-675 292.5,-669 292.5,-669 292.5,-655 292.5,-655 292.5,-649 298.5,-643 304.5,-643 304.5,-643 411.5,-643 411.5,-643 417.5,-643 423.5,-649 423.5,-655 423.5,-655 423.5,-669 423.5,-669 423.5,-675 417.5,-681 411.5,-681"/>
-<text text-anchor="middle" x="358" y="-665.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">Patient data law</text>
-<text text-anchor="middle" x="358" y="-650.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">(HSLF&#45;FS 2016:40)</text>
+<path fill="none" stroke="black" d="M419.5,-681C419.5,-681 312.5,-681 312.5,-681 306.5,-681 300.5,-675 300.5,-669 300.5,-669 300.5,-655 300.5,-655 300.5,-649 306.5,-643 312.5,-643 312.5,-643 419.5,-643 419.5,-643 425.5,-643 431.5,-649 431.5,-655 431.5,-655 431.5,-669 431.5,-669 431.5,-675 425.5,-681 419.5,-681"/>
+<text text-anchor="middle" x="366" y="-665.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">Patient data law</text>
+<text text-anchor="middle" x="366" y="-650.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">(HSLF&#45;FS 2016:40)</text>
 </a>
 </g>
 </g>
 <!-- PDL&#45;&gt;Controls -->
 <g id="edge2" class="edge">
 <title>PDL&#45;&gt;Controls</title>
-<path fill="none" stroke="black" d="M365.06,-642.76C371.49,-626.15 381.34,-600.72 390.35,-577.43"/>
-<polygon fill="black" stroke="black" points="393.67,-578.54 394.02,-567.95 387.14,-576.01 393.67,-578.54"/>
+<path fill="none" stroke="black" d="M372.01,-642.76C377.4,-626.41 385.61,-601.53 393.19,-578.55"/>
+<polygon fill="black" stroke="black" points="396.58,-579.45 396.39,-568.85 389.93,-577.25 396.58,-579.45"/>
 </g>
 <!-- NSA -->
 <g id="node8" class="node">
 <title>NSA</title>
 <g id="a_node8"><a xlink:href="https://media.defense.gov/2021/Aug/03/2002820425/-1/-1/1/CTR_KUBERNETES%20HARDENING%20GUIDANCE.PDF" xlink:title="NSA" target="_blank">
-<path fill="none" stroke="black" d="M796,-680C796,-680 712,-680 712,-680 706,-680 700,-674 700,-668 700,-668 700,-656 700,-656 700,-650 706,-644 712,-644 712,-644 796,-644 796,-644 802,-644 808,-650 808,-656 808,-656 808,-668 808,-668 808,-674 802,-680 796,-680"/>
-<text text-anchor="middle" x="754" y="-658.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">NSA</text>
+<path fill="none" stroke="black" d="M746,-680C746,-680 662,-680 662,-680 656,-680 650,-674 650,-668 650,-668 650,-656 650,-656 650,-650 656,-644 662,-644 662,-644 746,-644 746,-644 752,-644 758,-650 758,-656 758,-656 758,-668 758,-668 758,-674 752,-680 746,-680"/>
+<text text-anchor="middle" x="704" y="-658.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">NSA</text>
 </a>
 </g>
 </g>
 <!-- NSA&#45;&gt;Controls -->
 <g id="edge3" class="edge">
 <title>NSA&#45;&gt;Controls</title>
-<path fill="none" stroke="black" d="M712.67,-643.91C705.45,-640.93 698.01,-637.87 691,-635 613.93,-603.42 524.75,-567.2 468.37,-544.34"/>
-<polygon fill="black" stroke="black" points="469.51,-541.02 458.93,-540.51 466.88,-547.51 469.51,-541.02"/>
+<path fill="none" stroke="black" d="M668.2,-643.89C617.74,-619.79 525.33,-575.64 466.37,-547.47"/>
+<polygon fill="black" stroke="black" points="467.74,-544.25 457.2,-543.1 464.72,-550.56 467.74,-544.25"/>
 </g>
 <!-- EDPB -->
 <g id="node9" class="node">
 <title>EDPB</title>
 <g id="a_node9"><a xlink:href="https://edpb.europa.eu/system/files/2021-06/edpb_recommendations_202001vo.2.0_supplementarymeasurestransferstools_en.pdf" xlink:title="EDPB" target="_blank">
-<path fill="none" stroke="black" d="M670,-680C670,-680 586,-680 586,-680 580,-680 574,-674 574,-668 574,-668 574,-656 574,-656 574,-650 580,-644 586,-644 586,-644 670,-644 670,-644 676,-644 682,-650 682,-656 682,-656 682,-668 682,-668 682,-674 676,-680 670,-680"/>
-<text text-anchor="middle" x="628" y="-658.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">EDPB</text>
+<path fill="none" stroke="black" d="M620,-680C620,-680 536,-680 536,-680 530,-680 524,-674 524,-668 524,-668 524,-656 524,-656 524,-650 530,-644 536,-644 536,-644 620,-644 620,-644 626,-644 632,-650 632,-656 632,-656 632,-668 632,-668 632,-674 626,-680 620,-680"/>
+<text text-anchor="middle" x="578" y="-658.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">EDPB</text>
 </a>
 </g>
 </g>
 <!-- EDPB&#45;&gt;Controls -->
 <g id="edge4" class="edge">
 <title>EDPB&#45;&gt;Controls</title>
-<path fill="none" stroke="black" d="M601.51,-643.89C567.08,-621.66 506.23,-582.36 462.77,-554.29"/>
-<polygon fill="black" stroke="black" points="464.62,-551.32 454.32,-548.83 460.82,-557.2 464.62,-551.32"/>
+<path fill="none" stroke="black" d="M557.65,-643.89C532.96,-623.15 490.6,-587.55 457.9,-560.07"/>
+<polygon fill="black" stroke="black" points="460.15,-557.39 450.24,-553.64 455.64,-562.75 460.15,-557.39"/>
 </g>
 <!-- access -->
 <g id="node11" class="node">
