@@ -12,14 +12,24 @@ digraph compliance_basics {
 
     node[target="_top"]  // Open links in same tab
     subgraph cluster_header {
-        style="invis"
+        style="invis";
+
+        node[shape="none"];
+        //node[shape="box"]; // Use for debugging
+        createdBy[
+            label=""
+            image="logos/created-by.svg"
+            url="https://elastisys.com"
+            width=3
+        ]
         title[
-            shape="none"
+            width=4.3
             label="compliantkubernetes.io"
             fontcolor="#4651b4"
             URL="https://compliantkubernetes.io"
         ]
-        alignment_node_0[style="invis",width=1,label=""]
+        spacing_node_0[width=2,label=""]
+        alignment_node_0[width=1,label=""]
     }
 
     node[target="_blank"]  // Open links in new tab
