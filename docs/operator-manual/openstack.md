@@ -239,9 +239,23 @@ calico_mtu: 1480
 external_openstack_cloud_controller_extra_args:
   # Must be different for every cluster in the same openstack project
   cluster-name: "set-me"
+
+cinder_csi_enabled: true
+persistent_volumes_enabled: true
+expand_persistent_volumes: true
+openstack_blockstorage_ignore_volume_az: true
+
+storage_classes:
+  - name: cinder-csi
+    is_default: true
+    parameters:
+      allowVolumeExpansion: true
+      availability: nova
 ```
 
 `cluster-name` should be set to a name that is unique in the Openstack project you're deploying your clusters in. If you don't have any other clusters in the project, just make sure that the service cluster and workload clusters have different names.
+
+Cinder CSI is enabled by default along with the configuration options to enable persistent volumes and the expansion of these volumes. It is also set to ignore the volume availability zone to allow volumes to attach to nodes in different or mismatching zones. The default works well with both CityCloud and SafeSpring.
 
 If you want to set up LBaaS in your cluster, you can add the following config:
 
