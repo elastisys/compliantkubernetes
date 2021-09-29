@@ -50,6 +50,7 @@ sudo apt-get install graphviz make
 * Please contribute to a branch and create a PR.
 * Capitalize all letters of acronyms: DNS, TCP, AWS.
 * Capitalize proper nouns, in particular, names of projects, companies, and products: Kubernetes, Amazon, Azure.
+* Use [inclusive naming](https://inclusivenaming.org/).
 
 ### Code Snippets
 
@@ -104,6 +105,45 @@ curl https://example.com/
 # Bad
 kubectl delete all --all --all-namespaces
 ```
+
+## Diagrams
+
+### From diagrams.net
+
+The following architectural diagrams are exported from a non-public document entitled "Compliant Kubernetes Architecture":
+
+* `docs/img/ck8s-c4model-level3.svg`
+* `docs/img/ck8s-c4model-level3.png`
+
+To update them, proceed as follows:
+
+1. Open the document using diagrams.net.
+2. File -> Export As -> PNG.
+  * Change "zoom" to 200%.
+  * Leave everything else as default.
+3. File -> Export As -> SVG.
+  * Change "zoom" to 100%.
+  * Enable "Embed Images".
+  * Leave everything else as default.
+4. Copy the exported files in the right paths.
+5. Run `pre-commit run --all`, to fix some trailing whitespace issues in one SVG.
+
+
+### From graphviz
+
+Other diagrams are produced in graphviz. To regenerate them, edit the relevant `dot` file, then type:
+
+```
+make -C docs/img
+```
+
+For "live preview" open the output file (e.g., SVG or PNG) in a viewer supporting live refresh (e.g., eog), then type:
+
+```
+make -C docs/img preview
+```
+
+The viewer's output should be updated live as you save the source `dot` file.
 
 ## Deployment
 
