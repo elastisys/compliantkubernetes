@@ -255,7 +255,7 @@ storage_classes:
 
 `cluster-name` should be set to a name that is unique in the Openstack project you're deploying your clusters in. If you don't have any other clusters in the project, just make sure that the service cluster and workload clusters have different names.
 
-Cinder CSI is enabled by default along with the configuration options to enable persistent volumes and the expansion of these volumes. It is also set to ignore the volume availability zone to allow volumes to attach to nodes in different or mismatching zones.
+Cinder CSI is enabled by default along with the configuration options to enable persistent volumes and the expansion of these volumes. It is also set to ignore the volume availability zone to allow volumes to attach to nodes in different or mismatching zones. The default works well with both CityCloud and SafeSpring.
 
 If you want to set up LBaaS in your cluster, you can add the following config:
 
