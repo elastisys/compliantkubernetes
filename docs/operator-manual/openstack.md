@@ -60,7 +60,7 @@ done
 
 ### Infrastructure guidance
 
-We recommend you to have at least three worker nodes with 4 cores and 8 GB memory each, and we recommend you to have at least 2 cores and 4 GB for your master nodes.
+We recommend you to have at least three worker nodes with 4 cores and 8 GB memory each, and we recommend you to have at least 2 cores and 4 GB for your control plane nodes.
 
 Below is example `cluster.tfvars` for a few select openstack providers.
 The examples are copy-pastable, but you might want to change `cluster_name` and `network_name` (if neutron is used!).

@@ -13,7 +13,7 @@ Technical Story:
 
 Currently, we create per-cluster SSH key pairs, which are shared among administrators. This is problematic from an information security perspective for a few reasons:
 
-1. It reduces the auditability of various actions, e.g., who SSH-ed into the Kubernetes master.
+1. It reduces the auditability of various actions, e.g., who SSH-ed into the Kubernetes control plane Nodes.
 2. It makes credential management challenging, e.g., when onboarding/offboarding administrators.
 3. It makes credential rotation challenging, e.g., the new SSH key pair needs to be transmitted to all administrators.
 4. It encourages storing the SSH key pair without password protection.
