@@ -33,7 +33,13 @@ kubectl create secret generic -n alertmanager alertmanager-alertmanager --from-f
 !!!note
     If you get an access denied error, check with your Compliant Kubernetes administrator.
 
+## Accessing user AlertManager
+
+If you want to access AlertManager, for example to confirm that its configuration was picked up correctly, proceed as follows:
+
+1. Type: `kubectl proxy`.
+2. Open this link: http://127.0.0.1:8001/api/v1/namespaces/alertmanager/services/alertmanager-operated:web/proxy/
+
 TODO:
 
-* Document how to access user alertmanager.
 * Document how to configure an alert.
