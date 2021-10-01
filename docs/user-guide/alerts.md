@@ -30,6 +30,8 @@ kubectl delete -n alertmanager secret alertmanager-alertmanager
 kubectl create secret generic -n alertmanager alertmanager-alertmanager --from-file=alertmanager.yaml
 ```
 
+Make sure to configure **and test** a receiver for you alerts, e.g., Slack or OpsGenie.
+
 !!!note
     If you get an access denied error, check with your Compliant Kubernetes administrator.
 
@@ -40,6 +42,23 @@ If you want to access AlertManager, for example to confirm that its configuratio
 1. Type: `kubectl proxy`.
 2. Open this link: http://127.0.0.1:8001/api/v1/namespaces/alertmanager/services/alertmanager-operated:web/proxy/
 
-TODO:
+## Setting up an alert
 
-* Document how to configure an alert.
+Before setting up an alert, you must create a [ServiceMonitor](metrics) to collect metrics from your application. Then, create a `PrometheusRule` following the example below:
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  creationTimestamp: null
+  labels:
+    prometheus: example
+    role: alert-rules
+  name: prometheus-example-rules
+spec:
+  groups:
+  - name: ./example.rules
+    rules:
+    - alert: ExampleAlert
+      expr: vector(1)
+```
