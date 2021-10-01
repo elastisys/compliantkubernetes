@@ -1,0 +1,14 @@
+{{- if .Values.serviceMonitor.enabled -}}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "ck8s-user-demo.fullname" . }}
+  labels:
+    {{- include "ck8s-user-demo.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+    {{- include "ck8s-user-demo.selectorLabels" . | nindent 6 }}
+  endpoints:
+  - port: http
+{{- end }}
