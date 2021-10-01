@@ -4,9 +4,6 @@
 
 This guide is for users who manage application on top of Compliant Kubernetes.
 
-!!! note
-    Please make sure you've completed the [getting started guide](../getting-started.md).
-
 A user can be described via the following user stories:
 
 * As a Continuous Delivery (CD) pipeline I want to push changes to the Compliant Kubernetes cluster, so that the new version of the application is running.
