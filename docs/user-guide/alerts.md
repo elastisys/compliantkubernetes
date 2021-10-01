@@ -21,7 +21,7 @@ User alerts are configured via the Secret `alertmanager-alertmanager` located in
 
 ```bash
 # retrieve the old configuration
-kubectl get -n alertmanager secret alertmanager-alertmanager -o json | jq -r '.data["alertmanager.yaml"]' | base64 -d > alertmanager.yaml
+kubectl get -n alertmanager secret alertmanager-alertmanager -o jsonpath='{.data.alertmanager\.yaml}' | base64 -d > alertmanager.yaml
 
 # edit alertmanager.yaml as needed
 
