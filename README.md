@@ -110,10 +110,11 @@ kubectl delete all --all --all-namespaces
 
 ### From diagrams.net
 
-The following architectural diagrams are exported from a non-public document entitled "Compliant Kubernetes Architecture":
+The following architectural diagrams are exported from a non-public document entitled "Compliant Kubernetes Architecture" and "Compliant Kubernetes - User Guide":
 
 * `docs/img/ck8s-c4model-level3.svg`
 * `docs/img/ck8s-c4model-level3.png`
+* `docs/img/user-guide.svg`
 
 To update them, proceed as follows:
 
