@@ -1,0 +1,39 @@
+{{- if .Values.ingress.enabled -}}
+{{- $fullName := include "ck8s-user-demo.fullname" . -}}
+{{- $svcPort := .Values.service.port -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "ck8s-user-demo.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  rules:
+    {{- if .Values.ingress.hostname }}
+    - host: {{ .Values.ingress.hostname | quote }}
+      http:
+        paths:
+          {{- if .Values.ingress.extraPaths }}
+          {{- toYaml .Values.ingress.extraPaths | nindent 10 }}
+          {{- end }}
+          - path: {{ default "/" .Values.ingress.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $fullName }}
+                port:
+                  number: {{ $svcPort }}
+    {{- end }}
+  {{- if or .Values.ingress.tls }}
+  tls:
+    {{- if .Values.ingress.tls }}
+    - hosts:
+        - {{ .Values.ingress.hostname | quote }}
+      secretName: {{ printf "%s-tls" .Values.ingress.hostname }}
+    {{- end }}
+  {{- end }}
+{{- end }}
