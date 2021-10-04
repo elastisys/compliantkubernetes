@@ -67,7 +67,12 @@ kubectl config view --minify --output 'jsonpath={..namespace}'; echo
 
 ### Configure an Image Pull Secret
 
-To start, make sure you configure the Kubernetes cluster with an image pull secret. Ideally, you should create a container registry [Robot Account](https://goharbor.io/docs/2.2.0/working-with-projects/project-configuration/create-robot-accounts/) and take its token.
+To start, make sure you configure the Kubernetes cluster with an image pull secret. Ideally, you should create a container registry [Robot Account](https://goharbor.io/docs/2.2.0/working-with-projects/project-configuration/create-robot-accounts/), which only has pull permissions and use its token.
+
+!!!important
+    Using your own registry credentials as an image pull secret, instead of creating a robot account, is against best practices and may violate data privacy regulations.
+
+    Your registry credentials identify **you** and allow you to both push and pull images. A robot account should identify the Kubernetes cluster and be only allowed to pull images.
 
 ```bash
 DOCKER_USER=      # enter robot account name
