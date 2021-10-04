@@ -1,6 +1,6 @@
-# Log Reviews
+# Log Review
 
-This document highlights the risks that can be mitigated by regularly reviewing logs and makes concrete recommendations on how to review logs.
+This document highlights the risks that can be mitigated by regularly reviewing logs and makes concrete recommendations on how to do log review.
 
 ## Relevant Regulations
 
@@ -38,7 +38,7 @@ Periodically reviewing logs can mitigate the following information security risk
 * **Downtime**: Regularly reviewing logs can reveal misbehaving components (e.g., Pod restarts, various errors) and inform fixes before it leads to downtime.
 * **Silent corruption**: Regularly reviewing logs can reveal data corruption.
 
-## How to review logs
+## How to do log review
 
 By *review period*, we mean the time elapsed since the last review of the logs, e.g., 30 days.
 
