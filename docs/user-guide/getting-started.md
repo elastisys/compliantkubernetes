@@ -15,7 +15,7 @@ The easier is to request a demo environment from a [managed Compliant Kubernetes
 
 If you want to setup your own Compliant Kubernetes installation, head to the [Administrator Manual](../../operator-manual).
 
-## Verification
+## Running Example (Verification)
 
 Make sure you configure your environment properly:
 
