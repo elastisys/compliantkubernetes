@@ -1,6 +1,6 @@
 # Compliant Kubernetes User Demo
 
-This repository features a minimalistic NodeJS application to show off [Compliant Kubernetes](https://compliantkubernetes.io) features, such as Ingress, logging, metrics and user alerts.
+To make the most out of Compliant Kubernetes, this documentation features a minimalistic NodeJS application. I allows to explore all Compliant Kubernetes benefits, including, such as HTTPS Ingresses, logging, metrics and user alerts.
 
 The application provides:
 
@@ -10,6 +10,10 @@ The application provides:
 - Dockerfile;
 - Helm Chart;
 - ability to make it crash (`/crash`).
+
+Furthermore, the application caters to a security-hardened environment, and additionally:
+
+- runs as non-root.
 
 ## Usage
 

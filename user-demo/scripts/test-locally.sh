@@ -12,4 +12,3 @@ fi
 
 curl $IP_ADDRESS:3000
 echo
-

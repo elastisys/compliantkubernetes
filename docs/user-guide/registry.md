@@ -37,6 +37,51 @@ By default we also prevent you from running images from anywhere else than your 
 for: "unsafe-image.yaml": admission webhook "validation.gatekeeper.sh" denied the request: [denied by require-harbor-repo] container "unsafe-container" has an invalid image repo "unsafe.registry.io/ubuntu", allowed repos are ["harbor.test.compliantkubernetes.io"]
 ```
 
+## Running Example
+
+### Configure container registry credentials
+
+First, retrieve your Harbor CLI secret and configure your local Docker client.
+
+1. In your browser, type `harbor.$DOMAIN` where `$DOMAIN` is the information you retrieved from your administrator.
+2. Log into Harbor using Single Sign-On (SSO) via OpenID.
+3. In the right-top corner, click on your username, then "User Profile".
+4. Copy your CLI secret.
+5. Now log into the container registry: `docker login harbor.$DOMAIN`.
+6. You should see `Login Succeeded`.
+
+### Create a registry project
+
+If you haven't already done so, create a project called `demo` via the Harbor UI, which you have accessed in the previous step.
+
+### Clone the user demo
+
+If you haven't done so already, clone the user demo:
+
+```bash
+git clone https://github.com/elastisys/compliantkubernetes/
+cd compliantkubernetes/user-demo
+```
+
+### Build and push the image
+
+```bash
+REGISTRY_PROJECT=demo  # Name of the project, created above
+TAG=v1                 # Container image tag
+
+docker build -t harbor.$DOMAIN/$REGISTRY_PROJECT/ck8s-user-demo:$TAG .
+docker push harbor.$DOMAIN/$REGISTRY_PROJECT/ck8s-user-demo:$TAG
+```
+
+You should see no error message. Note down the `sha256` of the image.
+
+### Verification
+
+1. Go to `harbor.$DOMAIN`.
+2. Choose the `demo` project.
+3. Check if the image was uploaded successfully, by comparing the tag's `sha256` with the one returned by the `docker push` command above.
+4. (Optional) While you're at it, why not run the vulnerability scanner on the image you just pushed.
+
 ## Further reading
 
 For more information please refer to the official [Harbor](https://goharbor.io/docs/2.0.0/), [Trivy](https://github.com/aquasecurity/trivy), [Open Policy Agent](https://www.openpolicyagent.org/docs/latest/) and [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) documentation.

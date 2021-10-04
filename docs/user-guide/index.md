@@ -15,3 +15,27 @@ A user can be described via the following user stories:
 
 !!!note
     We suggest application developers to only perform changes to a production Compliant Kubernetes cluster via a Continuous Delivery Pipeline. This method, also known as GitOps, provides an audit log, review and testing of system changes for "free". This significantly facilitates complying with change management policies.
+
+## Running Example
+
+To make the most out of Compliant Kubernetes, this documentation features a minimalistic NodeJS application. I allows to explore all Compliant Kubernetes benefits, including, such as HTTPS Ingresses, logging, metrics and user alerts.
+
+The application provides:
+
+- some REST endpoints (`/`, `/users`);
+- structured logging;
+- metrics endpoint;
+- Dockerfile;
+- Helm Chart;
+- ability to make it crash (`/crash`).
+
+Furthermore, the application caters to a security-hardened environment, and additionally:
+
+- runs as non-root.
+
+If you are a newcomer to Compliant Kubernetes, we suggest you clone the user demo as follows:
+
+```bash
+git clone https://github.com/elastisys/compliantkubernetes/
+cd compliantkubernetes/user-demo
+```
