@@ -54,6 +54,97 @@ Once you have logged in through the browser, you are authenticated to the cluste
 Your credentials will then be used by the Kubernetes API to make sure you are authorized.
 You are now logged in and can use kubectl to manage your Kubernetes resources!
 
+## Running Example
+
+### Pre-verification
+
+Make sure you are in the right namespace on the right cluster:
+
+```bash
+kubectl get nodes
+kubectl config view --minify --output 'jsonpath={..namespace}'; echo
+```
+
+### Configure an Image Pull Secret
+
+To start, make sure you configure the Kubernetes cluster with an image pull secret. Ideally, you should create a container registry [Robot Account](https://goharbor.io/docs/2.2.0/working-with-projects/project-configuration/create-robot-accounts/) and take its token.
+
+```bash
+DOCKER_USER=      # enter robot account name
+DOCKER_PASSWORD=  # enter robot token
+```
+
+Now create a pull secret and (optionally) use it by default in the current namespace.
+
+```bash
+# Create a pull secret
+kubectl create secret docker-registry pull-secret \
+    --docker-server=harbor.$DOMAIN \
+    --docker-username=$DOCKER_USER \
+    --docker-password=$DOCKER_PASSWORD
+
+# Set default pull secret in current namespace
+kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "pull-secret"}]}'
+```
+
+!!!note
+    For each Kubernetes namespace, you will have to create an image pull secret and configure it to be default. Aim to have a one-to-one-to-one mapping between Kubernetes namespaces, container registry projects and robot accounts.
+
+### Deploy user demo
+
+If you haven't done so already, clone the user demo and ensure you are in the right folder:
+
+```bash
+git clone https://github.com/elastisys/compliantkubernetes/
+cd compliantkubernetes/user-demo
+```
+
+Ensure you use the right registry project and image tag, i.e., those that you pushed in the [previous example](../registry#running-example):
+
+```bash
+REGISTRY_PROJECT=demo
+TAG=v1
+```
+
+You are ready to deploy the application.
+
+```bash
+helm upgrade \
+    --install \
+    myapp \
+    deploy/ck8s-user-demo/ \
+    --set image.repository=harbor.$DOMAIN/$REGISTRY_PROJECT/ck8s-user-demo \
+    --set image.tag=$TAG \
+    --set ingress.hostname=demo.$DOMAIN
+```
+
+### Verification
+
+Verify that the application was deployed successfully:
+
+```bash
+kubectl get pods
+# Wait until the status of your Pod is Running.
+```
+
+Verify that the certificate was issued successfully:
+
+```bash
+kubectl get certificate
+# Wait until your certificate shows READY True.
+```
+
+Verify that your application is online. You may use your browser or `curl`:
+
+```bash
+curl --include https://demo.$DOMAIN
+# First line should be HTTP/2 200
+```
+
+!!!important "Do not expose `$DOMAIN` to your users."
+
+    Although your administrator will set `*.$DOMAIN` to point to your applications, prefer to buy a branded domain. For example, register the domain `myapp.com` and point it via a [CNAME](https://en.wikipedia.org/wiki/CNAME_record) or [ALIAS](https://en.wikipedia.org/wiki/CNAME_record#ANAME_record) record to `myapp.$DOMAIN`.
+
 ## Further reading
 
 * [dex on GitHub](https://github.com/dexidp/dex)
