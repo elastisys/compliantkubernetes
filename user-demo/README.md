@@ -17,23 +17,6 @@ Furthermore, the application caters to a security-hardened environment, and addi
 
 ## Usage
 
-The `scripts` folder should have self-describing scripts on how to build, test locally and deploy the application. Generally one would do:
+The `scripts` folder should have self-describing scripts on how to build, test locally and deploy the application.
 
-```
-# Change variables accordingly
-SC_DOMAIN=cksc.a1ck.io
-WC_DOMAIN=ckwc0.a1ck.io
-REGISTRY_DOMAIN=harbor.$SC_DOMAIN
-REGISTRY_PROJECT=default
-TAG=v1
-
-docker build -t $REGISTRY_DOMAIN/$REGISTRY_PROJECT/ck8s-user-demo:$TAG .
-helm upgrade \
-    --install \
-    myapp \
-    deploy/ck8s-user-demo/ \
-    --set image.repository=$REGISTRY_DOMAIN/$REGISTRY_PROJECT/ck8s-user-demo \
-    --set image.tag=$TAG \
-    --set imagePullSecrets[0].name=harbor-pull-secret \
-    --set ingress.hostname=demo.$WC_DOMAIN
-```
+For examples on using the application with Compliant Kubernetes, check the user guide in the `/docs` folder.
