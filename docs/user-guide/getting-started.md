@@ -13,4 +13,39 @@ The easier is to request a demo environment from a [managed Compliant Kubernetes
 * A [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file for configuring kubectl access to the cluster.
 * (Optionally) Static username and password. Normally, you should log in via a username and a password of your organizations identity provider.
 
-If you want to setup your own Compliant Kubernetes installation, head to the [Operator Manual](../operator-manual).
+If you want to setup your own Compliant Kubernetes installation, head to the [Administrator Manual](../../operator-manual).
+
+## Verification
+
+Make sure you configure your environment properly:
+
+```
+export KUBECONFIG=path/of/kubeconfig.yaml  # leave empty if you use the default of ~/.kube/config
+export DOMAIN=  # the domain you received from the administrator
+```
+
+To verify if the required tools are installed and work as expected, type:
+
+```bash
+docker version
+kubectl version
+helm version
+# You should see the version number of installed tools and no errors.
+```
+
+To verify the received KUBECONFIG, type:
+
+```bash
+# Notice that you will be asked to complete browser-based single sign-on
+kubectl get nodes
+# You should see the Nodes of your Kubernetes cluster
+```
+
+To verify the received URLs, type:
+
+```bash
+curl --head https://dex.$DOMAIN/healthz
+curl --include https://harbor.$DOMAIN/api/v2.0/health
+curl --head https://grafana.$DOMAIN/healthz
+curl --head https://kibana.$DOMAIN/api/status
+```
