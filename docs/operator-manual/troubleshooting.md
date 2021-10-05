@@ -422,3 +422,39 @@ for CLUSTER in "${WORKLOAD_CLUSTERS[@]}"; do
     ./compliantkubernetes-apps/bin/ck8s ops helmfile wc diff  # Respond "n" if you get WARN
 done
 ```
+
+## Velero backup stuck in progress
+
+Velero is known to get stuck `InProgress` when doing backups
+
+```bash
+velero backup get
+
+NAME                                 STATUS             ERRORS   WARNINGS   CREATED                          EXPIRES   STORAGE LOCATION   SELECTOR
+velero-daily-backup-20211005143248   InProgress         0        0          2021-10-05 14:32:48 +0200 CEST   29d       default            !nobackup
+```
+
+First try to delete the backup
+
+```bash
+./velero backup delete velero-daily-backup-20211005143248
+```
+
+Then kill all the pods under the velero namespace
+```bash
+./compliantkubernetes-apps/bin/ck8s ops kubectl wc delete pods -n velero --all
+```
+
+Check that the backup is gone
+```bash
+velero backup get
+
+NAME                                 STATUS             ERRORS   WARNINGS   CREATED                          EXPIRES   STORAGE LOCATION   SELECTOR
+
+```
+
+Recreate the backup from a schedule
+
+```bash
+velero backup create --from-schedule velero-daily-backup
+```
