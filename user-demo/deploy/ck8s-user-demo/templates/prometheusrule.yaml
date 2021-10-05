@@ -1,0 +1,14 @@
+{{- if .Values.prometheusRule.enabled -}}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "ck8s-user-demo.fullname" . }}
+  labels:
+    {{- include "ck8s-user-demo.labels" . | nindent 4 }}
+spec:
+  groups:
+  - name: ./example.rules
+    rules:
+    - alert: ApplicationIsActuallyUsed
+      expr: rate(http_request_duration_seconds_count[1m])>1
+{{- end }}
