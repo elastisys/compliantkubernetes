@@ -18,7 +18,7 @@ Velero is deployed in both the workload cluster and the service cluster. Followi
 
 ### Backing up
 
-Velero takes a daily backup of all Kubernetes Resources with the label `velero: backup`. Persistent Volumes will be backed up if they are tied to a Pod with the previously mentioned label and if that Pod is annotated with `backup.velero.io/backup-volumes=<volume1>,<volume2>,...`, where the value is a comma separated list of the volume names. For user applications deployed in the workload cluster, make sure to add these labels and annotations to the resources that need to be backed up.
+Velero takes a daily backup of all Kubernetes Resources in all user namespaces. Persistent Volumes will be backed up if they are tied to a Pod. If backups are not wanted the label `compliantkubernetes.io/nobackup` can be added to opt-out of the daily backups.
 
 In the service cluster, Grafana (and its associated Persistent Volume) is configured to be backed up.
 
