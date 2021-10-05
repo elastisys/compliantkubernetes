@@ -40,7 +40,7 @@ Make sure to configure **and test** a receiver for you alerts, e.g., Slack or Op
 If you want to access AlertManager, for example to confirm that its configuration was picked up correctly, proceed as follows:
 
 1. Type: `kubectl proxy`.
-2. Open this link: http://127.0.0.1:8001/api/v1/namespaces/alertmanager/services/alertmanager-operated:web/proxy/
+2. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/alertmanager/services/alertmanager-operated:web/proxy/) in your browser.
 
 ## Setting up an alert
 
@@ -61,4 +61,12 @@ spec:
     rules:
     - alert: ExampleAlert
       expr: vector(1)
+```
+
+## Running Example
+
+The user demo already includes a [PrometheusRule](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/prometheusrule.yaml), to configure an alert:
+
+```yaml
+--8<---- "user-demo/deploy/ck8s-user-demo/templates/prometheusrule.yaml"
 ```
