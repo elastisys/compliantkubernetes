@@ -18,7 +18,13 @@ A user can be described via the following user stories:
 
 ## Running Example
 
-To make the most out of Compliant Kubernetes, this documentation features a minimalistic NodeJS application. I allows to explore all Compliant Kubernetes benefits, including HTTPS Ingresses, logging, metrics and user alerts.
+To make the most out of Compliant Kubernetes, this documentation features a minimalistic NodeJS application. I allows to explore all Compliant Kubernetes benefits, including:
+
+* [Container registry](./registry/#running-example);
+* [HTTPS Ingresses](./kubernetes-api/#running-example);
+* [Logging](./logs#running-example);
+* [Metrics](./metrics#running-example);
+* [Alerts](./alerts#running-example).
 
 The application provides:
 
