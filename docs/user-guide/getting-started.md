@@ -30,7 +30,7 @@ To verify if the required tools are installed and work as expected, type:
 
 ```bash
 docker version
-kubectl version
+kubectl version  --client
 helm version
 # You should see the version number of installed tools and no errors.
 ```
