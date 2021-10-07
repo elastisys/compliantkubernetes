@@ -10,6 +10,7 @@ In theory, any vanilla Kubernetes cluster can be used for Compliant Kubernetes. 
 * [Python3 pip](https://packaging.python.org/guides/installing-using-linux-tools/#installing-pip-setuptools-wheel-with-linux-package-managers)
 * [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli#install-terraform)
 * [Ansible](https://ansible.com)
+* [pwgen](https://manpages.ubuntu.com/manpages/trusty/man1/pwgen.1.html)
 
 Ansible is best installed as follows:
 

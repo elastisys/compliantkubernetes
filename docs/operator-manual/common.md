@@ -71,6 +71,7 @@ export CK8S_ENVIRONMENT_NAME=my-environment-name
 export CK8S_CONFIG_PATH=~/.ck8s/my-cluster-path
 export CK8S_CLOUD_PROVIDER=# [exoscale|safespring|citycloud|aws|baremetal]
 export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
+
 ./bin/ck8s init
 ```
 
@@ -79,6 +80,9 @@ Three files, `sc-config.yaml` and `wc-config.yaml`, and `secrets.yaml`, were gen
 ```bash
 ls -l $CK8S_CONFIG_PATH
 ```
+
+!!!tip
+    If you want to generate random passwords for all services, you can run the script `scripts/generate-secrets.sh`
 <!--init-apps-stop-->
 
 <!--configure-apps-start-->
