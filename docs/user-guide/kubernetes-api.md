@@ -153,6 +153,10 @@ curl --include https://demo.$DOMAIN
 
     Although your administrator will set `*.$DOMAIN` to point to your applications, prefer to buy a branded domain. For example, register the domain `myapp.com` and point it via a [CNAME](https://en.wikipedia.org/wiki/CNAME_record) or [ALIAS](https://en.wikipedia.org/wiki/CNAME_record#ANAME_record) record to `myapp.$DOMAIN`.
 
+!!!important Use `topologySpreadConstraints` if you want cross-data-center resilience
+
+    If you want your application to tolerate a whole zone (data-center) to go down, you need to add `topologySpreadConstraints` by uncommenting the relevant section in [values.yaml](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L76-L82).
+
 ## Further reading
 
 * [dex on GitHub](https://github.com/dexidp/dex)
