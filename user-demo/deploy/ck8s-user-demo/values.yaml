@@ -75,7 +75,7 @@ prometheusRule:
 ##
 topologySpreadConstraints: []
   # - maxSkew: 1
-  #   topologyKey: zone
+  #   topologyKey: topology.kubernetes.io/zone
   #   whenUnsatisfiable: DoNotSchedule
   #   labelSelector:
   #     matchLabels:
