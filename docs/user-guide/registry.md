@@ -85,6 +85,9 @@ You should see no error message. Note down the `sha256` of the image.
 3. Check if the image was uploaded successfully, by comparing the tag's `sha256` with the one returned by the `docker push` command above.
 4. (Optional) While you're at it, why not run the vulnerability scanner on the image you just pushed.
 
+## User access
+If OIDC was enabled (e.g. DeX) your Harbor user will be created when you first login to the web interface. That user will not have admin privileges, if you need admin rights please contact the administrator by opening a support ticket.
+
 ## Further reading
 
 For more information please refer to the official [Harbor](https://goharbor.io/docs/2.0.0/), [Trivy](https://github.com/aquasecurity/trivy), [Open Policy Agent](https://www.openpolicyagent.org/docs/latest/) and [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) documentation.

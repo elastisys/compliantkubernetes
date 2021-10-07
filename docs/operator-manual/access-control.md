@@ -80,6 +80,10 @@ harbor:
     groupClaimName: groups
 ```
 
+!!!note
+    When OIDC (e.g. DeX) is enabled we cannot create static users using the Harbor web interface. But when anyone logs in via DeX they automatically get a user and we can promote that user to admin.
+    Once there is one admin, they can set specific permissions for other users (there should be at least a few users promoted to admins).
+
 ## Grafana
 
 !!!note
