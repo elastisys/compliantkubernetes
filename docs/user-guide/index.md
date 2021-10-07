@@ -18,26 +18,30 @@ A user can be described via the following user stories:
 
 ## Running Example
 
-To make the most out of Compliant Kubernetes, this documentation features a minimalistic NodeJS application. I allows to explore all Compliant Kubernetes benefits, including:
+To make the most out of Compliant Kubernetes, this documentation features a minimalistic NodeJS application. It allows to explore all Compliant Kubernetes benefits, including:
 
 * [Container registry](./registry/#running-example);
-* [HTTPS Ingresses](./kubernetes-api/#running-example);
+* [Deploying](./kubernetes-api/#running-example);
 * [Logging](./logs#running-example);
 * [Metrics](./metrics#running-example);
 * [Alerts](./alerts#running-example).
 
-The application provides:
+The application features:
 
-- some REST endpoints (`/`, `/users`);
-- structured logging;
-- metrics endpoint;
-- Dockerfile;
-- Helm Chart;
-- ability to make it crash (`/crash`).
+- [some REST endpoints](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L32) (`/`, `/users`);
+- [structured logging](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L13);
+- [metrics endpoint](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L28);
+- [Dockerfile](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/Dockerfile), which showcases:
+    - [How to run as non-root](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/Dockerfile#L10-L11);
+- [Helm Chart](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/deploy/ck8s-user-demo), which showcases:
+    - [HTTPS Ingresses](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L37-L40);
+    - [ServiceMonitor for metrics collection](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/servicemonitor.yaml);
+    - [PrometheusRule for alerting](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/prometheusrule.yaml);
+- [script for local development and testing](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/scripts);
 
-Furthermore, the application caters to a security-hardened environment, and additionally:
+Bonus:
 
-- runs as non-root.
+- [ability to make it crash](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/routes/crash.js) (`/crash`).
 
 If you are a newcomer to Compliant Kubernetes, we suggest you clone the user demo as follows:
 
