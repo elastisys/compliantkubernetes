@@ -52,6 +52,9 @@ First, retrieve your Harbor CLI secret and configure your local Docker client.
 
 ### Create a registry project
 
+!!!example
+    Here is an [example Dockerfile](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/Dockerfile) and [.dockerignore](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/.dockerignore) to get you started. Don't forget to run as non-root.
+
 If you haven't already done so, create a project called `demo` via the Harbor UI, which you have accessed in the previous step.
 
 ### Clone the user demo

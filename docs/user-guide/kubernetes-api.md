@@ -97,6 +97,9 @@ kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "pull-se
 
 ### Deploy user demo
 
+!!!example
+    Here is an [example Helm Chart](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/deploy/ck8s-user-demo) to get you started.
+
 If you haven't done so already, clone the user demo and ensure you are in the right folder:
 
 ```bash
