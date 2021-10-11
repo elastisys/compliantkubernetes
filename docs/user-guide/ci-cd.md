@@ -21,9 +21,98 @@ For the purpose of Compliant Kubernetes, one can distinguish between two "styles
 Push-style CI/CD
 ----------------
 
-Please follow [this tutorial](https://www.auroria.io/kubernetes-ci-cd-service-account-setup/) to create the relevant credentials. For improved access control, make sure the Role you create gets the least permissions possible. For example, if your application only consists of a Deployment, Service and Ingress, those should be the only resources available to the Role.
+Push-style CI/CD works pretty much as if you would access Compliant Kubernetes from your laptop, running `kubectl` or `helm` against the cluster, as required to deploy your application. However, for improved access control, the `KUBECONFIG` provided to your CI/CD pipeline should employ a ServiceAccount which is used only by your CI/CD pipeline. This ServiceAccount should be bound to a Role which gets the least permissions possible. For example, if your application only consists of a Deployment, Service and Ingress, those should be the only resources available to the Role.
 
-The user-token **must** be treated as a secret and injected into the CI/CD pipeline via a proper secrets handing feature, such as GitLab CI's [protected variable](https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-project) and GitHub Action's [secrets](https://docs.github.com/en/actions/reference/encrypted-secrets#using-encrypted-secrets-in-a-workflow).
+To create a `KUBECONFIG` for your CI/CD pipeline, proceed as shown below.
+
+### Pre-verification
+
+First, make sure you are in the right namespace on the right cluster:
+
+```bash
+kubectl get nodes
+kubectl config view --minify --output 'jsonpath={..namespace}'; echo
+```
+
+You can only create a Role which is as powerful as you (see [Privilege escalation prevention](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping)). Therefore, check what permissions you have and ensure they are sufficient for your CI/CD:
+
+```bash
+kubectl auth can-i --list
+```
+
+!!!note
+    What permissions you need depends on your application. For example, the [user demo](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/deploy/ck8s-user-demo/templates) creates Deployments, HorizontalPodAutoscalers, Ingresses, PrometheusRules, Services and ServiceMonitors. If unsure, simply continue. RBAC permissions errors are fairly actionable.
+
+### Create a Role
+
+Next, create a Role for you CI/CD pipeline. If unsure, start from the [example Role](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ci-cd-role.yaml) that the user demo's CI/CD pipeline needs.
+
+```bash
+kubectl apply -f ci-cd-role.yaml
+```
+
+!!!important "Dealing with Forbidden or RBAC permissions errors"
+    > Error from server (Forbidden): error when creating "STDIN": roles.rbac.authorization.k8s.io "ci-cd" is forbidden: user "demo@example.com" (groups=["system:authenticated"]) is attempting to grant RBAC permissions not currently held:
+
+    If you get an error like the one above, then it means you have insufficient permissions on the Compliant Kubernetes cluster. Contact your administrator.
+
+### Create a ServiceAccount
+
+User accounts are for humans, service accounts for robots. See [User accounts versus service accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#user-accounts-versus-service-accounts). Hence, you should employ a ServiceAccount for your CI/CD pipeline.
+
+The following command creates a ServiceAccount for your CI/CD pipeline:
+
+```bash
+kubectl create serviceaccount ci-cd
+```
+
+### Create a RoleBinding
+
+Now create a RoleBinding to bind the CI/CD ServiceAccount to the Role, so as to grant it associated permissions:
+
+```bash
+NAMESPACE=$(kubectl config view --minify --output 'jsonpath={..namespace}')
+kubectl create rolebinding ci-cd --role ci-cd --serviceaccount=$NAMESPACE:ci-cd
+```
+
+### Extract the KUBECONFIG
+
+You can now extract the `KUBECONFIG` of the ServiceAccount:
+
+```bash
+SECRET_NAME=$(kubectl get sa ci-cd -o json | jq -r .secrets[].name)
+
+server=$(kubectl config view --minify --output 'jsonpath={..cluster.server}')
+cluster=$(kubectl config view --minify --output 'jsonpath={..context.cluster}')
+
+ca=$(kubectl get secret $SECRET_NAME -o jsonpath='{.data.ca\.crt}')
+token=$(kubectl get secret $SECRET_NAME -o jsonpath='{.data.token}' | base64 --decode)
+namespace=$(kubectl get secret $SECRET_NAME -o jsonpath='{.data.namespace}' | base64 --decode)
+
+echo "\
+apiVersion: v1
+kind: Config
+clusters:
+- name: ${cluster}
+  cluster:
+    certificate-authority-data: ${ca}
+    server: ${server}
+contexts:
+- name: default-context
+  context:
+    cluster: ${cluster}
+    namespace: ${namespace}
+    user: default-user
+current-context: default-context
+users:
+- name: default-user
+  user:
+    token: ${token}
+" > kubeconfig_ci_cd.yaml
+```
+
+The generated `kubeconfig_ci_cd.yaml` can then be used in your CI/CD pipeline.
+Note that, `KUBECONFIG`s -- especially the token -- **must** be treated as a secret and injected into the CI/CD pipeline via a proper secrets handing feature, such as GitLab CI's [protected variable](https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-project) and GitHub Action's [secrets](https://docs.github.com/en/actions/reference/encrypted-secrets#using-encrypted-secrets-in-a-workflow).
 
 ArgoCD
 ------
