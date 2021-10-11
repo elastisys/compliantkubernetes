@@ -1,0 +1,75 @@
+# This file includes a minimal Role which can deploy this application.
+# Specifically, the following operations were tested:
+# * helm install --wait
+# * helm upgrade --wait
+# * helm list
+# * helm uninstall
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ci-cd
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources:
+    - configmaps
+    - pods
+    - secrets
+    - services
+  verbs:
+    - create
+    - delete
+    - get
+    - list
+    - patch
+    - update
+    - watch
+- apiGroups:
+    - apps
+  resources:
+    - deployments
+    - replicasets  # needed for 'helm upgrade --wait'
+  verbs:
+    - create
+    - delete
+    - get
+    - list
+    - patch
+    - update
+    - watch
+- apiGroups:
+    - autoscaling
+  resources:
+    - horizontalpodautoscalers
+  verbs:
+    - create
+    - delete
+    - get
+    - list
+    - patch
+    - update
+    - watch
+- apiGroups:
+    - networking.k8s.io
+  resources:
+    - ingresses
+  verbs:
+    - create
+    - delete
+    - get
+    - list
+    - patch
+    - update
+    - watch
+- apiGroups:
+    - monitoring.coreos.com
+  resources:
+    - prometheusrules
+    - servicemonitors
+  verbs:
+    - create
+    - delete
+    - get
+    - list
+    - patch
+    - update
+    - watch
