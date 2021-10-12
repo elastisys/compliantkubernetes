@@ -127,7 +127,6 @@ To update them, proceed as follows:
   * Enable "Embed Images".
   * Leave everything else as default.
 4. Copy the exported files in the right paths.
-5. Run `pre-commit run --all`, to fix some trailing whitespace issues in one SVG.
 
 
 ### From graphviz
