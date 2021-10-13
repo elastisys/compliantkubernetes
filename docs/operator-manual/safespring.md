@@ -446,7 +446,7 @@ Create object storage buckets for backups and container registry storage (if des
 
 For this you need to obtain access keys from Safespring to be able to create S3 buckets.
 
-```aidl
+```
 cd compliantkubernetes-apps
 git checkout v0.17.0
 AWS_ACCESS_KEY=set-me
