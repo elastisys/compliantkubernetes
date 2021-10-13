@@ -38,7 +38,7 @@ All of this is done from the root of the `compliantkubernetes-kubespray` reposit
 export CK8S_CONFIG_PATH=~/.ck8s/<environment-name>
 export SOPS_FP=<PGP-fingerprint>
 
-for CLUSTER in "${SERVICE_CLUSTER}" "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in $SERVICE_CLUSTER "${WORKLOAD_CLUSTERS[@]}"; do
   ./bin/ck8s-kubespray init "${CLUSTER}" openstack "${SOPS_FP}"
 done
 ```
@@ -213,7 +213,7 @@ Alternatively, using the `openrc` file:
 MODULE_PATH="$(pwd)/kubespray/contrib/terraform/openstack"
 
 pushd "${MODULE_PATH}"
-for CLUSTER in "${SERVICE_CLUSTER}" "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in $SERVICE_CLUSTER "${WORKLOAD_CLUSTERS[@]}"; do
   terraform init
   terraform apply -var-file="${CK8S_CONFIG_PATH}/${CLUSTER}-config/cluster.tfvars" -state="${CK8S_CONFIG_PATH}/${CLUSTER}-config/terraform.tfstate"
 done
@@ -313,7 +313,7 @@ Additionally, when you later set up `compliantkubernetes-apps` in your cluster, 
 Copy the script for generating dynamic ansible inventories:
 
 ```bash
-for CLUSTER in "${SERVICE_CLUSTER}" "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in $SERVICE_CLUSTER "${WORKLOAD_CLUSTERS[@]}"; do
   cp kubespray/contrib/terraform/terraform.py "${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini"
   chmod +x "${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini"
 done
@@ -322,7 +322,7 @@ done
 Now it is time to run the Kubespray playbook!
 
 ```bash
-for CLUSTER in "${SERVICE_CLUSTER}" "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in $SERVICE_CLUSTER "${WORKLOAD_CLUSTERS[@]}"; do
   ./bin/ck8s-kubespray apply "${CLUSTER}"
 done
 ```
@@ -333,7 +333,7 @@ You should now have an encrypted kubeconfig file for each cluster under `$CK8S_C
 Check that they work like this:
 
 ```bash
-for CLUSTER in "${SERVICE_CLUSTER}" "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in $SERVICE_CLUSTER "${WORKLOAD_CLUSTERS[@]}"; do
   sops exec-file "${CK8S_CONFIG_PATH}/.state/kube_config_${CLUSTER}.yaml" "kubectl --kubeconfig {} cluster-info"
 done
 ```
@@ -601,10 +601,11 @@ Note: if user namespaces are managed by Compliant Kubernetes apps then they will
 Destroy the infrastructure using Terraform, the same way you created it:
 
 ```bash
+cd compliantkubernetes-kubespray/
 MODULE_PATH="$(pwd)/kubespray/contrib/terraform/openstack"
 
 pushd "${MODULE_PATH}"
-for CLUSTER in "${SERVICE_CLUSTER}" "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in $SERVICE_CLUSTER "${WORKLOAD_CLUSTERS[@]}"; do
   terraform init
   terraform destroy -var-file="${CK8S_CONFIG_PATH}/${CLUSTER}-config/cluster.tfvars" -state="${CK8S_CONFIG_PATH}/${CLUSTER}-config/terraform.tfstate"
 done
