@@ -67,7 +67,8 @@ nav:
       - 'On Azure': 'operator-manual/azure.md'
       - 'On Exoscale': 'operator-manual/exoscale.md'
       - 'On GCP': 'operator-manual/gcp.md'
-      - 'On Openstack': operator-manual/openstack.md
+      - 'On Openstack': 'operator-manual/openstack.md'
+      - 'On Safespring': 'operator-manual/safespring.md'
       - 'On OVH Managed Kubernetes': 'operator-manual/ovh-managed-kubernetes.md'
       - 'On EKS-D': 'operator-manual/eksd.md'
       - 'Remove Compliant Kubernetes Apps': 'operator-manual/clean-up.md'
