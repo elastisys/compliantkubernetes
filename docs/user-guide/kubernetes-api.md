@@ -95,6 +95,14 @@ kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "pull-se
 !!!note
     For each Kubernetes namespace, you will have to create an image pull secret and configure it to be default. Aim to have a one-to-one-to-one mapping between Kubernetes namespaces, container registry projects and robot accounts.
 
+### Apply a NetworkPolicy
+
+!!!important
+    This section helps do comply with ISO 27001
+
+Depending on configuration, Compliant Kubernetes clusters may require you to configure [NetworkPolicies](https://kubernetes.io/docs/concepts/services-networking/network-policies/). These act like firewall rules in containerized worklods and require you to make an active choice on what ingress and egress traffic to allow to/from a container. This is necessary for
+
+
 ### Deploy user demo
 
 !!!example

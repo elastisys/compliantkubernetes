@@ -79,3 +79,16 @@ topologySpreadConstraints: []
   #   labelSelector:
   #     matchLabels:
   #       app.kubernetes.io/instance: myapp
+
+## Network Policy configuration
+## ref: https://kubernetes.io/docs/concepts/services-networking/network-policies/
+##
+networkPolicy:
+  ## @param networkPolicy.enabled Enable creation of NetworkPolicy resources
+  ##
+  enabled: true
+  ## @param networkPolicy.ingressNSMatchLabels Labels to match to allow traffic from other namespaces
+  ## Empty means accept from all namespaces.
+  ## @param networkPolicy.ingressNSPodMatchLabels Pod labels to match to allow traffic from other namespaces
+  ingressNSMatchLabels: {}
+  ingressNSPodMatchLabels: {}
