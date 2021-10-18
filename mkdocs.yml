@@ -32,6 +32,9 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.tabbed
+  - toc:
+      permalink: true
+      toc_depth: '2'
 
 nav:
   - Overview: 'index.md'
