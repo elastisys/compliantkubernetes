@@ -39,7 +39,6 @@ markdown_extensions:
 nav:
   - Overview: 'index.md'
   - 'Compliance Basics': 'compliance.md'
-  - 'Architecture': 'architecture.md'
   - 'Getting Started': 'getting-started.md'
   - 'User Guide':
     - 'Overview': 'user-guide/index.md'
@@ -87,6 +86,7 @@ nav:
     - 'Troubleshooting': 'operator-manual/troubleshooting.md'
   - 'Contributor Guide':
     - 'Overview': 'contributor-guide/index.md'
+    - 'Architecture': 'architecture.md'
     - 'Architectural Decision Log': 'adr/index.md'
     - 'Tech Radar': 'tech-radar/index.html'
   - 'Vocabulary': 'vocabulary.md'
