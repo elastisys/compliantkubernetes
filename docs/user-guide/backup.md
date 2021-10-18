@@ -18,11 +18,15 @@ Velero is deployed in both the workload cluster and the service cluster. Followi
 
 ### Backing up
 
-Velero takes a daily backup of all Kubernetes Resources in all user namespaces. Persistent Volumes will be backed up if they are tied to a Pod. If backups are not wanted the label `compliantkubernetes.io/nobackup` can be added to opt-out of the daily backups.
+<!--user-demo-backup-start-->
 
-In the service cluster, Grafana (and its associated Persistent Volume) is configured to be backed up.
+Compliant Kubernetes takes a daily backup of all Kubernetes Resources in all user namespaces. Persistent Volumes will be backed up if they are tied to a Pod. If backups are not wanted the label `compliantkubernetes.io/nobackup` can be added to opt-out of the daily backups.
 
-Backups are stored for 720 hours (30 days).
+Application metrics (Grafana) and application log (Kibana) dashboards are also backup up by default.
+
+By default, backups are stored for 720 hours (30 days).
+
+<!--user-demo-backup-end-->
 
 ### Restoring
 

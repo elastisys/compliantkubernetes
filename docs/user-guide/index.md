@@ -18,6 +18,7 @@ A user can be described via the following user stories:
 
 ## Running Example
 
+<!--user-demo-overview-start-->
 To make the most out of Compliant Kubernetes, this documentation features a minimalistic NodeJS application. It allows to explore all Compliant Kubernetes benefits, including:
 
 * [Container registry](./registry/#running-example);
@@ -52,3 +53,4 @@ If you are a newcomer to Compliant Kubernetes, we suggest you clone the user dem
 git clone https://github.com/elastisys/compliantkubernetes/
 cd compliantkubernetes/user-demo
 ```
+<!--user-demo-overview-end-->

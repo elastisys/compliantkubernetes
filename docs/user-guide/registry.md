@@ -39,6 +39,8 @@ for: "unsafe-image.yaml": admission webhook "validation.gatekeeper.sh" denied th
 
 ## Running Example
 
+<!--user-demo-registry-start-->
+
 ### Configure container registry credentials
 
 First, retrieve your Harbor CLI secret and configure your local Docker client.
@@ -84,6 +86,8 @@ You should see no error message. Note down the `sha256` of the image.
 2. Choose the `demo` project.
 3. Check if the image was uploaded successfully, by comparing the tag's `sha256` with the one returned by the `docker push` command above.
 4. (Optional) While you're at it, why not run the vulnerability scanner on the image you just pushed.
+
+<!--user-demo-registry-end-->
 
 ## User access
 If OIDC was enabled (e.g. DeX) your Harbor user will be created when you first login to the web interface. That user will not have admin privileges, if you need admin rights please contact the administrator by opening a support ticket.
