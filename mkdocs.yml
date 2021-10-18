@@ -37,10 +37,10 @@ nav:
   - Overview: 'index.md'
   - 'Compliance Basics': 'compliance.md'
   - 'Architecture': 'architecture.md'
-  - 'Exploring Benefits': 'benefits.md'
+  - 'Getting Started': 'getting-started.md'
   - 'User Guide':
     - 'Overview': 'user-guide/index.md'
-    - 'Getting Started': 'user-guide/getting-started.md'
+    - 'Set up': 'user-guide/setup.md'
     - 'Container registry': 'user-guide/registry.md'
     - 'Kubernetes API': 'user-guide/kubernetes-api.md'
     - 'Logs': 'user-guide/logs.md'
