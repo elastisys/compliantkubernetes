@@ -50,6 +50,7 @@ nav:
     - 'Alerts': 'user-guide/alerts.md'
     - 'Backups': 'user-guide/backup.md'
     - 'CI/CD': 'user-guide/ci-cd.md'
+    - 'Safeguards': 'user-guide/safeguards.md'
     - 'Can I?': 'user-guide/demarcation.md'
   - 'CISO Guide':
     - 'Overview': 'ciso-guide/index.md'
