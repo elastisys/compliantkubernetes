@@ -235,55 +235,96 @@ The following are the minimum change you should perform:
 ```yaml
 # ${CK8S_CONFIG_PATH}/sc-config.yaml and ${CK8S_CONFIG_PATH}/wc-config.yaml
 global:
-  baseDomain: "set-me"  # set to $CK8S_ENVIRONMENT_NAME.$DOMAIN
-  opsDomain: "set-me"  # set to ops.$CK8S_ENVIRONMENT_NAME.$DOMAIN
+  baseDomain: set-me # set to $CK8S_ENVIRONMENT_NAME.$DOMAIN
+  opsDomain: set-me  # set to ops.$CK8S_ENVIRONMENT_NAME.$DOMAIN
   issuer: letsencrypt-prod
 
 objectStorage:
-  type: "s3"
+  # type: s3 # set as default for prod flavor, defaults to "none" for dev
   s3:
-    region: "set-me"  # Region for S3 buckets, e.g, west-1
-    regionEndpoint: "set-me"  # e.g., https://s3.us-west-1.amazonaws.com
+    region: set-me          # Region for S3 buckets, e.g. ch-gva-2
+    regionEndpoint: set-me  # Region endpoint for S3 buckets, e.g. https://sos-ch-gva-2.exo.io
+    # forcePathStyle: false # set as default
 
-storageClasses:
-  default:  rook-ceph-block
-  nfs:
-    enabled: false
-  cinder:
-    enabled: false
-  local:
-    enabled: false
-  ebs:
-    enabled: false
-
+clusterAdmin:
+  users: # set to the cluster admin users
+    - set-me
+    - admin@example.com
 ```
 
 ```yaml
 # ${CK8S_CONFIG_PATH}/sc-config.yaml (in addition to the changes above)
-ingressNginx:
-    controller:
-      service:
-        type: "this-is-not-used"
-        annotations: "this-is-not-used"
-
+user:
+  grafana:
+    oidc:
+      allowedDomains: # set to your domain(s), or unset using [] to deny all
+        - set-me
+        - example.com
 harbor:
+  # persistence:
+  #  type: objectStorage    # set as default for prod flavor, defaults to "filesystem" for dev
+  #  disableRedirect: false # set as default
   oidc:
-    groupClaimName: "set-me" # set to group claim name used by OIDC provider
+    groupClaimName: set-me # set to group claim name used by OIDC provider
+    adminGroupName: set-me # name of the group that automatically will get admin
+
+elasticsearch:
+  extraRoleMappings: # set to configure elasticsearch access, or unset using []
+    - mapping_name: kibana_user
+      definition:
+        users:
+          - set-me
+    - mapping_name: kubernetes_log_reader
+      definition:
+        users:
+          - set-me
+    - mapping_name: all_access
+      definition:
+        users:
+          - set-me
+
+alerts:
+  opsGenieHeartbeat:
+    # enabled: true # set as default for prod flavour, defaults to "false" for dev
+    name: set-me    # set to name the hearbeat if enabled
 
 issuers:
   letsencrypt:
     prod:
-      email: "set-me"  # set this to an email to receive LetsEncrypt notifications
+      email: set-me # set this to an email to receive LetsEncrypt notifications
     staging:
-      email: "set-me"  # set this to an email to receive LetsEncrypt notifications
+      email: set-me # set this to an email to receive LetsEncrypt notifications
+```
+
+```yaml
+# ${CK8S_CONFIG_PATH}/wc-config.yaml (in addition to the changes above)
+user:
+  namespaces: # set this to create user namespaces, or unset using []
+    - set-me
+    - production
+    - staging
+  adminUsers: # set this to create admins in the user namespaces, or unset using []
+    - set-me
+    - admin@example.com
+  adminGroups: # set this to create admin groups in the user namespaces, or unset using []
+    - set-me
+  # alertmanager: # add this block to enable user accessible alertmanager
+  #   enabled: true
+  #   namespace: alertmanager # note that this namespace must be listed above under "user.namespaces"
+
+opa:
+  imageRegistry:
+    URL: # set this to the allowed image registry, or unset using [] to deny all
+      - set-me
+      - harbor.example.com
 ```
 
 ```yaml
 # ${CK8S_CONFIG_PATH}/secrets.yaml
 objectStorage:
   s3:
-    accessKey: "set-me" # set to your s3 accesskey
-    secretKey: "set-me" # set to your s3 secretKey
+    accessKey: set-me # set to your s3 accesskey
+    secretKey: set-me # set to your s3 secretKey
 ```
 
 {%

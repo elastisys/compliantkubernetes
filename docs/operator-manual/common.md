@@ -75,14 +75,12 @@ export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret
 ./bin/ck8s init
 ```
 
-Three files, `sc-config.yaml` and `wc-config.yaml`, and `secrets.yaml`, were generated in the `${CK8S_CONFIG_PATH}` directory.
+This will initialise the configuration in the `${CK8S_CONFIG_PATH}` directory. Generating configuration files `sc-config.yaml` and `wc-config.yaml`, as well as secrets with randomly generated passwords in `secrets.yaml`. This will also generate read-only default configuration under the directory `defaults/` which can be used as a guide for available and suggested options.
 
 ```bash
 ls -l $CK8S_CONFIG_PATH
 ```
 
-!!!tip
-    If you want to generate random passwords for all services, you can run the script `scripts/generate-secrets.sh`
 <!--init-apps-stop-->
 
 <!--configure-apps-start-->
@@ -96,6 +94,13 @@ vim ${CK8S_CONFIG_PATH}/sc-config.yaml
 vim ${CK8S_CONFIG_PATH}/wc-config.yaml
 sops ${CK8S_CONFIG_PATH}/secrets.yaml
 ```
+
+!!!tip
+    The default configuration for the service cluster and workload cluster are available in the directory `${CK8S_CONFIG_PATH}/defaults/` and can be used as a reference for available options.
+
+!!!warning
+    Do not modify the read-only default configurations files found in the directory `${CK8S_CONFIG_PATH}/defaults/`. Instead configure the cluster by modifying the regular files `${CK8S_CONFIG_PATH}/sc-config.yaml` and `${CK8S_CONFIG_PATH}/wc-config.yaml` as they will override the default options.
+
 <!--configure-apps-stop-->
 
 <!--install-apps-start-->
@@ -213,10 +218,11 @@ To ensure that you have configured S3 correctly, run the following snippet:
 (
     access_key=$(sops exec-file ${CK8S_CONFIG_PATH}/secrets.yaml 'yq r {} "objectStorage.s3.accessKey"')
     secret_key=$(sops exec-file ${CK8S_CONFIG_PATH}/secrets.yaml 'yq r {} "objectStorage.s3.secretKey"')
-    region=$(yq r ${CK8S_CONFIG_PATH}/sc-config.yaml 'objectStorage.s3.region')
-    host=$(yq r ${CK8S_CONFIG_PATH}/sc-config.yaml 'objectStorage.s3.regionEndpoint')
+    sc_config=$(yq m ${CK8S_CONFIG_PATH}/defaults/sc-config.yaml ${CK8S_CONFIG_PATH}/sc-config.yaml -a overwrite -x)
+    region=$(echo ${sc_config} | yq r - 'objectStorage.s3.region')
+    host=$(echo ${sc_config} | yq r -  'objectStorage.s3.regionEndpoint')
 
-    for bucket in $(yq r ${CK8S_CONFIG_PATH}/sc-config.yaml 'objectStorage.buckets.*'); do
+    for bucket in $(echo ${sc_config} | yq r -  'objectStorage.buckets.*'); do
         s3cmd --access_key=${access_key} --secret_key=${secret_key} \
             --region=${region} --host=${host} \
             ls s3://${bucket} > /dev/null
