@@ -65,6 +65,8 @@ The Pods dashboard (Kubernetes/Compute resources/Pods) gives a quick overview of
 
 ## Running Example
 
+<!--user-demo-metrics-start-->
+
 The user demo already includes a [ServiceMonitor](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/servicemonitor.yaml), as required for Compliant Kubernetes to collect metrics from its `/metrics` endpoint:
 
 ```yaml
@@ -73,10 +75,12 @@ The user demo already includes a [ServiceMonitor](https://github.com/elastisys/c
 
 The screenshot below shows a Grafana dashboard featuring the query `rate(http_request_duration_seconds_count[1m])`. It shows the request rate for the user demo application for each path and status code. As can be seen, the `/users` endpoint is getting popular.
 
-![Example of User Demo Metrics](../img/user-demo-metrics.jpeg)
+![Example of User Demo Metrics](/img/user-demo-metrics.jpeg)
 
 !!!note
     You may want to save frequently used dashboards. Compliant Kubernetes saves and backs these up for you.
+
+<!--user-demo-metrics-end-->
 
 ## Further reading
 For more information please refer to the official [Prometheus](https://prometheus.io/docs/) and [Grafana](https://grafana.com/docs/grafana/latest/) documentation.

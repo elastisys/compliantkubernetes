@@ -18,6 +18,7 @@ A user can be described via the following user stories:
 
 ## Running Example
 
+<!--user-demo-overview-start-->
 To make the most out of Compliant Kubernetes, this documentation features a minimalistic NodeJS application. It allows to explore all Compliant Kubernetes benefits, including:
 
 * [Container registry](./registry/#running-example);
@@ -39,7 +40,7 @@ The application features:
     - [PrometheusRule for alerting](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/prometheusrule.yaml);
     - [topologySpreadConstraings for tolerating a zone failure](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L76-L82);
     - [resources for capacity management](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L42-L51);
-    - [NetworkPolicies for network segmentation](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L83-L94)
+    - [NetworkPolicies for network segmentation](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L83-L94);
 - [script for local development and testing](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/scripts);
 
 Bonus:
@@ -52,3 +53,4 @@ If you are a newcomer to Compliant Kubernetes, we suggest you clone the user dem
 git clone https://github.com/elastisys/compliantkubernetes/
 cd compliantkubernetes/user-demo
 ```
+<!--user-demo-overview-end-->

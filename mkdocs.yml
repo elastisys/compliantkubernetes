@@ -32,15 +32,17 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.tabbed
+  - toc:
+      permalink: true
+      toc_depth: '2'
 
 nav:
   - Overview: 'index.md'
   - 'Compliance Basics': 'compliance.md'
-  - 'Architecture': 'architecture.md'
-  - 'Exploring Benefits': 'benefits.md'
+  - 'Getting Started': 'getting-started.md'
   - 'User Guide':
     - 'Overview': 'user-guide/index.md'
-    - 'Getting Started': 'user-guide/getting-started.md'
+    - 'Set up': 'user-guide/setup.md'
     - 'Container registry': 'user-guide/registry.md'
     - 'Kubernetes API': 'user-guide/kubernetes-api.md'
     - 'Logs': 'user-guide/logs.md'
@@ -84,6 +86,7 @@ nav:
     - 'Troubleshooting': 'operator-manual/troubleshooting.md'
   - 'Contributor Guide':
     - 'Overview': 'contributor-guide/index.md'
+    - 'Architecture': 'architecture.md'
     - 'Architectural Decision Log': 'adr/index.md'
     - 'Tech Radar': 'tech-radar/index.html'
   - 'Vocabulary': 'vocabulary.md'

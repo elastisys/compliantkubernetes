@@ -144,14 +144,18 @@ The figure below shows the search result for **OPA** logs.
 
 ## Running Example
 
+<!--user-demo-logs-start-->
+
 The user demo application already includes structured logging: For each HTTP request, it logs the URL, the user agent, etc. Compliant Kubernetes further adds the Pod name, Helm Chart name, Helm Release name, etc. to each log entry.
 
 The screenshot below gives an example of log entries produced by the user demo application. It was obtained by using the index pattern `kubernetes*` and the filter `kubernetes.labels.app_kubernetes_io/instance:myapp`.
 
-![Example of User Demo Logs](../img/user-demo-logs.jpeg)
+![Example of User Demo Logs](/img/user-demo-logs.jpeg)
 
 !!!note
     You may want to save frequently used searches as dashboards. Compliant Kubernetes saves and backs these up for you.
+
+<!--user-demo-logs-end-->
 
 ## Further Reading
 

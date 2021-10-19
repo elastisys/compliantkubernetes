@@ -1,4 +1,6 @@
-# Getting Started
+# Setup
+
+<!--user-demo-setup-start-->
 
 As a user, you will need:
 
@@ -13,13 +15,7 @@ The easier is to request a demo environment from a [managed Compliant Kubernetes
 * A [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file for configuring kubectl access to the cluster.
 * (Optionally) Static username and password. Normally, you should log in via a username and a password of your organizations identity provider.
 
-If you want to setup your own Compliant Kubernetes installation, head to the [Administrator Manual](../../operator-manual).
-
-## Running Example
-
-### Verification
-
-Make sure you configure your environment properly:
+Make sure you configure your tools properly:
 
 ```
 export KUBECONFIG=path/of/kubeconfig.yaml  # leave empty if you use the default of ~/.kube/config
@@ -51,3 +47,5 @@ curl --include https://harbor.$DOMAIN/api/v2.0/health
 curl --head https://grafana.$DOMAIN/healthz
 curl --head https://kibana.$DOMAIN/api/status
 ```
+
+<!--user-demo-setup-end-->

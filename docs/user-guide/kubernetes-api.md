@@ -56,6 +56,8 @@ You are now logged in and can use kubectl to manage your Kubernetes resources!
 
 ## Running Example
 
+<!--user-demo-kubernetes-api-start-->
+
 ### Pre-verification
 
 Make sure you are in the right namespace on the right cluster:
@@ -158,6 +160,8 @@ curl --include https://demo.$DOMAIN
     If you want your application to tolerate a whole zone (data-center) to go down, you need to add `topologySpreadConstraints` by uncommenting the relevant section in [values.yaml](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L76-L82).
 
     In order for this to work, your administrator must configure the Nodes with zone labels. You can verify if this was performed correctly typing `kubectl get nodes --show-labels` and checking if Nodes feature the `topology.kubernetes.io/zone` label.
+
+<!--user-demo-kubernetes-api-end-->
 
 ## Further reading
 
