@@ -46,6 +46,7 @@ curl --head https://dex.$DOMAIN/healthz
 curl --include https://harbor.$DOMAIN/api/v2.0/health
 curl --head https://grafana.$DOMAIN/healthz
 curl --head https://kibana.$DOMAIN/api/status
+# All commands above should return 'HTTP/2 200'
 ```
 
 <!--user-demo-setup-end-->
