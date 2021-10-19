@@ -218,6 +218,7 @@ objectStorage:
 harbor:
   oidc:
     groupClaimName: "set-me" # set to group claim name used by OIDC provider
+    adminGroupName: "set-me" # name of the group that automatically will get admin
 
 issuers:
   letsencrypt:
