@@ -41,7 +41,7 @@ $ kubectl get pods
 NAME                                   READY   STATUS                       RESTARTS   AGE
 myapp-ck8s-user-demo-564f8dd85-2bs8r   0/1     CreateContainerConfigError   0          84s
 myapp-ck8s-user-demo-bfbf9c459-dmk4l   0/1     CreateContainerConfigError   0          13m
-$ kubectl descibe pods myapp-ck8s-user-demo-564f8dd85-2bs8r
+$ kubectl describe pods myapp-ck8s-user-demo-564f8dd85-2bs8r
 [...]
 Error: container has runAsNonRoot and image has non-numeric user (node), cannot verify user is non-root (pod: "myapp-ck8s-user-demo-bfbf9c459-dmk4l_demo1(1b53b1a8-4845-4db5-aecf-6bebcc54e396)", container: ck8s-user-demo)
 ```
@@ -51,7 +51,7 @@ This means that your Dockerfile uses a non-numeric user and Kubernetes cannot va
 Alternatively, you may get:
 
 ```console
-$ kubectl descibe pods myapp-ck8s-user-demo-564f8dd85-2bs8r
+$ kubectl describe pods myapp-ck8s-user-demo-564f8dd85-2bs8r
 [...]
 Error: container has runAsNonRoot and image will run as root (pod: "myapp-ck8s-user-demo-564f8dd85-2bs8r_demo1(a55a25f3-7b77-4fae-9f92-11e264446ecc)", container: ck8s-user-demo)
 ```
