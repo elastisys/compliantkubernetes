@@ -7,6 +7,6 @@ RUN npm install
 
 COPY . ./
 
-USER node
+USER 1000  # User "node". Putting a numeric ID here to avoid Kubernetes throwing the error: 'container has runAsNonRoot and image has non-numeric user (node), cannot verify user is non-root'
 EXPOSE 3000
 CMD ./bin/www
