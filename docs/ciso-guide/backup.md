@@ -6,11 +6,16 @@
 
     > In assessing the appropriate level of security account shall be taken in particular of the risks that are presented by processing, **in particular from accidental or unlawful destruction, loss**, alteration, unauthorised disclosure of, or access to personal data transmitted, stored or otherwise processed. [highlights added]
 
-* [HIPAA Part 164—SECURITY AND PRIVACY](https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/combined/hipaa-simplification-201303.pdf)
+* [HSLF-FS 2016:40](https://www.socialstyrelsen.se/globalassets/sharepoint-dokument/artikelkatalog/foreskrifter-och-allmanna-rad/2016-4-44.pdf):
 
-    > (A) Data backup plan (Required). Establish and implement procedures to create and maintain retrievable exact copies of electronic protected health information.
-    > (B) Disaster recovery plan (Required). Establish (and implement as needed)
-procedures to restore any loss of data.
+    > **Säkerhetskopiering**
+    >
+    > 12 § Vårdgivaren ska säkerställa att personuppgifter som behandlas i informationssystem säkerhetskopieras med en fastställd periodicitet.
+    > Säkerhetskopiorna ska förvaras på ett säkert sätt, väl åtskilda från originaluppgifterna.
+    >
+    > 13 § Vårdgivaren ska besluta om hur länge säkerhetskopiorna ska sparas och hur ofta återläsningstester av kopiorna ska göras.
+    >
+    > Allmänna råd: Hur ofta återläsningstester ska göras bör styras av resultaten av återkommande riskanalyser.
 
 ## Mapping to ISO 27001 Controls
 

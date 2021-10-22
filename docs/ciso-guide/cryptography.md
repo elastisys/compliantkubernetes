@@ -8,9 +8,16 @@
     >
     > In assessing the appropriate level of security account shall be taken in particular of the risks that are presented by processing, in particular from accidental or unlawful destruction, loss, alteration, **unauthorised disclosure of, or access to personal data transmitted**, stored or otherwise processed. [highlights added]
 
-* [HIPAA Part 164—SECURITY AND PRIVACY](https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/combined/hipaa-simplification-201303.pdf)
+* [HSLF-FS 2016:40](https://www.socialstyrelsen.se/globalassets/sharepoint-dokument/artikelkatalog/foreskrifter-och-allmanna-rad/2016-4-44.pdf):
 
-    > (ii) Encryption (Addressable). Implement a mechanism to encrypt electronic protected health information whenever deemed appropriate.
+    > **Behandling av personuppgifter i öppna nät**
+    >
+    > 15 § Om vårdgivaren använder öppna nät vid behandling av personuppgifter, ska denne ansvara för att
+    >
+    > 1. överföring av uppgifterna görs på ett sådant sätt att inte obehöriga kan ta del av dem, och
+    >
+    > 2. elektronisk åtkomst eller direktåtkomst till uppgifterna föregås av
+stark autentisering.
 
 ## Mapping to ISO 27001 Controls
 
