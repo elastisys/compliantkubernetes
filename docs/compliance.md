@@ -18,7 +18,7 @@ Organizations in certain sectors, such as BioTech, FinTech, MedTech, and those p
 
 * Any bank operating in Sweden is regulated by the Swedish Financial Authority (Finansinspektionen) and has to comply with FFFS.
 * Any organization dealing with personal data is scrutinized by the Swedish Data Protection Authority (Datainspektionen) and needs to comply with GDPR.
-* Any organization handling patient data needs to comply with HIPAA in the US or Patientdatalagen (PDL) in Sweden.
+* Any organization handling patient data needs to comply with Patientdatalagen (PDL) in Sweden.
 
 Such regulation is not only aspirational, but is actually checked as often as yearly by an external auditor. If an organization is found to be non-compliant it may pay heavy fines or even lose its license to operate.
 
