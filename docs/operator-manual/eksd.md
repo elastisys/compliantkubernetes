@@ -1,3 +1,10 @@
+{%
+   include-markdown "common.md"
+   start="<!--out-of-date-start-->"
+   end="<!--out-of-date-stop-->"
+   comments=false
+%}
+
 # Compliant Kubernetes on EKS-D based clusters
 
 This document contains instructions on how to install [Compliant Kubernetes](https://github.com/elastisys/compliantkubernetes-apps) on [AWS](https://aws.amazon.com/?nc2=h_lg) using [EKS-D](https://github.com/aws/eks-distro).

@@ -1,3 +1,10 @@
+{%
+   include-markdown "common.md"
+   start="<!--out-of-date-start-->"
+   end="<!--out-of-date-stop-->"
+   comments=false
+%}
+
 # Compliant Kubernetes Deployment on OVH Managed Kubernetes
 
 This document contains instructions on how to setup a service cluster and a workload cluster in [OVH](https://www.ovh.com).

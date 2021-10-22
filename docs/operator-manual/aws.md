@@ -1,3 +1,10 @@
+{%
+   include-markdown "common.md"
+   start="<!--out-of-date-start-->"
+   end="<!--out-of-date-stop-->"
+   comments=false
+%}
+
 # Compliant Kubernetes Deployment on AWS
 
 This document describes how to set up Compliant Kubernetes on AWS.

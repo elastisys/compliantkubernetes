@@ -225,3 +225,13 @@ To ensure that you have configured S3 correctly, run the following snippet:
 )
 ```
 <!--test-s3-buckets-stop-->
+
+<!--out-of-date-start-->
+!!!bug "This page is out of date"
+    We are currently working on internal documentation to streamline
+    Compliant Kubernetes onboarding for selected cloud providers. Until
+    those documents are ready, and until we have capacity to make parts of
+    that documentation public, this page is out-of-date.
+
+    Nevertheless, parts of it are useful. Use at your own risk and don't expect things to work smoothly.
+<!--out-of-date-end-->
