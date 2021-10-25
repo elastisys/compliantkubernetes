@@ -1,5 +1,12 @@
 # Compliant Kubernetes Deployment on Safespring
 
+{%
+   include-markdown "common.md"
+   start="<!--out-of-date-start-->"
+   end="<!--out-of-date-stop-->"
+   comments=false
+%}
+
 This document contains instructions on how to set up a Compliant Kubernetes environment (consisting of a service cluster and one or more workload clusters) on Safespring.
 
 !!!note
