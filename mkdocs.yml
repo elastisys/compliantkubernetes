@@ -89,6 +89,7 @@ nav:
     - 'Disaster Recovery': 'compliantkubernetes/operator-manual/disaster-recovery.md'
     - 'Breaking the Glass': 'compliantkubernetes/operator-manual/break-glass.md'
     - 'Use of Credentials': 'compliantkubernetes/operator-manual/credentials.md'
+    - 'Capacity Management': 'compliantkubernetes/operator-manual/capacity-management.md'
     - 'Troubleshooting': 'compliantkubernetes/operator-manual/troubleshooting.md'
   - 'Contributor Guide':
     - 'Overview': 'compliantkubernetes/contributor-guide/index.md'
