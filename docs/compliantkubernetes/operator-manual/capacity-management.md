@@ -23,7 +23,7 @@ That was very information dense, so let's break it down.
 ### How?
 
 [Add a new Node](/operator-manual/troubleshooting/#node-seems-really-not-fine-i-want-a-new-one) of the same type as the other Nodes in the cluster.
-If the cluster has 6 Nodes, consider consolidating to 3 Nodes of twice-the-size -- both in number of CPUs and memory -- if the infrastructure cost is reduced.
+If the cluster has 6 Nodes, consider consolidating to 3 Nodes of twice-the-size -- in number of CPUs or memory or both -- if the infrastructure cost is reduced.
 If you are about to double the number of Nodes, get in touch with application developers to ensure their application is not misbehaving, before upscaling.
 
 ## Downscaling
