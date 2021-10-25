@@ -33,7 +33,7 @@ Nevertheless, application developer trust us to keep infrastructure costs down, 
 
 ### When?
 
-The capacity of the environment should be regularly reviewed.
+The capacity of the environment should be regularly reviewed, for example, after a maintenance window.
 
 ### How?
 
