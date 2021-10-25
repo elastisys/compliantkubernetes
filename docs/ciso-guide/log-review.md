@@ -4,17 +4,24 @@ This document highlights the risks that can be mitigated by regularly reviewing 
 
 ## Relevant Regulations
 
-* [GDPR Article 32](https://gdpr-info.eu/art-32-gdpr/):
+### GDPR
 
-    > Taking into account the state of the art, the costs of implementation and the nature, scope, context and purposes of processing as well as the risk of varying likelihood and severity for the rights and freedoms of natural persons, the controller and the processor shall implement appropriate technical and organisational measures to ensure a level of security appropriate to the risk, including inter alia as appropriate:
-    > [...]
-    > a process for regularly testing, assessing and evaluating the effectiveness of technical and organisational measures for ensuring the security of the processing.
+[GDPR Article 32](https://gdpr-info.eu/art-32-gdpr/):
 
-* [HSLF-FS 2016:40](https://www.socialstyrelsen.se/regler-och-riktlinjer/foreskrifter-och-allmanna-rad/konsoliderade-foreskrifter/201640-om-journalforing-och-behandling-av-personuppgifter-i-halso--och-sjukvarden/):
+> Taking into account the state of the art, the costs of implementation and the nature, scope, context and purposes of processing as well as the risk of varying likelihood and severity for the rights and freedoms of natural persons, the controller and the processor shall implement appropriate technical and organisational measures to ensure a level of security appropriate to the risk, including inter alia as appropriate:
+> [...]
+> a process for regularly testing, assessing and evaluating the effectiveness of technical and organisational measures for ensuring the security of the processing.
 
-    > 2 § Vårdgivaren ska genom ledningssystemet säkerställa att
-    > [...]
-    > 4. åtgärder kan härledas till en användare (spårbarhet) i informationssystem som är helt eller delvis automatiserade.
+### Swedish Patient Data Law
+
+!!!note
+    This regulation is only available in Swedish. To avoid confusion, we decided not to produce an unoffical translation.
+
+[HSLF-FS 2016:40](https://www.socialstyrelsen.se/regler-och-riktlinjer/foreskrifter-och-allmanna-rad/konsoliderade-foreskrifter/201640-om-journalforing-och-behandling-av-personuppgifter-i-halso--och-sjukvarden/):
+
+> 2 § Vårdgivaren ska genom ledningssystemet säkerställa att
+> [...]
+> 4. åtgärder kan härledas till en användare (spårbarhet) i informationssystem som är helt eller delvis automatiserade.
 
 ## Mapping to ISO 27001 Controls
 

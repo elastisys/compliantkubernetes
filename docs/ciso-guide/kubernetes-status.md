@@ -2,13 +2,20 @@
 
 ## Relevant Regulations
 
-* [GDPR Article 32](https://gdpr-info.eu/art-32-gdpr/):
+### GDPR
 
-    > The ability to ensure the ongoing confidentiality, integrity, **availability and resilience** of processing systems and services; [highlights added]
+[GDPR Article 32](https://gdpr-info.eu/art-32-gdpr/):
 
-* [HSLF-FS 2016:40](https://www.socialstyrelsen.se/globalassets/sharepoint-dokument/artikelkatalog/foreskrifter-och-allmanna-rad/2016-4-44.pdf):
+> The ability to ensure the ongoing confidentiality, integrity, **availability and resilience** of processing systems and services; [highlights added]
 
-    > 10 § Vårdgivaren ska vid utveckling, idrifttagande och ändring av informationssystem som används för behandling av personuppgifter säkerställa att personuppgifternas tillgänglighet, riktighet, konfidentialitet och spårbarhet inte riskeras.
+### Swedish Patient Data Law
+
+!!!note
+    This regulation is only available in Swedish. To avoid confusion, we decided not to produce an unoffical translation.
+
+[HSLF-FS 2016:40](https://www.socialstyrelsen.se/globalassets/sharepoint-dokument/artikelkatalog/foreskrifter-och-allmanna-rad/2016-4-44.pdf):
+
+> 10 § Vårdgivaren ska vid utveckling, idrifttagande och ändring av informationssystem som används för behandling av personuppgifter säkerställa att personuppgifternas tillgänglighet, riktighet, konfidentialitet och spårbarhet inte riskeras.
 
 ## Mapping to ISO 27001 Controls
 
