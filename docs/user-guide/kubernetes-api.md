@@ -109,7 +109,7 @@ git clone https://github.com/elastisys/compliantkubernetes/
 cd compliantkubernetes/user-demo
 ```
 
-Ensure you use the right registry project and image tag, i.e., those that you pushed in the [previous example](../registry#running-example):
+Ensure you use the right registry project and image tag, i.e., those that you pushed in the [previous example](/user-guide/registry#running-example):
 
 ```bash
 REGISTRY_PROJECT=demo

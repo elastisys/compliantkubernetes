@@ -21,11 +21,11 @@ A user can be described via the following user stories:
 <!--user-demo-overview-start-->
 To make the most out of Compliant Kubernetes, this documentation features a minimalistic NodeJS application. It allows to explore all Compliant Kubernetes benefits, including:
 
-* [Container registry](./registry/#running-example);
-* [Deploying](./kubernetes-api/#running-example);
-* [Logging](./logs#running-example);
-* [Metrics](./metrics#running-example);
-* [Alerts](./alerts#running-example).
+* [Container registry](/user-guide/registry/#running-example);
+* [Deploying](/user-guide/kubernetes-api/#running-example);
+* [Logging](/user-guide/logs#running-example);
+* [Metrics](/user-guide/metrics#running-example);
+* [Alerts](/user-guide/alerts#running-example).
 
 The application features:
 
