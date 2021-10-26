@@ -133,38 +133,38 @@ The examples are copy-pastable, but you might want to change `cluster_name` and 
     use_server_groups = true # Comment this out if you don't mind that the VMs are schedules on different physical machines
                              # Also, comment this out if you run into problems on Safespring because of shortage of physical machines
     ```
-    
+
 === "Safespring sto1 with private IPs and floating IPs assigned to VMs"
 
 For this to work, make sure that you can create networks and floating IPs on Safespring.
-    
+
         ``` hcl
         # your Kubernetes cluster name here
         cluster_name = "your-cluster-name"
-    
+
         # image to use for bastion, masters, standalone etcd instances, and nodes
         image = "ubuntu-20.04"
-    
+
         # 0|1 bastion nodes
         number_of_bastions = 0
-    
+
         use_neutron = 0
-    
+
         # standalone etcds
         number_of_etcd = 0
-    
+
         # masters
         number_of_k8s_masters = 1
         number_of_k8s_masters_no_etcd = 0
         number_of_k8s_masters_no_floating_ip = 0
         number_of_k8s_masters_no_floating_ip_no_etcd = 0
         flavor_k8s_master = "8a707999-0bce-4f2f-8243-b4253ba7c473"
-    
+
         # nodes
         number_of_k8s_nodes = 3
         number_of_k8s_nodes_no_floating_ip = 0
         flavor_k8s_node = "5b40af67-9d11-45ed-a44f-e876766160a5"
-    
+
         # networking
         # ssh access to nodes
         k8s_allowed_remote_ips = ["0.0.0.0/0"]
@@ -191,7 +191,7 @@ For this to work, make sure that you can create networks and floating IPs on Saf
         external_net = "b19680b3-c00e-40f0-ad77-4448e81ae226"
         use_access_ip = 1
         network_name = "private" # Change this if you would like a new network to be created
-    
+
         use_server_groups = true # Comment this out if you don't mind that the VMs are schedules on different physical machines
                                  # Also, comment this out if you run into problems on Safespring because of shortage of physical machines
         ```
@@ -508,7 +508,7 @@ You will then need to set `CK8S_CONFIG_PATH` to each `$CLUSTER-config` folder in
 
 With this you should be ready to install Compliant Kubernetes Apps on top of the clusters.
 
-##### Edit the storage class manifests 
+##### Edit the storage class manifests
 
 ```
 ./bin/ck8s ops kubectl sc edit storageclass cinder-csi
