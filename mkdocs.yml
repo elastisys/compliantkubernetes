@@ -35,6 +35,8 @@ markdown_extensions:
   - toc:
       permalink: true
       toc_depth: '2'
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 nav:
   - Overview: 'index.md'
@@ -52,6 +54,7 @@ nav:
     - 'CI/CD': 'user-guide/ci-cd.md'
     - 'Safeguards': 'user-guide/safeguards.md'
     - 'Can I?': 'user-guide/demarcation.md'
+    - 'Go-live Checklist': 'user-guide/go-live.md'
   - 'CISO Guide':
     - 'Overview': 'ciso-guide/index.md'
     - 'Backup': 'ciso-guide/backup.md'
