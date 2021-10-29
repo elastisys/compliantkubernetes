@@ -15,7 +15,7 @@ To move from production anxiety to production karma, here is a checklist to go t
     * **Why?** This ensures that enough capacity was allocated for the environment.
     * **How?** Set up a synthetic workload generator or replay a relevant workload. Ask the administrator to monitor your environment's capacity usage, including that related to components necessary for application logs and application metrics.
     * **Desired outcome**: Allocated capacity is sufficient.
-    * **Possible resolution**: Ensure the application has proper resource requests and limits (see our [user demo as an example](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L42-L51).
+    * **Possible resolution**: Ensure the application has proper resource requests and limits (see our [user demo as an example](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L42-L51)).
 - [ ] Load testing was performed while updating the application.
     * **Why?** This ensures that the application can be updated without downtime.
     * **How?** Make a trivial change to your application, e.g., add "Lorem ipsum" in the output of some API, and redeploy.
