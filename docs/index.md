@@ -10,8 +10,6 @@ Compliant Kubernetes is a [Certified Kubernetes](https://landscape.cncf.io/organ
 
 * [Swedish Healthcare (Patientdatalagen)](https://elastisys.com/how-to-use-kubernetes-in-swedish-healthcare/)
 * General Data Protection Regulation (GDPR)
-* Payment Card Industry Data Security Standard (PCI DSS)
-* Finansinspektionen's Regulatory Code (e.g., FFFS 2014:7)
 * Other regulations that map to information security standards, such as ISO 27001
 
 ## Why Compliant Kubernetes?
