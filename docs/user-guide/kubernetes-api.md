@@ -77,8 +77,8 @@ To start, make sure you configure the Kubernetes cluster with an image pull secr
     Your registry credentials identify **you** and allow you to both push and pull images. A robot account should identify the Kubernetes cluster and be only allowed to pull images.
 
 ```bash
-DOCKER_USER=      # enter robot account name
-DOCKER_PASSWORD=  # enter robot token
+DOCKER_USER="robot\$name"      # enter robot account name
+DOCKER_PASSWORD=               # enter robot secret
 ```
 
 Now create a pull secret and (optionally) use it by default in the current namespace.
