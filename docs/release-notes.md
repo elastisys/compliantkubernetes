@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.18.0](#v0180) - 2021-11-04
 - [v0.17.0](#v0170) - 2021-06-29
 - [v0.16.0](#v0160) - 2021-05-27
 - [v0.15.0](#v0150) - 2021-05-05
@@ -10,6 +11,16 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.18.0
+
+Released 2021-11-04.
+
+Changes:
+
+- Ingress-nginx-controller has been updated from v0.28.0 to v0.49.3, bringing various updates.
+    - Additionally, the configuration option `allow-snippet-annotations` has been set to `false` to mitigate known security issue [CVE-2021-25742](https://github.com/kubernetes/ingress-nginx/issues/7837)
+- Fixes, minor version upgrades, improvements to resource requests and limits for applications, improvements to stability.
 
 ### v0.17.0
 
