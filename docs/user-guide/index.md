@@ -15,4 +15,3 @@ A user can be described via the following user stories:
 
 !!!note
     We suggest application developers to only perform changes to a production Compliant Kubernetes cluster via a Continuous Delivery Pipeline. This method, also known as GitOps, provides an audit log, review and testing of system changes for "free". This significantly facilitates complying with change management policies.
-
