@@ -45,6 +45,7 @@ nav:
   - 'User Guide':
     - 'Overview': 'user-guide/index.md'
     - 'Set up': 'user-guide/setup.md'
+    - 'Prepare Your Application': 'user-guide/prepare.md'
     - 'Container registry': 'user-guide/registry.md'
     - 'Kubernetes API': 'user-guide/kubernetes-api.md'
     - 'Logs': 'user-guide/logs.md'
