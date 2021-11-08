@@ -6,14 +6,6 @@ description: Learn how to explore the benefits of the Compliant Kubernetes platf
 
 This documentation includes a user demo application which allows you to quickly explore the benfits of Compliant Kubernetes. The provided artifacts, including Dockerfile and Helm Chart, allow you to quickly get started on your journey to become an agile organization with zero compromise on compliance with data protection regulations.
 
-## Overview
-
-{%
-    include "user-guide/index.md"
-    start="<!--user-demo-overview-start-->"
-    end="<!--user-demo-overview-end-->"
-%}
-
 ## Set Up
 
 {%
@@ -22,6 +14,13 @@ This documentation includes a user demo application which allows you to quickly 
     end="<!--user-demo-setup-end-->"
 %}
 
+## Prepare Your Application
+
+{%
+    include "user-guide/prepare.md"
+    start="<!--user-demo-overview-start-->"
+    end="<!--user-demo-overview-end-->"
+%}
 
 ## Push Your Application Container Images
 
