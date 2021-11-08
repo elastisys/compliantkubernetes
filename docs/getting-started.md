@@ -54,7 +54,7 @@ This documentation includes a user demo application which allows you to quickly 
     end="<!--user-demo-metrics-end-->"
 %}
 
-## Alert on Application Incidents
+## Alert on Application Metrics
 
 {%
     include "user-guide/alerts.md"
