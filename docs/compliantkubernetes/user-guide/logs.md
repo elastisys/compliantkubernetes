@@ -150,7 +150,7 @@ The user demo application already includes structured logging: For each HTTP req
 
 The screenshot below gives an example of log entries produced by the user demo application. It was obtained by using the index pattern `kubernetes*` and the filter `kubernetes.labels.app_kubernetes_io/instance:myapp`.
 
-![Example of User Demo Logs](/img/user-demo-logs.jpeg)
+![Example of User Demo Logs](/compliantkubernetes/img/user-demo-logs.jpeg)
 
 !!!note
     You may want to save frequently used searches as dashboards. Compliant Kubernetes saves and backs these up for you.

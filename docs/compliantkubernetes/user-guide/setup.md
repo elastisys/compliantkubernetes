@@ -9,7 +9,7 @@ As a user, you will need:
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 * [oidc-login](https://github.com/int128/kubelogin); we suggest installing it via [krew](https://github.com/kubernetes-sigs/krew)
 
-The easier is to request a dev environment from a [managed Compliant Kubernetes provider](https://compliantkubernetes.com). You should receive:
+The easier is to request a dev environment from a [managed Compliant Kubernetes provider](https://elastisys.com). You should receive:
 
 * URLs for Compliant Kubernetes UI components, such as the dashboard, container registry, logs, etc.
 * A [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file for configuring kubectl access to the cluster.
