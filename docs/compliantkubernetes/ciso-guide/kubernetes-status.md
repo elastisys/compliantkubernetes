@@ -11,7 +11,7 @@
 ### Swedish Patient Data Law
 
 !!!note
-    This regulation is only available in Swedish. To avoid confusion, we decided not to produce an unoffical translation.
+    This regulation is only available in Swedish. To avoid confusion, we decided not to produce an unofficial translation.
 
 [HSLF-FS 2016:40](https://www.socialstyrelsen.se/globalassets/sharepoint-dokument/artikelkatalog/foreskrifter-och-allmanna-rad/2016-4-44.pdf):
 
