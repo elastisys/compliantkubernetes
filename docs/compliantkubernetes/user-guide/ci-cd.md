@@ -11,6 +11,8 @@ Compliant Kubernetes does not come with a [CI/CD](https://en.wikipedia.org/wiki/
 Background
 ----------
 
+![Styles of CI/CD pipelines](img/ci-cd.drawio.svg)
+
 For the purpose of Compliant Kubernetes, one can distinguish between two "styles" of CI/CD: push-style and pull-style.
 
 **Push-style CI/CD** -- like [GitLab CI](https://docs.gitlab.com/ee/ci/) or [GitHub Actions](https://docs.github.com/en/actions) -- means that a commit will trigger some commands on a CI/CD worker, which will push changes into the Compliant Kubernetes cluster. The CI/CD worker generally runs outside the Kubernetes cluster. Push-style CI/CD solutions should work out-of-the-box and require no special considerations for Compliant Kubernetes.
