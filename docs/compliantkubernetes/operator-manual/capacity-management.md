@@ -51,7 +51,7 @@ That was very information dense, so let's break it down.
 [Add a new Node](/operator-manual/troubleshooting/#node-seems-really-not-fine-i-want-a-new-one) of the same type as the other Nodes in the cluster.
 
 If the cluster has 6 Nodes, consider consolidating to 3 Nodes of twice-the-size -- in number of CPUs or memory or both -- if the infrastructure cost is reduced.
-Before doing this, get in touch with application developers to ensure they don't have Kubernetes scheduling constraints that would  cause issues on the consolidated environment.
+Before doing this, get in touch with application developers to ensure they don't have Kubernetes scheduling constraints that would cause issues on the consolidated environment.
 
 If you are about to double the number of Nodes, get in touch with application developers to ensure their application is not misbehaving, before upscaling.
 
@@ -67,6 +67,16 @@ Nevertheless, application developer trust us to keep infrastructure costs down, 
 ### When?
 
 The capacity of the environment should be regularly reviewed, for example, after a maintenance window.
+
+
+!!!important
+    Downscaling may put application uptime at risk. Therefore, be conservative when downscaling.
+
+    Before downscaling you should:
+
+    * Evaluate the capacity trends in last 3 to 6 months and take decision based on that. Notice that capacity usage may be smaller during weekends, at the beginning or end of the month, during vacation periods, etc.
+    * Ask the user if the reduction in capacity usage is a real trend, and not just sporadic due to quiet periods or vacation periods. E.g., an EdTech app won't be used as intensively during school holidays.
+    * Ask the user if they foresee any increase in capacity due to new app releases or new apps additions or something that will require more resources.
 
 ### How?
 
