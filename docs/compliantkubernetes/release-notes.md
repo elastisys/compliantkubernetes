@@ -52,6 +52,7 @@ Changes:
 
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
+- [v2.17.1-ck8s1](#v2171-ck8s1) - 2021-11-11
 - [v2.17.0-ck8s1](#v2170-ck8s1) - 2021-10-21
 - [v2.16.0-ck8s1](#v2160-ck8s1) - 2021-07-02
 - [v2.15.0-ck8s1](#v2150-ck8s1) - 2021-05-27
@@ -59,6 +60,14 @@ Changes:
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/CHANGELOG.md).
+
+### v2.17.1-ck8s1
+
+Released 2021-11-11.
+
+Changes:
+
+- Kubespray updated, including a new Kubernetes version upgrade to version <a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.21.md#v1216">1.21.6</a>. This patch is mostly minor fixes.
 
 ### v2.17.0-ck8s1
 
