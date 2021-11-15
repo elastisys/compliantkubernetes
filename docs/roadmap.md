@@ -22,7 +22,7 @@ make log-based alerting generally available in Compliant Kubernetes.
 
 ## Security hardening as code 
 
-Implementation of suggested [security safeguards](https://elastisys.io/compliantkubernetes/user-guide/safeguards/) through Open Policy Agent. 
+Implementation of security safeguards, in addition to those listed [here](https://elastisys.io/compliantkubernetes/user-guide/safeguards/) through Open Policy Agent. 
 
 
 
