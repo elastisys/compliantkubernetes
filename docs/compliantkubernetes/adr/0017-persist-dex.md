@@ -28,8 +28,6 @@ What persistence option should we use?
 
 Chosen option: "use CRD-based storage", because it improves user experience when Nodes are rebooted.
 
-As required for "API-changing" Compliant Kubernetes layers, Dex needs to be installed from a separate Helmfile, e.g., `05-dex.yaml`.
-
 With "memory" storage, Dex loses the OpenID keys when restarted, which leads to the user being forced to eventually re-login. Worst off, this forced re-login happens unexpectedly from the user's perspective, when the Kubernetes apiserver chooses to refresh the OpenID keys.
 
 Here is the experiment to illustrate the issue:
