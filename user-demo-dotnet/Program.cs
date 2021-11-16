@@ -14,8 +14,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection();
-
 app.MapGet("/", () =>
 {
     const string version = "0.0.1";
