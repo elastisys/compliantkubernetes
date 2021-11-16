@@ -1,3 +1,5 @@
+using Prometheus;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -37,6 +39,11 @@ app.MapGet("/crash", () =>
     Environment.Exit(1);
 })
 .WithName("CrashHandler");
+
+// Prometheus monitoring support.
+app.UseMetricServer();
+app.UseRouting();
+app.UseHttpMetrics();
 
 app.Run();
 
