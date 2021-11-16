@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="prometheus-net" Version="5.0.1" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="5.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
