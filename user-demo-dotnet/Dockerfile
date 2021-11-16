@@ -13,6 +13,10 @@ RUN dotnet publish -c Release -o /app --no-restore
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build /app .
-EXPOSE 3000
+
+ENV PORT 3000
+ENV ASPNETCORE_URLS "http://0.0.0.0:${PORT}"
+EXPOSE ${PORT}
+
 USER 1000
 ENTRYPOINT ["dotnet", "user-demo-dotnet.dll"]
