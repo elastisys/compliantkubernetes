@@ -63,7 +63,7 @@ nav:
     - 'Intrusion Detection': 'compliantkubernetes/ciso-guide/intrusion-detection.md'
     - 'Policy-as-Code': 'compliantkubernetes/ciso-guide/policy-as-code.md'
     - 'Network Security': 'compliantkubernetes/ciso-guide/network-security.md'
-    - 'Kubernetes Status': 'compliantkubernetes/ciso-guide/kubernetes-status.md'
+    - 'Capacity Management': 'compliantkubernetes/ciso-guide/capacity-management.md'
     - 'Vulnerability Management': 'compliantkubernetes/ciso-guide/vulnerability.md'
     - 'Log Review': 'compliantkubernetes/ciso-guide/log-review.md'
   - 'Administrator Manual':

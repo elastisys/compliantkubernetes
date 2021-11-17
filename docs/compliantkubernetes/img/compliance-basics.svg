@@ -50,8 +50,8 @@
 <!-- title -->
 <g id="node2" class="node">
 <title>title</title>
-<g id="a_node2"><a xlink:href="https://compliantkubernetes.io" xlink:title="compliantkubernetes.io" target="_top">
-<text text-anchor="middle" x="423" y="-767.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">compliantkubernetes.io</text>
+<g id="a_node2"><a xlink:href="https://elastisys.io/compliantkubernetes/" xlink:title="https://elastisys.io/compliantkubernetes/" target="_top">
+<text text-anchor="middle" x="423" y="-767.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">https://elastisys.io/compliantkubernetes/</text>
 </a>
 </g>
 </g>
@@ -153,8 +153,11 @@
 <!-- logging -->
 <g id="node14" class="node">
 <title>logging</title>
+<g id="a_node14"><a xlink:href="https://elastisys.io/compliantkubernetes/ciso-guide/log-review/" xlink:title="Logging" target="_top">
 <path fill="none" stroke="black" d="M166,-398C166,-398 118,-398 118,-398 112,-398 106,-392 106,-386 106,-386 106,-374 106,-374 106,-368 112,-362 118,-362 118,-362 166,-362 166,-362 172,-362 178,-368 178,-374 178,-374 178,-386 178,-386 178,-392 172,-398 166,-398"/>
-<text text-anchor="middle" x="142" y="-376.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">Logging</text>
+<text text-anchor="middle" x="142" y="-376.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">Logging</text>
+</a>
+</g>
 </g>
 <!-- Controls&#45;&gt;logging -->
 <g id="edge6" class="edge">
@@ -165,7 +168,7 @@
 <!-- backups -->
 <g id="node15" class="node">
 <title>backups</title>
-<g id="a_node15"><a xlink:href="/ciso-guide/backup/" xlink:title="Backup" target="_top">
+<g id="a_node15"><a xlink:href="https://elastisys.io/compliantkubernetes/ciso-guide/backup/" xlink:title="Backup" target="_top">
 <path fill="none" stroke="black" d="M256,-398C256,-398 208,-398 208,-398 202,-398 196,-392 196,-386 196,-386 196,-374 196,-374 196,-368 202,-362 208,-362 208,-362 256,-362 256,-362 262,-362 268,-368 268,-374 268,-374 268,-386 268,-386 268,-392 262,-398 256,-398"/>
 <text text-anchor="middle" x="232" y="-376.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">Backup</text>
 </a>
@@ -180,7 +183,7 @@
 <!-- continuous -->
 <g id="node16" class="node">
 <title>continuous</title>
-<g id="a_node16"><a xlink:href="/ciso-guide/policy-as-code/" xlink:title="Continuous\ncompliance" target="_top">
+<g id="a_node16"><a xlink:href="https://elastisys.io/compliantkubernetes/ciso-guide/policy-as-code/" xlink:title="Continuous\ncompliance" target="_top">
 <path fill="none" stroke="black" d="M346,-398C346,-398 298,-398 298,-398 292,-398 286,-392 286,-386 286,-386 286,-374 286,-374 286,-368 292,-362 298,-362 298,-362 346,-362 346,-362 352,-362 358,-368 358,-374 358,-374 358,-386 358,-386 358,-392 352,-398 346,-398"/>
 <text text-anchor="middle" x="322" y="-383.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00" fill="#4651b4">Continuous</text>
 <text text-anchor="middle" x="322" y="-370.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00" fill="#4651b4">compliance</text>
@@ -196,9 +199,12 @@
 <!-- vulnerability -->
 <g id="node17" class="node">
 <title>vulnerability</title>
+<g id="a_node17"><a xlink:href="https://elastisys.io/compliantkubernetes/ciso-guide/vulnerability/" xlink:title="Vulnerability\nmanagement" target="_top">
 <path fill="none" stroke="black" d="M436,-398C436,-398 388,-398 388,-398 382,-398 376,-392 376,-386 376,-386 376,-374 376,-374 376,-368 382,-362 388,-362 388,-362 436,-362 436,-362 442,-362 448,-368 448,-374 448,-374 448,-386 448,-386 448,-392 442,-398 436,-398"/>
-<text text-anchor="middle" x="412" y="-383.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00">Vulnerability</text>
-<text text-anchor="middle" x="412" y="-370.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00">management</text>
+<text text-anchor="middle" x="412" y="-383.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00" fill="#4651b4">Vulnerability</text>
+<text text-anchor="middle" x="412" y="-370.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00" fill="#4651b4">management</text>
+</a>
+</g>
 </g>
 <!-- Controls&#45;&gt;vulnerability -->
 <g id="edge9" class="edge">
@@ -209,7 +215,7 @@
 <!-- intrusion -->
 <g id="node18" class="node">
 <title>intrusion</title>
-<g id="a_node18"><a xlink:href="/ciso-guide/intrusion-detection/" xlink:title="Intrusion\ndetection" target="_top">
+<g id="a_node18"><a xlink:href="https://elastisys.io/compliantkubernetes/ciso-guide/intrusion-detection/" xlink:title="Intrusion\ndetection" target="_top">
 <path fill="none" stroke="black" d="M526,-398C526,-398 478,-398 478,-398 472,-398 466,-392 466,-386 466,-386 466,-374 466,-374 466,-368 472,-362 478,-362 478,-362 526,-362 526,-362 532,-362 538,-368 538,-374 538,-374 538,-386 538,-386 538,-392 532,-398 526,-398"/>
 <text text-anchor="middle" x="502" y="-383.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">Intrusion</text>
 <text text-anchor="middle" x="502" y="-368.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">detection</text>
@@ -225,7 +231,7 @@
 <!-- network -->
 <g id="node19" class="node">
 <title>network</title>
-<g id="a_node19"><a xlink:href="/ciso-guide/network-security/" xlink:title="Network\nsecurity" target="_top">
+<g id="a_node19"><a xlink:href="https://elastisys.io/compliantkubernetes/ciso-guide/network-security/" xlink:title="Network\nsecurity" target="_top">
 <path fill="none" stroke="black" d="M616,-398C616,-398 568,-398 568,-398 562,-398 556,-392 556,-386 556,-386 556,-374 556,-374 556,-368 562,-362 568,-362 568,-362 616,-362 616,-362 622,-362 628,-368 628,-374 628,-374 628,-386 628,-386 628,-392 622,-398 616,-398"/>
 <text text-anchor="middle" x="592" y="-383.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">Network</text>
 <text text-anchor="middle" x="592" y="-368.8" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00" fill="#4651b4">security</text>
@@ -241,7 +247,7 @@
 <!-- crypto -->
 <g id="node20" class="node">
 <title>crypto</title>
-<g id="a_node20"><a xlink:href="/ciso-guide/cryptography/" xlink:title="Use of\ncryptography" target="_top">
+<g id="a_node20"><a xlink:href="https://elastisys.io/compliantkubernetes/ciso-guide/cryptography/" xlink:title="Use of\ncryptography" target="_top">
 <path fill="none" stroke="black" d="M706,-398C706,-398 658,-398 658,-398 652,-398 646,-392 646,-386 646,-386 646,-374 646,-374 646,-368 652,-362 658,-362 658,-362 706,-362 706,-362 712,-362 718,-368 718,-374 718,-374 718,-386 718,-386 718,-392 712,-398 706,-398"/>
 <text text-anchor="middle" x="682" y="-383.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00" fill="#4651b4">Use of</text>
 <text text-anchor="middle" x="682" y="-370.4" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="12.00" fill="#4651b4">cryptography</text>
@@ -257,9 +263,12 @@
 <!-- capacity -->
 <g id="node21" class="node">
 <title>capacity</title>
+<g id="a_node21"><a xlink:href="https://elastisys.io/compliantkubernetes/ciso-guide/capacity-management/" xlink:title="Capacity\nmanagement" target="_top">
 <path fill="none" stroke="black" d="M796,-398C796,-398 748,-398 748,-398 742,-398 736,-392 736,-386 736,-386 736,-374 736,-374 736,-368 742,-362 748,-362 748,-362 796,-362 796,-362 802,-362 808,-368 808,-374 808,-374 808,-386 808,-386 808,-392 802,-398 796,-398"/>
-<text text-anchor="middle" x="772" y="-383.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="11.00">Capacity</text>
-<text text-anchor="middle" x="772" y="-371.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="11.00">management</text>
+<text text-anchor="middle" x="772" y="-383.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="11.00" fill="#4651b4">Capacity</text>
+<text text-anchor="middle" x="772" y="-371.2" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="11.00" fill="#4651b4">management</text>
+</a>
+</g>
 </g>
 <!-- Controls&#45;&gt;capacity -->
 <g id="edge13" class="edge">

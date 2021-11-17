@@ -51,6 +51,7 @@ sudo apt-get install graphviz make
 * Capitalize all letters of acronyms: DNS, TCP, AWS.
 * Capitalize proper nouns, in particular, names of projects, companies, and products: Kubernetes, Amazon, Azure.
 * Use [inclusive naming](https://inclusivenaming.org/).
+* Prefer absolute URLs in SVGs (including protocol and domain) to facilitate re-usage outside this website.
 
 ### Code Snippets
 
