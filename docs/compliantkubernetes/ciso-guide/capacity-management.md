@@ -1,4 +1,4 @@
-# Kubernetes Status Dashboard
+# Capacity Management (Kubernetes Status) Dashboard
 
 ## Relevant Regulations
 

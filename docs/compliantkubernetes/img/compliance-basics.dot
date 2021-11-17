@@ -24,9 +24,9 @@ digraph compliance_basics {
         ]
         title[
             width=4.3
-            label="compliantkubernetes.io"
+            label="https://elastisys.io/compliantkubernetes/"
             fontcolor="#4651b4"
-            URL="https://compliantkubernetes.io"
+            URL="https://elastisys.io/compliantkubernetes/"
         ]
         spacing_node_0[width=2,label=""]
         alignment_node_0[width=1,label=""]
@@ -92,40 +92,46 @@ digraph compliance_basics {
             access[label="Access\ncontrol"]
             logging[
                 label="Logging"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/log-review/"
+                fontcolor="#4651b4"
             ]
             backups[
                 label="Backup"
-                URL="/ciso-guide/backup/"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/backup/"
                 fontcolor="#4651b4"
             ]
             continuous[
                 label="Continuous\ncompliance"
-                URL="/ciso-guide/policy-as-code/"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/policy-as-code/"
                 fontcolor="#4651b4"
                 fontsize=12
             ]
             vulnerability[
                 label="Vulnerability\nmanagement"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/vulnerability/"
+                fontcolor="#4651b4"
                 fontsize=12
             ]
             intrusion[
                 label="Intrusion\ndetection"
-                URL="/ciso-guide/intrusion-detection/"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/intrusion-detection/"
                 fontcolor="#4651b4"
             ]
             network[
                 label="Network\nsecurity"
-                URL="/ciso-guide/network-security/"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/network-security/"
                 fontcolor="#4651b4"
             ]
             crypto[
                 label="Use of\ncryptography"
-                URL="/ciso-guide/cryptography/"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/cryptography/"
                 fontcolor="#4651b4"
                 fontsize=12
             ]
             capacity[
                 label="Capacity\nmanagement"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/capacity-management/"
+                fontcolor="#4651b4"
                 fontsize=11
             ]
         }
