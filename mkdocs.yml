@@ -91,6 +91,7 @@ nav:
     - 'Breaking the Glass': 'compliantkubernetes/operator-manual/break-glass.md'
     - 'Use of Credentials': 'compliantkubernetes/operator-manual/credentials.md'
     - 'Capacity Management': 'compliantkubernetes/operator-manual/capacity-management.md'
+    - 'Maintenance': 'compliantkubernetes/operator-manual/maintenance.md'
     - 'Troubleshooting': 'compliantkubernetes/operator-manual/troubleshooting.md'
   - 'Contributor Guide':
     - 'Overview': 'compliantkubernetes/contributor-guide/index.md'
