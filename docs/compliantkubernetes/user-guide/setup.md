@@ -1,8 +1,8 @@
-# Setup
+# Prerequisites - Before getting started
 
 <!--user-demo-setup-start-->
 
-As a user, you will need:
+As a user, you will need the following before you get started with Compliant Kubernetes:
 
 * [docker](https://docs.docker.com/get-docker/)
 * [helm](https://helm.sh/docs/intro/install/)
