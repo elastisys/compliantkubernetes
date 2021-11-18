@@ -53,6 +53,11 @@ nav:
     - 'Alerts': 'compliantkubernetes/user-guide/alerts.md'
     - 'Backups': 'compliantkubernetes/user-guide/backup.md'
     - 'CI/CD': 'compliantkubernetes/user-guide/ci-cd.md'
+    - 'Additional services':
+      - 'Overview': 'compliantkubernetes/user-guide/additional-services.md'
+      - 'PostgreSQL': 'compliantkubernetes/user-guide/postgresql.md'
+      - 'Redis': 'compliantkubernetes/user-guide/redis.md'
+      - 'RabbitMQ': 'compliantkubernetes/user-guide/rabbitmq.md'
     - 'Safeguards': 'compliantkubernetes/user-guide/safeguards.md'
     - 'Can I?': 'compliantkubernetes/user-guide/demarcation.md'
     - 'Go-live Checklist': 'compliantkubernetes/user-guide/go-live.md'
