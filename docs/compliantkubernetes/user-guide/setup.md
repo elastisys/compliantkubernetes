@@ -1,4 +1,4 @@
-# Prerequisites - Before getting started
+# Install Prerequisites
 
 <!--user-demo-setup-start-->
 
