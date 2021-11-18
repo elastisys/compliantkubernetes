@@ -24,6 +24,7 @@ plugins:
   - search
 
 markdown_extensions:
+  - attr_list
   - admonition
   - meta
   - pymdownx.details
@@ -100,5 +101,6 @@ nav:
   - 'FAQ': 'compliantkubernetes/faq.md'
   - 'Release Notes': 'compliantkubernetes/release-notes.md'
   - 'Roadmap': 'compliantkubernetes/roadmap.md'
+  - 'Office Hours': 'compliantkubernetes/office-hours.md'
   - 'Support ⧉': 'https://elastisys.com/'
   - 'Blog ⧉': 'https://elastisys.com/blog/'
