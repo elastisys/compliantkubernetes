@@ -84,6 +84,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0015](0015-we-believe-in-community-driven-open-source.md) - We believe in community-driven open source
 * [ADR-0016](0016-gid-0-is-okey-but-not-by-default.md) - gid=0 is okay, but not by default
 * [ADR-0017](0017-persist-dex.md) - Persist Dex
+* [ADR-0018](0018-use-blackbox-to-measure-uptime.md) - Use Blackbox to Measure Uptime of Internal Compliant Kubernetes Services
 
 <!-- adrlogstop -->
 
