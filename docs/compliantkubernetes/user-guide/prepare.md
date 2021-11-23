@@ -15,6 +15,7 @@ To make the most out of Compliant Kubernetes, prepare your application so it fea
     - [topologySpreadConstraints for tolerating a zone failure](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L76-L82);
     - [resources for capacity management](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L42-L51);
     - [NetworkPolicies for network segmentation](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L83-L94);
+- [Grafana dashboards for metrics visualization](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/dashboards);
 - [script for local development and testing](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/scripts);
 
 Bonus:
