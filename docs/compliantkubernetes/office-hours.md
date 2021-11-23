@@ -9,11 +9,11 @@ Let us know what kind of features you would like and why!
 
 Biweekly Tuesdays (odd weeks) at 11.30 CET/CEST (Stockholm time)
 
-[Get calendar invite](https://calendar.google.com/event?action=TEMPLATE&tmeid=N2hibmN0b2s3MmxpOXJnZmJyMzhkZW1qdWpfMjAyMTExMjNUMTAzMDAwWiBjcmlzdGlhbi5rbGVpbkBlbGFzdGlzeXMuY29t&tmsrc=cristian.klein%40elastisys.com&scp=ALL){ .md-button .md-button--primary }
+[Get Zoom calendar event](https://us06web.zoom.us/webinar/tZArcu6tqT8sEtEKQMetAh0hBkdn03kf04yc/ics?icsToken=98tyKuGsqD4tH9ORthGCRpwIBI_4KO_wtildj7d4ty7IBjRyalP-FOlGPOIsG96A){ .md-button .md-button--primary }
+
+[Get Google calendar event](https://calendar.google.com/event?action=TEMPLATE&tmeid=N2hibmN0b2s3MmxpOXJnZmJyMzhkZW1qdWpfMjAyMTExMjNUMTAzMDAwWiBjcmlzdGlhbi5rbGVpbkBlbGFzdGlzeXMuY29t&tmsrc=cristian.klein%40elastisys.com&scp=ALL){ .md-button }
 
 [Convert to your timezone](https://dateful.com/convert/stockholm-sweden?t=1130){ .md-button }
-
-[Jump directly into Zoom](https://www.google.com/url?q=https://us06web.zoom.us/j/84657574685&sa=D&source=calendar&ust=1638097651700134&usg=AOvVaw2iHaNHzCX0uLTdYJ6aF777){ .md-button }
 
 ## Agenda
 
