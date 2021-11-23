@@ -1,6 +1,6 @@
-# Do not persist Dex
+# [Superseded by [ADR-0017](0017-persist-dex.md)] Do not persist Dex
 
-* Status: accepted
+* Status: superseded by [ADR-0017](0017-persist-dex.md)
 * Deciders: Compliant Kubernetes Architecture Meeting
 * Date: 2021-04-29
 

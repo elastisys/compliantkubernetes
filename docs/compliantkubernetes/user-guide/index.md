@@ -1,6 +1,6 @@
 # User Guide Overview
 
-<embed src="../img/user-guide.svg" alt="Overview of User Roles and Stories" width="100%" />
+<embed src="img/user-guide.drawio.svg" alt="Overview of User Roles and Stories" width="100%" />
 
 This guide is for users who manage application on top of Compliant Kubernetes.
 

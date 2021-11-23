@@ -73,4 +73,8 @@ The user demo already includes a [PrometheusRule](https://github.com/elastisys/c
 --8<---- "user-demo/deploy/ck8s-user-demo/templates/prometheusrule.yaml"
 ```
 
+The screenshot below gives an example of the application alert, as seen in AlertManager.
+
+![Example of User Demo Alerts](/compliantkubernetes/img/user-demo-alerts.png)
+
 <!--user-demo-alerts-end-->

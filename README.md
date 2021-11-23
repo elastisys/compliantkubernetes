@@ -51,6 +51,7 @@ sudo apt-get install graphviz make
 * Capitalize all letters of acronyms: DNS, TCP, AWS.
 * Capitalize proper nouns, in particular, names of projects, companies, and products: Kubernetes, Amazon, Azure.
 * Use [inclusive naming](https://inclusivenaming.org/).
+* Prefer absolute URLs in SVGs (including protocol and domain) to facilitate re-usage outside this website.
 
 ### Code Snippets
 
@@ -108,13 +109,24 @@ kubectl delete all --all --all-namespaces
 
 ## Diagrams
 
-### From diagrams.net
+### From diagrams.net (source of truth in this repo)
 
-The following architectural diagrams are exported from a non-public document entitled "Compliant Kubernetes Architecture" and "Compliant Kubernetes - User Guide":
+Files ending in `*.drawio.svg` are produced using [diagrams.net](https://www.diagrams.net/). They are exported as follows:
+
+1. File -> Export As -> SVG
+2. Change "zoom" to 100%.
+3. Enable "Embed Images".
+4. Enable "Embed Fonts".
+5. Enable "Include a copy of my diagram".
+6. Select "Links: In new window".
+6. Leave everything else as default.
+
+### From diagrams.net (source of truth in Google Drive)
+
+The following architectural diagrams are exported from a non-public document entitled "Compliant Kubernetes Architecture":
 
 * `docs/img/ck8s-c4model-level3.svg`
 * `docs/img/ck8s-c4model-level3.png`
-* `docs/img/user-guide.svg`
 
 To update them, proceed as follows:
 

@@ -24,6 +24,7 @@ plugins:
   - search
 
 markdown_extensions:
+  - attr_list
   - admonition
   - meta
   - pymdownx.details
@@ -44,7 +45,7 @@ nav:
   - 'Getting Started': 'compliantkubernetes/getting-started.md'
   - 'User Guide':
     - 'Overview': 'compliantkubernetes/user-guide/index.md'
-    - 'Set up': 'compliantkubernetes/user-guide/setup.md'
+    - 'Install Prerequisites': 'compliantkubernetes/user-guide/setup.md'
     - 'Prepare Your Application': 'compliantkubernetes/user-guide/prepare.md'
     - 'Container registry': 'compliantkubernetes/user-guide/registry.md'
     - 'Kubernetes API': 'compliantkubernetes/user-guide/kubernetes-api.md'
@@ -53,6 +54,11 @@ nav:
     - 'Alerts': 'compliantkubernetes/user-guide/alerts.md'
     - 'Backups': 'compliantkubernetes/user-guide/backup.md'
     - 'CI/CD': 'compliantkubernetes/user-guide/ci-cd.md'
+    - 'Additional Services':
+      - 'Overview': 'compliantkubernetes/user-guide/additional-services/index.md'
+      - 'PostgreSQL': 'compliantkubernetes/user-guide/additional-services/postgresql.md'
+      - 'Redis': 'compliantkubernetes/user-guide/additional-services/redis.md'
+      - 'RabbitMQ': 'compliantkubernetes/user-guide/additional-services/rabbitmq.md'
     - 'Safeguards': 'compliantkubernetes/user-guide/safeguards.md'
     - 'Can I?': 'compliantkubernetes/user-guide/demarcation.md'
     - 'Go-live Checklist': 'compliantkubernetes/user-guide/go-live.md'
@@ -63,7 +69,7 @@ nav:
     - 'Intrusion Detection': 'compliantkubernetes/ciso-guide/intrusion-detection.md'
     - 'Policy-as-Code': 'compliantkubernetes/ciso-guide/policy-as-code.md'
     - 'Network Security': 'compliantkubernetes/ciso-guide/network-security.md'
-    - 'Kubernetes Status': 'compliantkubernetes/ciso-guide/kubernetes-status.md'
+    - 'Capacity Management': 'compliantkubernetes/ciso-guide/capacity-management.md'
     - 'Vulnerability Management': 'compliantkubernetes/ciso-guide/vulnerability.md'
     - 'Log Review': 'compliantkubernetes/ciso-guide/log-review.md'
   - 'Administrator Manual':
@@ -90,6 +96,7 @@ nav:
     - 'Breaking the Glass': 'compliantkubernetes/operator-manual/break-glass.md'
     - 'Use of Credentials': 'compliantkubernetes/operator-manual/credentials.md'
     - 'Capacity Management': 'compliantkubernetes/operator-manual/capacity-management.md'
+    - 'Maintenance': 'compliantkubernetes/operator-manual/maintenance.md'
     - 'Troubleshooting': 'compliantkubernetes/operator-manual/troubleshooting.md'
   - 'Contributor Guide':
     - 'Overview': 'compliantkubernetes/contributor-guide/index.md'
@@ -100,5 +107,6 @@ nav:
   - 'FAQ': 'compliantkubernetes/faq.md'
   - 'Release Notes': 'compliantkubernetes/release-notes.md'
   - 'Roadmap': 'compliantkubernetes/roadmap.md'
+  - 'Office Hours': 'compliantkubernetes/office-hours.md'
   - 'Support ⧉': 'https://elastisys.com/'
   - 'Blog ⧉': 'https://elastisys.com/blog/'

@@ -27,7 +27,7 @@ To achieve this, Compliant Kubernetes is implemented as two Kubernetes clusters
 
 Click on the diagram below to see the nuts-and-bolts of Compliant Kubernetes.
 
-[![C4 Model, Level 3 Diagram](img/ck8s-c4model-level3.png)](/img/ck8s-c4model-level3.svg)
+[![C4 Model, Level 3 Diagram](img/ck8s-c4model-level3.png)](img/ck8s-c4model-level3.svg)
 
 !!!note
     Due to technical limitations, some compliance-related components still need to run in the workload cluster. These are visible when inspecting the workload cluster, for example, via the [Kubernetes API](user-guide/kubernetes-api.md). Currently, these components are:
