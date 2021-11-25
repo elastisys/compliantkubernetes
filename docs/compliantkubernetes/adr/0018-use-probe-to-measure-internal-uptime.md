@@ -1,8 +1,8 @@
-# Use Blackbox to Measure Uptime of Internal Compliant Kubernetes Services
+# Use Probe to Measure Uptime of Internal Compliant Kubernetes Services
 
 * Status: accepted
 * Deciders: Cristian, Lucian, Ravi
-* Date: 2021-11-19
+* Date: 2021-11-25
 
 ## Context and Problem Statement
 
@@ -23,10 +23,36 @@ How exactly should we measure uptime?
 
 * [Blackbox exporter](https://github.com/prometheus/blackbox_exporter)
 * [kubelet prober metrics](https://stackoverflow.com/questions/62736899/how-to-set-up-an-alert-when-liveness-readiness-probe-fails-in-kubernetes)
+* [Prometheus Operator Probe](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#probespec), which essentially wraps the Blackbox exporter in a `Probe` CustomResource.
 
 ## Decision Outcome
 
-Chosen option: "use Blackbox exporter for measuring uptime of internal Compliant Kubernetes services", because it measures uptime as observed by a consumer. Although this might require a bit of extra capacity, the costs are worth the benefits.
+Chosen option: "use Probe for measuring uptime of internal Compliant Kubernetes services", because it measures uptime as observed by a consumer. Although this requires a bit of extra capacity for running Blackbox, the costs are worth the benefits.
+
+Instead of configuring Blackbox directly, `Probe` is a cleaner abstraction provided by the Prometheus Operator.
+
+The following is an example for a Probe:
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+metadata:
+  name: google-is-up
+  labels:
+    probe: google
+    release: kube-prometheus-stack
+spec:
+  interval: 60s
+  module: http_2xx
+  prober:
+    url: blackbox-prometheus-blackbox-exporter.monitoring.svc.cluster.local:9115
+  targets:
+    staticConfig:
+      static:
+      - https://www.google.com
+```
+
+This will generate a metric as follows: `probe_success{cluster="ckdemo-wc", instance="https://www.google.com", job="probe/demo1/google-is-up", namespace="demo1"}`.
 
 ### Positive Consequences
 
