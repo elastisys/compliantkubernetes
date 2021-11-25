@@ -25,7 +25,10 @@ To move from production anxiety to production karma, here is a checklist to go t
     * **Why?** Node failure may cause application downtime. Said downtime can be large if it happens at night, when administrators need to wake up before they can respond. Also, administrators need some extra capacity for performing critical security updates on the base operating system of the Nodes.
     * **How?** As above, but now ask the administrator to perform a rolling reboot of Nodes.
     * **Desired outcome**: The measured downtime (due to Pod migration) during Node failure or drain is acceptable. Capacity is sufficient to tolerate one Node failure or drain.
-    * **Possible resolution**: Ensure the application has proper resource requests and limits (see our [user demo for an example](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L42-L51)). Ensure the application has at least two replicas. Consider adding `topologySpreadConstraints` to ensure Pods do not end up on the same Node.
+    * **Possible resolution**:
+        * Ensure the application has proper resource requests and limits (see our [user demo for an example](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L42-L51)).
+        * Ensure the application has at least two replicas (see our [user demo for an example](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L5)).
+        * Ensure the application has `topologySpreadConstraints` to ensure Pods do not end up on the same Node (see our [user demo for an example](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L76-L82)).
 - [ ] Disaster recovery testing was performed:
     * **Why?** This ensures that the application and platform team agreed on who backs up what, instead of ending up thinking that "backing up this thingy" is the other team's problem.
     * **How?** Ask the administrator to destroy the environment and restore from off-site backups. Check if your application is back up and its data is restored as expected.
