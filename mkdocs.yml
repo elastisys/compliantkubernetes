@@ -49,6 +49,7 @@ nav:
     - 'Prepare Your Application': 'compliantkubernetes/user-guide/prepare.md'
     - 'Container registry': 'compliantkubernetes/user-guide/registry.md'
     - 'Kubernetes API': 'compliantkubernetes/user-guide/kubernetes-api.md'
+    - 'Kubernetes UI (Lens)': 'compliantkubernetes/user-guide/kubernetes-ui.md'
     - 'Logs': 'compliantkubernetes/user-guide/logs.md'
     - 'Metrics': 'compliantkubernetes/user-guide/metrics.md'
     - 'Alerts': 'compliantkubernetes/user-guide/alerts.md'
