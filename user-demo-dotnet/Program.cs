@@ -42,6 +42,7 @@ app.MapGet("/crash", () =>
 
 // Prometheus monitoring support.
 app.UseMetricServer();
+app.UseHttpLogging();
 app.UseRouting();
 app.UseHttpMetrics();
 
