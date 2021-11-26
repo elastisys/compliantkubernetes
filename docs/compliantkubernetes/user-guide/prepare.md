@@ -3,11 +3,11 @@
 <!--user-demo-overview-start-->
 To make the most out of Compliant Kubernetes, prepare your application so it features:
 
-- [some REST endpoints](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L32) (`/`, `/users`);
-- [structured logging](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L13);
-- [metrics endpoint](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L28);
-- [Dockerfile](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/Dockerfile), which showcases:
-    - [How to run as non-root](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/Dockerfile#L10-L13);
+- some REST endpoints: [NodeJS](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L32), [.NET](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Program.cs#L19);
+- structured logging: [NodeJS](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L13), [.NET](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Program.cs#L45);
+- metrics endpoint: [NodeJS](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L28), [.NET](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Program.cs#L44);
+- Dockerfile, which showcases:
+    - How to run as non-root: [NodeJS](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/Dockerfile#L10-L13), [.NET](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Dockerfile#L17);
 - [Helm Chart](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/deploy/ck8s-user-demo), which showcases:
     - [HTTPS Ingresses](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L37-L40);
     - [ServiceMonitor for metrics collection](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/servicemonitor.yaml);
