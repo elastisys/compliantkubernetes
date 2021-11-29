@@ -4,6 +4,8 @@ description: Learn how to explore the benefits of the Compliant Kubernetes platf
 
 # Getting Started with Compliant Kubernetes
 
+[![Click here to watch demos](/compliantkubernetes/img/watch-demos.svg)](/compliantkubernetes/watch-demos/){target=_blank}
+
 This documentation includes a user demo application which allows you to quickly explore the benfits of Compliant Kubernetes. The provided artifacts, including Dockerfile and Helm Chart, allow you to quickly get started on your journey to become an agile organization with zero compromise on compliance with data protection regulations.
 
 ## Install Prerequisites
