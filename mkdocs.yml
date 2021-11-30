@@ -62,6 +62,7 @@ nav:
       - 'RabbitMQ': 'compliantkubernetes/user-guide/additional-services/rabbitmq.md'
     - 'Safeguards': 'compliantkubernetes/user-guide/safeguards.md'
     - 'Can I?': 'compliantkubernetes/user-guide/demarcation.md'
+    - 'How to Delegate': 'compliantkubernetes/user-guide/delegation.md'
     - 'Go-live Checklist': 'compliantkubernetes/user-guide/go-live.md'
   - 'CISO Guide':
     - 'Overview': 'compliantkubernetes/ciso-guide/index.md'
