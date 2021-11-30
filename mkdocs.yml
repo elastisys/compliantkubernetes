@@ -60,7 +60,12 @@ nav:
       - 'PostgreSQL': 'compliantkubernetes/user-guide/additional-services/postgresql.md'
       - 'Redis': 'compliantkubernetes/user-guide/additional-services/redis.md'
       - 'RabbitMQ': 'compliantkubernetes/user-guide/additional-services/rabbitmq.md'
-    - 'Safeguards': 'compliantkubernetes/user-guide/safeguards.md'
+    - 'Safeguards':
+      - 'Overview': 'compliantkubernetes/user-guide/safeguards/index.md'
+      - 'Enforce No Root': 'compliantkubernetes/user-guide/safeguards/enforce-no-root.md'
+      - 'Enforce NetworkPolicies': 'compliantkubernetes/user-guide/safeguards/enforce-networkpolicies.md'
+      - 'Enforce Resources': 'compliantkubernetes/user-guide/safeguards/enforce-resources.md'
+      - 'Enforce Trusted Registries': 'compliantkubernetes/user-guide/safeguards/enforce-trusted-registries.md'
     - 'Can I?': 'compliantkubernetes/user-guide/demarcation.md'
     - 'Go-live Checklist': 'compliantkubernetes/user-guide/go-live.md'
   - 'CISO Guide':
