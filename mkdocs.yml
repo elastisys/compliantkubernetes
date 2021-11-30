@@ -67,6 +67,7 @@ nav:
       - 'Enforce Resources': 'compliantkubernetes/user-guide/safeguards/enforce-resources.md'
       - 'Enforce Trusted Registries': 'compliantkubernetes/user-guide/safeguards/enforce-trusted-registries.md'
     - 'Can I?': 'compliantkubernetes/user-guide/demarcation.md'
+    - 'How to Delegate': 'compliantkubernetes/user-guide/delegation.md'
     - 'Go-live Checklist': 'compliantkubernetes/user-guide/go-live.md'
   - 'CISO Guide':
     - 'Overview': 'compliantkubernetes/ciso-guide/index.md'
