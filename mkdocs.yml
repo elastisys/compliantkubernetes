@@ -76,6 +76,7 @@ nav:
   - 'Administrator Manual':
     - 'Overview': 'compliantkubernetes/operator-manual/index.md'
     - 'Getting Started': 'compliantkubernetes/operator-manual/getting-started.md'
+    - 'Provider Audit': 'compliantkubernetes/operator-manual/provider-audit.md'
     - 'Creating/Destroying/Upgrading a Cluster':
       - 'On AWS': 'compliantkubernetes/operator-manual/aws.md'
       - 'On Azure': 'compliantkubernetes/operator-manual/azure.md'
