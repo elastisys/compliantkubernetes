@@ -5,7 +5,7 @@
 
     * A.12.4.4 Clock Synchronization
     * A.15 Supplier Relationships
-    
+
 Compliant Kubernetes is designed to build upon the security and compliance of the underlying cloud provider.
 If you cannot trust the underlying provider with controls such as physical security to the servers, safe disposal of hard drives, access control to infrastructure control plane, then no technical measure will help you achieve your security and compliance goals.
 Trying to take preventive measures in Compliant Kubernetes -- i.e., at the platform level -- is inefficient at best and downright dangerous at worst.
@@ -43,7 +43,7 @@ The remainder of this page contains open questions that you should ask your clou
         1. Do these images have [NTP enabled by default](https://ubuntu.com/server/docs/network-ntp)?
     1. Do you have a Kubernetes integration for your IaaS?
         1. Can I use a [cloud-controller](https://kubernetes.io/docs/concepts/architecture/cloud-controller/) for automatic discovery of Nodes and labeling Nodes with the right Zone?
-        
+
 1. Storage capabilities:
     1. Do you offer Object Storage as a Service (OSaaS)?
         1. Can I use the object storage via an S3-compatible API?
@@ -87,7 +87,7 @@ The remainder of this page contains open questions that you should ask your clou
 1. Can you show us your ISO-27001 certification?
     1. Which profile?
     1. Which organization made the audit?
-    1. Can we get a copy of the [Statement of Applicability (SoA)](https://www.isms.online/iso-27001/iso27001-statement-applicability-simplified/)? 
+    1. Can we get a copy of the [Statement of Applicability (SoA)](https://www.isms.online/iso-27001/iso27001-statement-applicability-simplified/)?
 1. Who is overall responsible with compliance in your organization?
 1. How do you implement regulatory and contractual requirements?
 1. How is a new requirement discovered?
