@@ -1,5 +1,5 @@
 [codespell]
 count =
 summary =
-skip = ./site,*.svg,*.dot,./docs/compliantkubernetes/ciso-guide/*.md
+skip = ./site,*.svg,*.dot,./docs/compliantkubernetes/ciso-guide/*.md,.git
 ignore-words-list = aks,
