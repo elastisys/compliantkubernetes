@@ -118,4 +118,3 @@ With these settings in place, you will have metrics integration working, showing
 ![Overview with metrics](img/lens-overview.png)
 
 ![Overview with metrics](img/lens-pod-metrics.png)
-

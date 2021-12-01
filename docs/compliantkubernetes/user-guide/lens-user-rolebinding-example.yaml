@@ -15,4 +15,3 @@ subjects:
 - kind: User
   name: some.person@elastisys.com
   apiGroup: rbac.authorization.k8s.io
-
