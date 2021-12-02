@@ -80,3 +80,8 @@ kubectl create rolebinding $ROLE --role $ROLE --group=$GROUP --dry-run=client -o
 # review my-role-binding.yaml
 kubectl apply -f my-role-binding.yaml
 ```
+
+## Application Metrics (Grafana)
+
+Your administrator will have mapped your IdP groups to the Grafana viewer, editor and admin roles.
+Please read the [upstream documentation](https://grafana.com/docs/grafana/latest/permissions/organization_roles/) to learn more.
