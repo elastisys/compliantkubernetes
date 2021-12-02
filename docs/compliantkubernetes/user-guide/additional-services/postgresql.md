@@ -28,25 +28,44 @@ sudo apt-get install postgresql-client
 ## Getting Access
 
 Your administrator will set up a Secret inside Compliant Kubernetes, which contains all information you need to access your PostgreSQL cluster.
+The Secret has the following shape:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: $SECRET
+  namespace: $NAMESPACE
+stringData:
+  # `PGHOST` represents a cluster-scoped DNS name or IP, which only makes sense inside the Kubernetes cluster.
+  # E.g., `postgresql1.postgres-system.svc.cluster.local`
+  PGHOST: $PGHOST
+
+  # These fields map to the environment variables consumed by `psql`.
+  # Ref https://www.postgresql.org/docs/13/libpq-envars.html
+  PGUSER: $PGUSER
+  PGPASSWORD: $PGPASSWORD
+  PGSSLMODE: $PGSSLMODE
+
+  # This is the Kubernetes Service to which you need to `kubectl port-forward` in order to get access to the PostgreSQL cluster from outside the Kubernetes cluster.
+  # E.g., `svc/postgresql1`
+  # Ref https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
+  USER_ACCESS: $USER_ACCESS
+```
+
+!!!important
+    The Secret is very precious! Prefer not to persist any information extracted from it, as shown below.
+
 To extract this information, proceed as follows:
 
 ```bash
 export SECRET=            # Get this from your administrator
 export NAMESPACE=         # Get this from your administrator
 
-##
-## The information extracted below, as well as the Secret are very precious! Handle carefully!
-##
-
-# `PGHOST` represents a cluster-scoped DNS name or IP, which only makes sense inside the Kubernetes cluster.
-# E.g., `postgresql1.postgres-system.svc.cluster.local`
 export PGHOST=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGHOST}' | base64 -d)
 export PGUSER=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGUSER}' | base64 -d)
 export PGPASSWORD=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGPASSWORD}' | base64 -d)
 export PGSSLMODE=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGSSLMODE}' | base64 -d)
-
-# This is the Kubernetes Service to which you need to `kubectl port-forward` in order to get access to the PostgreSQL cluster from outside the Kubernetes cluster.
-# E.g., `svc/postgresql1`
 export USER_ACCESS=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.USER_ACCESS}' | base64 -d)
 ```
 
