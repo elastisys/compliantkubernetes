@@ -25,18 +25,44 @@ Make sure to install the PostgreSQL client on your workstation. On Ubuntu, this 
 sudo apt-get install postgresql-client
 ```
 
-## Create an Application User
+## Getting Access
 
-Your administrator will set up Kubernetes RBAC so that you can get access to the PostgreSQL admin username and password via a Secret.
+Your administrator will set up a Secret inside Compliant Kubernetes, which contains all information you need to access your PostgreSQL cluster.
+To extract this information, proceed as follows:
+
+```bash
+export SECRET=            # Get this from your administrator
+export NAMESPACE=         # Get this from your administrator
+
+##
+## The information extracted below, as well as the Secret are very precious! Handle carefully!
+##
+
+# `PGHOST` represents a cluster-scoped DNS name or IP, which only makes sense inside the Kubernetes cluster.
+# E.g., `postgresql1.postgres-system.svc.cluster.local`
+export PGHOST=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGHOST}' | base64 -d)
+export PGUSER=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGUSER}' | base64 -d)
+export PGPASSWORD=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGPASSWORD}' | base64 -d)
+export PGSSLMODE=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGSSLMODE}' | base64 -d)
+
+# This is the Kubernetes Service to which you need to `kubectl port-forward` in order to get access to the PostgreSQL cluster from outside the Kubernetes cluster.
+# E.g., `svc/postgresql1`
+export USER_ACCESS=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.USER_ACCESS}' | base64 -d)
+```
 
 !!!important
     Do not configure your application with the PostgreSQL admin username and password. Since the application will get too much permission, this will likely violate your access control policy.
 
+The following helps you create a mental model to understand how to access the PostgreSQL cluster from inside and outside Compliant Kubernetes:
+
+![PostgreSQL Deployment Model](img/postgresql.drawio.svg)
+
+## Create an Application User
+
 First, port forward into the PostgreSQL master.
 
 ```bash
-export PGMASTER=$(kubectl -n postgres-system get pods -o jsonpath={.items..metadata.name} -l application=spilo,cluster-name=iam-main,spilo-role=master)
-kubectl -n postgres-system port-forward $PGMASTER 5432
+kubectl -n $NAMESPACE port-forward $USER_ACCESS 5432
 ```
 
 !!!important
@@ -45,17 +71,11 @@ kubectl -n postgres-system port-forward $PGMASTER 5432
 In a different console, run the PostgreSQL client:
 
 ```bash
-export PGHOST=localhost
-export PGPORT=5432
-export PGUSER=$(kubectl -n postgres-system get secret postgres-user-secret -o 'jsonpath={.data.username}' | base64 -d)
-export PGPASSWORD=$(kubectl -n postgres-system get secret postgres-user-secret -o 'jsonpath={.data.password}' | base64 -d)
-export PGSSLMODE=require
-
 export APP_DATABASE=myapp
 export APP_USERNAME=myapp
 export APP_PASSWORD=$(pwgen)
 
-cat <<EOF | psql \
+cat <<EOF | psql -h 127.0.0.1 \
     --set=APP_DATABASE=$APP_DATABASE \
     --set=APP_USERNAME=$APP_USERNAME \
     --set=APP_PASSWORD=$APP_PASSWORD
@@ -84,9 +104,9 @@ metadata:
     name: app-postgresql-secret
 type: Opaque
 stringData:
-    PGHOST: ${PGMASTER}  ## TODO: Is this correct?
+    PGHOST: ${PGHOST}
     PGPORT: '5432'
-    PGSSLMODE: require
+    PGSSLMODE: ${PGSSLMODE}
     PGUSER: ${APP_USERNAME}
     PGPASSWORD: ${APP_PASSWORD}
     PGDATABASE: ${APP_DATABASE}
