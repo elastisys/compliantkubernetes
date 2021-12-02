@@ -37,18 +37,18 @@ metadata:
   name: $SECRET
   namespace: $NAMESPACE
 stringData:
-  # `PGHOST` represents a cluster-scoped DNS name or IP, which only makes sense inside the Kubernetes cluster.
-  # E.g., `postgresql1.postgres-system.svc.cluster.local`
+  # PGHOST represents a cluster-scoped DNS name or IP, which only makes sense inside the Kubernetes cluster.
+  # E.g., postgresql1.postgres-system.svc.cluster.local
   PGHOST: $PGHOST
 
-  # These fields map to the environment variables consumed by `psql`.
+  # These fields map to the environment variables consumed by psql.
   # Ref https://www.postgresql.org/docs/13/libpq-envars.html
   PGUSER: $PGUSER
   PGPASSWORD: $PGPASSWORD
   PGSSLMODE: $PGSSLMODE
 
-  # This is the Kubernetes Service to which you need to `kubectl port-forward` in order to get access to the PostgreSQL cluster from outside the Kubernetes cluster.
-  # E.g., `svc/postgresql1`
+  # This is the Kubernetes Service to which you need to 'kubectl port-forward' in order to get access to the PostgreSQL cluster from outside the Kubernetes cluster.
+  # E.g., svc/postgresql1
   # Ref https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
   USER_ACCESS: $USER_ACCESS
 ```
