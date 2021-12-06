@@ -85,3 +85,10 @@ kubectl apply -f my-role-binding.yaml
 
 Your administrator will have mapped your IdP groups to the Grafana viewer, editor and admin roles.
 Please read the [upstream documentation](https://grafana.com/docs/grafana/latest/permissions/organization_roles/) to learn more.
+
+## Application Logs (OpenSearch Dashboards)
+
+!!!note
+    Compliant Kubernetes is currently migrating from OpenDistro for Elasticsearch to OpenSearch. As a result, Kibana will be replaced with OpenSearch Dashboards. You can track progress [here](https://github.com/elastisys/compliantkubernetes-apps/issues/588). This section of the documentation will be updated once the migration is completed.
+
+TBD
