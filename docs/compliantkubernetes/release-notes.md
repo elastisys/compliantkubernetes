@@ -3,6 +3,8 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.18.1](#v0181) - 2021-12-08
+- [v0.17.1](#v0171) - 2021-12-08
 - [v0.18.0](#v0180) - 2021-11-04
 - [v0.17.0](#v0170) - 2021-06-29
 - [v0.16.0](#v0160) - 2021-05-27
@@ -11,6 +13,22 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.18.1
+
+Released 2021-12-08.
+
+Changes:
+
+ - updated Grafana to 8.0.7 in order to fix [CVE-2021-43798](https://grafana.com/blog/2021/12/07/grafana-8.3.1-8.2.7-8.1.8-and-8.0.7-released-with-high-severity-security-fix/)
+
+### v0.17.1
+
+Released 2021-12-08.
+
+Changes:
+
+ - updated Grafana to 8.0.7 in order to fix [CVE-2021-43798](https://grafana.com/blog/2021/12/07/grafana-8.3.1-8.2.7-8.1.8-and-8.0.7-released-with-high-severity-security-fix/)
 
 ### v0.18.0
 
