@@ -113,7 +113,7 @@ nav:
       - 'Remove Compliant Kubernetes Apps': 'compliantkubernetes/operator-manual/clean-up.md'
     - 'QA': 'compliantkubernetes/operator-manual/qa.md'
     - 'Configuring a Cluster':
-      - 'Overview' : 'compliantkubernetes/operator-manual/overview.md'
+      - 'Overview' : 'compliantkubernetes/operator-manual/configure.md'
       - 'Sizing' : 'compliantkubernetes/operator-manual/cluster-sizing.md'
       - 'Ingress': 'compliantkubernetes/operator-manual/ingress.md'
       - 'Access Control': 'compliantkubernetes/operator-manual/access-control.md'
