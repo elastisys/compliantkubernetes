@@ -1,6 +1,8 @@
 PostgreSQL
 ==========
 
+![PostgreSQL Deployment Model](img/postgresql.drawio.svg)
+
 This page will help you succeed in connecting your application to a primary relational database PostgreSQL which meets your security and compliance requirements.
 
 ## Provision a New PostgreSQL Cluster
@@ -71,10 +73,6 @@ export USER_ACCESS=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.dat
 
 !!!important
     Do not configure your application with the PostgreSQL admin username and password. Since the application will get too much permission, this will likely violate your access control policy.
-
-The following helps you create a mental model to understand how to access the PostgreSQL cluster from inside and outside Compliant Kubernetes:
-
-![PostgreSQL Deployment Model](img/postgresql.drawio.svg)
 
 ## Create an Application User
 
