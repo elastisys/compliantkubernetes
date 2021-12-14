@@ -32,7 +32,7 @@ To avoid running into capacity issues, Kubernetes allows Pods to [specify resour
 
 ## How Does Compliant Kubernetes Help?
 
-To make sure you don't forget to configure resource requests and limits, the administrator can configure Compliant Kubernetes to deny creation of Pods with no resources.
+To make sure you don't forget to configure resource requests and limits, the administrator can configure Compliant Kubernetes to deny creation of Pods without explicit resource specifications.
 
 If you get the following error:
 
