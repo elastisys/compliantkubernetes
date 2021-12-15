@@ -1,5 +1,5 @@
-Redis
-=====
+Redis™
+======
 
 ![Redis Deployment Model](img/redis.drawio.svg)
 

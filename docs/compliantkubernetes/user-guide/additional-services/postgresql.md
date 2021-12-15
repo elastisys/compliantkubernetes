@@ -1,5 +1,5 @@
-PostgreSQL
-==========
+PostgreSQL®
+===========
 
 ![PostgreSQL Deployment Model](img/postgresql.drawio.svg)
 

@@ -5,7 +5,16 @@ site_description: >-
   for complying with Swedish Healthcare (Patientdatalagen), GDPR and
   ISO 27001.
 site_author: Elastisys AB
-copyright: Copyright © 2020 Elastisys AB
+copyright: >-
+  Copyright © 2021 Elastisys AB
+  <br/>
+  Kubernetes® is a registered trademark of The Linux Foundation in the United States and other countries, and is used pursuant to a license from The Linux Foundation.
+  <br/>
+  Postgres and PostgreSQL and the Elephant Logo (Slonik) are all registered trademarks of the PostgreSQL Community Association of Canada.
+  <br/>
+  Redis is a trademark of Redis Ltd. Any rights therein are reserved to Redis Ltd. Any use by the Compliant Kubernetes project is for referential purposes only and does not indicate any sponsorship, endorsement or affiliation between Redis and Compliant Kubernetes project.
+  <br/>
+  RabbitMQ is a trademark of VMware, Inc. in the U.S. and other countries.
 
 repo_url: https://github.com/elastisys/compliantkubernetes
 edit_uri: edit/main/docs/
