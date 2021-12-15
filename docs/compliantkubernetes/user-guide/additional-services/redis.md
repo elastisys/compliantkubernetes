@@ -107,6 +107,12 @@ To expose the Redis cluster to your application, follow one of the following ups
 * [Create a Pod that has access to the secret data through a Volume](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume)
 * [Define container environment variables using Secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data)
 
+!!!important
+    Make sure to use a Redis client library with Sentinel support. For example:
+
+    * [Django-Redis Client that supports Sentinel Cluster HA](https://github.com/danigosa/django-redis-sentinel-redux#how-to-use-it)
+        If the linked code example doesn't work, try `LOCATION: redis://mymaster/db`.
+
 ## Follow the Go-Live Checklist
 
 You should be all set.
