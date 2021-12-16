@@ -74,7 +74,7 @@ export REDIS_SENTINEL_PORT=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpa
 ```
 
 !!!important
-    At the time of this writing, we do not recommend to use a Redis cluster in a multi-tenant fashion. Once Redis cluster should have only one purpose.
+    At the time of this writing, we do not recommend to use a Redis cluster in a multi-tenant fashion. One Redis cluster should have only one purpose.
 
 ## Create a Secret
 
