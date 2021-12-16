@@ -112,7 +112,7 @@ nav:
       - 'On EKS-D': 'compliantkubernetes/operator-manual/eksd.md'
       - 'Remove Compliant Kubernetes Apps': 'compliantkubernetes/operator-manual/clean-up.md'
     - 'QA': 'compliantkubernetes/operator-manual/qa.md'
-    - 'Configuring a Cluster':
+    - 'Advanced Configuration':
       - 'Overview' : 'compliantkubernetes/operator-manual/configure.md'
       - 'Sizing' : 'compliantkubernetes/operator-manual/cluster-sizing.md'
       - 'Ingress': 'compliantkubernetes/operator-manual/ingress.md'
