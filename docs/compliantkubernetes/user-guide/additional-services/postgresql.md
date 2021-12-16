@@ -102,7 +102,7 @@ grant all privileges on database :APP_DATABASE to :APP_USERNAME;
 EOF
 ```
 
-## Create a Secret
+## Create an Application Secret
 
 First, check that you are on the right Compliant Kubernetes cluster, in the right **application** namespace:
 
