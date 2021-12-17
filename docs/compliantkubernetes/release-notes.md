@@ -3,6 +3,8 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.18.2](#v0182) - 2021-12-16
+- [v0.17.2](#v0172) - 2021-12-16
 - [v0.18.1](#v0181) - 2021-12-08
 - [v0.17.1](#v0171) - 2021-12-08
 - [v0.18.0](#v0180) - 2021-11-04
@@ -13,6 +15,22 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.18.2
+
+Released 2021-12-16.
+
+Changes:
+
+ - Updated Open Distro for Elasticsearch to 1.13.3 to mitigate [CVE-2021-44228 & CVE-2021-45046](https://opendistro.github.io/for-elasticsearch/blog/2021/12/update-to-1-13-3/)
+
+### v0.17.2
+
+Released 2021-12-16.
+
+Changes:
+
+ - Updated Open Distro for Elasticsearch to 1.13.3 to mitigate [CVE-2021-44228 & CVE-2021-45046](https://opendistro.github.io/for-elasticsearch/blog/2021/12/update-to-1-13-3/)
 
 ### v0.18.1
 
