@@ -20,6 +20,7 @@
 * Capitalize proper nouns, in particular, names of projects, companies, and products: Kubernetes, Amazon, Azure.
 * Use [inclusive naming](https://inclusivenaming.org/).
 * Prefer absolute URLs in SVGs (including protocol and domain) to facilitate re-usage outside this website.
+* Respect trademarks. If in doubt, prefer [nominative use](https://en.wikipedia.org/wiki/Nominative_use) and no logo.
 
 ## Stable URL Policy
 
