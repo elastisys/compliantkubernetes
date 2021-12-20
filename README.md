@@ -53,6 +53,13 @@ sudo apt-get install graphviz make
 * Use [inclusive naming](https://inclusivenaming.org/).
 * Prefer absolute URLs in SVGs (including protocol and domain) to facilitate re-usage outside this website.
 
+### Stable URL Policy
+
+Please observe a stable URL policy. This means:
+
+* Try to avoid breaking URLs.
+* If you need to break URLs, make sure you set up redirects. (See [example](docs/compliantkubernetes/watch-demos.md).)
+
 ### Code Snippets
 
 Code snippets should be written in a way that is transparent, predictable and flexible. They should be written with two roles in mind: devs and ops. Devs need commands that "mostly work", but need access to the underlying tools to select only the component they currently work on (e.g., Ansible `-t` or Helmfile `-l`). Ops need access to dry-run. Both these roles will be called "administrator" below.
