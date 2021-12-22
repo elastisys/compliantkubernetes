@@ -27,4 +27,4 @@ OVERRIDES='''
 }
 '''
 
-kubectl run --rm -ti shell-$USER --overrides="$OVERRIDES" --image=overriden -- overriden
+kubectl run --rm -ti shell-$USER --overrides="$OVERRIDES" --image=overridden -- overridden
