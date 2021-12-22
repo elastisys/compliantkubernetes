@@ -132,4 +132,3 @@ make -C docs/img preview
 ```
 
 The viewer's output should be updated live as you save the source `dot` file.
-
