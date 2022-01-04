@@ -25,9 +25,8 @@ kubectl get -n alertmanager secret alertmanager-alertmanager -o jsonpath='{.data
 
 # edit alertmanager.yaml as needed
 
-# re-apply the new configuration
-kubectl delete -n alertmanager secret alertmanager-alertmanager
-kubectl create secret generic -n alertmanager alertmanager-alertmanager --from-file=alertmanager.yaml
+# patch the new configuration
+kubectl patch -n alertmanager secret alertmanager-alertmanager -p "'{\"data\":{\"alertmanager.yaml\":\"$(base64 -w 0 < alertmanager.yaml)\"}}'"
 ```
 
 Make sure to configure **and test** a receiver for you alerts, e.g., Slack or OpsGenie.
