@@ -7,16 +7,19 @@ This is administrator-facing documentation associated with [this user guide](/us
 
 Perform the following configuration changes in `wc-config.yaml`:
 
+1. Set `user.alertmanager.enabled=true`.
+1. Ensure `user.alertmanager.ingress.enabled` is **false**.
+
+For v0.18 and below include the following changes:
+
 1. Update the `user.namespaces` list to include `alertmanager`.
-2. Set `user.alertmanager.enabled=true`.
-3. Set `user.alertmanager.namespace=alertmanager`.
-4. Ensure `user.alertmanager.ingress.enabled` is **false**.
+1. Set `user.alertmanager.namespace=alertmanager`.
 
 Then apply ck8s-apps.
 
 ## Example
 
-Please find below an example taken from `wc-config.yaml`, which was tested with [compliantkubernetes-apps v0.17.0](https://github.com/elastisys/compliantkubernetes-apps/releases/tag/v0.17.0):
+Please find below an example taken from `wc-config.yaml`, which was tested with [compliantkubernetes-apps v0.17.0](https://github.com/elastisys/compliantkubernetes-apps/releases/tag/v0.17.0) and also applies to version v0.18:
 
 ```yaml
 user:
@@ -42,3 +45,6 @@ user:
     ingress:
       enabled: false
 ```
+
+!!!note
+    For versions after v0.18 `alertmanager` may not be listed under `user.namespaces` and the option `user.alertmanager.namespace` is deprecated.
