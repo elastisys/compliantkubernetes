@@ -166,10 +166,10 @@ digraph compliance_basics {
             label="Velero"
             URL="https://velero.io"
         ] }
-        logging -> { elasticsearch[
-            image="logos/project-icons/opendistro.svg"
-            label="Elasticsearch"
-            URL="https://opendistro.github.io/for-elasticsearch/"
+        logging -> { opensearch[
+            image="logos/project-icons/opensearch.svg"
+            label="OpenSearch"
+            URL="https://opensearch.org/"
             fontsize=14
         ] }
         continuous -> { opa[
@@ -237,7 +237,7 @@ digraph compliance_basics {
 
         edge[lhead=cluster_audit]
         dex->prometheus
-        elasticsearch->grafana
+        opensearch->grafana
         velero->alerts
 
         // Alignment: We create a lot of invisible nodes "auditNA*" for alignment.

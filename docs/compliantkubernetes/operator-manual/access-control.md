@@ -46,12 +46,11 @@ users:
 
     Copy the token to [jwt.io](https://jwt.io) and ensure that the payload includes the expected groups claim.
 
-## Kibana
+## OpenSearch
 
-To enable kibana to use the groups for kibana access.
-
+To enable OpenSearch to use the groups for OpenSearch Dashboards access.
 ```yaml
-elasticsearch:
+opensearch:
   sso:
     scope: "... groups" # Add groups to existing
   extraRoleMappings:
@@ -68,6 +67,8 @@ elasticsearch:
         backend_roles:
           - my-group-name
 ```
+!!!note
+    For Open Distro for Elasticsearch and Kibana used in v0.18 and earlier, the same configuration applies under the root key `elasticsearch` instead of `opensearch`.
 
 ## Harbor
 

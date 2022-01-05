@@ -8,4 +8,4 @@ Monitoring stack (InfluxDB) can handle 2500 metrics per second while provisioned
 
 ## Logging
 
-Logging stack (Elasticsearch) can take 100 records per second while provisioned with 12 CPUs and 24 GB of memory.
+Logging stack (OpenSearch) can take 100 records per second while provisioned with 12 CPUs and 24 GB of memory.

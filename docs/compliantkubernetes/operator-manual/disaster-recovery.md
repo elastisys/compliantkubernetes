@@ -21,41 +21,45 @@ Exoscale S3    | Yes
 GCP            | Yes
 Safespring S3  | Yes
 
-## Elasticsearch
+## OpenSearch
+
+!!!note
+    For Open Distro for Elasticsearch used in v0.18 and earlier, the same approach for backup and restore can be used with different naming, using `elasticsearch` for the CronJob and `elastic` for the namespace instead of `opensearch`.
 
 ### Backup
 
-Elasticsearch is set up to store backups in an S3 bucket. There is a CronJob called `elasticsearch-backup` in the cluster that is invoking the snapshot process in Elasticsearch.
+OpenSearch is set up to store backups in an S3 bucket. There is a CronJob called `opensearch-backup` in the cluster that is invoking the snapshot process in OpenSearch.
 
 To take a snapshot on-demand, execute
 
 ```
-./bin/ck8s ops kubectl sc -n elastic-system create job --from=cronjob/elasticsearch-backup <name-of-job>
+./bin/ck8s ops kubectl sc -n opensearch-system create job --from=cronjob/opensearch-backup <name-of-job>
 ```
 
 ### Restore
 
+
 Set the following variables
 
-- `user` - Elasticsearch user with permissions to manage snapshots, usually `snapshotter`
+- `user` - OpenSearch user with permissions to manage snapshots, usually `snapshotter`
 - `password` - password for the above user
-- `es_url` - url to Elasticsearch
+- `os_url` - URL to OpenSearch
 
 List snapshot repositories
 
 ```bash
 # Simple
-❯ curl -kL -u "${user}:${password}" "${es_url}/_cat/repositories?v"
-id              type
-s3_exoscale_7.x   s3
+❯ curl -kL -u "${user}:${password}" "${os_url}/_cat/repositories?v"
+id                   type
+opensearch-snapshots   s3
 
 # Detailed
-❯ curl -kL -u "${user}:${password}" "${es_url}/_snapshot/?pretty"
+❯ curl -kL -u "${user}:${password}" "${os_url}/_snapshot/?pretty"
 {
-  "s3_exoscale_7.x" : {
+  "opensearch-snapshots" : {
     "type" : "s3",
     "settings" : {
-      "bucket" : "es-backup",
+      "bucket" : "opensearch-backup",
       "client" : "default"
     }
   }
@@ -68,46 +72,50 @@ List available snapshots
 snapshot_repo=<name/id from previous step>
 
 # Simple
-❯ curl -kL -u "${user}:${password}" "${es_url}/_cat/snapshots/${snapshot_repo}?v&s=id"
+❯ curl -kL -u "${user}:${password}" "${os_url}/_cat/snapshots/${snapshot_repo}?v&s=id"
 id                         status start_epoch start_time end_epoch  end_time duration indices successful_shards failed_shards total_shards
-snapshot-20200929_093941z SUCCESS 1601372382  09:39:42   1601372390 09:39:50     8.4s       6                 6             0            6
-snapshot-20200930_000008z SUCCESS 1601424008  00:00:08   1601424035 00:00:35    27.4s      20                20             0           20
-snapshot-20201001_000006z SUCCESS 1601510407  00:00:07   1601510530 00:02:10       2m      75                75             0           75
+snapshot-20211231_120002z SUCCESS 1640952003  12:00:03   1640952082 12:01:22     1.3m      54                54             0           54
+snapshot-20220101_000003z SUCCESS 1640995203  00:00:03   1640995367 00:02:47     2.7m      59                59             0           59
+snapshot-20220101_120002z SUCCESS 1641038403  12:00:03   1641038533 12:02:13     2.1m      57                57             0           57
+...
 
 # Detailed list of all snapshots
-curl -kL -u "${user}:${password}" "${es_url}/_snapshot/${snapshot_repo}/_all?pretty"
+curl -kL -u "${user}:${password}" "${os_url}/_snapshot/${snapshot_repo}/_all?pretty"
 
 # Detailed list of specific snapshot
-❯ curl -kL -u "${user}:${password}" "${es_url}/_snapshot/${snapshot_repo}/snapshot-20201001_000006z?pretty"
-{
+❯ curl -kL -u "${user}:${password}" "${os_url}/_snapshot/${snapshot_repo}/snapshot-20220104_120002z?pretty"
+{{
   "snapshots" : [
     {
-      "snapshot" : "snapshot-20201001_000006z",
-      "uuid" : "Fq0EusFYRV2nI9G9F1DX1A",
-      "version_id" : 7080099,
-      "version" : "7.8.0",
+      "snapshot" : "snapshot-20220104_120002z",
+      "uuid" : "oClQdNAyTeiEmZb5dVh0SQ",
+      "version_id" : 135238127,
+      "version" : "1.2.3",
       "indices" : [
-        "kubernetes-default-2020.09.30-000032",
-        "other-default-2020.09.30-000005",
-        ..<redacted>..
-        "kubeaudit-default-2020.09.30-000009"
+        "authlog-default-2021.12.20-000001",
+        "authlog-default-2021.12.30-000011",
+        "authlog-default-2022.01.03-000015",
+        "other-default-2021.12.30-000011",
+        ...
       ],
+      "data_streams" : [ ],
       "include_global_state" : false,
       "state" : "SUCCESS",
-      "start_time" : "2020-10-01T00:00:07.344Z",
-      "start_time_in_millis" : 1601510407344,
-      "end_time" : "2020-10-01T00:02:10.828Z",
-      "end_time_in_millis" : 1601510530828,
-      "duration_in_millis" : 123484,
+      "start_time" : "2022-01-04T12:00:02.596Z",
+      "start_time_in_millis" : 1641297602596,
+      "end_time" : "2022-01-04T12:01:07.833Z",
+      "end_time_in_millis" : 1641297667833,
+      "duration_in_millis" : 65237,
       "failures" : [ ],
       "shards" : {
-        "total" : 75,
+        "total" : 66,
         "failed" : 0,
-        "successful" : 75
+        "successful" : 66
       }
     }
   ]
 }
+
 
 ```
 
@@ -121,49 +129,50 @@ Restore one or multiple indices from a snapshot
 snapshot_name=<Snapshot name from previous step>
 indices="<list of comma separated indices/index patterns>"
 
-curl -kL -u "${user}:${password}" -X POST "${es_url}/_snapshot/${snapshot_repo}/${snapshot_name}/_restore?pretty" -H 'Content-Type: application/json' -d'
+curl -kL -u "${user}:${password}" -X POST "${os_url}/_snapshot/${snapshot_repo}/${snapshot_name}/_restore?pretty" -H 'Content-Type: application/json' -d'
 {
   "indices": "'${indices}'"
 }
 '
 ```
 
-Read the [API](https://www.elastic.co/guide/en/elasticsearch/reference/current/restore-snapshot-api.html#restore-snapshot-api-request-body) to see all parameters and their explanations.
+Read the [documentation](https://opensearch.org/docs/latest/opensearch/snapshot-restore/) to see the API, all parameters and their explanations.
 
-#### Restoring Kibana data
+#### Restoring OpenSearch Dashboards data
 
-Data in Kibana (saved searches, visualizations, dashboards, etc) is stored in the index `.kibana_1`. To restore that data you first need to delete the index and then do a restore.
+Data in OpenSearch Dashboards (saved searches, visualizations, dashboards, etc) is stored in the index `.opensearch_dashboards_1`. To restore that data you first need to delete the index and then do a restore.
 
-This will overwrite anything in the current `.kibana_1` index. If there is something new that should be saved, then [export](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_export) the saved objects and [import](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_import) them after the restore.
+This will overwrite anything in the current `.opensearch_dashboards_1` index. If there is something new that should be saved, then [export](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_export) the saved objects and [import](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_import) them after the restore.
 
 ```bash
 snapshot_name=<Snapshot name from previous step>
 
-curl -kL -u "${user}:${password}" -X DELETE "${es_url}/.kibana_1?pretty"
+curl -kL -u "${user}:${password}" -X DELETE "${os_url}/.opensearch_dashboards_1?pretty"
 
-curl -kL -u "${user}:${password}" -X POST "${es_url}/_snapshot/${snapshot_repo}/${snapshot_name}/_restore?pretty" -H 'Content-Type: application/json' -d'
+curl -kL -u "${user}:${password}" -X POST "${os_url}/_snapshot/${snapshot_repo}/${snapshot_name}/_restore?pretty" -H 'Content-Type: application/json' -d'
 {
-  "indices": "'.kibana_1'"
+  "indices": "'.opensearch_dashboards_1'"
 }
 '
 ```
+
+!!!note
+    For Open Distro for Elasticsearch and Kibana used in v0.18 and earlier, the same approach can be used with different naming, using `.kibana_1` for the index name instead of `.opensearch_dashboards_1`.
 
 ### Start new cluster from snapshot
 
 This process is very similar to the one described above, but there are a few extra steps to carry out.
 
-Before you install Elasticsearch you can preferably disable the initial index creation by setting
+Before you install OpenSearch you can preferably disable the initial index creation to make the restore process leaner by setting the following configuration option:
 
 ```bash
-configurer.createIndices: false
+opensearch.configurer.createIndices: false
 ```
 
-in the values file for opendistro. This will make the restore process leaner.
-
-Install the Elasticsearch suite:
+Install the OpenSearch suite:
 
 ```bash
-./bin/ck8s ops helmfile sc -l app=opendistro apply
+./bin/ck8s ops helmfile sc -l group=opensearch apply
 ```
 
 Wait for the the installation to complete.
@@ -178,7 +187,7 @@ indices="kubernetes-*,kubeaudit-*,other-*"
 !!!note
     This process assumes that you are using the same S3 bucket as your previous cluster. If you aren't:
 
-    - Register a new S3 snapshot repository to the old bucket as [described here](https://www.elastic.co/guide/en/elasticsearch/plugins/7.9/repository-s3-usage.html#repository-s3-usage)
+    - Register a new S3 snapshot repository to the old bucket as [described here](https://opensearch.org/docs/latest/opensearch/snapshot-restore/#register-repository)
     - Use the newly registered snapshot repository in the restore process
 
 ## Harbor
