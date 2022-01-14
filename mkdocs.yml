@@ -57,6 +57,7 @@ nav:
     - 'Install Prerequisites': 'compliantkubernetes/user-guide/setup.md'
     - 'Prepare Your Application': 'compliantkubernetes/user-guide/prepare.md'
     - 'Container registry': 'compliantkubernetes/user-guide/registry.md'
+    - 'Network Model': 'compliantkubernetes/user-guide/network-model.md'
     - 'Kubernetes API': 'compliantkubernetes/user-guide/kubernetes-api.md'
     - 'Kubernetes UI (Lens)': 'compliantkubernetes/user-guide/kubernetes-ui.md'
     - 'Logs': 'compliantkubernetes/user-guide/logs.md'
