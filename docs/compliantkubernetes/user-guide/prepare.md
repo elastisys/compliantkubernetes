@@ -28,4 +28,18 @@ Feel free to clone our user demo for inspiration:
 git clone https://github.com/elastisys/compliantkubernetes/
 cd compliantkubernetes/user-demo
 ```
+
+## Make Sure Your Application Tolerates Nodes Replacement
+!!!important
+
+    This section helps you implement ISO 27001, specifically:
+
+    * A.12.6.1 Management of Technical Vulnerabilities
+
+Compliant Kubernetes recommends **against** [PodDisruptionBudgets (PDBs)](https://kubernetes.io/docs/tasks/run-application/configure-pdb/). PDBs can easily be misconfigured to block draining Nodes, which interferes with automatic OS patching and compromises the security posture of the environment. Instead, prefer engineering your application to deal with disruptions. The user demo already showcases how to achieve this with replication and topologySpreadConstraints. Make sure to move state, even soft state, to [specialized services](/compliantkubernetes/user-guide/additional-services/).
+
+Further reading:
+
+* [Dealing with Disruptions](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/#dealing-with-disruptions)
+
 <!--user-demo-overview-end-->
