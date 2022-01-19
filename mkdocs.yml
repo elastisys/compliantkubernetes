@@ -78,6 +78,8 @@ nav:
     - 'Can I?': 'compliantkubernetes/user-guide/demarcation.md'
     - 'How to Delegate': 'compliantkubernetes/user-guide/delegation.md'
     - 'Go-live Checklist': 'compliantkubernetes/user-guide/go-live.md'
+    - 'Troubleshooting': 'compliantkubernetes/user-guide/troubleshooting.md'
+    - 'FAQ': 'compliantkubernetes/user-guide/faq.md'
   - 'CISO Guide':
     - 'Overview': 'compliantkubernetes/ciso-guide/index.md'
     - 'Backup': 'compliantkubernetes/ciso-guide/backup.md'
