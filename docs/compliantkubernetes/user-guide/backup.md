@@ -33,3 +33,19 @@ By default, backups are stored for 720 hours (30 days).
 Restoring from a backup with Velero is meant to be a type of disaster recovery. **Velero will not overwrite existing Resources when restoring.** As such, if you want to restore the state of a Resource that is still running, the Resource must be deleted first.
 
 To restore a backup on demand, contact your Compliant Kubernetes administrator.
+
+## Protection of Backups
+
+The Compliant Kubernetes administrator will take the following measure to ensure backups are protected:
+
+1. Backups are encrypted at rest, if the underlying infrastructure provider supports it.
+
+    **Why?** This ensures backups remain confidential, even if, e.g., hard drives are not safely disposed.
+
+2. Backups are replicated to an off-site location, if requested. This process is performed from the service cluster, hence the users -- or attackers gaining access to their application -- cannot access the off-site replicas.
+
+    **Why?** This ensures backups are available even if the primary location is subject to a disaster, such as extreme weather. The backups also remain available -- though unlikely confidential -- in case an attacker manages to gain access to the workload cluster.
+
+3. The buckets holding the backups are configured with [object lock](https://docs.safespring.com/storage/object-locking/), if the underlying cloud provider supports it. This means that backups cannot be modified or erase until a given retention time, even with privileged credentials.
+
+    **Why?** This ensures backups are available -- though unlikely confidential -- even if the whole Compliant Kubernetes environment is compromised.
