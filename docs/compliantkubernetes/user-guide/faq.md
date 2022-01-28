@@ -26,13 +26,13 @@ Compliant Kubernetes encrypts everything at rest, including Kubernetes resources
 
 Get in touch with your administrator to check the status. They are responsible for performing a [provider audit](/compliantkubernetes/operator-manual/provider-audit).
 
-!!!important "Why does Compliant Kubernetes not offer encryption at rest at the platform level?"
+!!!important "Why does Compliant Kubernetes not offer encryption-at-rest at the platform level?"
 
     **TL;DR**: operational scalability and to avoid [security theatre](https://en.wikipedia.org/wiki/Security_theater).
 
     We are frequently asked why we don't simply do full-disk encryption at the VM level, using something like [cryptsetup](https://linux.die.net/man/8/cryptsetup). Let us explain our rationale.
 
-    The reason why people want encryption at rest is to add another safeguard to data confidentiality. Encryption at rest is a must-have for laptops, as they can easily be stolen or get lost. However, it is a nice-to-have addition for servers, which are supposed to be in a physically protected data-center, with disks being safely disposed. This is verified during a [provider audit](/compliantkubernets/operator-manual/provider-audit).
+    The reason why people want encryption-at-rest is to add another safeguard to data confidentiality. Encryption-at-rest is a must-have for laptops, as they can easily be stolen or get lost. However, it is a nice-to-have addition for servers, which are supposed to be in a physically protected data-center, with disks being safely disposed. This is verified during a [provider audit](/compliantkubernets/operator-manual/provider-audit).
 
     At any rate, if encryption-at-rest is deployed it must: (a) actually safeguard data confidentiality; (b) without prohibitive costs in terms of administration.
 
@@ -42,11 +42,15 @@ Get in touch with your administrator to check the status. They are responsible f
 
     * Non-option 1: Store the encryption key on the VM's `/boot` disk. This is obvious security theatre. For example, if server disks are stolen, the VM's data is in the hands of the thiefs.
 
-    * Non-option 2: Let admins type the encryption key on the VM's console. This would be prohibitive to the admins time. If they spend all their time copy-pasting encryption keys, they won't have time to do security patching and Compliant Kubernetes improvements, hence the overall security posture will suffer.
+    * Non-option 2: Let admins type the encryption key on the VM's console. Asking admins to do this is time-consuming, error-prone, effectivly jeopardizing uptime. Instead, Compliant Kubernetes recommends automatic VM reboots during "quiet times", such as at night, to ensure the OS is patched without sacrificing uptime.
 
-    * Non-option 3: Let the VM pull the encryption key via instance metadata or [instance configuration](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data). This would imply storing the encryption key on the cloud provider. If the cloud provider doesn't have encryption at rest, then the encryption key is also stored unencrypted, likely on the same server as the VM is running. Hence, this quickly ends up being security theatre.
+        . as it would require admins to frequently copy-pasteBetter to mention that it will add a problematic and time-consuming step that jeopardizes the uptime and prevents automatic rebooting of servers as a protective security measure.
 
-    * Non-option 4: Let the VM pull the encryption key from an external location which features encryption at rest. This would imply that the VM needs some kind of credentials to authenticate to the external location. Again these credentials are stored unencrypted on the cloud provider, so we are back to non-option 3.
+        This would be prohibitive to the admins time. If they spend all their time copy-pasting encryption keys, they won't have time to do security patching and Compliant Kubernetes improvements, hence the overall security posture will suffer.
+
+    * Non-option 3: Let the VM pull the encryption key via instance metadata or [instance configuration](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data). This would imply storing the encryption key on the cloud provider. If the cloud provider doesn't have encryption-at-rest, then the encryption key is also stored unencrypted, likely on the same server as the VM is running. Hence, this quickly ends up being security theatre.
+
+    * Non-option 4: Let the VM pull the encryption key from an external location which features encryption-at-rest. This would imply that the VM needs some kind of credentials to authenticate to the external location. Again these credentials are stored unencrypted on the cloud provider, so we are back to non-option 3.
 
     Okay, so what are real options then?
 
