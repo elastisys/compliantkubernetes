@@ -27,6 +27,11 @@ theme:
   logo: 'compliantkubernetes/img/logo.png'
   favicon: 'compliantkubernetes/img/favicon.png'
   custom_dir: overrides
+  palette:
+    scheme: elastisys
+
+extra_css:
+  - stylesheets/branding.css
 
 plugins:
   - include-markdown
