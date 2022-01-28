@@ -10,3 +10,10 @@ repos:
     -   id: check-yaml
         exclude: '[/]templates[/]'
     -   id: check-added-large-files
+-   repo: local
+    hooks:
+    -   id: svg-must-embed
+        name: SVGs must embed all images
+        entry: 'image[^>]* xlink:href="https'
+        language: pygrep
+        files: '.*[.]svg$'
