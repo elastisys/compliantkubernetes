@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.19.0](#v0190) - 2022-02-01
 - [v0.18.2](#v0182) - 2021-12-16
 - [v0.17.2](#v0172) - 2021-12-16
 - [v0.18.1](#v0181) - 2021-12-08
@@ -10,11 +11,45 @@
 - [v0.18.0](#v0180) - 2021-11-04
 - [v0.17.0](#v0170) - 2021-06-29
 - [v0.16.0](#v0160) - 2021-05-27
-- [v0.15.0](#v0150) - 2021-05-05
 <!-- END TOC -->
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.19.0
+
+Released 2022-02-01
+
+#### Added
+
+- **Added Thanos as a new metrics backend.**<br/>
+  Provides a much more efficient and reliable platform for long-term metrics, with the capabilities to keep metrics for much longer time periods than previously possible.<br/>
+  InfluxDB will still be supported in this release.
+
+- **Added a new feature to enable off-site replication of backups.**<br/>
+  Synchronizes S3 buckets across regions or clouds to keep an off-site backup.
+
+- **Added a new feature to create and log into separate indices per namespace.**<br/>
+  *Currently considered to be an alpha feature.*
+
+#### Changed
+
+- **Replacing Open Distro for Elasticsearch with OpenSearch.**<br/>
+  In this release, since [the Open Distro project has reached end of life](https://opendistro.github.io/for-elasticsearch/), Elasticsearch is replaced with OpenSearch and Kibana with OpenSearch Dashboards.
+  OpenSearch is a fully open source fork of Elasticsearch with a compatible API and familiar User Experience.<br/>
+  *Note that recent versions of official Elasticsearch clients and tools will not work with OpenSearch as they employ a product check, compatible versions can be found [here](https://opensearch.org/docs/latest/clients/index/).*
+
+- **Enforcing OPA policies by default.**<br/>
+  Provides [strict safeguards](/compliantkubernetes/user-guide/safeguards/) by default.
+
+- **Allowing viewers to inspect and temporarily edit panels in Grafana.**<br/>
+  Gives more insight to the metrics and data shown.
+
+- **Setting Fluentd to log the reason why when it can't push logs to OpenSearch.**
+
+#### Updated
+
+- Large number of application and service updates, keeping up to date with new security fixes and changes.
 
 ### v0.18.2
 
@@ -76,15 +111,6 @@ Changes:
 
 - The default retention values have been changed and streamlined for `authlog*` and `other*`. The former will be kept for a longer period of time while the latter for shorter, both have reduced sized according to their actual usage.
 - Updates, fixes, and features to improve the security of the platform.
-
-### v0.15.0
-
-Released 2021-05-05.
-
-Changes:
-
-- The search and analythics engine ElasticSearch now indexes the `authlog*` logs.
-- Updates, fixes, and streamlined the install components to avoid redundant ones.
 
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
