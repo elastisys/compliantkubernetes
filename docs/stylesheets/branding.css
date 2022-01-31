@@ -21,6 +21,10 @@
   font-family: "Poppins",sans-serif;
 }
 
+.md-header__topic:first-child {
+  font-weight: 300;
+}
+
 [data-md-color-scheme="elastisys"] {
   --esys-blue-01: #202836;
   --esys-blue-02: #334768;
@@ -36,6 +40,8 @@
   --esys-gray-02: #716E81;
   --esys-gray-03: #9CA4C0;
   --esys-gray-04: #BEC3D6;
+
+  --md-default-bg-color: #f9f9f9;
 
   --md-primary-fg-color: var(--esys-blue-02);
   --md-primary-fg-color--light: var(--esys-blue-03);
