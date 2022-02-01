@@ -17,7 +17,7 @@ Note to contributors: Aim for the following format.
     * A.12.1.3 Capacity Management
 
 !!!important
-    This feature is disabled by default. Ask the Compliant Kubernetes administrator to enable it.
+    This safeguard is enabled by default since apps v0.19.0.
 
 ## Problem
 
