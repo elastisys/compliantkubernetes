@@ -8,7 +8,7 @@
     * A.13.1.3 Segregation in Networks
 
 !!!important
-    This feature is disabled by default. Ask the Compliant Kubernetes administrator to enable it.
+    This safeguard is enabled by default since apps v0.19.0.
 
 NetworkPolicies are useful in two cases: segregating tenants hosted in the same environment and further segregating application components. Both help you achieve better data protection.
 
