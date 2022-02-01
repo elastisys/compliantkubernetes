@@ -1,6 +1,6 @@
-# [Superseded by [ADR-0019](0019-push-metrics-via-thanos.md)] Push Metrics via InfluxDB
+# Push Metrics via InfluxDB
 
-* Status: superseded by [ADR-0019](0019-push-metrics-via-thanos.md)
+* Status: accepted
 * Deciders: Johan, Cristian, Viktor, Emil, Olle, Fredrik
 * Date: 2020-11-19
 
