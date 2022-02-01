@@ -69,7 +69,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0000](0000-use-markdown-architectural-decision-records.md) - Use Markdown Architectural Decision Records
 * [ADR-0001](0001-use-rook-storage-orchestrator.md) - Use Rook for Storage Orchestrator
 * [ADR-0002](0002-use-kubespray-for-cluster-lifecycle.md) - Use Kubespray for Cluster Life-cycle
-* [ADR-0003](0003-push-metrics-via-influxdb.md) - Push Metrics via InfluxDB
+* [ADR-0003](0003-push-metrics-via-influxdb.md) - [Superseded by [ADR-0019](0019-push-metrics-via-thanos.md)] Push Metrics via InfluxDB
 * [ADR-0004](0004-plan-for-usage-without-wrapper-scripts.md) - Plan for Usage without Wrapper Scripts
 * [ADR-0005](0005-use-individual-ssh-keys.md) - Use Individual SSH Keys
 * [ADR-0006](0006-use-standard-kubeconfig-mechanisms.md) - Use Standard Kubeconfig Mechanisms
@@ -85,6 +85,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0016](0016-gid-0-is-okey-but-not-by-default.md) - gid=0 is okay, but not by default
 * [ADR-0017](0017-persist-dex.md) - Persist Dex
 * [ADR-0018](0018-use-probe-to-measure-internal-uptime.md) - Use Probe to Measure Uptime of Internal Compliant Kubernetes Services
+* [ADR-0019](0019-push-metrics-via-thanos.md) - Push Metrics via Thanos
 
 <!-- adrlogstop -->
 
