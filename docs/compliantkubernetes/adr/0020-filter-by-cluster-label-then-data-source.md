@@ -34,6 +34,17 @@ because it fulfills the all decision drivers with little complexity.
 
 [Prom-label-enforcer](https://github.com/prometheus-community/prom-label-proxy) can be used to create multiple data sources from a single data store, discriminating by `cluster` label.
 
+### Positive Consequences
+
+* We support both dashboards with `cluster` filter and without
+* We can enforce metrics multi-tenancy, i.e., map Grafana users/orgs to datasources, to filter some metrics out.
+
+### Negative Consequences
+
+* [Minor] We need to configure data sources in `sc-config.yaml`
+* [Minor] Label enforcer uses a bit of resources.
+
+
 <!--
 
 CK Pending questions:
