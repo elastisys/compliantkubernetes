@@ -16,7 +16,7 @@ How should we organise metrics to allow users and admins to select for which clu
 ## Decision Drivers
 
 * We want to be able to see metrics for a single cluster, for multiple cluster, and even for all clusters.
-* We want to be able to reuse upstream dashboards, and some are missing filters for the `cluster` variable.
+* We want to be able to reuse upstream dashboards, and [some are missing filters](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/alertmanager-overview.yaml) for the `cluster` variable.
 * We want to stay flexible.
 
 ## Considered Options
@@ -32,7 +32,9 @@ Chosen option:
 "Filter primarily by `cluster` label, but allow filtering by data source",
 because it fulfills the all decision drivers with little complexity.
 
-[Prom-label-enforcer](https://github.com/prometheus-community/prom-label-proxy) can be used to create multiple data sources from a single data store, discriminating by `cluster` label.
+[Prom-label-enforcer](https://github.com/prometheus-community/prom-label-proxy) can be used to create multiple data sources from a single data store, discriminating by `cluster` label. To simplify Thanos configuration, we can also discriminate based on `tenant_id`, which will always contain the same value as `cluster`.
+
+In general, we will aim to fix dashboards missing the `cluster` variable upstream. However, by also providing filtering based on data source, we facilitate our users to reuse their dashboards, which might not be cluster-aware.
 
 ### Positive Consequences
 
@@ -42,14 +44,6 @@ because it fulfills the all decision drivers with little complexity.
 ### Negative Consequences
 
 * [Minor] We need to configure data sources in `sc-config.yaml`
+  * For example, if we forget to add the name of a workload cluster, the data source will be missing, but filtering based on `cluster` label is still possible.
 * [Minor] Label enforcer uses a bit of resources.
-
-
-<!--
-
-CK Pending questions:
-
-- Why do we use `tenant_id` in the label enforcer? https://github.com/elastisys/compliantkubernetes-apps/blob/27f336afb8b3570f35516dfb859c453694d7949a/helmfile/values/grafana-label-enforcer.yaml.gotmpl#L4
-- Which upstream dashboards don't support filtering by cluster label? https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
-
--->
+  * However, we already saved a lot by migrating from InfluxDB to Thanos, so we can afford go back a bit.
