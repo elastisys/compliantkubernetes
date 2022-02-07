@@ -86,6 +86,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0017](0017-persist-dex.md) - Persist Dex
 * [ADR-0018](0018-use-probe-to-measure-internal-uptime.md) - Use Probe to Measure Uptime of Internal Compliant Kubernetes Services
 * [ADR-0019](0019-push-metrics-via-thanos.md) - Push Metrics via Thanos
+* [ADR-0020](0020-filter-by-cluster-label-then-data-source.md) - Filter by cluster label then data source
 
 <!-- adrlogstop -->
 
