@@ -169,7 +169,7 @@ As a first step, review your application change management policy to reduce the 
 Second, ask your administrator to re-index the affected indices.
 
 !!!note
-    Re-indexing requires a lot of permissions, including creating/deleting/renaming indices and change Index Lifecycle Management (ILM) policies. This may interfere with audit logs and [compromise platform security](/compliantkubernetes/user-guide/demarcation/). Therefore, to ensure platform security, re-indexing can only be performed by Compliant Kubernetes administrators.
+    Re-indexing requires a lot of permissions, including creating and deleting indices, and changing Index templates. This may interfere with audit logs and [compromise platform security](/compliantkubernetes/user-guide/demarcation/). Therefore, to ensure platform security, re-indexing can only be performed by Compliant Kubernetes administrators.
 
 ## Running Example
 
