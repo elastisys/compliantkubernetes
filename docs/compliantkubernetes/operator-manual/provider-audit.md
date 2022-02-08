@@ -88,6 +88,12 @@ The remainder of this page contains open questions that you should ask your clou
     1. Do you offer IPv6 support? By default?
     1. Do you offer DNS as a Service? Which API?
 
+1. Network security:
+    1. Do you allow NTP (UDP port 123) for clock synchronization to the Internet?
+        1. If not, do you have a private NTP server?
+    1. Do you allow ACME (TCP port 80) for automated certificate provisioning via [LetsEncrypt](https://letsencrypt.org/)?
+        1. If not, how will you provision certificates?
+
 ## Organizational capabilities
 
 1. What regulations are your existing customers subject to? (e.g., GDPR, public sector regulations, some ISO 27001 profile)
