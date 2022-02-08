@@ -150,6 +150,27 @@ The figure below shows  the search result for **Falco** logs.
 The figure below shows the search result for **OPA** logs.
 ![OPA logs](../img/opa_log.png)
 
+## Handling Mapping Conflicts
+
+If you get the following error:
+
+```error
+Mapping conflict! A field is defined as several types (string,
+integer, etc) across the indices that match this pattern. You may still
+be able to use these conflict fields in parts of Kibana, but they will
+be unavailable for functions that require Kibana to know their type.
+Correcting this issue will require re-indexing your data.
+```
+
+This means that your application has changed the type of a field in your structured logs. For example, say version A of your application logs the HTTP request path in `request`. Later, version B logs the HTTP request path in `request.path` and the HTTP verb in `request.verb`. Essentially, `request` has changed from string to dictionary.
+
+As a first step, review your application change management policy to reduce the chance of a log field changing type.
+
+Second, ask your administrator to re-index the affected indices.
+
+!!!note
+    Re-indexing requires a lot of permissions, including creating/deleting/renaming indices and change Index Lifecycle Management (ILM) policies. This may interfere with audit logs and [compromise platform security](/compliantkubernetes/user-guide/demarcation/). Therefore, to ensure platform security, re-indexing can only be performed by Compliant Kubernetes administrators.
+
 ## Running Example
 
 <!--user-demo-logs-start-->
