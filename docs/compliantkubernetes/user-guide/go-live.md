@@ -29,6 +29,14 @@ To move from production anxiety to production karma, here is a checklist to go t
         * Ensure the application has proper resource requests and limits (see our [user demo for an example](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L42-L51)).
         * Ensure the application has at least two replicas (see our [user demo for an example](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L5)).
         * Ensure the application has `topologySpreadConstraints` to ensure Pods do not end up on the same Node (see our [user demo for an example](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L76-L82)).
+- [ ] [For multi-Zone environments] Load testing was performed while failing an entire Zone:
+    * **Why?** If a multi-Zone environment was requested, then the additional resilience must be tested. Otherwise, Zone failure may cause application downtime.
+    * **How?** As above, but now ask the administrator to fail an entire Zone.
+    * **Desired outcome**: The measured downtime (due to Pod migration) during Zode failure is acceptable. Capacity is sufficient to tolerate one Zode failure.
+    * **Possible resolution**:
+        * Ensure the application has proper resource requests and limits (see our [user demo for an example](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L42-L51)).
+        * Ensure the application has at least two replicas (see our [user demo for an example](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L5)).
+        * Ensure the application has `topologySpreadConstraints` to ensure Pods do not end up on the same Zone (see our [user demo for an example](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L76-L82)).
 - [ ] Disaster recovery testing was performed:
     * **Why?** This ensures that the application and platform team agreed on who backs up what, instead of ending up thinking that "backing up this thingy" is the other team's problem.
     * **How?** Ask the administrator to destroy the environment and restore from off-site backups. Check if your application is back up and its data is restored as expected.
