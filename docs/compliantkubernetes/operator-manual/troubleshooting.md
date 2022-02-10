@@ -386,6 +386,29 @@ Follow cert-manager's troubleshooting, specifically:
 * [Troubleshooting](https://cert-manager.io/docs/faq/troubleshooting/)
 * [Troubleshooting Issuing ACME Certificates](https://cert-manager.io/docs/faq/acme/)
 
+### Failed to perform self check: no such host
+
+If with `kubectl describe challenges -A` you get an error similar to below:
+
+```error
+Waiting for HTTP-01 challenge propagation: failed to perform self check
+    GET request ''http://url/.well-known/acme-challenge/xVfDZoLlqs4tad2qOiCT4sjChNRausd5iNpbWuGm5ls'':
+    Get "http://url/.well-known/acme-challenge/xVfDZoLlqs4tad2qOiCT4sjChNRausd5iNpbWuGm5ls":
+    dial tcp: lookup opensearch.domain on 10.177.0.3:53: no such host'
+```
+
+Then you might have a DNS issue inside your cluster. Make sure that `global.clusterDns` in `common-config.yaml` is set to the CoreDNS Service IP returned by `kubectl get svc -n kube-system coredns`.
+
+### Failed to perform self check: connection timed out
+
+If with `kubectl describe challenges -A` you get an error similar to below:
+
+```error
+Reason: Waiting for http-01 challenge propagation: failed to perform self check GET request 'http://abc.com/.well-known/acme-challenge/Oej8tloD2wuHNBWS6eVhSKmGkZNfjLRemPmpJoHOPkA': Get "http://abc.com/.well-known/acme-challenge/Oej8tloD2wuHNBWS6eVhSKmGkZNfjLRemPmpJoHOPkA": dial tcp 18.192.17.98:80: connect: connection timed out
+```
+
+Then your Kubernetes data plane Nodes cannot connect to themselves with the IP address of the load-balancer that fronts them. The easiest is to configure the load-balancer's IP address on the loopback interface of each Nodes. (See example [here](https://github.com/kubernetes-sigs/kubespray/blob/release-2.18/contrib/terraform/exoscale/modules/kubernetes-cluster/templates/cloud-init.tmpl#L29).)
+
 ## How do I check if infrastructure drifted due to manual intervention?
 
 Go to the docs of the cloud provider and run Terraform `plan` instead of `apply`. For Exoscale, it looks as follows:
