@@ -81,6 +81,7 @@ The remainder of this page contains open questions that you should ask your clou
         1. Do you have a Terraform provider for your API?
         1. Can I use a [cloud-controller](https://kubernetes.io/docs/concepts/architecture/cloud-controller/) for automatic creation of [external LoadBalancers](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)?
         1. Can I set up a LB across zones? Via API?
+        1. Can VMs see themselves via the LB's IP? (If not, then VMs need a minor [fix](https://github.com/kubernetes-sigs/kubespray/blob/release-2.18/contrib/terraform/exoscale/modules/kubernetes-cluster/templates/cloud-init.tmpl#L29).)
     1. Do you offer IPv6 support? By default?
     1. Do you offer DNS as a Service? Which API?
 
