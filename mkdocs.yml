@@ -88,6 +88,7 @@ nav:
     - 'FAQ': 'compliantkubernetes/user-guide/faq.md'
   - 'CISO Guide':
     - 'Overview': 'compliantkubernetes/ciso-guide/index.md'
+    - 'Audit Logs': 'compliantkubernetes/ciso-guide/audit-logs.md'
     - 'Backup': 'compliantkubernetes/ciso-guide/backup.md'
     - 'Cryptography': 'compliantkubernetes/ciso-guide/cryptography.md'
     - 'Intrusion Detection': 'compliantkubernetes/ciso-guide/intrusion-detection.md'
