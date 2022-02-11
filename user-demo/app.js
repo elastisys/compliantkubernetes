@@ -21,6 +21,7 @@ function structuredLogFormat(tokens, req, res) {
     'content-length': tokens['res'](req, res, 'content-length'),
     'referrer': tokens['referrer'](req, res),
     'user-agent': tokens['user-agent'](req, res),
+    'request-headers': req.headers,
   });
 }
 

@@ -47,6 +47,9 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/ingress.class: nginx
+    ## Uncomment the line below to implement source IP allowlisting.
+    ## Blocklisted IPs will get HTTP 403.
+    # nginx.ingress.kubernetes.io/whitelist-source-range: 98.128.193.2/32
 spec:
   rules:
     - host: "demo.example.com"
@@ -70,6 +73,13 @@ spec:
 
 !!!important
     The DNS name in `spec.rules[0].host` and `spec.tls[0].hosts[0]` must be the same as the DNS entry used by your application users. Otherwise, the application users will get a "Your connection is not private" error.
+
+!!!important
+    Some load-balancers fronting Compliant Kubernetes do not preserve source IP. This makes source IP allowlisting unusable.
+
+    To check if source IP is preserved, check the HTTP request headers received by your application, specifically `x-forwarded-for` and `x-real-ip`. The [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L24) logs all HTTP request headers, as shown in the screenshot below.
+
+    ![HTTP request headers shown in the user demo](img/http-request-headers.png)
 
 ## Demarcation of Responsibilities
 
