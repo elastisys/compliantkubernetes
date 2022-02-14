@@ -22,7 +22,7 @@ Both users (application developers) and administrators will show in the audit lo
 
 ## SSH Access Logs
 
-Compliant Kubernetes also captures highlighly privileged SSH access to the worker Nodes in the `authlog*` index pattern. Only administrators should have such access.
+Compliant Kubernetes also captures highly privileged SSH access to the worker Nodes in the `authlog*` index pattern. Only administrators should have such access.
 
 ![Example of SSH Access Logs](img/authlog.png)
 
