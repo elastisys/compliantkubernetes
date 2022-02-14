@@ -17,7 +17,7 @@ Note to contributors: Aim for the following format.
     * A.12.6.1 Management of Technical Vulnerabilities
 
 !!!important
-    This safeguard is enabled by default since apps v0.19.0.
+    This safeguard is enabled by default since [Compliant Kubernetes apps v0.19.0](/compliantkubernetes/release-notes/#v0190).
 
 ## Problem
 
