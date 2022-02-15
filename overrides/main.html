@@ -18,3 +18,12 @@
 </script>
 <!-- End Matomo Code -->
 {% endblock %}
+
+{% block extrahead %}
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  img-src 'self' data:;
+  connect-src 'self' https://matomo.elastisys.com/;
+  script-src 'self' 'unsafe-inline';
+">
+{% endblock %}
