@@ -34,6 +34,26 @@ Please read the upstream documentation linked below to learn how a Harbor admin 
 
 ## Kubernetes API
 
+### TL;DR: Onboarding Extra Workload Admins
+
+!!!important
+    Make sure you understand what you are doing. Blindly copy-pasting these commands may violate your access control policy.
+
+```bash
+# Give $USER1 and $USER2 workload admin access to $NAMESPACE:
+kubectl create \
+    --namespace=$NAMESPACE \
+    rolebinding extra-admin \
+    --clusterrole=admin \
+    --user=$USER1 \
+    --user=$USER2 \
+    --dry-run=client -o yaml > extra-admin.yaml
+# Review extra-admin.yaml
+kubectl apply -f extra-admin.yaml
+```
+
+### Concepts
+
 Kubernetes uses the following concepts for [access control](https://kubernetes.io/docs/reference/access-authn-authz/authentication/):
 
 * users and groups -- these are provided by your IdP;
