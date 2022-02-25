@@ -6,11 +6,6 @@ All seems fine, but somehow you feel anxious about going into production 24/7.
 
 To move from production anxiety to production karma, here is a checklist to go through before going live 24/7. Make sure to perform this checklist in a shared session with the administrator.
 
-- [ ] Redeployment of the application from scratch works.
-    * **Why?** This ensures that no tribal knowledge exists and your Git repository is truly the only source of truth.
-    * **How?** Ask your administrator to "reset" the environment, i.e., remove all container images, remove all cached container images, remove all Kubernetes resources, etc. Redeploy your application.
-    * **Desired outcome**: Measured setup time is acceptable.
-    * **Possible resolutions**: Make sure to add all code and Kubernetes manifests to your Git repository. Make sure that relevant documentation exists.
 - [ ] Load testing was performed.
     * **Why?** This ensures that enough capacity was allocated for the environment.
     * **How?** Set up a synthetic workload generator or replay a relevant workload. Ask the administrator to monitor your environment's capacity usage, including that related to components necessary for application logs and application metrics.
@@ -42,3 +37,8 @@ To move from production anxiety to production karma, here is a checklist to go t
     * **How?** Ask the administrator to destroy the environment and restore from off-site backups. Check if your application is back up and its data is restored as expected.
     * **Desired outcome**: Measured recovery point and recovery time is acceptable.
     * **Possible resolution**: Ensure you store application either in PersistentVolumes -- these are backed up by default in Compliant Kubernetes -- or a managed database hosted inside Compliant Kubernetes.
+- [ ] Redeployment of the application from scratch works.
+    * **Why?** This ensures that no tribal knowledge exists and your Git repository is truly the only source of truth.
+    * **How?** Ask your administrator to "reset" the environment, i.e., remove all container images, remove all cached container images, remove all Kubernetes resources, etc. Redeploy your application.
+    * **Desired outcome**: Measured setup time is acceptable.
+    * **Possible resolutions**: Make sure to add all code and Kubernetes manifests to your Git repository. Make sure that relevant documentation exists.
