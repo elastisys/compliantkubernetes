@@ -1,0 +1,29 @@
+name: deploy
+
+on:
+  push:
+    branches: [ github-actions-demo ]
+
+env:
+  DOMAIN: ckdemo.a1ck.io
+  REGISTRY_PROJECT: demo
+  TAG: v1
+
+jobs:
+  deploy:
+    name: Setup, Build, Publish, and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Deploy
+      run: |-
+        helm upgrade \
+            --install \
+            myapp \
+            user-demo/deploy/ck8s-user-demo/ \
+            --set image.repository=harbor.$DOMAIN/$REGISTRY_PROJECT/ck8s-user-demo \
+            --set image.tag=$TAG \
+            --set ingress.hostname=demo.$DOMAIN
