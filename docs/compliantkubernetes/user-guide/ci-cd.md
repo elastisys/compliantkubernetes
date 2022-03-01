@@ -116,6 +116,10 @@ users:
 The generated `kubeconfig_ci_cd.yaml` can then be used in your CI/CD pipeline.
 Note that, `KUBECONFIG`s -- especially the token -- **must** be treated as a secret and injected into the CI/CD pipeline via a proper secrets handing feature, such as GitLab CI's [protected variable](https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-project) and GitHub Action's [secrets](https://docs.github.com/en/actions/reference/encrypted-secrets#using-encrypted-secrets-in-a-workflow).
 
+### Example: GitHub Actions
+
+Please find a concrete example for GitHub Actions [here](https://github.com/elastisys/compliantkubernetes/blob/main/.github/workflows/user-demo.yml.example).
+
 ArgoCD
 ------
 
