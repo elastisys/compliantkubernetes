@@ -1,0 +1,54 @@
+# GitHub Action to deploy the user demo to Compliant Kubernetes
+#
+# This file serves as an example on how to integrate GitHub Actions with
+# Compliant Kubernetes for push-style Continuous Delivery.
+#
+# This action needs a KUBECONFIG derived from a ServiceAccount with
+# CI/CD-related permissions. Copy-paste-able code can be found in the document
+# below. Once you created `kubeconfig_ci_cd.yaml`, create an environment secret
+# called KUBECONFIG_CONTENTS_B64 with the output of
+# `base64 kubeconfig_ci_cd.yaml`.
+#
+# Further reading:
+# - https://elastisys.io/compliantkubernetes/user-guide/ci-cd/#push-style-cicd
+# - https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-secrets
+
+name: app-deploy
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  DOMAIN: ckdemo.a1ck.io
+  REGISTRY_PROJECT: demo
+  TAG: v1
+
+jobs:
+  app-deploy:
+    name: Deploy user-demo
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup KUBECONFIG
+      env:
+        KUBECONFIG_CONTENTS_B64: ${{ secrets.KUBECONFIG_CONTENTS_B64 }}
+      run: |-
+        mkdir -p ~/.kube
+        echo $KUBECONFIG_CONTENTS_B64 | base64 -d --ignore-garbage > ~/.kube/config
+        chmod 0400 ~/.kube/config
+
+    - name: Deploy
+      working-directory: user-demo
+      run: |-
+        helm upgrade \
+            --install \
+            myapp \
+            deploy/ck8s-user-demo/ \
+            --set image.repository=harbor.$DOMAIN/$REGISTRY_PROJECT/ck8s-user-demo \
+            --set image.tag=$TAG \
+            --set ingress.hostname=demo.$DOMAIN
