@@ -27,7 +27,7 @@ An architectural decision generally starts with one of the following:
 
 ## How are architectural decisions captured?
 
-Architectural decisions are captured via [Architectural Decision Records](#adrs) or the [tech radar](../developer-guide/tech-radar/).
+Architectural decisions are captured via [Architectural Decision Records](#adrs) or the [tech radar](/compliantkubernetes/tech-radar/).
 Both are stored in Git, hence a decision log is also captured as part of the Git commit messages.
 
 ## How are architectural decisions taken?
