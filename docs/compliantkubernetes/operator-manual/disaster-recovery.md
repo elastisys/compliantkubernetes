@@ -166,7 +166,7 @@ This process is very similar to the one described above, but there are a few ext
 Before you install OpenSearch you can preferably disable the initial index creation to make the restore process leaner by setting the following configuration option:
 
 ```bash
-opensearch.configurer.createIndices: false
+opensearch.createIndices: false
 ```
 
 Install the OpenSearch suite:
