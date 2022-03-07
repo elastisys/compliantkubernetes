@@ -55,8 +55,7 @@ elastisys.io/node-type=rabbitmq:NoSchedule
 
 ## Recommendations to Operators
 
-For better application developer experience, run the application on dedicated Nodes.
-Otherwise put, run system Deployments and StatefulSets -- such as Ingress Controllers, Prometheus, Velero, Gatekeeper and Starboard -- onto dedicated Nodes.
+For better application performance and security, run system Deployments and StatefulSets -- such as Ingress Controllers, Prometheus, Velero, Gatekeeper and Starboard -- onto dedicated Nodes.
 
 Specifically, use the following Node labels
 
@@ -69,6 +68,8 @@ and taints:
 ```
 elastisys.io/node-type=elastisys:NoSchedule
 ```
+
+Remember to also add tolerations and Node affinity to all affected Pods.
 
 ## Links
 
