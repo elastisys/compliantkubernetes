@@ -88,6 +88,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0019](0019-push-metrics-via-thanos.md) - Push Metrics via Thanos
 * [ADR-0020](0020-filter-by-cluster-label-then-data-source.md) - Filter by cluster label then data source
 * [ADR-0021](0021-tls-for-additional-services.md) - Default to TLS for performance-insensitive additional services
+* [ADR-0022](0022-use-dedicated-nodes-for-additional-services.md) - Use Dedicated Nodes for Additional Services
 
 <!-- adrlogstop -->
 
