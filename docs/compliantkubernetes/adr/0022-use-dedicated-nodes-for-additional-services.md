@@ -52,3 +52,26 @@ elastisys.io/node-type=rabbitmq:NoSchedule
 
 * Forces additional services to be sized based on available Node sizes. While some commonality exists, Node sizes are specific to each infrastructure provider.
 * Latency is somewhat increased. This is an issue mostly for Redis, as other services are a bit more latency tolerant.
+
+## Recommendations to Operators
+
+For better application developer experience, run the application on dedicated Nodes.
+Otherwise put, run system Deployments and StatefulSets -- such as Ingress Controllers, Prometheus, Velero, Gatekeeper and Starboard -- onto dedicated Nodes.
+
+Specifically, use the following Node labels
+
+```
+elastisys.io/node-type=elastisys
+```
+
+and taints:
+
+```
+elastisys.io/node-type=elastisys:NoSchedule
+```
+
+## Links
+
+* [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
+* [Well-Known Labels, Annotations and Taints](https://kubernetes.io/docs/reference/labels-annotations-taints/)
+* [Kubespray `node_labels` and `node_taints`](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/vars.md#other-service-variables)
