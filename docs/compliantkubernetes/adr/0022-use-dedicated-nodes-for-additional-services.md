@@ -63,7 +63,7 @@ Specifically, use the following Node label:
 elastisys.io/node-type=elastisys
 ```
 
-and taints:
+and taint:
 
 ```
 elastisys.io/node-type=elastisys:NoSchedule
