@@ -57,7 +57,7 @@ elastisys.io/node-type=rabbitmq:NoSchedule
 
 For better application performance and security, run system Deployments and StatefulSets -- such as Ingress Controllers, Prometheus, Velero, Gatekeeper and Starboard -- onto dedicated Nodes.
 
-Specifically, use the following Node labels
+Specifically, use the following Node label:
 
 ```
 elastisys.io/node-type=elastisys
