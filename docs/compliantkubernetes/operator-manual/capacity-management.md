@@ -17,9 +17,6 @@ Zone resilient environments are set up over three Zones, two active and one arbi
 
 ### When?
 
-!!!note
-    TBD; [implementation in progress](https://github.com/elastisys/compliantkubernetes-apps/issues/625)
-
 Compliant Kubernetes triggers a P2 alert when any capacity dimension is predicted to exceed 66% (for Node resilient) or 50% (for Zone resilient) within 3 days.
 
 That was very information dense, so let's break it down.
