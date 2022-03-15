@@ -66,6 +66,7 @@ nav:
     - 'Kubernetes API': 'compliantkubernetes/user-guide/kubernetes-api.md'
     - 'Kubernetes UI (Lens)': 'compliantkubernetes/user-guide/kubernetes-ui.md'
     - 'Logs': 'compliantkubernetes/user-guide/logs.md'
+    - 'Log-based Alerts': 'compliantkubernetes/user-guide/log-based-alerts.md'
     - 'Metrics': 'compliantkubernetes/user-guide/metrics.md'
     - 'Alerts': 'compliantkubernetes/user-guide/alerts.md'
     - 'Backups': 'compliantkubernetes/user-guide/backup.md'
