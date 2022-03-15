@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.19.1](#v0191) - 2022-03-01
 - [v0.19.0](#v0190) - 2022-02-01
 - [v0.18.2](#v0182) - 2021-12-16
 - [v0.17.2](#v0172) - 2021-12-16
@@ -15,6 +16,14 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.19.1
+
+Released 2022-03-01
+
+#### Fixed
+
+- Fixed critical stability issue related to Prometheus rules being evaluated without metrics.
 
 ### v0.19.0
 
