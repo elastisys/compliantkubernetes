@@ -19,7 +19,7 @@ By default, pull-based CD solutions such as ArgoCD (and Flux, for that matter) r
 
 ## Additional dashboards
 
-User experience for Compliant Kubernetes operators, application developers, and CISOs will be continously improved,
+User experience for Compliant Kubernetes operators, application developers, and CISOs will be continuously improved,
 including addition of single pane of glass dashboards that give overviews of all relevant services.
 
 # Non-Goals
