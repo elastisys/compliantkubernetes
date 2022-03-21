@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.20.0](#v0200) - 2022-03-21
 - [v0.19.1](#v0191) - 2022-03-01
 - [v0.19.0](#v0190) - 2022-02-01
 - [v0.18.2](#v0182) - 2021-12-16
@@ -16,6 +17,47 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.20.0
+
+Released 2022-03-21
+
+#### Added
+
+- **Added kured - Kubernetes Reboot Daemon.**<br/>
+  This enables automatic node reboots and security patching of the underlying base Operating System image, container runtime and Kubernetes cluster components.
+
+- **Added fluentd grafana dashboard and alerts.**<br/>
+
+- **Added RBAC for admin users.**<br/>
+  Admin users can now list pods cluster wide and run the kubectl top command.
+
+- **Added containerd support for fluentd.**<br/>
+
+#### Changed
+
+- **Added the new OPA policy.**<br/>
+  To disallow the latest image tag.
+
+- **Persist Dex state in Kubernetes.**<br/>
+  This ensure the JWT token received from an OpenID provider is valid even after security patching of Kubernetes cluster components.
+
+- **Add ingressClassName in ingresses where that configuration option is available.**<br/>
+
+- **Thanos is now enabled by default.**<br/>
+
+#### Updated
+
+- **Upgraded nginx-ingress helm chart to v4.0.17**<br/>
+  This upgrades nginx-ingress to v1.1.1. When upgrading an ingressClass object called nginx will be installed, this class has been set as the default class in Kubernetes. Ingress-nginx has been configured to still handle existing ingress objects that do not specify any ingressClassName.
+
+- **Upgraded starboard-operator helm chart to v0.9.1**<br/>
+  This is upgrading starboard-operator to v0.14.1
+
+#### Removed
+
+- **Removed influxDB and dependent helm charts.**<br/>
+
 
 ### v0.19.1
 
