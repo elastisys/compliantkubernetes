@@ -1,5 +1,8 @@
-Frequently Asked Questions (FAQ)
-================================
+---
+description: FAQ for Application Developers on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+---
+
+# Application Developer FAQ
 
 ## Why can't I `kubectl run`?
 

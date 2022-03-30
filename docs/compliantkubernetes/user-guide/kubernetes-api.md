@@ -1,3 +1,7 @@
+---
+description: How access to the Kubernetes API works on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+---
+
 # Kubernetes API
 
 The Kubernetes API is the entrypoint to managing your Kubernetes resources.
