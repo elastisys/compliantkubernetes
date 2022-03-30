@@ -1,9 +1,14 @@
-Troubleshooting
-===============
+---
+description: Troubleshooting help for Application Developers on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+---
 
-## I have no clue where to start
+# Troubleshooting
 
-### Is the Kubernetes clusters doing fine?
+Going through these basic troubleshooting steps should help you as an application developer identify where a problem may lie. If any of these steps do not give the expected "fine" output, use `kubectl describe` to investigate.
+
+If you are using Lens instead of the `kubectl` command-line interface, clicking through your Deployments and Pods will reveal the same information as the commands given below. 
+
+## Is the Kubernetes cluster fine?
 
 All Nodes need to have status `Ready`.
 
@@ -11,7 +16,7 @@ All Nodes need to have status `Ready`.
 kubectl get nodes
 ```
 
-### Are my application Pods fine?
+## Are my application Pods fine?
 
 Pods should be `Running` or `Completed`, and fully `Ready` (e.g., `1/1` or `6/6`)?
 
@@ -27,7 +32,7 @@ kubectl top pod
 
 Inspect [application logs](../logs) and [metrics](../metrics).
 
-### Are my Deployments fine?
+## Are my Deployments fine?
 
 Are all Deployments fine? Deployments should show all Pods Ready, Up-to-date and Available (e.g., `2/2 2 2`).
 
@@ -35,7 +40,7 @@ Are all Deployments fine? Deployments should show all Pods Ready, Up-to-date and
 kubectl get deployments
 ```
 
-### Are Helm Releases fine?
+## Are Helm Releases fine?
 
 All Releases should be `deployed`.
 
@@ -43,7 +48,7 @@ All Releases should be `deployed`.
 helm list --all
 ```
 
-### Are my Certificates fine?
+## Are my Certificates fine?
 
 All Certificates needs to be Ready.
 
