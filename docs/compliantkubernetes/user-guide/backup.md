@@ -30,9 +30,11 @@ By default, backups are stored for 720 hours (30 days).
 
 ### Restoring
 
+<!--user-demo-restore-start-->
 Restoring from a backup with Velero is meant to be a type of disaster recovery. **Velero will not overwrite existing Resources when restoring.** As such, if you want to restore the state of a Resource that is still running, the Resource must be deleted first.
 
 To restore a backup on demand, contact your Compliant Kubernetes administrator.
+<!--user-demo-restore-end-->
 
 ## Protection of Backups
 

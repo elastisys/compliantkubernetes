@@ -1,45 +1,51 @@
-# Prepare Your Application
+---
+description: Learn how to prepare for Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+---
 
-<!--user-demo-overview-start-->
-To make the most out of Compliant Kubernetes, prepare your application so it features:
+# Step 1: Prepare
 
-- some REST endpoints: [NodeJS](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L32), [.NET](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Program.cs#L19);
-- structured logging: [NodeJS](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L13), [.NET](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Program.cs#L45);
-- metrics endpoint: [NodeJS](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L28), [.NET](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Program.cs#L44);
-- Dockerfile, which showcases:
-    - How to run as non-root: [NodeJS](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/Dockerfile#L10-L13), [.NET](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Dockerfile#L17);
-- [Helm Chart](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/deploy/ck8s-user-demo), which showcases:
-    - [HTTPS Ingresses](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L37-L40);
-    - [ServiceMonitor for metrics collection](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/servicemonitor.yaml);
-    - [PrometheusRule for alerting](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/prometheusrule.yaml);
-    - [topologySpreadConstraints for tolerating single Node or single Zone failure](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L76-L82);
-    - [resources for capacity management](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L42-L51);
-    - [NetworkPolicies for network segmentation](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L83-L94);
-- [Grafana dashboards for metrics visualization](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/dashboards);
-- [script for local development and testing](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/scripts);
+Hi there, Application Developer! Happy to have you on board with Elastisys Compliant Kubernetes! 
 
-Bonus:
+In this part, you will learn about the things you should do to prepare to get started with the platform.
 
-- [ability to make it crash](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/routes/crash.js) (`/crash`).
+We assume somebody else, your administrator, has already set up the platform for you. You will therefore have received:
 
-Feel free to clone our user demo for inspiration:
+{%
+    include "setup.md"
+    start="<!--bill-of-materials-service-start-->"
+    end="<!--bill-of-materials-service-end-->"
+%}
 
-```bash
-git clone https://github.com/elastisys/compliantkubernetes/
-cd compliantkubernetes/user-demo
-```
+Do you not already have an Elastisys Compliant Kubernetes platform up and running? Request one from [a managed service provider](https://elastisys.com/) and get started!
 
-## Make Sure Your Application Tolerates Nodes Replacement
-!!!important
+## Install Prerequisite Software
 
-    This section helps you implement ISO 27001, specifically:
+{%
+    include "setup.md"
+    start="<!--prerequisite-software-start-->"
+    end="<!--prerequisite-software-end-->"
+%}
 
-    * A.12.6.1 Management of Technical Vulnerabilities
+Once installed, you can verify that configuration is correct by [issuing a few simple commands](setup.md).
 
-Compliant Kubernetes recommends **against** [PodDisruptionBudgets (PDBs)](https://kubernetes.io/docs/tasks/run-application/configure-pdb/). PDBs can easily be misconfigured to block draining Nodes, which interferes with automatic OS patching and compromises the security posture of the environment. Instead, prefer engineering your application to deal with disruptions. The user demo already showcases how to achieve this with replication and topologySpreadConstraints. Make sure to move state, even soft state, to [specialized services](/compliantkubernetes/user-guide/additional-services/).
+## Access Your Web Portals
 
-Further reading:
+TODO: content here
 
-* [Dealing with Disruptions](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/#dealing-with-disruptions)
+## Containerize Your Application
 
-<!--user-demo-overview-end-->
+Elastisys Compliant Kubernetes runs containerized applications in a Kubernetes platform. It is a Certified Kubernetes distribution, which means that if an application is possible to deploy on a standard Kubernetes environment, it can be deployed on Elastisys Compliant Kubernetes.
+
+However, there are some restrictions in place for security reasons. In particular, **containers cannot be run as root**. Following this [best practice](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user) is a simple way to ensure additional security for your containerized applications deployed in Kubernetes.
+
+There are additional safeguards in place that reflect the security posture of Elastisys Compliant Kubernetes that impact your application. These prevent users from doing potentially unsafe things. In particular, users are not allowed to:
+
+{%
+    include "demarcation.md"
+    start="<!--safeguards-start-->"
+    end="<!--safeguards-end-->"
+%}
+
+## Next step? Deploying!
+
+Ready with a contianerized application? Head over to the next step, where you learn how to [deploy](deploy.md) it!

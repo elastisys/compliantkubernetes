@@ -1,12 +1,11 @@
-#OpenSearch Alert
+# OpenSearch Alert
 
 The alerting feature notifies you when data from one or more OpenSearch indices meets certain conditions. For example, you might want to notify a Slack channel if your application logs more than five HTTP 404 errors in one hour/minute, or you might want to page a developer if no new documents have been indexed in the past 20 minutes.
 
-Alerting features have been enabled by default in Compliant Kubernetes as of version 0.19.X
+Alerting features have been enabled by default in Elastisys Compliant Kubernetes as of version 0.19.X
 
-You can find the more information here - [OpenSearch alerting](https://opensearch.org/docs/latest/monitoring-plugins/alerting/index/)
 
-#OpenSearch Alert Demo
+## OpenSearch Alert Demo
 
 When you log into **OpenSearch Dashboards**, you will start at the home page as shown below.
 
@@ -93,10 +92,12 @@ Go to Monitors & Create Monitor as shown in the below.
 
 ![OpenSearch Acknowledge Alert](../img/acknowledge-alert.png)
 
-#Alert state
+## Alert state
 
 - **Active** - The alert is ongoing and unacknowledged. Alerts remain in this state until you acknowledge them, delete the trigger associated with the alert, or delete the monitor entirely.
 - **Acknowledged** - Someone has acknowledged the alert, but not fixed the root cause.
 - **Completed** - The alert is no longer ongoing. Alerts enter this state after the corresponding trigger evaluates to false.
 - **Error** - An error occurred while executing the trigger—usually the result of a bad trigger or destination.
 - **Deleted** - Someone deleted the monitor or trigger associated with this alert while the alert was ongoing.
+
+You can find the more information about [OpenSearch alerting](https://opensearch.org/docs/latest/monitoring-plugins/alerting/index/) by following the link.

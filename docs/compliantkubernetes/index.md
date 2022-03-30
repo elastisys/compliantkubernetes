@@ -1,15 +1,31 @@
-# Welcome to Compliant Kubernetes
+---
+description: Documentation for Elastisys Compliant Kubernetes project, the security-focused Kubernetes distribution.
+---
 
-![Comparison of vanilla Kubernetes and Compliant Kubernetes](img/comparison-chart.png)
+# Elastisys Compliant Kubernetes
 
-Elastisys Compliant Kubernetes® is a [Certified Kubernetes](https://landscape.cncf.io/organization=elastisys&selected=elastisys-compliant-kubernetes) distribution, i.e., an opinionated way of packaging and configuring Kubernetes together with other projects. Compliant Kubernetes reduces the compliance burden, as required to comply with:
+![Comparison of vanilla Kubernetes and Elastisys Compliant Kubernetes](img/comparison-chart.png)
 
-* [Swedish Healthcare (Patientdatalagen)](https://elastisys.com/how-to-use-kubernetes-in-swedish-healthcare/)
-* General Data Protection Regulation (GDPR)
-* Other regulations that map to information security standards, such as ISO 27001
+** Like vanilla Kubernetes - but with security and observability built in. **
+Elastisys Compliant Kubernetes is an open source, Certified Kubernetes distribution designed according to the ISO27001 controls: providing you with security tooling and observability from day one.
 
-## Why Compliant Kubernetes?
 
-Kubernetes has established itself as a go-to solution for high development velocity without vendor lock-in. However, vanilla Kubernetes is not usable in regulated industry, since it is [not secure by default, nor by itself](https://searchitoperations.techtarget.com/news/252487963/Kubernetes-security-defaults-prompt-upstream-dilemma). Therefore, if you want to benefit from the speed of cloud native development in regulated industries, Kubernetes needs to be carefully configured. Furthermore, Kubernetes is a laser-focused project ("Make each program do one thing well."), so it needs to be complemented with other cloud native projects.
+## Components of Elastisys Compliant Kubernetes
 
-Compliant Kubernetes fills this gap.
+<embed src="img/compliance-basics.svg" alt="Components of Elastisys Compliant Kubernetes" width="100%" />
+
+## How do I get started?
+
+IMAGE GOES HERE
+
+Getting started guides:
+
+* [for application developers](user-guide/prepare/)
+* [for Kubernetes administrators](operator-manual/)
+* [for CISOs (Chief Information Security Officers)](ciso-guide/)
+
+## Would you like to contribute?
+
+We want to build the next generation of cloud native technology were data security and privacy is the default setting. 
+
+Join us on our mission as a contributor? Go to the [guide for contributors](contributor-guide).

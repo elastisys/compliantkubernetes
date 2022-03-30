@@ -29,6 +29,8 @@ theme:
   custom_dir: overrides
   palette:
     scheme: elastisys
+  features:
+    - toc.integrate
 
 extra_css:
   - stylesheets/branding.css
@@ -55,50 +57,40 @@ markdown_extensions:
 
 nav:
   - Overview: 'compliantkubernetes/index.md'
-  - 'Compliance Basics': 'compliantkubernetes/compliance.md'
-  - 'Getting Started': 'compliantkubernetes/getting-started.md'
-  - 'User Guide':
-    - 'Overview': 'compliantkubernetes/user-guide/index.md'
-    - 'Install Prerequisites': 'compliantkubernetes/user-guide/setup.md'
-    - 'Prepare Your Application': 'compliantkubernetes/user-guide/prepare.md'
-    - 'Container registry': 'compliantkubernetes/user-guide/registry.md'
-    - 'Network Model': 'compliantkubernetes/user-guide/network-model.md'
-    - 'Kubernetes API': 'compliantkubernetes/user-guide/kubernetes-api.md'
-    - 'Kubernetes UI (Lens)': 'compliantkubernetes/user-guide/kubernetes-ui.md'
-    - 'Logs': 'compliantkubernetes/user-guide/logs.md'
-    - 'Log-based Alerts': 'compliantkubernetes/user-guide/log-based-alerts.md'
-    - 'Metrics': 'compliantkubernetes/user-guide/metrics.md'
-    - 'Alerts': 'compliantkubernetes/user-guide/alerts.md'
-    - 'Backups': 'compliantkubernetes/user-guide/backup.md'
-    - 'CI/CD': 'compliantkubernetes/user-guide/ci-cd.md'
-    - 'Additional Services':
-      - 'Overview': 'compliantkubernetes/user-guide/additional-services/index.md'
-      - 'PostgreSQL': 'compliantkubernetes/user-guide/additional-services/postgresql.md'
-      - 'Redis': 'compliantkubernetes/user-guide/additional-services/redis.md'
-      - 'RabbitMQ': 'compliantkubernetes/user-guide/additional-services/rabbitmq.md'
+  - 'For Application Developers':
+    - 'Getting Started':
+      - 'Step 1: Prepare': 'compliantkubernetes/user-guide/prepare.md'
+      - 'Step 2: Deploy': 'compliantkubernetes/user-guide/deploy.md'
+      - 'Step 3: Operate': 'compliantkubernetes/user-guide/operate.md'
+    - 'Go Deeper':
+      - 'Prepare Your Application': 'compliantkubernetes/user-guide/prepare-application.md'
+      - 'Container registry': 'compliantkubernetes/user-guide/registry.md'
+      - 'Network Model': 'compliantkubernetes/user-guide/network-model.md'
+      - 'Kubernetes API': 'compliantkubernetes/user-guide/kubernetes-api.md'
+      - 'Kubernetes UI (Lens)': 'compliantkubernetes/user-guide/kubernetes-ui.md'
+      - 'Logs': 'compliantkubernetes/user-guide/logs.md'
+      - 'Log-based Alerts': 'compliantkubernetes/user-guide/log-based-alerts.md'
+      - 'Metrics': 'compliantkubernetes/user-guide/metrics.md'
+      - 'Metric Alerts': 'compliantkubernetes/user-guide/alerts.md'
+      - 'Backups': 'compliantkubernetes/user-guide/backup.md'
+      - 'CI/CD': 'compliantkubernetes/user-guide/ci-cd.md'
+      - 'Demarcation': 'compliantkubernetes/user-guide/demarcation.md'
+      - 'How to Delegate': 'compliantkubernetes/user-guide/delegation.md'
     - 'Safeguards':
       - 'Overview': 'compliantkubernetes/user-guide/safeguards/index.md'
       - 'Enforce No Root': 'compliantkubernetes/user-guide/safeguards/enforce-no-root.md'
       - 'Enforce NetworkPolicies': 'compliantkubernetes/user-guide/safeguards/enforce-networkpolicies.md'
       - 'Enforce Resources': 'compliantkubernetes/user-guide/safeguards/enforce-resources.md'
       - 'Enforce Trusted Registries': 'compliantkubernetes/user-guide/safeguards/enforce-trusted-registries.md'
-    - 'Can I?': 'compliantkubernetes/user-guide/demarcation.md'
-    - 'How to Delegate': 'compliantkubernetes/user-guide/delegation.md'
+    - 'Additional Services':
+      - 'Overview': 'compliantkubernetes/user-guide/additional-services/index.md'
+      - 'PostgreSQL': 'compliantkubernetes/user-guide/additional-services/postgresql.md'
+      - 'Redis': 'compliantkubernetes/user-guide/additional-services/redis.md'
+      - 'RabbitMQ': 'compliantkubernetes/user-guide/additional-services/rabbitmq.md'
     - 'Go-live Checklist': 'compliantkubernetes/user-guide/go-live.md'
     - 'Troubleshooting': 'compliantkubernetes/user-guide/troubleshooting.md'
     - 'FAQ': 'compliantkubernetes/user-guide/faq.md'
-  - 'CISO Guide':
-    - 'Overview': 'compliantkubernetes/ciso-guide/index.md'
-    - 'Audit Logs': 'compliantkubernetes/ciso-guide/audit-logs.md'
-    - 'Backup': 'compliantkubernetes/ciso-guide/backup.md'
-    - 'Cryptography': 'compliantkubernetes/ciso-guide/cryptography.md'
-    - 'Intrusion Detection': 'compliantkubernetes/ciso-guide/intrusion-detection.md'
-    - 'Policy-as-Code': 'compliantkubernetes/ciso-guide/policy-as-code.md'
-    - 'Network Security': 'compliantkubernetes/ciso-guide/network-security.md'
-    - 'Capacity Management': 'compliantkubernetes/ciso-guide/capacity-management.md'
-    - 'Vulnerability Management': 'compliantkubernetes/ciso-guide/vulnerability.md'
-    - 'Log Review': 'compliantkubernetes/ciso-guide/log-review.md'
-  - 'Administrator Manual':
+  - 'For Kubernetes Administrators':
     - 'Overview': 'compliantkubernetes/operator-manual/index.md'
     - 'Getting Started': 'compliantkubernetes/operator-manual/getting-started.md'
     - 'Provider Audit': 'compliantkubernetes/operator-manual/provider-audit.md'
@@ -125,13 +117,24 @@ nav:
     - 'Capacity Management': 'compliantkubernetes/operator-manual/capacity-management.md'
     - 'Maintenance': 'compliantkubernetes/operator-manual/maintenance.md'
     - 'Troubleshooting': 'compliantkubernetes/operator-manual/troubleshooting.md'
-  - 'Contributor Guide':
+    - 'FAQ': 'compliantkubernetes/operator-manual/faq.md'
+  - 'For CISOs':
+    - 'Overview': 'compliantkubernetes/ciso-guide/index.md'
+    - 'Audit Logs': 'compliantkubernetes/ciso-guide/audit-logs.md'
+    - 'Backup': 'compliantkubernetes/ciso-guide/backup.md'
+    - 'Cryptography': 'compliantkubernetes/ciso-guide/cryptography.md'
+    - 'Intrusion Detection': 'compliantkubernetes/ciso-guide/intrusion-detection.md'
+    - 'Policy-as-Code': 'compliantkubernetes/ciso-guide/policy-as-code.md'
+    - 'Network Security': 'compliantkubernetes/ciso-guide/network-security.md'
+    - 'Capacity Management': 'compliantkubernetes/ciso-guide/capacity-management.md'
+    - 'Vulnerability Management': 'compliantkubernetes/ciso-guide/vulnerability.md'
+    - 'Log Review': 'compliantkubernetes/ciso-guide/log-review.md'
+    - 'FAQ': 'compliantkubernetes/ciso-guide/faq.md'
+  - 'For Contributors':
     - 'Overview': 'compliantkubernetes/contributor-guide/index.md'
     - 'Architecture': 'compliantkubernetes/architecture.md'
     - 'Architectural Decision Log': 'compliantkubernetes/adr/index.md'
     - 'Tech Radar': 'compliantkubernetes/tech-radar/index.html'
-  - 'Vocabulary': 'compliantkubernetes/vocabulary.md'
-  - 'FAQ': 'compliantkubernetes/faq.md'
   - 'Release Notes': 'compliantkubernetes/release-notes.md'
   - 'Roadmap': 'compliantkubernetes/roadmap.md'
   - 'Office Hours': 'compliantkubernetes/office-hours.md'
