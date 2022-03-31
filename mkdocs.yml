@@ -51,7 +51,7 @@ markdown_extensions:
   - pymdownx.tabbed
   - toc:
       permalink: true
-      toc_depth: '2'
+      toc_depth: 0
   - pymdownx.tasklist:
       custom_checkbox: true
 
