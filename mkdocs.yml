@@ -34,6 +34,7 @@ theme:
 
 extra_css:
   - stylesheets/branding.css
+  - stylesheets/extra.css
 
 plugins:
   - include-markdown

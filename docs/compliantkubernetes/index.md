@@ -6,8 +6,12 @@ description: Documentation for Elastisys Compliant Kubernetes project, the secur
 
 ![Comparison of vanilla Kubernetes and Elastisys Compliant Kubernetes](img/comparison-chart.png)
 
-** Like vanilla Kubernetes - but with security and observability built in. **
+<p class="hero-text">
+<strong>Like vanilla Kubernetes<br />- but with security and observability built in.</strong>
+</p>
+<p class="hero-text">
 Elastisys Compliant Kubernetes is an open source, Certified Kubernetes distribution designed according to the ISO27001 controls: providing you with security tooling and observability from day one.
+</p>
 
 
 ## Components of Elastisys Compliant Kubernetes
@@ -16,7 +20,7 @@ Elastisys Compliant Kubernetes is an open source, Certified Kubernetes distribut
 
 ## How do I get started?
 
-IMAGE GOES HERE
+<embed src="img/getting-started-developers.svg" alt="The Journey for Application Developers" width="100%" />
 
 Getting started guides:
 
