@@ -1,3 +1,7 @@
+---
+description: How to prepare your application for Elastisys Compliant Kubernetes, the security-focused kubernetes distribution.
+---
+
 # Prepare Your Application
 
 <!--user-demo-overview-start-->

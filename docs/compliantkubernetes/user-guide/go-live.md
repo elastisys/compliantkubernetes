@@ -1,3 +1,7 @@
+---
+description: Checklist before going live on Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+---
+
 # Go-live Checklist
 
 The administrator set up a shiny new Compliant Kubernetes environment.

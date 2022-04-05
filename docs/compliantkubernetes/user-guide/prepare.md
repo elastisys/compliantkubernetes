@@ -30,7 +30,13 @@ Once installed, you can verify that configuration is correct by [issuing a few s
 
 ## Access Your Web Portals
 
-TODO: content here
+Those URLs that your Elastisys Compliant Kubernetes administrator gave you all have a `$DOMAIN`, which will typically include your company name and perhaps the environment name.
+
+Your web portals are avaialable at:
+
+* `harbor.$DOMAIN` -- the Harbor container image registry, which will be the home to all your container images
+* `opensearch.$DOMAIN` -- the OpenSearch Dashboards portal, where you will view your application and audit logs
+* `grafana.$DOMAIN` -- the Grafana portal, where you will view your monitoring metrics for both the platform, as such, and your application-specific metrics
 
 ## Containerize Your Application
 

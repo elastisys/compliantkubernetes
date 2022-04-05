@@ -1,7 +1,9 @@
+---
+description: The demarcation between what users can and cannot do in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+---
+
 Can I?
 ======
-
-> It's not that I don't trust you. Rather, I don't want you to worry.
 
 Compliant Kubernetes comes with a lot of safeguards to ensure you protect your business reputation and earn the trust of your customers. Furthermore, it is a good idea to keep regulators happy, since they bring public trust into digitalization. Public trust is necessary to shift customers away from pen-and-paper to drive usage of your amazing application.
 

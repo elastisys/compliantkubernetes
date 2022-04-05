@@ -1,3 +1,7 @@
+---
+description: How to work with log-based alerting in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+---
+
 # OpenSearch Alert
 
 The alerting feature notifies you when data from one or more OpenSearch indices meets certain conditions. For example, you might want to notify a Slack channel if your application logs more than five HTTP 404 errors in one hour/minute, or you might want to page a developer if no new documents have been indexed in the past 20 minutes.

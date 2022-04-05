@@ -1,5 +1,5 @@
 ---
-description: How access to the Kubernetes API works on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+description: How access to the Kubernetes API works in Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
 ---
 
 # Kubernetes API

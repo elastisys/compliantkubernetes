@@ -1,3 +1,7 @@
+---
+description: How to work with Lens and Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+---
+
 # Kubernetes UI (Lens)
 
 [Lens](https://k8slens.dev/) is a graphical user interface that you install locally on your machine. It provides an attractive and easy to use way of interacting with your Kubernetes cluster. Similar to `kubectl`, it can be used to manage multiple clusters. You can also install [extensions that help you manage your clusters or applications deployed on them](https://github.com/lensapp/lens-extensions/blob/main/README.md) from a growing list of community-provided extensions.

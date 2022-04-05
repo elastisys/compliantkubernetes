@@ -1,3 +1,7 @@
+---
+description: How to work with monitoring metrics on Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+---
+
 # Metrics
 This guide gives an introduction to Prometheus and Grafana and where they fit in Compliant Kubernetes, in terms of reducing the compliance burden.
 

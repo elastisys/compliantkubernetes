@@ -1,3 +1,7 @@
+---
+description: How to set up your computer for operating applications on Elastisys Compliant Kubernetes, the security-focused kubernetes distribution.
+---
+
 # Install Prerequisites
 
 <!--user-demo-setup-start-->

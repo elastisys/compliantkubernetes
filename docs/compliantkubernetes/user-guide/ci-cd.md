@@ -1,3 +1,7 @@
+---
+description: Integrating with CI/CD in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+---
+
 CI/CD Integration
 =================
 

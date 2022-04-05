@@ -1,3 +1,7 @@
+---
+description: How to work with logs in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+---
+
 # Logging
 
 Compliant Kubernetes (CK8s) provides the mechanism to manage your cluster as well as  the lifecycle of thousands of containerized applications deployed in  the cluster. The resources managed by CK8s are expected to be highly distributed with dynamic behaviors. An instance of CK8s cluster  environment involves several components with  nodes that host hundreds of containers that are constantly being spun up and destroyed based on workloads.

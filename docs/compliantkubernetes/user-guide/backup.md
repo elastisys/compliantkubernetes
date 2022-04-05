@@ -1,3 +1,7 @@
+---
+description: Backing up data in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+---
+
 # Backups
 
 Compliant Kubernetes (CK8S) includes backup functionality through Velero, a backup tool for Kubernetes Resources and Persistent Volumes. For backup of container images, Harbor is used instead.
