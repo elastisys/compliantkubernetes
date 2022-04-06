@@ -29,6 +29,6 @@ Getting started guides:
 
 ## Would you like to contribute?
 
-We want to build the next generation of cloud native technology were data security and privacy is the default setting. 
+We want to build the next generation of cloud native technology were data security and privacy is the default setting.
 
 Join us on our mission as a contributor? Go to the [guide for contributors](contributor-guide).

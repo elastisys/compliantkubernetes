@@ -4,7 +4,7 @@ description: Learn how to prepare for Elastisys Compliant Kubernetes, the securi
 
 # Step 1: Prepare
 
-Hi there, Application Developer! Happy to have you on board with Elastisys Compliant Kubernetes! 
+Hi there, Application Developer! Happy to have you on board with Elastisys Compliant Kubernetes!
 
 In this part, you will learn about the things you should do to prepare to get started with the platform.
 

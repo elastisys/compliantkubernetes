@@ -58,7 +58,7 @@ Go deeper into [log-based alerts](log-based-alerts.md).
 
 Disaster recovery is about so much more than backing up and restoring data. Backing up data is a necessary, but not sufficient, part of that.
 
-Not having sufficient capacity is also a kind of disaster, albeit, one that is easy to mitigate. 
+Not having sufficient capacity is also a kind of disaster, albeit, one that is easy to mitigate.
 
 ### Back up Application Data
 
@@ -86,7 +86,7 @@ As an application developer, you should perform capacity management on a Pod lev
 
 ## Automate with CI/CD
 
-Elastisys Compliant Kubernetes currently does not dictate or recommend any particular CI/CD solution over any other. It is, however, easy to integrate with various CI/CD solutions, such as GitHub Actions. 
+Elastisys Compliant Kubernetes currently does not dictate or recommend any particular CI/CD solution over any other. It is, however, easy to integrate with various CI/CD solutions, such as GitHub Actions.
 
 The basic steps for a generic push-style CI/CD solution (such as GitHub Actions) are to:
 
@@ -94,7 +94,7 @@ The basic steps for a generic push-style CI/CD solution (such as GitHub Actions)
 0. Create a `ServiceAccount` and binding to the role created earlier via a `RoleBinding`, granting it the permissions needed for deploying the application.
 0. Getting the token for the ServiceAccount, so you can craft a `KUBECONFIG` to use with `kubectl` or `helm` in your CI/CD solution.
 
-Adding an in-cluster CI/CD solution is a work in progress, pending security reviews of alternatives in the ecosystem.  
+Adding an in-cluster CI/CD solution is a work in progress, pending security reviews of alternatives in the ecosystem.
 
 Go deeper into [CI/CD](ci-cd.md).
 

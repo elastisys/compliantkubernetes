@@ -6,7 +6,7 @@ description: Troubleshooting help for Application Developers on Elastisys Compli
 
 Going through these basic troubleshooting steps should help you as an application developer identify where a problem may lie. If any of these steps do not give the expected "fine" output, use `kubectl describe` to investigate.
 
-If you are using Lens instead of the `kubectl` command-line interface, clicking through your Deployments and Pods will reveal the same information as the commands given below. 
+If you are using Lens instead of the `kubectl` command-line interface, clicking through your Deployments and Pods will reveal the same information as the commands given below.
 
 ## Is the Kubernetes cluster fine?
 
