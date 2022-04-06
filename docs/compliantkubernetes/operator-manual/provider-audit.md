@@ -46,6 +46,9 @@ The remainder of this page contains open questions that you should ask your clou
         1. Do these images have [NTP enabled by default](https://ubuntu.com/server/docs/network-ntp)?
     1. Do you have a Kubernetes integration for your IaaS?
         1. Can I use a [cloud-controller](https://kubernetes.io/docs/concepts/architecture/cloud-controller/) for automatic discovery of Nodes and labeling Nodes with the right Zone?
+    1. Can you handle large diurnal capacity changes, a.k.a., auto-scaling? E.g., 40 VMs from 6.00 to 10.00, but only 10 VMs from 10.00-6.00.
+        1. Can I reserve VMs? How do you bill for reserved but unused VMs?
+        1. What technical implementation do you recommend? E.g., pause/unpause VMs, stop/start VMs, terminate/recreate VMs.
 
 1. Storage capabilities:
     1. Do you offer Object Storage as a Service (OSaaS)?

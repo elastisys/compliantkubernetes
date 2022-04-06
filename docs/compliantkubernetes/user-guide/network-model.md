@@ -49,6 +49,7 @@ kind: Ingress
 metadata:
   name: myapp-ck8s-user-demo
   annotations:
+    # To list your current ClusterIssuers, simply use 'kubectl get ClusterIssuers'.
     cert-manager.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/ingress.class: nginx
     ## Uncomment the line below to implement source IP allowlisting.

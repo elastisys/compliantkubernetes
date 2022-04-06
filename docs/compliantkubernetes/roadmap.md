@@ -1,16 +1,30 @@
----
-description: Roadmap for the Elastisys Compliant Kubernetes project, the security-focused Kubernetes distribution.
----
-
 # Roadmap
 
-## Support for pull-based CD that adhere to security safeguards
+## GPU support
 
-Elastisys Compliant Kubernetes can be integrated with many different CI/CD pipelines.
-Pull-based solutions such as Argo and Flux by default require too extensive security privileges
-and needs modified roles to be operated in a safe manner. Investigation into suitable, and secure,
-alternative solutions are underway.
+Support for GPU nodes in Compliant Kubernetes workload clusters, subject to GPU availability on supported cloud providers.
 
-## Security hardening as code
+## Secrets management service
 
-Implementation of suggested [security safeguards](https://elastisys.io/compliantkubernetes/user-guide/safeguards/) through Open Policy Agent.
+Convenient solution to manage secrets for Compliant Kubernetes application developers, such as SOPS or Sealed Secrets.
+
+## SAML support
+
+Support for SAML based Identity Providers (IDPs) as a complement to currently supported OpenID format.
+
+## ArgoCD configation that adhere to security safeguards
+
+Locked down security profile for ArgoCD that adheres to Compliant Kubernetes security practices.
+By default, pull-based CD solutions such as ArgoCD (and Flux, for that matter) require too extensive security privileges.
+
+## Additional dashboards
+
+User experience for Compliant Kubernetes operators, application developers, and CISOs will be continuously improved,
+including addition of single pane of glass dashboards that give overviews of all relevant services.
+
+# Non-Goals
+
+## Opinionated CI/CD
+
+Compliant Kubernetes can be used with a wide range of CI/CD pipelines, including traditional push-style tools and pull-style solutions such as GitOps operators.
+Compliant Kubernetes will not dictate the use of one specific CI/CD technology.

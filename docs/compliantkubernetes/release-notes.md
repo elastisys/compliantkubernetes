@@ -3,6 +3,8 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.20.0](#v0200) - 2022-03-21
+- [v0.19.1](#v0191) - 2022-03-01
 - [v0.19.0](#v0190) - 2022-02-01
 - [v0.18.2](#v0182) - 2021-12-16
 - [v0.17.2](#v0172) - 2021-12-16
@@ -15,6 +17,55 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.20.0
+
+Released 2022-03-21
+
+#### Added
+
+- **Added kured - Kubernetes Reboot Daemon.**<br/>
+  This enables automatic node reboots and security patching of the underlying base Operating System image, container runtime and Kubernetes cluster components.
+
+- **Added fluentd grafana dashboard and alerts.**<br/>
+
+- **Added RBAC for admin users.**<br/>
+  Admin users can now list pods cluster wide and run the kubectl top command.
+
+- **Added containerd support for fluentd.**<br/>
+
+#### Changed
+
+- **Added the new OPA policy.**<br/>
+  To disallow the latest image tag.
+
+- **Persist Dex state in Kubernetes.**<br/>
+  This ensure the JWT token received from an OpenID provider is valid even after security patching of Kubernetes cluster components.
+
+- **Add ingressClassName in ingresses where that configuration option is available.**<br/>
+
+- **Thanos is now enabled by default.**<br/>
+
+#### Updated
+
+- **Upgraded nginx-ingress helm chart to v4.0.17**<br/>
+  This upgrades nginx-ingress to v1.1.1. When upgrading an ingressClass object called nginx will be installed, this class has been set as the default class in Kubernetes. Ingress-nginx has been configured to still handle existing ingress objects that do not specify any ingressClassName.
+
+- **Upgraded starboard-operator helm chart to v0.9.1**<br/>
+  This is upgrading starboard-operator to v0.14.1
+
+#### Removed
+
+- **Removed influxDB and dependent helm charts.**<br/>
+
+
+### v0.19.1
+
+Released 2022-03-01
+
+#### Fixed
+
+- Fixed critical stability issue related to Prometheus rules being evaluated without metrics.
 
 ### v0.19.0
 
@@ -114,6 +165,7 @@ Changes:
 
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
+- [v2.18.0-ck8s1](#v2180-ck8s1) - 2022-02-18
 - [v2.17.1-ck8s1](#v2171-ck8s1) - 2021-11-11
 - [v2.17.0-ck8s1](#v2170-ck8s1) - 2021-10-21
 - [v2.16.0-ck8s1](#v2160-ck8s1) - 2021-07-02
@@ -122,6 +174,16 @@ Changes:
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/CHANGELOG.md).
+
+### v2.18.0-ck8s1
+
+Released 2022-02-18.
+
+Changes:
+
+- Kubespray updated, including a new Kubernetes version upgrade to version [1.22.5](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#v1225).
+  This introduces new features and fixes, including security updates.
+  There's also a lot of deprecated API's that were removed in this version so take a good look at [these notes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#removal-of-several-beta-kubernetes-apis) before upgrading.
 
 ### v2.17.1-ck8s1
 
