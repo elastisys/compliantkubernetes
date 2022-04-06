@@ -32,7 +32,7 @@ Once installed, you can verify that configuration is correct by [issuing a few s
 
 Those URLs that your Elastisys Compliant Kubernetes administrator gave you all have a `$DOMAIN`, which will typically include your company name and perhaps the environment name.
 
-Your web portals are avaialable at:
+Your web portals are available at:
 
 * `harbor.$DOMAIN` -- the Harbor container image registry, which will be the home to all your container images
 * `opensearch.$DOMAIN` -- the OpenSearch Dashboards portal, where you will view your application and audit logs
