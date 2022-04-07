@@ -81,7 +81,11 @@ Therefore, for the time being, please ask your administrator for creating a new 
 
 ## Why can't I access my cluster? 'Bad Request Unregistered redirect_uri ("http://localhost:18000").'
 
-Port 8000 is the only allowed port to port forward from and if that port is used locally it will try to bind to port 18000. Make sure that nothing is running locally that is using port 8000.
+Port 8000 is the only allowed port for OpenID callback URL and is needed by the `kubectl` OpenID plugin. If that port is used locally, then `kubectl` will try to bind to port 18000 which is not allowed due to security concerns. Make sure that nothing is running locally that is using port 8000.
+
+## Why can't I access Kibana or Elasticsearch?
+
+In Compliant Kubernetes v0.19.0 or later Elasticsearch and Kibana is no used and has been replaced by Opensearch and Opensearch Dashboards respectively. These can be accessed with domain prefix `opensearch`.
 
 ## What is encrypted at rest?
 
