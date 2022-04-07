@@ -79,6 +79,10 @@ Unfortunately, it is currently not possible to make adding/changing/removing nam
 
 Therefore, for the time being, please ask your administrator for creating a new namespace.
 
+## Why can't I access my cluster? 'Bad Request Unregistered redirect_uri ("http://localhost:18000").'
+
+Port 8000 is the only allowed port to port forward from and if that port is used locally it will try to bind to port 18000. Make sure that nothing is running locally that is using port 8000.
+
 ## What is encrypted at rest?
 
 Compliant Kubernetes encrypts everything at rest, including Kubernetes resources, PersistentVolumeClaims, logs, metrics and backups, **if the underlying cloud provider supports it**.
