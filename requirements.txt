@@ -20,9 +20,9 @@
 
 # Direct dependencies
 mkdocs>=1.2
-mkdocs-material
-Pygments>=2.4
+mkdocs-material>=8.2
+Pygments>=2.10
 markdown>=3.2
-pymdown-extensions>=7.0
+pymdown-extensions>=9.0
 mkdocs-material-extensions>=1.0
 mkdocs-include-markdown-plugin>=2.8

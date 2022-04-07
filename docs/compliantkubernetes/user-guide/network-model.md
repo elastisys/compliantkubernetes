@@ -1,3 +1,7 @@
+---
+description: Explanation of the network model in Elastisys Compliant Kubernetes, the security-focused kubernetes distribution.
+---
+
 Network Model
 =============
 

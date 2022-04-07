@@ -1,3 +1,7 @@
+---
+description: How to work with the container registry in Elastisys Compliant Kubernetes, the security-focused kubernetes distribution.
+---
+
 # Harbor - private container registry
 
 This guide gives an introduction to Harbor and where it fits in Compliant Kubernetes, in terms of reducing the compliance burden.

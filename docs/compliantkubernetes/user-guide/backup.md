@@ -1,3 +1,7 @@
+---
+description: Backing up data in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+---
+
 # Backups
 
 Compliant Kubernetes (CK8S) includes backup functionality through Velero, a backup tool for Kubernetes Resources and Persistent Volumes. For backup of container images, Harbor is used instead.
@@ -30,9 +34,11 @@ By default, backups are stored for 720 hours (30 days).
 
 ### Restoring
 
+<!--user-demo-restore-start-->
 Restoring from a backup with Velero is meant to be a type of disaster recovery. **Velero will not overwrite existing Resources when restoring.** As such, if you want to restore the state of a Resource that is still running, the Resource must be deleted first.
 
 To restore a backup on demand, contact your Compliant Kubernetes administrator.
+<!--user-demo-restore-end-->
 
 ## Protection of Backups
 

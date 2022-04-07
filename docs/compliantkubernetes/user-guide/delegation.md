@@ -1,3 +1,7 @@
+---
+description: How to delegate and work with permissions in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+---
+
 # How to Delegate?
 
 !!!note

@@ -1,7 +1,9 @@
+---
+description: The demarcation between what users can and cannot do in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+---
+
 Can I?
 ======
-
-> It's not that I don't trust you. Rather, I don't want you to worry.
 
 Compliant Kubernetes comes with a lot of safeguards to ensure you protect your business reputation and earn the trust of your customers. Furthermore, it is a good idea to keep regulators happy, since they bring public trust into digitalization. Public trust is necessary to shift customers away from pen-and-paper to drive usage of your amazing application.
 
@@ -25,12 +27,14 @@ To stick to the general principles above, Compliant Kubernetes puts the followin
 
 More technically, Compliant Kubernetes does not allow users to:
 
+<!--safeguards-start-->
 * change the Kubernetes API through [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) or [Dynamic Webhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks);
 * gain more container execution permissions by mutating [PodSecurityPolicies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/); this implies that you cannot run container images as root or mount [hostPaths](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath);
 * mutate ClusterRoles or Roles so as to [escalate privileges](https://v1-19.docs.kubernetes.io/docs/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping);
 * mutate Kubernetes resources in administrator-owned namespaces, such as `monitoring` or `kube-system`;
 * re-configure system Pods, such as Prometheus or fluentd;
 * access the hosts directly.
+<!--safeguards-end-->
 
 But what if I really need to?
 -----------------------------
