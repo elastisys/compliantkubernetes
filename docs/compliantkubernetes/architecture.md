@@ -38,3 +38,9 @@ Click on the diagram below to see the nuts-and-bolts of Compliant Kubernetes.
     * OpenPolicyAgent, for enforcing Kubernetes API policies.
 
     Note that, the logs, metrics and alerts produced by these components are immediately pushed into the tamper-proof logging environment, hence this technical limitation does not weaken compliance.
+
+## Level 3: Authentication
+
+Click on the diagram below to see the nuts-and-bolts of Compliant Kubernetes authentication.
+
+[![C4 Model, Level 3 Diagram, Authentication](img/ck8s-c4model-level3-auth.drawio.svg)](img/ck8s-c4model-level3-auth.drawio.svg)
