@@ -165,6 +165,7 @@ Changes:
 
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
+- [v2.18.1-ck8s1](#v2181-ck8s1) - 2022-04-26
 - [v2.18.0-ck8s1](#v2180-ck8s1) - 2022-02-18
 - [v2.17.1-ck8s1](#v2171-ck8s1) - 2021-11-11
 - [v2.17.0-ck8s1](#v2170-ck8s1) - 2021-10-21
@@ -174,6 +175,17 @@ Changes:
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/CHANGELOG.md).
+
+### v2.18.1-ck8s1
+
+Released 2022-04-26.
+
+Changes:
+
+- Kubespray updated to v2.18.1
+  This introduces some fixes for cluster using containerd as container manager.
+- Changed default etcd version to 3.5.3
+  This fixes an issue where [etcd data might get corrupted](https://groups.google.com/a/kubernetes.io/g/dev/c/B7gJs88XtQc/m/rSgNOzV2BwAJ)
 
 ### v2.18.0-ck8s1
 
