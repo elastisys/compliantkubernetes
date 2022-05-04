@@ -85,6 +85,16 @@ kubectl create rolebinding $ROLE --role $ROLE --group=$GROUP --dry-run=client -o
 kubectl apply -f my-role-binding.yaml
 ```
 
+### Add a User admin
+
+In Compliant Kubernetes v0.21.0 User admins can now add more `User admins` themselves.
+
+Edit the clusterrolebinding `user-admin-cluster-wide-delegation` and add the desired users or groups under `subjects`. If unsure, look at an [example subject](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects) from the official kubernetes documentation.
+
+```bash
+kubectl edit clusterrolebinding user-admin-cluster-wide-delegation
+```
+
 ## Application Metrics (Grafana)
 
 Your administrator will have mapped your IdP groups to the Grafana viewer, editor and admin roles.
