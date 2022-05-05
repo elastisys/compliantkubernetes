@@ -44,3 +44,9 @@ Click on the diagram below to see the nuts-and-bolts of Compliant Kubernetes.
 Click on the diagram below to see the nuts-and-bolts of Compliant Kubernetes authentication.
 
 [![C4 Model, Level 3 Diagram, Authentication](img/ck8s-c4model-level3-auth.drawio.svg)](img/ck8s-c4model-level3-auth.drawio.svg)
+
+## Level 3: Backup
+
+Click on the diagram below to see the nuts-and-bolts of Compliant Kubernetes backup.
+
+[![C4 Model, Level 3 Diagram, Backup](img/ck8s-c4model-level3-backup.drawio.svg)](img/ck8s-c4model-level3-backup.drawio.svg)
