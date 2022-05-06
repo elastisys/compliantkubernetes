@@ -54,3 +54,7 @@ Click on the diagram below to see the nuts-and-bolts of Compliant Kubernetes bac
 ## Level 3: Metrics and Metrics-based Alerting
 
 [![C4 Model, Level 3 Diagram, Metrics](img/ck8s-c4model-level3-metrics.drawio.svg)](img/ck8s-c4model-level3-metrics.drawio.svg)
+
+## Level 3: Logs and Log-based Alerting
+
+[![C4 Model, Level 3 Diagram, Logs](img/ck8s-c4model-level3-logs.drawio.svg)](img/ck8s-c4model-level3-logs.drawio.svg)
