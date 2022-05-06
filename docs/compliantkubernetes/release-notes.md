@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.21.0](#v0210) - 2022-05-04
 - [v0.20.0](#v0200) - 2022-03-21
 - [v0.19.1](#v0191) - 2022-03-01
 - [v0.19.0](#v0190) - 2022-02-01
@@ -17,6 +18,30 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.21.0
+
+Released 2022-05-04
+
+#### Changed
+
+- **Users can now view ClusterIssuers.**<br/>
+
+- **User admins can now add users to the ClusterRole user-view.**<br/>
+  This is done by adding users to the ClusterRoleBinding `extra-user-view`.
+
+- **User can now get ClusterIssuers.**<br/>
+
+- **Ensured all CISO dashboards are available to users.**<br/>
+  All the grafana dashboards in our [CISO docs](https://elastisys.io/compliantkubernetes/ciso-guide/) are now available.
+
+- **Better stability for dex**<br/>
+  Dex now runs with two replicas and has been updated.
+
+#### Updated
+
+- **Image upgrades to reduce number of vulnerabilities**<br/>
+  Upgrades for fluentd, grafana, and harbor chartmuseum.
 
 ### v0.20.0
 
