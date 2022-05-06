@@ -264,13 +264,6 @@ NOTE: 203.0.113.123 is in [TEST-NET-3](https://en.wikipedia.org/wiki/Reserved_IP
    comments=false
 %}
 
-{%
-   include-markdown "common.md"
-   start="<!--dns-setup-start-->"
-   end="<!--dns-setup-stop-->"
-   comments=false
-%}
-
 ### Setup required DNS entries
 
 You will need to set up the following DNS entries.
