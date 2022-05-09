@@ -58,7 +58,3 @@ Click on the diagram below to see the nuts-and-bolts of Compliant Kubernetes bac
 ## Level 3: Logs and Log-based Alerting
 
 [![C4 Model, Level 3 Diagram, Logs](img/ck8s-c4model-level3-logs.drawio.svg)](img/ck8s-c4model-level3-logs.drawio.svg)
-
-## Level 3: Access Control
-
-[![C4 Model, Level 3 Diagram, Access Control](img/ck8s-c4model-level3-access-control.drawio.svg)](img/ck8s-c4model-level3-access-control.drawio.svg)
