@@ -8,7 +8,7 @@ For the nitty-gritty details, see [Architectural Decision Records](adr/index.md)
 
 Let us start with the system context.
 
-![C4 Model, Level 1 Diagram](img/ck8s-c4model-level1.png)
+![C4 Model, Level 1 Diagram](img/ck8s-c4model-level1.drawio.svg)
 
 Compliance imposes restrictions on all levels of the tech stack. Your compliance focus should mostly lie on your application. Compliant Kubernetes ensures that the platform hosting your application is compliant. Finally, you need the whole software stack on a hardware that is managed in a compliant way, either via an ISO 27001-certified cloud provider or using on-prem hardware.
 
