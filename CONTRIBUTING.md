@@ -97,6 +97,8 @@ Files ending in `*.drawio.svg` are produced using [diagrams.net](https://www.dia
 6. Select "Links: In new window".
 6. Leave everything else as default.
 
+To facilitate editing architecture diagrams, import the [Compliant Kubernetes DrawIO library](docs/compliantkubernetes/img/ck8s-library.drawio.xml).
+
 ### From graphviz
 
 Other diagrams are produced in graphviz. To regenerate them, edit the relevant `dot` file, then type:
