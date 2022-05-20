@@ -190,6 +190,34 @@ The screenshot below gives an example of log entries produced by the user demo a
 
 <!--user-demo-logs-end-->
 
+## Exporting logs
+
+At the moment the reporting feature in OpenSearch doesn't work so instead we recommend you to use [elasticsearch-dump](https://github.com/elasticsearch-dump/elasticsearch-dump).
+
+Example of exporting the `kubernetes-*` index pattern to a folder `opensearch-dump`:
+
+```bash
+docker pull elasticdump/elasticsearch-dump
+mkdir opensearch-dump
+
+# OpenSearch username and password
+# This will be handed out from your Compliant Kubernetes administrator
+OPENSEARCH_USERNAME="your-username"
+OPENSEARCH_PASSWORD="your-password"
+
+# Your domain that is used for your cluster.
+# This is the same as the one you are using for your other services (grafana, harbor, etc.)
+DOMAIN="your-domain"
+
+docker run --rm -ti -v $(pwd)/opensearch-dump:/tmp elasticdump/elasticsearch-dump \
+  --input="http://${OPENSEARCH_USERNAME}:${OPENSEARCH_PASSWORD}@opensearch.ops.${DOMAIN}/kubernetes-*" \
+  --type=data \
+  --output=/tmp/opensearch-dump.json \
+  --searchBody='{"query":{......}}'
+```
+
+For more examples and how to use the tool, read the documentation [in the repo](https://github.com/elasticsearch-dump/elasticsearch-dump#use).
+
 ## Further Reading
 
 * [OpenSearch](https://opensearch.org/)
