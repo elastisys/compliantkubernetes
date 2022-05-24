@@ -66,7 +66,7 @@ curl --head https://dex.$DOMAIN/healthz
 curl --head https://harbor.$DOMAIN/healthz
 curl --head https://grafana.$DOMAIN/healthz
 curl --head https://opensearch.$DOMAIN/api/status
-curl --insecure --head https://app.$DOMAIN/healthz  # WC Ingress Controller
+curl --insecure --head https://app.$DOMAIN/healthz  # Ingress Controller
 # All commands above should return 'HTTP/2 200'
 ```
 
