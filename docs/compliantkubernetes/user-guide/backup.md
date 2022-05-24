@@ -18,7 +18,7 @@ The requirements to comply with ISO 27001 are stated in ISO [27001:2013](https:/
 
 ## Usage
 
-Velero is deployed in both the workload cluster and the service cluster. Following are instructions for backing up and restoring resources.
+The following are instructions for backing up and restoring resources.
 
 ### Backing up
 
@@ -48,9 +48,9 @@ The Compliant Kubernetes administrator will take the following measure to ensure
 
     **Why?** This ensures backups remain confidential, even if, e.g., hard drives are not safely disposed.
 
-2. Backups are replicated to an off-site location, if requested. This process is performed from the service cluster, hence the users -- or attackers gaining access to their application -- cannot access the off-site replicas.
+2. Backups are replicated to an off-site location, if requested. This process is performed from outside the cluster, hence the users -- or attackers gaining access to their application -- cannot access the off-site replicas.
 
-    **Why?** This ensures backups are available even if the primary location is subject to a disaster, such as extreme weather. The backups also remain available -- though unlikely confidential -- in case an attacker manages to gain access to the workload cluster.
+    **Why?** This ensures backups are available even if the primary location is subject to a disaster, such as extreme weather. The backups also remain available -- though unlikely confidential -- in case an attacker manages to gain access to the cluster.
 
 <!--
 
