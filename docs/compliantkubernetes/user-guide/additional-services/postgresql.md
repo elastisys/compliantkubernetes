@@ -64,11 +64,11 @@ To extract this information, proceed as follows:
 export SECRET=            # Get this from your administrator
 export NAMESPACE=         # Get this from your administrator
 
-export PGHOST=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGHOST}' | base64 -d)
-export PGUSER=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGUSER}' | base64 -d)
-export PGPASSWORD=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGPASSWORD}' | base64 -d)
-export PGSSLMODE=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGSSLMODE}' | base64 -d)
-export USER_ACCESS=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.USER_ACCESS}' | base64 -d)
+export PGHOST=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGHOST}' | base64 --decode)
+export PGUSER=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGUSER}' | base64 --decode)
+export PGPASSWORD=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGPASSWORD}' | base64 --decode)
+export PGSSLMODE=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.PGSSLMODE}' | base64 --decode)
+export USER_ACCESS=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.USER_ACCESS}' | base64 --decode)
 ```
 
 !!!important
@@ -76,7 +76,7 @@ export USER_ACCESS=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.dat
 
 ## Create an Application User
 
-First, port forward into the PostgreSQL master.
+First, in one console, fetch the information from the access Secret as described above and port forward into the PostgreSQL master.
 
 ```bash
 kubectl -n $NAMESPACE port-forward $USER_ACCESS 5432
@@ -85,14 +85,14 @@ kubectl -n $NAMESPACE port-forward $USER_ACCESS 5432
 !!!important
     Since humans are bad at generating random passwords, we recommend using [pwgen](https://linux.die.net/man/1/pwgen).
 
-In a different console, run the PostgreSQL client:
+Second, in another console, fetch the information from the access Secret again and run the PostgreSQL client to create the application database and user:
 
 ```bash
 export APP_DATABASE=myapp
 export APP_USERNAME=myapp
-export APP_PASSWORD=$(pwgen)
+export APP_PASSWORD=$(pwgen 32)
 
-cat <<EOF | psql -h 127.0.0.1 \
+cat <<EOF | psql -d postgres -h 127.0.0.1 \
     --set=APP_DATABASE=$APP_DATABASE \
     --set=APP_USERNAME=$APP_USERNAME \
     --set=APP_PASSWORD=$APP_PASSWORD
@@ -101,6 +101,8 @@ create user :APP_USERNAME with encrypted password ':APP_PASSWORD';
 grant all privileges on database :APP_DATABASE to :APP_USERNAME;
 EOF
 ```
+
+Continue with the second console in the next section to create a Secret with this information.
 
 ## Create an Application Secret
 
@@ -129,6 +131,13 @@ stringData:
     PGDATABASE: ${APP_DATABASE}
 EOF
 ```
+
+!!!warning
+    Although most client libraries follow the `libpq` definition of these environment variables, some do not, and this will require changes to the application Secret.
+
+    Notably [`node-postgres`](https://github.com/brianc/node-postgres) does not currently do so for `PGSSLMODE`.
+    When this variable is set to `require`, it will do a full verification instead, requiring access to the PostgreSQL certificates to allow a connection.
+    To get the intended mode for `require` set the variable to `no-verify` instead.
 
 ## Expose PostgreSQL credentials to Your Application
 
