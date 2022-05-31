@@ -1,0 +1,115 @@
+# This is an example oauth2-proxy deployment to be used with Nginx Ingress controller.
+#
+# Usage
+# =====
+#
+# 1. Start by reading and understanding:
+#
+# - https://oauth2-proxy.github.io/oauth2-proxy/#architecture
+# - https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/
+# - https://oauth2-proxy.github.io/oauth2-proxy/docs/configuration/overview
+# - https://kubernetes.io/docs/concepts/services-networking/ingress/
+# - https://elastisys.io/compliantkubernetes/user-guide/network-model/
+#
+# 2. Configure oauth2-proxy by adjusting the command-line arguments and/or
+# environment variables below. At the very least, you need to change
+# - OAUTH2_PROXY_CLIENT_ID
+# - OAUTH2_PROXY_CLIENT_SECRET
+# - OAUTH2_PROXY_COOKIE_SECRET
+#
+# 3. Replace __INGRESS_HOST__ and __INGRESS_SECRET__.
+#
+# 4. kubectl apply -f oauth2-proxy.yaml
+#
+# 5. Go back to the Ingress of your application and make sure you have the
+# right Ingress annotations. If you don't know which ones are meant, go back to
+# step 1.
+#
+# Note: The provided example will forward the JWT token to your application in
+# the 'Authorization' header. Make sure to decide if this is what you want.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    k8s-app: oauth2-proxy
+  name: oauth2-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: oauth2-proxy
+  template:
+    metadata:
+      labels:
+        k8s-app: oauth2-proxy
+    spec:
+      containers:
+      - args:
+        - --provider=google
+        - --email-domain=elastisys.com
+        - --upstream=file:///dev/null
+        - --http-address=0.0.0.0:4180
+        - --set-authorization-header
+        env:
+        - name: OAUTH2_PROXY_CLIENT_ID
+          value: i-didnt-read-the-docs-above
+        - name: OAUTH2_PROXY_CLIENT_SECRET
+          value: i-didnt-read-the-docs-above
+        # docker run -ti --rm python:3-alpine python -c 'import secrets,base64; print(base64.b64encode(base64.b64encode(secrets.token_bytes(16))));'
+        - name: OAUTH2_PROXY_COOKIE_SECRET
+          value: i-didnt-read-the-docs-above
+        image: quay.io/oauth2-proxy/oauth2-proxy:latest
+        imagePullPolicy: Always
+        name: oauth2-proxy
+        ports:
+        - containerPort: 4180
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100M
+          limits:
+            cpu: 100m
+            memory: 100M
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: oauth2-proxy
+  name: oauth2-proxy
+spec:
+  ports:
+  - name: http
+    port: 4180
+    protocol: TCP
+    targetPort: 4180
+  selector:
+    k8s-app: oauth2-proxy
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: oauth2-proxy
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: __INGRESS_HOST__
+    http:
+      paths:
+      - path: /oauth2
+        pathType: Prefix
+        backend:
+          service:
+            name: oauth2-proxy
+            port:
+              number: 4180
+  tls:
+  - hosts:
+    - __INGRESS_HOST__
+    secretName: __INGRESS_SECRET__
