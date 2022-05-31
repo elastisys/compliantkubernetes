@@ -78,6 +78,8 @@ spec:
 !!!example
     Feel free to take inspiration from the [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L34).
 
+    If you want to protect your Ingress with OAuth2-based authentication, check out [oauth2-proxy](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/oauth2-proxy.yaml).
+
 !!!important
     The DNS name in `spec.rules[0].host` and `spec.tls[0].hosts[0]` must be the same as the DNS entry used by your application users. Otherwise, the application users will get a "Your connection is not private" error.
 
