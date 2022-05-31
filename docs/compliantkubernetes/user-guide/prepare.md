@@ -54,4 +54,4 @@ There are additional safeguards in place that reflect the security posture of El
 
 ## Next step? Deploying!
 
-Ready with a contianerized application? Head over to the next step, where you learn how to [deploy](deploy.md) it!
+Ready with a containerized application? Head over to the next step, where you learn how to [deploy](deploy.md) it!
