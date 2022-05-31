@@ -57,6 +57,12 @@ metadata:
     ## Uncomment the line below to implement source IP allowlisting.
     ## Blocklisted IPs will get HTTP 403.
     # nginx.ingress.kubernetes.io/whitelist-source-range: 98.128.193.2/32
+    ## Uncomment the lines below to get OAuth authentication
+    ## You will also need to configure and install oauth2-proxy
+    ## (see ../oauth2-proxy.yaml for an example and more details.)
+    # nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+    # nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+    # nginx.ingress.kubernetes.io/auth-response-headers: "authorization"
 spec:
   rules:
     - host: "demo.example.com"
