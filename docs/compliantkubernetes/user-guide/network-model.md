@@ -58,8 +58,8 @@ metadata:
     ## Blocklisted IPs will get HTTP 403.
     # nginx.ingress.kubernetes.io/whitelist-source-range: 98.128.193.2/32
     ## Uncomment the lines below to get OAuth authentication
-    ## You will also need to configure and install oauth2-proxy
-    ## (see ../oauth2-proxy.yaml for an example and more details.)
+    ## You will also need to configure and install oauth2-proxy.
+    ## For an example and more details, see https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/oauth2-proxy.yaml
     # nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
     # nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
     # nginx.ingress.kubernetes.io/auth-response-headers: "authorization"
