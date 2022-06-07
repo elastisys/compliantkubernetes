@@ -21,6 +21,15 @@ Exoscale S3    | Yes
 GCP            | Yes
 Safespring S3  | Yes
 
+## Off-site backups
+
+Backups can be set up to be replicated off-site using CronJobs.
+
+In version v0.23 these can be **encrypted** before they are sent off-site, which means they must first be restored to be usable. <br/>
+It is possible to restore serviecs directly from **unencrypted** off-site backups with some additional steps.
+
+See [the instructions in `compliantkubernetes-apps`](https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts/restore-sync) for how to restore off-site backups.
+
 ## OpenSearch
 
 !!!note
@@ -38,12 +47,36 @@ To take a snapshot on-demand, execute
 
 ### Restore
 
-
 Set the following variables
 
 - `user` - OpenSearch user with permissions to manage snapshots, usually `snapshotter`
 - `password` - password for the above user
 - `os_url` - URL to OpenSearch
+
+!!!important "Restoring from off-site backup"
+    - To restore from an **encrypted** off-site backup:
+
+        First import the backup into the main S3 service and register the restored bucket as a new snapshot repository:
+        ```bash
+        curl -kL -u "${user}:${password}" -X PUT "${os_url}/_snapshot/backup-repository?pretty" -H 'Content-Type: application/json' -d'
+        {
+          "type": "s3",
+          "settings": {
+            "bucket": "<restored-bucket>",
+            "readonly": true
+          }
+        }
+        '
+        ```
+        Then restore from this snapshot repository (`backup-repositroy`) in OpenSearch.
+
+    - To restore from an **unencrypted** off-site backup:
+
+        Configure the remote and bucket as the main S3 service and bucket for apps and OpenSearch respectively, then update the OpenSearch Helm releases and perform the restore.
+        It is recommended to either suspend or remove the OpenSearch backup CronJob to prevent it from running while restoring.
+
+        Remember to revert to the regular S3 service afterwards and reactivate the backup CronJob! <br/>
+        Replace the previous snapshot repository if it is unusable.
 
 List snapshot repositories
 
@@ -205,6 +238,9 @@ To take a backup on-demand, execute
 
 ### Restore
 
+!!!important "Restoring from off-site backup"
+    Since Harbor stores both database backups and images in the same bucket it is recommended to restore the off-site backup into the main S3 service first, reconfigure Harbor to use it, then restore the database from it.
+
 Instructions for how to restore Harbor can be found in `compliantkubernetes-apps`: <https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts/restore#restore-harbor>
 
 ## InfluxDB
@@ -274,7 +310,7 @@ exit
 
 ## Velero
 
-These instructions make use of the Velero CLI, you can download it here: <https://github.com/vmware-tanzu/velero/releases/tag/v1.5.3> (version 1.5.3).
+These instructions make use of the Velero CLI, you can download it here: <https://github.com/vmware-tanzu/velero/releases/tag/v1.7.1> (version 1.7.1).
 The CLI needs the env variable `KUBECONFIG` set to the path of a decrypted kubeconfig.
 Read more about Velero here: <https://compliantkubernetes.io/user-guide/backup/>
 
@@ -314,6 +350,71 @@ When restoring the Persistent Volume it will overwrite any existing files with t
 Any other files will be left as they were before the restoration started.
 So a restore will not wipe the volume clean and then restore.
 If a clean wipe is the desired behavior, then the volume must be wiped manually before restoring.
+
+### Restore from off-site backup
+
+- Restoring from **encrypted** off-site backup:
+
+    Recover the encrypted bucket into the main S3 service and reconfigure Velero to use this bucket, then follow the regular instructions.
+
+    The references in Kubernetes might need to be deleted so Velero can resync from the bucket:
+
+    ```bash
+    # Note that this is only backup metadata
+    kubectl -n velero delete backups.velero.io --all
+    ```
+
+- Restoring from **unencrypted** off-site backup:
+
+    To recover directly from off-site backup the backup-location must be reconfigured:
+
+    ```bash
+    export S3_BUCKET="<off-site-s3-bucket>"
+    export S3_PREFIX="<service-cluster|workload-cluster>"
+    export S3_ACCESS_KEY=$(sops -d --extract '["objectStorage"]["sync"]["s3"]["accessKey"]') "$CK8S_CONFIG_PATH/secrets.yaml")
+    export S3_SECRET_KEY=$(sops -d --extract '["objectStorage"]["sync"]["s3"]["accessKey"]') "$CK8S_CONFIG_PATH/secrets.yaml")
+    export S3_REGION=$(yq r "$CK8S_CONFIG_PATH/sc-config.yaml" "objectStorage.sync.s3.region")
+    export S3_ENDPOINT=$(yq r "$CK8S_CONFIG_PATH/sc-config.yaml" "objectStorage.sync.s3.regionEndpoint")
+    export S3_PATH_STYLE=$(yq r "$CK8S_CONFIG_PATH/sc-config.yaml" "objectStorage.sync.s3.forcePathStyle")
+
+    # Delete default backup location
+    velero backup-location delete default
+
+    # Delete backups from default backup location, note that this is only the backup metadata
+    kubectl -n velero delete backups.velero.io --all
+
+    # Create off-site credentials
+    kubectl -n velero create secret generic velero-backup \
+      --from-literal=cloud="$(echo "[default]\naws_access_key_id: ${S3_ACCESS_KEY}\naws_secret_access_key: ${S3_SECRET_KEY}\n")"
+
+    # Create off-site backup location
+    velero backup-location create backup \
+        --access-mode ReadOnly \
+        --provider aws \
+        --bucket "${S3_BUCKET}" \
+        --prefix "${S3_PREFIX}" \
+        --config="region=${S3_REGION},s3Url=${S3_ENDPOINT},s3ForcePathStyle=${S3_PATH_STYLE}" \
+        --credential=velero-backup=cloud
+    ```
+
+    Check that the backup-location becomes available:
+    ```console
+    $ velero backup-location get
+    NAME     PROVIDER   BUCKET/PREFIX       PHASE       LAST VALIDATED   ACCESS MODE   DEFAULT
+    backup   aws        <bucket>/<prefix>   Available   <timestamp>      ReadOnly
+    ```
+
+    Then check that the backups becomes available using `velero backup get`.
+    When they are available restore one of them using `velero restore create <name-of-restore> --from-backup <name-of-backup>`.
+
+    After the restore is complete Velero should be reconfigured to use the main S3 service again, with a new bucket if the previous one is unusable.
+    Updating or syncing the Helm chart will reset the backup location.
+
+    The secret and the backup metadata from the off-site backups can be deleted:
+    ```bash
+    kubectl -n velero delete secret velero-backup
+    kubectl -n velero delete backups.velero.io --all
+    ```
 
 ## Grafana
 
