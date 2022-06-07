@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.22.0](#v0220) - 2022-06-01
 - [v0.21.0](#v0210) - 2022-05-04
 - [v0.20.0](#v0200) - 2022-03-21
 - [v0.19.1](#v0191) - 2022-03-01
@@ -18,6 +19,30 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.22.0
+
+Released 2022-06-01
+
+#### Added
+
+- **Added support for Elastx and UpCloud!**<br/>
+
+- **New 'Welcoming' dashboard in OpenSearch and Grafana.**<br/>
+  Users can now access public docs and different urls to the services provided by Compliant Kubernetes.
+
+- **Improved availability of metrics and alerting.**<br/>
+  Alertmanager now runs with two replicas by default, Prometheus can now be run in HA mode.
+
+- **Added Falco rules to reduce alerts for services in Compliant Kubernetes.**<br/>
+  Falco now alerts less on operations that are expected out of these services.
+
+#### Fixed
+
+- **Fixed a bug where users couldn't silence alerts when portforwarding to alertmanager.**<br/>
+
+- **Improved logging stack and fixed a number of issues to ensure reliability.**<br/>
+
 
 ### v0.21.0
 
