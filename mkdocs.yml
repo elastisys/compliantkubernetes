@@ -39,6 +39,8 @@ extra_css:
 plugins:
   - include-markdown
   - search
+  - tags:
+      tags_file: compliantkubernetes/ciso-guide/controls.md
 
 markdown_extensions:
   - attr_list
@@ -121,6 +123,7 @@ nav:
     - 'FAQ': 'compliantkubernetes/operator-manual/faq.md'
   - 'For CISOs':
     - 'Overview': 'compliantkubernetes/ciso-guide/index.md'
+    - 'Controls': 'compliantkubernetes/ciso-guide/controls.md'
     - 'Audit Logs': 'compliantkubernetes/ciso-guide/audit-logs.md'
     - 'Backup': 'compliantkubernetes/ciso-guide/backup.md'
     - 'Cryptography': 'compliantkubernetes/ciso-guide/cryptography.md'

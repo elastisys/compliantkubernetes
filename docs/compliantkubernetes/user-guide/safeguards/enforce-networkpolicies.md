@@ -1,3 +1,9 @@
+---
+tags:
+- ISO 27001 A.13.1.1
+- ISO 27001 A.13.1.2
+- ISO 27001 A.13.1.3
+---
 # Reduce blast radius: NetworkPolicies
 
 !!!note
