@@ -1,3 +1,8 @@
+---
+tags:
+- ISO 27001 A.12.4.4
+- ISO 27001 A.15
+---
 # Cloud Provider Audit
 
 !!!note

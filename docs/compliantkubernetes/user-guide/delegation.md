@@ -1,5 +1,7 @@
 ---
 description: How to delegate and work with permissions in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+tags:
+- ISO 27001 A.9.4.1
 ---
 
 # How to Delegate?
@@ -7,7 +9,7 @@ description: How to delegate and work with permissions in Elastisys Compliant Ku
 !!!note
     This section helps you implement ISO 27001, specifically:
 
-    * A.9 Access control
+    * A.9.4.1 Information Access Restriction
 
 Now that you are almost ready to go live, you will certainly want to delegate some permissions to other team members or IT systems in your organization.
 This page shows you how to do that.

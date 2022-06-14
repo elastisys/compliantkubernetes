@@ -1,3 +1,9 @@
+---
+tags:
+- ISO 27001 A.12.2.1
+- ISO 27001 A.12.6.1
+- ISO 27001 A.16.1.7
+---
 # Intrusion Detection Dashboard
 
 ## Relevant Regulations

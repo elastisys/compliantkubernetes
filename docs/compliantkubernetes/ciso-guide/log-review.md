@@ -1,3 +1,8 @@
+---
+tags:
+- ISO 27001 A.12.4.1
+- ISO 27001 A.12.4.3
+---
 # Log Review
 
 This document highlights the risks that can be mitigated by regularly reviewing logs and makes concrete recommendations on how to do log review.

@@ -1,3 +1,7 @@
+---
+tags:
+- ISO 27001 A.17
+---
 # We believe in community-driven open source
 
 * Status: accepted

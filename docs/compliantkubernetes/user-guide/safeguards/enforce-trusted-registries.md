@@ -1,3 +1,7 @@
+---
+tags:
+- ISO 27001 A.12.6.1
+---
 <!--
 Note to contributors: Aim for the following format.
 

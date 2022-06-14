@@ -1,3 +1,7 @@
+---
+tags:
+- ISO 27001 A.10.1.2
+---
 # Cryptography Dashboard
 
 ## Relevant Regulations
@@ -28,7 +32,7 @@ stark autentisering.
 
 ## Mapping to ISO 27001 Controls
 
-* [A.10 Cryptography](https://www.isms.online/iso-27001/annex-a-10-cryptography/)
+* [A.10.1.2 Key Management](https://www.isms.online/iso-27001/annex-a-10-cryptography/)
 
 ## Compliant Kubernetes Cryptography Dashboard
 

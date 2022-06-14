@@ -1,3 +1,8 @@
+---
+tags:
+- ISO 27001 A.12.3.1
+- ISO 27001 A.17.1.1
+---
 # Disaster Recovery
 
 This document details disaster recovery procedures for Compliant Kubernetes. These procedures must be executed by the administrator.

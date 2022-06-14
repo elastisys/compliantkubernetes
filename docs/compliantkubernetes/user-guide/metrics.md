@@ -1,5 +1,8 @@
 ---
 description: How to work with monitoring metrics on Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+tags:
+- ISO 27001 A.12.1.3
+- ISO 27001 A.16.1
 ---
 
 # Metrics
