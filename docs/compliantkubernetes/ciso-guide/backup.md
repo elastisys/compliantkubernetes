@@ -1,3 +1,9 @@
+---
+tags:
+- ISO 27001 A.12.3.1
+- ISO 27001 A.17.1.1
+---
+
 # Backup Dashboard
 
 ## Relevant Regulations

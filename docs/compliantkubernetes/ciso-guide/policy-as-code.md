@@ -1,3 +1,8 @@
+---
+tags:
+- ISO 27001 A.18.2.2
+- ISO 27001 A.18.2.3
+---
 # Policy-as-Code Dashboard
 
 ## Relevant Regulations

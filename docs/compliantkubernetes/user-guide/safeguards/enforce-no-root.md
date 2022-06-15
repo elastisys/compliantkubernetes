@@ -1,3 +1,10 @@
+---
+tags:
+- ISO 27001 A.9.4.4
+- ISO 27001 A.12.6.1
+- ISO 27001 A.14.2.5
+---
+
 # Reduce blast radius: Preventing forgotten roots
 
 !!!note

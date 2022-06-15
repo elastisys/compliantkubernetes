@@ -1,3 +1,7 @@
+---
+tags:
+- ISO 27001 A.12.6.1
+---
 # Contributor guide
 
 ## Definition of Done

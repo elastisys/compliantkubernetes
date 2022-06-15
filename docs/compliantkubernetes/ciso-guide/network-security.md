@@ -1,3 +1,7 @@
+---
+tags:
+- ISO 27001 A.13
+---
 # Network Security Dashboard
 
 ## Relevant Regulations
