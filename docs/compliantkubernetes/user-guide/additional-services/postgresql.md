@@ -5,6 +5,8 @@ PostgreSQL®
 
 This page will help you succeed in connecting your application to a primary relational database PostgreSQL which meets your security and compliance requirements.
 
+<!--postgresql-setup-start-->
+
 ## Provision a New PostgreSQL Cluster
 
 Ask your service-specific administrator to install a PostgreSQL cluster inside your Compliant Kubernetes environment. The service-specific administrator will ensure the PostgreSQL cluster complies with your security requirements, including:
@@ -146,21 +148,7 @@ To expose the PostgreSQL cluster credentials to your application, follow one of 
 * [Create a Pod that has access to the secret data through a Volume](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume)
 * [Define container environment variables using Secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data)
 
-## Deploy TimescaleDB on managed PostgreSQL.
-
-If you only want to use TimescaleDB on your cluster, ask your administrator to [provision a new standard PostgreSQL cluster](https://elastisys.io/compliantkubernetes/user-guide/additional-services/postgresql/#provision-a-new-postgresql-cluster). Then set up the TimescaleDB extension.
-
-* Connect to the created database:
-```bash
-\c $APP_DATABASE
-```
-* Add the TimescaleDB extension:
-```bash
-CREATE EXTENSION IF NOT EXISTS timescaledb;
-```
-
-!!!important
-    Due to very different performance-tuning characteristics, Timescale and PostgreSQL databases should never run on the same PostgreSQL cluster.
+<!--postgresql-setup-end-->
 
 ## Follow the Go-Live Checklist
 
