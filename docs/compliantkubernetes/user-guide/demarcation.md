@@ -1,5 +1,7 @@
 ---
 description: The demarcation between what users can and cannot do in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+tags:
+- APP.4.4.A3
 ---
 
 Can I?
