@@ -43,6 +43,7 @@ The remainder of this page contains open questions that you should ask your clou
     1. How can I create roles? Via an API? Via a UI? Via a Terraform provider?
     1. What services can I configure role-based access control for?
     1. Can IAM be configured via API? Can IAM be configured via Terraform?
+    1. Can one single user be given access to multiple projects?
 1. Infrastructure aaS:
     1. Which IaaS engine do you use? (e.g., OpenStack, VMware, proprietary)
     1. Do you have a Terraform provider for your API?
