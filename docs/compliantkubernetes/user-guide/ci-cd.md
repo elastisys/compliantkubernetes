@@ -1,5 +1,8 @@
 ---
 description: Integrating with CI/CD in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+tags:
+- BSI IT-Grundschutz APP.4.4.A2
+- BSI IT-Grundschutz APP.4.4.A10
 ---
 
 CI/CD Integration
