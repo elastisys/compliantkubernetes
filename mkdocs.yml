@@ -65,7 +65,8 @@ nav:
       - 'Step 3: Operate': 'compliantkubernetes/user-guide/operate.md'
     - 'Go Deeper':
       - 'Prepare Your Application': 'compliantkubernetes/user-guide/prepare-application.md'
-      - 'Container registry': 'compliantkubernetes/user-guide/registry.md'
+      - 'Container Registry': 'compliantkubernetes/user-guide/registry.md'
+      - 'Distributed Tracing': 'compliantkubernetes/user-guide/distributed-tracing.md'
       - 'Network Model': 'compliantkubernetes/user-guide/network-model.md'
       - 'Kubernetes API': 'compliantkubernetes/user-guide/kubernetes-api.md'
       - 'Kubernetes UI (Lens)': 'compliantkubernetes/user-guide/kubernetes-ui.md'

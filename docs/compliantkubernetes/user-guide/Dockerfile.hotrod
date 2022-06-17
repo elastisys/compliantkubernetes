@@ -1,0 +1,12 @@
+FROM jaegertracing/example-hotrod:1.35 as hotrod
+
+FROM alpine:3
+EXPOSE 8080 8081 8082 8083
+RUN addgroup -S -g 10000 jaeger && adduser -S -u 10000 -G jaeger jaeger
+
+COPY --from=hotrod /go/bin/hotrod-linux /usr/local/bin/hotrod
+
+USER jaeger
+
+ENTRYPOINT ["/usr/local/bin/hotrod"]
+CMD ["all"]
