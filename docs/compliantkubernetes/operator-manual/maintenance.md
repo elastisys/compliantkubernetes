@@ -72,6 +72,7 @@ Note that you should check the documentation at the release tag instead of `main
     ```bash
     ./bin/ck8s dry-run sc
     ./bin/ck8s dry-run wc
+    ```
 
 4. If dry-run reports no errors, proceed with the upgrade.
 

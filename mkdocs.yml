@@ -75,6 +75,7 @@ nav:
       - 'Log-based Alerts': 'compliantkubernetes/user-guide/log-based-alerts.md'
       - 'Metrics': 'compliantkubernetes/user-guide/metrics.md'
       - 'Metric Alerts': 'compliantkubernetes/user-guide/alerts.md'
+      - 'Maintenance': 'compliantkubernetes/user-guide/maintenance.md'
       - 'Backups': 'compliantkubernetes/user-guide/backup.md'
       - 'CI/CD': 'compliantkubernetes/user-guide/ci-cd.md'
       - 'Demarcation': 'compliantkubernetes/user-guide/demarcation.md'
