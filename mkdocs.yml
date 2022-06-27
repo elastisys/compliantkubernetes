@@ -15,6 +15,8 @@ copyright: >-
   Redis is a trademark of Redis Ltd. Any rights therein are reserved to Redis Ltd. Any use by the Compliant Kubernetes project is for referential purposes only and does not indicate any sponsorship, endorsement or affiliation between Redis and Compliant Kubernetes project.
   <br/>
   RabbitMQ is a trademark of VMware, Inc. in the U.S. and other countries.
+  <br/>
+  TimescaleDB and the EON mascot are trademarks of <a href="https://www.timescale.com/">Timescale, Inc.</a>
 
 repo_url: https://github.com/elastisys/compliantkubernetes
 edit_uri: edit/main/docs/
@@ -89,6 +91,7 @@ nav:
     - 'Additional Services':
       - 'Overview': 'compliantkubernetes/user-guide/additional-services/index.md'
       - 'PostgreSQL': 'compliantkubernetes/user-guide/additional-services/postgresql.md'
+      - 'TimescaleDB': 'compliantkubernetes/user-guide/additional-services/timescaledb.md'
       - 'Redis': 'compliantkubernetes/user-guide/additional-services/redis.md'
       - 'RabbitMQ': 'compliantkubernetes/user-guide/additional-services/rabbitmq.md'
     - 'Go-live Checklist': 'compliantkubernetes/user-guide/go-live.md'
