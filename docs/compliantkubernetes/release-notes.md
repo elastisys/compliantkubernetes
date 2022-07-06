@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.23.0](#v0230) - 2022-07-06
 - [v0.22.0](#v0220) - 2022-06-01
 - [v0.21.0](#v0210) - 2022-05-04
 - [v0.20.0](#v0200) - 2022-03-21
@@ -19,6 +20,27 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.23.0
+
+Released 2022-07-06
+
+#### Updated
+- **Updated the ingress controller `ingress-nginx` to image version v1.2.1**<br/>
+  - You can find the changelog [here](https://github.com/kubernetes/ingress-nginx/releases/tag/controller-v1.2.1).
+
+#### Changed
+
+- **Added support for accessing Alertmanager via port-forward**<br/>
+
+#### Added
+
+- **Backups can now be encrypted before they are replicated to an off-site S3 service.**<br/>
+- **Improved metrics and alerting for OpenSearch.**<br/>
+
+#### Fixed
+
+- **The deployment of Dex is now properly configured to be HA, ensuring that the Dex instances are placed on different Kubernetes worker nodes.**<br/>
 
 ### v0.22.0
 
