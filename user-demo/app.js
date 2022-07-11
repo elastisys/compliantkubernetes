@@ -4,6 +4,11 @@ const path = require('path');
 const logger = require('morgan');
 const promBundle = require("express-prom-bundle");
 
+const jaegerEndpoint = process.env.JAEGER_EXPORTER_ENDPOINT || '';
+if (isNaN(jaegerEndpoint)) {
+const tracer = require('./tracing')('user-demo');
+}
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const crashRouter = require('./routes/crash');

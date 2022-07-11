@@ -6,6 +6,15 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "@opentelemetry/api": "^1.1.0",
+    "@opentelemetry/exporter-jaeger": "^1.4.0",
+    "@opentelemetry/instrumentation": "^0.30.0",
+    "@opentelemetry/instrumentation-express": "^0.30.0",
+    "@opentelemetry/instrumentation-http": "^0.30.0",
+    "@opentelemetry/resources": "^1.4.0",
+    "@opentelemetry/sdk-trace-base": "^1.4.0",
+    "@opentelemetry/sdk-trace-node": "^1.4.0",
+    "@opentelemetry/semantic-conventions": "^1.4.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",

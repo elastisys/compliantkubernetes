@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  # user-demo app
+  user-demo:
+    build: .
+    ports:
+      - "3000:3000"
+    networks:
+      - jaeger-user-demo
+    depends_on:
+      - jaeger-all-in-one
+    environment:
+      JAEGER_EXPORTER_ENDPOINT: ${JAEGER_EXPORTER_ENDPOINT}
+
+  # jaeger
+  jaeger-all-in-one:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686"
+      - "14268:14268"
+    networks:
+      - jaeger-user-demo
+
+networks:
+  jaeger-user-demo:
