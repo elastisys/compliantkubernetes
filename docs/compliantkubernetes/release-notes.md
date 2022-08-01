@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.24.1](#v0241) - 2022-08-01
 - [v0.24.0](#v0240) - 2022-07-25
 - [v0.23.0](#v0230) - 2022-07-06
 - [v0.22.0](#v0220) - 2022-06-01
@@ -21,6 +22,16 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+# v0.24.1 - 2022-08-01
+
+Released 2022-08-01
+
+- **Required patch to be able to use release `v0.24.0`**<br/>
+
+#### Fixed
+
+- Fixed a formatting issue with harbor s3 configuration.
 
 ## v0.24.0
 
