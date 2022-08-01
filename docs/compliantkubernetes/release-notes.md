@@ -268,6 +268,7 @@ Changes:
 
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
+- [v2.19.0-ck8s2](#v2190-ck8s2) - 2022-07-22
 - [v2.19.0-ck8s1](#v2190-ck8s1) - 2022-06-27
 - [v2.18.1-ck8s1](#v2181-ck8s1) - 2022-04-26
 - [v2.18.0-ck8s1](#v2180-ck8s1) - 2022-02-18
@@ -279,6 +280,15 @@ Changes:
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/CHANGELOG.md).
+
+### v2.19.0-ck8s2
+
+Released 2022-07-22
+
+Changes:
+
+- Added option to clusteradmin kubeconfigs to use OIDC for authentication.
+- New ansible playbooks to manage kubeconfigs and some RBAC.
 
 ### v2.19.0-ck8s1
 
