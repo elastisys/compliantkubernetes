@@ -23,7 +23,7 @@
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
 
-# v0.24.1 - 2022-08-01
+## v0.24.1
 
 Released 2022-08-01
 
