@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.24.0](#v0240) - 2022-07-25
 - [v0.23.0](#v0230) - 2022-07-06
 - [v0.22.0](#v0220) - 2022-06-01
 - [v0.21.0](#v0210) - 2022-05-04
@@ -20,6 +21,25 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+## v0.24.0
+
+Released 2022-07-25
+
+#### Updated
+
+- **Upgraded Helm stack**<br/>
+  Upgrades for Helm, Helmfile and Helm-secrets.
+
+- **Image upgrade to node-local-dns**<br/>
+
+#### Changed
+
+- **Improved stability to automatic node reboots**<br/>
+
+#### Added
+
+- **Further configurability to ingress-nginx**<br/>
 
 ### v0.23.0
 
