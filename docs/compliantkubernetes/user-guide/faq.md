@@ -75,9 +75,63 @@ If you are not using groups, contact your administrator.
 
 ## How do I add a new namespace?
 
-Unfortunately, it is currently not possible to make adding/changing/removing namespaces self-serviced without compromising the security of the platform. While [several promising approaches](https://kubernetes.io/blog/2020/08/14/introducing-hierarchical-namespaces/) exist, they have yet to reach the maturity we require for Compliant Kubernetes.
+In Compliant Kubernetes v0.25.0 and later [Hierarchical Namespace Controller](https://github.com/kubernetes-sigs/hierarchical-namespaces) (HNC) is included, and it allows the super application developer to manage namespaces as subnamespaces and delegates access automatically. From the perspective of Kubernetes these are regular namespaces, but these can be modified via a namespaced resource by the user. In Compliant Kubernetes versions prior to v0.25.0 HNC is not included, for these versions please ask your administrator for creating a new namespace.
 
-Therefore, for the time being, please ask your administrator for creating a new namespace.
+!!!note
+    When a subnamespace is created all roles and rolebindings will propagate from the parent namespace to the descendant namespace to ensure that correct access is set.
+    Propagated copies cannot be modified, these types of resources cannot be created in a parent namespace if it conflicts with a resource in a descendant namespace.
+
+    To put an exception annotate the role or rolebinding with `propagate.hnc.x-k8s.io/none: "true"` to prevent if from being propagated at all.
+    Or to only propagate to selected descendant namespaces use `propagate.hnc.x-k8s.io/treeSelect: ...`, include descendant namespaces with `<descendant-namespace>` or exclude namespaces with `!<descendant-namespace>`.
+
+Creating a subnamespace:
+```bash
+kubectl apply -f - <<EOF
+apiVersion: hnc.x-k8s.io/v1alpha2
+kind: SubnamespaceAnchor
+metadata:
+  name: <descendant-namespace>
+  namespace: <parent-namespace>
+EOF
+```
+
+Verify that it gets created:
+```bash
+kubectl get ns <descendant-namespace>
+```
+
+Verify that it gets configured:
+```console
+$ kubectl get subns -n <parent-namespace> <descendant-namespace> -o yaml
+apiVersion: hnc.x-k8s.io/v1alpha2
+kind: SubnamespaceAnchor
+metadata:
+	...
+  name: <descendant-namespace>
+  namespace: <parent-namespace>
+...
+status:
+  status: Ok
+```
+
+If the status is `Ok` then the subnamespace is ready to go.
+
+!!!tip
+    HNC also comes with the [HNS `kubectl` plugin](https://github.com/kubernetes-sigs/hierarchical-namespaces/blob/master/docs/user-guide/how-to.md#prepare-to-use-hierarchical-namespaces-as-a-user).
+
+    Using this plugin creating subnamespaces is as easy as:
+    ```bash
+    kubectl hns create -n <parent-namespace> <descendant-namespace>
+    ```
+
+    And provides more detailed information using:
+    ```bash
+    kubectl hns describe <namespace>
+
+    kubectl hns tree <namespace>
+    ```
+
+For more information about how to use HNC see their [user documentation](https://github.com/kubernetes-sigs/hierarchical-namespaces/tree/master/docs/user-guide).
 
 ## Why can't I access my cluster? 'Bad Request Unregistered redirect_uri ("http://localhost:18000").'
 
