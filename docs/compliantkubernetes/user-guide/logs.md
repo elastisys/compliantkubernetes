@@ -58,7 +58,7 @@ Let us dive into it then.
 
 ### Data Visualization and Exploration
 
-As you can see in the figure above, data visualzation and exploration in OpenSearch Dashboards has three components: **Discover**, **Visualize** and **Dashboard**. The following section describes each components using examples.
+As you can see in the figure above, data visualization and exploration in OpenSearch Dashboards has three components: **Discover**, **Visualize** and **Dashboard**. The following section describes each components using examples.
 
 !!!note
     These following examples were created for Open Distro for Elasticsearch and Kibana, however the user experience is the same when using OpenSearch Dashboards.

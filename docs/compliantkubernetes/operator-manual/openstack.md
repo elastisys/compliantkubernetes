@@ -652,7 +652,7 @@ The following are the minimum change you should perform:
     alerts:
       opsGenieHeartbeat:
         # enabled: true # set as default for prod flavour, defaults to "false" for dev
-        name: set-me    # set to name the hearbeat if enabled
+        name: set-me    # set to name the heartbeat if enabled
 
     issuers:
       letsencrypt:
@@ -750,7 +750,7 @@ The following are the minimum change you should perform:
     alerts:
       opsGenieHeartbeat:
         # enabled: true # set as default for prod flavour, defaults to "false" for dev
-        name: set-me    # set to name the hearbeat if enabled
+        name: set-me    # set to name the heartbeat if enabled
 
     issuers:
       letsencrypt:
