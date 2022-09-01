@@ -50,7 +50,36 @@ IP addresses of Pods are not stable. For example, the rollout of a new container
 
 Your application users should never ever access the private network directly. Instead external access is enabled by creating Ingress objects. Compliant Kubernetes already comes with cert-manager and is already configured with a ClusterIssuer. A secure ACME protocol is used to issue and rotate certificates using the [LetsEncrypt](https://letsencrypt.org/) public service.
 
-You only need to create an Ingress object with the right `metadata.annotations` and `spec.tls`, as exemplified below:
+Assuming you configured a Service and a Deployment for you application, making application users access your application involves two steps:
+
+1. Create the right DNS CNAME record.
+2. Create the right Ingress resource.
+
+### Running Example
+
+Let us assume you want to host your application behind the nicely branded domain `demo.example.com`. Proceed as follows:
+
+For step 1, create a DNS CNAME as follows:
+
+```
+demo.example.com. 900 CNAME app.$DOMAIN.
+```
+
+where `$DOMAIN` is the environment-specific variable [you received from the administrator](https://elastisys.io/compliantkubernetes/user-guide/prepare/#access-your-web-portals). The line above is presented in [DNS Zone file](https://en.wikipedia.org/wiki/Zone_file) format and is widely accepted by DNS providers.
+
+After configuration, make sure the DNS record is properly configured and propagaged, by typing:
+
+```bash
+host -a demo.example.com.
+```
+
+!!!important
+    In the above examples, the domain name is [fully qualified](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), i.e., it ends with a dot. Make sure your DNS provider does not mis-interpret it as a relative domain name. Otherwise, you risk creating a DNS record like `demo.example.com.example.com` which is rarely what you want.
+
+!!!important
+    Be cautious when using CNAMEs and apex domains (e.g., `example.com`). See [here](https://serverfault.com/questions/613829/why-cant-a-cname-record-be-used-at-the-apex-aka-root-of-a-domain) for a long discussion of potential problems and current workarounds.
+
+For step 2, create an Ingress object with the right `metadata.annotations` and `spec.tls`, as exemplified below:
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -94,7 +123,7 @@ spec:
     If you want to protect your Ingress with OAuth2-based authentication, check out [oauth2-proxy](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/oauth2-proxy.yaml).
 
 !!!important
-    The DNS name in `spec.rules[0].host` and `spec.tls[0].hosts[0]` must be the same as the DNS entry used by your application users. Otherwise, the application users will get a "Your connection is not private" error.
+    The DNS name in `spec.rules[0].host` and `spec.tls[0].hosts[0]` must be the same as the DNS entry used by your application users, in the example above `demo.example.com`. Otherwise, the application users will get a "Your connection is not private" error.
 
 !!!important
     Some load-balancers fronting Compliant Kubernetes do not preserve source IP. This makes source IP allowlisting unusable.
