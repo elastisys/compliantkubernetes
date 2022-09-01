@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.25.0](#v0250) - 2022-08-25
 - [v0.24.1](#v0241) - 2022-08-01
 - [v0.24.0](#v0240) - 2022-07-25
 - [v0.23.0](#v0230) - 2022-07-06
@@ -23,7 +24,27 @@
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
 
-## v0.24.1
+### v0.25.0
+
+Released 2022-08-25
+
+#### Added
+
+- **Added Hierarchical Namespace Controller**<br/> Allowing users to create and manage subnamespaces, namespaces within namespaces. You can read more about this in our [FAQ](https://elastisys.io/compliantkubernetes/user-guide/faq/#how-do-i-add-a-new-namespace).
+- **Added support for custom solvers in cluster issuers** <br/> Allowing DNS01 challenges for certificate requests.
+- **Added support for running Harbor in High Availability**
+
+#### Updated
+
+- **Updated cert-manager from v1.6.1 to v1.8.2** <br/> API versions `v1alpha2`, `v1alpha3`, and `v1beta1` have been removed from the custom resource definitions (CRDs), certificate rotation policy will now be validated. See their [changelog](https://github.com/cert-manager/cert-manager/releases) for more details.
+
+- **Updated OpenSearch with new usability improvements and features** <br/> Checkout their [launch announcement](https://opensearch.org/blog/releases/2022/03/launch-announcement-1-3-0/).
+
+#### Changed
+
+- **New additions to the Kubernetes cluster status Grafana dashboard** <br/> It now shows information about resource requests and limits per node, and resource usage vs request per pod.
+
+### v0.24.1
 
 Released 2022-08-01
 
@@ -33,7 +54,7 @@ Released 2022-08-01
 
 - Fixed a formatting issue with harbor s3 configuration.
 
-## v0.24.0
+### v0.24.0
 
 Released 2022-07-25
 
