@@ -143,7 +143,12 @@ nav:
     - 'Architecture': 'compliantkubernetes/architecture.md'
     - 'Architectural Decision Log': 'compliantkubernetes/adr/index.md'
     - 'Tech Radar': 'compliantkubernetes/tech-radar/index.html'
-  - 'Release Notes': 'compliantkubernetes/release-notes.md'
+  - 'Release Notes':
+    - 'Compliant Kubernetes': 'compliantkubernetes/release-notes/ck8s.md'
+    - 'CK8S Kubespray': 'compliantkubernetes/release-notes/kubespray.md'
+    - 'CK8S PostgreSQL': 'compliantkubernetes/release-notes/postgres.md'
+    - 'CK8S RabbitMQ': 'compliantkubernetes/release-notes/rabbitmq.md'
+    - 'CK8S Redis': 'compliantkubernetes/release-notes/redis.md'
   - 'Roadmap': 'compliantkubernetes/roadmap.md'
   - 'Support ⧉': 'https://elastisys.com/'
   - 'Blog ⧉': 'https://elastisys.com/blog/'

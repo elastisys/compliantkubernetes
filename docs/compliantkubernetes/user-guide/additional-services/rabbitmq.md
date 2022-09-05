@@ -115,6 +115,10 @@ To expose the AMQP URL to your application, follow one of the following upstream
 You should be all set.
 Before going into production, don't forget to go through the [go-live checklist](../go-live.md).
 
+## CK8S RabbitMQ Release Notes
+
+Check out the [release notes](../../release-notes/rabbitmq.md) for the RabbitMQ cluster that runs in Compliant Kubernetes environments!
+
 ## Further Reading
 
 * [RabbitMQ Management UI](https://www.rabbitmq.com/management.html)
