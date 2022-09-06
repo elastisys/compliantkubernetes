@@ -118,6 +118,10 @@ To expose the Redis cluster to your application, follow one of the following ups
 You should be all set.
 Before going into production, don't forget to go through the [go-live checklist](../go-live.md).
 
+## CK8S Redis Release Notes
+
+Check out the [release notes](../../release-notes/redis.md) for the Redis cluster that runs in Compliant Kubernetes environments!
+
 ## Further Reading
 
 * [Redis Sentinel](https://redis.io/topics/sentinel)
