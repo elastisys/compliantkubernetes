@@ -1,8 +1,8 @@
-name: deploy
+name: deploy-main
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main,release-* ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -11,7 +11,28 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Deploy docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install Python dependencies
+        run: python3 -m pip install -r ./requirements.txt
+
+      - name: Configure Git user
+        run: |
+          git config --local user.email "${GITHUB_ACTOR}@users.noreply.${GITHUB_DOMAIN:-"github.com"}"
+          git config --local user.name "${GITHUB_ACTOR}"
+
+      - name: Configure Git user
+        run: git fetch origin gh-pages --depth=1
+
+      - name: Deploy with mike
+        run: |
+          if [ "$GITHUB_REF_NAME" == "main" ]; then
+              # Latest version of the docs goes under https://elastisys.io/compliantkubernetes
+              VERSION_TITLE="main"
+              VERSION="compliantkubernetes ck8s"
+          else
+              # Other versions go under https://elastisys.io/compliantkubernetes-v0.25/
+              VERSION_TITLE=$(echo "$GITHUB_REF_NAME" | cut -d- -f2)
+              VERSION="compliantkubernetes-${VERSION_TITLE}"
+          fi
+          echo version: $VERSION version-title: $VERSION_TITLE
+          mike deploy $VERSION -t $VERSION_TITLE
+          mike set-default compliantkubernetes --push
