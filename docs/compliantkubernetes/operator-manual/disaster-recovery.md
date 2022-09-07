@@ -383,12 +383,3 @@ To restore the Grafana backup you must:
     ```bash
     velero restore create --from-schedule velero-daily-backup --wait
     ```
-
-You can also restore Grafana by setting `restore.velero` in your `{CK8S_CONFIG_PATH}/sc-config.yaml` to `true`, and then reapply the service cluster apps:
-
-```bash
-.bin/ck8s apply sc
-```
-
- This will go through the same steps as above.
- By default, the latest daily backup is chosen; to restore from a different backup, set `restore.veleroBackupName` to the desired backup name.
