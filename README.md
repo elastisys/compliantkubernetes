@@ -19,7 +19,7 @@ sudo apt-get install graphviz make
 
 ## Usage
 
-* To view locally: `mkdocs serve`.
+* To view locally: `mike serve`.
 * To re-generate figures: `make -C docs/img`. **For simplicity, please commit generated figures. Prefer PNG (width == 1200px), to facilitate embedded logos.**
 * For continuous preview of figures: `make -C docs/img preview`.
 
@@ -29,6 +29,7 @@ sudo apt-get install graphviz make
 * [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
 * [GitHub Pages](https://pages.github.com/)
 * [Graphviz](https://graphviz.org/)
+* [mike](https://github.com/jimporter/mike)
 
 ## Deployment
 

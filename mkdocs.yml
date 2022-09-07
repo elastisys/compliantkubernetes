@@ -18,7 +18,7 @@ copyright: >-
   <br/>
   TimescaleDB and the EON mascot are trademarks of <a href="https://www.timescale.com/">Timescale, Inc.</a>
 
-repo_url: https://github.com/elastisys/compliantkubernetes
+repo_url: https://github.com/elastisys
 edit_uri: edit/main/docs/
 
 strict: true
@@ -26,8 +26,8 @@ strict: true
 theme:
   name: material
   font: false
-  logo: 'compliantkubernetes/img/logo.png'
-  favicon: 'compliantkubernetes/img/favicon.png'
+  logo: 'img/logo.png'
+  favicon: 'img/favicon.png'
   custom_dir: overrides
   palette:
     scheme: elastisys
@@ -41,8 +41,14 @@ extra_css:
 plugins:
   - include-markdown
   - search
+  - mike:
+      # these fields are all optional; the defaults are as below...
+      version_selector: true   # set to false to leave out the version selector
+      css_dir: css             # the directory to put the version selector's CSS
+      javascript_dir: js       # the directory to put the version selector's JS
+      canonical_version: null
   - tags:
-      tags_file: compliantkubernetes/ciso-guide/controls.md
+      tags_file: ciso-guide/controls.md
 
 markdown_extensions:
   - attr_list
@@ -60,95 +66,99 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
 
+extra:
+  version:
+    provider: mike
+
 nav:
-  - Overview: 'compliantkubernetes/index.md'
+  - Overview: 'index.md'
   - 'For Application Developers':
     - 'Getting Started':
-      - 'Step 1: Prepare': 'compliantkubernetes/user-guide/prepare.md'
-      - 'Step 2: Deploy': 'compliantkubernetes/user-guide/deploy.md'
-      - 'Step 3: Operate': 'compliantkubernetes/user-guide/operate.md'
+      - 'Step 1: Prepare': 'user-guide/prepare.md'
+      - 'Step 2: Deploy': 'user-guide/deploy.md'
+      - 'Step 3: Operate': 'user-guide/operate.md'
     - 'Go Deeper':
-      - 'Prepare Your Application': 'compliantkubernetes/user-guide/prepare-application.md'
-      - 'Container registry': 'compliantkubernetes/user-guide/registry.md'
-      - 'Network Model': 'compliantkubernetes/user-guide/network-model.md'
-      - 'Kubernetes API': 'compliantkubernetes/user-guide/kubernetes-api.md'
-      - 'Kubernetes UI (Lens)': 'compliantkubernetes/user-guide/kubernetes-ui.md'
-      - 'Logs': 'compliantkubernetes/user-guide/logs.md'
-      - 'Log-based Alerts': 'compliantkubernetes/user-guide/log-based-alerts.md'
-      - 'Metrics': 'compliantkubernetes/user-guide/metrics.md'
-      - 'Metric Alerts': 'compliantkubernetes/user-guide/alerts.md'
-      - 'Maintenance': 'compliantkubernetes/user-guide/maintenance.md'
-      - 'Backups': 'compliantkubernetes/user-guide/backup.md'
-      - 'CI/CD': 'compliantkubernetes/user-guide/ci-cd.md'
-      - 'Demarcation': 'compliantkubernetes/user-guide/demarcation.md'
-      - 'How to Delegate': 'compliantkubernetes/user-guide/delegation.md'
+      - 'Prepare Your Application': '/user-guide/prepare-application.md'
+      - 'Container registry': 'user-guide/registry.md'
+      - 'Network Model': 'user-guide/network-model.md'
+      - 'Kubernetes API': 'user-guide/kubernetes-api.md'
+      - 'Kubernetes UI (Lens)': 'user-guide/kubernetes-ui.md'
+      - 'Logs': 'user-guide/logs.md'
+      - 'Log-based Alerts': 'user-guide/log-based-alerts.md'
+      - 'Metrics': 'user-guide/metrics.md'
+      - 'Metric Alerts': 'user-guide/alerts.md'
+      - 'Maintenance': 'user-guide/maintenance.md'
+      - 'Backups': 'user-guide/backup.md'
+      - 'CI/CD': 'user-guide/ci-cd.md'
+      - 'Demarcation': 'user-guide/demarcation.md'
+      - 'How to Delegate': 'user-guide/delegation.md'
     - 'Safeguards':
-      - 'Overview': 'compliantkubernetes/user-guide/safeguards/index.md'
-      - 'Enforce No Root': 'compliantkubernetes/user-guide/safeguards/enforce-no-root.md'
-      - 'Enforce NetworkPolicies': 'compliantkubernetes/user-guide/safeguards/enforce-networkpolicies.md'
-      - 'Enforce Resources': 'compliantkubernetes/user-guide/safeguards/enforce-resources.md'
-      - 'Enforce Trusted Registries': 'compliantkubernetes/user-guide/safeguards/enforce-trusted-registries.md'
+      - 'Overview': 'user-guide/safeguards/index.md'
+      - 'Enforce No Root': 'user-guide/safeguards/enforce-no-root.md'
+      - 'Enforce NetworkPolicies': 'user-guide/safeguards/enforce-networkpolicies.md'
+      - 'Enforce Resources': 'user-guide/safeguards/enforce-resources.md'
+      - 'Enforce Trusted Registries': 'user-guide/safeguards/enforce-trusted-registries.md'
     - 'Additional Services':
-      - 'Overview': 'compliantkubernetes/user-guide/additional-services/index.md'
-      - 'PostgreSQL': 'compliantkubernetes/user-guide/additional-services/postgresql.md'
-      - 'TimescaleDB': 'compliantkubernetes/user-guide/additional-services/timescaledb.md'
-      - 'Redis': 'compliantkubernetes/user-guide/additional-services/redis.md'
-      - 'RabbitMQ': 'compliantkubernetes/user-guide/additional-services/rabbitmq.md'
-    - 'Go-live Checklist': 'compliantkubernetes/user-guide/go-live.md'
-    - 'Troubleshooting': 'compliantkubernetes/user-guide/troubleshooting.md'
-    - 'FAQ': 'compliantkubernetes/user-guide/faq.md'
+      - 'Overview': 'user-guide/additional-services/index.md'
+      - 'PostgreSQL': 'user-guide/additional-services/postgresql.md'
+      - 'TimescaleDB': 'user-guide/additional-services/timescaledb.md'
+      - 'Redis': 'user-guide/additional-services/redis.md'
+      - 'RabbitMQ': 'user-guide/additional-services/rabbitmq.md'
+    - 'Go-live Checklist': 'user-guide/go-live.md'
+    - 'Troubleshooting': 'user-guide/troubleshooting.md'
+    - 'FAQ': 'user-guide/faq.md'
   - 'For Kubernetes Administrators':
-    - 'Overview': 'compliantkubernetes/operator-manual/index.md'
-    - 'Getting Started': 'compliantkubernetes/operator-manual/getting-started.md'
-    - 'Provider Audit': 'compliantkubernetes/operator-manual/provider-audit.md'
+    - 'Overview': 'operator-manual/index.md'
+    - 'Getting Started': 'operator-manual/getting-started.md'
+    - 'Provider Audit': 'operator-manual/provider-audit.md'
     - 'Creating/Destroying/Upgrading a Cluster':
-      - 'On AWS': 'compliantkubernetes/operator-manual/aws.md'
-      - 'On Azure': 'compliantkubernetes/operator-manual/azure.md'
-      - 'On Exoscale': 'compliantkubernetes/operator-manual/exoscale.md'
-      - 'On GCP': 'compliantkubernetes/operator-manual/gcp.md'
-      - 'On Openstack': 'compliantkubernetes/operator-manual/openstack.md'
-      - 'On Safespring': 'compliantkubernetes/operator-manual/safespring.md'
-      - 'On OVH Managed Kubernetes': 'compliantkubernetes/operator-manual/ovh-managed-kubernetes.md'
-      - 'On EKS-D': 'compliantkubernetes/operator-manual/eksd.md'
-      - 'Remove Compliant Kubernetes Apps': 'compliantkubernetes/operator-manual/clean-up.md'
-    - 'QA': 'compliantkubernetes/operator-manual/qa.md'
+      - 'On AWS': 'operator-manual/aws.md'
+      - 'On Azure': 'operator-manual/azure.md'
+      - 'On Exoscale': 'operator-manual/exoscale.md'
+      - 'On GCP': 'operator-manual/gcp.md'
+      - 'On Openstack': 'operator-manual/openstack.md'
+      - 'On Safespring': 'operator-manual/safespring.md'
+      - 'On OVH Managed Kubernetes': 'operator-manual/ovh-managed-kubernetes.md'
+      - 'On EKS-D': 'operator-manual/eksd.md'
+      - 'Remove Compliant Kubernetes Apps': 'operator-manual/clean-up.md'
+    - 'QA': 'operator-manual/qa.md'
     - 'Advanced Configuration':
-      - 'Overview' : 'compliantkubernetes/operator-manual/configure.md'
-      - 'Sizing' : 'compliantkubernetes/operator-manual/cluster-sizing.md'
-      - 'Ingress': 'compliantkubernetes/operator-manual/ingress.md'
-      - 'Access Control': 'compliantkubernetes/operator-manual/access-control.md'
-      - 'User Alerts': 'compliantkubernetes/operator-manual/user-alerts.md'
-    - 'Disaster Recovery': 'compliantkubernetes/operator-manual/disaster-recovery.md'
-    - 'Breaking the Glass': 'compliantkubernetes/operator-manual/break-glass.md'
-    - 'Use of Credentials': 'compliantkubernetes/operator-manual/credentials.md'
-    - 'Capacity Management': 'compliantkubernetes/operator-manual/capacity-management.md'
-    - 'Maintenance': 'compliantkubernetes/operator-manual/maintenance.md'
-    - 'Troubleshooting': 'compliantkubernetes/operator-manual/troubleshooting.md'
-    - 'FAQ': 'compliantkubernetes/operator-manual/faq.md'
+      - 'Overview' : 'operator-manual/configure.md'
+      - 'Sizing' : 'operator-manual/cluster-sizing.md'
+      - 'Ingress': 'operator-manual/ingress.md'
+      - 'Access Control': 'operator-manual/access-control.md'
+      - 'User Alerts': 'operator-manual/user-alerts.md'
+    - 'Disaster Recovery': 'operator-manual/disaster-recovery.md'
+    - 'Breaking the Glass': 'operator-manual/break-glass.md'
+    - 'Use of Credentials': 'operator-manual/credentials.md'
+    - 'Capacity Management': 'operator-manual/capacity-management.md'
+    - 'Maintenance': 'operator-manual/maintenance.md'
+    - 'Troubleshooting': 'operator-manual/troubleshooting.md'
+    - 'FAQ': 'operator-manual/faq.md'
   - 'For CISOs':
-    - 'Overview': 'compliantkubernetes/ciso-guide/index.md'
-    - 'ISO 27001 and BSI IT-Grundschutz': 'compliantkubernetes/ciso-guide/controls.md'
-    - 'Audit Logs': 'compliantkubernetes/ciso-guide/audit-logs.md'
-    - 'Backup': 'compliantkubernetes/ciso-guide/backup.md'
-    - 'Cryptography': 'compliantkubernetes/ciso-guide/cryptography.md'
-    - 'Intrusion Detection': 'compliantkubernetes/ciso-guide/intrusion-detection.md'
-    - 'Policy-as-Code': 'compliantkubernetes/ciso-guide/policy-as-code.md'
-    - 'Network Security': 'compliantkubernetes/ciso-guide/network-security.md'
-    - 'Capacity Management': 'compliantkubernetes/ciso-guide/capacity-management.md'
-    - 'Vulnerability Management': 'compliantkubernetes/ciso-guide/vulnerability.md'
-    - 'Log Review': 'compliantkubernetes/ciso-guide/log-review.md'
-    - 'FAQ': 'compliantkubernetes/ciso-guide/faq.md'
+    - 'Overview': 'ciso-guide/index.md'
+    - 'ISO 27001 and BSI IT-Grundschutz': 'ciso-guide/controls.md'
+    - 'Audit Logs': 'ciso-guide/audit-logs.md'
+    - 'Backup': 'ciso-guide/backup.md'
+    - 'Cryptography': 'ciso-guide/cryptography.md'
+    - 'Intrusion Detection': 'ciso-guide/intrusion-detection.md'
+    - 'Policy-as-Code': 'ciso-guide/policy-as-code.md'
+    - 'Network Security': 'ciso-guide/network-security.md'
+    - 'Capacity Management': 'ciso-guide/capacity-management.md'
+    - 'Vulnerability Management': 'ciso-guide/vulnerability.md'
+    - 'Log Review': 'ciso-guide/log-review.md'
+    - 'FAQ': 'ciso-guide/faq.md'
   - 'For Contributors':
-    - 'Overview': 'compliantkubernetes/contributor-guide/index.md'
-    - 'Architecture': 'compliantkubernetes/architecture.md'
-    - 'Architectural Decision Log': 'compliantkubernetes/adr/index.md'
-    - 'Tech Radar': 'compliantkubernetes/tech-radar/index.html'
+    - 'Overview': 'contributor-guide/index.md'
+    - 'Architecture': 'architecture.md'
+    - 'Architectural Decision Log': 'adr/index.md'
+    - 'Tech Radar': 'tech-radar/index.html'
   - 'Release Notes':
-    - 'Compliant Kubernetes': 'compliantkubernetes/release-notes/ck8s.md'
-    - 'CK8S Kubespray': 'compliantkubernetes/release-notes/kubespray.md'
-    - 'CK8S PostgreSQL': 'compliantkubernetes/release-notes/postgres.md'
-    - 'CK8S RabbitMQ': 'compliantkubernetes/release-notes/rabbitmq.md'
-    - 'CK8S Redis': 'compliantkubernetes/release-notes/redis.md'
-  - 'Roadmap': 'compliantkubernetes/roadmap.md'
+    - 'Compliant Kubernetes': 'release-notes/ck8s.md'
+    - 'CK8S Kubespray': 'release-notes/kubespray.md'
+    - 'CK8S PostgreSQL': 'release-notes/postgres.md'
+    - 'CK8S RabbitMQ': 'release-notes/rabbitmq.md'
+    - 'CK8S Redis': 'release-notes/redis.md'
+  - 'Roadmap': 'roadmap.md'
   - 'Support ⧉': 'https://elastisys.com/'
   - 'Blog ⧉': 'https://elastisys.com/blog/'
