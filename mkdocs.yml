@@ -87,6 +87,7 @@ nav:
       - 'Kubernetes UI (Lens)': 'user-guide/kubernetes-ui.md'
       - 'Logs': 'user-guide/logs.md'
       - 'Log-based Alerts': 'user-guide/log-based-alerts.md'
+      - 'Long-term Log Retention': 'user-guide/long-term-log-retention.md'
       - 'Metrics': 'user-guide/metrics.md'
       - 'Metric Alerts': 'user-guide/alerts.md'
       - 'Maintenance': 'user-guide/maintenance.md'
