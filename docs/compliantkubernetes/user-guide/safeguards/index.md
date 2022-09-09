@@ -5,7 +5,7 @@
 
     Some of these safeguards might be "inconvenient" and "easy to disable". Faced with tight deadlines, it might be tempting to pressure administrators to disable some of these safeguards.
 
-    **Prefer to keep these safeguards to avoid costly fines.** A safeguard should only be disabled if a risk assessment determined that the cost of implementation outweights the risk to personal data.
+    **Prefer to keep these safeguards to avoid costly fines.** A safeguard should only be disabled if a risk assessment determined that the cost of implementation outweighs the risk to personal data.
 
 > "Det ska vara lätt att göra rätt." (English: "It should be easy to do it right.")
 
