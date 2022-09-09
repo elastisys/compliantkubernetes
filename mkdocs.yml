@@ -33,6 +33,7 @@ theme:
     scheme: elastisys
   features:
     - toc.integrate
+    - content.tabs.link
 
 extra_css:
   - stylesheets/branding.css
@@ -59,7 +60,8 @@ markdown_extensions:
       use_pygments: true
   - pymdownx.snippets
   - pymdownx.superfences
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - toc:
       permalink: true
       toc_depth: 0
