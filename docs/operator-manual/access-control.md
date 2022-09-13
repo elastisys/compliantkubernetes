@@ -62,10 +62,6 @@ opensearch:
       definition:
         backend_roles:
           - my-group-name
-    - mapping_name: readall_and_monitor
-      definition:
-        backend_roles:
-          - my-group-name
 ```
 !!!note
     For Open Distro for Elasticsearch and Kibana used in v0.18 and earlier, the same configuration applies under the root key `elasticsearch` instead of `opensearch`.
