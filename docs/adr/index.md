@@ -1,6 +1,6 @@
 ---
 tags:
-- ISO 27001 A.14.1.1
+  - ISO 27001 A.14.1.1
 ---
 # Architectural Decision Log
 
@@ -93,6 +93,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0020](0020-filter-by-cluster-label-then-data-source.md) - Filter by cluster label then data source
 * [ADR-0021](0021-tls-for-additional-services.md) - Default to TLS for performance-insensitive additional services
 * [ADR-0022](0022-use-dedicated-nodes-for-additional-services.md) - Use Dedicated Nodes for Additional Services
+* [ADR-0023](0023-allow-snippets-annotations.md) - Only allow Ingress Configuration Snippet Annotations after Proper Risk Acceptance
 
 <!-- adrlogstop -->
 
