@@ -49,11 +49,11 @@ Compliant Kubernetes installs the prometheus-operator by default. The Prometheus
 | thanosrulers | monitoring.coreos.com | ThanosRuler | | |
 
 #### Accessing Prometheus
-The web interface is not exposed by default in Compliant Kubernetes. In order to access it, the most straight-forward way is to use port forwarding via the [Kubernetes API](../kubernetes-api).
+If you want to access the web interface of Prometheus, proceed as follows:
+    1. Type: `kubectl proxy`
+    2. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/monitoring/services/kube-prometheus-stack-prometheus:web/proxy/) in your browser
 
-	kubectl -- -n monitoring port-forward prometheus-prometheus-operator-prometheus-0 9090:9090
-
-Depending on your Compliant Kubernetes settings, access to the Prometheus server might have been disabled by the administrator.
+The Prometheus UI is only available by default starting in Compliant Kubernetes version 0.26.
 
 ### Grafana
 Grafana can be accessed at the endpoint provided by the Compliant Kubernetes install scripts. If you have configured dex you can login with a connected account.
