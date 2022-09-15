@@ -80,7 +80,7 @@ nav:
       - 'Step 2: Deploy': 'user-guide/deploy.md'
       - 'Step 3: Operate': 'user-guide/operate.md'
     - 'Go Deeper':
-      - 'Prepare Your Application': '/user-guide/prepare-application.md'
+      - 'Prepare Your Application': 'user-guide/prepare-application.md'
       - 'Container registry': 'user-guide/registry.md'
       - 'Network Model': 'user-guide/network-model.md'
       - 'Kubernetes API': 'user-guide/kubernetes-api.md'
