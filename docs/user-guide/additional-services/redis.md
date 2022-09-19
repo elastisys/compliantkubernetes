@@ -113,6 +113,10 @@ To expose the Redis cluster to your application, follow one of the following ups
     * [Django-Redis Client that supports Sentinel Cluster HA](https://github.com/danigosa/django-redis-sentinel-redux#how-to-use-it)
         If the linked code example doesn't work, try `LOCATION: redis://mymaster/db`.
 
+    If your library doesn't support sentinel you could use this project - [Redis sentinel proxy](https://github.com/anubhavmishra/redis-sentinel-proxy)
+        Note that the default configuration in this repository will not ensure HA for redis.
+        For this you'll either need to use multiple replicas or use it as a sidecar for your applications.
+
 ## Follow the Go-Live Checklist
 
 You should be all set.
