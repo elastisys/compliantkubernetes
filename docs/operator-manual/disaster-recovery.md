@@ -54,7 +54,7 @@ To take a snapshot on-demand, execute
 
 Set the following variables
 
-- `user` - OpenSearch user with permissions to manage snapshots, usually `snapshotter`
+- `user` - OpenSearch user with permissions to manage snapshots, usually `admin`
 - `password` - password for the above user
 - `os_url` - URL to OpenSearch
 
