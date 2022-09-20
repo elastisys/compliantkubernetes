@@ -4,6 +4,17 @@ description: How to work with Lens and Elastisys Compliant Kubernetes, the secur
 
 # Kubernetes UI (Lens)
 
+!!!important
+    As of September 2022, the Lens binary includes proprietary code on top of the open-source Lens source code.
+    Unfortunately, some of that code includes **non-features**, like requiring a Lens ID for "activating" Lens and tracking your activity.
+
+    We find such practices questionable, especially in highly-regulated industries.
+    Therefore, we currently recommend using [OpenLens](https://github.com/MuhammedKalkan/OpenLens/releases), which is a "clean" binary of the Lens source code.
+    OpenLens consists of all the open-source Lens code without the prioprietary code.
+    Even better, OpenLens does not require "activation" and does not track your actions.
+
+    The Compliant Kubernetes project monitors the situation and will decide on permanently switching to OpenLens or finding a suitable replacement, like the [VSCode plugin for Kubernetes](https://code.visualstudio.com/docs/azure/kubernetes).
+
 [Lens](https://k8slens.dev/) is a graphical user interface that you install locally on your machine. It provides an attractive and easy to use way of interacting with your Kubernetes cluster. Similar to `kubectl`, it can be used to manage multiple clusters. You can also install [extensions that help you manage your clusters or applications deployed on them](https://github.com/lensapp/lens-extensions/blob/main/README.md) from a growing list of community-provided extensions.
 
 Because Lens is installed locally, and has no cluster-side component, it uses the *exact same permissions* as your Compliant Kubernetes user has. This makes it a perfectly *safe and secure* user interface to use and does **not** compromise your cluster's stability or security posture.
