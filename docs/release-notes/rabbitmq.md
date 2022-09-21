@@ -18,7 +18,7 @@ Released 2022-09-21
 
 Changes:
 
-- Changed versioning to be based on the server version rather than the operator version. The version is now <server version>-<ck8s patch>, e.g. v3.10.7-ck8s1.
+- Changed versioning to be based on the server version rather than the operator version. The version is now `<server version>-<ck8s patch>`, e.g. v3.10.7-ck8s1.
 - Improved monitoring and alerting
 - Added queue details Grafana dashboard based on metrics from the prometheus plugin, made to replace the metrics exporter dashboard
 - Added support for external access using load balancer or node port service
