@@ -137,9 +137,15 @@ For more information about how to use HNC see their [user documentation](https:/
 
 Port 8000 is the only allowed port for OpenID callback URL and is needed by the `kubectl` OpenID plugin. If that port is used locally, then `kubectl` will try to bind to port 18000 which is not allowed due to security concerns. Make sure that nothing is running locally that is using port 8000.
 
-## Why can't I access Kibana or Elasticsearch?
+## Select your tenant?
 
-In Compliant Kubernetes v0.19.0 or later Elasticsearch and Kibana is no used and has been replaced by Opensearch and Opensearch Dashboards respectively. These can be accessed with domain prefix `opensearch`.
+If you are using Compliant Kubernetes `<v0.26.0` then you will likely see this popup when logging in to Opensearch.
+
+![Select Your Tenant Opensearch](img/select-your-tenant.png)
+
+We have disabled multi tenancy in Opensearch and there is a bug in older versions of Opensearch which makes this popup appear when multi tenancy is disabled. It has been fixed in a newer version of Opensearch which is included in Compliant Kubernetes version `v0.26.0`.
+
+So if you are using Compliant Kubernetes `<v0.26.0` then please just click `Cancel` or `X` and continue to use Opensearch as you would.
 
 ## What is encrypted at rest?
 
