@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.26.0](#v0250) - 2022-09-19
 - [v0.25.0](#v0250) - 2022-08-25
 - [v0.24.1](#v0241) - 2022-08-01
 - [v0.24.0](#v0240) - 2022-07-25
@@ -24,6 +25,28 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### V0.26.0
+
+Released 2022-09-19
+
+### Updated
+
+- **Harbor upgraded to `v2.6.0`**
+- **OpenSearch has been upgraded from version `v1.3.4` to `v2.6.0`**
+
+### Fixed
+
+- **Fixed the welcome dashboard template for OpenSearch Dashboards**
+
+### Added
+
+- **Option to create custom solvers for letsencrypt issuers, including a simple way to add secrets**
+- **Kube-bench runs on every node**
+  Automated CIS tests are performed on each node using kube-bench
+  Added a CIS kube-bench Grafana dashboard
+- **Added option for kured to notify to slack when draning and rebooting nodes**
+- **Allow users to proxy and port-forward to prometheus running in the workload cluster**
 
 ### v0.25.0
 
