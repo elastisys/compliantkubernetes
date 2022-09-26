@@ -33,7 +33,7 @@ Released 2022-09-19
 ### Updated
 
 - **Harbor upgraded to `v2.6.0`**
-- **OpenSearch has been upgraded from version `v1.3.4` to `v2.6.0`**
+- **Upgraded Opensearch helm chart to `2.6.0`, this upgrades Opensearch to `2.3.0`. For more information about the upgrade, check out their [2.3 Launch Announcement](https://opensearch.org/blog/releases/2022/09/opensearch-2-3-is-ready-for-download/).**
 
 ### Fixed
 
