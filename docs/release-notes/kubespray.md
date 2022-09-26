@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
+- [v2.19.0-ck8s3](#v2190-ck8s3) - 2022-09-23
 - [v2.19.0-ck8s2](#v2190-ck8s2) - 2022-07-22
 - [v2.19.0-ck8s1](#v2190-ck8s1) - 2022-06-27
 - [v2.18.1-ck8s1](#v2181-ck8s1) - 2022-04-26
@@ -15,6 +16,14 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/CHANGELOG.md).
+
+## v2.19.0-ck8s3
+
+Released 2022-09-23
+
+Changes:
+
+- Bumped upcloud csi driver to `v0.3.3`
 
 ### v2.19.0-ck8s2
 
