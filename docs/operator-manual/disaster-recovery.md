@@ -178,18 +178,44 @@ Read the [documentation](https://opensearch.org/docs/latest/opensearch/snapshot-
 
 #### Restoring OpenSearch Dashboards data
 
-Data in OpenSearch Dashboards (saved searches, visualizations, dashboards, etc) is stored in the index `.opensearch_dashboards_1`. To restore that data you first need to delete the index and then do a restore.
+Data in OpenSearch Dashboards (saved searches, visualizations, dashboards, etc) is stored in the index `.opensearch_dashboards_x`. To restore that data you first need to delete the index and then do a restore.
 
-This will overwrite anything in the current `.opensearch_dashboards_1` index. If there is something new that should be saved, then [export](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_export) the saved objects and [import](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_import) them after the restore.
+This will overwrite anything in the current `.opensearch_dashboards_x` index. If there is something new that should be saved, then [export](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_export) the saved objects and [import](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_import) them after the restore.
+
+There can be multiple `.opensearch_dashboards` indices in Opensearch, the current index should be the one you want to restore. To view your dashboard indices, follow these steps.
 
 ```bash
 snapshot_name=<Snapshot name from previous step>
 
-curl -kL -u "${user}:${password}" -X DELETE "${os_url}/.opensearch_dashboards_1?pretty"
+curl -kL -u "${user}:${password}" -X GET ${os_url}'/.opensearch_dashboard*?pretty' | jq 'keys'
+```
+
+If multiple `.opensearch_dashboards_x` indices show up, run this to see the index that the alias is currently looking at.
+
+```bash
+curl -kL -u "${user}:${password}" -X GET ${os_url}'/_alias/.opensearch_dashboard*?pretty' | jq 'keys'
+```
+
+Make sure that the index you want to restore also exists on the snapshot. (May be an issue if you are using an old snapshot)
+
+```bash
+curl -kL -u "${user}:${password}" -X GET "${os_url}/_snapshot/${snapshot_repo}/${snapshot_name}?pretty" | jq '.snapshots[].indices' | grep .opensearch_dashboards
+```
+
+!!!note
+    If you visit the `"<os_url>/app/dashboards"` page in the Opensearch GUI after deleting the index and before restoring the index, another empty index `.opensearch_dashboards` will be created. You need to delete this manually, which can be done with
+    ```bash
+    `curl -kL -u "${user}:${password}" -X DELETE "${os_url}/.opensearch_dashboards?pretty"`
+    ```
+
+```bash
+index_to_restore=<Index name from previous step>
+
+curl -kL -u "${user}:${password}" -X DELETE "${os_url}/${index_to_restore}?pretty"
 
 curl -kL -u "${user}:${password}" -X POST "${os_url}/_snapshot/${snapshot_repo}/${snapshot_name}/_restore?pretty" -H 'Content-Type: application/json' -d'
 {
-  "indices": "'.opensearch_dashboards_1'"
+  "indices": "'${index_to_restore}'"
 }
 '
 ```
