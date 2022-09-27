@@ -16,35 +16,59 @@
 
 Released 2022-09-21
 
-Changes:
+!!!note
+	From this release the version tracks the RabbitMQ server version rather than the RabbitMQ cluster operator version.
 
-- Changed versioning to be based on the server version rather than the operator version. The version is now `<server version>-<ck8s patch>`, e.g. v3.10.7-ck8s1.
-- Improved monitoring and alerting
-- Added queue details Grafana dashboard based on metrics from the prometheus plugin, made to replace the metrics exporter dashboard
-- Added support for external access using load balancer or node port service
-- Added issuer to generate chain of trust for TLS support
-- Updated cluster operator to v1.14.0, updated server to 3.10.7
-- Improved support for multi-cluster setup
-- Removed metrics exporter and dashboard
+#### Updated:
+
+- **Upgraded RabbitMQ server version to `3.10.7`** <br/>
+	This is a two minor version jump that introduces new upstream features while remaining compatible with current clients.
+	The most exciting features includes the new Stream queue type tuned for bulk messaging, and much improved efficiency for Quorum and Classic queue types.
+	See [the upstream changelog](https://www.rabbitmq.com/changelog.html) for more detailed information.
+
+#### Added:
+
+- **Added support for external access** <br/>
+	Using either a LoadBalancer or NodePort Service, additionally with a self-signed chain of trust to enable TLS and host verification.
+
+#### Changed:
+
+- **Improved observability** <br/>
+	Improved the alerting and replaced the per queue metrics source and dashboard, removing the need for an external exporter.
 
 ### v1.11.1-ck8s2
 
 Released 2022-06-08
 
-Changes:
+#### Changed:
 
-- Added a dashboard that shows metrics per queue
+- **Reworked monitoring** <br/>
+	Added additional metrics collection and a new dashboard to show metrics per queue, and fixed those added by the previous release.
+- **Tuned performance** <br/>
+	Configured and tuned the performance according to RabbitMQ upstream production checklist.
+	Including better constraints to improve scheduling for redundancy.
 
 ### v1.11.1-ck8s1
 
 Released 2022-03-11
 
-Changes:
+#### Updated:
 
-- Upgraded rabbitmq-operator to version `v1.11.1`
+- **Upgraded RabbitMQ to version `3.8.21`** <br/>
+	Using Cluster operator version `1.11.1` providing bugfixes.
+
+#### Added:
+
+- **Added definitions-exporter** <br/>
+	Taking daily backups of the RabbitMQ messaging topology and users for quick and easy reconfiguring in case of disaster.
+
+#### Changed:
+
+- Reduced RabbitMQ privilege for security.
+- Improved RabbitMQ observability through better monitoring.
 
 ### v1.7.0-ck8s1
 
 Released 2021-12-23
 
-First stable release!
+First stable release using RabbitMQ version `3.8.16`!
