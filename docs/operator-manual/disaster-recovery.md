@@ -35,6 +35,30 @@ It is possible to restore serviecs directly from **unencrypted** off-site backup
 
 See [the instructions in `compliantkubernetes-apps`](https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts/restore-sync) for how to restore off-site backups.
 
+## When a new region/cloud provider is used
+
+- Configure and set base ck8s-configs:
+
+  sc-config.yaml:
+
+  `harbor.persistence.swift.*`,`objectStorage.sync.*`
+
+  common-config.yaml:
+
+  `objectStorage.s3.region`, `objectStorage.s3.regionEndpoint`
+
+  secrets.yaml:
+
+  `dex.connectors.*`, `harbor.persistence.swift.username`, `harbor.persistence.swift.password`, `objectStorage.s3.accessKey`, `objectStorage.s3.secretKey`
+
+  .state/s3cfg.ini:
+
+  `access_key`, `secret_key`, `host_base`, `host_bucket`
+
+- Configure and set custom ck8s-configs:
+
+  Examples can be files containing Identity Provider, Cloud Provider, or DNS critical information.
+
 ## OpenSearch
 
 !!!note
