@@ -114,16 +114,7 @@ nav:
     - 'Overview': 'operator-manual/index.md'
     - 'Getting Started': 'operator-manual/getting-started.md'
     - 'Provider Audit': 'operator-manual/provider-audit.md'
-    - 'Creating/Destroying/Upgrading a Cluster':
-      - 'On AWS': 'operator-manual/aws.md'
-      - 'On Azure': 'operator-manual/azure.md'
-      - 'On Exoscale': 'operator-manual/exoscale.md'
-      - 'On GCP': 'operator-manual/gcp.md'
-      - 'On Openstack': 'operator-manual/openstack.md'
-      - 'On Safespring': 'operator-manual/safespring.md'
-      - 'On OVH Managed Kubernetes': 'operator-manual/ovh-managed-kubernetes.md'
-      - 'On EKS-D': 'operator-manual/eksd.md'
-      - 'Remove Compliant Kubernetes Apps': 'operator-manual/clean-up.md'
+    - 'Standard Template for on-prem Environment': 'operator-manual/on-prem-standard.md'
     - 'QA': 'operator-manual/qa.md'
     - 'Advanced Configuration':
       - 'Overview' : 'operator-manual/configure.md'
