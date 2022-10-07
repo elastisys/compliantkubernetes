@@ -1,4 +1,26 @@
+---
+tags:
+- ISO 27001 A.18.1.2
+---
 # CISO FAQ
+
+## Do we need to make our application source code public when using Compliant Kubernetes?
+
+!!!note "TL;DR"
+    **Definitely NOT**, you own your application source code and you decide what to do with it.
+
+We hereby confirm that Compliant Kubernetes and its Additional Managed Services (AMS) are NOT putting application developers (users) in a situation which obliges them to make their software or source code running on Compliant Kubernetes available to the public.
+
+Should we at Elastisys become aware of such an issue existing, we will immediately rectify the situation by replacing problematic components. You can read more about how we take architectural decisions [here](../../adr).
+
+As evidence, that the architectural decision process works – in particular when it comes to licensing issues – here are some decisions we took:
+
+* We decided only to offer TimescaleDB Apache 2 Edition (licensed under Apache 2.0) and NOT TimescaleDB “Community Edition” (licensed under the Timescale license). The Timescale license contains some problematic clauses and is, to our knowledge, not tested in court. You can read more about the subtle differences between the TimescaleDB versions [by opening this link](https://docs.timescale.com/timescaledb/latest/timescaledb-edition-comparison/).
+* We replaced Elasticsearch with OpenSearch (licensed under Apache 2.0), when Elasticsearch changed to the Elastic license. You can read more about the context [by opening this link](https://opensearch.org/faq/).
+* We replaced InfluxDB with Thanos. This was due to the fact that the open-source version was too limiting. You can read more about this decision [by opening this link](../../adr/0019-push-metrics-via-thanos/).
+* We made a risk assessment regarding Grafana, and determined that its AGPL license does not pose a problem. You can read more about our assessment below.
+
+You can read more about our commitment to community-driven open-source [by opening this link](../../adr/0015-we-believe-in-community-driven-open-source/).
 
 ## Will GrafanaLabs change to AGPL licenses affect Compliant Kubernetes?
 
