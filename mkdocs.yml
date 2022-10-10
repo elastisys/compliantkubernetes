@@ -101,6 +101,7 @@ nav:
       - 'Enforce NetworkPolicies': 'user-guide/safeguards/enforce-networkpolicies.md'
       - 'Enforce Resources': 'user-guide/safeguards/enforce-resources.md'
       - 'Enforce Trusted Registries': 'user-guide/safeguards/enforce-trusted-registries.md'
+      - 'Enforce No Latest Tag': 'user-guide/safeguards/enforce-no-latest-tag.md'
     - 'Additional Services':
       - 'Overview': 'user-guide/additional-services/index.md'
       - 'PostgreSQL': 'user-guide/additional-services/postgresql.md'
