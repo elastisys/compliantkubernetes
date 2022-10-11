@@ -15,7 +15,11 @@ Elastisys Compliant Kubernetes is an open source, Certified Kubernetes distribut
 
 ## Components of Elastisys Compliant Kubernetes
 
-<embed src="img/compliance-basics.svg" alt="Components of Elastisys Compliant Kubernetes" width="100%" />
+<embed src="img/marchitecture.drawio.svg" alt="Components of Elastisys Compliant Kubernetes" width="100%"/>
+
+## Mapping of ISO 27001 Controls to Implementation
+
+<embed src="img/compliance-basics.svg" alt="Mapping of ISO 27001 Control to Elastisys Compliant Kubernetes" width="100%" />
 
 ## How do I get started?
 
