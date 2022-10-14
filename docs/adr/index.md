@@ -1,12 +1,14 @@
 ---
 tags:
   - ISO 27001 A.14.1.1
+  - ISO 27001 A.14.2.4
 ---
 # Architectural Decision Log
 
 ## Mapping to ISO 27001 Controls
 
 * A.14.1.1 "Information security requirements analysis and specification"
+* A.14.2.4 "Restrictions on Changes to Software Packages"
 
 ## What are architectural decisions?
 
