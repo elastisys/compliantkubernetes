@@ -36,9 +36,9 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
 1. Create the domain name.
     You need to create a domain name to access the different services in your environment. You will need to set up the following DNS entries (replace example.com with your domain name).
-    - Point these domains to the workload cluster ingress controller:
+    - Point these domains to the workload cluster ingress controller (this step is done during Compliant Kubernetes app installation):
         - `*.example.com`
-    - Point these domains to the service cluster ingress controller:
+    - Point these domains to the service cluster ingress controller (this step is done during Compliant Kubernetes app installation):
         - `*.ops.example.com`
         - `dex.example.com`
         - `grafana.example.com`
@@ -117,7 +117,7 @@ Run the following command to set up Rook.
  done
 ```
 
-Please restart the operator pod, `rook-ceph-operator*`, if some pods stalls in initialization state as shown below:
+Please restart the operator pod, `rook-ceph-operator*`, if some pods stall in the initialization state as shown below:
 
 ```console
 rook-ceph     rook-ceph-crashcollector-minion-0-b75b9fc64-tv2vg    0/1     Init:0/2   0          24m
@@ -178,6 +178,7 @@ vim ${CK8S_CONFIG_PATH}/common-config.yaml
 Edit the secrets.yaml file and add the credentials for:
 - s3 - used for backup storage
 - dex - connectors -- check [your indentiy provider](https://dexidp.io/docs/connectors/).
+- On-call management tool configurations-- Check [supported on-call management tools](https://prometheus.io/docs/alerting/latest/configuration/)
 
 ```console
 sops ${CK8S_CONFIG_PATH}/secrets.yaml
