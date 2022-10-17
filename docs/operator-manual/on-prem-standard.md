@@ -22,7 +22,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     > **_NOTE:_** You can choose names for your service cluster and workload cluster by changing the values for `SERVICE_CLUSTER` and `WORKLOAD_CLUSTERS` respectively.
 
     ```console
-    export CK8S_CONFIG_PATH=${HOME}/<path>
+    export CK8S_CONFIG_PATH=./
     export CK8S_ENVIRONMENT_NAME=<my-ck8s-cluster>
     export CK8S_CLOUD_PROVIDER=[exoscale|safespring|citycloud|elastx|aws|baremetal]
     export CK8S_FLAVOR=[dev|prod] # defaults to dev
@@ -30,10 +30,23 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     SERVICE_CLUSTER="sc"
     WORKLOAD_CLUSTERS="wc"
     ```
+
+1. Add the Elastisys Compliant Kubernetes Kubespray repo as `git submodule` to the configuration repo as follows:
+
     ```console
-    mkdir -p $CK8S_CONFIG_PATH #create config path
+    git submodule add  https://github.com/elastisys/compliantkubernetes-kubespray
+    git submodule update --init --recursive
+
     ```
 
+1. Add compliantkubernetes-apps as `git submodule` to the configuration repo and install pre-requisites as follows:
+
+    ```console
+    https://github.com/elastisys/compliantkubernetes-apps.git
+    cd compliantkubernetes-apps
+    ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
+
+    ```
 1. Create the domain name.
     You need to create a domain name to access the different services in your environment. You will need to set up the following DNS entries (replace example.com with your domain name).
     - Point these domains to the workload cluster ingress controller (this step is done during Compliant Kubernetes app installation):
@@ -53,29 +66,13 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
 1. Make sure you have [all necessary tools](https://elastisys.io/compliantkubernetes/operator-manual/getting-started/).
 
-1. Clone the Elastisys Compliant Kubernetes Kubespray repo as follows:
-
-    ```console
-    git clone --recursive https://github.com/elastisys/compliantkubernetes-kubespray
-    done
-    ```
-
-1. Clone compliantkubernetes-apps and install pre-requisites as follows:
-
-    ```console
-    https://github.com/elastisys/compliantkubernetes-apps.git
-    cd compliantkubernetes-apps
-    ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
-    done
-    ```
 ## Deploying Compliant Kubernetes using Kubespray
 
 ### Init Kubespray config in your config path.
 
     ```console
-    export CK8S_KUBESPRAY_REPOSITORY_PATH=/path/to/compliantkubernetes-kubespray
     for CLUSTER in ${SERVICE_CLUSTER} "{WORKLOAD_CLUSTERS}"; do
-      $CK8S_KUBESPRAY_REPOSITORY_PATH/bin/ck8s-kubespray init $CLUSTER $CK8S_CLOUD_PROVIDER $CK8S_PGP_FP
+      compliantkubernetes-kubespray/ck8s-kubespray init $CLUSTER $CK8S_CLOUD_PROVIDER $CK8S_PGP_FP
     done
     ```
 
@@ -97,7 +94,7 @@ Add the host name, user and IP address of each VM that you prepared above in `${
 
 ```console
 for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS}; do
-    $CK8S_KUBESPRAY_REPOSITORY_PATH/bin/ck8s-kubespray apply $CLUSTER --flush-cache
+    compliantkubernetes-kubespray/bin/ck8s-kubespray apply $CLUSTER --flush-cache
 done
 ```
 
@@ -113,7 +110,7 @@ Run the following command to set up Rook.
  for CLUSTER in  sc wc; do
      sops --decrypt ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $CLUSTER.yaml
      export KUBECONFIG=$CLUSTER.yaml
-     $CK8S_KUBESPRAY_REPOSITORY_PATH/compliantkubernetes-kubespray/rook/deploy-rook.sh
+     compliantkubernetes-kubespray/rook/deploy-rook.sh
  done
 ```
 
@@ -156,9 +153,7 @@ done
 ### Initialize the apps configuration
 
 ```bash
-export  CK8S_APPS_REPOSITORY_PATH=</path/to/compliantkubernetes-kubespray-apps>
-
-$CK8S_APPS_REPOSITORY_PATH/bin/ck8s init
+compliantkubernetes-apps/bin/ck8s init
 ```
 
 This will initialise the configuration in the `${CK8S_CONFIG_PATH}` directory. Generating configuration files `common-config.yaml`, `sc-config.yaml` and `wc-config.yaml`, as well as secrets with randomly generated passwords in `secrets.yaml`. This will also generate read-only default configuration under the directory `defaults/` which can be used as a guide for available and suggested options.
@@ -193,7 +188,7 @@ sops ${CK8S_CONFIG_PATH}/secrets.yaml
 You can use the following command to create the required S3 buckets. The command uses `s3cmd` in the background and gets configuration and credentials for your S3 provider from the `~/.s3cfg` file.
 
  ```console
-$CK8S_APPS_REPOSITORY_PATH/bin/ck8s s3cmd create
+compliantkubernetes-apps/bin/ck8s s3cmd create
 ```
 
 ### Install Compliant Kubernetes apps
@@ -201,8 +196,8 @@ $CK8S_APPS_REPOSITORY_PATH/bin/ck8s s3cmd create
 This will set up apps, first in the service cluster and then in the workload cluster:
 
 ```console
-$CK8S_APPS_REPOSITORY_PATH/compliantkubernetes-apps/bin/ck8s apply sc
-$CK8S_APPS_REPOSITORY_PATH/compliantkubernetes-apps/bin/ck8s apply wc
+compliantkubernetes-apps/bin/ck8s apply sc
+compliantkubernetes-apps/bin/ck8s apply wc
 ```
 
 ### Settling
@@ -212,14 +207,14 @@ $CK8S_APPS_REPOSITORY_PATH/compliantkubernetes-apps/bin/ck8s apply wc
 Check if all helm charts succeeded.
 
 ```console
-$CK8S_APPS_REPOSITORY_PATH/compliantkubernetes-apps/bin/ck8s ops helm wc list -A --all
+compliantkubernetes-apps/bin/ck8s ops helm wc list -A --all
 ```
 
 You can check if the system settled as follows.
 
 ```console
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
- $CK8S_APPS_REPOSITORY_PATH/compliantkubernetes-apps/bin/ck8s ops kubectl $CLUSTER get --all-namespaces pods
+ compliantkubernetes-apps/bin/ck8s ops kubectl $CLUSTER get --all-namespaces pods
 done
 ```
 
@@ -227,7 +222,7 @@ Check the output of the command above. All Pods need to be `Running` or `Complet
 
 ```console
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-  $CK8S_APPS_REPOSITORY_PATH/compliantkubernetes-apps/bin/ck8s ops kubectl $CLUSTER get --all-namespaces issuers,clusterissuers,certificates
+  compliantkubernetes-apps/bin/ck8s ops kubectl $CLUSTER get --all-namespaces issuers,clusterissuers,certificates
 done
 ```
 
@@ -241,11 +236,11 @@ After completing the installation step you can test if the apps are properly ins
 Start with the service cluster:
 
 ```bash
-$CK8S_APPS_REPOSITORY_PATH/compliantkubernetes-apps/bin/ck8s test sc
+compliantkubernetes-apps/bin/ck8s test sc
 ```
 
 Then the workload clusters:
 
 ```bash
-$CK8S_APPS_REPOSITORY_PATH/compliantkubernetes-apps/bin/ck8s test wc
+compliantkubernetes-apps/bin/ck8s test wc
 ```
