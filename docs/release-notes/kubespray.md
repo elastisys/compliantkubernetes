@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
+- [v2.20.0-ck8s1](#v2200-ck8s1) - 2022-10-10
 - [v2.19.0-ck8s3](#v2190-ck8s3) - 2022-09-23
 - [v2.19.0-ck8s2](#v2190-ck8s2) - 2022-07-22
 - [v2.19.0-ck8s1](#v2190-ck8s1) - 2022-06-27
@@ -17,7 +18,18 @@
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/CHANGELOG.md).
 
-## v2.19.0-ck8s3
+### v2.20.0-ck8s1
+
+Released 2022-10-10
+
+Changes:
+
+- Scripts are now using yq version 4, this requires `yq4` as an alias to yq v4.
+- Kubespray updated to `v2.20.0`.
+- Kubernetes version upgraded to [v1.24.6](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.24.md#v1246).
+- Fixed multiple kube-bench fails (01.03.07, 01.04.01, 01.04.02)
+
+### v2.19.0-ck8s3
 
 Released 2022-09-23
 
