@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.26.2](#v0262) - 2022-10-18
 - [v0.26.0](#v0260) - 2022-09-19
 - [v0.25.0](#v0250) - 2022-08-25
 - [v0.24.1](#v0241) - 2022-08-01
@@ -26,20 +27,39 @@
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
 
+### V0.26.2
+
+Released 2022-10-18
+
+#### Fixed
+
+- **Blackbox exporter now looks at the correct error code for the opensearch-dashboards target**
+- **Fixed inevitable mapping conflicts in Opensearch by updating `elastisys/fluentd` to use image tag `v3.4.0-ck8s4`.**
+- **Kubernetes cluster status Grafana dashboard not loading data for some panels**
+- **Fixed small issues introduced in v0.26.0**
+
+### V0.26.1
+
+Released 2022-10-05
+
+#### Updated
+
+- **Updated dex chart to `v0.12.0` which upgraded dex to `v2.35.1`**
+
 ### V0.26.0
 
 Released 2022-09-19
 
-### Updated
+#### Updated
 
 - **Harbor upgraded to `v2.6.0`**
 - **Upgraded Opensearch helm chart to `2.6.0`, this upgrades Opensearch to `2.3.0`. For more information about the upgrade, check out their [2.3 Launch Announcement](https://opensearch.org/blog/releases/2022/09/opensearch-2-3-is-ready-for-download/).**
 
-### Fixed
+#### Fixed
 
 - **Fixed the welcome dashboard template for OpenSearch Dashboards**
 
-### Added
+#### Added
 
 - **Option to create custom solvers for letsencrypt issuers, including a simple way to add secrets**
 - **Kube-bench runs on every node**
