@@ -78,7 +78,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
 ### Configure OIDC
 
-To configure OIDC access for kubernetes api and  other services dex should be configured with your identity provider. Check what dex needs from [your identity provider](https://dexidp.io/docs/connectors/).
+To configure OpenID access for Kubernetes API and other services, Dex should be configured with your identity provider. Check what Dex needs from [your identity provider](https://dexidp.io/docs/connectors/).
 
 #### Configure OIDC endpoint
 
