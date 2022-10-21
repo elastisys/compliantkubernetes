@@ -4,7 +4,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
 ## Prerequisites
 
-!!! Decision
+!!!important "Decision to be taken"
 
     Decisions regarding the following items should be made before venturing on deploying Compliant Kubernetes.
 
@@ -62,7 +62,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
         - `harbor.example.com`
         - `opensearch.example.com`
 
-    ???+ "If both service and workload clusters are in the same subnet"
+    ???+note "If both service and workload clusters are in the same subnet"
 
         If both the service and workload clusters are in the same subnet, it would be great to configure the following domain names to the private IP addresses of the respective services. (Replace `example.com` with your domain name.)
 
