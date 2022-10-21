@@ -4,8 +4,10 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
 ## Prerequisites
 
-1. > **DECISION-TO-BE-TAKEN:**
+!!! Decision
+
     Decisions regarding the following items should be made before venturing on deploying Compliant Kubernetes.
+
     - Overall architecture, i.e., VM sizes, load-balancer configuration, storage configuration, etc.
     - Identity Provider (IdP) choice and configuration
     - On-call Management Tool (OMT) choice and configuration
@@ -17,9 +19,12 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
 1. Create a git working folder to store Compliant Kubernetes configurations in a version-controlled manner. Run the following commands from the root of the config repo.
 
-    > **_NOTE:_** the following steps are done from the root of the git repository you created for the cofigurations.
+    !!! note
+        The following steps are done from the root of the git repository you created for the cofigurations.
 
-    > **_NOTE:_** You can choose names for your service cluster and workload cluster by changing the values for `SERVICE_CLUSTER` and `WORKLOAD_CLUSTERS` respectively.
+    !!! note 
+    
+        You can choose names for your service cluster and workload cluster by changing the values for `SERVICE_CLUSTER` and `WORKLOAD_CLUSTERS` respectively.
 
     ```bash
     export CK8S_CONFIG_PATH=./
@@ -95,7 +100,8 @@ Set `kube_oidc_url` in `${CK8S_CONFIG_PATH}/sc-config/group_vars/k8s_cluster/ck8
 
 Add the host name, user and IP address of each VM that you prepared above in `${CK8S_CONFIG_PATH}/sc-config/inventory.ini`for service cluster and `${CK8S_CONFIG_PATH}/sc-config/inventory.ini` for workload cluster. Moreover, you also need to add the host names of the master nodes under `[kube_control_plane]`, etdc nodes under `[etcd]` and worker nodes under `[kube_node]`.
 
-  > **_NOTE:_** Make sure that the user has SSH access to the VMs.
+  !!! note
+    Make sure that the user has SSH access to the VMs.
 
 ### Run Kubespray to deploy the Kubernetes clusters
 
@@ -105,7 +111,8 @@ for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS}; do
 done
 ```
 
-> **_NOTE:_** the kubeconfig for wc `.state/kube_config_wc.yaml` will not be usable until you have installed dex in the service cluster (by deploying apps).
+!!! note
+    The kubeconfig for wc `.state/kube_config_wc.yaml` will not be usable until you have installed dex in the service cluster (by deploying apps).
 
 ### Set up Rook
 
@@ -188,9 +195,11 @@ Edit the secrets.yaml file and add the credentials for:
 sops ${CK8S_CONFIG_PATH}/secrets.yaml
 ```
 
-> **_TIP:_** The default configuration for the service cluster and workload cluster are available in the directory `${CK8S_CONFIG_PATH}/defaults/` and can be used as a reference for available options.
+!!! tip
+    The default configuration for the service cluster and workload cluster are available in the directory `${CK8S_CONFIG_PATH}/defaults/` and can be used as a reference for available options.
 
-> **_WARNING:_** Do not modify the read-only default configurations files found in the directory `${CK8S_CONFIG_PATH}/defaults/`. Instead configure the cluster by modifying the regular files `${CK8S_CONFIG_PATH}/sc-config.yaml` and `${CK8S_CONFIG_PATH}/wc-config.yaml` as they will override the default options.
+!!! warning
+    Do not modify the read-only default configurations files found in the directory `${CK8S_CONFIG_PATH}/defaults/`. Instead configure the cluster by modifying the regular files `${CK8S_CONFIG_PATH}/sc-config.yaml` and `${CK8S_CONFIG_PATH}/wc-config.yaml` as they will override the default options.
 
 ### Create S3 buckets
 
@@ -211,7 +220,8 @@ compliantkubernetes-apps/bin/ck8s apply wc
 
 ### Settling
 
-> **_INFO:_** Leave sufficient time for the system to settle, e.g., request TLS certificates from LetsEncrypt, perhaps as much as 20 minutes.
+!!! info
+    Leave sufficient time for the system to settle, e.g., request TLS certificates from LetsEncrypt, perhaps as much as 20 minutes.
 
 Check if all helm charts succeeded.
 
