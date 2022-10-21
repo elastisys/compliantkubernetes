@@ -22,8 +22,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     !!! note
         The following steps are done from the root of the git repository you created for the cofigurations.
 
-    !!! note 
-    
+    !!! note
         You can choose names for your service cluster and workload cluster by changing the values for `SERVICE_CLUSTER` and `WORKLOAD_CLUSTERS` respectively.
 
     ```bash
