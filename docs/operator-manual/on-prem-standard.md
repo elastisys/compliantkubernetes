@@ -64,7 +64,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
     ???+ "If both service and workload clusters are in the same subnet"
 
-        If both the service and workload clusters are in the same subnet, it would be greate to configure the following domain names to the private IP addresses of the respective services. (Replace `example.com` with your domain name.)
+        If both the service and workload clusters are in the same subnet, it would be great to configure the following domain names to the private IP addresses of the respective services. (Replace `example.com` with your domain name.)
 
         - `*.thanos.ops.example.com`
         - `*.opensearch.ops.example.com`
