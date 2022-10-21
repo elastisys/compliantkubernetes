@@ -99,7 +99,7 @@ Set `kube_oidc_url` in `${CK8S_CONFIG_PATH}/sc-config/group_vars/k8s_cluster/ck8
 
 Add the host name, user and IP address of each VM that you prepared above in `${CK8S_CONFIG_PATH}/sc-config/inventory.ini`for service cluster and `${CK8S_CONFIG_PATH}/sc-config/inventory.ini` for workload cluster. Moreover, you also need to add the host names of the master nodes under `[kube_control_plane]`, etdc nodes under `[etcd]` and worker nodes under `[kube_node]`.
 
-  !!! note
+!!! note
     Make sure that the user has SSH access to the VMs.
 
 ### Run Kubespray to deploy the Kubernetes clusters
