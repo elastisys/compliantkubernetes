@@ -94,7 +94,7 @@ export APP_DATABASE=myapp
 export APP_USERNAME=myapp
 export APP_PASSWORD=$(pwgen 32)
 
-cat <<EOF | psql -d postgres -h 127.0.0.1 \
+cat <<EOF | psql -d postgres -h 127.0.0.1 -U $PGUSER \
     --set=APP_DATABASE=$APP_DATABASE \
     --set=APP_USERNAME=$APP_USERNAME \
     --set=APP_PASSWORD=$APP_PASSWORD
