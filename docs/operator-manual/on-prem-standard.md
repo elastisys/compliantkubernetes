@@ -80,14 +80,14 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 ## Deploying Compliant Kubernetes using Kubespray
 
 
-???+note "Change Default Kubernetes Subnet Addresses"
+???+note "How to change Default Kubernetes Subnet Address"
 
     If  the default IP block range used for docker and kubernetes are the same as the internal IP ranges used in the company, you can change the values  to resolve the conflict as follows. Note that you can use any valid private IP address range, the values below are put as an example.
 
     === "For Kubernetes"
 
         ``` markdown
-        * For service cluster: Add `kube_service_addresses: 10.178.0.0/18` and `kube_pods_subnet: 10.178.120.0/18` in `${CK8S_CONFIG_PATH}/sc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` file. 
+        * For service cluster: Add `kube_service_addresses: 10.178.0.0/18` and `kube_pods_subnet: 10.178.120.0/18` in `${CK8S_CONFIG_PATH}/sc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` file.
         * For workload cluster:  Add `kube_service_addresses: 10.178.0.0/18` and `kube_pods_subnet: 10.178.120.0/18` in `${CK8S_CONFIG_PATH}/wc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` file.
         ```
 
@@ -182,7 +182,7 @@ done
 ```
 ## Deploying Compliant Kubernetes Apps
 
-???+note "Change local DNS IP if you change the default kubebernetes subnet address"
+???+note "How to change local DNS IP if you change the default kubebernetes subnet address"
 
     You need to change the default coredns default IP address in `common-config.yaml` file if  you change the default IP block  used for kubernetes services above.  To get the coredns IP address, run the following commands.
 
@@ -194,7 +194,7 @@ done
 
 ???+note "Configure the load balancer IP on the loopback interface for each worker node"
     The Kubernetes data plane Nodes (i.e., worker nodes) cannot connect to themselves with the IP address of the load balancer that fronts them. The easiest is to configure the load balancer's IP address on the loopback interface of each Nodes. Create `/etc/netplan/20-eip-fix.yaml` file and add the following to it. `${loadblancer_ip_address}` should be replaced with the IP address of the load balancer for each cluster.
-  
+
     ```yaml
     network:
     version: 2
