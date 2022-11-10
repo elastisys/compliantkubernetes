@@ -46,6 +46,11 @@ Error: UPGRADE FAILED: failed to create resource: admission webhook "validation.
 
 Then you are missing resource requests for some containers of your Pods. The [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L42-L51) gives a good example to get you started.
 
+If your administrator has not enforced this policy yet, you can view current violations of the policy by running
+```bash
+kubectl get k8sresourcerequests.constraints.gatekeeper.sh require-resource-requests -ojson | jq .status.violations
+```
+
 ## Further Reading
 
 * [Managing Resources for Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
