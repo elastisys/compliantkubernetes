@@ -45,6 +45,11 @@ Error: admission webhook "validation.gatekeeper.sh" denied the request: [denied 
 
 Then you are missing NetworkPolicies which select your Pods. The [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/networkpolicy.yaml) gives a good example to get you started.
 
+If your administrator has not enforced this policy yet, you can view current violations of the policy by running
+```bash
+kubectl get k8srequirenetworkpolicy.constraints.gatekeeper.sh require-networkpolicy -ojson | jq .status.violations
+```
+
 ## Further Reading
 
 * [NetworkPolicies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
