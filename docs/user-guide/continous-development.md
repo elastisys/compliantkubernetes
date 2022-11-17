@@ -142,7 +142,7 @@ to the cluster. After the deployment has stabilized, when visiting the same URL,
 To see the amount of pods, run (inside another terminal):
 
 ```bash
-$ kubectl get pods                          
+$ kubectl get pods
 NAME                              READY   STATUS    RESTARTS   AGE
 ck8s-user-demo-7645db4f5c-h4xks   1/1     Running   0          45s
 ck8s-user-demo-7645db4f5c-svqfs   1/1     Running   0          35s
