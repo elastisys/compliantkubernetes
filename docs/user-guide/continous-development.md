@@ -28,7 +28,7 @@ sudo install skaffold /usr/local/bin/
 !!!note
     Skaffold will use the active `KUBECONFIG` to authenticate to the Kubernetes cluster.
 
-If you havent't done so already, clone the user demo:
+If you haven't done so already, clone the user demo:
 
 ```bash
 git clone https://github.com/elastisys/compliantkubernetes/
