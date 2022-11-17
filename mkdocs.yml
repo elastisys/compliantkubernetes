@@ -82,6 +82,7 @@ nav:
     - 'Go Deeper':
       - 'Prepare Your Application': 'user-guide/prepare-application.md'
       - 'Container registry': 'user-guide/registry.md'
+      - 'Continous Development': 'user-guide/continous-development.md'
       - 'Network Model': 'user-guide/network-model.md'
       - 'Kubernetes API': 'user-guide/kubernetes-api.md'
       - 'Kubernetes UI (Lens)': 'user-guide/kubernetes-ui.md'
