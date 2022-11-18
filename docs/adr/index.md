@@ -98,6 +98,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0023](0023-allow-snippets-annotations.md) - Only allow Ingress Configuration Snippet Annotations after Proper Risk Acceptance
 * [ADR-0024](0024-allow-Harbor-robot-account.md) - Allow a Harbor robot account that can create other robot accounts with full privileges
 * [ADR-0025](0025-local-storage.md) - Use local-volume-provisioner for Managed Services that requires high-speed disks.
+* [ADR-0026](0026-hnc.md) - Use `environment-name` as the default root of Hierarchical Namespace Controller (HNC)
 
 <!-- adrlogstop -->
 
