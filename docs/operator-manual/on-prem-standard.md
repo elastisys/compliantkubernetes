@@ -79,6 +79,25 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
 ## Deploying Compliant Kubernetes using Kubespray
 
+
+???+note "How to change Default Kubernetes Subnet Address"
+
+    If  the default IP block ranges used for Docker and Kubernetes are the same as the internal IP ranges used in the company, you can change the values  to resolve the conflict as follows. Note that you can use any valid private IP address range, the values below are put as an example.
+
+    === "For Kubernetes"
+
+        ``` markdown
+        * For service cluster: Add `kube_service_addresses: 10.178.0.0/18` and `kube_pods_subnet: 10.178.120.0/18` in `${CK8S_CONFIG_PATH}/sc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` file.
+        * For workload cluster:  Add `kube_service_addresses: 10.178.0.0/18` and `kube_pods_subnet: 10.178.120.0/18` in `${CK8S_CONFIG_PATH}/wc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` file.
+        ```
+
+    === "For Docker"
+
+        ``` markdown
+        * For service cluster: Added `docker_options: "--default-address-pool base=10.179.0.0/24,size=24"` in `${CK8S_CONFIG_PATH}/sc-config/group_vars/all/docker.yml` file.
+        * For workload cluster:  Added `docker_options: "--default-address-pool base=10.179.4.0/24,size=24"` in `${CK8S_CONFIG_PATH}/wc-config/group_vars/all/docker.yml` file.
+        ```
+
 ### Init Kubespray config in your config path.
 
 ```bash
@@ -162,6 +181,36 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
 done
 ```
 ## Deploying Compliant Kubernetes Apps
+
+???+note "How to change local DNS IP if you change the default Kubebernetes subnet address"
+
+    You need to change the default coreDNS default IP address in `common-config.yaml` file if  you change the default IP block  used for Kubernetes services above.  To get the coreDNS IP address, run the following commands.
+
+    ```bash
+    ${CK8S_CONFIG_PATH}/compliantkubernetes-apps/bin/ck8s ops kubectl sc get svc -n kube-system coredns
+    ```
+    Once you get the IP address edit `${CK8S_CONFIG_PATH}/scommon-config.yaml` file  and set  the value  to `global.clusterDns` field.
+
+
+???+note "Configure the load balancer IP on the loopback interface for each worker node"
+    The Kubernetes data planenodes (i.e., worker nodes) cannot connect to themselves with the IP address of the load balancer that fronts them. The easiest is to configure the load balancer's IP address on the loopback interface of each nodes. Create `/etc/netplan/20-eip-fix.yaml` file and add the following to it. `${loadblancer_ip_address}` should be replaced with the IP address of the load balancer for each cluster.
+
+    ```yaml
+    network:
+    version: 2
+    ethernets:
+        "lo:0":
+        match:
+            name: lo
+        dhcp4: false
+        addresses:
+        - ${loadblancer_ip_address}/32
+    ```
+    After adding the above content, run the following command in each worker node:
+
+    ```bash
+    sudo netplan apply
+    ```
 
 ### Initialize the apps configuration
 
