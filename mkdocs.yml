@@ -18,7 +18,7 @@ copyright: >-
   <br/>
   TimescaleDB and the EON mascot are trademarks of <a href="https://www.timescale.com/">Timescale, Inc.</a>
 
-repo_url: https://github.com/elastisys
+repo_url: https://github.com/elastisys/compliantkubernetes/
 edit_uri: edit/main/docs/
 
 strict: true
