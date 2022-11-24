@@ -42,33 +42,22 @@ Make sure to configure **and test** a receiver for you alerts, e.g., Slack or Op
 
 ## Accessing user AlertManager
 
-If you want to access AlertManager, for example to confirm that its configuration was picked up correctly, proceed as follows:
+If you want to access AlertManager, for example to confirm that its configuration was picked up correctly, or to configure silences, proceed as follows:
 
 1. Type: `kubectl proxy`.
 2. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/alertmanager/services/alertmanager-operated:web/proxy/) in your browser.
 
-## Setting up an alert
+## Configuring alerts
 
-Before setting up an alert, you must create a [ServiceMonitor](metrics) to collect metrics from your application. Then, create a `PrometheusRule` following the example below:
+Before setting up an alert, you must first [collect metrics](../metrics) from your application by setting up either ServiceMonitors or PodMonitors. In general ServiceMonitors are recommended over PodMonitors, and it is the most common way to configure metrics collection.
 
-```yaml
-apiVersion: monitoring.coreos.com/v1
-kind: PrometheusRule
-metadata:
-  creationTimestamp: null
-  labels:
-    prometheus: example
-    role: alert-rules
-  name: prometheus-example-rules
-spec:
-  groups:
-  - name: ./example.rules
-    rules:
-    - alert: ExampleAlert
-      expr: vector(1)
-```
+Then create a `PrometheusRule` following the examples below or the upstream documentation with an expression that evaluates to the condition to alert on. Prometheus will pick them up, evaluate them, and then send notifications to AlertManager.
 
-## Running Example
+The [API reference for Prometheus Operator](https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.PrometheusRule) describes how the Kubernetes resource is configured and the [configuration reference for Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) describes the rules themselves.
+
+In Compliant Kubernetes the Prometheus Operator in the workload cluster is configured to pick up all PrometheusRules, regardless in which namespace they are or which labels they have.
+
+### Running Example
 
 <!--user-demo-alerts-start-->
 
@@ -83,3 +72,39 @@ The screenshot below gives an example of the application alert, as seen in Alert
 ![Example of User Demo Alerts](/compliantkubernetes/img/user-demo-alerts.png)
 
 <!--user-demo-alerts-end-->
+
+### Detailed example
+
+PrometheusRules have two features, either the rules *alerts* based on expression, or the rules `records` based on a expression.
+The former is the way to create alerting rules and the latter is a way to precompute complex queries that will be stored as separate metrics:
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    prometheus: example
+    role: alert-rules
+  name: prometheus-example-rules
+spec:
+  groups:
+  - name: ./example.rules
+    # interval: 30s # optional parameter to configure how often groups of rules are evaluated
+    rules:
+    - alert: ExampleAlert
+      expr: vector(1)
+      # for: 1m # optional parameter to configure how long an alert must be triggered to be fired
+      labels:
+        severity: high
+      annotations:
+        summary: "Example Alert has been fired!"
+        description: "The Example Alert has been fired! It shows the value {{ $value }}."
+    - record: example_record_metric
+      expr: vector(1)
+      labels:
+        record: example
+```
+
+For alert rules labels and annotations can be added or overridden that will become present in the resulting alert notifications, in addition the annotations support Go Templating allowing access to the evaluated value via the `$value` variable and all labels from the expression using the `$labels` variable.
+
+For recording rules labels can be added or overridden that will become present in the resulting metric.

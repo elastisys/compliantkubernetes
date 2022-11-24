@@ -58,10 +58,10 @@ The Prometheus UI is only available by default starting in Compliant Kubernetes 
 ### Grafana
 Grafana can be accessed at the endpoint provided by the Compliant Kubernetes install scripts. If you have configured dex you can login with a connected account.
 
-Compliant Kubernetes deploys Grafana with a selection of dashboards by default. Dashboards are accessed by clicking the Dashboard icon (for squares) at the lefthand side of the grafana window and selecting Manage. Some examples of useful dashboards are listed below.
+Compliant Kubernetes deploys Grafana with a selection of dashboards by default. Dashboards are accessed by clicking the Dashboard icon (four squares) at the lefthand side of the Grafana window and selecting Browse. Some examples of useful dashboards are listed below.
 
 #### Node health
-The Nodes dashboard (Nodes) gives a quick overview of the status (health) of a node in the cluster. By selecting an instance in the "instance" dropdown metrics for CPU, Load, Memory, Disk and Network I/O is showed for that node. The time frame can be changed either by using the time dropdown or selecting directly in the graphs.
+The Nodes dashboard (Node Exporter / Nodes) gives a quick overview of the status (health) of a node in the cluster. By selecting an instance in the "instance" dropdown metrics for CPU, Load, Memory, Disk and Network I/O is showed for that node. The time frame can be changed either by using the time dropdown or selecting directly in the graphs.
 
 ![Node Health](../img/node_health.png  "Nodes dashboard")
 
@@ -70,7 +70,13 @@ The Pods dashboard (Kubernetes/Compute resources/Pods) gives a quick overview of
 
 ![Pod health](../img/pod_health.png  "Pod health")
 
-## Running Example
+## Collecting metrics
+
+Configuring Prometheus to collect metrics from an application requires either a ServiceMonitor or a PodMonitor, targeting a Kubernetes Service or Pod respectively. They are both described upstream in the [API reference for Prometheus Operator](https://prometheus-operator.dev/docs/operator/api/). In general ServiceMonitors are recommended over PodMonitors, and it is the most common way to configure metrics collection.
+
+In Compliant Kubernetes the Prometheus Operator in the workload cluster is configured to pick up all ServiceMonitors and PodMonitors, regardless in which namespace they are or which labels they have.
+
+### Running Example
 
 <!--user-demo-metrics-start-->
 
@@ -90,6 +96,83 @@ The "Explore" mode is great for developing queries and exploring the data set. I
     You may want to save frequently used Dashboards. Compliant Kubernetes saves and backs these up for you.
 
 <!--user-demo-metrics-end-->
+
+### Troubleshooting metrics collection
+
+It is possible to see if monitors are picked up by [accessing Prometheus' web interface](#accessing-prometheus). Navigating to "Status" > "Service Discovery" will show all monitors picked by Prometheus, and the "(x/y active targets)" will show how many targets of those monitors are active. Active targets are actively scraped by Prometheus and inactive targets are those that fail to match the selectors of the monitor.
+
+Monitors can be expanded further down to list and inspect its targets, within each one the "Discovered Labels" column will list information about the object in Kubernetes and in the "Target Labels" it will show the labels recorded from the target.
+
+If the "Target Labels" is "Dropped" for a target then it means that it has been excluded from scraping since it doesn't match the monitor. There are three key things to check to make sure a target is properly picked up by a monitor:
+
+1. Make sure either that the monitor is in the same namespace as the target, or that the monitor has the correct namespace selector for the target:
+  ```diff
+   apiVersion: monitoring.coreos.com/v1
+   kind: ServiceMonitor
+   metadata:
+     ...
+   spec:
+     ...
+  +  namespaceSelector:
+  +    matchNames:
+  +      - <namespace>
+     ...
+  ```
+
+2. Make sure that the selector of the monitor matches the target:
+  ```diff
+   apiVersion: v1
+   kind: Service
+   metadata:
+     ...
+  +  labels:
+  +    app: target
+     ...
+   spec:
+     ...
+   ---
+   apiVersion: monitoring.coreos.com/v1
+   kind: ServiceMonitor
+   metadata:
+     ...
+   spec:
+     ...
+  +  selector:
+  +    matchLabels:
+  +      app: target
+     ...
+  ```
+
+3. Make sure that the port of the monitor matches the target:
+  ```diff
+   apiVersion: v1
+   kind: Service
+   metadata:
+     ...
+   spec:
+     ...
+  +  ports:
+  +    - name: target
+  +      port: 9000
+     ...
+   ---
+   apiVersion: monitoring.coreos.com/v1
+   kind: ServiceMonitor
+   metadata:
+     ...
+   spec:
+     ...
+  +  endpoints:
+       # either
+  +    - port: target
+       # or
+  +    - port: 9000
+     ...
+  ```
+
+The same concept applies to PodMonitors and Pods.
+
+Then when the targets are active it is possible to see scrape information by navigating to "Status" > "Targets". Here Prometheus gives information about the time, status, and duration for scrapes.
 
 ## Further reading
 For more information please refer to the official [Prometheus](https://prometheus.io/docs/) and [Grafana](https://grafana.com/docs/grafana/latest/) documentation.
