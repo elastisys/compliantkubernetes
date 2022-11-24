@@ -133,7 +133,7 @@ nav:
     - 'FAQ': 'operator-manual/faq.md'
   - 'For CISOs':
     - 'Overview': 'ciso-guide/index.md'
-    - 'ISO 27001 and BSI IT-Grundschutz': 'ciso-guide/controls.md'
+    - 'ISO 27001, BSI IT-Grundschutz and HIPAA': 'ciso-guide/controls.md'
     - 'Audit Logs': 'ciso-guide/audit-logs.md'
     - 'Backup': 'ciso-guide/backup.md'
     - 'Cryptography': 'ciso-guide/cryptography.md'

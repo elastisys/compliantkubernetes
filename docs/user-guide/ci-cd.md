@@ -3,6 +3,7 @@ description: Integrating with CI/CD in Elastisys Compliant Kubernetes, the secur
 tags:
 - BSI IT-Grundschutz APP.4.4.A2
 - BSI IT-Grundschutz APP.4.4.A10
+- HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
 ---
 
 CI/CD Integration

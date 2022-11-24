@@ -1,3 +1,7 @@
+---
+tags:
+- HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
+---
 Use of Credentials
 ==================
 Compliant Kubernetes interacts with a lot of credentials. This document captures all of them in an orderly fashion, layer-by-layer.
