@@ -7,6 +7,9 @@ tags:
 - ISO 27001 A.13.1.3
 - BSI IT-Grundschutz APP.4.4.A7
 - BSI IT-Grundschutz APP.4.4.A18
+- HIPAA S52 - Transmission - § 164.312(e)(1)
+- HIPAA S53 - Transmission Security - Integrity Controls - § 164.312(e)(2)(i)
+- HIPAA S54 - Transmission Security - Encryption - § 164.312(e)(2)(ii)
 ---
 
 Network Model

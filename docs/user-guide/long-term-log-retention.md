@@ -1,4 +1,7 @@
-
+---
+tags:
+- HIPAA S48 - Audit Controls - § 164.312(b)
+---
 # Long-term log retention
 
 Compliant Kubernetes by default sets an retention of 30 days for logs, with an additional 30 days though backups of this logs, within OpenSearch.

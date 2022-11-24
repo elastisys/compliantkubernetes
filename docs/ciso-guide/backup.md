@@ -3,6 +3,7 @@ tags:
 - ISO 27001 A.12.3.1
 - ISO 27001 A.17.1.1
 - BSI IT-Grundschutz APP.4.4.A5
+- HIPAA S23 - Contingency Plan - Data Backup Plan - § 164.308(a)(7)(ii)(A)
 ---
 
 # Backup Dashboard

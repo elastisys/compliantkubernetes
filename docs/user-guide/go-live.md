@@ -1,5 +1,7 @@
 ---
 description: Checklist before going live on Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+tags:
+- HIPAA S26 - Contingency Plan - Testing and Revision Procedure - § 164.308(a)(7)(ii)(D)
 ---
 
 # Go-live Checklist

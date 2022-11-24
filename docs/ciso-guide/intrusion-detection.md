@@ -3,6 +3,7 @@ tags:
 - ISO 27001 A.12.2.1
 - ISO 27001 A.12.6.1
 - ISO 27001 A.16.1.7
+- HIPAA S20 - Security Incident Procedures - § 164.308(a)(6)
 ---
 # Intrusion Detection Dashboard
 

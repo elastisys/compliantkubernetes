@@ -3,6 +3,10 @@ description: How to delegate and work with permissions in Elastisys Compliant Ku
 tags:
 - ISO 27001 A.9.4.1
 - BSI IT-Grundschutz APP.4.4.A3
+- HIPAA S13 - Information Access Management - Access Authorization - § 164.308(a)(4)(ii)(B)
+- HIPAA S14 - Information Access Management - Access Establishment and Modification - § 164.308(a)(4)(ii)(C)
+- HIPAA S43 - Access Control - § 164.312(a)(1)
+- HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
 ---
 
 # How to Delegate?

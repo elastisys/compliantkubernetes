@@ -2,6 +2,14 @@
 tags:
 - ISO 27001 A.12.4.4
 - ISO 27001 A.15
+- HIPAA S29 - Business Associate Contracts and Other Arrangements - § 164.308(b)(1)
+- HIPAA S31 - Facility Access Controls - § 164.310(a)(1)
+- HIPAA S32 - Facility Access Controls - Contingency Operations - § 164.310(a)(2)(i)
+- HIPAA S33 - Facility Access Controls - Facility Security Plan - § 164.310(a)(2)(ii)
+- HIPAA S34 - Facility Access Controls - Access Control and Validation Procedures - § 164.310(a)(2)(iii)
+- HIPAA S35 - Facility Access Controls - Maintain Maintenance Records - § 164.310(a)(2)(iv)
+- HIPAA S39 - Device and Media Controls - Disposal - § 164.310(d)(2)(i)
+- HIPAA S47 - Access Control - Encryption and Decryption - § 164.312(a)(2)(iv)
 ---
 # Cloud Provider Audit
 
@@ -76,6 +84,7 @@ The remainder of this page contains open questions that you should ask your clou
         1. Encrypted object storage: Do you offer this by default?
         1. Encrypted block storage: Do you offer this by default?
         1. Encrypted boot discs: Do you offer this by default?
+        1. If not, how do you dispose of media potentially containing personal data (e.g., hard drivers, backup tapes)?
 
 1. Networking capabilities:
     1. Can the VMs be set up on a private network? Do you have a Terraform provider for your API?
@@ -146,6 +155,8 @@ The remainder of this page contains open questions that you should ask your clou
     1. Even the web fonts and analytics code on your front-page?
 1. Do you have a DPO?
     1. Is this an internal employee or outsourced?
+1. [HIPAA only] Are you familiar with [Business Associate Agreements](https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html)?
+    1. Are you ready to sign one with us?
 
 ## Collaboration
 
