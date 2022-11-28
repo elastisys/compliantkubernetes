@@ -12,6 +12,14 @@
 !!!note
     These are only the user-facing changes.
 
+### v3.10.7-ck8s2
+
+Released 2022-11-28
+
+#### Fixed:
+
+- **Corrected the Queue Details Grafana dashboard and improved alerting**
+
 ### v3.10.7-ck8s1
 
 Released 2022-09-21
