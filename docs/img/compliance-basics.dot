@@ -19,7 +19,7 @@ digraph compliance_basics {
         createdBy[
             label=""
             image="logos/created-by.svg"
-            url="https://elastisys.com"
+            URL="https://elastisys.com"
             width=3
         ]
         title[

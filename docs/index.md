@@ -11,7 +11,7 @@ description: Documentation for Elastisys Compliant Kubernetes, the security-focu
 Elastisys Compliant Kubernetes is an open source, Certified Kubernetes distribution designed according to the ISO27001 controls: providing you with security tooling and observability from day one.
 </p>
 
-![Comparison of vanilla Kubernetes and Elastisys Compliant Kubernetes](img/comparison-chart.png)
+[![Comparison of vanilla Kubernetes and Elastisys Compliant Kubernetes](img/comparison-chart.png)](https://elastisys.com)
 
 ## Components of Elastisys Compliant Kubernetes
 
