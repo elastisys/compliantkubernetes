@@ -1,7 +1,6 @@
 all: \
 		compliance-basics.png \
 		compliance-basics.svg \
-		ck8s-c4model-level1.png \
 		ck8s-c4model-level2.png \
 		user-overview.png \
 		harbor-usage.png

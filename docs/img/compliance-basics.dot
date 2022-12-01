@@ -11,26 +11,6 @@ digraph compliance_basics {
     graph[labeljust="l", fontsize=20, ranksep=1]
 
     node[target="_top"]  // Open links in same tab
-    subgraph cluster_header {
-        style="invis";
-
-        node[shape="none"];
-        //node[shape="box"]; // Use for debugging
-        createdBy[
-            label=""
-            image="logos/created-by.svg"
-            url="https://elastisys.com"
-            width=3
-        ]
-        title[
-            width=4.3
-            label="https://elastisys.io/compliantkubernetes/"
-            fontcolor="#4651b4"
-            URL="https://elastisys.io/compliantkubernetes/"
-        ]
-        spacing_node_0[width=2,label=""]
-        alignment_node_0[width=1,label=""]
-    }
 
     node[target="_blank"]  // Open links in new tab
     subgraph cluster_personaldata_regulations {
@@ -249,7 +229,28 @@ digraph compliance_basics {
         kubernetes->auditNA7
     }
 
+    subgraph cluster_footer {
+        style="invis";
+
+        node[shape="none"];
+        //node[shape="box"]; // Use for debugging
+        createdBy[
+            label=""
+            image="logos/created-by.svg"
+            URL="https://elastisys.com"
+            width=3
+        ]
+        title[
+            width=4.3
+            label="https://elastisys.io/compliantkubernetes/"
+            fontcolor="#4651b4"
+            URL="https://elastisys.io/compliantkubernetes/"
+        ]
+        spacing_node_0[width=2,label=""]
+        alignment_node_0[width=1,label=""]
+    }
+
     // ALIGNMENT
     edge[weight=1000,style="invis"]
-    alignment_node_0 -> GDPR -> controls2 -> access -> dex -> prometheus
+    GDPR -> controls2 -> access -> dex -> prometheus -> alignment_node_0
 }
