@@ -4,7 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
-- [v0.26.2](#v0262) - 2022-10-18
+- [v0.27.0](#v0270) - 2022-11-17
 - [v0.26.0](#v0260) - 2022-09-19
 - [v0.25.0](#v0250) - 2022-08-25
 - [v0.24.1](#v0241) - 2022-08-01
@@ -27,26 +27,41 @@
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
 
-### V0.26.2
+### v0.27.0
 
-Released 2022-10-18
-
-#### Fixed
-
-- **Blackbox exporter now looks at the correct error code for the opensearch-dashboards target**
-- **Fixed inevitable mapping conflicts in Opensearch by updating `elastisys/fluentd` to use image tag `v3.4.0-ck8s4`.**
-- **Kubernetes cluster status Grafana dashboard not loading data for some panels**
-- **Fixed small issues introduced in v0.26.0**
-
-### V0.26.1
-
-Released 2022-10-05
+Released 2022-11-17
 
 #### Updated
 
-- **Updated dex chart to `v0.12.0` which upgraded dex to `v2.35.1`**
+- **Updated Dex helm chart to `v0.12.0`, which also upgrades Dex to `v2.35.1`.**
+- **Updated Falco helm chart to `2.2.0`, which also upgrades Falco to `0.33.0` and Falco Sidekick to `2.26.0`.**
+- **Updated Falco Exporter helm chart to `0.9.0`, which also upgrades Falco Exporter to `0.8.0`.**
+- **Updated Velero helm chart to `v2.31.8`, which also upgrades Velero to `v1.9.2`.**
+- **Updated Grafana helm chart to `v6.43.4`, which also upgrades Grafana to `v9.2.4`.**
 
-### V0.26.0
+#### Changed
+
+- **Improved Network security by adding Network policies to a lot of the included services.**
+- **NetworkPolicies are now automatically propagated from a parent namespace to its subnamespaces in HNC.**
+- **Several default resource requests and limits have changed for the included services.**
+- **Lowered the default retention age for Kubernetes logs in the prod flavor down to 30 days.**
+- **Made dex ID Token expiration time configurable.**
+- **User alertmanager is now enabled by default.**
+
+#### Fixed
+
+- **Fixed an issue with the "Kubernetes cluster status" Grafana dashboard not loading data for some panels**
+- **Rclone can now be configured to run every x minutes/hours/days/week/month/year.**
+
+#### Added
+
+- **Added RBAC for admin users to view Gatekeeper constraints.**
+- **New section in the welcoming dashboards, displaying the most relevant features and changes for the user added in the last two releases.**
+- **Added an option to configure alerts for growing indices in OpenSearch.**
+  - **The settings for this might need to be tweaked to better suit the environment.**
+- **Added an alert for failed evicted pods (KubeFailedEvictedPods).**
+
+### v0.26.0
 
 Released 2022-09-19
 
