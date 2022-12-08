@@ -41,16 +41,16 @@ sudo apt install redis-tools
 
 ## Getting Access
 
-Your administrator will set up a Secret inside Compliant Kubernetes, which contains all information you need to access your Redis cluster.
-The Secret has the following shape:
+Your administrator will set up a ConfigMap inside Compliant Kubernetes, which contains all information you need to access your Redis cluster.
+The ConfigMap has the following shape:
 
 ```yaml
 apiVersion: v1
-kind: Secret
+kind: ConfigMap
 metadata:
-  name: $SECRET
+  name: $CONFIG_MAP
   namespace: $NAMESPACE
-stringData:
+data:
   # REDIS_SENTINEL_HOST represents a cluster-scoped Redis Sentinel host, which only makes sense inside the Kubernetes cluster.
   # E.g., rfs-redis-cluster.redis-system
   REDIS_SENTINEL_HOST: $REDIS_SENTINEL_HOST
@@ -60,23 +60,20 @@ stringData:
   REDIS_SENTINEL_PORT: "$REDIS_SENTINEL_PORT"
 ```
 
-!!!important
-    The Secret is very precious! Prefer not to persist any information extracted from it, as shown below.
-
 To extract this information, proceed as follows:
 
 ```bash
-export SECRET=            # Get this from your administrator
+export CONFIG_MAP=            # Get this from your administrator
 export NAMESPACE=         # Get this from your administrator
 
-export REDIS_SENTINEL_HOST=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.REDIS_SENTINEL_HOST}' | base64 -d)
-export REDIS_SENTINEL_PORT=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.data.REDIS_SENTINEL_PORT}' | base64 -d)
+export REDIS_SENTINEL_HOST=$(kubectl -n $NAMESPACE get configmap $CONFIG_MAP -o 'jsonpath={.data.REDIS_SENTINEL_HOST}')
+export REDIS_SENTINEL_PORT=$(kubectl -n $NAMESPACE get configmap $CONFIG_MAP -o 'jsonpath={.data.REDIS_SENTINEL_PORT}')
 ```
 
 !!!important
     At the time of this writing, we do not recommend to use a Redis cluster in a multi-tenant fashion. One Redis cluster should have only one purpose.
 
-## Create a Secret
+## Create a ConfigMap
 
 First, check that you are on the right Compliant Kubernetes cluster, in the right **application** namespace:
 
@@ -85,16 +82,15 @@ kubectl get nodes
 kubectl config view --minify --output 'jsonpath={..namespace}'; echo
 ```
 
-Now, create a Kubernetes Secret in your application namespace to store the Redis Sentinel connection parameters:
+Now, create a Kubernetes ConfigMap in your application namespace to store the Redis Sentinel connection parameters:
 
 ```bash
 cat <<EOF | kubectl apply -f -
 apiVersion: v1
-kind: Secret
+kind: ConfigMap
 metadata:
-    name: app-redis-secret
-type: Opaque
-stringData:
+    name: app-redis-config
+data:
     REDIS_SENTINEL_HOST: $REDIS_SENTINEL_HOST
     REDIS_SENTINEL_PORT: "$REDIS_SENTINEL_PORT"
 EOF
@@ -104,8 +100,8 @@ EOF
 
 To expose the Redis cluster to your application, follow one of the following upstream documentation:
 
-* [Create a Pod that has access to the secret data through a Volume](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume)
-* [Define container environment variables using Secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data)
+* [Create a Pod that has access to the ConfigMap data through a Volume](https://kubernetes.io/docs/concepts/configuration/configmap/#using-configmaps-as-files-from-a-pod)
+* [Define container environment variables using ConfigMap data](https://kubernetes.io/docs/concepts/configuration/configmap/#configmaps-and-pods)
 
 !!!important
     Make sure to use a Redis client library with Sentinel support. For example:
@@ -131,4 +127,4 @@ Check out the [release notes](../../release-notes/redis.md) for the Redis cluste
 * [Redis Sentinel](https://redis.io/topics/sentinel)
 * [Guidelines for Redis clients with support for Redis Sentinel](https://redis.io/topics/sentinel-clients)
 * [Redis Commands](https://redis.io/commands)
-* [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
+* [Kubernetes ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap)
