@@ -99,6 +99,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0024](0024-allow-Harbor-robot-account.md) - Allow a Harbor robot account that can create other robot accounts with full privileges
 * [ADR-0025](0025-local-storage.md) - Use local-volume-provisioner for Managed Services that requires high-speed disks.
 * [ADR-0026](0026-hnc.md) - Use `environment-name` as the default root of Hierarchical Namespace Controller (HNC)
+* [ADR-0027](0027-postgresql-external-replication.md) - PostgreSQL - Enable external replication
 * [ADR-0028](0028-harder-pod-eviction-when-node-goes-OOM) - Harder pod eviction when nodes are going OOM
 
 <!-- adrlogstop -->
