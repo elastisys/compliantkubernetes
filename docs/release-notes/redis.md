@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes Redis
 <!-- BEGIN TOC -->
+- [v1.1.1-ck8s4](#v111-ck8s4) - 2022-12-09
 - [v1.1.1-ck8s3](#v111-ck8s3) - 2022-10-04
 - [v1.1.1-ck8s2](#v111-ck8s2) - 2022-08-23
 - [v1.1.1-ck8s1](#v111-ck8s1) - 2022-03-07
@@ -11,6 +12,14 @@
 
 !!!note
     These are only the user-facing changes.
+
+### v1.1.1-ck8s4
+
+Released 2022-12-09
+
+Changes:
+
+- Improved alerting and scheduling for better operational management and safety.
 
 ### v1.1.1-ck8s3
 
