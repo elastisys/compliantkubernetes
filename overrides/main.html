@@ -26,4 +26,19 @@
   connect-src 'self' https://matomo.elastisys.com/;
   script-src 'self' 'unsafe-inline';
 ">
+
+<!-- Disable localStorage, sessionStorage and cookies -->
+<script>
+if (window.localStorage) {
+  window.localStorage.setItem = function() { };
+  window.localStorage.clear();
+}
+if (window.sessionStorage) {
+  window.sessionStorage.setItem = function() { }
+  window.sessionStorage.clear();
+}
+if (browser.cookies) {
+  browser.cookies.set = function() { }
+)
+</script>
 {% endblock %}
