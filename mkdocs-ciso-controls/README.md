@@ -7,6 +7,7 @@ This is a PoC solving the following use-case. The Compliant Kubernetes documenta
 tags:
 - ISO 27001 A13.1
 - HIPAA S13
+- BSI IT-Grundschutz APP.X
 ```
 
 The goal of this plugin is to:
@@ -22,15 +23,14 @@ In `mkdocs.yaml`:
 ```
 plugins:
   - ciso-controls:
-      root_url: /ciso-guide/controls/
-      control_sources:
-        - 'ISO 27001'
-        - 'HIPAA'
-        - 'BSI IT-Grundschutz'
+      root_url: ciso-guide/controls/
 ```
 
-Tag indexes will be generated at:
+For the example above, the following files are expected to exist:
 
-* `/ciso-guide/controls/iso-27001`;
-* `/ciso-guide/controls/hipaa`;
-* `/ciso-guide/controls/bsi-it-grundschutz`.
+* `ciso-guide/controls/iso-27001.md`;
+* `ciso-guide/controls/bsi-it-grundschutz.md`;
+* `ciso-guide/controls/hipaa.md`.
+
+These files are expected to contain the string `[TAGS]`, which will be replaced with an index to all tags prefixed with the name of the page.
+
