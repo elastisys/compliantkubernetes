@@ -9,6 +9,7 @@ import sys
 
 from markdown.extensions.toc import slugify
 import mkdocs
+from natsort import natsorted
 
 class CisoControlsPlugin(mkdocs.plugins.BasePlugin):
     config_scheme = (
@@ -77,7 +78,7 @@ class CisoControlsPlugin(mkdocs.plugins.BasePlugin):
         # Replace placeholder in Markdown with rendered tags index
         return markdown.replace("[TAGS]", "\n".join([
             self.__render_tag_links(*args, self_page=page)
-                for args in sorted(tags.items())
+                for args in natsorted(tags.items())
         ]))
 
     # Render the given tag and links to all pages with occurrences

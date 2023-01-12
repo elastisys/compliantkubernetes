@@ -28,6 +28,7 @@ These files are expected to:
 
 The string `[TAGS]` will be replaced with an HTML index to all relevant pages.
 In the other direction, all relevant pages will link back to the tags index.
+Tags will be sorted naturally via the [natsort](https://pypi.org/project/natsort/) package.
 
 For inclusion in the tags index, the tags index filename without extension must be a prefix of the [slugified](https://stackoverflow.com/a/427160) tag.
 

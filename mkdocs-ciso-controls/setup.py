@@ -14,7 +14,7 @@ setup(
     long_description_content_type="text/markdown",
     license="MIT",
     packages=find_packages(),
-    install_requires=["mkdocs>=1.2"],
+    install_requires=["mkdocs>=1.2", "natsort>=8.2.0"],
     include_package_data=True,
     zip_safe=False,
     entry_points={
