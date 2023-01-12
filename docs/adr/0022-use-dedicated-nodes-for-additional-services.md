@@ -7,10 +7,11 @@ tags:
 * Status: accepted
 * Deciders: arch meeting
 * Date: 2022-03-03
+* Updated: 2023-01-12
 
 ## Context and Problem Statement
 
-We run additional services in the workload cluster, currently databases (PostgreSQL), in-memory caches (Redis) and message queues (RabbitMQ).
+We run additional services in the workload cluster, currently databases (PostgreSQL), in-memory caches (Redis), message queues (RabbitMQ) and distributed tracing (Jaeger).
 
 On what Nodes should they run?
 
@@ -33,6 +34,7 @@ Specifically, use the following Node labels
 elastisys.io/node-type=postgresql
 elastisys.io/node-type=redis
 elastisys.io/node-type=rabbitmq
+elastisys.io/node-type=jaegertracing
 ```
 
 and taints:
@@ -41,6 +43,7 @@ and taints:
 elastisys.io/node-type=postgresql:NoSchedule
 elastisys.io/node-type=redis:NoSchedule
 elastisys.io/node-type=rabbitmq:NoSchedule
+elastisys.io/node-type=jaegertracing:NoSchedule
 ```
 
 !!!important
