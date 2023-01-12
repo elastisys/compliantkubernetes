@@ -37,7 +37,7 @@ To work around that, you need to override the `content.html` template:
 
 ```bash
 mkdir -p overrides/partials/
-ln -sf ./mkdocs-ciso-controls/overrides/partials/content.html ./overrides/partials/
+ln -sf ../../mkdocs-ciso-controls/overrides/partials/content.html ./overrides/partials/
 ```
 
 ## Example
