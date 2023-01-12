@@ -33,4 +33,3 @@ For the example above, the following files are expected to exist:
 * `ciso-guide/controls/hipaa.md`.
 
 These files are expected to contain the string `[TAGS]`, which will be replaced with an index to all tags prefixed with the name of the page.
-
