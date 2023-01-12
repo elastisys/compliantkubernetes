@@ -1,35 +1,61 @@
 # CISO Control Plugin for Mkdocs
 
-This is a PoC solving the following use-case. The Compliant Kubernetes documentation uses tags to capture various Information Security Management System (ISMS) controls, such as:
+This plugin is similar to the [tags plugin](https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/) which is built into mkdocs-material.
+However, it allows to generate separate tags index pages, depending on the prefix of the tag.
+
+It aims to solve the following use-case.
+The Compliant Kubernetes documentation uses tags to capture various Information Security Management System (ISMS) controls.
+This plugin will:
+
+1. Create tags indexes for each requirement source.
+2. Create bi-directional links between tags indexes and pages.
+
+## Usage
+
+Start by adding the following in `mkdocs.yaml`:
 
 ```
-# In the YAML frontmatter of the page
+plugins:
+  - ciso-controls:
+      root_url: $ROOT_URL
+```
+
+The plugin will scan the specified folder for Markdown documents which will serve as tags indexes.
+These files are expected to:
+
+1. be named with the prefix of tags to be included in that tags index;
+1. contain the string `[TAGS]`.
+
+The string `[TAGS]` will be replaced with an HTML index to all relevant pages.
+In the other direction, all relevant pages will link back to the tags index.
+
+For inclusion in the tags index, the tags index filename without extension must be a prefix of the [slugified](https://stackoverflow.com/a/427160) tag.
+
+Note that, mkdocs-material will only show tags on pages if its own built-in tags plugin is enabled.
+To work around that, you need to override the `content.html` template:
+
+```bash
+mkdir -p overrides/partials/
+ln -sf ./mkdocs-ciso-controls/overrides/partials/content.html ./overrides/partials/
+```
+
+## Example
+
+Create the following files:
+
+* `ciso-guide/controls/iso-27001.md`;
+* `ciso-guide/controls/bsi-it-grundschutz.md`;
+* `ciso-guide/controls/hipaa.md`.
+
+You can add any content you want, but make sure you have the string `[TAGS]` somewhere.
+
+Next, add something as follows in the frontmatter:
+
+```
 tags:
 - ISO 27001 A13.1
 - HIPAA S13
 - BSI IT-Grundschutz APP.X
 ```
 
-The goal of this plugin is to:
-
-1. Create tag indexes for each requirement source. In the example above "ISO 27001" and "HIPAA" is each a requirement source.
-
-2. Create bi-directional links between tag indexes and pages.
-
-## Usage
-
-In `mkdocs.yaml`:
-
-```
-plugins:
-  - ciso-controls:
-      root_url: ciso-guide/controls/
-```
-
-For the example above, the following files are expected to exist:
-
-* `ciso-guide/controls/iso-27001.md`;
-* `ciso-guide/controls/bsi-it-grundschutz.md`;
-* `ciso-guide/controls/hipaa.md`.
-
-These files are expected to contain the string `[TAGS]`, which will be replaced with an index to all tags prefixed with the name of the page.
+This will add `ISO 27001 A13.1` to `ciso-guide/controls/iso-27001`, etc.
