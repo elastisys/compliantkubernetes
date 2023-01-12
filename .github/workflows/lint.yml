@@ -16,4 +16,6 @@ jobs:
         with:
           ignore_words_file: .codespellignore
       - name: Test docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        run: |
+          python3 -m pip install -r ./requirements.txt
+          mkdocs build
