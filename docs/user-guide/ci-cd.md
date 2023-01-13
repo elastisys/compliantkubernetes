@@ -85,12 +85,28 @@ NAMESPACE=$(kubectl config view --minify --output 'jsonpath={..namespace}')
 kubectl create rolebinding ci-cd --role ci-cd --serviceaccount=$NAMESPACE:ci-cd
 ```
 
+### Create a Secret with a token
+
+Now create a secret for the ServiceAccount that Kubernetes will populate with a token:
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ci-cd
+  annotations:
+    kubernetes.io/service-account.name: ci-cd
+type: kubernetes.io/service-account-token
+EOF
+```
+
 ### Extract the KUBECONFIG
 
 You can now extract the `KUBECONFIG` of the ServiceAccount:
 
 ```bash
-SECRET_NAME=$(kubectl get sa ci-cd -o json | jq -r .secrets[].name)
+SECRET_NAME=ci-cd
 
 server=$(kubectl config view --minify --output 'jsonpath={..cluster.server}')
 cluster=$(kubectl config view --minify --output 'jsonpath={..context.cluster}')
