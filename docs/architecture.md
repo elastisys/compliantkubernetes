@@ -1,3 +1,7 @@
+---
+tags:
+- MSBFS 2020:7 2 kap. 4 §
+---
 # Architecture
 
 Below we present the architecture of Compliant Kubernetes, using the [C4 model](https://c4model.com/).
