@@ -32,14 +32,6 @@ Tags will be sorted naturally via the [natsort](https://pypi.org/project/natsort
 
 For inclusion in the tags index, the tags index filename without extension must be a prefix of the [slugified](https://stackoverflow.com/a/427160) tag.
 
-Note that, mkdocs-material will only show tags on pages if its own built-in tags plugin is enabled.
-To work around that, you need to override the `content.html` template:
-
-```bash
-mkdir -p overrides/partials/
-ln -sf ../../mkdocs-ciso-controls/overrides/partials/content.html ./overrides/partials/
-```
-
 ## Example
 
 Create the following files:

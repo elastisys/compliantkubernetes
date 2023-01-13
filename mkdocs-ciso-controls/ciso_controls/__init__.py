@@ -20,8 +20,13 @@ class CisoControlsPlugin(mkdocs.plugins.BasePlugin):
         self.tags = { } # shape: Dict[tags_index, Dict[tag, list of pages]]
         self.root_url = self.config.get('root_url')
 
+        # mkdocs-material will only show tags on pages if its own built-in tags
+        # plugin is enabled. Trick the partials/content.html template into
+        # believing that.
+        config["plugins"]["material/tags"] = None
+
     # Move tags indexes to the end to ensure we first collect all page tags
-    def on_nav(self, nav, files, **kwargs):
+    def on_nav(self, nav, config, files):
         tags_indexes = []
         for filename, file in files.src_paths.items():
             if file.url.startswith(self.root_url):
