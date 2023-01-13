@@ -3,6 +3,7 @@ tags:
 - ISO 27001 A.12.4.3
 - HIPAA S18 - Security Awareness, Training, and Tools - Log-in Monitoring - § 164.308(a)(5)(ii)(C)
 - HIPAA S48 - Audit Controls - § 164.312(b)
+- MSBFS 2020:7 4 kap. 16 §
 ---
 # Audit Logs
 

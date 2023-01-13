@@ -4,6 +4,7 @@ tags:
 - ISO 27001 A.12.4.3
 - HIPAA S5 - Security Management Process - Information System Activity Review - § 164.308(a)(1)(ii)(D)
 - HIPAA S18 - Security Awareness, Training, and Tools - Log-in Monitoring - § 164.308(a)(5)(ii)(C)
+- MSBFS 2020:7 4 kap. 17 §
 ---
 # Log Review
 

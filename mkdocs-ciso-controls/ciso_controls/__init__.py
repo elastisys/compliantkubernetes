@@ -69,7 +69,9 @@ class CisoControlsPlugin(mkdocs.plugins.BasePlugin):
         log.info(
             'Collected the following tags indexes: ' +
             ' '.join(self.tags.keys()))
-        log.error(f'No tags index for tag: {tag}')
+        log.error(
+            f'No tags index for tag: {tag}; ' +
+            f'expected a prefix of {slugified_tag}')
         sys.exit()
 
     # Render tags index

@@ -3,6 +3,9 @@ tags:
 - ISO 27001 A.12.3.1
 - ISO 27001 A.17.1.1
 - HIPAA S24 - Contingency Plan - Disaster Recovery Plan - § 164.308(a)(7)(ii)(B)
+- MSBFS 2020:7 4 kap. 14 §
+- MSBFS 2020:7 4 kap. 15 §
+- MSBFS 2020:7 4 kap. 22 §
 ---
 # Disaster Recovery
 

@@ -2,6 +2,7 @@
 description: FAQ for Application Developers on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
 tags:
 - HIPAA S47 - Access Control - Encryption and Decryption - § 164.312(a)(2)(iv)
+- MSBFS 2020:7 4 kap. 7 §
 ---
 
 # Application Developer FAQ

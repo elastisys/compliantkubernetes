@@ -10,6 +10,9 @@ tags:
 - HIPAA S52 - Transmission - § 164.312(e)(1)
 - HIPAA S53 - Transmission Security - Integrity Controls - § 164.312(e)(2)(i)
 - HIPAA S54 - Transmission Security - Encryption - § 164.312(e)(2)(ii)
+- MSBFS 2020:7 4 kap. 1 §
+- MSBFS 2020:7 4 kap. 2 §
+- MSBFS 2020:7 4 kap. 7 §
 ---
 
 Network Model

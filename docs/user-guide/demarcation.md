@@ -5,6 +5,8 @@ tags:
 - HIPAA S13 - Information Access Management - Access Authorization - § 164.308(a)(4)(ii)(B)
 - HIPAA S14 - Information Access Management - Access Establishment and Modification - § 164.308(a)(4)(ii)(C)
 - HIPAA S43 - Access Control - § 164.312(a)(1)
+- MSBFS 2020:7 4 kap. 3 §
+- MSBFS 2020:7 4 kap. 4 §
 ---
 
 Can I?
