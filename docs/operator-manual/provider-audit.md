@@ -1,6 +1,5 @@
 ---
 tags:
-- ISO 27001 A.12.4.4
 - ISO 27001 A.15
 - HIPAA S29 - Business Associate Contracts and Other Arrangements - § 164.308(b)(1)
 - HIPAA S31 - Facility Access Controls - § 164.310(a)(1)
@@ -13,6 +12,7 @@ tags:
 - MSBFS 2020:7 3 kap. 1 §
 - MSBFS 2020:7 3 kap. 2 §
 - MSBFS 2020:7 4 kap. 12 §
+- MSBFS 2020:7 4 kap. 21 §
 ---
 # Cloud Provider Audit
 
