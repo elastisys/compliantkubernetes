@@ -30,11 +30,6 @@ The following controls are outside the scope of Compliant Kubernetes and **need 
 * S9 - Workforce security - Workforce Clearance Procedure - § 164.308(a)(3)(ii)(B)
 * S10 - Workforce security - Establish Termination Procedures - § 164.308(a)(3)(ii)(C)
 * S11 - Information Access Management - § 164.308(a)(4)
-* S12 - Information Access Management - Isolating Healthcare Clearinghouse Functions - § 164.308(a)(4)(ii)(A)
-
-    !!!important
-        Compliant Kubernetes recommends to setting up at least two separate environments: one for testing and one for production.
-
 * S15 - Security Awareness and Training - § 164.308(a)(5)
 * S19 - Security Awareness, Training, and Tools - Password Management - § 164.308(a)(5)(ii)(D)
 * S21 - Security Incident Procedures - Response and Reporting - § 164.308(a)(6)
