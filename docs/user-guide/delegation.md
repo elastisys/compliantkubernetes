@@ -1,7 +1,7 @@
 ---
 description: How to delegate and work with permissions in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 tags:
-- ISO 27001 A.9.4.1
+- ISO 27001 A.9.4.1 Information Access Restriction
 - BSI IT-Grundschutz APP.4.4.A3
 - HIPAA S13 - Information Access Management - Access Authorization - § 164.308(a)(4)(ii)(B)
 - HIPAA S14 - Information Access Management - Access Establishment and Modification - § 164.308(a)(4)(ii)(C)

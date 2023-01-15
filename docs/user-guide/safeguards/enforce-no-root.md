@@ -1,8 +1,8 @@
 ---
 tags:
-- ISO 27001 A.9.4.4
-- ISO 27001 A.12.6.1
-- ISO 27001 A.14.2.5
+- ISO 27001 A.9.4.4 Use of Privileged Utility Programmes
+- ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
+- ISO 27001 A.14.2.5 Secure System Engineering Principles
 ---
 
 # Reduce blast radius: Preventing forgotten roots

@@ -1,6 +1,6 @@
 ---
 tags:
-- ISO 27001 A.10.1.2
+- ISO 27001 A.10.1.2 Key Management
 ---
 # Cryptography Dashboard
 

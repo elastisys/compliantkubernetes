@@ -1,6 +1,6 @@
 ---
 tags:
-- ISO 27001 A.12.1.3
+- ISO 27001 A.12.1.3 Capacity Management
 ---
 <!--
 Note to contributors: Aim for the following format.

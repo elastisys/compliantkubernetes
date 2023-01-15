@@ -1,10 +1,8 @@
 ---
 description: Explanation of the network model in Elastisys Compliant Kubernetes, the security-focused kubernetes distribution.
 tags:
-- ISO 27001 A.10.1.2
-- ISO 27001 A.13.1.1
-- ISO 27001 A.13.1.2
-- ISO 27001 A.13.1.3
+- ISO 27001 A.10.1.2 Key Management
+- ISO 27001 A.13.1 Network Security
 - BSI IT-Grundschutz APP.4.4.A7
 - BSI IT-Grundschutz APP.4.4.A18
 - HIPAA S52 - Transmission - § 164.312(e)(1)

@@ -1,6 +1,6 @@
 ---
 tags:
-- ISO 27001 A.13
+- ISO 27001 A.13 Network Security
 ---
 # Network Security Dashboard
 

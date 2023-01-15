@@ -1,6 +1,6 @@
 ---
 tags:
-- ISO 27001 A.17
+- ISO 27001 A.17.1.1 Planning Information Security Continuity
 ---
 # We believe in community-driven open source
 

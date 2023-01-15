@@ -1,6 +1,6 @@
 ---
 tags:
-- ISO 27001 A.12.6.1
+- ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
 ---
 <!--
 Note to contributors: Aim for the following format.

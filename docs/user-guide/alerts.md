@@ -1,7 +1,7 @@
 ---
 description: Alerting on metrics with AlertManager in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 tags:
-- ISO 27001 A.16
+- ISO 27001 A.16 Information Security Incident Management
 ---
 
 # Alerts

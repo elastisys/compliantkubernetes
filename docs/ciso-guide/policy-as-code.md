@@ -1,7 +1,7 @@
 ---
 tags:
-- ISO 27001 A.18.2.2
-- ISO 27001 A.18.2.3
+- ISO 27001 A.18.2.2 Compliance with Security Policies & Standards
+- ISO 27001 A.18.2.3 Technical Compliance Review
 ---
 # Policy-as-Code Dashboard
 

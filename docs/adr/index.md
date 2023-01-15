@@ -1,7 +1,7 @@
 ---
 tags:
-  - ISO 27001 A.14.1.1
-  - ISO 27001 A.14.2.4
+  - ISO 27001 A.14.1.1 Information Security Requirements Analysis & Specification
+  - ISO 27001 A.14.2.4 Restrictions on Changes to Software Packages
 ---
 # Architectural Decision Log
 

@@ -1,6 +1,6 @@
 ---
 tags:
-- ISO 27001 A.12.1.3
+- ISO 27001 A.12.1.3 Capacity Management
 ---
 # Capacity Management (Kubernetes Status) Dashboard
 

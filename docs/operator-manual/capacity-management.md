@@ -1,3 +1,7 @@
+---
+tags:
+- ISO 27001 A.12.1.3 Capacity Management
+---
 # Capacity Management
 
 Our users trust us -- the Compliant Kubernetes administrators -- to keep applications up and secure.

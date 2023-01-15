@@ -1,6 +1,7 @@
 ---
 description: Checklist before going live on Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 tags:
+- ISO 27001 A.17.1.3 Verify, Review & Evaluate Information Security Continuity
 - HIPAA S26 - Contingency Plan - Testing and Revision Procedure - § 164.308(a)(7)(ii)(D)
 ---
 

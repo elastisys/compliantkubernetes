@@ -1,9 +1,9 @@
 ---
 description: How to work with logs in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 tags:
-- ISO 27001 A.12.4.1
-- ISO 27001 A.12.4.3
-- ISO 27001 A.16
+- ISO 27001 A.12.4.1 Event Logging
+- ISO 27001 A.12.4.3 Administrator & Operator Logs
+- ISO 27001 A.16 Information Security Incident Management
 ---
 
 # Logging
