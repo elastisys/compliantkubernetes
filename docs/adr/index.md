@@ -103,6 +103,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0026](0026-hnc.md) - Use `environment-name` as the default root of Hierarchical Namespace Controller (HNC)
 * [ADR-0027](0027-postgresql-external-replication.md) - PostgreSQL - Enable external replication
 * [ADR-0028](0028-harder-pod-eviction-when-node-goes-OOM.md) - Harder pod eviction when nodes are going OOM
+* [ADR-0029](0029-expose-jaeger-ui.md) - Expose Jaeger UI in WC
 * [ADR-0030](0030-run-argocd-on-elastisys-nodes.md) - Run ArgoCD on the Elastisys nodes
 * [ADR-0031](0031-run-csi-cinder-controllerplugin-on-elastisys-nodes.md) - Run csi-cinder-controllerplugin on the Elastisys nodes
 * [ADR-0032](0032-boot-disk-size.md) - Boot disk size on nodes
