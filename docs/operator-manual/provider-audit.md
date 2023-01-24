@@ -19,7 +19,6 @@ tags:
 !!!note
     This section helps you implement ISO 27001, specifically:
 
-    * A.12.4.4 Clock Synchronization
     * A.15 Supplier Relationships
 
 This page will help you do your due diligence and ensure you choose a cloud provider that provides a solid foundation for Compliant Kubernetes and your application.
@@ -160,6 +159,7 @@ The remainder of this page contains open questions that you should ask your clou
     1. Even the web fonts and analytics code on your front-page?
 1. Do you have a DPO?
     1. Is this an internal employee or outsourced?
+1. Can you show us your Data Processing Agreement (DPA)?
 1. [HIPAA only] Are you familiar with [Business Associate Agreements](https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html)?
     1. Are you ready to sign one with us?
 
