@@ -1,5 +1,55 @@
-
+---
+tags:
+- ISO 27001 A.14.2.9 System Acceptance Testing
+---
 # Quality Assurance
+
+Compliant Kubernetes provides a stable and secure platform for containerized applications.
+To achieve this, quality assurance is an integral part of development.
+When we say "quality", we really refer to the following quality criteria.
+
+Feature can be delivered ...
+
+* ... at scale
+    * Feature has good user-facing documentation
+    * Feature is self-serviced
+    * Feature is well-understood and aligned in marketing, sales, product and operations
+    * Feature is clearly covered by ToS
+    * Feature is implemented using a stable upstream API
+    * Feature is used by at least 2 customers
+    * Feature generates a manageable number of service tickets, whether questions or change orders
+    * Feature has well understood packaging and pricing
+    * Feature can be billed easily
+
+* ... without ruining admin's life
+    * At least 2 admins have required training
+    * Feature has good admin-facing documentation (2nd day ops, all processes in place and documented, etc.)
+    * Feature triggers a manageable number of P1 alerts
+    * Feature triggers a manageable number of P2 alerts
+    * Feature has good upstream support
+    * All information security risks related to feature have been identified
+    * (In case of a new supplier) Supplier collaborates directly with Elastisys admins
+    * Feature is covered by QA
+    * Feature is sufficiently redundant to be able to operate in degraded state upon faults
+    * Feature integrates well with Ops observability (alerting, logging, metrics)
+
+* ... without compromising our security posture
+    * Feature has good and well-understood access control towards customer
+    * Feature does not expose platform to additional risk (needs escalated privilegies that were not analyzed, etc.)
+    * Feature has good and well-understood security patching
+    * Feature has good and well-understood upgrades
+    * Feature has good and well-understood business continuity, i.e., high availability or self-healing
+    * Feature has good and well-understood disaster recovery
+    * Feature does not impair ability to upgrade underlying infrastructure and base OS
+    * (In case of a new supplier) Supplier provides sufficient security for our needs
+    * Feature has good and well understood way of measuring SLA fulfillment
+
+These criteria should be taken as a direction, not a "task list".
+For some features, some of these criteria won't apply.
+For other features, we might accept that some of these criteria cannot be fully satisfied.
+It is the role of our QA manager to decide how to apply these criteria to each feature.
+
+## How to perform quality assurance?
 
 When you have created your Compliant Kubernetes cluster it can be wise to run some checks to ensure that it works as expected.
 This document details some snippets that you can follow in order to ensure some functionality of the cluster.
