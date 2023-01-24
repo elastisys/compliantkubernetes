@@ -22,7 +22,8 @@ An important part of this is keeping your Compliant Kubernetes environment up to
 This maps to objectives in ISO Annex [A.12.6.1 Management of Technical Vulnerabilities](https://www.isms.online/iso-27001/annex-a-12-operations-security/).
 
 ## What maintenance do I need to do and how?
-In short, there are three levels of maintenane that should be performed on a regular basis.
+
+In short, there are three levels of maintenance that should be performed on a regular basis.
 
 - Patching the underlying OS on the nodes
 - Upgrading the Compliant Kubernetes application stack
@@ -31,6 +32,7 @@ In short, there are three levels of maintenane that should be performed on a reg
 Let's go through them one by one.
 
 ### Patching the nodes
+
 Security patches for the underlying OS on the nodes is constantly being released, and to ensure your environment is secured, the nodes that run Compliant Kubernetes must be updated with these patches.
 We recommend that you use the [AutomaticSecurityUpdates](https://help.ubuntu.com/community/AutomaticSecurityUpdates) feature that is available in Ubuntu (similar feature exist in other distros) to install these updates.
 Note that the nodes still need to be rebooted for some of these updates to be applied.
@@ -45,11 +47,30 @@ It will cordon and reboot the nodes one by one.
 ```
 
 ### Upgrading the Compliant Kubernetes application stack
-Compliant Kuberenets consists of a multitude of open source components that interact to form a smooth end user experience.
+
+Compliant Kubernetes consists of a multitude of open source components that interact to form a smooth end user experience.
 In order to free you of the burden of keeping track of when to upgrade the various components, new versions of Complaint Kubernetes are regularly release.
 When a new version is released, it becomes available as a [tagged release](https://github.com/elastisys/compliantkubernetes-apps/tags) in the github repo.
 
 > Before upgrading to a new release, please review the [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md) if possible, apply the upgrade to a staging environment before upgrading any environments with production data.
+
+### Prerequisites
+
+- [ ] Notify the users (if any) before the upgrade starts;
+- [ ] Check if there are any pending changes to the environment;
+- [ ] Check the state of the environment, pods, nodes and backup jobs:
+
+> **_NOTE:_** the below steps should be run from compliantkubernetes-apps root directory
+
+```bash
+./bin/ck8s test sc|wc
+./bin/ck8s ops kubectl sc|wc get pods -A -o custom-columns=NAMESPACE:metadata.namespace,POD:metadata.name,READY-false:status.containerStatuses[*].ready,REASON:status.containerStatuses[*].state.terminated.reason | grep false | grep -v Completed
+./bin/ck8s ops kubectl sc|wc get nodes
+./bin/ck8s ops kubectl sc|wc get jobs -A
+velero get backup
+```
+
+- [ ] Silence the notifications for the alerts. e.g you can use [alertmanager silences](https://prometheus.io/docs/alerting/latest/alertmanager/#silences);
 
 ### Upgrading compliantkubernetes-apps
 
@@ -59,31 +80,39 @@ Note what version of compliantkubernetes-apps that is currently used and the ver
 Then check the release notes for each version in between to see if there are anything that might cause any problems, if so then consult the rest of the operations team before proceeding.
 **You should never upgrade more than one minor version of compliantkubernetes-apps at a time.**
 
-1. Checkout the next compliantkubernetes-apps version
+1. Pull the latest changes and switch to the correct branch:
 
     ```bash
-    # you should be in the root folder of compliantkubernetes-apps
-    git checkout <next-version>
+    git pull
+    git switch -d <next-version>
     ```
 
-2. Check if there is a [migration document](https://github.com/elastisys/compliantkubernetes-apps/tree/main/migration) for the relesae you want to upgrade to, (e.g. [for upgrade to 0.11.0](https://github.com/elastisys/compliantkubernetes-apps/blob/5d8f4f1b3cc053b3b515711549ab80df9617f2f4/migration/v0.10.x-v0.11.x/upgrade-apps.md) ) and follow the instructions there.
+1. Update apps configuration:
+
+    This will take a backup into `backups/` before modifying any files.
+
+    ```bash
+    ./bin/ck8s init
+    ```
+
+1. Check if there is a [migration document](https://github.com/elastisys/compliantkubernetes-apps/tree/main/migration) for the release you want to upgrade to, (e.g. [for upgrade to 0.11.0](https://github.com/elastisys/compliantkubernetes-apps/blob/5d8f4f1b3cc053b3b515711549ab80df9617f2f4/migration/v0.10.x-v0.11.x/upgrade-apps.md) ) and follow the instructions there.
 Note that you should check the documentation at the release tag instead of `main` to be sure that it's correct.
 
-3. If there is no relevant migration document, first do a dry-run.
+1. If there is no relevant migration document, first do a dry-run.
 
     ```bash
     ./bin/ck8s dry-run sc
     ./bin/ck8s dry-run wc
     ```
 
-4. If dry-run reports no errors, proceed with the upgrade.
+1. If dry-run reports no errors, proceed with the upgrade.
 
     ```bash
     ./bin/ck8s apply sc
     ./bin/ck8s apply wc
     ```
 
-5. Verify that everything is running after the upgrade.
+1. Verify that everything is running after the upgrade.
 At the minimum, at least run the tests in compliantkubernetes-apps.
 
     ```bash
@@ -91,7 +120,7 @@ At the minimum, at least run the tests in compliantkubernetes-apps.
     ./bin/ck8s test wc
     ```
 
-6. Go back to step 1 and repeat one new release of compliantkubernetes-apps at a time until you are at the latest release.
+1. Go back to step 1 and repeat one new release of compliantkubernetes-apps at a time until you are at the latest release.
 
 ### Upgrading Kubespray/Kubernetes
 
@@ -109,18 +138,41 @@ Read more about Kubespray upgrades in their [documentation](https://kubespray.io
 
     ```bash
     # you should be in the root folder of compliantkubernetes-kubespray
-    git checkout <next-version>
-    git submodule update
+    git switch -d <next-version>
+    git submodule sync
+    git submodule update --init --recursive
     ```
 
-2. Upgrade compliantkubernetes-kubespray by following the relevant [documentation](https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/migration) (e.g. [for upgrade to v2.17.x-ck8s1](https://github.com/elastisys/compliantkubernetes-kubespray/blob/v2.17.1-ck8s1/migration/v2.16.0-ck8s1-v2.17.x-ck8s1/upgrade-cluster.md)).
+1. Upgrade compliantkubernetes-kubespray by following the relevant [documentation](https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/migration) (e.g. [for upgrade to v2.17.x-ck8s1](https://github.com/elastisys/compliantkubernetes-kubespray/blob/v2.17.1-ck8s1/migration/v2.16.0-ck8s1-v2.17.x-ck8s1/upgrade-cluster.md)).
 
-## After doing any upgrades or maintenance
+1. Download the required files on the nodes
 
-It is a good idea to perform a **log review** after each maintenance.
-The purpose is two-fold:
+    ```bash
+    ./bin/ck8s-kubespray run-playbook sc upgrade-cluster.yml -b --tags=download
+    ./bin/ck8s-kubespray run-playbook wc upgrade-cluster.yml -b --tags=download
+    ```
 
-1. To catch potential issues caused by the maintenance.
-2. To piggy-back log review on top of a known-good process.
+1. Upgrade the cluster to a new kubernetes version:
 
-For instructions on how to do this, please follow the [log review guide](https://compliantkubernetes.io/ciso-guide/log-review/).
+    ```bash
+    ./bin/ck8s-kubespray run-playbook sc upgrade-cluster.yml -b --skip-tags=download
+    ./bin/ck8s-kubespray run-playbook wc upgrade-cluster.yml -b --skip-tags=download
+    ```
+
+### After doing any upgrades or maintenance
+
+- [ ] Check the state of the environment, pods and nodes:
+
+> **_NOTE:_** the below steps should be run from compliantkubernetes-apps root directory
+
+```bash
+./bin/ck8s test sc|wc
+./bin/ck8s ops kubectl sc|wc get pods -A -o custom-columns=NAMESPACE:metadata.namespace,POD:metadata.name,READY-false:status.containerStatuses[*].ready,REASON:status.containerStatuses[*].state.terminated.reason | grep false | grep -v Completed
+./bin/ck8s ops kubectl sc|wc get nodes
+```
+
+- [ ] Check if any alerts generated by the upgrade didn't close;
+- [ ] Check if you can login to Grafana, Opensearch or Harbor;
+- [ ] Enable the notifications for the alerts;
+- [ ] Notify the users (if any) when the upgrade is complete;
+- [ ] Check that you can see fresh metrics and logs.
