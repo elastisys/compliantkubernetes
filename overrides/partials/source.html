@@ -1,12 +1,8 @@
 {% import "partials/language.html" as lang with context %}
 
-<a
-  href="{{ config.repo_url }}"
-  title="{{ lang.t('source.link.title') }}"
-  style="display: block; font-size: .65rem; line-height: 1.2; white-space: nowrap; -webkit-backface-visibility: hidden; backface-visibility: hidden; transition: opacity 250ms;"
->
-  <div class="md-source__icon md-icon">
-    {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
-    {% include ".icons/" ~ icon ~ ".svg" %}
-  </div>
-</a>
+<ul class="header-links">
+  <li>
+    <a href="{{ config.repo_url }}"><img width="25px" src="img/git-alt.svg" /></a></li>
+  <li><a href="https://elastisys.com/" class="menu-callout">Try out Managed<br/>Compliant Kubernetes</a></li>
+</ul>
+
