@@ -5,12 +5,19 @@ tags:
 ---
 # Clock Synchronization
 
-!!!important
-    Compliant Kubernetes is about to add clock synchronization with `ntp.se` by default.
-    This will be done according to [best practices](https://www.netnod.se/blog/best-practices-connecting-ntp-servers).
-    To check progress, see [this issue](https://github.com/elastisys/compliantkubernetes-kubespray/issues/250).
+## TL;DR
 
+By default, Compliant Kubernetes sets up clock synchronization with the [Swedish Distributed Time Service](https://www.ntp.se), a.k.a., `ntp.se`:
 
+> There are six time nodes in different locations in Sweden.
+> The time nodes are continuously monitored and steered to follow UTC(SP).
+> Each time node has two atomic clocks generating separate time scales for high availability.
+
+This complies with MSBFS 2020:7 4 kap. 13 § and `ntp.se` [best practices](https://www.netnod.se/blog/best-practices-connecting-ntp-servers).
+
+You might need to override this behaviour depending on your security policy, e.g., add US NIST or German PTB. You can do so from [here](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/config/common/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml#:~:text=ntp_servers:).
+
+## Why Clock Synchronization?
 
 Clock synchronization is important for the following reasons:
 
