@@ -13,25 +13,29 @@ digraph compliance_basics {
     node[target="_top"]  // Open links in same tab
 
     node[target="_blank"]  // Open links in new tab
-    subgraph cluster_personaldata_regulations {
-        label="Personal Data Regulations"
+    subgraph cluster_regulations {
+        label="Data Protection Regulations"
 
         node[width=1, shape=box, style=rounded]
 
-        alignment_node_1[style=invis,label=""]
-        alignment_node_2[style=invis,label=""]
-        GDPR[URL="https://gdpr.eu/"]
-    }
-
-    subgraph cluster_healthtech_regulations {
-        label="Healthcare Regulations"
-
-        node[width=1.5, shape=box, style=rounded]
-
-        alignment_node_3[width=0.7,style=invis,label=""]
+        HIPAA[
+            label="US Healthcare\n(HIPAA)"
+            URL="https://elastisys.io/compliantkubernetes/ciso-guide/controls/hipaa/"
+            fontcolor="#4651b4"
+        ]
+        MSBFS[
+            label="Swedish Government\n(MSBFS 2020:7)"
+            URL="https://elastisys.io/compliantkubernetes/ciso-guide/controls/msbfs-20207/"
+            fontcolor="#4651b4"
+        ]
         PDL[
-            label="Patient data law\n(HSLF-FS 2016:40)"
-            URL="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355"
+            label="Swedish Healthcare\n(HSLF-FS 2016:40)"
+            URL="https://elastisys.io/compliantkubernetes/ciso-guide/controls/hslf-fs-201640/"
+            fontcolor="#4651b4"
+        ]
+        GDPR[
+            label="EU GDPR"
+            URL="https://gdpr.eu/"
         ]
     }
 
@@ -58,10 +62,12 @@ digraph compliance_basics {
 
         Controls[
             label="ISO 27001\nControls"
+            URL="https://elastisys.io/compliantkubernetes/ciso-guide/controls/iso-27001/"
+            fontcolor="#4651b4"
             width=1.4
         ]
 
-        { NSA, EDPB, PDL, GDPR } -> Controls
+        { NSA, EDPB, HIPAA, MSBFS, PDL, GDPR } -> Controls
 
         node[
             width=1
@@ -69,7 +75,11 @@ digraph compliance_basics {
             style=rounded
         ]
         Controls -> {
-            access[label="Access\ncontrol"]
+            access[
+                label="Access\ncontrol"
+                URL="https://elastisys.io/compliantkubernetes/operator-manual/access-control/"
+                fontcolor="#4651b4"
+            ]
             logging[
                 label="Logging"
                 URL="https://elastisys.io/compliantkubernetes/ciso-guide/log-review/"

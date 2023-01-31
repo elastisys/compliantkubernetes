@@ -131,6 +131,7 @@ nav:
     - 'Breaking the Glass': 'operator-manual/break-glass.md'
     - 'Use of Credentials': 'operator-manual/credentials.md'
     - 'Capacity Management': 'operator-manual/capacity-management.md'
+    - 'Clock Synchronization': 'operator-manual/clock-synchronization.md'
     - 'Maintenance': 'operator-manual/maintenance.md'
     - 'Troubleshooting': 'operator-manual/troubleshooting.md'
     - 'FAQ': 'operator-manual/faq.md'

@@ -11,6 +11,7 @@ tags:
 - MSBFS 2020:7 4 kap. 1 §
 - MSBFS 2020:7 4 kap. 2 §
 - MSBFS 2020:7 4 kap. 7 §
+- MSBFS 2020:7 4 kap. 9 §
 ---
 
 Network Model
@@ -82,6 +83,9 @@ host -a demo.example.com.
 
 !!!important
     Be cautious when using CNAMEs and apex domains (e.g., `example.com`). See [here](https://serverfault.com/questions/613829/why-cant-a-cname-record-be-used-at-the-apex-aka-root-of-a-domain) for a long discussion of potential problems and current workarounds.
+
+!!!important
+    MSBFS 2020:7 4 kap. 9 § requires you to use DNSSEC for all your registered domains.
 
 For step 2, create an Ingress object with the right `metadata.annotations` and `spec.tls`, as exemplified below:
 
