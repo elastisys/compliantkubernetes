@@ -1,6 +1,7 @@
 ---
 tags:
 - ISO 27001 A.10.1.2 Key Management
+- HSLF-FS 2016:40 3 kap. 15 § Behandling av personuppgifter i öppna nät
 ---
 # Cryptography Dashboard
 

@@ -6,6 +6,7 @@ tags:
 - HIPAA S23 - Contingency Plan - Data Backup Plan - § 164.308(a)(7)(ii)(A)
 - MSBFS 2020:7 4 kap. 14 §
 - MSBFS 2020:7 4 kap. 15 §
+- HSLF-FS 2016:40 3 kap. 12 § Säkerhetskopiering
 ---
 
 # Backups

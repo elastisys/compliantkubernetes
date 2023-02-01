@@ -1,6 +1,7 @@
 ---
 tags:
 - HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
+- HSLF-FS 2016:40 4 kap. 2 § Styrning av behörigheter
 ---
 Use of Credentials
 ==================

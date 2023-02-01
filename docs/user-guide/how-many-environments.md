@@ -4,6 +4,7 @@ tags:
 - HIPAA S12 - Information Access Management - Isolating Healthcare Clearinghouse Functions - § 164.308(a)(4)(ii)(A)
 - MSBFS 2020:7 3 kap. 1 §
 - MSBFS 2020:7 3 kap. 2 §
+- HSLF-FS 2016:40 3 kap. 10 § Upphandling och utveckling
 ---
 
 # How Many Environments?

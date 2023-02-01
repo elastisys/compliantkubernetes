@@ -6,6 +6,7 @@ tags:
 - MSBFS 2020:7 4 kap. 14 §
 - MSBFS 2020:7 4 kap. 15 §
 - MSBFS 2020:7 4 kap. 22 §
+- HSLF-FS 2016:40 3 kap. 13 § Säkerhetskopiering
 ---
 # Disaster Recovery
 
