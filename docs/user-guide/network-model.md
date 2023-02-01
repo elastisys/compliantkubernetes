@@ -11,6 +11,7 @@ tags:
 - MSBFS 2020:7 4 kap. 1 §
 - MSBFS 2020:7 4 kap. 2 §
 - MSBFS 2020:7 4 kap. 7 §
+- HSLF-FS 2016:40 3 kap. 15 § Behandling av personuppgifter i öppna nät
 ---
 
 Network Model

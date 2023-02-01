@@ -6,6 +6,7 @@ tags:
 - HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
 - MSBFS 2020:7 4 kap. 3 §
 - MSBFS 2020:7 4 kap. 4 §
+- HSLF-FS 2016:40 4 kap. 3 § Styrning av behörigheter
 ---
 # Access control
 
