@@ -49,9 +49,7 @@ Released 2023-01-30
 
 #### Added
 
-- **Network policies for `coredns` and `dnsAutoscaler`.**
-- **Network policies for `rook-ceph` (disabled by default).**
-- **Network policies for `csi-cinder`, `csi-upcloud`, `metrics-server` and `snapshot-controller`.**
+- **Improved security posture by adding network policies for some of the networking and storage components.**
 - **Added alert for less kubelets than nodes in the cluster.**
 - **Added alert for object limits in buckets.**
 
