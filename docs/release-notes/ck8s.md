@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.28.0](#v0280) - 2023-01-30
 - [v0.27.0](#v0270) - 2022-11-17
 - [v0.26.0](#v0260) - 2022-09-19
 - [v0.25.0](#v0250) - 2022-08-25
@@ -26,6 +27,31 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.28.0
+
+Released 2023-01-30
+
+#### Changed
+
+- **Updated Rook alerts to `v1.10.5`.**
+- **Nginx ingress controller service can now have multiple annotations instead of just one.**
+- **Synced all grafana dashboards to use the default organization timezone.**
+- **Several default resource requests and limits have changed for the included services.**
+
+#### Fixed
+
+- **Use FQDN for services connecting from the workload cluster to the service cluster to prevent resolve timeouts.**
+- **Fixed `KubeletDown` alert rule not alerting if a kubelet was missing.**
+- **Added permissions to the `alerting_full_access` role in Opensearch to be able to view notification channels.**
+- **Added `fluent-plugin-record-modifier` to the fluentd image to prevent mapping errors.**
+- **Various fixes to network policies.**
+
+#### Added
+
+- **Improved security posture by adding network policies for some of the networking and storage components.**
+- **Added alert for less kubelets than nodes in the cluster.**
+- **Added alert for object limits in buckets.**
 
 ### v0.27.0
 
