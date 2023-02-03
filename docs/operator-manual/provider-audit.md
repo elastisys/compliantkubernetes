@@ -82,6 +82,7 @@ The remainder of this page contains open questions that you should ask your clou
         1. Which API (OpenStack, VMware)?
         1. In which zones?
         1. Can I use a [Container Storage Interface (CSI) driver](https://kubernetes-csi.github.io/docs/drivers.html) for automatic creating of PersistentVolumes?
+        1. [For NFS] How did you configure [User ID Mapping](https://linux.die.net/man/5/exports#:~:text=User%20ID%20Mapping), specifically `root_squash`, `no_root_squash`, `all_squash`, `anonuid` and `anongid`? Mapping the root UID to values typically used by containers, e.g., 1000, will lead to permission denied errors. For example, OpenSearch's init containers do `chown 1000` which fails with `squash_root` and `anonuid=1000`.
         1. Is BSaaS stretched across zones?
         1. Is block storage replicated across zones?
     1. Do you offer encryption-at-rest?
