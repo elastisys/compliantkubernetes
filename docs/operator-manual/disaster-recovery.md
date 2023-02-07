@@ -321,6 +321,9 @@ Read more about those labels and annotations here: <https://compliantkubernetes.
 It is also possible to take on-demand backups.
 Then you can freely chose what to backup and do not have to base it on the same labels.
 A basic example with the Velero CLI would be `velero backup create manual-backup`, which would take a backup of all kubernetes resources (though not the data in the volumes by default).
+
+If you want to create a latest backup from existing schedule , Velero CLI would be `velero backup create --from-schedule velero-daily-backup --wait`.
+
 Check which arguments you can use by running `velero backup create --help`.
 
 ### Restore
