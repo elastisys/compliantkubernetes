@@ -174,3 +174,13 @@ The remainder of this page contains open questions that you should ask your clou
     1. Is your on-call team available 24/7?
 1. Are you open to having quarterly operations (engineering) retrospectives? Our engineering team wants to keep a close loop with vendors and regularly discuss what went well, what can be improved, and devise a concrete action plan.
 1. Are you open to having quarterly roadmap discussions?
+
+## Evidence
+
+The audit should conclude with gathering the following documents in an "evidence package":
+
+1. Filled questionnaire
+1. All relevant certificates, e.g., ISO 14001, ISO 27001, “green cloud”
+1. Latest version of the Terms of Service and Data Protection Agreement
+1. All relevant certificates from data-centre providers
+1. Signed and transparent ownership structure
