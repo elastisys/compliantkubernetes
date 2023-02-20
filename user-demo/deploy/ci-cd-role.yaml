@@ -85,3 +85,11 @@ rules:
     - patch
     - update
     - watch
+- apiGroups:
+  - cert-manager.io
+  resources:
+  - certificates
+  verbs:
+  - get
+  - list
+  - watch
