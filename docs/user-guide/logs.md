@@ -228,6 +228,24 @@ docker run --rm -ti -v $(pwd)/opensearch-dump:/tmp elasticdump/elasticsearch-dum
 
 For more examples and how to use the tool, read the documentation [in the repo](https://github.com/elasticsearch-dump/elasticsearch-dump#use).
 
+## Log review dashboard
+
+This dashboard can be viewed to get a quick overview of the cluster's state.
+
+![Log review dashboard](../img/log-review-dashboard.png)
+
+- ### kubeaudit
+    - All api-requests = Successful API requests
+    - Forbid error = Forbidden API requests
+    - Client Error = Client error logs
+    - Server error = Server error logs
+- ### kubernetes
+    - error OR denied = Error & denied logs
+- ### other
+    - error OR critical OR alert OR warning = System logs of priority 1-4
+- ### authlog
+    - number of authlog seassions = Authlog seassions
+
 ## Further Reading
 
 * [OpenSearch](https://opensearch.org/)
