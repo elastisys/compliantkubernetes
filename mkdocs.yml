@@ -34,6 +34,7 @@ theme:
   palette:
     scheme: elastisys
   features:
+    - content.code.annotate
     - toc.integrate
     - content.tabs.link
 

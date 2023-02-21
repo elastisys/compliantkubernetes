@@ -137,6 +137,92 @@ spec:
 
     ![HTTP request headers shown in the user demo](img/http-request-headers.png)
 
+## LetsEncrypt
+
+Let’s Encrypt is a certificate authority that provides free SSL/TLS certificates via an automated process. Their certificates are accepted by most of today’s browsers.
+
+On Compliant Kubernetes, we provide a cert-manager setup which you can use to create, sign, install and renew certificates for your domains/apps running in CK8S.
+
+### Issuing a Certificate
+
+You can use cert-manager setup for general purpose certificates not directly linked to an Ingress object.
+
+```yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: custom-cert
+spec:
+  dnsNames: # (1)
+  - 'domain.example.com'
+  issuerRef: # (2)
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+  secretName: custom-cert # (3)
+```
+
+1.  For which domains the certificate will be valid for.
+2.  Reference to the issuer to use.
+3.  The created certificate is stored in this secret.
+
+And you can directly link a certificate to an Ingress object :
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod # (1)
+  name: webapp-ingress
+  namespace: default # (2)
+spec:
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: myservice
+            port:
+              number: 80
+  tls: # (3)
+  - hosts:
+    - example.com
+    secretName: webapp-certificate # (4)
+```
+
+1.  Annotation indicating the issuer to use.
+2.  Target namespace where the object will be created.
+3.  Placing a host in the TLS config will determine what ends up in the cert’s subjectAltNames.
+4.  The created certificate is stored in this secret.
+
+### Let's Encrypt Environments
+
+LetsEncrypt provides two environments as part of their ACME V2 standardization: Staging & Production.
+
+The ACME URL for LetsEncrypt ACME v2 staging environment is: https://acme-staging-v02.api.letsencrypt.org/directory
+
+The ACME URL for LetsEncrypt ACME v2 production environment is: https://acme-v02.api.letsencrypt.org/directory
+
+Both environments serve to issue valid certificates, the difference is the CA, on staging, the CA is not trusted by any application, web browser ..
+
+We highly recommend testing against the Let’s Encrypt staging environment and use it for any non-production workloads. This will allow you to get things right before issuing trusted certificates and reduce the chance of you running up against rate limits. It should be to test that your client is working fine and can generate the challenges, certificates…
+
+!!!important
+    Certificates issued by the LetsEncrypt staging environment are signed by untrusted authorities, similar to self-signed certificates. They are typically not used in production environments.
+
+### Rate Limits
+
+LetsEncrypt provides rate-limits on generated certificates to ensure fair usage across all clients. The production environment limits can be exceeded more frequently in environments certificates are installed or reinstalled frequently. This can result in failed installations due to rate limit exceptions on certificate generation.
+
+In such environments, it is better to use the LetsEncrypt staging environment, which has much higher limits than the production environment.
+
+The default rate limits for the production environment are listed in the following page by letencrypt : [Production Rate Limits](https://letsencrypt.org/docs/rate-limits/).
+
+The staging environment uses the same rate limits as described for the production environment with some exceptions that are listed here : [Staging Rate Limits](https://letsencrypt.org/docs/staging-environment/).
+
 ## Demarcation of Responsibilities
 
 You are responsible for:
