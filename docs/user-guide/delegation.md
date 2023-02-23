@@ -98,10 +98,18 @@ kubectl apply -f my-role-binding.yaml
 
 In Compliant Kubernetes v0.21.0 User admins can now add more `User admins` themselves.
 
-Edit the clusterrolebinding `user-admin-cluster-wide-delegation` and add the desired users or groups under `subjects`. If unsure, look at an [example subject](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects) from the official kubernetes documentation.
+#### Steps:
+
+1. Edit the clusterrolebinding `extra-user-view` and add the desired users or groups under `subjects`. If unsure, look at an [example subject](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects) from the official kubernetes documentation.
 
 ```bash
 kubectl edit clusterrolebinding user-admin-cluster-wide-delegation
+```
+
+2. In each of your user namespaces, edit the rolebinding `extra-workload-admins` and add the desired users or groups under `subjects`.
+
+```bash
+kubectl edit rolebinding extra-workload-admins -n user-namespace
 ```
 
 ## Application Metrics (Grafana)
