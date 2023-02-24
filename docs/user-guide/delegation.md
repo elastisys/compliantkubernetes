@@ -106,7 +106,7 @@ In Compliant Kubernetes v0.21.0 User admins can now add more `User admins` thems
 kubectl edit clusterrolebinding user-admin-cluster-wide-delegation
 ```
 
-2. In each of your user namespaces, edit the rolebinding `extra-workload-admins` and add the desired users or groups under `subjects`.
+2. In each of your user namespaces that you want the users or groups to be admin in, edit the rolebinding `extra-workload-admins` and add the desired users or groups under `subjects`. If you have a root HNC namespace and you want the users or groups to be admin in all of **your** namespaces, you only need to edit the rolebinding in this root namespace and it will propagate.
 
 ```bash
 kubectl edit rolebinding extra-workload-admins -n user-namespace
