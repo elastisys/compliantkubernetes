@@ -359,7 +359,9 @@ If a clean wipe is the desired behavior, then the volume must be wiped manually 
 
     ```bash
     # Note that this is only backup metadata
-    kubectl -n velero delete backups.velero.io --all
+    ./bin/ck8s ops kubectl sc -n velero delete backups.velero.io --all
+
+    ./bin/ck8s ops kubectl wc -n velero delete backups.velero.io --all
     ```
 
 - Restoring from **unencrypted** off-site backup:
@@ -369,8 +371,8 @@ If a clean wipe is the desired behavior, then the volume must be wiped manually 
     ```bash
     export S3_BUCKET="<off-site-s3-bucket>"
     export S3_PREFIX="<service-cluster|workload-cluster>"
-    export S3_ACCESS_KEY=$(sops -d --extract '["objectStorage"]["sync"]["s3"]["accessKey"]') "$CK8S_CONFIG_PATH/secrets.yaml")
-    export S3_SECRET_KEY=$(sops -d --extract '["objectStorage"]["sync"]["s3"]["accessKey"]') "$CK8S_CONFIG_PATH/secrets.yaml")
+    export S3_ACCESS_KEY=$(sops -d --extract '["objectStorage"]["sync"]["s3"]["accessKey"]' "$CK8S_CONFIG_PATH/secrets.yaml")
+    export S3_SECRET_KEY=$(sops -d --extract '["objectStorage"]["sync"]["s3"]["secretKey"]' "$CK8S_CONFIG_PATH/secrets.yaml")
     export S3_REGION=$(yq r "$CK8S_CONFIG_PATH/sc-config.yaml" "objectStorage.sync.s3.region")
     export S3_ENDPOINT=$(yq r "$CK8S_CONFIG_PATH/sc-config.yaml" "objectStorage.sync.s3.regionEndpoint")
     export S3_PATH_STYLE=$(yq r "$CK8S_CONFIG_PATH/sc-config.yaml" "objectStorage.sync.s3.forcePathStyle")
@@ -379,11 +381,13 @@ If a clean wipe is the desired behavior, then the volume must be wiped manually 
     velero backup-location delete default
 
     # Delete backups from default backup location, note that this is only the backup metadata
-    kubectl -n velero delete backups.velero.io --all
+    ./bin/ck8s ops kubectl sc -n velero delete backups.velero.io --all
+
+    ./bin/ck8s ops kubectl wc -n velero delete backups.velero.io --all
 
     # Create off-site credentials
     kubectl -n velero create secret generic velero-backup \
-      --from-literal=cloud="$(echo "[default]\naws_access_key_id: ${S3_ACCESS_KEY}\naws_secret_access_key: ${S3_SECRET_KEY}\n")"
+      --from-literal=cloud="$(echo -e "[default]\naws_access_key_id: ${S3_ACCESS_KEY}\naws_secret_access_key: ${S3_SECRET_KEY}\n")"
 
     # Create off-site backup location
     velero backup-location create backup \
@@ -406,12 +410,22 @@ If a clean wipe is the desired behavior, then the volume must be wiped manually 
     When they are available restore one of them using `velero restore create <name-of-restore> --from-backup <name-of-backup>`.
 
     After the restore is complete Velero should be reconfigured to use the main S3 service again, with a new bucket if the previous one is unusable.
-    Updating or syncing the Helm chart will reset the backup location.
+    Updating or syncing the Helm chart:
+    ```bash
+    ./bin/ck8s ops helmfile sc -f helmfile -l app=velero -i apply
+
+    ./bin/ck8s ops helmfile wc -f helmfile -l app=velero -i apply
+    ```
 
     The secret and the backup metadata from the off-site backups can be deleted:
     ```bash
-    kubectl -n velero delete secret velero-backup
-    kubectl -n velero delete backups.velero.io --all
+    ./bin/ck8s ops kubectl sc -n velero delete secret velero-backup
+    ./bin/ck8s ops kubectl sc -n velero delete backups.velero.io --all
+    ./bin/ck8s ops kubectl sc -n velero delete backupstoragelocations.velero.io backup
+
+    ./bin/ck8s ops kubectl wc -n velero delete secret velero-backup
+    ./bin/ck8s ops kubectl wc -n velero delete backups.velero.io --all
+    ./bin/ck8s ops kubectl wc -n velero delete backupstoragelocations.velero.io backup
     ```
 
 ## Grafana
@@ -432,8 +446,8 @@ To restore the Grafana backup you must:
 - Delete the grafana deployment, PVC and PV
 
     ```bash
-    kubectl delete deploy -n monitoring user-grafana
-    kubectl delete pvc -n monitoring user-grafana
+    ./bin/ck8s ops kubectl sc delete deploy -n monitoring user-grafana
+    ./bin/ck8s ops kubectl sc delete pvc -n monitoring user-grafana
     ```
 
 - Restore the velero backup
