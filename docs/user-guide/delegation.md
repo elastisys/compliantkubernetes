@@ -98,10 +98,18 @@ kubectl apply -f my-role-binding.yaml
 
 In Compliant Kubernetes v0.21.0 User admins can now add more `User admins` themselves.
 
-Edit the clusterrolebinding `user-admin-cluster-wide-delegation` and add the desired users or groups under `subjects`. If unsure, look at an [example subject](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects) from the official kubernetes documentation.
+#### Steps:
+
+1. Edit the clusterrolebinding `extra-user-view` and add the desired users or groups under `subjects`. If unsure, look at an [example subject](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects) from the official kubernetes documentation.
 
 ```bash
 kubectl edit clusterrolebinding user-admin-cluster-wide-delegation
+```
+
+2. In each of your user namespaces that you want the users or groups to be admin in, edit the rolebinding `extra-workload-admins` and add the desired users or groups under `subjects`. If you have a root HNC namespace and you want the users or groups to be admin in all of **your** namespaces, you only need to edit the rolebinding in this root namespace and it will propagate.
+
+```bash
+kubectl edit rolebinding extra-workload-admins -n user-namespace
 ```
 
 ## Application Metrics (Grafana)
