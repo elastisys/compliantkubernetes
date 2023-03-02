@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.28.1](#v0281) - 2023-03-02
 - [v0.28.0](#v0280) - 2023-01-30
 - [v0.27.0](#v0270) - 2022-11-17
 - [v0.26.0](#v0260) - 2022-09-19
@@ -27,6 +28,14 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.28.1
+
+Released 2023-03-02
+
+#### Added
+
+- **Added falco rules to ignore redis operator related alerts.**
 
 ### v0.28.0
 
