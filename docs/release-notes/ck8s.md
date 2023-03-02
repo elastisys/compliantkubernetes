@@ -37,11 +37,6 @@ Released 2023-03-02
 
 - **Added falco rules to ignore redis operator related alerts.**
 
-#### Fixed
-
-- **The update-ips script can now fetch object storage sync destination IPs.**
-- **The OpenSearch network policies now properly work with dedicated nodes and shapshots enabled.**
-
 ### v0.28.0
 
 Released 2023-01-30
