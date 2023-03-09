@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
+- [v2.21.0-ck8s1](#v2210-ck8s1) - 2023-02-06
 - [v2.20.0-ck8s2](#v2200-ck8s2) - 2022-10-24
 - [v2.20.0-ck8s1](#v2200-ck8s1) - 2022-10-10
 - [v2.19.0-ck8s3](#v2190-ck8s3) - 2022-09-23
@@ -18,6 +19,28 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/CHANGELOG.md).
+
+### v2.21.0-ck8s1
+
+Released 2023-02-06
+
+#### Updated:
+
+- **Updated kubespray to `v1.21.0`** <br/>
+    This version upgrades Kubernetes to `v1.25` in which Pod Security Policies (PSPs) are removed. You should not upgrade to this version if you are using PSPs. To deploy [Compliant Kubernetes Apps](https://github.com/elastisys/compliantkubernetes-apps) on this version it needs to be on a compatible version which depends on [this issue](https://github.com/elastisys/compliantkubernetes-apps/issues/1218). <br/>
+    This version requires at least terraform version `0.14.0` in order to provision infrastructure using the kubespray provided terraform modules.
+- **Upgraded rook-ceph operator to `v1.10.5` and ceph to `v17.2.5`** <br/>
+    If you are using the rook-ceph operator you can read the [migration docs](rook/migration/rook-1.5.x-rook-1.10.5/upgrade.md) on how to upgrade these components.
+
+#### Changed:
+
+- **Changed terraform scripts for Openstack to be able to setup additional server groups and override variables per instance**
+- **Switched from using upstream kubespray repository as submodule to the elastisys fork**
+
+#### Added:
+
+- **Added a get-requirements file to standardize which terraform version to use, `1.2.9`**
+- **Added ntp.se as standard ntp server**
 
 ### v2.20.0-ck8s2
 
