@@ -55,3 +55,20 @@ All Certificates needs to be Ready.
 ```bash
 kubectl get certificates
 ```
+
+## Is the API server healthy?
+The command below should return `HTTP/2 200`.
+```sh
+curl --fail --verbose -k https://$loadbalancer_ip_address:6443/healthz
+```
+
+## Are Compliantkubernetes apps services healthy?
+All commands below should return `HTTP/2 200`.
+
+```sh
+curl --fail --verbose https://dex.$DOMAIN/healthz
+curl --fail --verbose https://harbor.$DOMAIN/healthz
+curl --fail --verbose https://grafana.$DOMAIN/healthz
+curl --fail --verbose https://opensearch.$DOMAIN/
+curl --fail --verbose -k https://app.$DOMAIN/healthz  # WC Ingress Controller
+```
