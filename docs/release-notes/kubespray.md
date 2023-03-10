@@ -34,7 +34,8 @@ Released 2023-02-06
 
 #### Changed:
 
-- **Changed terraform scripts for Openstack to be able to setup additional server groups and override variables per instance**
+- **Improved setup for OpenStack with additional server groups** <br/>
+    This allows anti-affinity to be set between arbitrary nodes, improving scheduling and stability.
 - **Switched from using upstream kubespray repository as submodule to the elastisys fork**
 
 #### Added:
