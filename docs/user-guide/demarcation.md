@@ -18,6 +18,8 @@ tags:
     * PodSecurityPolicies
     * ValidatingWebhookConfiguration, MutatingWebhookConfiguration
 
+    **This means that generally you cannot deploy [Operators](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).**
+
 !!!danger "TL;DR: You **cannot**:"
 
     * Run containers as root (`uid=0`)
