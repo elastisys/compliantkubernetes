@@ -15,7 +15,7 @@ That is why Compliant Kubernetes is built with various safeguards, to allow you 
 
 ## Relevant Regulations
 
-* [GDPR Article 32](https://gdpr-info.eu/art-32-gdpr/):
+* [GDPR Article 32](https://gdpr.fan/a32):
 
     > Taking into account the state of the art [...] the controller and the processor shall implement [...] as appropriate [...] a process for regularly testing, assessing and evaluating the effectiveness of technical and organisational measures for ensuring the security of the processing.
     >

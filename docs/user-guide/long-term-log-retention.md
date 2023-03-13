@@ -9,7 +9,7 @@ Many regulators, including Swedish Healthcare, require a minimum of 5 year log r
 
 This is not provided at the platform level by Compliant Kubernetes as it runs the risk of GDPR non-complicance.
 Logs may include sensitive information like personal data, which requires that the the retention scheme is designed together with application-specific knowledge to ensure compliance.
-Specifically, this includes that the retention scheme ensures that erased personal data can not be accidentally restored, as per [Art. 17 GDPR Right to erasure (‘right to be forgotten’)](https://gdpr-info.eu/art-17-gdpr/).
+Specifically, this includes that the retention scheme ensures that erased personal data can not be accidentally restored, as per [Art. 17 GDPR Right to erasure (‘right to be forgotten’)](https://gdpr.fan/a17).
 
 Using application-specific knowledge would also make it possible to reduce the amount of logs stored, by filtering out so only the required logs are kept.
 Minimising the kept data, storage costs and storage management.
