@@ -45,7 +45,7 @@ Make sure to configure **and test** a receiver for you alerts, e.g., Slack or Op
 If you want to access AlertManager, for example to confirm that its configuration was picked up correctly, or to configure silences, proceed as follows:
 
 1. Type: `kubectl proxy`.
-2. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/alertmanager/services/alertmanager-operated:web/proxy/) in your browser.
+2. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/alertmanager/services/alertmanager-operated:9093/proxy/) in your browser.
 
 ## Configuring alerts
 
