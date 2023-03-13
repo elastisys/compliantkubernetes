@@ -8,7 +8,7 @@ tags:
 
 ### GDPR
 
-[GDPR Article 32](https://gdpr-info.eu/art-32-gdpr/):
+[GDPR Article 32](https://gdpr.fan/a32):
 
 > The ability to ensure the ongoing confidentiality, integrity, **availability and resilience** of processing systems and services; [highlights added]
 

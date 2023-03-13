@@ -8,7 +8,7 @@ tags:
 
 ### GDPR
 
-[GDPR Article 32](https://gdpr-info.eu/art-32-gdpr/):
+[GDPR Article 32](https://gdpr.fan/a32):
 
 > Taking into account the state of the art [...] the controller and the processor shall implement [...] as appropriate [...] encryption of personal data;
 >

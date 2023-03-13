@@ -15,7 +15,7 @@ This document highlights the risks that can be mitigated by regularly reviewing 
 
 ### GDPR
 
-[GDPR Article 32](https://gdpr-info.eu/art-32-gdpr/):
+[GDPR Article 32](https://gdpr.fan/a32):
 
 > Taking into account the state of the art, the costs of implementation and the nature, scope, context and purposes of processing as well as the risk of varying likelihood and severity for the rights and freedoms of natural persons, the controller and the processor shall implement appropriate technical and organisational measures to ensure a level of security appropriate to the risk, including inter alia as appropriate:
 > [...]

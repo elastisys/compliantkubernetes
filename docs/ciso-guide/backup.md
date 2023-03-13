@@ -15,7 +15,7 @@ tags:
 
 ### GDPR
 
-[GDPR Article 32](https://gdpr-info.eu/art-32-gdpr/):
+[GDPR Article 32](https://gdpr.fan/a32):
 
 > In assessing the appropriate level of security account shall be taken in particular of the risks that are presented by processing, **in particular from accidental or unlawful destruction, loss**, alteration, unauthorised disclosure of, or access to personal data transmitted, stored or otherwise processed. [highlights added]
 
