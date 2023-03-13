@@ -10,6 +10,20 @@ tags:
 - HSLF-FS 2016:40 4 kap. 3 § Styrning av behörigheter
 ---
 
+!!!danger "TL;DR: You **cannot** install:"
+
+    * ClusterRoles, ClusterRoleBindings, Roles and RoleBindings
+    * CustomResourceDefinitions (CRDs)
+    * Roles and RoleBindings
+    * PodSecurityPolicies
+    * ValidatingWebhookConfiguration, MutatingWebhookConfiguration
+
+!!!danger "TL;DR: You **cannot**:"
+
+    * Run containers as root (`uid=0`)
+    * SSH into any Node
+
+
 Can I?
 ======
 
