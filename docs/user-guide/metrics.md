@@ -51,7 +51,7 @@ Compliant Kubernetes installs the prometheus-operator by default. The Prometheus
 #### Accessing Prometheus
 If you want to access the web interface of Prometheus, proceed as follows:
     1. Type: `kubectl proxy`
-    2. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/monitoring/services/kube-prometheus-stack-prometheus:9090/proxy/) in your browser
+    2. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/monitoring/services/kube-prometheus-stack-prometheus:web/proxy/) in your browser
 
 The Prometheus UI is only available by default starting in Compliant Kubernetes version 0.26.
 
