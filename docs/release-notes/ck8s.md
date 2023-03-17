@@ -41,8 +41,12 @@ Released 2023-03-16
 #### Changed
 
 - **The Fluentd deplyoment has changed considerably and users must ensure that their custom filters continue to work as expected.**
-- **In 1.10 the containers in pods created by cert-manager have been renamed to better reflect what they do. This can be breaking for automation that relies on these names being static.**
-- **In 1.11 the cert-manager Gateway API integration uses the v1beta1 API version. ExperimentalGatewayAPISupport alpha feature users must ensure that v1beta of Gateway API is installed in cluster.**
+
+#### Updated
+
+- **Cert-manager updated to `v1.11.0`**
+  - The containers in pods created by cert-manager have been renamed to better reflect what they do. This can be breaking for automation that relies on these names being static.
+  - The cert-manager Gateway API integration now uses the v1beta1 API version. ExperimentalGatewayAPISupport alpha feature users must ensure that v1beta of Gateway API is installed in cluster.
 
 ### v0.28.1
 
