@@ -15,6 +15,7 @@ tags:
 - MSBFS 2020:7 4 kap. 21 §
 - HSLF-FS 2016:40 3 kap. 9 § Upphandling och utveckling
 - HSLF-FS 2016:40 3 kap. 14 § Fysiskt skydd av informationssystem
+- GDPR Art. 28 Processor
 ---
 # Cloud Provider Audit
 
