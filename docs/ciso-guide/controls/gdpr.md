@@ -20,7 +20,7 @@ If you process [personal data](https://gdpr.fan/a4) in the EU/EEA, you need to f
 
 ## GDPR Art. 32 Security of Processing
 
-When it comes to security GDPR is rather broad and non-prescription.
+When it comes to security, GDPR is rather broad and non-prescriptive.
 Pretty much everything we do in Compliant Kubernetes is done to secure data.
 In fact, we could pretty much link every single page to GDPR Art. 32, but that would be rather noisy.
 
