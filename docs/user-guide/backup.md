@@ -7,7 +7,7 @@ tags:
 - MSBFS 2020:7 4 kap. 14 §
 - MSBFS 2020:7 4 kap. 15 §
 - HSLF-FS 2016:40 3 kap. 12 § Säkerhetskopiering
-- GDPR Art. 17 Right to erasure (‘right to be forgotten’)
+- GDPR Art. 17 Right to erasure ("right to be forgotten")
 ---
 
 # Backups
