@@ -46,7 +46,7 @@ Released 2023-03-16
 
 - **Cert-manager updated to `v1.11.0`**
   - The containers in pods created by cert-manager have been renamed to better reflect what they do. This can be breaking for automation that relies on these names being static.
-  - The cert-manager Gateway API integration now uses the v1beta1 API version. ExperimentalGatewayAPISupport alpha feature users must ensure that v1beta of Gateway API is installed in cluster.
+  - The cert-manager Gateway API integration now uses the v1beta1 API version. ExperimentalGatewayAPISupport alpha feature users must upgrade to v1beta of Gateway API.
 
 ### v0.28.1
 
