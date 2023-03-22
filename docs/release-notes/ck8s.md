@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.29.0](#v0290) - 2023-03-16
 - [v0.28.1](#v0281) - 2023-03-02
 - [v0.28.0](#v0280) - 2023-01-30
 - [v0.27.0](#v0270) - 2022-11-17
@@ -28,6 +29,24 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.29.0
+
+Released 2023-03-16
+
+#### Added
+
+- **Static users can now be added in OpenSearch.**
+
+#### Changed
+
+- **The Fluentd deplyoment has changed considerably and users must ensure that their custom filters continue to work as expected.**
+
+#### Updated
+
+- **Cert-manager updated to `v1.11.0`**
+  - The containers in pods created by cert-manager have been renamed to better reflect what they do. This can be breaking for automation that relies on these names being static.
+  - The cert-manager Gateway API integration now uses the v1beta1 API version. ExperimentalGatewayAPISupport alpha feature users must upgrade to v1beta of Gateway API.
 
 ### v0.28.1
 
