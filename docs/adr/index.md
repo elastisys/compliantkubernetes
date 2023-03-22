@@ -107,6 +107,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0031](0031-run-csi-cinder-controllerplugin-on-elastisys-nodes.md) - Run csi-cinder-controllerplugin on the Elastisys nodes
 * [ADR-0032](0032-boot-disk-size.md) - Boot disk size on nodes
 * [ADR-0033](0033-run-cluster-api-controllers-on-service-cluster.md) - Run Cluster API controllers on service cluster
+* [ADR-0035](0035-run-tekton-on-service-cluster.md) - Run Tekton on service cluster
 
 <!-- adrlogstop -->
 
