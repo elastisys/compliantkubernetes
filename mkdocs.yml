@@ -133,6 +133,7 @@ nav:
       - 'User Alerts': 'operator-manual/user-alerts.md'
     - 'Disaster Recovery': 'operator-manual/disaster-recovery.md'
     - 'Breaking the Glass': 'operator-manual/break-glass.md'
+    - 'Use of Cryptography': 'operator-manual/cryptography.md'
     - 'Use of Credentials': 'operator-manual/credentials.md'
     - 'Capacity Management': 'operator-manual/capacity-management.md'
     - 'Maintenance': 'operator-manual/maintenance.md'
