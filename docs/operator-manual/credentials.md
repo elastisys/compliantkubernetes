@@ -55,6 +55,8 @@ SSH Keys
     * Accessing Nodes via SSH
 * Do not use for:
     * Giving a system access to a Git repository. Create a separate SSH key only for that purpose instead.
+* Important considerations:
+    * When generating an SSH key, see [Cryptography](cryptography.md).
 
 PGP Keys
 --------
@@ -68,6 +70,8 @@ PGP Keys
     * Encrypting/decrypting individual credentials. These are meant to be individual and never shared.
     * Encrypting/decrypting SSH key. These are meant to be individual and never shared. Prefer [protecting your SSH key with a passphrase](https://martin.kleppmann.com/2013/05/24/improving-security-of-ssh-private-keys.html) or storing it on a [YubiKey](https://en.wikipedia.org/wiki/YubiKey).
     * Encrypting non-sensitive information. This leads to a culture of "security by obscurity" in which people over-rely on encryption. Prefer being mindful about what data you store and why. If unsure, prefer not storing credentials, as Cloud Provider Credentials and SSH keys should be enough to restore any access.
+* Important considerations:
+    * When generating a GPG key, see [Cryptography](cryptography.md).
 
 Cloud Controller (Integration) Credentials
 ------------------------------------------
