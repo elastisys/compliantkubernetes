@@ -34,5 +34,5 @@ Hence, if you need a more precise understanding on how Compliant Kubernetes prot
 
 * [What is personal data?](https://gdpr.fan/a4)
 * [Art. 28 GDPR Processor](https://gdpr.fan/a28)
-* [Art. 17 GDPR Right to erasure (‘right to be forgotten’)](https://gdpr.fan/a17)
+* [Art. 17 GDPR Right to erasure ("right to be forgotten")](https://gdpr.fan/a17)
 * [Art. 32 GDPR Security of processing](https://gdpr.fan/a32)
