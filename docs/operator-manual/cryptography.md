@@ -28,11 +28,13 @@ The key cryptographic parameters are listed below.
 | Public Key Primitive | RSA (>3072) <br/> DSA (>256/3072) <br/> ECDSA (>256) |
 
 !!!note
-    Compliant Kubernetes might use RSA 2048 when provisioning certificates via cert-manager and LetsEncrypt, which is lower than ECRYPT-CSA recommends for near-term use.
-    There is ongoing discussions to use RSA 4096 in website certificates (see discussions on [LetsEncrypt's own R3 certificate](https://community.letsencrypt.org/t/why-does-let-s-encrypt-r3s-cert-use-lower-rsa-than-the-root-cert/189339)).
-    Given that the certificate expires after 3 months, we assessed that this situation is **okay for now**.
+    For HTTPS traffic, Compliant Kubernetes uses [TLS 1.3](https://en.wikipedia.org/wiki/Transport_Layer_Security#TLS_1.3).
+    TLS 1.3 mandates [forward secrecy](https://en.wikipedia.org/wiki/Forward_secrecy).
+    In other words, an attacker cannot decrypt past HTTPS transmissions even if the TLS certificate (private key) is compromised.
 
-    The Compliant Kubernetes closely follows developments and discussions in the field and will take action when required.
+    Compliant Kubernetes uses RSA 2048 when provisioning HTTPS certificates, which is lower than the present recommendation.
+    However, these certificates have a short expiration time of 3 months.
+    Hence, given the forward secrecy of TLS 1.3 and the short expiration time, **usage of RSA 2048 for HTTPS certificates does not add a security risk.**
 
 ## Further Reading
 
