@@ -36,6 +36,34 @@ The key cryptographic parameters are listed below.
     However, these certificates have a short expiration time of 3 months.
     Hence, given the forward secrecy of TLS 1.3 and the short expiration time, **usage of RSA 2048 for HTTPS certificates does not add a security risk.**
 
+## Recommended Implementation
+
+Ubuntu 22.04 already generates SSH and GPG keys conforming to this recommendation, as evidenced below:
+
+```console
+$ ssh-keygen
+Generating public/private rsa key pair.
+[...]
++---[RSA 3072]----+
+|           o+.=++|
+|           +o..= |
+|        = =...o  |
+|       O @.    o |
+|      . S +.  . .|
+|       + B  .. .E|
+|      . O o ..o  |
+|       o + +o... |
+|          +oo=o  |
++----[SHA256]-----+
+$ gpg --generate-key
+gpg (GnuPG) 2.2.27; Copyright (C) 2021 Free Software Foundation, Inc.
+[...]
+pub   rsa3072 2023-03-24 [SC] [expires: 2025-03-23]
+      41E32D8838ADA81B4D57333E79797753D349F087
+uid                      Cristian Klein <cristian.klein@example.com>
+sub   rsa3072 2023-03-24 [E] [expires: 2025-03-23]
+```
+
 ## Further Reading
 
 * [ECRYPT–CSA D5.4 Algorithms, Key Size and Protocols Report (2018)](https://ec.europa.eu/research/participants/documents/downloadPublic?documentIds=080166e5ba203b9b&appId=PPGMS)
