@@ -51,8 +51,7 @@ stringData:
   PGPASSWORD: $PGPASSWORD
   PGSSLMODE: $PGSSLMODE
 
-  # This is the Kubernetes Service to which you need to 'kubectl port-forward' in order to get access to the PostgreSQL cluster from outside the Kubernetes cluster.
-  # E.g., svc/postgresql1
+  # This is the Kubernetes Service name to which you can port-foward to in order to get access to the PostgreSQL cluster from outside the Kubernetes cluster.
   # Ref https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
   USER_ACCESS: $USER_ACCESS
 ```
@@ -76,12 +75,15 @@ export USER_ACCESS=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.dat
 !!!important
     Do not configure your application with the PostgreSQL admin username and password. Since the application will get too much permission, this will likely violate your access control policy.
 
+!!!important
+    If you change the password for $PGUSER, you are responsible for keeping track of the new password.
+
 ## Create an Application User
 
 First, in one console, fetch the information from the access Secret as described above and port forward into the PostgreSQL master.
 
 ```bash
-kubectl -n $NAMESPACE port-forward $USER_ACCESS 5432
+kubectl -n $NAMESPACE port-forward svc/$USER_ACCESS 5432
 ```
 
 !!!important
