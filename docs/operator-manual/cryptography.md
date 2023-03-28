@@ -27,15 +27,6 @@ The key cryptographic parameters are listed below.
 | Hash Functions       | SHA-2 (256, 384, 512, 512/256)<br />SHA-3 (256, 384, 512, SHAKE128, SHAKE256)<br />Whirlpool (512)<br />BLAKE (256, 584, 512) |
 | Public Key Primitive | RSA (>3072) <br/> DSA (>256/3072) <br/> ECDSA (>256) |
 
-!!!note
-    For HTTPS traffic, Compliant Kubernetes uses [TLS 1.3](https://en.wikipedia.org/wiki/Transport_Layer_Security#TLS_1.3).
-    TLS 1.3 mandates [forward secrecy](https://en.wikipedia.org/wiki/Forward_secrecy).
-    In other words, an attacker cannot decrypt past HTTPS transmissions even if the TLS certificate (private key) is compromised.
-
-    Compliant Kubernetes uses RSA 2048 when provisioning HTTPS certificates, which is lower than the present recommendation.
-    However, these certificates have a short expiration time of 3 months.
-    Hence, given the forward secrecy of TLS 1.3 and the short expiration time, **usage of RSA 2048 for HTTPS certificates does not add a security risk.**
-
 ## Recommended Implementation
 
 Ubuntu 22.04 already generates SSH and GPG keys conforming to this recommendation, as evidenced below:
@@ -64,7 +55,26 @@ uid                      Cristian Klein <cristian.klein@example.com>
 sub   rsa3072 2023-03-24 [E] [expires: 2025-03-23]
 ```
 
+## Notes on HTTPS Traffic
+
+For HTTPS traffic, Compliant Kubernetes allows either [TLS 1.2](https://en.wikipedia.org/wiki/Transport_Layer_Security#TLS_1.2) or [TLS 1.3](https://en.wikipedia.org/wiki/Transport_Layer_Security#TLS_1.3).
+TLS 1.3 mandates [forward secrecy](https://en.wikipedia.org/wiki/Forward_secrecy).
+TLS 1.2 makes forward secrecy optional, however, the [default cipher list](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#ssl-ciphers) in Compliant Kubernetes prioritizes algorithms that provide perfect forward secrecy.
+In brief, **you can rely on forward secrecy with most browsers in use today**.
+
+Forward secrecy addresses the "store now, decrypt later" attack.
+In essence, an attacker cannot decrypt past HTTPS transmissions even if the TLS certificate (private key) is compromised.
+
+Compliant Kubernetes uses RSA 2048 when provisioning HTTPS certificates, which is lower than the present recommendation.
+However, these certificates have a short expiration time of 3 months.
+Hence, with short certificate expiration time and forward secrecy, **usage of RSA 2048 for HTTPS certificates does not add a security risk.**
+
+We recommend you to regularly run the [Qualys SSL Server Test](https://www.ssllabs.com/ssltest/) against the application HTTPS endpoints to make sure encrypted-in-transit sufficiently protects your data.
+
 ## Further Reading
 
 * [ECRYPT–CSA D5.4 Algorithms, Key Size and Protocols Report (2018)](https://ec.europa.eu/research/participants/documents/downloadPublic?documentIds=080166e5ba203b9b&appId=PPGMS)
 * [BlueCrypt Cryptographic Key Length Recommendation](https://www.keylength.com/en/3/)
+* [Ingress Nginx SSL Ciphers](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#ssl-ciphers)
+* [Mozilla SSL recommendations](https://wiki.mozilla.org/Security/Server_Side_TLS)
+* [Forward secrecy](https://en.wikipedia.org/wiki/Forward_secrecy)
