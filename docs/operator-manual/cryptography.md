@@ -70,6 +70,7 @@ However, these certificates have a short expiration time of 3 months.
 Hence, with short certificate expiration time and forward secrecy, **usage of RSA 2048 for HTTPS certificates does not add a security risk.**
 
 We recommend you to regularly run the [Qualys SSL Server Test](https://www.ssllabs.com/ssltest/) against the application HTTPS endpoints to make sure encrypted-in-transit sufficiently protects your data.
+At the time of this writing, Compliant Kubernetes receives A+ overall rating.
 
 ## Further Reading
 
