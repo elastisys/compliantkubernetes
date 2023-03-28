@@ -39,14 +39,14 @@ Prometheus and Grafana can help with this by making it easier to:
 ### Prometheus
 Compliant Kubernetes installs the prometheus-operator by default. The Prometheus Operator for Kubernetes provides easy monitoring definitions for Kubernetes services and deployment and management of Prometheus instances as it can create/configure/manage Prometheus clusters atop Kubernetes. The following CRDs are installed by default.
 
-| crd | apigroup | kind | used by | description |
-| :-- | :-- | :-- | :-- | :-- |
-| alertmanagers	| monitoring.coreos.com | Alertmanager | prometheus-alerts | |
-| podmonitors | monitoring.coreos.com | PodMonitor | customer-rbac | |
-| prometheuses | monitoring.coreos.com | Prometheus | | |
-| prometheusrules | monitoring.coreos.com | PrometheusRule | customer-rbac, elasticsearch | |
-| servicemonitors | monitoring.coreos.com | ServiceMonitor | customer-rbac, dex, grafana, kibana, elastisearch, influxdb | |
-| thanosrulers | monitoring.coreos.com | ThanosRuler | | |
+| crd | apigroup | kind | can be used by users |
+| :-- | :-- | :-- | :-- |
+| alertmanagers	| monitoring.coreos.com | Alertmanager | NO |
+| podmonitors | monitoring.coreos.com | PodMonitor | YES |
+| prometheuses | monitoring.coreos.com | Prometheus | NO |
+| prometheusrules | monitoring.coreos.com | PrometheusRule | YES |
+| servicemonitors | monitoring.coreos.com | ServiceMonitor | YES |
+| thanosrulers | monitoring.coreos.com | ThanosRuler | NO |
 
 #### Accessing Prometheus
 If you want to access the web interface of Prometheus, proceed as follows:

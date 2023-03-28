@@ -4,7 +4,7 @@ A full Compliant Kubernetes deployment requires a cluster with at least 40 CPUs 
 
 ## Monitoring
 
-Monitoring stack (InfluxDB) can handle 2500 metrics per second while provisioned with 4 CPUs and 16 GB of memory.
+Monitoring stack (Thanos) can handle 6000 metrics per second in our standard configuration. This can be increased on demand.
 
 ## Logging
 

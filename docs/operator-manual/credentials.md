@@ -90,7 +90,7 @@ Backup and Long-Term Logging Credentials
 ----------------------------------------
 
 * Purpose:
-    * Allow backup of various components, e.g., PVCs via Velero, InfluxDB metrics, OpenSearch Indexes, PostgreSQL databases.
+    * Allow backup of various components, e.g., PVCs via Velero, Thanos metrics, OpenSearch Indexes, PostgreSQL databases.
     * Allow long-term logging, e.g., Service Cluster logs
 * Owner: each Compliant Kubernetes cluster should have their own
 * Type: service account
