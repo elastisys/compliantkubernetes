@@ -8,25 +8,49 @@ tags:
 ---
 # Audit Logs
 
-!!!note
-    This section helps you implement ISO 27001, specifically:
+To help comply with various data protection regulations, Compliant Kubernetes comes built-in with audit logs, which can be accessed via [OpenSearch Dashboard](../../user-guide/logs).
 
-    * A.12.4.3 Administrator & Operator Logs
 
-Compliant Kubernetes comes built in with audit logs, which can be accessed via [OpenSearch Dashboard](/compliantkubernetes/user-guide/logs).
+## What are audit logs?
+
+In brief, audit logs are lines answering "**who** did **what** and **when**?".
+
+## Why are audit logs important?
+
+Audit logs help both with proactive and reactive security:
+
+* Regular audit [log reviews](log-review.md) give you a chance to catch an attacker before they succeed.
+* After-the-fact, audit logs allow you to gather evidence for forensics and assess the extend of the damage caused by an attacker.
+
+## What audit logs are included?
+
+Compliant Kubernetes follow a risk-based approach to audit logs.
+We enable audit logs on all APIs which can be used to compromise data security.
+Then we filter high-volume low-risk audit logs.
+Don't forget that, at the end of the day, logs are only as useful as someone looks at them.
+See [log review](log-review.md) for details.
+
+Specifically, the following audit logs are configured by default:
+
+- Kubernetes API audit logs;
+- SSH access logs.
+
+Further audit logs can be configured on a case-by-case basis, as described below.
+
+## Kubernetes API Audit Logs
+
 The audit logs are stored in the `kubeaudit*` index pattern.
 The audit logs cover calls to the Kubernetes API, specifically **who** did **what** and **when** on **which** Kubernetes cluster.
 
-Thanks to integration with [your Identity Provider](/compliantkubernetes/user-guide/kubernetes-api/#authentication-and-access-control-in-compliant-kubernetes) (IdP), if who is a person, their email address will be shown. If who is a system -- e.g., a CI/CD pipeline -- the name of the ServiceAccount is recorded.
+Thanks to integration with [your Identity Provider](../../user-guide/kubernetes-api/#authentication-and-access-control-in-compliant-kubernetes) (IdP), if who is a person, their email address will be shown. If who is a system -- e.g., a CI/CD pipeline -- the name of the ServiceAccount is recorded.
 
 Your change management or incident management process should ensure that you also cover **why**.
 
 Both users (application developers) and administrators will show in the audit log. The former will change resources related to their application, whereas the latter will change Compliant Kubernetes system components.
 
-![Example of Audit Logs](img/audit-logs.png)
+The exact configuration of the Kubernetes audit logs can be found [here](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/config/common/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml#L87).
 
-!!!note
-    It might be tempting to enable audit logging for "everything", e.g., service cluster Kubernetes API, Harbor, Grafana, Kibana, etc. Compliant Kubernetes takes a risk-reward approach and captures audit logs for the events that pose the highest risk to personal data. Don't forget that, at the end of the day, logs are only as useful as [someone looks at them](./log-review).
+![Example of Audit Logs](img/audit-logs.png)
 
 ## SSH Access Logs
 
