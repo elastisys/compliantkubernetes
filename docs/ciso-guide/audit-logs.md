@@ -48,7 +48,7 @@ Your change management or incident management process should ensure that you als
 
 Both users (application developers) and administrators will show in the audit log. The former will change resources related to their application, whereas the latter will change Compliant Kubernetes system components.
 
-The exact configuration of the Kubernetes audit logs can be found [here](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/config/common/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml#L87).
+The exact configuration of the Kubernetes audit logs can be found [here](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/config/common/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml).
 
 ![Example of Audit Logs](img/audit-logs.png)
 
