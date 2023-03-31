@@ -176,6 +176,14 @@ The remainder of this page contains open questions that you should ask your clou
 1. Are you open to having quarterly operations (engineering) retrospectives? Our engineering team wants to keep a close loop with vendors and regularly discuss what went well, what can be improved, and devise a concrete action plan.
 1. Are you open to having quarterly roadmap discussions?
 
+## Environment Management
+
+1. What environmental policies and certifications do you have?
+1. What energy sources are your datacenters using?
+1. How do you work to become more energy efficient?
+1. How do you recycle used/old equipment?
+1. Do you do any form of environmental compensation activities?
+
 ## Evidence
 
 The audit should conclude with gathering the following documents in an "evidence package":
