@@ -127,3 +127,15 @@ Get in touch with your administrator to check the status. They are responsible f
     The only real option is to rely on support from the cloud provider. The latest generation (physical) servers feature a [TPM](https://en.wikipedia.org/wiki/Trusted_Platform_Module) to store the disk encryption key. This can be [securely release to the Linux kernel](https://en.wikipedia.org/wiki/Disk_encryption#Full_disk_encryption) thanks to [pre-boot authentication](https://en.wikipedia.org/wiki/Pre-boot_authentication). This process is performance-neutral and fully transparent to the VMs running on top of the servers.
 
     And that is why Compliant Kubernetes encrypts everything at rest, **only if the underlying cloud provider supports it**.
+
+## What are preview features?
+
+Preview features are assessed to have a higher residual risk than commonly accepted by Customers.
+Residual risks include, but are not limited to:
+
+* risk of downtime;
+* risk of the feature becoming unavailable in the future;
+* risk of data loss.
+
+The risks are usually due to novelty of the feature or uncertainties in the open-source ecosystem.
+By using Preview Features, the Customer accepts these additional risks.
