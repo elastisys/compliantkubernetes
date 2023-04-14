@@ -8,7 +8,9 @@ site_author: Elastisys AB
 copyright: >-
   Copyright © 2022 Elastisys AB
   <br/>
-  Kubernetes® is a registered trademark of The Linux Foundation in the United States and other countries, and is used pursuant to a license from The Linux Foundation.
+  The Linux Foundation has the following registered trademarks in the United States and/or other countries: Certified Kubernetes®, containerd®, fluentd®, Helm®, Istio®, K8s®, Kubernetes®, Prometheus®, PromQL®, Rook®, The Linux Foundation®.
+  <br/>
+  The Linux Foundation has registrations pending or trademarks in use for the following marks in the United States and/or other countries: Argo™, CoreDNS™, Falco™, Harbor™, Jaeger™, Linux Foundation™, OpenTelemetry™, OpenTracing™, Open Policy Agent™, Tekton™, Thanos™.
   <br/>
   Postgres and PostgreSQL and the Elephant Logo (Slonik) are all registered trademarks of the PostgreSQL Community Association of Canada.
   <br/>
@@ -17,8 +19,6 @@ copyright: >-
   RabbitMQ is a trademark of VMware, Inc. in the U.S. and other countries.
   <br/>
   TimescaleDB and the EON mascot are trademarks of <a href="https://www.timescale.com/">Timescale, Inc.</a>
-  <br/>
-  Jaeger and the Logo are a trademark of The Linux Foundation in the United States and other countries, and is used pursuant to a license from The Linux Foundation.
 
 repo_url: https://github.com/elastisys/compliantkubernetes/
 edit_uri: edit/main/docs/
