@@ -1,5 +1,5 @@
-Jaeger®
-===========
+Jaeger™ (preview)
+=================
 
 ![Jaeger Deployment Model](img/jaeger.drawio.svg)
 
