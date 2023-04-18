@@ -84,15 +84,35 @@ See [Namespaces](namespaces.md).
 
 Port 8000 is the only allowed port for OpenID callback URL and is needed by the `kubectl` OpenID plugin. If that port is used locally, then `kubectl` will try to bind to port 18000 which is not allowed due to security concerns. Make sure that nothing is running locally that is using port 8000.
 
-## Select your tenant?
+## "Connection reset by peer" when port-forwarding to postgres?
 
-If you are using Compliant Kubernetes `<v0.26.0` then you will likely see this popup when logging in to Opensearch.
+You may have seen this error when port-forwarding to postgres:
+```console
+Forwarding from 127.0.0.1:5432 -> 5432
+Forwarding from [::1]:5432 -> 5432
+Handling connection for 5432
+Handling connection for 5432
+portforward.go:406] an error occurred forwarding 5432 -> 5432: error forwarding port 5432 to pod, uid : failed to execute portforward in network namespace "": read tcp4 127.0.0.1:5432->127.0.0.1:5432: read: connection reset by peer
+portforward.go:234] lost connection to pod
+```
 
-![Select Your Tenant Opensearch](img/select-your-tenant.png)
+You have two options to resolve this issue:
 
-We have disabled multi tenancy in Opensearch and there is a bug in older versions of Opensearch which makes this popup appear when multi tenancy is disabled. It has been fixed in a newer version of Opensearch which is included in Compliant Kubernetes version `v0.26.0`.
+1. Send a request to your administrator to disable TLS in the postgres cluster. Although it sounds "bad", it does not compromise security, since;
 
-So if you are using Compliant Kubernetes `<v0.26.0` then please just click `Cancel` or `X` and continue to use Opensearch as you would.
+    - Traffic between kubectl and the Kubernetes API is encrypted.
+    - In-cluster network is trusted.
+
+2. A workaround for the issue is to use an older version of `kubectl` when making this request, specifically `v1.21.14` or lower.
+
+    To avoid always using an old `kubectl` version, you can give the binary another name when downloading the `v1.21.14` version, e.g. `kubectl-1.21`. This way your normal `kubectl` binary can be kept up to date.
+
+    Then use that specific binary when making the port-forward request:
+    ```bash
+    kubectl-1.21 -n $NAMESPACE port-forward svc/$USER_ACCESS 5432
+    ```
+
+You can read more about this issue [here](https://github.com/kubernetes/kubernetes/issues/111825).
 
 ## What is encrypted at rest?
 
