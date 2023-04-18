@@ -1,4 +1,4 @@
-Jaeger™ (preview)
+Jaeger™ (beta)
 =================
 
 ![Jaeger Deployment Model](img/jaeger.drawio.svg)
