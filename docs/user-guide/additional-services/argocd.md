@@ -1,4 +1,4 @@
-Argo™ CD (beta)
+Argo™ CD (preview)
 ==================
 
 ![ArgoCD Deployment Model](img/argocd.drawio.svg)
