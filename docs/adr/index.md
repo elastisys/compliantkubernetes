@@ -110,6 +110,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0034](0034-how-to-run-multiple-ams-packages-of-the-same-type.md) - How to run multiple AMS packages of the same type in the same ck8s environment
 * [ADR-0035](0035-run-tekton-on-service-cluster.md) - Run Tekton on service cluster
 * [ADR-0036](0036-run-ingress-nginx-as-daemonset.md) - Run ingress-nginx as a daemonSet
+* [ADR-0038](0038-replace-starboard-operator-with-trivy-operator.md) - Replace the starboard-operator with the trivy-operator
 
 <!-- adrlogstop -->
 
