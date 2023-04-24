@@ -160,6 +160,7 @@ nav:
       - 'ciso-guide/vulnerability.md'
       - 'ciso-guide/log-review.md'
     - 'FAQ': 'ciso-guide/faq.md'
+    - 'How do I comply with GDPR Art. 17 Right to erasure ("right to be forgotten")?': 'ciso-guide/gdpr-art-17.md'
   - 'For Contributors':
     - 'Overview': 'contributor-guide/index.md'
     - 'Architecture': 'architecture.md'
