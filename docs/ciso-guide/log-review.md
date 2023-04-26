@@ -39,10 +39,10 @@ This document highlights the risks that can be mitigated by regularly reviewing 
 
 ## Purpose
 
-Compliant Kubernetes captures application logs and audit logs in a tamper-proof logging environment, which we call the service cluster. By "tamper-proof", we mean that even a complete compromise of production infrastructure does not allow an attacker to erase or change existing log entries, as would be required to hide their activity and avoid suspecion.
+Compliant Kubernetes captures application logs and audit logs in a tamper-proof logging environment, which we call the service cluster. By "tamper-proof", we mean that even a complete compromise of production infrastructure does not allow an attacker to erase or change existing log entries, as would be required to hide their activity and avoid suspicion.
 
 !!!note
-    Attackers can, however, inject new "weird" logs entries. However, that wouldn't remove their tracks and would only trigger more suspecion.
+    Attackers can, however, inject new "weird" logs entries. However, that wouldn't remove their tracks and would only trigger more suspicion.
 
 However, said logs only help with information security if they are **regularly reviewed** for suspicious activity. Prefer to use logs for catching "unknown unknowns". For known bad failures -- e.g., a fluentd Pod restarting -- prefer alerts.
 
@@ -60,7 +60,7 @@ By *review period*, we mean the time elapsed since the last review of the logs, 
 
 Aim for a review which is both **wide** and **deep**. By wide we mean that you should vary the time interval, time point, filters, etc., when reviewing log entries. By deep we mean that you should actually read and try to understand a sample of logs.
 
-1. Open up a browser and open the Compliant Kubernetes [logs](/compliantkubernetes/user-guide/logs/) of the cluster you are reviewing. This functionality is currently offered by OpenSearch or Kibana and Elasticsearch depending on version, but the procedure is the same.
+1. Open up a browser and open the Compliant Kubernetes [logs](/compliantkubernetes/user-guide/logs/) of the cluster you are reviewing. This functionality is currently offered by OpenSearch.
 2. Search for the following keywords on all indices -- i.e., search over each index pattern -- over the last review period: `error`, `failed`, `failure`, `deny`, `denied`, `blocked`, `invalid`, `expired`, `unable`, `unauthorized`, `bad`, `401`, `403`, `500`, `unknown`. Sample a few keywords you recently encountered during your work, e.g., `already installed` or `not found`; be creative and unpredictable.
 3. Vary the time point, the time interval, filters, etc.
 4. Go *wide*: For each query (index pattern, keyword, timepoint, time interval and filter combination), look at the timeline and see if there is an unexpected increase or decrease in the count of log lines. If you find any, focus your attention on those.
@@ -78,5 +78,5 @@ Their is a [dashboard](https://elastisys.io/compliantkubernetes/ciso-guide/audit
 
 ## Possible resolutions
 
-1. If you found a suspecious activity, escalate.
+1. If you found a suspicious activity, escalate.
 2. If the log entry is due to a bug in Compliant Kubernetes, file an issue.

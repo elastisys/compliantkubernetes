@@ -25,7 +25,7 @@ In order to follow [the principle of least privilege](https://en.wikipedia.org/w
 User access to the Kubernetes API may need to be restricted from case to case to follow the principle of least privilege.
 
 !!!note
-    Regardless of your privilege, you will not be able to see components such as Harbor and Elasticsearch via the Kubernetes API. This is in order to comply with common logging policies, which requires logging to be sent to a tamper-proof environment. The tamper-proof environment needs to be separated from the production cluster.
+    Regardless of your privilege, you will not be able to see components such as Harbor and OpenSearch via the Kubernetes API. This is in order to comply with common logging policies, which requires logging to be sent to a tamper-proof environment. The tamper-proof environment needs to be separated from the production cluster.
 
 
 ## Usage guide

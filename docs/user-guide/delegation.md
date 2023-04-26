@@ -119,7 +119,4 @@ Please read the [upstream documentation](https://grafana.com/docs/grafana/latest
 
 ## Application Logs (OpenSearch Dashboards)
 
-!!!note
-    Compliant Kubernetes is currently migrating from OpenDistro for Elasticsearch to OpenSearch. As a result, Kibana will be replaced with OpenSearch Dashboards. You can track progress [here](https://github.com/elastisys/compliantkubernetes-apps/issues/588). This section of the documentation will be updated once the migration is completed.
-
 TBD
