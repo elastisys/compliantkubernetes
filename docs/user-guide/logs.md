@@ -27,9 +27,6 @@ Raw logs in CK8s are normalized, filtered, and processed by [fluentd](https://ww
 
 OpenSearch provides a powerful, easy-to-use event monitoring and alerting system, enabling you to monitor, search, visualize your data among other things. OpenSearch Dashboards is used as visualization and analysis interface for OpenSearch for all your logs.
 
-!!!note
-    Compliant Kubernetes v0.18 and earlier used Open Distro for Elasticsearch, providing fully open source versions of Elasticsearch and Kibana. This project has now reached end of life and continues through OpenSearch, replacing Elasticsearch with OpenSearch and Kibana with OpenSearch Dashboards. Although a big change for the project, it still remains highly compatible and with minor differences in features and user experience.
-
 ## Visualization using OpenSearch Dashboards
 OpenSearch Dashboards is used as a data visualization and exploration tool for log time-series  and aggregate analytics. It offers powerful and easy-to-use features such as histograms, line graphs, pie charts, heat maps, and built-in geospatial support.
 

@@ -66,9 +66,6 @@ See [the instructions in `compliantkubernetes-apps`](https://github.com/elastisy
 
 ## OpenSearch
 
-!!!note
-    For Open Distro for Elasticsearch used in v0.18 and earlier, the same approach for backup and restore can be used with different naming, using `elasticsearch` for the CronJob and `elastic` for the namespace instead of `opensearch`.
-
 ### Backup
 
 OpenSearch is set up to store backups in an S3 bucket. There is a CronJob called `opensearch-backup` in the cluster that is invoking the snapshot process in OpenSearch.
@@ -248,9 +245,6 @@ curl -kL -u "${user}:${password}" -X POST "${os_url}/_snapshot/${snapshot_repo}/
 }
 '
 ```
-
-!!!note
-    For Open Distro for Elasticsearch and Kibana used in v0.18 and earlier, the same approach can be used with different naming, using `.kibana_1` for the index name instead of `.opensearch_dashboards_1`.
 
 ### Start new cluster from snapshot
 
