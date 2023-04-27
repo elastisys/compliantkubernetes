@@ -54,6 +54,16 @@ plugins:
   # See ./mkdocs-ciso-controls/README.md
   - ciso-controls:
       root_url: ciso-guide/controls/
+  - redirects:
+      redirect_maps:
+        'operator-manual/aws.md': 'operator-manual/on-prem-standard.md'
+        'operator-manual/azure.md': 'operator-manual/on-prem-standard.md'
+        'operator-manual/eksd.md': 'operator-manual/on-prem-standard.md'
+        'operator-manual/exoscale.md': 'operator-manual/on-prem-standard.md'
+        'operator-manual/gcp.md': 'operator-manual/on-prem-standard.md'
+        'operator-manual/openstack.md': 'operator-manual/on-prem-standard.md'
+        'operator-manual/ovh-managed-kubernetes.md': 'operator-manual/on-prem-standard.md'
+        'operator-manual/safespring.md': 'operator-manual/on-prem-standard.md'
 
 markdown_extensions:
   - attr_list
