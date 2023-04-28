@@ -174,5 +174,19 @@ The same concept applies to PodMonitors and Pods.
 
 Then when the targets are active it is possible to see scrape information by navigating to "Status" > "Targets". Here Prometheus gives information about the time, status, and duration for scrapes.
 
+## Grafana Dashboards as Code
+
+You can manage your Grafana Dashboards in a GitOps-fashion using the [Terraform Provider for Grafana](https://registry.terraform.io/providers/grafana/grafana/latest/docs#creating-a-grafana-organization-provider-on-premise).
+
+Proceed as follows:
+
+1. Log in to Grafana.
+2. Create an API key, setting it to Editor or Admin.
+3. Provide the API key to Terraform either via the `GRAFANA_AUTH` environment variable or the [auth](https://registry.terraform.io/providers/grafana/grafana/latest/docs#auth) provider variable.
+4. Provide the URL of Grafana (`https://grafana.$DOMAIN`) to Terraform either via the `GRAFANA_URL` environment variable or the [url](https://registry.terraform.io/providers/grafana/grafana/latest/docs#url) provider variable.
+
 ## Further reading
-For more information please refer to the official [Prometheus](https://prometheus.io/docs/) and [Grafana](https://grafana.com/docs/grafana/latest/) documentation.
+
+* [Prometheus](https://prometheus.io/docs/)
+* [Grafana](https://grafana.com/docs/grafana/latest/)
+* [Terraform Provider for Grafana](https://registry.terraform.io/providers/grafana/grafana/latest)
