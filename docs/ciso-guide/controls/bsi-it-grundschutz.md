@@ -36,4 +36,4 @@ Compliant Kubernetes administrators must regularly audit the configuration of th
 
 ### APP.4.4.A20 Verschlüsselte Datenhaltung bei Pods (H)
 
-Compliant Kubernetes recommends disk encryption to be provided at the infrastructure level. If you have this requirement, check for full-disk encryption via the [provider audit](../operator-manual/provider-audit.md).
+Compliant Kubernetes recommends disk encryption to be provided at the infrastructure level. If you have this requirement, check for full-disk encryption via the [provider audit](../../operator-manual/provider-audit.md).
