@@ -19,7 +19,7 @@ Compliant Kubernetes recommends the [RabbitMQ Cluster Operator for Kubernetes](h
 
 ## Accessing a RabbitMQ Cluster
 
-Before continuing, make sure you have access to the Kubernetes API, as describe [here](/compliantkubernetes/user-guide/setup/).
+Before continuing, make sure you have access to the Kubernetes API, as describe [here](../setup.md).
 
 Make sure to install the RabbitMQ client on your workstation. On Ubuntu, this can be achieved as follows:
 
