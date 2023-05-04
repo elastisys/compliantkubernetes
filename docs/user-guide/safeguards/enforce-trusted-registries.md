@@ -21,12 +21,12 @@ Note to contributors: Aim for the following format.
     * A.12.6.1 Management of Technical Vulnerabilities
 
 !!!important
-    * This safeguard is enabled by default with the enforcement action `deny` since [Compliant Kubernetes apps v0.19.0](/compliantkubernetes/release-notes/#v0190). As a result, resources that violate this policy will not be created.
-    * The default enforcement action for this safeguard has been changed to `warn` instead of `deny` since [Compliant Kubernetes apps v0.29.0](/compliantkubernetes/release-notes/#v0290). As a result, resources that violate this policy will generate warning messages, but will still be created.
+    * This safeguard is enabled by default with the enforcement action `deny` since [Compliant Kubernetes apps v0.19.0](../../release-notes.md#v0190). As a result, resources that violate this policy will not be created.
+    * The default enforcement action for this safeguard has been changed to `warn` instead of `deny` since [Compliant Kubernetes apps v0.29.0](../../release-notes.md#v0290). As a result, resources that violate this policy will generate warning messages, but will still be created.
 
 ## Problem
 
-A healthy security posture requires you to ensure your code has no known vulnerabilities. Compliant Kubernetes comes with a [registry](/compliantkubernetes/user-guide/registry/) which includes vulnerability scanning of container images. It can even be configured to prevent the Kubernetes cluster from pulling images with vulnerabilities above a set criticality. This is a per-project setting, so you could, for example, have a stricter policy for publicly facing application components -- e.g., the front office -- and a less strict policy for internal application components -- e.g., the back office.
+A healthy security posture requires you to ensure your code has no known vulnerabilities. Compliant Kubernetes comes with a [registry](../registry.md) which includes vulnerability scanning of container images. It can even be configured to prevent the Kubernetes cluster from pulling images with vulnerabilities above a set criticality. This is a per-project setting, so you could, for example, have a stricter policy for publicly facing application components -- e.g., the front office -- and a less strict policy for internal application components -- e.g., the back office.
 
 Public container registry, such as Docker Hub and Quay, might not stick to the vulnerability management you require, perhaps being at times too strict or too loose.
 
