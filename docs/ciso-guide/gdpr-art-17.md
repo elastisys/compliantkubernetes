@@ -43,6 +43,6 @@ Once you have these in place, we recommend you proceed as follows when receiving
 
 ## Further Reading
 
-- [Audit Logs](../audit-logs)
-- [Application Logs](../../user-guide/logs)
-- [Backups](../../user-guide/backup)
+- [Audit Logs](audit-logs.md)
+- [Application Logs](../user-guide/logs.md)
+- [Backups](../user-guide/backup.md)
