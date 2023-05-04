@@ -19,3 +19,22 @@ repos:
         entry: 'image[^>]* xlink:href="https'
         language: pygrep
         files: '.*[.]svg$'
+    -   id: use-relative-urls
+        name: Use relative URLs for internal links
+        # Why? Mkdocs wants you to: https://www.mkdocs.org/user-guide/writing-your-docs/#linking-to-pages
+        entry: '\[[^\]]*\][(][/].*[)]'
+        language: pygrep
+        files: '.*[.]md$'
+    -   id: use-relative-urls-to-files
+        # Why? This ensures the docs are readable from GitHub and allows mkdocs
+        # to do some internal link checking.
+        name: Internal links should point to files
+        # NOTE: I'm unsure the rule above can be precisely implemented using a
+        # regex. What I'm essentially ask here is:
+        # - link should not start with anchor `#`;
+        # - ignore leading `../..` from relative links;
+        # - there should be `:` (as in `https://`) or `.` (as in `index.md`)
+        #   somewhere in the link.
+        entry: '\[[^\]]*\][(][^#][.\/]*[^.:]*[)]'
+        language: pygrep
+        files: '.*[.]md$'
