@@ -328,7 +328,7 @@ Released 2022-02-01
   *Note that recent versions of official Elasticsearch clients and tools will not work with OpenSearch as they employ a product check, compatible versions can be found [here](https://opensearch.org/docs/latest/clients/index/).*
 
 - **Enforcing OPA policies by default.**<br/>
-  Provides [strict safeguards](user-guide/safeguards/index.md) by default.
+  Provides [strict safeguards](../user-guide/safeguards/index.md) by default.
 
 - **Allowing viewers to inspect and temporarily edit panels in Grafana.**<br/>
   Gives more insight to the metrics and data shown.

@@ -1,5 +1,1 @@
-{%
-    include "release-notes/ck8s.md"
-    start="<!--apps-release-notes-start-->"
-    end="<!--apps-release-notes-end-->"
-%}
+See [Compliant Kubernetes Release Notes](release-notes/ck8s.md).
