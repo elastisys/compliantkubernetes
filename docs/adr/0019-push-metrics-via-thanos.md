@@ -15,7 +15,7 @@ Currently, the service cluster exposes several end-points for workload clusters:
 
 InfluxDB has served us really well over the years. However, as we enter a new era of growth, it no longer satisfies our needs. In particular:
 
-* It is not community-driven (see [ADR-0015 We believe in community-driven open source](0015-we-believe-in-community-driven-open-source)).
+* It is not community-driven (see [ADR-0015 We believe in community-driven open source](0015-we-believe-in-community-driven-open-source.md)).
 * The open-source version cannot be run replicated, hence it is a single point of failure.
 * It is rather capacity hungry, eating as much as 2 CPUs and 15 Gi in a standard package environment.
 * It is unsuitable for long-term metrics storage, which we need -- among others -- for proper capacity management.
