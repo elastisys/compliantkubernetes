@@ -64,6 +64,7 @@ plugins:
         'operator-manual/openstack.md': 'operator-manual/on-prem-standard.md'
         'operator-manual/ovh-managed-kubernetes.md': 'operator-manual/on-prem-standard.md'
         'operator-manual/safespring.md': 'operator-manual/on-prem-standard.md'
+        'release-notes.md': 'release-notes/ck8s.md'
 
 markdown_extensions:
   - attr_list
