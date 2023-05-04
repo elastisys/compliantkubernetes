@@ -21,7 +21,7 @@ Compliant Kubernetes recommends the [Zalando PostgreSQL operator](https://postgr
 
 ## Install Prerequisites
 
-Before continuing, make sure you have access to the Kubernetes API, as describe [here](/compliantkubernetes/user-guide/setup/).
+Before continuing, make sure you have access to the Kubernetes API, as describe [here](../setup.md).
 
 Make sure to install the PostgreSQL client on your workstation. On Ubuntu, this can be achieved as follows:
 

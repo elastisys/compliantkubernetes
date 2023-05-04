@@ -18,7 +18,7 @@ Ask your service-specific administrator to install a Redis cluster inside your C
 
     > Redis is designed to be accessed by trusted clients inside trusted environments.
 
-    For improved security, discuss with your service-specific administrator what Pods and/or Namespaces need access to the Redis cluster. They can then set up the necessary [NetworkPolicies](/compliantkubernetes/user-guide/safeguards/enforce-networkpolicies/).
+    For improved security, discuss with your service-specific administrator what Pods and/or Namespaces need access to the Redis cluster. They can then set up the necessary [NetworkPolicies](../safeguards/enforce-networkpolicies.md).
 
 !!!important "Important: No Disaster Recovery"
 
@@ -31,7 +31,7 @@ Compliant Kubernetes recommends the [Spotahome operator](https://github.com/spot
 
 ## Install Prerequisites
 
-Before continuing, make sure you have access to the Kubernetes API, as describe [here](/compliantkubernetes/user-guide/setup/).
+Before continuing, make sure you have access to the Kubernetes API, as describe [here](../setup.md).
 
 Make sure to install the Redis client on your workstation. On Ubuntu, this can be achieved as follows:
 
