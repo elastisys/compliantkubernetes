@@ -3,7 +3,7 @@ name: Regularly check links
 on:
   schedule:
     # Runs "At 08:30 on every day-of-week from Monday through Friday." (see https://crontab.guru)
-    - cron: '30 8 * * 1-5'
+    - cron: '40 8 * * 1-5'
 
 jobs:
   build:
@@ -11,6 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install linkchecker
-        run: apt install linkchecker
+        run: sudo apt install linkchecker
       - name: Run linkchecker
         run: linkchecker https://elastisys.io
