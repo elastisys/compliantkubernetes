@@ -47,17 +47,17 @@ externalDatabase:
  port: 5432
  user: <APP_USER>
  database: <APP_DATABASE>
- existingSecret: "<application-secret"
+ existingSecret: "<application-secret>"
  existingSecretPasswordKey: "PGPASSWORD"
 ```
 
-3. Configure your values for production and based on how you will be using Keycloak.
+3. Configure your values for production
 \
-a. https://www.keycloak.org/server/configuration-production
-\
-b. Consider if you should expose Keycloak with an ingress.
+a. https://www.keycloak.org/server/configuration-production  
+b. Enable and configure an ingress.
 
-4. How will you be using Keycloak?
+
+4. Consider how you will be using Keycloak.
 \
 a. [With a reverse proxy?](https://www.keycloak.org/server/configuration-production#_reverse_proxy_in_a_distributed_environment)
 \
