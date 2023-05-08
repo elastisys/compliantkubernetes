@@ -1,35 +1,15 @@
 # FerretDB (self-service)
 [FerretDB](https://www.ferretdb.io/) is a database that is an open-source alternative to MongoDB that uses Postgres as its backend database. This documentation details how to run FerretDB in a Compliant Kubernetes cluster using the managed [Postgres service](postgresql.md).
 
-## Build and push
+## Pushing FerretDB image to Harbor
 
-The upstream FerretDB image cannot run as non-root due to folder permission issues. The following Dockerfile can be used to build an image for FerretDB that can run as non-root:
-```Dockerfile
-FROM busybox:1.36 as builder
+These instructions will pull the FerretDB container image and push it to another registry. If you are using managed Harbor as your container registry, please follow [these instructions](../deploy.md) on how to authenticate, create a new project, and how to create a robot account and using it in a pull-secret to be able to pull an image from Harbor to your cluster safely:
 
-RUN mkdir /state
-
-FROM ghcr.io/ferretdb/ferretdb
-
-ARG user=1001
-
-COPY --from=builder --chown=$user:$user /state /state
-
-USER $user
-```
-
-Save the file as `Dockerfile` and build the image:
-```
-docker build . -t $REGISTRY/$PROJECT/ferretdb:$TAG
-```
-
-Push the image:
-```
+```sh
+docker pull docker pull ghcr.io/ferretdb/ferretdb:1.0.0
+docker tag ghcr.io/ferretdb/ferretdb:1.0.0 $REGISTRY/$PROJECT/ferretdb:$TAG
 docker push $REGISTRY/$PROJECT/ferretdb:$TAG
 ```
-
-> **Note** <br/>
-> If you are using managed Harbor as your container registry, please follow [these instructions](../deploy.md) for authenticating, setting up projects, as well as creating robot accounts and using them in a pull secret to safely pull the image from Harbor.
 
 ## Install
 
@@ -75,7 +55,19 @@ spec:
               name: ferretdb-postgres-credentials
               key: ferretdb-url
         securityContext:
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
           runAsUser: 1001
+        volumeMounts:
+        - mountPath: /state
+          name: state
+      securityContext:
+        fsGroup: 1001
+      volumes:
+      - name: state
+        emptyDir: {}
 ```
 
 To access the FerretDB instance, create the following Service:
