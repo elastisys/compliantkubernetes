@@ -1,4 +1,6 @@
-# FerretDB (self-service)
+FerretDB (self-service)
+=======================
+
 [FerretDB](https://www.ferretdb.io/) is a database that is an open-source alternative to MongoDB that uses Postgres as its backend database. This documentation details how to run FerretDB in a Compliant Kubernetes cluster using the managed [Postgres service](postgresql.md).
 
 ## Pushing FerretDB image to Harbor
@@ -120,6 +122,103 @@ mydict = { "name": "John", "address": "Highway 38" }
 collection.insert_one(mydict)
 print(collection.find_one())
 ```
+
+See the following `pg_dump` below to see how the example above is mapped in the actual backend Postgres database.
+
+<details>
+<summary>pg_dump</summary>
+
+```sql
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.6 (Ubuntu 14.6-1.pgdg22.04+1)
+-- Dumped by pg_dump version 15.1 (Ubuntu 15.1-1.pgdg22.04+1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: test_db; Type: SCHEMA; Schema: -; Owner: ferretdb
+--
+
+CREATE SCHEMA test_db;
+
+
+ALTER SCHEMA test_db OWNER TO ferretdb;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: _ferretdb_database_metadata; Type: TABLE; Schema: test_db; Owner: ferretdb
+--
+
+CREATE TABLE test_db._ferretdb_database_metadata (
+    _jsonb jsonb
+);
+
+
+ALTER TABLE test_db._ferretdb_database_metadata OWNER TO ferretdb;
+
+--
+-- Name: customers_c09344de; Type: TABLE; Schema: test_db; Owner: ferretdb
+--
+
+CREATE TABLE test_db.customers_c09344de (
+    _jsonb jsonb
+);
+
+
+ALTER TABLE test_db.customers_c09344de OWNER TO ferretdb;
+
+--
+-- Data for Name: _ferretdb_database_metadata; Type: TABLE DATA; Schema: test_db; Owner: ferretdb
+--
+
+COPY test_db._ferretdb_database_metadata (_jsonb) FROM stdin;
+{"$s": {"p": {"_id": {"t": "string"}, "table": {"t": "string"}, "indexes": {"i": [{"t": "object", "$s": {"p": {"key": {"t": "object", "$s": {"p": {"_id": {"t": "int"}}, "$k": ["_id"]}}, "name": {"t": "string"}, "unique": {"t": "bool"}, "pgindex": {"t": "string"}}, "$k": ["pgindex", "name", "key", "unique"]}}], "t": "array"}}, "$k": ["_id", "table", "indexes"]}, "_id": "customers", "table": "customers_c09344de", "indexes": [{"key": {"_id": 1}, "name": "_id_", "unique": true, "pgindex": "customers__id__e06693c2_idx"}]}
+\.
+
+
+--
+-- Data for Name: customers_c09344de; Type: TABLE DATA; Schema: test_db; Owner: ferretdb
+--
+
+COPY test_db.customers_c09344de (_jsonb) FROM stdin;
+{"$s": {"p": {"_id": {"t": "objectId"}, "name": {"t": "string"}, "address": {"t": "string"}}, "$k": ["_id", "name", "address"]}, "_id": "6454cd232da4567e5cd31f39", "name": "John", "address": "Highway 37"}
+\.
+
+
+--
+-- Name: _ferretdb_database_metadata_id_idx; Type: INDEX; Schema: test_db; Owner: ferretdb
+--
+
+CREATE UNIQUE INDEX _ferretdb_database_metadata_id_idx ON test_db._ferretdb_database_metadata USING btree (((_jsonb -> '_id'::text)));
+
+
+--
+-- Name: customers__id__e06693c2_idx; Type: INDEX; Schema: test_db; Owner: ferretdb
+--
+
+CREATE UNIQUE INDEX customers__id__e06693c2_idx ON test_db.customers_c09344de USING btree (((_jsonb -> '_id'::text)));
+
+
+--
+-- PostgreSQL database dump complete
+--
+```
+</details>
 
 ## Security
 FerretDB supports securing connections between FerretDB and client with TLS. All you need is to specify additional run-time arguments or environment variables, as described in the [FerretDB documentation](https://docs.ferretdb.io/security/).
