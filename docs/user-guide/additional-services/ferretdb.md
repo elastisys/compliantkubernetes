@@ -1,5 +1,12 @@
-FerretDB (self-service)
-=======================
+# FerretDB (self-service)
+
+!!!danger
+    FerretDB tries to be a drop-in replacement for MongoDB. However:
+
+    * There are [known differences](https://docs.ferretdb.io/diff/).
+    * There might also be performance implications.
+
+    Make sure to load-test your application with FerretDB before going into production.
 
 [FerretDB](https://www.ferretdb.io/) is a database that is an open-source alternative to MongoDB that uses Postgres as its backend database. This documentation details how to run FerretDB in a Compliant Kubernetes cluster using the managed [Postgres service](postgresql.md).
 
@@ -8,9 +15,13 @@ FerretDB (self-service)
 These instructions will pull the FerretDB container image and push it to another registry. If you are using managed Harbor as your container registry, please follow [these instructions](../deploy.md) on how to authenticate, create a new project, and how to create a robot account and using it in a pull-secret to be able to pull an image from Harbor to your cluster safely:
 
 ```sh
-docker pull docker pull ghcr.io/ferretdb/ferretdb:1.0.0
-docker tag ghcr.io/ferretdb/ferretdb:1.0.0 $REGISTRY/$PROJECT/ferretdb:$TAG
-docker push $REGISTRY/$PROJECT/ferretdb:$TAG
+TAG=1.0.0
+REGISTRY=harbor.$DOMAIN
+REGISTRY_PROJECT=demo
+
+docker pull ghcr.io/ferretdb/ferretdb:$TAG
+docker tag ghcr.io/ferretdb/ferretdb:$TAG $REGISTRY/$REGISTRY_PROJECT/ferretdb:$TAG
+docker push $REGISTRY/$REGISTRY_PROJECT/ferretdb:$TAG
 ```
 
 ## Install
@@ -19,7 +30,7 @@ In a managed CK8s environment, follow [these instructions](postgresql.md#getting
 
 Create secret containing a postgres url to authenticate to the managed postgres service and newly created database with the application user credentials:
 ```sh
-kubectl create secret generic --from-literal=ferretdb-url="postgresql://$APP_USERNAME:$APP_PASSWORD@$PGHOST:$PGPORT/$APP_DATABASE" ferretdb-postgres-credentials -n ferretdb
+kubectl create secret generic --from-literal=ferretdb-url="postgresql://$APP_USERNAME:$APP_PASSWORD@$PGHOST:$PGPORT/$APP_DATABASE" ferretdb-postgres-credentials
 ```
 
 Deploy:
@@ -28,7 +39,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ferretdb
-  namespace: ferretdb
   labels:
     run: ferretdb
 spec:
@@ -41,11 +51,9 @@ spec:
       labels:
         run: ferretdb
     spec:
-      imagePullSecrets: # https://elastisys.io/compliantkubernetes/user-guide/deploy/#configure-an-image-pull-secret
-      - name: pull-secret
       containers:
       - name: ferretdb
-        image: $REGISTRY/$PROJECT/ferretdb:$TAG # replace this
+        image: $REGISTRY/$REGISTRY_PROJECT/ferretdb:$TAG # replace this
         args:
          - --listen-addr=0.0.0.0:27017
          - --telemetry=disable
@@ -70,16 +78,11 @@ spec:
       volumes:
       - name: state
         emptyDir: {}
-```
-
-To access the FerretDB instance, create the following Service:
-
-```yaml
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: ferretdb-service
-  namespace: ferretdb
   labels:
     run: ferretdb
 spec:
@@ -91,6 +94,22 @@ spec:
       port: 27017
       targetPort: 27017
 ```
+
+Check that FerretDB started properly:
+
+```console
+$ kubectl get svc,deploy,pod -l run=ferretdb
+NAME                       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE
+service/ferretdb-service   ClusterIP   10.233.42.102   <none>        27017/TCP   75s
+
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/ferretdb   1/1     1            1           75s
+
+NAME                            READY   STATUS    RESTARTS   AGE
+pod/ferretdb-5887cc848c-brwjf   1/1     Running   0          75s
+```
+
+The Deployment should show `STATUS` is `Running`. The Pod(s) should have `STATUS` is `Running`.
 
 To try out access to FerretDB, you can port-forward the Service to localhost and connect using mongosh:
 ```sh
