@@ -29,7 +29,7 @@ docker push $REGISTRY/$PROJECT/ferretdb:$TAG
 ```
 
 > **Note** <br/>
-> If you are using managed Harbor as your container registry, please follow [these instructions](https://elastisys.io/compliantkubernetes/user-guide/deploy/) for authenticating, setting up projects, as well as creating robot accounts and using them in a pull secret to safely pull the image from Harbor.
+> If you are using managed Harbor as your container registry, please follow [these instructions](../deploy.md) for authenticating, setting up projects, as well as creating robot accounts and using them in a pull secret to safely pull the image from Harbor.
 
 ## Install
 
