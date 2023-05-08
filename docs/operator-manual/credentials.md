@@ -43,7 +43,7 @@ Cloud Provider (Infrastructure) Credentials
     * Creating and destroying buckets via helper scripts
 * Do not use for:
     * Kubernetes [cloud-controller integration](https://github.com/kubernetes-sigs/kubespray/blob/master/inventory/sample/group_vars/all/openstack.yml#L38), use [Cloud Controller Credentials](#cloud-controller-integration-credentials) instead.
-    * Access to object storage / S3 bucket, use [backup credentials](backup-and-long-term-logging-credentials) instead.
+    * Access to object storage / S3 bucket, use [backup credentials](#backup-and-long-term-logging-credentials) instead.
 
 SSH Keys
 --------

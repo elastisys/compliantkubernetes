@@ -47,11 +47,11 @@ Skaffold finds you will be prompted to specify how to build them, or if they are
 The first image Skaffold finds is busybox, however this image is not built from this project, so choose
 `None (image not built from these sources)`
 
-![Skaffold init Output1](/compliantkubernetes/user-guide/img/skaffold-busybox.png)
+![Skaffold init Output1](img/skaffold-busybox.png)
 
 The second image Skaffold finds is the user-demo image and this image is built from the Dockerfile.
 
-![Skaffold init Output2](/compliantkubernetes/user-guide/img/skaffold-user-demo.png)
+![Skaffold init Output2](img/skaffold-user-demo.png)
 
 Skaffold then asks for which resources we want to create Kubernetes resources, but as the image already has a Helm Chart
 this can be skipped by pressing enter.
@@ -110,7 +110,7 @@ skaffold dev --port-forward
 When the application has been built and deployed to the cluster Skaffold shows which URL to access,
 shows the logs of the application, and starts listening for changes in the source-files.
 
-![Skaffold Output1](/compliantkubernetes/user-guide/img/skaffold-output1.png)
+![Skaffold Output1](img/skaffold-output1.png)
 
 When visiting the URL to the application or the portforwarded URL the following output can be seen:
 

@@ -27,7 +27,7 @@
 Please observe a stable URL policy. This means:
 
 * Try to avoid breaking URLs.
-* If you need to break URLs, make sure you set up redirects. (See [example](docs/compliantkubernetes/watch-demos.md).)
+* If you need to break URLs, make sure you set up redirects. (Search for `redirects` in [mkdocs.yml](mkdocs.yml).)
 
 ## Code Snippets
 
@@ -97,7 +97,7 @@ Files ending in `*.drawio.svg` are produced using [diagrams.net](https://www.dia
 6. Select "Links: In new window".
 6. Leave everything else as default.
 
-To facilitate editing architecture diagrams, import the [Compliant Kubernetes DrawIO library](docs/compliantkubernetes/img/ck8s-library.drawio.xml).
+To facilitate editing architecture diagrams, import the [Compliant Kubernetes DrawIO library](docs/img/ck8s-library.drawio.xml).
 
 ### From graphviz
 

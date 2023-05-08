@@ -4,9 +4,9 @@ Help! Something is wrong with my Compliant Kubernetes cluster. Fear no more, thi
 
 This guide assumes that:
 
-* You have [pre-requisites](operator-manual/getting-started/) installed.
+* You have [pre-requisites](getting-started.md) installed.
 * Your environment variables, in particular `CK8S_CONFIG_PATH` is set.
-* Your config folder (e.g. [for OpenStack](/operator-manual/openstack/#initialize-configuration-folder)) is available.
+* Your config folder is available.
 * `compliantkubernetes-apps` and `compliantkubernetes-kubespray` is available.
 
 ## I have no clue where to start

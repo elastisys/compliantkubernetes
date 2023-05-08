@@ -42,14 +42,14 @@ That was very information dense, so let's break it down.
 * **Why within 3 days?** This should ensure sufficient time to act on the capacity shortage, without ruining anyone's weekend.
 
 !!!note
-    Compliant Kubernetes can be configured to [require resource requests](/user-guide/safeguards/#avoid-downtime-with-resource-requests) for all Pods.
+    Compliant Kubernetes can be configured to [require resource requests](../user-guide/safeguards/enforce-resources.md) for all Pods.
 
 !!!important
     Nodes dedicated for data services, such as PostgreSQL, are excluded from Kubernetes requests to allocatable calculation.
 
 ### How?
 
-[Add a new Node](/operator-manual/troubleshooting/#node-seems-really-not-fine-i-want-a-new-one) of the same type as the other Nodes in the cluster.
+[Add a new Node](../operator-manual/troubleshooting.md#node-seems-really-not-fine-i-want-a-new-one) of the same type as the other Nodes in the cluster.
 
 If the cluster has 6 Nodes, consider consolidating to 3 Nodes of twice-the-size -- in number of CPUs or memory or both -- if the infrastructure cost is reduced.
 Before doing this, get in touch with application developers to ensure they don't have Kubernetes scheduling constraints that would cause issues on the consolidated environment.

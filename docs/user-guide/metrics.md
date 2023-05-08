@@ -88,7 +88,7 @@ The user demo already includes a [ServiceMonitor](https://github.com/elastisys/c
 
 The screenshot below shows Grafana in "Explore" mode (the compass icon to the left) featuring the query `rate(http_request_duration_seconds_count[1m])`. It shows the request rate for the user demo application for each path and status code. As can be seen in the graph, the `/users` endpoint is getting more traffic than the other endpoints.
 
-![Example of User Demo Metrics](/compliantkubernetes/img/user-demo-metrics.jpeg)
+![Example of User Demo Metrics](../img/user-demo-metrics.jpeg)
 
 The "Explore" mode is great for developing queries and exploring the data set. If you want to save a query so you can refer back to it, you can create a Dashboard instead. Dashboards consist of multiple Panels, each of which, can display the results of running queries. Learn more [about Grafana panels](https://grafana.com/docs/grafana/latest/panels/).
 

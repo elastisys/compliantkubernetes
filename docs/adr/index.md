@@ -35,7 +35,7 @@ An architectural decision generally starts with one of the following:
 
 ## How are architectural decisions captured?
 
-Architectural decisions are captured via [Architectural Decision Records](#adrs) or the [tech radar](/compliantkubernetes/tech-radar/).
+Architectural decisions are captured via [Architectural Decision Records](#adrs) or the [tech radar](../tech-radar/index.html).
 Both are stored in Git, hence a decision log is also captured as part of the Git commit messages.
 
 ## How are architectural decisions taken?
@@ -58,7 +58,7 @@ Before taking in any new component to Compliant Kubernetes, we investigate and e
 * **community-driven open-source projects**, to reduce the risk of a component becoming abandoned, changing its license or changing direction in the interest of a single entity; as far as possible, we choose [CNCF projects](https://landscape.cncf.io/?project=hosted) (preferably graduated ones) or projects which are governed by at least 3 different entities;
 * **projects with a good security track record**, to avoid unexpected security vulnerabilities or delays in fixing security vulnerabilities; as far as possible, we choose projects with a clear security disclosure process and a clear security announcement process;
 * **projects that are popular**, both from a usage and contribution perspective; as far as possible, we choose projects featuring well-known users and many contributors;
-* **projects that rely on technologies that our team is already trained on**, to reduce the risk of requiring a lot of (initial or ongoing) training; as far as possible, we choose projects that overlap with the projects already on our [tech radar](../developer-guide/tech-radar);
+* **projects that rely on technologies that our team is already trained on**, to reduce the risk of requiring a lot of (initial or ongoing) training; as far as possible, we choose projects that overlap with the projects already on our [tech radar](../tech-radar/index.html);
 * **projects that are simple to install and manage**, to reduce required training and burden on administrators.
 
 Often, it is not possible to fulfill the above criteria. In that case, we take the following mitigations:

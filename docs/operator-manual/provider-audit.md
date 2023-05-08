@@ -154,6 +154,7 @@ The remainder of this page contains open questions that you should ask your clou
     1. How often do you test fail-over? How did the last test go?
 1. How do you handle disaster recovery?
     1. How often do you test disaster recovery? How did the last test go?
+1. What is your use of cryptography policy?
 1. How do you deal with DDoS attacks?
 
 ## Legal issues

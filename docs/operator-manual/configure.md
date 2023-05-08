@@ -1,6 +1,6 @@
 # Advanced Configuration
 
-You have already been exposed to some of Compliant Kubernetes's configuration options while creating a cluster. If not, read that section first (e.g., [On Exoscale](/compliantkubernetes/operator-manual/exoscale/)).
+You have already been exposed to some of Compliant Kubernetes's configuration options while creating a cluster. If not, read [that section](on-prem-standard.md) first.
 
 This section will outline some advanced configuration topics.
 

@@ -43,7 +43,7 @@ cd compliantkubernetes/user-demo
 
     * A.12.6.1 Management of Technical Vulnerabilities
 
-Compliant Kubernetes recommends **against** [PodDisruptionBudgets (PDBs)](https://kubernetes.io/docs/tasks/run-application/configure-pdb/). PDBs can easily be misconfigured to block draining Nodes, which interferes with automatic OS patching and compromises the security posture of the environment. Instead, prefer engineering your application to deal with disruptions. The user demo already showcases how to achieve this with replication and topologySpreadConstraints. Make sure to move state, even soft state, to [specialized services](/compliantkubernetes/user-guide/additional-services/).
+Compliant Kubernetes recommends **against** [PodDisruptionBudgets (PDBs)](https://kubernetes.io/docs/tasks/run-application/configure-pdb/). PDBs can easily be misconfigured to block draining Nodes, which interferes with automatic OS patching and compromises the security posture of the environment. Instead, prefer engineering your application to deal with disruptions. The user demo already showcases how to achieve this with replication and topologySpreadConstraints. Make sure to move state, even soft state, to [specialized services](additional-services/index.md).
 
 Further reading:
 

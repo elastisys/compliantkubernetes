@@ -40,7 +40,7 @@ Chosen options: 2
 1. Always scale horizontally and place each package on its own set of dedicated nodes.
     * "Add additional label `elastisys.io/ams-cluster-name` to a set of nodes dedicated to a specific package"
     * "Do not taint the nodes."
-Respect [ADR-0022](0022-use-dedicated-nodes-for-additional-services) and add the `elastisys.io/node-type` taint and label.
+Respect [ADR-0022](0022-use-dedicated-nodes-for-additional-services.md) and add the `elastisys.io/node-type` taint and label.
 
 ### Positive Consequences
 
