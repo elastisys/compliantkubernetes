@@ -1,5 +1,5 @@
 # FerretDB (self-service)
-[FerretDB](https://www.ferretdb.io/) is a database that is an open-source alternative to MongoDB that uses Postgres as its backend database. This documentation details how to run FerretDB in a Compliant Kubernetes cluster using the managed [Postgres service](https://elastisys.io/compliantkubernetes/user-guide/additional-services/postgresql/).
+[FerretDB](https://www.ferretdb.io/) is a database that is an open-source alternative to MongoDB that uses Postgres as its backend database. This documentation details how to run FerretDB in a Compliant Kubernetes cluster using the managed [Postgres service](postgresql.md).
 
 ## Build and push
 
