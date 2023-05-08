@@ -18,7 +18,7 @@ COPY --from=builder --chown=$user:$user /state /state
 USER $user
 ```
 
-Save the file as `Dockerfile` and build the image: 
+Save the file as `Dockerfile` and build the image:
 ```
 docker build . -t $REGISTRY/$PROJECT/ferretdb:$TAG
 ```
@@ -78,7 +78,7 @@ spec:
           runAsUser: 1001
 ```
 
-To access the FerretDB instace, create the following Service:
+To access the FerretDB instance, create the following Service:
 
 ```yaml
 apiVersion: v1
@@ -108,7 +108,7 @@ mongosh mongodb://localhost:27017
 ## Python client example
 The following is an example of how to connect to FerretDB using the [PyMongo](https://pymongo.readthedocs.io/en/stable/) Python library (using the localhost port-forwarding described above).
 
-```python 
+```python
 from pymongo import MongoClient
 
 client = MongoClient('mongodb://localhost:27017')
