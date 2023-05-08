@@ -33,7 +33,7 @@ docker push $REGISTRY/$PROJECT/ferretdb:$TAG
 
 ## Install
 
-In a managed CK8s environment, follow these instructions on how to access the managed postgres service and how to create an application user and database: https://elastisys.io/compliantkubernetes/user-guide/additional-services/postgresql/#getting-access.
+In a managed CK8s environment, follow [these instructions](postgresql.md#getting-access) on how to access the managed postgres service and how to create an application user and database.
 
 Create secret containing a postgres url to authenticate to the managed postgres service and newly created database with the application user credentials:
 ```sh
