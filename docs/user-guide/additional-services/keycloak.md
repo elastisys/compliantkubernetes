@@ -88,8 +88,8 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 helm upgrade --install keycloak bitnami/keycloak --values values.yaml
 ```
 
-
-When you have deployed Keycloak you can:
+---
+After you have deployed Keycloak you can:
 \
 [Login as admin and configure realms, users, and clients.](https://www.keycloak.org/getting-started/getting-started-kube)
 \
