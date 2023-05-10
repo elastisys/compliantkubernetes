@@ -1,6 +1,6 @@
-# gid=0 is okay, but not by default
+# [Superseded by [ADR-0040](0040-allow-group-id-0.md)] gid=0 is okay, but not by default
 
-* Status: accepted
+* Status: superseded by [ADR-0040](0040-allow-group-id-0.md)
 * Deciders: Cristian, Lars, Olle
 * Date: 2021-08-23
 
