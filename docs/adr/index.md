@@ -112,6 +112,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0036](0036-run-ingress-nginx-as-daemonset.md) - Run ingress-nginx as a daemonSet
 * [ADR-0037](0037-enforce-ttl-on-jobs.md) - Enforce TTL on Jobs
 * [ADR-0038](0038-replace-starboard-operator-with-trivy-operator.md) - Replace the starboard-operator with the trivy-operator
+* [ADR-0040](0040-allow-group-id-0.md) - Allow running containers with primary and supplementary group id 0
 
 <!-- adrlogstop -->
 
