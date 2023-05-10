@@ -1,6 +1,6 @@
-Keycloak (self-managed)
+Keycloak (self-service)
 ===========
-# (Picture goes here)
+![Keycloak Logo](img/keycloak.drawio.svg)
 
 This page will help you succeed in connecting your application to an identity and access management solution Keycloak, which meets your security and compliance requirements.
 
@@ -10,7 +10,7 @@ It offers a comprehensive set of features, including Single Sign-On (SSO), user 
 \
 As of May 2023, Keycloak is a [CNCF Incubating project](https://www.cncf.io/blog/2023/04/11/keycloak-joins-cncf-as-an-incubating-project/).
 
-In this guide we outline the necessary steps to configure and deploy a Keycloak instance on a Compliant Kubernetes cluster that is using the [managed Postgres.](postgresql.md)
+In this guide we outline the necessary steps to configure and deploy a Keycloak instance on a Compliant Kubernetes cluster that is using the [managed Postgres service](postgresql.md).
 \
 This will provide you with a robust and secure IAM solution to manage user access and authorization for your applications running on Compliant Kubernetes.
 
@@ -38,8 +38,8 @@ We chose Bitnami's Helm chart for [Keycloak](https://github.com/bitnami/charts/t
 
 Bitnami is a well known provider of pre-configured, open-source application stacks that simplify deployment and management in various environments, such as Kubernetes. They offer a Helm chart for Keycloak, which streamlines deployment while adhering to Kubernetes best practices for security.
 
-**values.yaml:**
-
+### Deploying Keycloak
+Below is a sample **values.yaml** file that can be used to deploy Keycloak, please read the notes and change what is necessary.
 ``` yaml
 
 resources: # (1)
@@ -88,25 +88,30 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 helm upgrade --install keycloak bitnami/keycloak --values values.yaml
 ```
 
----
-After you have deployed Keycloak you can:
+### Accessing Keycloak
+When you have deployed Keycloak and can access the URL you can:
 \
 [Login as admin and configure realms, users, and clients.](https://www.keycloak.org/getting-started/getting-started-kube)
 \
 The default admin user is “user”.
-Assuming you have installed keycloak in the current namespace. The initial admin password can be fetched using the command below:
+
+The initial admin password can be fetched using the command below (assuming default namespace):
 
 ```
 password=$(kubectl get secret keycloak -o jsonpath="{.data.admin-password}" | base64 -d)
-echo $password
+echo “Password: $password”
 ```
 
-Note: If you uninstall and install Keycloak the initial admin password will be regenerated but the previous initial admin password may still be used unless you clear the PostgreSQL database.
+Note: If you uninstall and install Keycloak the initial admin password will be regenerated but the previous initial admin password may still be used unless you clear the Postgres database.
 
+For more information about using Keycloak to secure/protect your applications, see “Securing your applications” and “Reverse Proxy” in the further reading section.
 
 ## Further Reading
 - [Documentation](https://www.keycloak.org/documentation)
 - [Guides](https://www.keycloak.org/guides)
 - [Production Configuration](https://www.keycloak.org/server/configuration-production)
 - [Reverse Proxy](https://www.keycloak.org/server/reverseproxy)
+    - [Ingress Nginx](https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/)
+    - [Oauth2-Proxy](https://oauth2-proxy.github.io/oauth2-proxy/docs/configuration/oauth_provider/#keycloak-oidc-auth-provider)
+      - Note: the “oidc-issuer-url” may be outdated in the guide. See [this issue.](https://stackoverflow.com/questions/70577004/keycloak-could-not-find-resource-for-full-path)
 - [Secure your applications](https://www.keycloak.org/docs/latest/securing_apps/index.html)
