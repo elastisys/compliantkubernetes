@@ -10,14 +10,14 @@ It offers a comprehensive set of features, including Single Sign-On (SSO), user 
 \
 As of May 2023, Keycloak is a [CNCF Incubating project](https://www.cncf.io/blog/2023/04/11/keycloak-joins-cncf-as-an-incubating-project/).
 
-In this guide we outline the necessary steps to configure and deploy a Keycloak instance on a Compliant Kubernetes cluster that is using the [managed Postgres service](postgresql.md).
+In this guide we outline the necessary steps to configure and deploy a Keycloak instance on a Compliant Kubernetes cluster that is using the [managed PostgreSQL service](postgresql.md).
 \
 This will provide you with a robust and secure IAM solution to manage user access and authorization for your applications running on Compliant Kubernetes.
 
 ## Initial preparation
-*Note: This guide assumes that you have managed Postgres as an additional service.*
+*Note: This guide assumes that you have managed PostgreSQL as an additional service.*
 
-1. [Setup an application database and user in postgres](postgresql.md)
+1. [Setup an application database and user in PostgreSQL](postgresql.md)
 
 2. Take note of the following variables from step 1 for the next section.
 - The application secret you have created.
@@ -32,7 +32,7 @@ echo $APP_DATABASE
 
 
 
-## Configure Keycloak with managed Postgres
+## Configure Keycloak with managed PostgreSQL
 
 We chose Bitnami's Helm chart for [Keycloak](https://github.com/bitnami/charts/tree/main/bitnami/keycloak) due to its open-source nature, ease of deployment, security optimization, and active maintenance.
 
@@ -102,7 +102,7 @@ password=$(kubectl get secret keycloak -o jsonpath="{.data.admin-password}" | ba
 echo “Password: $password”
 ```
 
-Note: If you uninstall and install Keycloak the initial admin password will be regenerated but the previous initial admin password may still be used unless you clear the Postgres database.
+Note: If you uninstall and install Keycloak the initial admin password will be regenerated but the previous initial admin password may still be used unless you clear the PostgreSQL database.
 
 For more information about using Keycloak to secure/protect your applications, see “Securing your applications” and “Reverse Proxy” in the further reading section.
 
@@ -114,4 +114,4 @@ For more information about using Keycloak to secure/protect your applications, s
     - [Ingress Nginx](https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/)
     - [Oauth2-Proxy](https://oauth2-proxy.github.io/oauth2-proxy/docs/configuration/oauth_provider/#keycloak-oidc-auth-provider)
       - Note: the “oidc-issuer-url” may be outdated in the guide. See [this issue.](https://stackoverflow.com/questions/70577004/keycloak-could-not-find-resource-for-full-path)
-- [Secure your applications](https://www.keycloak.org/docs/latest/securing_apps/index.html)
+- [Securing your applications](https://www.keycloak.org/docs/latest/securing_apps/index.html)
