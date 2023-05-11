@@ -7,7 +7,7 @@
 Technical Story:
 
 * [Do not fiddle with the SSH key](https://github.com/elastisys/compliantkubernetes-kubespray/issues/21)
-* [Create a process of how we should move to use personal SSH keys](https://github.com/elastisys/ck8s-ops/issues/54)
+* Create a process of how we should move to use personal SSH keys
 
 ## Context and Problem Statement
 
