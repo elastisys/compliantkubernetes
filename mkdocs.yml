@@ -130,6 +130,7 @@ nav:
       - 'Jaeger (preview)': 'user-guide/additional-services/jaeger.md'
       - 'Argo CD (preview)': 'user-guide/additional-services/argocd.md'
       - 'FerretDB (self-service)': 'user-guide/additional-services/ferretdb.md'
+      - 'Keycloak (self-service)': 'user-guide/additional-services/keycloak.md'
     - 'Go-live Checklist': 'user-guide/go-live.md'
     - 'Troubleshooting': 'user-guide/troubleshooting.md'
     - 'FAQ': 'user-guide/faq.md'
