@@ -1,5 +1,7 @@
 # Compliant Kubernetes Documentation
 
+[![Regularly check links](https://github.com/elastisys/compliantkubernetes/actions/workflows/checklinks.yml/badge.svg)](https://github.com/elastisys/compliantkubernetes/actions/workflows/checklinks.yml)
+
 This is the main repository for documentation about the Compliant Kubernetes project. For Compliant Kubernetes code, please refer to:
 
 * [`compliantkubernetes-kubespray`](https://github.com/elastisys/compliantkubernetes-kubespray) for setting up a vanilla Kubernetes cluster on top of a compliant cloud provider;
