@@ -181,10 +181,10 @@ skaffold delete
 ## Advanced
 
 - Skaffold supports multiple different builder, such as Dockerfile, Bazel, Buildpacks or others
-  ([More Info](https://skaffold.dev/docs/pipeline-stages/builders/)).
+  ([More Info](https://skaffold.dev/docs/builders/)).
 
 - Skaffold supports copying files to the running containers which will avoid rebuilding of
-  containers when not needed ([More Info](https://skaffold.dev/docs/pipeline-stages/filesync/)).
+  containers when not needed ([More Info](https://skaffold.dev/docs/filesync/)).
 
 ## Further Reading
 

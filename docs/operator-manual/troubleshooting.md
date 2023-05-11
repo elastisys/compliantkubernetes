@@ -301,8 +301,8 @@ journalctl --unit $FAILED_UNIT
 
 Please check the following upstream documents:
 
-* [Rook Common Issues](https://github.com/rook/rook/blob/master/Documentation/common-issues.md)
-* [Ceph Common Issues](https://github.com/rook/rook/blob/master/Documentation/ceph-common-issues.md)
+* [Rook Common Issues](https://github.com/rook/rook/blob/master/Documentation/Troubleshooting/common-issues.md)
+* [Ceph Common Issues](https://github.com/rook/rook/blob/master/Documentation/Troubleshooting/ceph-common-issues.md)
 
 ## Pod seems not fine
 

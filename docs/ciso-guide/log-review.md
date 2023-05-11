@@ -26,7 +26,7 @@ This document highlights the risks that can be mitigated by regularly reviewing 
 !!!note
     This regulation is only available in Swedish. To avoid confusion, we decided not to produce an unofficial translation.
 
-[HSLF-FS 2016:40](https://www.socialstyrelsen.se/regler-och-riktlinjer/foreskrifter-och-allmanna-rad/konsoliderade-foreskrifter/201640-om-journalforing-och-behandling-av-personuppgifter-i-halso--och-sjukvarden/):
+[HSLF-FS 2016:40](https://www.socialstyrelsen.se/kunskapsstod-och-regler/regler-och-riktlinjer/foreskrifter-och-allmanna-rad/konsoliderade-foreskrifter/201640-om-journalforing-och-behandling-av-personuppgifter-i-halso--och-sjukvarden/)
 
 > 2 § Vårdgivaren ska genom ledningssystemet säkerställa att
 > [...]

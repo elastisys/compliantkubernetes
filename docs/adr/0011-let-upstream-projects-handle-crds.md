@@ -73,4 +73,4 @@ Dex can be configured without CRDs. [ADR-0012](https://github.com/elastisys/comp
 ### Velero
 
 * Installation: Velero install CRDs using [standard Helm mechanism](https://github.com/vmware-tanzu/helm-charts/tree/main/charts/velero/crds).
-* Upgrade: Velero includes [magic to upgrade CRDs](https://github.com/vmware-tanzu/helm-charts/blob/main/charts/velero/templates/upgrade-crds.yaml).
+* Upgrade: Velero includes [magic to upgrade CRDs](https://github.com/vmware-tanzu/helm-charts/blob/main/charts/velero/templates/upgrade-crds/).
