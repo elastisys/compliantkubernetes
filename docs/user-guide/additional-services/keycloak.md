@@ -1,6 +1,6 @@
 Keycloak (self-service)
 ===========
-![Keycloak Image](img/keycloakimg.drawio.svg)
+![Keycloak Image](img/keycloakpic.png)
 
 This page will help you succeed in connecting your application to an identity and access management solution Keycloak, which meets your security and compliance requirements.
 
@@ -28,10 +28,6 @@ echo $PGHOST
 echo $APP_USERNAME
 echo $APP_DATABASE
 ```
-
-
-
-
 
 ## Configure Keycloak with managed PostgreSQL
 
@@ -68,8 +64,6 @@ ingress: # (3)
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
   tls: true
-
-
 
 production: true # (4)
 tls:
