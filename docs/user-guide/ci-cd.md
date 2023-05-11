@@ -144,7 +144,7 @@ Note that, `KUBECONFIG`s -- especially the token -- **must** be treated as a sec
 
 Please find a concrete example for GitHub Actions [here](https://github.com/elastisys/compliantkubernetes/blob/main/.github/workflows/user-demo.yml.example). Below is the produced output:
 
-![GitHub Actions Example Output](/compliantkubernetes/user-guide/img/github-actions-screenshot.png)
+![GitHub Actions Example Output](img/github-actions-screenshot.png)
 
 Flux v1
 -------

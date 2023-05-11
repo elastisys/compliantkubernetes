@@ -64,6 +64,7 @@ plugins:
         'operator-manual/openstack.md': 'operator-manual/on-prem-standard.md'
         'operator-manual/ovh-managed-kubernetes.md': 'operator-manual/on-prem-standard.md'
         'operator-manual/safespring.md': 'operator-manual/on-prem-standard.md'
+        'release-notes.md': 'release-notes/ck8s.md'
 
 markdown_extensions:
   - attr_list
@@ -128,6 +129,7 @@ nav:
       - 'RabbitMQ': 'user-guide/additional-services/rabbitmq.md'
       - 'Jaeger (preview)': 'user-guide/additional-services/jaeger.md'
       - 'Argo CD (preview)': 'user-guide/additional-services/argocd.md'
+      - 'FerretDB (self-service)': 'user-guide/additional-services/ferretdb.md'
     - 'Go-live Checklist': 'user-guide/go-live.md'
     - 'Troubleshooting': 'user-guide/troubleshooting.md'
     - 'FAQ': 'user-guide/faq.md'

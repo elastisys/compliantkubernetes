@@ -49,7 +49,7 @@ If you want to access AlertManager, for example to confirm that its configuratio
 
 ## Configuring alerts
 
-Before setting up an alert, you must first [collect metrics](../metrics) from your application by setting up either ServiceMonitors or PodMonitors. In general ServiceMonitors are recommended over PodMonitors, and it is the most common way to configure metrics collection.
+Before setting up an alert, you must first [collect metrics](metrics.md) from your application by setting up either ServiceMonitors or PodMonitors. In general ServiceMonitors are recommended over PodMonitors, and it is the most common way to configure metrics collection.
 
 Then create a `PrometheusRule` following the examples below or the upstream documentation with an expression that evaluates to the condition to alert on. Prometheus will pick them up, evaluate them, and then send notifications to AlertManager.
 
@@ -69,7 +69,7 @@ The user demo already includes a [PrometheusRule](https://github.com/elastisys/c
 
 The screenshot below gives an example of the application alert, as seen in AlertManager.
 
-![Example of User Demo Alerts](/compliantkubernetes/img/user-demo-alerts.png)
+![Example of User Demo Alerts](../img/user-demo-alerts.png)
 
 <!--user-demo-alerts-end-->
 

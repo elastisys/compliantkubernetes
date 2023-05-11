@@ -1,6 +1,6 @@
 # Enabling user alerts
 
-This is administrator-facing documentation associated with [this user guide](/user-guide/alerts/). Please read that one first.
+This is administrator-facing documentation associated with [this user guide](../user-guide/alerts.md). Please read that one first.
 
 !!!important
     Alertmanager should no longer be access via an Ingress, since this circumvents access control and audit logs. Please find the updated access method in the user guide linked above.

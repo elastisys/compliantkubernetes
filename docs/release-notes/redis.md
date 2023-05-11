@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes Redis
 <!-- BEGIN TOC -->
+- [v6.2.6-ck8s1](#v626-ck8s1) - 2023-05-10
 - [v1.1.1-ck8s4](#v111-ck8s4) - 2022-12-09
 - [v1.1.1-ck8s3](#v111-ck8s3) - 2022-10-04
 - [v1.1.1-ck8s2](#v111-ck8s2) - 2022-08-23
@@ -12,6 +13,23 @@
 
 !!!note
     These are only the user-facing changes.
+
+### v6.2.6-ck8s1
+
+Released 2023-05-10
+
+!!!note
+	From this release the version tracks the Redis version rather than the Redis operator version.
+
+Changes:
+
+- Changed to standard timezone in grafana dashboard
+- Upgraded the redis-operator to `v1.2.4` and Chart version to `v3.2.8`
+
+Added:
+
+- Added RBAC for users to be able to port-forward to redis
+- Added nodeAffinity for the label `elastisys.io/ams-cluster-name` which will be set for each cluster in `values.yaml`
 
 ### v1.1.1-ck8s4
 

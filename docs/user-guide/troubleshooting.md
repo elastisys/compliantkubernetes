@@ -30,7 +30,7 @@ Check your Pods for excessive resource usage:
 kubectl top pod
 ```
 
-Inspect [application logs](../logs) and [metrics](../metrics).
+Inspect [application logs](logs.md) and [metrics](metrics.md).
 
 ## Are my Deployments fine?
 

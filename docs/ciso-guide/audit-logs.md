@@ -8,7 +8,7 @@ tags:
 ---
 # Audit Logs
 
-To help comply with various data protection regulations, Compliant Kubernetes comes built-in with audit logs, which can be accessed via [OpenSearch Dashboard](../../user-guide/logs).
+To help comply with various data protection regulations, Compliant Kubernetes comes built-in with audit logs, which can be accessed via [OpenSearch Dashboard](../user-guide/logs.md).
 
 
 ## What are audit logs?
@@ -42,7 +42,7 @@ Further audit logs can be configured on a case-by-case basis, as described below
 The audit logs are stored in the `kubeaudit*` index pattern.
 The audit logs cover calls to the Kubernetes API, specifically **who** did **what** and **when** on **which** Kubernetes cluster.
 
-Thanks to integration with [your Identity Provider](../../user-guide/kubernetes-api/#authentication-and-access-control-in-compliant-kubernetes) (IdP), if who is a person, their email address will be shown. If who is a system -- e.g., a CI/CD pipeline -- the name of the ServiceAccount is recorded.
+Thanks to integration with [your Identity Provider](../user-guide/kubernetes-api.md#authentication-and-access-control-in-compliant-kubernetes) (IdP), if who is a person, their email address will be shown. If who is a system -- e.g., a CI/CD pipeline -- the name of the ServiceAccount is recorded.
 
 Your change management or incident management process should ensure that you also cover **why**.
 
@@ -71,7 +71,7 @@ The Kubernetes Audit Logs capture user access to additional services, i.e., `kub
 
 **Prefer audit logs in your application to capture audit-worthy events**, such as login, logout, patient record access, patient record change, etc. Resist the temptation to enable audit logging too "low" in the stack. Messages like "Redis client connected" are plenty and add little value to your data protection posture.
 
-Out of all additional services, audit logging for the [database](/compliantkubernetes/user-guide/additional-services/postgresql) makes the most sense. It can be enabled via [pgaudit](https://github.com/pgaudit/pgaudit/blob/master/README.md). Make sure you discuss your auditing requirements with the service-specific administrator, to ensure you find the best risk-reduction-to-implementation-cost trade-off. Typically, you want to discuss:
+Out of all additional services, audit logging for the [database](../user-guide/additional-services/postgresql.md) makes the most sense. It can be enabled via [pgaudit](https://github.com/pgaudit/pgaudit/blob/master/README.md). Make sure you discuss your auditing requirements with the service-specific administrator, to ensure you find the best risk-reduction-to-implementation-cost trade-off. Typically, you want to discuss:
 
 - which databases and tables are audited: e.g., audit `app.users`, but not `app.emailsSent`;
 - what operations are audited: e.g., audit `INSERT/UPDATE/DELETE`, but not `SELECT`;
