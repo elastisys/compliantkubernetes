@@ -50,7 +50,7 @@ It will cordon and reboot the nodes one by one.
 
 Compliant Kubernetes consists of a multitude of open source components that interact to form a smooth end user experience.
 In order to free you of the burden of keeping track of when to upgrade the various components, new versions of Complaint Kubernetes are regularly release.
-When a new version is released, it becomes available as a [tagged release](https://github.com/elastisys/compliantkubernetes-apps/tags) in the github repo.
+When a new version is released, it becomes available as a [tagged release](https://github.com/elastisys/compliantkubernetes-apps/tags) in the GitHub repo.
 
 > Before upgrading to a new release, please review the [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md) if possible, apply the upgrade to a staging environment before upgrading any environments with production data.
 
@@ -152,7 +152,7 @@ Read more about Kubespray upgrades in their [documentation](https://kubespray.io
     ./bin/ck8s-kubespray run-playbook wc upgrade-cluster.yml -b --tags=download
     ```
 
-1. Upgrade the cluster to a new kubernetes version:
+1. Upgrade the cluster to a new Kubernetes version:
 
     ```bash
     ./bin/ck8s-kubespray run-playbook sc upgrade-cluster.yml -b --skip-tags=download

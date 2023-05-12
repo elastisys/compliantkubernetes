@@ -38,3 +38,8 @@ repos:
         entry: '\[[^\]]*\][(][^#][.\/]*[^.:]*[)]'
         language: pygrep
         files: '.*[.]md$'
+      - id: capitalize-common-names
+        name: Please capitalize common names
+        entry: ' (git[Hh]ub|kubernetes|trivy|starboard)( |, |[.] )'
+        language: pygrep
+        files: '.*[.]md$'

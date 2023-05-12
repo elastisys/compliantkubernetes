@@ -100,7 +100,7 @@ In Compliant Kubernetes v0.21.0 User admins can now add more `User admins` thems
 
 #### Steps:
 
-1. Edit the clusterrolebinding `extra-user-view` and add the desired users or groups under `subjects`. If unsure, look at an [example subject](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects) from the official kubernetes documentation.
+1. Edit the clusterrolebinding `extra-user-view` and add the desired users or groups under `subjects`. If unsure, look at an [example subject](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects) from the official Kubernetes documentation.
 
 ```bash
 kubectl edit clusterrolebinding user-admin-cluster-wide-delegation

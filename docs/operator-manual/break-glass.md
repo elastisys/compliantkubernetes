@@ -3,7 +3,7 @@ tags:
 - HIPAA S45 - Access Control - Emergency Access Procedure - § 164.312(a)(2)(ii)
 ---
 # Break-glass
-In this section we  describe a workaround when access  to the environment is broken for  the kubernetes administrators/operators and/or users.
+In this section we  describe a workaround when access  to the environment is broken for  the Kubernetes administrators/operators and/or users.
 
 
 ## Kubernetes Administrator Access

@@ -1,5 +1,5 @@
 ---
-description: Explanation of the network model in Elastisys Compliant Kubernetes, the security-focused kubernetes distribution.
+description: Explanation of the network model in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 tags:
 - ISO 27001 A.10.1.2 Key Management
 - ISO 27001 A.13.1 Network Security

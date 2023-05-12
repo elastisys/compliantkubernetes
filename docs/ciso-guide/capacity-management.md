@@ -31,7 +31,7 @@ tags:
 
 ![Kubernetes Status Dashboard](img/kubernetes-status.png)
 
-The Compliant Kubernetes Status Dashboard shows a quick overview of the status of your kubernetes cluster.
+The Compliant Kubernetes Status Dashboard shows a quick overview of the status of your Kubernetes cluster.
 This includes:
 
 * Unhealthy pods

@@ -26,7 +26,7 @@ Should we enable kubelet hard eviction so as to behold the vital components?
 
 Chosen options: `Enable kubelet hard eviction` & `Setup priority class for all our apps` .
 
-The option `Adjust OOM score so that kernel does not OOM critical Pods` is  not viable as it can be used only if we set requests=limits on all our pods (see [here](https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#node-out-of-memory-behavior) and [here](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed)), and this will not allow us to benefit from the burstable capabilities of kubernetes and have a static allocation of resources which locks the resources on the nodes even if they are not used most of the time. This reduces the available resources for the customer on the nodes.
+The option `Adjust OOM score so that kernel does not OOM critical Pods` is  not viable as it can be used only if we set requests=limits on all our pods (see [here](https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#node-out-of-memory-behavior) and [here](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed)), and this will not allow us to benefit from the burstable capabilities of Kubernetes and have a static allocation of resources which locks the resources on the nodes even if they are not used most of the time. This reduces the available resources for the customer on the nodes.
 
 ### Positive Consequences
 
