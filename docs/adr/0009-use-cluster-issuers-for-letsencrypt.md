@@ -35,7 +35,7 @@ Each cluster is configured with an optional ClusterIssuer called `letsencrypt-pr
 
 ### Direct LetsEncrypt emails to a "logging" mailbox
 
-Although LetsEncrypt does not require an email address, cert-managers seems to require all ClusterIssuers/Issuers to be configured with a syntactically valid email address. Said email address will receive notifications when certificates are close to expiry. Given that Compliant Kubernetes comes with [Cryptography](https://compliantkubernetes.io/ciso-guide/cryptography/) dashboards, these emails do not seem useful. **Hence, ClusterIssuer emails should be directed to an address that has "logging" but not "alerting" status.**
+Although LetsEncrypt does not require an email address, cert-managers seems to require all ClusterIssuers/Issuers to be configured with a syntactically valid email address. Said email address will receive notifications when certificates are close to expiry. Given that Compliant Kubernetes comes with [Cryptography](../ciso-guide/cryptography.md) dashboards, these emails do not seem useful. **Hence, ClusterIssuer emails should be directed to an address that has "logging" but not "alerting" status.**
 
 ### Separate registered domains
 

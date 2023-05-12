@@ -43,3 +43,13 @@ repos:
         entry: ' (git[Hh]ub|kubernetes|trivy|starboard)( |, |[.] )'
         language: pygrep
         files: '.*[.]md$'
+      - id: avoid-absolute-urls-for-internal-links
+        name: Avoid absolute URLs (https://elastisys.io) for internal links
+        entry: '\/\/(elastisys.io)\/'
+        language: pygrep
+        files: '.*[.]md$'
+      - id: avoid-old-urls
+        name: Avoid old URLs (https://compliantkubernetes.io)
+        entry: 'compliantkubernetes.io(?!\/nobackup)'
+        language: pygrep
+        files: '.*[.]md$'

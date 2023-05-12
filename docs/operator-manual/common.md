@@ -205,7 +205,7 @@ scripts/S3/entry.sh create
 !!!important
 
     You should not use your own credentials for S3.
-    Rather create a new set of credentials with write-only access, when supported by the object storage provider ([check a feature matrix](https://compliantkubernetes.io/operator-manual/disaster-recovery/#feature-matrix)).
+    Rather create a new set of credentials with write-only access, when supported by the object storage provider ([check a feature matrix](disaster-recovery.md#feature-matrix)).
 
 <!--create-s3-buckets-stop-->
 

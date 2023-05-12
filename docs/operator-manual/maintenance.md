@@ -11,9 +11,9 @@ In order to keep your Compliant Kubernetes environment running smoothly, and to 
 
 This guide assumes that:
 
-- Your Compliant Kubernetes environment is running normally, if not, please see the [Troubleshooting guide](https://elastisys.io/compliantkubernetes/operator-manual/troubleshooting/).
-- Your Compliant Kubernetes environment is properly [sized](https://elastisys.io/compliantkubernetes/operator-manual/cluster-sizing/)
-- You have performed the actions in the [Go-live Checklist](https://elastisys.io/compliantkubernetes/user-guide/go-live/) as failure to do so might cause downtime during maintenance.
+- Your Compliant Kubernetes environment is running normally, if not, please see the [Troubleshooting guide](troubleshooting.md).
+- Your Compliant Kubernetes environment is properly [sized](cluster-sizing.md)
+- You have performed the actions in the [Go-live Checklist](../user-guide/go-live.md) as failure to do so might cause downtime during maintenance.
 
 ## Compliance needs
 

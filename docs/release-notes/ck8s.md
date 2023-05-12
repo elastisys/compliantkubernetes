@@ -143,7 +143,7 @@ Released 2022-08-25
 
 #### Added
 
-- **Added Hierarchical Namespace Controller**<br/> Allowing users to create and manage subnamespaces, namespaces within namespaces. You can read more about this in our [FAQ](https://elastisys.io/compliantkubernetes/user-guide/faq/#how-do-i-add-a-new-namespace).
+- **Added Hierarchical Namespace Controller**<br/> Allowing users to create and manage subnamespaces, namespaces within namespaces. You can read more about this in our [FAQ](../user-guide/faq.md#how-do-i-add-a-new-namespace).
 - **Added support for custom solvers in cluster issuers** <br/> Allowing DNS01 challenges for certificate requests.
 - **Added support for running Harbor in High Availability**
 
@@ -245,7 +245,7 @@ Released 2022-05-04
 - **User can now get ClusterIssuers.**<br/>
 
 - **Ensured all CISO dashboards are available to users.**<br/>
-  All the grafana dashboards in our [CISO docs](https://elastisys.io/compliantkubernetes/ciso-guide/) are now available.
+  All the grafana dashboards in our [CISO docs](../ciso-guide/index.md) are now available.
 
 - **Better stability for dex**<br/>
   Dex now runs with two replicas and has been updated.

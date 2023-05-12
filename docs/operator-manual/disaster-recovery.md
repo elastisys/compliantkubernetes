@@ -299,9 +299,9 @@ Instructions for how to restore Harbor can be found in `compliantkubernetes-apps
 
 ## Velero
 
-These instructions make use of the Velero CLI, you can download it here: <https://github.com/vmware-tanzu/velero/releases/tag/v1.7.1> (version 1.7.1).
+These instructions make use of the Velero CLI, you can download it [here](https://github.com/vmware-tanzu/velero/releases/tag/v1.7.1) (version 1.7.1).
 The CLI needs the env variable `KUBECONFIG` set to the path of a decrypted kubeconfig.
-Read more about Velero here: <https://compliantkubernetes.io/user-guide/backup/>
+Read more about Velero [here](../user-guide/backup.md).
 
 !!!note
     This documentation uses the Velero CLI, as opposed to Velero CRDs, since that is what is encouraged by upstream documentation.
@@ -310,7 +310,7 @@ Read more about Velero here: <https://compliantkubernetes.io/user-guide/backup/>
 
 Velero is set up to take daily backups and store them in an S3 bucket.
 The daily backup will not take backups of everything in a Kubernetes cluster, it will instead look for certain labels and annotations.
-Read more about those labels and annotations here: <https://compliantkubernetes.io/user-guide/backup/#backing-up>
+Read more about those labels and annotations [here](../user-guide/backup.md#backing-up).
 
 It is also possible to take on-demand backups.
 Then you can freely chose what to backup and do not have to base it on the same labels.
