@@ -19,6 +19,12 @@ copyright: >-
   RabbitMQ is a trademark of VMware, Inc. in the U.S. and other countries.
   <br/>
   TimescaleDB and the EON mascot are trademarks of <a href="https://www.timescale.com/">Timescale, Inc.</a>
+  <br/>
+  FerretDB® is a registered trademark of FerretDB, Inc. FerretDB Inc. is not affiliated, associated, authorized, endorsed by, or in any way officially connected with MongoDB Inc., or any of its subsidiaries or its affiliates.
+  <br/>
+  MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.
+  <br/>
+  Keycloak™ is a trademark of Red Hat Inc.
 
 repo_url: https://github.com/elastisys/compliantkubernetes/
 edit_uri: edit/main/docs/
@@ -129,8 +135,9 @@ nav:
       - 'RabbitMQ': 'user-guide/additional-services/rabbitmq.md'
       - 'Jaeger (preview)': 'user-guide/additional-services/jaeger.md'
       - 'Argo CD (preview)': 'user-guide/additional-services/argocd.md'
-      - 'FerretDB (self-service)': 'user-guide/additional-services/ferretdb.md'
-      - 'Keycloak (self-service)': 'user-guide/additional-services/keycloak.md'
+    - 'Self-Service Guides':
+      - 'FerretDB (self-service)': 'user-guide/self-service-guide/ferretdb.md'
+      - 'Keycloak (self-service)': 'user-guide/self-service-guide/keycloak.md'
     - 'Go-live Checklist': 'user-guide/go-live.md'
     - 'Troubleshooting': 'user-guide/troubleshooting.md'
     - 'FAQ': 'user-guide/faq.md'

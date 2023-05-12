@@ -1,4 +1,4 @@
-Keycloak (self-service)
+Keycloak™ (self-service)
 ===========
 ![Keycloak Image](img/keycloakpic.png)
 
@@ -8,14 +8,14 @@ Keycloak is a widely recognized open-source Identity and Access Management (IAM)
 
 As of May 2023, Keycloak is a [CNCF Incubating project](https://www.cncf.io/blog/2023/04/11/keycloak-joins-cncf-as-an-incubating-project/).
 
-In this guide we outline the necessary steps to configure and deploy a Keycloak instance on a Compliant Kubernetes cluster that is using the [managed PostgreSQL service](postgresql.md).
+In this guide we outline the necessary steps to configure and deploy a Keycloak instance on a Compliant Kubernetes cluster that is using the [managed PostgreSQL service](../additional-services/postgresql.md).
 
 This will provide you with a robust and secure IAM solution to manage user access and authorization for your applications running on Compliant Kubernetes.
 
 ## Initial preparation
 *Note: This guide assumes that you have managed PostgreSQL as an additional service.*
 
-[Setup an application database and user in PostgreSQL](postgresql.md)
+[Setup an application database and user in PostgreSQL](../additional-services/postgresql.md)
 
 Take note of the following variables for the next section.
 
