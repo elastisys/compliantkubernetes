@@ -1,5 +1,5 @@
 ---
-description: Explanation of the network model in Elastisys Compliant Kubernetes, the security-focused kubernetes distribution.
+description: Explanation of the network model in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 tags:
 - ISO 27001 A.10.1.2 Key Management
 - ISO 27001 A.13.1 Network Security
@@ -70,7 +70,7 @@ For step 1, create a DNS CNAME as follows:
 demo.example.com. 900 CNAME app.$DOMAIN.
 ```
 
-where `$DOMAIN` is the environment-specific variable [you received from the administrator](https://elastisys.io/compliantkubernetes/user-guide/prepare/#access-your-web-portals). The line above is presented in [DNS Zone file](https://en.wikipedia.org/wiki/Zone_file) format and is widely accepted by DNS providers.
+where `$DOMAIN` is the environment-specific variable [you received from the administrator](prepare.md#access-your-web-portals). The line above is presented in [DNS Zone file](https://en.wikipedia.org/wiki/Zone_file) format and is widely accepted by DNS providers.
 
 After configuration, make sure the DNS record is properly configured and propagaged, by typing:
 

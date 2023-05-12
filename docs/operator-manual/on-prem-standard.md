@@ -75,7 +75,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
     You need to set up two load balancers, one for the workload cluster and one for the service cluster.
 
-1. Make sure you have [all necessary tools](https://elastisys.io/compliantkubernetes/operator-manual/getting-started/).
+1. Make sure you have [all necessary tools](getting-started.md).
 
 ## Deploying Compliant Kubernetes using Kubespray
 

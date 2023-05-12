@@ -13,7 +13,7 @@ tags:
 !!!danger "TL;DR: You **cannot** install:"
 
     * ClusterRoles, ClusterRoleBindings
-    * Roles and RoleBindings that would [escalate your privileges](https://elastisys.io/compliantkubernetes/architecture/)
+    * Roles and RoleBindings that would [escalate your privileges](../architecture.md)
     * CustomResourceDefinitions (CRDs)
     * PodSecurityPolicies
     * ValidatingWebhookConfiguration, MutatingWebhookConfiguration

@@ -1,31 +1,31 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
+  - repo: 'https://github.com/pre-commit/pre-commit-hooks'
     rev: v4.1.0
     hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
         exclude: '[.](svg|drawio.xml)$'
-    -   id: check-yaml
+      - id: check-yaml
         exclude: '[/](templates[/]|oauth2-proxy.yaml)'
-    -   id: check-added-large-files
-    - id: check-merge-conflict
-    - id: no-commit-to-branch
--   repo: local
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: no-commit-to-branch
+  - repo: local
     hooks:
-    -   id: svg-must-embed
+      - id: svg-must-embed
         name: SVGs must embed all images
         entry: 'image[^>]* xlink:href="https'
         language: pygrep
         files: '.*[.]svg$'
-    -   id: use-relative-urls
+      - id: use-relative-urls
         name: Use relative URLs for internal links
         # Why? Mkdocs wants you to: https://www.mkdocs.org/user-guide/writing-your-docs/#linking-to-pages
         entry: '\[[^\]]*\][(][/].*[)]'
         language: pygrep
         files: '.*[.]md$'
-    -   id: use-relative-urls-to-files
+      - id: use-relative-urls-to-files
         # Why? This ensures the docs are readable from GitHub and allows mkdocs
         # to do some internal link checking.
         name: Internal links should point to files
@@ -36,5 +36,20 @@ repos:
         # - there should be `:` (as in `https://`) or `.` (as in `index.md`)
         #   somewhere in the link.
         entry: '\[[^\]]*\][(][^#][.\/]*[^.:]*[)]'
+        language: pygrep
+        files: '.*[.]md$'
+      - id: capitalize-common-names
+        name: Please capitalize common names
+        entry: ' (git[Hh]ub|kubernetes|trivy|starboard)( |, |[.] )'
+        language: pygrep
+        files: '.*[.]md$'
+      - id: avoid-absolute-urls-for-internal-links
+        name: Avoid absolute URLs (https://elastisys.io) for internal links
+        entry: '\/\/(elastisys.io)\/'
+        language: pygrep
+        files: '.*[.]md$'
+      - id: avoid-old-urls
+        name: Avoid old URLs (https://compliantkubernetes.io)
+        entry: 'compliantkubernetes.io(?!\/nobackup)'
         language: pygrep
         files: '.*[.]md$'

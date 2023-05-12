@@ -179,7 +179,7 @@ Navigate to the endpoints, for example `grafana.$BASE_DOMAIN`, `kibana.$BASE_DOM
 <!--clean-apps-start-->
 ### Removing Compliant Kubernetes Apps from your cluster
 
-To remove the applications added by compliant kubernetes you can use the two scripts `clean-sc.sh` and `clean-wc.sh`, they are located here in the [scripts folder](https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts).
+To remove the applications added by Compliant Kubernetes you can use the two scripts `clean-sc.sh` and `clean-wc.sh`, they are located here in the [scripts folder](https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts).
 
 They perform the following actions:
 
@@ -205,7 +205,7 @@ scripts/S3/entry.sh create
 !!!important
 
     You should not use your own credentials for S3.
-    Rather create a new set of credentials with write-only access, when supported by the object storage provider ([check a feature matrix](https://compliantkubernetes.io/operator-manual/disaster-recovery/#feature-matrix)).
+    Rather create a new set of credentials with write-only access, when supported by the object storage provider ([check a feature matrix](disaster-recovery.md#feature-matrix)).
 
 <!--create-s3-buckets-stop-->
 

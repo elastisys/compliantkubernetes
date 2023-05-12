@@ -11,9 +11,9 @@ In order to keep your Compliant Kubernetes environment running smoothly, and to 
 
 This guide assumes that:
 
-- Your Compliant Kubernetes environment is running normally, if not, please see the [Troubleshooting guide](https://elastisys.io/compliantkubernetes/operator-manual/troubleshooting/).
-- Your Compliant Kubernetes environment is properly [sized](https://elastisys.io/compliantkubernetes/operator-manual/cluster-sizing/)
-- You have performed the actions in the [Go-live Checklist](https://elastisys.io/compliantkubernetes/user-guide/go-live/) as failure to do so might cause downtime during maintenance.
+- Your Compliant Kubernetes environment is running normally, if not, please see the [Troubleshooting guide](troubleshooting.md).
+- Your Compliant Kubernetes environment is properly [sized](cluster-sizing.md)
+- You have performed the actions in the [Go-live Checklist](../user-guide/go-live.md) as failure to do so might cause downtime during maintenance.
 
 ## Compliance needs
 
@@ -50,7 +50,7 @@ It will cordon and reboot the nodes one by one.
 
 Compliant Kubernetes consists of a multitude of open source components that interact to form a smooth end user experience.
 In order to free you of the burden of keeping track of when to upgrade the various components, new versions of Complaint Kubernetes are regularly release.
-When a new version is released, it becomes available as a [tagged release](https://github.com/elastisys/compliantkubernetes-apps/tags) in the github repo.
+When a new version is released, it becomes available as a [tagged release](https://github.com/elastisys/compliantkubernetes-apps/tags) in the GitHub repo.
 
 > Before upgrading to a new release, please review the [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md) if possible, apply the upgrade to a staging environment before upgrading any environments with production data.
 
@@ -152,7 +152,7 @@ Read more about Kubespray upgrades in their [documentation](https://kubespray.io
     ./bin/ck8s-kubespray run-playbook wc upgrade-cluster.yml -b --tags=download
     ```
 
-1. Upgrade the cluster to a new kubernetes version:
+1. Upgrade the cluster to a new Kubernetes version:
 
     ```bash
     ./bin/ck8s-kubespray run-playbook sc upgrade-cluster.yml -b --skip-tags=download

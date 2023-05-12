@@ -13,7 +13,7 @@ Traditionally, when these services are provided as managed services, they are ex
 * [RabbitMQ](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/data-protection.html#data-protection-encryption-in-transit);
 * [PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html).
 
-In Compliant Kubernetes, the network is assumed trusted, either because we performed a [provider audit](https://elastisys.io/compliantkubernetes/operator-manual/provider-audit/) or because we enabled Pod-to-Pod encryption via [WireGuard](https://elastisys.com/redundancy-across-data-centers-with-kubernetes-wireguard-and-rook/). Hence, TLS does not improve data security.
+In Compliant Kubernetes, the network is assumed trusted, either because we performed a [provider audit](../operator-manual/provider-audit.md) or because we enabled Pod-to-Pod encryption via [WireGuard](https://elastisys.com/redundancy-across-data-centers-with-kubernetes-wireguard-and-rook/). Hence, TLS does not improve data security.
 
 How should we expose additional services in Compliant Kubernetes? With or without TLS?
 

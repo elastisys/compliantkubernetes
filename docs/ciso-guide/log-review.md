@@ -74,7 +74,7 @@ Aim for a review which is both **wide** and **deep**. By wide we mean that you s
 
 ## Log review dashboard
 
-Their is a [dashboard](https://elastisys.io/compliantkubernetes/ciso-guide/audit-logs/) made to get a overview of the log landscape.
+Their is a [dashboard](../ciso-guide/audit-logs.md) made to get a overview of the log landscape.
 
 ## Possible resolutions
 
