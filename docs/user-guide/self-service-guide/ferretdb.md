@@ -1,14 +1,14 @@
-# FerretDB (self-service)
+# FerretDB® (self-service)
 
 !!!danger
-    FerretDB tries to be a drop-in replacement for MongoDB. However:
+    FerretDB® tries to be a drop-in replacement for MongoDB®. However:
 
     * There are [known differences](https://docs.ferretdb.io/diff/).
     * There might also be performance implications.
 
     Make sure to load-test your application with FerretDB before going into production.
 
-[FerretDB](https://www.ferretdb.io/) is a database that is an open-source alternative to MongoDB that uses Postgres as its backend database. This documentation details how to run FerretDB in a Compliant Kubernetes cluster using the managed [Postgres service](postgresql.md).
+[FerretDB](https://www.ferretdb.io/) is a database that is an open-source alternative to MongoDB that uses PostgreSQL as its backend database. This documentation details how to run FerretDB in a Compliant Kubernetes cluster using the Managed [PostgreSQL service](../additional-services/postgresql.md).
 
 ## Pushing FerretDB image to Harbor
 
@@ -26,9 +26,9 @@ docker push $REGISTRY/$REGISTRY_PROJECT/ferretdb:$TAG
 
 ## Install
 
-In a managed CK8s environment, follow [these instructions](postgresql.md#getting-access) on how to access the managed postgres service and how to create an application user and database.
+In a managed CK8s environment, follow [these instructions](../additional-services/postgresql.md#getting-access) on how to access the Managed PostgreSQL service and how to create an application user and database.
 
-Create secret containing a postgres url to authenticate to the managed postgres service and newly created database with the application user credentials:
+Create secret containing a PostgreSQL URL to authenticate to the Managed PostgreSQL service and newly created database with the application user credentials:
 ```sh
 kubectl create secret generic --from-literal=ferretdb-url="postgresql://$APP_USERNAME:$APP_PASSWORD@$PGHOST:$PGPORT/$APP_DATABASE" ferretdb-postgres-credentials
 ```
