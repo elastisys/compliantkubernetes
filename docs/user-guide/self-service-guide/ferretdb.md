@@ -64,6 +64,10 @@ spec:
             secretKeyRef:
               name: ferretdb-postgres-credentials
               key: ferretdb-url
+        resources:
+          requests:
+            cpu: "5m"
+            memory: "15M"
         securityContext:
           capabilities:
             drop:
