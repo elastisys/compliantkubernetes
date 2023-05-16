@@ -295,12 +295,12 @@ cd [compliatkubernetes-apps-root-dir]
 ./bin/ck8s update-ips sc update
 ./bin/ck8s update-ips wc update
 
-ck8s ops helmfile sc -l app=common-np -i apply
-ck8s ops helmfile wc -l app=common-np -i apply
+./bin/ck8s ops helmfile sc -l app=common-np -i apply
+./bin/ck8s ops helmfile wc -l app=common-np -i apply
 
-ck8s ops helmfile sc -l app=service-cluster-np -i apply
+./bin/ck8s ops helmfile sc -l app=service-cluster-np -i apply
 # or
-ck8s ops helmfile wc -l app=workload-cluster-np -i apply
+./bin/ck8s ops helmfile wc -l app=workload-cluster-np -i apply
 ```
 
 Check that the new Node joined the cluster, as shown [here](#are-the-kubernetes-clusters-doing-fine).
