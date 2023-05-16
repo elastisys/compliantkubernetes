@@ -1,4 +1,10 @@
-# FerretDB® (self-service)
+# FerretDB® (self-managed)
+
+{%
+   include-markdown '_common.include'
+   start='<!--disclaimer-start-->'
+   end='<!--disclaimer-end-->'
+%}
 
 !!!danger
     FerretDB® tries to be a drop-in replacement for MongoDB®. However:

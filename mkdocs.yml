@@ -135,9 +135,9 @@ nav:
       - 'RabbitMQ': 'user-guide/additional-services/rabbitmq.md'
       - 'Jaeger (preview)': 'user-guide/additional-services/jaeger.md'
       - 'Argo CD (preview)': 'user-guide/additional-services/argocd.md'
-    - 'Self-Service Guides':
-      - 'FerretDB (self-service)': 'user-guide/self-service-guide/ferretdb.md'
-      - 'Keycloak (self-service)': 'user-guide/self-service-guide/keycloak.md'
+    - 'Self-Managed Services':
+      - 'FerretDB (self-managed)': 'user-guide/self-managed-services/ferretdb.md'
+      - 'Keycloak (self-managed)': 'user-guide/self-managed-services/keycloak.md'
     - 'Go-live Checklist': 'user-guide/go-live.md'
     - 'Troubleshooting': 'user-guide/troubleshooting.md'
     - 'FAQ': 'user-guide/faq.md'

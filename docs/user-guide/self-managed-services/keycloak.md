@@ -1,5 +1,12 @@
-Keycloak™ (self-service)
+Keycloak™ (self-managed)
 ===========
+
+{%
+   include-markdown '_common.include'
+   start='<!--disclaimer-start-->'
+   end='<!--disclaimer-end-->'
+%}
+
 ![Keycloak Image](img/keycloakpic.png)
 
 This page will help you succeed in connecting your application to an identity and access management solution Keycloak, which meets your security and compliance requirements.
