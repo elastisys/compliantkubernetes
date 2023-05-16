@@ -40,3 +40,11 @@ header .header-links li {
 .header-links li:first-child {
     margin-left: 0px;
 }
+
+/* Highlight external links */
+a[href*="//"]:not([href*="elastisys."]):not(:has(img,div,figure,svg)):after {
+    content: ' ↗';
+}
+a[href*="//"]:not([href*="elastisys."]):has(img, div, figure, svg) {
+    border-bottom: 2px dashed #a8b1be;
+}
