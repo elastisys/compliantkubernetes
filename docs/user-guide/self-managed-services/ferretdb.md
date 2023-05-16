@@ -72,7 +72,7 @@ spec:
               key: ferretdb-url
         resources:
           requests:
-            cpu: "5m"
+            cpu: "1000m"
             memory: "15M"
         securityContext:
           capabilities:

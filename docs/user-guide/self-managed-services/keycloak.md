@@ -50,7 +50,7 @@ resources: # (1)
     #cpu: 1000m
     memory: 1000Mi
   requests:
-    cpu: 10m
+    cpu: 1000m
     memory: 400Mi
 
 postgresql:
