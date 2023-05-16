@@ -11,7 +11,7 @@ This guide assumes that:
 
 !!!important
     For some of the ansible commands below, you might require root privileges. To run commands as a priveleged user with ansible, use the `--become, -b` flag.
-    
+
     Example:
     `ansible -i inventory.ini -b all -m ping`
 
