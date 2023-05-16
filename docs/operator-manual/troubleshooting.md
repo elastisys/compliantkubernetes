@@ -10,7 +10,7 @@ This guide assumes that:
 * `compliantkubernetes-apps` and `compliantkubernetes-kubespray` is available.
 
 !!!important
-    For some of the ansible commands below, you might require root privileges. To run commands as a priveleged user with ansible, use the `--become, -b` flag.
+    For some of the ansible commands below, you might require root privileges. To run commands as a privileged user with ansible, use the `--become, -b` flag.
 
     Example:
     `ansible -i inventory.ini -b all -m ping`
