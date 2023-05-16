@@ -271,12 +271,37 @@ Prefer this option if you "quickly" need to add CPU, memory or storage (i.e., Ro
 First, check for infrastructure drift, as shown [here](#how-do-i-check-if-infrastructure-drifted-due-to-manual-intervention).
 
 Depending on your provider:
-
+If the infrastructure is not managed by terraform you can skip to step 3:
 1. Add a new Node by editing the `*.tfvars`.
 2. Re-apply Terraform.
-3. Re-create the `inventory.ini` (skip this step if the cluster is using a dynamic inventory).
-4. Re-apply Kubespray.
-5. Re-fix the Kubernetes API URL.
+3. Add the new node to the `inventory.ini` (skip this step if the cluster is using a dynamic inventory).
+4. Re-apply Kubespray only for the new node.
+```sh
+cd [compliantkubernetes-kubespray-root-dir]
+
+CLUSTER=[sc | wc]
+
+./bin/ck8s-kubespray run-playbook $CLUSTER facts.yml
+./bin/ck8s-kubespray run-playbook $CLUSTER scale.yml -b --limit=[new_node_name]
+```
+5. Add ssh keys to the new node if necessary
+```sh
+./bin/ck8s-kubespray apply-ssh $CLUSTER --limit=[new_node_name]
+```
+6. Update network policies
+```sh
+cd [compliatkubernetes-apps-root-dir]
+
+./bin/ck8s update-ips sc update
+./bin/ck8s update-ips wc update
+
+./bin/ck8s ops helmfile sc -l app=common-np -i apply
+./bin/ck8s ops helmfile wc -l app=common-np -i apply
+
+./bin/ck8s ops helmfile sc -l app=service-cluster-np -i apply
+# or
+./bin/ck8s ops helmfile wc -l app=workload-cluster-np -i apply
+```
 
 Check that the new Node joined the cluster, as shown [here](#are-the-kubernetes-clusters-doing-fine).
 
