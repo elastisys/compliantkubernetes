@@ -9,6 +9,12 @@ This guide assumes that:
 * Your config folder is available.
 * `compliantkubernetes-apps` and `compliantkubernetes-kubespray` is available.
 
+!!!important
+    For some of the ansible commands below, you might require root privileges. To run commands as a priveleged user with ansible, use the `--become, -b` flag.
+    
+    Example:
+    `ansible -i inventory.ini -b all -m ping`
+
 ## I have no clue where to start
 
 If you get lost, start checking from the "physical layer" and up.
@@ -16,7 +22,7 @@ If you get lost, start checking from the "physical layer" and up.
 ### Are the Nodes still accessible via SSH?
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
     ansible -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini all -m ping
 done
 ```
@@ -26,7 +32,7 @@ done
 Dmesg should not display unexpected messages. [OOM](https://en.wikipedia.org/wiki/Out_of_memory) will show up here.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
     ansible -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; dmesg | tail -n 10'
 done
 ```
@@ -34,7 +40,7 @@ done
 Uptime should show high uptime (e.g., days) and low load (e.g., less than 3):
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
     ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; uptime'
 done
 ```
@@ -42,7 +48,7 @@ done
 Any process that uses too much CPU?
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
     ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; ps -Ao user,uid,comm,pid,pcpu,tty --sort=-pcpu | head -n 6'
 done
 ```
@@ -50,7 +56,7 @@ done
 Is there enough disk space? All writeable file-systems should have at least 30% free.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
     ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; df -h'
 done
 ```
@@ -58,7 +64,7 @@ done
 Is there enough available memory? There should be at least a few GB of available memory.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
     ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; cat /proc/meminfo | grep Available'
 done
 ```
@@ -66,7 +72,7 @@ done
 Can Nodes access the Internet?
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
     ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; curl --silent  https://checkip.amazonaws.com'
 done
 ```
@@ -74,7 +80,7 @@ done
 Are the Nodes having the proper time? You should see `System clock synchronized: yes` and `NTP service: active`.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
     ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; timedatectl status'
 done
 ```
@@ -86,7 +92,7 @@ We generally run the latest [Ubuntu LTS](https://ubuntu.com/blog/what-is-an-ubun
 You can confirm this by doing:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
     ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'cat /etc/lsb-release'
 done
 ```
@@ -94,7 +100,7 @@ done
 Are systemd units running fine? You should see `running` and not `degraded`.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
     ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'systemctl is-system-running'
 done
 ```
@@ -104,10 +110,10 @@ done
 Are the Nodes reporting in on Kubernetes? All Kubernetes Nodes, both control-plane and workers, should be `Ready`:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
-        'kubectl --kubeconfig {} get nodes'
-done
+CLUSTER=[sc | wc]
+cd [compliatkubernetes-apps-root-dir]
+
+./bin/ck8s ops kubectl $CLUSTER get nodes
 ```
 
 ### Is Rook doing fine?
@@ -115,15 +121,9 @@ done
 If Rook is installed, is Rook doing fine? You should see `HEALTH_OK`.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
-        'kubectl --kubeconfig {} -n rook-ceph apply -f ./compliantkubernetes-kubespray/rook/toolbox-deploy.yaml'
-done
+./bin/ck8s ops kubectl $CLUSTER -n rook-ceph apply -f ./compliantkubernetes-kubespray/rook/toolbox-deploy.yaml
 
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
-        'kubectl --kubeconfig {} -n rook-ceph exec deploy/rook-ceph-tools -- ceph status'
-done
+./bin/ck8s ops kubectl $CLUSTER -n rook-ceph exec deploy/rook-ceph-tools -- ceph status'
 ```
 
 ### Are Kubernetes Pods doing fine?
@@ -131,28 +131,19 @@ done
 Pods should be `Running` or `Completed`, and fully `Ready` (e.g., `1/1` or `6/6`)?
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
-        'kubectl --kubeconfig {} get --all-namespaces pods'
-done
+./bin/ck8s ops kubectl $CLUSTER get --all-namespaces pods'
 ```
 
 Are all Deployments fine? Deployments should show all Pods Ready, Up-to-date and Available (e.g., `2/2 2 2`).
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
-        'kubectl --kubeconfig {} get --all-namespaces deployments'
-done
+./bin/ck8s ops kubectl $CLUSTER get --all-namespaces deployments'
 ```
 
 Are all DaemonSets fine? DaemonSets should show as many Pods Desired, Current, Ready and Up-to-date, as Desired.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
-        'kubectl --kubeconfig {} get --all-namespaces ds'
-done
+./bin/ck8s ops kubectl $CLUSTER get --all-namespaces ds'
 ```
 
 ### Are Helm Releases fine?
@@ -160,12 +151,7 @@ done
 All Releases should be `deployed`.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    export KUBECONFIG=kube_config_$CLUSTER.yaml
-    sops -d ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $KUBECONFIG
-    helm list --all --all-namespaces
-    shred $KUBECONFIG
-done
+./bin/ck8s ops helm $CLUSTER list --all --all-namespaces
 ```
 
 ### Is cert-manager doing fine?
@@ -173,12 +159,7 @@ done
 Are (Cluster)Issuers fine? All Resources should be `READY=True` or `valid`.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    export KUBECONFIG=kube_config_$CLUSTER.yaml
-    sops -d ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $KUBECONFIG
-    kubectl get clusterissuers,issuers,certificates,orders,challenges --all-namespaces
-    shred $KUBECONFIG
-done
+./bin/ck8s ops kubectl $CLUSTER get clusterissuers,issuers,certificates,orders,challenges --all-namespaces
 ```
 
 ## Where do I find the Nodes public and private IP?
@@ -190,7 +171,7 @@ find . -name inventory.ini
 or
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
     ansible-inventory -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini --list all
 done
 ```
@@ -334,10 +315,9 @@ Please check the following upstream documents:
 Before starting, set up a handy environment:
 
 ```bash
-CLUSTER=cksc  # Cluster containing the unhealthy Pod
+CLUSTER=[sc | wc]  # Cluster containing the unhealthy Pod
 
 export KUBECONFIG=kube_config_$CLUSTER.yaml
-sops -d ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $KUBECONFIG
 ```
 
 Check that you are on the **right** cluster:
@@ -375,10 +355,9 @@ kubectl get pod -A --watch
 Before starting, set up a handy environment:
 
 ```bash
-CLUSTER=cksc  # Cluster containing the failed Release
+CLUSTER=[sc | wc]  # Cluster containing the failed Release
 
 export KUBECONFIG=kube_config_$CLUSTER.yaml
-sops -d ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $KUBECONFIG
 ```
 
 Check that you are on the **right** cluster:
@@ -440,7 +419,7 @@ Go to the docs of the cloud provider and run Terraform `plan` instead of `apply`
 
 ```bash
 TF_SCRIPTS_DIR=$(readlink -f compliantkubernetes-kubespray/kubespray/contrib/terraform/exoscale)
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
     pushd ${TF_SCRIPTS_DIR}
     export TF_VAR_inventory_file=${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini
     terraform init
@@ -465,7 +444,7 @@ ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG
 
 ```bash
 # For the workload clusters
-for CLUSTER in "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in ${WORKLOAD_CLUSTER}; do
     ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
     ./compliantkubernetes-apps/bin/ck8s ops helmfile wc diff  # Respond "n" if you get WARN
 done
