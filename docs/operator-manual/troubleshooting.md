@@ -13,9 +13,6 @@ This guide assumes that:
     `./bin/ck8s` references the `compliantkubernetes-apps` CLI
     `./bin/ck8s-kubespray` references the `compliantkubernetes-kubespray` CLI
 
-    To use `kubectl` or `helm` directly, export a KUBECONFIG like so:
-    `export KUBECONFIG=${CK8S_CONFIG_PATH}/.state/kube_config_${CLUSTER}.yaml`
-
 !!!important
     For some of the ansible commands below, you might require root privileges. To run commands as a privileged user with ansible, use the `--become, -b` flag.
 
@@ -444,4 +441,15 @@ Recreate the backup from a schedule
 
 ```bash
 velero backup create --from-schedule velero-daily-backup
+```
+
+## How do I use `kubectl` and `helm` directly?
+This guide makes heavy use of the `compliantkubernetes-apps` CLI to access and control Compliant Kubernetes clusters. However, you can use `kubectl` and `helm` directly, by exporting a `KUBECONFIG` like so:
+
+```bash
+export KUBECONFIG=${CK8S_CONFIG_PATH}/.state/kube_config_${CLUSTER}.yaml
+
+kubectl get pods -A
+
+helm list -A
 ```
