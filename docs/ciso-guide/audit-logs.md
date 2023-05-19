@@ -50,6 +50,11 @@ Both users (application developers) and administrators will show in the audit lo
 
 The exact configuration of the Kubernetes audit logs can be found [here](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/config/common/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml).
 
+To view the audit logs for a specific user:
+   1. Open the `Audit user` dashboard in Opensearch;
+   2. Under `User selector` add the name of the user you want to audit (e.g admin@example.com);
+   3. Apply changes;
+
 ![Example of Audit Logs](img/audit-logs.png)
 
 ## SSH Access Logs
