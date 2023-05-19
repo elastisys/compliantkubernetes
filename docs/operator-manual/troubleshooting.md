@@ -5,9 +5,16 @@ Help! Something is wrong with my Compliant Kubernetes cluster. Fear no more, thi
 This guide assumes that:
 
 * You have [pre-requisites](getting-started.md) installed.
-* Your environment variables, in particular `CK8S_CONFIG_PATH` is set.
+* Your environment variables, in particular `CK8S_CONFIG_PATH` is set, and `CLUSTER` set to either `sc` or `wc`.
 * Your config folder is available.
 * `compliantkubernetes-apps` and `compliantkubernetes-kubespray` is available.
+
+!!!important
+    `./bin/ck8s` references the `compliantkubernetes-apps` CLI
+    `./bin/ck8s-kubespray` references the `compliantkubernetes-kubespray` CLI
+
+    To use `kubectl` or `helm` directly, export a KUBECONFIG like so:
+    `export KUBECONFIG=${CK8S_CONFIG_PATH}/.state/kube_config_${CLUSTER}.yaml`
 
 !!!important
     For some of the ansible commands below, you might require root privileges. To run commands as a privileged user with ansible, use the `--become, -b` flag.
@@ -22,9 +29,7 @@ If you get lost, start checking from the "physical layer" and up.
 ### Are the Nodes still accessible via SSH?
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
-    ansible -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini all -m ping
-done
+ansible -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini all -m ping
 ```
 
 ### Are the Nodes "doing fine"?
@@ -32,57 +37,43 @@ done
 Dmesg should not display unexpected messages. [OOM](https://en.wikipedia.org/wiki/Out_of_memory) will show up here.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
-    ansible -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; dmesg | tail -n 10'
-done
+ansible -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; dmesg | tail -n 10'
 ```
 
 Uptime should show high uptime (e.g., days) and low load (e.g., less than 3):
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
-    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; uptime'
-done
+ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; uptime'
 ```
 
 Any process that uses too much CPU?
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
-    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; ps -Ao user,uid,comm,pid,pcpu,tty --sort=-pcpu | head -n 6'
-done
+ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; ps -Ao user,uid,comm,pid,pcpu,tty --sort=-pcpu | head -n 6'
 ```
 
 Is there enough disk space? All writeable file-systems should have at least 30% free.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
-    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; df -h'
-done
+ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; df -h'
 ```
 
 Is there enough available memory? There should be at least a few GB of available memory.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
-    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; cat /proc/meminfo | grep Available'
-done
+ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; cat /proc/meminfo | grep Available'
 ```
 
 Can Nodes access the Internet?
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
-    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; curl --silent  https://checkip.amazonaws.com'
-done
+ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; curl --silent  https://checkip.amazonaws.com'
 ```
 
 Are the Nodes having the proper time? You should see `System clock synchronized: yes` and `NTP service: active`.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
-    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; timedatectl status'
-done
+ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; timedatectl status'
 ```
 
 ### Is the base OS doing fine?
@@ -92,17 +83,13 @@ We generally run the latest [Ubuntu LTS](https://ubuntu.com/blog/what-is-an-ubun
 You can confirm this by doing:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
-    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'cat /etc/lsb-release'
-done
+ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'cat /etc/lsb-release'
 ```
 
 Are systemd units running fine? You should see `running` and not `degraded`.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
-    ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'systemctl is-system-running'
-done
+ansible -i $CK8S_CONFIG_PATH/${CLUSTER}-config/inventory.ini all -m shell -a 'systemctl is-system-running'
 ```
 
 ### Are the Kubernetes clusters doing fine?
@@ -110,9 +97,6 @@ done
 Are the Nodes reporting in on Kubernetes? All Kubernetes Nodes, both control-plane and workers, should be `Ready`:
 
 ```bash
-CLUSTER=[sc | wc]
-cd [compliatkubernetes-apps-root-dir]
-
 ./bin/ck8s ops kubectl $CLUSTER get nodes
 ```
 
@@ -171,9 +155,7 @@ find . -name inventory.ini
 or
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
-    ansible-inventory -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini --list all
-done
+ansible-inventory -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini --list all
 ```
 
 `ansible_host` is usually the public IP, while `ip` is usually the private IP.
@@ -257,7 +239,7 @@ If the infrastructure is not managed by terraform you can skip to step 3:
 2. Re-apply Terraform.
 3. Add the new node to the `inventory.ini` (skip this step if the cluster is using a dynamic inventory).
 4. Re-apply Kubespray only for the new node.
-```sh
+```bash
 cd [compliantkubernetes-kubespray-root-dir]
 
 CLUSTER=[sc | wc]
@@ -266,11 +248,11 @@ CLUSTER=[sc | wc]
 ./bin/ck8s-kubespray run-playbook $CLUSTER scale.yml -b --limit=[new_node_name]
 ```
 5. Add ssh keys to the new node if necessary
-```sh
+```bash
 ./bin/ck8s-kubespray apply-ssh $CLUSTER --limit=[new_node_name]
 ```
 6. Update network policies
-```sh
+```bash
 cd [compliatkubernetes-apps-root-dir]
 
 ./bin/ck8s update-ips sc update
@@ -311,25 +293,17 @@ Please check the following upstream documents:
 * [Ceph Common Issues](https://github.com/rook/rook/blob/master/Documentation/Troubleshooting/ceph-common-issues.md)
 
 ## Pod seems not fine
-
-Before starting, set up a handy environment:
-
-```bash
-CLUSTER=[sc | wc]  # Cluster containing the unhealthy Pod
-
-export KUBECONFIG=kube_config_$CLUSTER.yaml
-```
-
-Check that you are on the **right** cluster:
+Make sure you are on the **right** cluster:
 
 ```bash
-kubectl get nodes
+echo $CK8S_CONFIG_PATH
+echo $CLUSTER
 ```
 
 Find the name of the Pod which is not fine:
 
 ```bash
-kubectl get pod -A
+./bin/ck8s ops kubectl $CLUSTER get pod -A
 
 # Copy-paste the Pod and Pod namespace below
 UNHEALTHY_POD=prometheus-kube-prometheus-stack-prometheus-0
@@ -339,36 +313,28 @@ UNHEALTHY_POD_NAMESPACE=monitoring
 Gather some "evidence" for later diagnostics, when the heat is over:
 
 ```bash
-kubectl describe pod -n $UNHEALTHY_POD_NAMESPACE $UNHEALTHY_POD
-kubectl logs -n $UNHEALTHY_POD_NAMESPACE $UNHEALTHY_POD
+./bin/ck8s ops kubectl $CLUSTER describe pod -n $UNHEALTHY_POD_NAMESPACE $UNHEALTHY_POD
+./bin/ck8s ops kubectl $CLUSTER logs -n $UNHEALTHY_POD_NAMESPACE $UNHEALTHY_POD
 ```
 
 Try to kill  and check if the underlying Deployment, StatefulSet or DaemonSet will restart it:
 
 ```bash
-kubectl delete pod -n $UNHEALTHY_POD_NAMESPACE $UNHEALTHY_POD
-kubectl get pod -A --watch
+./bin/ck8s ops kubectl $CLUSTER delete pod -n $UNHEALTHY_POD_NAMESPACE $UNHEALTHY_POD
+./bin/ck8s ops kubectl $CLUSTER get pod -A --watch
 ```
 
 ## Helm Release is `failed`
-
-Before starting, set up a handy environment:
-
-```bash
-CLUSTER=[sc | wc]  # Cluster containing the failed Release
-
-export KUBECONFIG=kube_config_$CLUSTER.yaml
-```
-
-Check that you are on the **right** cluster:
+Make sure you are on the **right** cluster:
 
 ```bash
-kubectl get nodes
+echo $CK8S_CONFIG_PATH
+echo $CLUSTER
 ```
 
 Find the failed Release:
 ```bash
-helm ls --all-namespaces --all
+./bin/ck8s ops helm $CLUSTER ls --all-namespaces --all
 
 FAILED_RELEASE=user-rbac
 FAILED_RELEASE_NAMESPACE=kube-system
@@ -378,7 +344,7 @@ Just to make sure, do a drift check, as shown [here](#how-do-i-check-if-apps-dri
 
 Remove the failed Release:
 ```bash
-helm uninstall -n $FAILED_RELEASE_NAMESPACE $FAILED_RELEASE
+./bin/ck8s ops helm $CLUSTER uninstall -n $FAILED_RELEASE_NAMESPACE $FAILED_RELEASE
 ```
 
 Re-apply `apps` according to documentation.
@@ -419,15 +385,13 @@ Go to the docs of the cloud provider and run Terraform `plan` instead of `apply`
 
 ```bash
 TF_SCRIPTS_DIR=$(readlink -f compliantkubernetes-kubespray/kubespray/contrib/terraform/exoscale)
-for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTER}; do
-    pushd ${TF_SCRIPTS_DIR}
-    export TF_VAR_inventory_file=${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini
-    terraform init
-    terraform plan \
-        -var-file=${CK8S_CONFIG_PATH}/${CLUSTER}-config/cluster.tfvars \
-        -state=${CK8S_CONFIG_PATH}/${CLUSTER}-config/terraform.tfstate
-    popd
-done
+pushd ${TF_SCRIPTS_DIR}
+export TF_VAR_inventory_file=${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini
+terraform init
+terraform plan \
+    -var-file=${CK8S_CONFIG_PATH}/${CLUSTER}-config/cluster.tfvars \
+    -state=${CK8S_CONFIG_PATH}/${CLUSTER}-config/terraform.tfstate
+popd
 ```
 
 ## How do I check if the Kubespray setup drifted due to manual intervention?
@@ -438,16 +402,12 @@ At the time of this writing, this cannot be done, but [efforts are underway](htt
 
 ```bash
 # For service cluster
-ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml
-./compliantkubernetes-apps/bin/ck8s ops helmfile sc diff  # Respond "n" if you get WARN
+./bin/ck8s ops helmfile sc diff  # Respond "n" if you get WARN
 ```
 
 ```bash
 # For the workload clusters
-for CLUSTER in ${WORKLOAD_CLUSTER}; do
-    ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
-    ./compliantkubernetes-apps/bin/ck8s ops helmfile wc diff  # Respond "n" if you get WARN
-done
+./bin/ck8s ops helmfile wc diff  # Respond "n" if you get WARN
 ```
 
 ## Velero backup stuck in progress
@@ -469,7 +429,7 @@ First try to delete the backup
 
 Then kill all the pods under the velero namespace
 ```bash
-./compliantkubernetes-apps/bin/ck8s ops kubectl wc delete pods -n velero --all
+./bin/ck8s ops kubectl wc delete pods -n velero --all
 ```
 
 Check that the backup is gone
