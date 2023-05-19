@@ -42,9 +42,15 @@ header .header-links li {
 }
 
 /* Highlight external links */
-a[href*="//"]:not([href*="elastisys."]):not(:has(img,div,figure,svg)):after {
+a[href*="//"]:not([href*="elastisys."])::after {
     content: ' ↗';
 }
-a[href*="//"]:not([href*="elastisys."]):has(img, div, figure, svg) {
+
+/* Firefox does not support the :has pseudo-selector.
+ * Fortunately, we only have one image link in the docs */
+.header-links a[href*="//"]:not([href*="elastisys."])::after {
+    content: '';
+}
+.header-links a[href*="//"]:not([href*="elastisys."]) {
     border-bottom: 2px dashed #a8b1be;
 }
