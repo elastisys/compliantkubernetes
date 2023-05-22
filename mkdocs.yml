@@ -41,8 +41,8 @@ theme:
     scheme: elastisys
   features:
     - content.code.annotate
-    - toc.integrate
     - content.tabs.link
+    - navigation.top
 
 extra_css:
   - stylesheets/branding.css
@@ -85,7 +85,6 @@ markdown_extensions:
       alternate_style: true
   - toc:
       permalink: true
-      toc_depth: 0
   - pymdownx.tasklist:
       custom_checkbox: true
 
