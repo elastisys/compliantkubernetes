@@ -322,6 +322,11 @@ Check which arguments you can use by running `velero backup create --help`.
 
 ### Restore
 
+
+!!!note
+
+    If you are restoring an environment under a new domain name then there is a possibility to reconfigure image references with [Velero](https://velero.io/docs/main/restore-reference/#changing-poddeploymentstatefulsetdaemonsetreplicasetreplicationcontrollerjobcronjob-image-repositories), but ingresses must be updated manually.
+
 Restoring from a backup with Velero is meant to be a type of disaster recovery.
 **Velero will not overwrite existing Resources when restoring.**
 As such, if you want to restore the state of a Resource that is still running, the Resource must be deleted first.
