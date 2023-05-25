@@ -25,6 +25,7 @@ How should we in Compliant Kubernetes handle encryption-at-rest both for VMs and
 ## Considered Options
 
 VM disk encryption:
+
 1. Store the encryption key on the VM's /boot disk.
     This is obvious security theatre. For example, if server disks are stolen, the VM's data is in the hands of the thief.
 1. Let admins type the encryption key on the VM's console.
@@ -36,6 +37,7 @@ VM disk encryption:
 1. Rely on cloud provider to provide encryption-at-rest.
 
 Object storage encryption:
+
 1. Encrypt data before shipping to object storage.
     This is not doable since not all applications that interacts with object storage in Compliant Kubernetes supports this.
     Using a proxy gateway that can handle the encryption could have been a solution, however the only tool that we've found, MinIO Gateway, has been [deprecated](https://blog.min.io/deprecation-of-the-minio-gateway/).
@@ -48,8 +50,9 @@ Object storage encryption:
 ## Decision Outcome
 
 Chosen options:
-- VM disk encryption: "Rely on cloud provider to provide encryption-at-rest".
-- Object storage encryption: "Rely on cloud provider to provide encryption-at-rest".
+
+* VM disk encryption: "Rely on cloud provider to provide encryption-at-rest".
+* Object storage encryption: "Rely on cloud provider to provide encryption-at-rest".
 
 ### Positive Consequences
 
