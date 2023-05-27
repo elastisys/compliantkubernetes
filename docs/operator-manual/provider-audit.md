@@ -133,7 +133,8 @@ The remainder of this page contains open questions that you should ask your clou
 1. How do you implement regulatory and contractual requirements?
 1. How is a new requirement discovered?
     1. What is the journey that a requirement takes from discovery, to updating policies, to training employees, to implementation, to evidence of implementation?
-1. Do you data-centers fulfill physical security "skyddsklass 3" according to [SSF 130](https://www.stoldskyddsforeningen.se/butik/foretag/ssf-normer/inbrottslarm/ssf-130-utg-9-projektering-och-installation-av-inbrotts-och-overfallslarmanlaggning/) and [SSF 200](https://www.stoldskyddsforeningen.se/butik/foretag/ssf-normer/skal-inbrottsskydd/ssf-200-utg-5/)?
+1. Do your data-centers fulfill physical security "skyddsklass 3" according to [SSF 130](https://www.stoldskyddsforeningen.se/butik/foretag/ssf-normer/inbrottslarm/ssf-130-utg-9-projektering-och-installation-av-inbrotts-och-overfallslarmanlaggning/) and [SSF 200](https://www.stoldskyddsforeningen.se/butik/foretag/ssf-normer/skal-inbrottsskydd/ssf-200-utg-5/)?
+    1. If not, how do you comply with [Directive (EU) 2022/2557 Resilience of critical entities Art. 13 p. 1(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32022L2557&qid=1685198736745#d1e1424-164-1)?
     1. If not, how is physical security handled?
 1. How do you handle incidents and deviations?
     1. What response times / time to resolution do you offer?
