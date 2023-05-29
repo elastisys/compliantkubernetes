@@ -5,6 +5,12 @@ tags:
 - MSBFS 2020:7 3 kap. 1 §
 - MSBFS 2020:7 3 kap. 2 §
 - HSLF-FS 2016:40 3 kap. 10 § Upphandling och utveckling
+- BSI IT-Grundschutz APP.4.4.A1
+- BSI IT-Grundschutz APP.4.4.A15
+---
+
+Compliant Kubernetes recommends to setting up at least two separate environments: one for testing and one for production.
+
 ---
 
 # How Many Environments?
