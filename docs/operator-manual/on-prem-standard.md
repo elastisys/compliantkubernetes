@@ -1,3 +1,7 @@
+---
+tags:
+- BSI IT-Grundschutz APP.4.4.A13
+---
 # Standard Template for on-prem Environment
 
 This document contains instructions on how to set-up a new Compliant Kubernetes on-prem environment.
