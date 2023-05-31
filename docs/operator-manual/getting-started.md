@@ -1,6 +1,6 @@
 # Getting Started
 
-Setting up Compliant Kubernetes consists of two parts: setting up at least two vanilla Kubernetes clusters and deploying `compliantkubernetes-apps` on top of them.
+Setting up Compliant Kubernetes consists of two parts: setting up [at least two vanilla Kubernetes clusters](../architecture.md#level-2-clusters) and deploying `compliantkubernetes-apps` on top of them.
 
 ## Pre-requisites for Creating Vanilla Kubernetes clusters
 
