@@ -250,7 +250,7 @@ CREATE UNIQUE INDEX customers__id__e06693c2_idx ON test_db.customers_c09344de US
 </details>
 
 ## Security
-FerretDB supports securing connections between FerretDB and client with TLS. All you need is to specify additional run-time arguments or environment variables, as described in the [FerretDB documentation](https://docs.ferretdb.io/security/).
+FerretDB supports securing connections between FerretDB and client with TLS. All you need is to specify additional run-time arguments or environment variables, as described in the [FerretDB documentation](https://docs.ferretdb.io/category/security/).
 
 
 ## Known Issues / Limitations
