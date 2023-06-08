@@ -217,7 +217,7 @@ OPENSEARCH_PASSWORD="your-password"
 DOMAIN="your-domain"
 
 docker run --rm -ti -v $(pwd)/opensearch-dump:/tmp elasticdump/elasticsearch-dump \
-  --input="http://${OPENSEARCH_USERNAME}:${OPENSEARCH_PASSWORD}@opensearch.ops.${DOMAIN}/kubernetes-*" \
+  --input="https://${OPENSEARCH_USERNAME}:${OPENSEARCH_PASSWORD}@opensearch.ops.${DOMAIN}/kubernetes-*" \
   --type=data \
   --output=/tmp/opensearch-dump.json \
   --searchBody='{"query":{......}}'
