@@ -79,7 +79,8 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.highlight:
       use_pygments: true
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      check_paths: true
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true

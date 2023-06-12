@@ -117,7 +117,7 @@ That said, if you self-administer your cluster, are aware of the potential risks
 Download the [lens-user-role.yaml](lens-user-role.yaml) file, the contents of which is shown below:
 
 ```yaml
---8<-- "docs/compliantkubernetes/user-guide/lens-user-role.yaml"
+--8<-- "docs/user-guide/lens-user-role.yaml"
 ```
 
 Apply it, as-is, to your cluster by running `kubectl apply -f lens-user-role.yaml`.
@@ -125,7 +125,7 @@ Apply it, as-is, to your cluster by running `kubectl apply -f lens-user-role.yam
 Assign this role to your user or the group your user belongs to by downloading and modifying it so that it lists your user name (typically that will be your email address) or the group you want to give these permissions to. Do that by downloading the [lens-user-rolebinding-example.yaml](lens-user-rolebinding-example.yaml) file and editing it. The file is shown below:
 
 ```yaml
---8<-- "docs/compliantkubernetes/user-guide/lens-user-rolebinding-example.yaml"
+--8<-- "docs/user-guide/lens-user-rolebinding-example.yaml"
 ```
 
 Apply it to your cluster after making your changes to a copy of the template via, for instance, `kubectl apply -f lens-user-rolebinding.yaml`.
