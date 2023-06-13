@@ -54,3 +54,26 @@ a[href*="//"]:not([href*="elastisys."])::after {
 .header-links a[href*="//"]:not([href*="elastisys."]) {
     border-bottom: 2px dashed #a8b1be;
 }
+
+/* Configure the `elastisys` custom admonition
+ * https://squidfunk.github.io/mkdocs-material/reference/admonitions/#custom-admonitions
+ */
+.md-typeset .admonition.elastisys,
+.md-typeset details.elastisys {
+  border-color: var(--md-primary-fg-color);
+}
+.md-typeset .elastisys > .admonition-title,
+.md-typeset .elastisys > summary {
+  background-color: rgba(43, 155, 70, 0.1);
+}
+.md-typeset .elastisys > .admonition-title::before,
+.md-typeset .elastisys > summary::before {
+  background-image:
+    /* This path works in production */
+    url('/compliantkubernetes/img/logos/elastisys-logo-icon.svg'),
+    /* This path work in development, i.e., `mkdocs server` */
+    url('/img/logos/elastisys-logo-icon.svg');
+  background-size: cover;
+  -webkit-mask-image: none
+  mask-image: none
+}
