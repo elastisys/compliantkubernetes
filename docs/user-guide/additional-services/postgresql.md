@@ -1,23 +1,26 @@
 PostgreSQL®
 ===========
 
+!!! elastisys "For Elastisys Managed Services Customers"
+
+    You can order Managed PostgreSQL® by filing a [service ticket](https://elastisys.atlassian.net/a). Here are the highlights:
+
+    * **Business continuity**:
+        * Standard Plan is configured with two replicas (one primary and one standby).
+        * Premium Plan is configured with three replicas (one primary and two standby-s).
+    * **Disaster recovery**:
+        * Backup scope includes user definitions, data definitions, and the data per-se.
+        * A full backup is taken every day between 0:00 am and 6:00 am CET. The backup retention period is 30 days unless otherwise requested by the customer.
+        * Point-in-Time Recovery (PITR) is provided for the last 7 days with a recovery point objective of 5 minutes.
+        * Long-term backup schemes can be enabled after discussion with the customer.
+
+    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
+
 ![PostgreSQL Deployment Model](img/postgresql.drawio.svg)
 
 This page will help you succeed in connecting your application to a primary relational database PostgreSQL which meets your security and compliance requirements.
 
 <!--postgresql-setup-start-->
-
-## Provision a New PostgreSQL Cluster
-
-Ask your service-specific administrator to install a PostgreSQL cluster inside your Compliant Kubernetes environment. The service-specific administrator will ensure the PostgreSQL cluster complies with your security requirements, including:
-
-* **Business continuity**: We recommend a highly available setup with at minimum a primary instance and a replica. Ideally, the PostgreSQL cluster should be configured with a primary and two replicas.
-* **Disaster recovery**: Your service-specific administrator will configure the PostgreSQL cluster with physical backups, logical backups and Point-in-Time Recovery (PITR), as required to meet your [Recovery Point Objectives](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective).
-* **Capacity management**: Your service-specific administrator will ensure PostgreSQL runs on dedicated (i.e., tainted) Kubernetes Nodes, as required to get the best performance.
-* **Incident management**: Your administrator will set up the necessary Probes, dashboards and alerts, to discover issues and resolve them, before they become a problem.
-* **Access control**: Your administrator will set up a "root-like" PostgreSQL account, which will allow you to create databases and PostgreSQL users, but not tamper will logging, business continuity or disaster recovery.
-
-Compliant Kubernetes recommends the [Zalando PostgreSQL operator](https://postgres-operator.readthedocs.io/en/latest/).
 
 ## Install Prerequisites
 

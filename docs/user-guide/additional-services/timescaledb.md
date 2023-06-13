@@ -1,9 +1,25 @@
 TimescaleDB®
 ============
 
+!!! elastisys "For Elastisys Managed Services Customers"
+
+    You can order Managed TimescaleDB® Community by filing a [service ticket](https://elastisys.atlassian.net/a). Here are the highlights:
+
+    * **Business continuity**:
+        * Standard Plan is configured with two replicas (one primary and one standby).
+        * Premium Plan is configured with three replicas (one primary and two standby-s).
+    * **Disaster recovery**:
+        * Backup scope includes user definitions, data definitions, and the data per-se.
+        * A full backup is taken every day between 0:00 am and 6:00 am CET. The backup retention period is 30 days unless otherwise requested by the customer.
+        * Point-in-Time Recovery (PITR) is provided for the last 7 days with a recovery point objective of 5 minutes.
+        * Long-term backup schemes can be enabled after discussion with the customer.
+    * **Only open-source features are included**
+
+    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
+
 ![TimescaleDB Deployment Model](img/timescaledb.drawio.svg)
 
-This page will help you succeed in connecting your application to a primary relational database TimescaleDB which meets your security and compliance requirements.
+This page will help you succeed in connecting your application to the time-series database TimescaleDB which meets your security and compliance requirements.
 
 TimescaleDB is an extension on top of our managed PostgreSQL.
 This means that your administrator will be setting up a complete PostgreSQL cluster for you and you just use it for TimescaleDB via the TimescaleDB extension.
