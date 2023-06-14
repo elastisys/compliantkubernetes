@@ -69,7 +69,7 @@ a[href*="//"]:not([href*="elastisys."])::after {
 .md-typeset .elastisys > .admonition-title::before,
 .md-typeset .elastisys > summary::before {
   background-image:
-    url('../../img/logos/elastisys-logo-icon.svg');
+    url('../img/logos/elastisys-logo-icon.svg');
   background-size: cover;
   -webkit-mask-image: none
   mask-image: none
