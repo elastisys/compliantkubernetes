@@ -69,10 +69,7 @@ a[href*="//"]:not([href*="elastisys."])::after {
 .md-typeset .elastisys > .admonition-title::before,
 .md-typeset .elastisys > summary::before {
   background-image:
-    /* This path works in production */
-    url('/compliantkubernetes/img/logos/elastisys-logo-icon.svg'),
-    /* This path work in development, i.e., `mkdocs server` */
-    url('/img/logos/elastisys-logo-icon.svg');
+    url('../../img/logos/elastisys-logo-icon.svg');
   background-size: cover;
   -webkit-mask-image: none
   mask-image: none
