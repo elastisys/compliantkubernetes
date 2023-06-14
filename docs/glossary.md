@@ -41,7 +41,7 @@ Usage notes:
 
 * If you need more precision, use:
     * "Application Developers who are Grafana administrators" (see [Grafana Roles](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/))
-    * "Application Developers who are Harbor ProjectAdmin" (see [Harbor Managing Users](https://goharbor.io/docs/2.8.0/administration/managing-users/))
+    * "Application Developers who are Harbor system administrators" (see [Harbor Managing Users](https://goharbor.io/docs/2.8.0/administration/managing-users/))
     * "Application Developers who are Kubernetes admins" (see [Kubernetes user-facing roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles))
     * "Application Developers with Kubernetes edit permissions" (see [Kubernetes user-facing roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles))
 * Do NOT use "Super Application Developer", "user-admin", "user-view", etc.
