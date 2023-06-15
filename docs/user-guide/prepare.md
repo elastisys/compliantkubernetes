@@ -6,14 +6,13 @@ description: Learn how to prepare for Elastisys Compliant Kubernetes, the securi
 
     You can order Managed Compliant Kubernetes by filing a [service ticket](https://elastisys.atlassian.net/). Here are the highlights:
 
-    * Infrastructure provider: You choose it, among the Elastisys Partners.
-    * Business Continuity: Kubernetes Cluster always feature 3 control plane Nodes.
-    * Retention for logs: 30 days by default.
-    * Retention for metrics: 90 days by default.
-    * Backup:
+    * **Infrastructure provider**: You choose it, among the Elastisys Partners.
+    * **Business Continuity**: Kubernetes Cluster always feature 3 control plane Nodes.
+    * **Retention**: by default 30 days for logs, 90 days for metrics.
+    * **Backup**:
         * Scope: most Kubernetes resources and Persistent Volume Claims.
         * RPO: daily, 3 backups
-    * Maintenance and incident management: included.
+    * **Monitoring, security patching and incident management**: included.
 
     For more information, please read [ToS Appendix 2 Managed Compliant Kubernetes Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-2-managed-compliant-kubernetes-service-specification).
 
