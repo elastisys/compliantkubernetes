@@ -12,6 +12,8 @@ Redis™
     For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
 
 
+
+
 ![Redis Deployment Model](img/redis.drawio.svg)
 
 This page will help you succeed in connecting your application to a low-latency in-memory cache Redis which meets your security and compliance requirements.
@@ -29,6 +31,9 @@ This page will help you succeed in connecting your application to a low-latency 
 
     * Cached data: If this is lost, this data can be quickly retrieved from the primary database, such as the PostgreSQL cluster.
     * Session state: If this is lost, the user experience might be impacted -- e.g., the user needs to re-login -- but no data should be lost.
+
+!!!important "Important: Sentinel support"
+    We recommend a highly available setup with at minimum three instances. The Redis client library that you use in your application needs to support [Redis Sentinel](https://redis.io/topics/sentinel). Notice that clients with Sentinel support need [extra steps to discover the Redis primary](https://redis.io/topics/sentinel-clients).
 
 ## Install Prerequisites
 
