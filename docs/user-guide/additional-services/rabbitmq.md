@@ -1,21 +1,22 @@
 RabbitMQ®
 =========
 
+!!! elastisys "For Elastisys Managed Services Customers"
+
+    You can order Managed RabbitMQ® by filing a [service ticket](https://elastisys.atlassian.net/). Here are the highlights:
+
+    * **Business continuity**: three replicas.
+    * **Disaster recovery**:
+        * Backup scope includes user definitions, vhost definitions, topology definitions.
+        * Backup does NOT include messages -- RabbitMQ core contributors discourage this.
+        * A full backup is taken every day between 0:00 am and 6:00 am CET. The backup retention period is 30 days unless otherwise requested by the customer.
+    * **Monitoring, security patching and incident management**: included.
+
+    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
+
 ![RabbitMQ Deployment Model](img/rabbitmq.drawio.svg)
 
 This page will help you succeed in connecting your application to a RabbitMQ-based message queue which meets your security and compliance requirements.
-
-## Provision a New RabbitMQ Cluster
-
-Ask your service-specific administrator to install a RabbitMQ cluster inside your Compliant Kubernetes environment. The service-specific administrator will ensure the RabbitMQ cluster complies with your security requirements, including:
-
-* **Business continuity**: We recommend a highly available setup with three instances.
-* **Disaster recovery**: Note that, because messages are often short-lived and possibly transient, backing them up from under a running node is highly discouraged and can lead to an inconsistent snapshot of the data. Generally, disaster recovery for message queue only makes sense for the [dead letter exchange](https://www.rabbitmq.com/dlx.html).
-* **Capacity management**: Your service-specific administrator will ensure RabbitMQ runs on dedicated (i.e., tainted) Kubernetes Nodes, as required to get the best performance.
-* **Incident management**: Your administrator will set up the necessary monitors, probes, dashboards and alerts, to discover issues and resolve them, before they become a problem.
-* **Access control**: Your service-specific administrator will hand you the RabbitMQ administrator username and password. This will allow you to declare exchanges, queues, bindings, users, virtual hosts and user permissions, as required.
-
-Compliant Kubernetes recommends the [RabbitMQ Cluster Operator for Kubernetes](https://www.rabbitmq.com/kubernetes/operator/operator-overview.html).
 
 ## Accessing a RabbitMQ Cluster
 

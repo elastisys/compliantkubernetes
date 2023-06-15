@@ -14,6 +14,7 @@ TimescaleDB®
         * Point-in-Time Recovery (PITR) is provided for the last 7 days with a recovery point objective of 5 minutes.
         * Long-term backup schemes can be enabled after discussion with the customer.
     * **Only open-source features are included**
+    * **Monitoring, security patching and incident management**: included.
 
     For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
 
