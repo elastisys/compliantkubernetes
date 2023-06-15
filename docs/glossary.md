@@ -3,6 +3,10 @@
 !!!important
     Harmonization of documentation with this glossary is underway. (See [#609](https://github.com/elastisys/compliantkubernetes/issues/609))
 
+> There are only two hard things in Computer Science: cache invalidation and naming things.
+>
+> — Phil Karlton
+
 This page introduces terminology used in the Compliant Kubernetes project.
 We borrow terminology from:
 
