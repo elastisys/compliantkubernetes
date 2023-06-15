@@ -53,7 +53,7 @@ See also:
 
 ## Cluster
 
-A set of Nodes managed by a single control plane which looks like a whole from the outside. Can refer to a Kubernetes Cluster, a PostgreSQL cluster, a Redis cluster, a RabbitMQ cluster, an OpenSearch Cluster, etc.
+Can refer to a [Kubernetes Cluster](#kubernetes-cluster), a PostgreSQL cluster, a Redis cluster, a RabbitMQ cluster, an OpenSearch Cluster, etc.
 
 Usage notes:
 
@@ -107,11 +107,24 @@ See also:
 
 ## Environment
 
-One instance of a Compliant Kubernetes deployment. One Environment is compose of two [Kubernetes Clusters](#cluster), the [Management Cluster](#management-cluster) and [Workload Cluster](#workload-cluster).
+One instance of a Compliant Kubernetes deployment. One Environment is compose of two [Kubernetes Clusters](#kubernetes-cluster), the [Management Cluster](#management-cluster) and [Workload Cluster](#workload-cluster).
 
 Usage notes:
 
 * Make sure to distinguish between Environment and Cluster.
+
+## Kubernetes Cluster
+
+A set of worker machines, called nodes, that run containerized applications. Every cluster has at least one worker node.
+
+Usage notes:
+
+* Prefer [Workload Cluster](#workload-cluster) or [Management Cluster](#management-cluster) to avoid confusion.
+
+See also:
+
+* [Architecture Diagram Level 2: Clusters](architecture.md#level-2-clusters)
+* [Cluster on Kubernetes Glossary](https://kubernetes.io/docs/reference/glossary/?all=true#term-cluster)
 
 ## Identity Provider
 
