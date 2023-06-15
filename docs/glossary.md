@@ -196,6 +196,7 @@ See also:
 Usage notes:
 
 * Do NOT use "Operator" to refer to "Platform Administrator". Such usage is confusing.
+* It's okay to use "admin".
 
 ## Platform Administrator
 
