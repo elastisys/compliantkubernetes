@@ -17,6 +17,8 @@ You may want to familiarize yourself with that terminology first.
 
 When naming things, we stick to [Inclusive Naming](https://inclusivenaming.org/).
 
+Please capitalize these terms, i.e., treat them as [proper nouns](https://en.wikipedia.org/wiki/Proper_noun).
+
 <!--
 NOTE to contributors:
 
@@ -43,7 +45,7 @@ A person who writes an application that runs in a Kubernetes cluster.
 
 Usage notes:
 
-* It's okay to use "dev" or "developer", if it's clear from the context that we refer to an Application Developer.
+* It's okay to use "app dev", "dev" or "developer", if it's clear from the context that we refer to an Application Developer.
 * If you need more precision, use:
     * "Application Developers who are Grafana administrators" (see [Grafana Roles](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/))
     * "Application Developers who are Harbor system administrators" (see [Harbor Managing Users](https://goharbor.io/docs/2.8.0/administration/managing-users/))
@@ -138,6 +140,7 @@ An Identity Provider (IdP) is a system that offers user authentication as a serv
 Usage notes:
 
 * Do NOT use "Authentication Provider"
+* [Dex](https://dexidp.io/) is a "Federated OpenID Connect Provider". Hence, it is okay to call it a "Federated Identity Provider".
 
 See also:
 
@@ -167,7 +170,7 @@ A Kubernetes cluster hosting some platform components.
 Usage notes:
 
 * Do NOT use "Service Cluster". That terms is poorly recognized and hereby deprecated.
-* `SC` and `sc` may be used to preserve backwards compatibility.
+* `SC` and `sc` may be used to preserve backwards compatibility. Acceptable usage includes code and command-line tools. Unacceptable usage include documentation.
 
 See also:
 
