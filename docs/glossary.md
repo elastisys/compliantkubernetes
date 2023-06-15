@@ -145,7 +145,7 @@ See also:
 
 ## Infrastructure Provider
 
-A supplier of Virtual or Bate-metal Machines, networks, load-balancers, block storage and object storage.
+A supplier of Virtual or Bare-metal Machines, networks, load balancers, block storage and object storage.
 
 Usage notes:
 
