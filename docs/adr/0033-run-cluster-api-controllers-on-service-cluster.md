@@ -28,7 +28,7 @@ Where should we run the Cluster API controller?
 
 ## Decision Outcome
 
-Chosen option: "Service cluster", because it strikes the balance between security, as it has relatively good availablilty properties and no Kubernetes admin credentails have to be stored in the workload cluster, and maintainability, as clusters can be managed centralised.
+Chosen option: "Service cluster", because it strikes the balance between security, as it has relatively good availability properties and no Kubernetes admin credentials have to be stored in the workload cluster, and maintainability, as clusters can be managed centralised.
 
 ### Positive Consequences <!-- optional -->
 

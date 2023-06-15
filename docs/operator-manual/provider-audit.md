@@ -57,7 +57,7 @@ The remainder of this page contains open questions that you should ask your clou
     1. What services can I configure role-based access control for?
     1. Can IAM be configured via API? Can IAM be configured via Terraform?
     1. Can one single user be given access to multiple projects?
-1. Infrastructure aaS:
+1. Infrastructure-aaS:
     1. Which IaaS engine do you use? (e.g., OpenStack, VMware, proprietary)
     1. Do you have a Terraform provider for your API?
     1. Do you have pre-uploaded Ubuntu images? Which?
@@ -102,11 +102,11 @@ The remainder of this page contains open questions that you should ask your clou
             1. The default Docker network (`172.17.0.0/16`)?
             1. The [default Kubernetes Service network](https://github.com/kubernetes-sigs/kubespray/blob/v2.18.0/inventory/sample/group_vars/k8s_cluster/k8s-cluster.yml#L73) (`10.233.0.0/18`)?
             1. The [default Kubernetes Pod network](https://github.com/kubernetes-sigs/kubespray/blob/v2.18.0/inventory/sample/group_vars/k8s_cluster/k8s-cluster.yml#L78) (`10.233.64.0/18`)?
-    1. Firewall aaS
-        1. Are Firewall aaS available?
+    1. Firewall-aaS
+        1. Are Firewall-aaS available?
         1. What API? (e.g., OpenStack, VMware)
         1. Do you have a Terraform provider for your API?
-    1. Do you offer Load Balancer aaS (LBaaS)?
+    1. Do you offer Load Balancer-aaS (LBaaS)?
         1. Can I create a LB via API?
         1. Do you have a Terraform provider for your API?
         1. Can I use a [cloud-controller](https://kubernetes.io/docs/concepts/architecture/cloud-controller/) for automatic creation of [external LoadBalancers](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)?
