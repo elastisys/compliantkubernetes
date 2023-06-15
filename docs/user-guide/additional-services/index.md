@@ -5,6 +5,12 @@ tags:
 Additional Services
 ===================
 
+!!! elastisys "For Elastisys Managed Services Customers"
+
+    You can order Managed Additional Services by filing a [service ticket](https://elastisys.atlassian.net/).
+
+    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
+
 ![Illustration of Compliant Kubernetes as the hourglass waist](img/additional-services.drawio.svg)
 
 Compliant Kubernetes simplifies usage of a complex and diverse infrastructure. By exposing simple and uniform concepts, it allows you to focus on application development.
