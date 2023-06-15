@@ -149,6 +149,7 @@ A Kubernetes cluster hosting some platform components.
 Usage notes:
 
 * Do NOT use "Service Cluster". That terms is poorly recognized and hereby deprecated.
+* `SC` and `sc` may be used to preserve backwards compatibility.
 
 See also:
 
