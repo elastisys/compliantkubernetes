@@ -24,7 +24,7 @@ This page will help you succeed in connecting your application to a primary rela
 
 ## Install Prerequisites
 
-Before continuing, make sure you have access to the Kubernetes API, as describe [here](../setup.md).
+Before continuing, make sure you have access to the Kubernetes API, as describe [here](../prepare.md).
 
 Make sure to install the PostgreSQL client on your workstation. On Ubuntu, this can be achieved as follows:
 

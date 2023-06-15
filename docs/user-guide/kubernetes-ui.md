@@ -31,7 +31,7 @@ sudo dpkg -i lens.deb
 
 ### Note for macOS and Linux users
 
-If you followed the [Install Prerequisites](setup.md) steps of this documentation, you have probably installed the `oidc-login` plugin to `kubectl` via `krew`. If so, Lens will not be able to find it. That makes Lens fail to authenticate via Dex, the OpenID Connect provider in Compliant Kubernetes.
+If you followed the [Install Prerequisites](prepare.md) steps of this documentation, you have probably installed the `oidc-login` plugin to `kubectl` via `krew`. If so, Lens will not be able to find it. That makes Lens fail to authenticate via Dex, the OpenID Connect provider in Compliant Kubernetes.
 
 You have two options for making the `oidc-login` plugin findable by Lens:
 
