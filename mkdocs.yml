@@ -194,6 +194,7 @@ nav:
     - 'CK8S Redis': 'release-notes/redis.md'
     - 'CK8S Jaeger': 'release-notes/jaeger.md'
     - 'CK8S Argo CD': 'release-notes/argocd.md'
+  - 'Glossary': 'glossary.md'
   - 'Roadmap': 'roadmap.md'
   - 'Support': 'https://elastisys.com/'
   - 'Training': 'https://elastisys.com/training/'
