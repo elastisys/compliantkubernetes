@@ -43,6 +43,7 @@ A person who writes an application that runs in a Kubernetes cluster.
 
 Usage notes:
 
+* It's okay to use "dev" or "developer", if it's clear from the context that we refer to an Application Developer.
 * If you need more precision, use:
     * "Application Developers who are Grafana administrators" (see [Grafana Roles](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/))
     * "Application Developers who are Harbor system administrators" (see [Harbor Managing Users](https://goharbor.io/docs/2.8.0/administration/managing-users/))
