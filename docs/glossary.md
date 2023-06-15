@@ -185,22 +185,14 @@ See also:
 
 * [Open source maintainers on Linux Foundation](https://www.linuxfoundation.org/blog/open-source-maintainers-what-they-need-and-how-to-support-them)
 
-## Operator
-
-Software extension to Kubernetes.
-
-See also:
-
-* [Operator pattern on Kubernetes Glossary](https://kubernetes.io/docs/reference/glossary/?all=true#term-operator-pattern)
-
-Usage notes:
-
-* Do NOT use "Operator" to refer to "Platform Administrator". Such usage is confusing.
-* It's okay to use "admin".
-
 ## Platform Administrator
 
 The people who operate Compliant Kubernetes and Additional Platform Services.
+
+Usage notes:
+
+* Do NOT use "Operator" to refer to "Platform Administrator". Such usage is confusing due to the [Operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).
+* It's okay to use "admin" or "administrator", if it's clear from the context that we refer to the Platform Administrator.
 
 See also:
 
