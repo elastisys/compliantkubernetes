@@ -197,8 +197,8 @@ Restore one or multiple indices from a snapshot
 
 ```bash
 snapshot_name=<Snapshot name from previous step>
-indices="kubernetes-*,kubeaudit-*,other-*,authlog-*" # list of comma separated indices or
-indices="-.*" # index patterns
+# Use "-.*" if index per namespace is enabled
+indices="kubernetes-*,kubeaudit-*,other-*,authlog-*"
 
 curl -kL -u "${user}:${password}" -X POST "${os_url}/_snapshot/${snapshot_repo}/${snapshot_name}/_restore?pretty" -H 'Content-Type: application/json' -d'
 {
