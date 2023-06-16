@@ -1,17 +1,26 @@
 Redis™
 ======
 
-![Redis Deployment Model](img/redis.drawio.svg)
+!!! elastisys "For Elastisys Managed Services Customers"
+
+    You can order Managed Ephemeral Redis™ by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals). Here are the highlights:
+
+    * **Business continuity**: Replicated across three dedicated Nodes.
+    * **Disaster recovery**: none -- we recommend against using Redis as a primary database.
+    * **Monitoring, security patching and incident management**: included.
+
+    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
+
+<figure>
+    <img alt="Redis Deployment Model" src="../img/redis.drawio.svg" >
+    <figcaption>
+        <strong>Redis on Compliant Kubernetes Deployment Model</strong>
+        <br>
+        This help you build a mental model on how to access Redis as an Application Developer and how to connect your application to Redis.
+    </figcaption>
+</figure>
 
 This page will help you succeed in connecting your application to a low-latency in-memory cache Redis which meets your security and compliance requirements.
-
-## Provision a New Redis Cluster
-
-Ask your service-specific administrator to install a Redis cluster inside your Compliant Kubernetes environment. The service-specific administrator will ensure the Redis cluster complies with your security requirements, including:
-
-* **Business continuity**: We recommend a highly available setup with at minimum three instances. The Redis client library that you use in your application needs to support [Redis Sentinel](https://redis.io/topics/sentinel). Notice that clients with Sentinel support need [extra steps to discover the Redis primary](https://redis.io/topics/sentinel-clients).
-* **Capacity management**: Your service-specific administrator will ensure Redis has enough capacity to meet your needs.
-* **Incident management**: Your administrator will set up the necessary Probes, dashboards and alerts, to discover issues and resolve them, before they become a problem.
 
 !!!important "Important: Improve Access Control with NetworkPolicies"
     Please note the follow information about [Redis access control](https://redis.io/topics/security) from the upstream documentation:
@@ -27,11 +36,12 @@ Ask your service-specific administrator to install a Redis cluster inside your C
     * Cached data: If this is lost, this data can be quickly retrieved from the primary database, such as the PostgreSQL cluster.
     * Session state: If this is lost, the user experience might be impacted -- e.g., the user needs to re-login -- but no data should be lost.
 
-Compliant Kubernetes recommends the [Spotahome operator](https://github.com/spotahome/redis-operator).
+!!!important "Important: Sentinel support"
+    We recommend a highly available setup with at minimum three instances. The Redis client library that you use in your application needs to support [Redis Sentinel](https://redis.io/topics/sentinel). Notice that clients with Sentinel support need [extra steps to discover the Redis primary](https://redis.io/topics/sentinel-clients).
 
 ## Install Prerequisites
 
-Before continuing, make sure you have access to the Kubernetes API, as describe [here](../setup.md).
+Before continuing, make sure you have access to the Kubernetes API, as describe [here](../prepare.md).
 
 Make sure to install the Redis client on your workstation. On Ubuntu, this can be achieved as follows:
 

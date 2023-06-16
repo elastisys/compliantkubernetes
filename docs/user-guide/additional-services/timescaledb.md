@@ -3,7 +3,7 @@ TimescaleDB®
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
-    You can order Managed TimescaleDB® Community by filing a [service ticket](https://elastisys.atlassian.net/). Here are the highlights:
+    You can order Managed TimescaleDB® Community by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals). Here are the highlights:
 
     * **Business continuity**:
         * Standard Plan is configured with two replicas (one primary and one standby).
@@ -14,10 +14,18 @@ TimescaleDB®
         * Point-in-Time Recovery (PITR) is provided for the last 7 days with a recovery point objective of 5 minutes.
         * Long-term backup schemes can be enabled after discussion with the customer.
     * **Only open-source features are included**
+    * **Monitoring, security patching and incident management**: included.
 
     For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
 
-![TimescaleDB Deployment Model](img/timescaledb.drawio.svg)
+<figure>
+    <img alt="TimescaleDB Deployment Model" src="../img/timescaledb.drawio.svg" >
+    <figcaption>
+        <strong>TimescaleDB on Compliant Kubernetes Deployment Model</strong>
+        <br>
+        This help you build a mental model on how to access TimescaleDB as an Application Developer and how to connect your application to TimescaleDB.
+    </figcaption>
+</figure>
 
 This page will help you succeed in connecting your application to the time-series database TimescaleDB which meets your security and compliance requirements.
 

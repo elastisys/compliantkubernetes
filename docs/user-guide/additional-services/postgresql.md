@@ -3,7 +3,7 @@ PostgreSQL®
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
-    You can order Managed PostgreSQL® by filing a [service ticket](https://elastisys.atlassian.net/). Here are the highlights:
+    You can order Managed PostgreSQL® by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals). Here are the highlights:
 
     * **Business continuity**:
         * Standard Plan is configured with two replicas (one primary and one standby).
@@ -13,10 +13,18 @@ PostgreSQL®
         * A full backup is taken every day between 0:00 am and 6:00 am CET. The backup retention period is 30 days unless otherwise requested by the customer.
         * Point-in-Time Recovery (PITR) is provided for the last 7 days with a recovery point objective of 5 minutes.
         * Long-term backup schemes can be enabled after discussion with the customer.
+    * **Monitoring, security patching and incident management**: included.
 
     For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
 
-![PostgreSQL Deployment Model](img/postgresql.drawio.svg)
+<figure markdown>
+    <img alt="PostgreSQL Deployment Model" src="../img/postgresql.drawio.svg" >
+    <figcaption>
+        <strong>PostgreSQL on Compliant Kubernetes Deployment Model</strong>
+        <br>
+        This help you build a mental model on how to access PostgreSQL as an Application Developer and how to connect your application to PostgreSQL.
+    </figcaption>
+</figure>
 
 This page will help you succeed in connecting your application to a primary relational database PostgreSQL which meets your security and compliance requirements.
 
@@ -24,7 +32,7 @@ This page will help you succeed in connecting your application to a primary rela
 
 ## Install Prerequisites
 
-Before continuing, make sure you have access to the Kubernetes API, as describe [here](../setup.md).
+Before continuing, make sure you have access to the Kubernetes API, as describe [here](../prepare.md).
 
 Make sure to install the PostgreSQL client on your workstation. On Ubuntu, this can be achieved as follows:
 

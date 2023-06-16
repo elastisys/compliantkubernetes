@@ -1,27 +1,26 @@
 Jaeger™ (preview)
 =================
 
-![Jaeger Deployment Model](img/jaeger.drawio.svg)
+!!! elastisys "For Elastisys Managed Services Customers"
 
-This page will help you succeed in connecting your application to Jaeger tracing  which meets your security and compliance requirements.
+    You can order Managed Jaeger™ by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
 
-<!--jaeger-setup-start-->
+    This is a preview feature. For more information, please read [ToS 9.1 Preview Features](https://elastisys.com/legal/terms-of-service/#91-preview-features).
 
-## Provision a New Jaeger Cluster
+<figure>
+    <img alt="Jaeger Deployment Model" src="../img/jaeger.drawio.svg" >
+    <figcaption>
+        <strong>Jaeger on Compliant Kubernetes Deployment Model</strong>
+        <br>
+        This help you build a mental model on how to access Jaeger as an Application Developer and how to connect your application to Jaeger.
+    </figcaption>
+</figure>
 
-Ask your service-specific administrator to install a Jaeger cluster inside your Compliant Kubernetes environment. The service-specific administrator will ensure the Jaeger cluster complies with your security requirements, including:
-
-* **Business continuity**: We recommend a highly available setup with 3 instances for Jaeger and Opensearch.
-* **Disaster recovery**: Your service-specific administrator will configure Opensearch with regular backups.
-* **Capacity management**: Your service-specific administrator will ensure Jaeger and Opensearch runs on dedicated (i.e., tainted) Kubernetes Nodes, as required to get the best performance.
-* **Incident management**: Your administrator will set up the necessary probes, dashboards and alerts, to discover issues and resolve them, before they become a problem.
-* **Access control**: Your administrator will set up a reverse proxy that provides authentication using Dex.
-
-Compliant Kubernetes recommends the [Jaeger operator](https://github.com/jaegertracing/jaeger-operator).
+This page will help you succeed in connecting your application to Jaeger tracing which meets your security and compliance requirements.
 
 ## Getting Access
 
-Your administrator will set up the authentication reverse proxy inside Compliant Kubernetes, which will give you access to JaegerUI.
+Your administrator will set up the authentication reverse proxy inside Compliant Kubernetes, which will give you access to Jaeger UI.
 
 ## Prepare your application
 
@@ -45,8 +44,6 @@ spec:
             fieldRef:
               fieldPath: status.hostIP
 ```
-
-<!--jaeger-setup-end-->
 
 ## Follow the Go-Live Checklist
 
