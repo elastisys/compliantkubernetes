@@ -106,23 +106,25 @@ The **Visualize** component in OpenSearch Dashboards is to create different visu
 To create visualizations:
 
   1. Open the sidebar and click **Visualize** under OpenSearch Dashboards.
-  2. Click **Create visualization** link located on the top right side of the page.
-  3. Select a visualization type, we will use **Pie** here.
-  4. Choose the index name or saved query name, if any,  under **New Pie / Choose a source**. We will use the **Kubernetes** index here.
+  1. Click **Create visualization** button located on the top right side of the page.
+  1. Select a visualization type, we will use **Pie** here.
+  1. Choose an index pattern or saved search name under **New Pie / Choose a source**. You can utilize the search function. We will use the **kubernetes\*** index here.
 
 By default a pie chart with the total number of logs will be provided by OpenSearch Dashboards. Let us divide the pie chart based on the number of logs contributed by each **namespace**. To do that perform the following steps:
 
-  1. Under **Buckets** click **add** then **Split Slices**. See the figure below.
+  1. Under **Buckets** click **Add** then **Split slices**. See the figure below.
 
       ![Visualize Bucket](../img/add_bucket.png)
 
-  1. Under **aggregation** select **Significant Terms** terms. see the figure below.
+  1. Under **Aggregation** select **Significant Terms** terms. See the figure below.
 
       ![Visualize Aggregation](../img/aggregation.png)
 
-  1. Select **Kubernetes.namespace_name.keyword** under **field**. See the figure below.
+  1. Under **Field** select **kubernetes.namespace_name.keyword** and under **Size** input **10**. See the figure below.
 
       ![Visualize Fields](../img/namespace.png)
+
+  1. Click **Update** button located in the bottom right corner.
 
 The final result will look like the following figure.
 
@@ -143,8 +145,8 @@ Let us bring the two visualizations that we created above together in a single d
 To do that:
 
 1. Open the sidebar and click **Dashboard** under OpenSearch Dashboards.
-2. Click **Create Dashboard** link located on the top right side of the page.
-3. Click **Add existing** link located on the left side.
+2. Click **Create dashboard** button located on the top right side of the page.
+3. Click **Add an existing** link located on the left side.
 4. Select the name of the two charts/visualizations that you created above.
 
 The figure below shows the dashboard generated from the above steps showing the two pie charts in a single page.
