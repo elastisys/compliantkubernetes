@@ -5,7 +5,7 @@ Jaeger™ (preview)
 
     You can order Managed Jaeger™ by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
 
-    This is a preview feature. For more information, please read [ToS 9.1 Preview Features](https://elastisys.com/legal/terms-of-service/#91-preview-features).
+    As of 2023-06-16, this is a preview feature. For more information about what preview features are, please read [ToS 9.1 Preview Features](https://elastisys.com/legal/terms-of-service/#91-preview-features).
 
 ![Jaeger Deployment Model](img/jaeger.drawio.svg)
 
