@@ -17,7 +17,14 @@ PostgreSQL®
 
     For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
 
-![PostgreSQL Deployment Model](img/postgresql.drawio.svg)
+<figure markdown>
+    <img alt="PostgreSQL Deployment Model" src="../img/postgresql.drawio.svg" >
+    <figcaption>
+        <strong>PostgreSQL on Compliant Kubernetes Deployment Model</strong>
+        <br>
+        This help you build a mental model on how to access PostgreSQL as an Application Developer and how to connect your application to PostgreSQL.
+    </figcaption>
+</figure>
 
 This page will help you succeed in connecting your application to a primary relational database PostgreSQL which meets your security and compliance requirements.
 

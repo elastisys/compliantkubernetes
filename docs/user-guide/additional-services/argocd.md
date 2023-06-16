@@ -7,7 +7,14 @@ Argo™ CD (preview)
 
     This is a preview feature. For more information, please read [ToS 9.1 Preview Features](https://elastisys.com/legal/terms-of-service/#91-preview-features).
 
-![ArgoCD Deployment Model](img/argocd.drawio.svg)
+<figure>
+    <img alt="Argo CD Deployment Model" src="../img/argocd.drawio.svg" >
+    <figcaption>
+        <strong>Argo CD on Compliant Kubernetes Deployment Model</strong>
+        <br>
+        This help you build a mental model of how to levarage Argo CD for deploying your application.
+    </figcaption>
+</figure>
 
 This page will help you succeed in connecting to Argo CD application which meets your security and compliance requirements.
 

@@ -7,7 +7,14 @@ Jaeger™ (preview)
 
     This is a preview feature. For more information, please read [ToS 9.1 Preview Features](https://elastisys.com/legal/terms-of-service/#91-preview-features).
 
-![Jaeger Deployment Model](img/jaeger.drawio.svg)
+<figure>
+    <img alt="Jaeger Deployment Model" src="../img/jaeger.drawio.svg" >
+    <figcaption>
+        <strong>Jaeger on Compliant Kubernetes Deployment Model</strong>
+        <br>
+        This help you build a mental model on how to access Jaeger as an Application Developer and how to connect your application to Jaeger.
+    </figcaption>
+</figure>
 
 This page will help you succeed in connecting your application to Jaeger tracing which meets your security and compliance requirements.
 

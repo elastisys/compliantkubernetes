@@ -14,7 +14,14 @@ RabbitMQ®
 
     For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
 
-![RabbitMQ Deployment Model](img/rabbitmq.drawio.svg)
+<figure>
+    <img alt="RabbitMQ Deployment Model" src="../img/rabbitmq.drawio.svg" >
+    <figcaption>
+        <strong>RabbitMQ on Compliant Kubernetes Deployment Model</strong>
+        <br>
+        This help you build a mental model on how to access RabbitMQ as an Application Developer and how to connect your application to RabbitMQ.
+    </figcaption>
+</figure>
 
 This page will help you succeed in connecting your application to a RabbitMQ-based message queue which meets your security and compliance requirements.
 

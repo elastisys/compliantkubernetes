@@ -11,10 +11,14 @@ Redis™
 
     For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
 
-
-
-
-![Redis Deployment Model](img/redis.drawio.svg)
+<figure>
+    <img alt="Redis Deployment Model" src="../img/redis.drawio.svg" >
+    <figcaption>
+        <strong>Redis on Compliant Kubernetes Deployment Model</strong>
+        <br>
+        This help you build a mental model on how to access Redis as an Application Developer and how to connect your application to Redis.
+    </figcaption>
+</figure>
 
 This page will help you succeed in connecting your application to a low-latency in-memory cache Redis which meets your security and compliance requirements.
 

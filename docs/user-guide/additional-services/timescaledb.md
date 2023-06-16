@@ -18,7 +18,14 @@ TimescaleDB®
 
     For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
 
-![TimescaleDB Deployment Model](img/timescaledb.drawio.svg)
+<figure>
+    <img alt="TimescaleDB Deployment Model" src="../img/timescaledb.drawio.svg" >
+    <figcaption>
+        <strong>TimescaleDB on Compliant Kubernetes Deployment Model</strong>
+        <br>
+        This help you build a mental model on how to access TimescaleDB as an Application Developer and how to connect your application to TimescaleDB.
+    </figcaption>
+</figure>
 
 This page will help you succeed in connecting your application to the time-series database TimescaleDB which meets your security and compliance requirements.
 
