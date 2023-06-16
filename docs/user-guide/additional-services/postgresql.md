@@ -3,7 +3,7 @@ PostgreSQL®
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
-    You can order Managed PostgreSQL® by filing a [service ticket](https://elastisys.atlassian.net/). Here are the highlights:
+    You can order Managed PostgreSQL® by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals). Here are the highlights:
 
     * **Business continuity**:
         * Standard Plan is configured with two replicas (one primary and one standby).

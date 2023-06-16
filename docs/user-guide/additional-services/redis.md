@@ -3,7 +3,7 @@ Redis™
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
-    You can order Managed Ephemeral Redis™ by filing a [service ticket](https://elastisys.atlassian.net/). Here are the highlights:
+    You can order Managed Ephemeral Redis™ by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals). Here are the highlights:
 
     * **Business continuity**: Replicated across three dedicated Nodes.
     * **Disaster recovery**: none -- we recommend against using Redis as a primary database.
