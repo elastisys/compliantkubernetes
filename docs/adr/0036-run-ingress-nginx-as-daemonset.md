@@ -48,7 +48,7 @@ Chosen options: 1 & 3 & 5
 
 * Feels like some resources are wasted on very large environments with many nodes.
 
-## Recommendation to Operators
+## Recommendation to Platform Administrators
 
 - Do not run the ingress-nginx on the AMS nodes.
 - For Infra Providers without service type loadbalancer start using service type NodePort for nginx and also use the external load balancer to route traffic from ports 80/443 to node ports 30080/30443

@@ -43,6 +43,6 @@ The Compliant Kubernetes Intrusion Detection Dashboard allows to quickly audit a
 
 ## Handling Non-Compliance
 
-Make sure you have a proper incident management policy in place. If an attack is ongoing, it might be better to take the system offline to protect data from getting in the wrong hands. Operators need to be trained on what events justify such an extreme action, otherwise, escalating the issue along the reporting chain may add delays that favor the attacker.
+Make sure you have a proper incident management policy in place. If an attack is ongoing, it might be better to take the system offline to protect data from getting in the wrong hands. Platform administrators need to be trained on what events justify such an extreme action, otherwise, escalating the issue along the reporting chain may add delays that favor the attacker.
 
 In less severe cases, simply contact the developers to investigate their code and fix any potential misconfiguration.

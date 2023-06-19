@@ -39,7 +39,7 @@ Chosen option: Use local storage with local-volume-provisioner and move the code
 * Scaling the storage becomes harder as it will involve replacing the nodes.
 * We are limited by the size of the volumes that are available within the cloud provider offering.
 
-## Recommendation to Operators
+## Recommendation to Platform Administrators
 
 When using the local-volume-provisioner please create dedicated partitions and make sure to reserve enough space for the boot partition. Failing to do so can lead to entire disc to become full and the node will become unresponsive and crash.
 

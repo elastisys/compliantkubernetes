@@ -39,7 +39,7 @@ Chosen option: Increase the boot disk size to 100GB for all nodes irrespective o
 * We need to replace all existing nodes for our existing environments
 * Cost will increase depending on number of nodes and price per GB of storage
 
-## Recommendation to Operators
+## Recommendation to Platform Administrators
 
 * Try to use same VM flavors on all environments
 * Use VM flavor with local disk of 100GB or whichever is closest to this size depending on cloud provider for controlplane nodes.

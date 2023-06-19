@@ -60,7 +60,7 @@ elastisys.io/node-type=jaegertracing:NoSchedule
 * Forces additional services to be sized based on available Node sizes. While some commonality exists, Node sizes are specific to each infrastructure provider.
 * Latency is somewhat increased. This is an issue mostly for Redis, as other services are a bit more latency tolerant.
 
-## Recommendations to Operators
+## Recommendations to Platform Administrators
 
 For better application performance and security, run system Deployments and StatefulSets -- such as Ingress Controllers, Prometheus, Velero, Gatekeeper and Starboard -- onto dedicated Nodes.
 

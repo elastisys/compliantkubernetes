@@ -37,6 +37,6 @@ The option `Adjust OOM score so that kernel does not OOM critical Pods` is  not 
 * Application developer pods will be stuck in pending until resources are available and this might make the application developer feel that their pods are less important.
 * [kubectl may not observe pressure right away](https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#kubelet-may-not-observe-memory-pressure-right-away)
 
-## Recommendation to Operators
+## Recommendation to Platform Administrators
 
 Test multiple comfigurations using kubelet hard eviction, priotiry classes and other option to obtain the desired behaviour where the nodes do not become unresponsive and our components are not getting evicted when the node is overcommitted by the application developer.

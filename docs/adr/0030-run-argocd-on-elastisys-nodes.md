@@ -38,7 +38,7 @@ Scale up the Elastisys Nodes to 4C8GB before installing managed ArgoCD.
 * We need to scale up the Elastisys nodes to 4C8GB
 * We are sharing the Elastisys nodes resources with the other Elastisys platform components, e.g., Ingress Controller.
 
-## Recommendations to Operators
+## Recommendations to Platform Administrators
 
 Specifically, use the following Node labels
 

@@ -33,6 +33,6 @@ Chosen option: "Allow Harbor robot accounts which can create Harbor robot accoun
 
 * Increases the chances that the application developer can cripple the Harbor service.
 
-## Recommendations to Operators
+## Recommendations to Platform Administrators
 
 Make it clear in the ticket requesting this that the application developer accepts the risk of "shooting themselves in the foot"

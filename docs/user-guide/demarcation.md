@@ -31,7 +31,7 @@ Can I?
 
 Compliant Kubernetes comes with a lot of safeguards to ensure you protect your business reputation and earn the trust of your application developers. Furthermore, it is a good idea to keep regulators happy, since they bring public trust into digitalization. Public trust is necessary to shift application developers away from pen-and-paper to drive usage of your amazing application.
 
-If you used Kubernetes before, especially if you acted as a Kubernetes administrator, then being a Compliant Kubernetes user might feel a bit limiting. For example, you might not be able to run containers with root (`uid=0`) as you were used to. Again, these are not limitations, rather safeguards.
+If you used Kubernetes before, especially if you acted as a platform administrator, then being a Compliant Kubernetes user might feel a bit limiting. For example, you might not be able to run containers with root (`uid=0`) as you were used to. Again, these are not limitations, rather safeguards.
 
 Why?
 ----

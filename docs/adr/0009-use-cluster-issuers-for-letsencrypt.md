@@ -31,7 +31,7 @@ Chosen option: "Use ClusterIssuers in the service cluster; optionally enable Clu
 
 Each cluster is configured with an optional ClusterIssuer called `letsencrypt-prod` for LetsEncrypt production and `letsencrypt-staging` for LetsEncrypt staging. The email address for the ClusterIssuers is configured by the administrator.
 
-## Recommendations to Operators
+## Recommendations to Platform Administrators
 
 ### Direct LetsEncrypt emails to a "logging" mailbox
 

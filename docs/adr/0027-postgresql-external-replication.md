@@ -12,7 +12,7 @@ Should we allow and enable external replication for PostgreSQL, or should we off
 ## Decision Drivers
 
 * We want to best serve the application developer needs.
-* We want to make the operator life easier.
+* We want to make the platform administrators life easier.
 * We want to ensure platform security and stability.
 * We want to make it hard for application developers to break the platform via trivial mistakes.
 
@@ -37,8 +37,8 @@ The diagram of the solution looks like this:
 
 ### Positive Consequences
 
-* We make the operator life easier by offering them a possibility to clone/replicate their PostgreSQL cluster from the S3 bucket containing the basebackup and WAL files.
-* Operator can now use 3rd party tools that can pull the basebackup and WAL files and clone the PostgreSQL cluster in another location.
+* We make the platform administrators life easier by offering them a possibility to clone/replicate their PostgreSQL cluster from the S3 bucket containing the basebackup and WAL files.
+* Platform administrators can now use 3rd party tools that can pull the basebackup and WAL files and clone the PostgreSQL cluster in another location.
 * Increase application developer autonomy
 
 ### Negative Consequences
@@ -46,7 +46,7 @@ The diagram of the solution looks like this:
 * For providers that do not offer S3 with ACL, we need to create and maintain an rclone job that copies the files from the initial S3 backup bucket to a new S3 bucket (preferably owned by the application developer)
 * When rclone is involved, the time to recover will be up to 24 hours old as we will rclone once per day.
 
-## Recommendation to Operators
+## Recommendation to Platform Administrators
 
 On providers that offer S3 with ACL, this can be done with small effort.
 On providers that do not offer S3 with ACL we need to clone the bucket containing the file to another S3 bucket that is preferably owned by the application developer.

@@ -54,10 +54,10 @@ Configuration of alerts happens in the OMT.
 * Does not capture alerting know-how in Compliant Kubernetes.
 * Migration to a new OMT means all alerting configuration needs to be migrated to the new tool. Fortunately, this can be done incrementally.
 
-## Recommendations to Operators
+## Recommendations to Platform Administrators
 
-* Operators should familiarize themselves with the capabilities of OMT, e.g., OpsGenie. This should be first done using a web UI, since that improves discoverability of such capabilities.
-* When alerting configuration becomes too complex and/or repetitive, administrators should employ a configuration management tools, such as Terraform, to configure the OMT.
+* Platform administrators should familiarize themselves with the capabilities of OMT, e.g., OpsGenie. This should be first done using a web UI, since that improves discoverability of such capabilities.
+* When alerting configuration becomes too complex and/or repetitive, platform administrators should employ a configuration management tools, such as Terraform, to configure the OMT.
 
 ## Links
 

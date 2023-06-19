@@ -17,7 +17,7 @@ So, should we enforce the usage of TTL on Jobs?
 * We want to maintain platform security and stability.
 * We want to find a solution which is scalable and minimizes MSE burden.
 * We want to best serve the application developers.
-* We want to make the operator life easier.
+* We want to make the platform administrator life easier.
 
 ## Considered Options
 

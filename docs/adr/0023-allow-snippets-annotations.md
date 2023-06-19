@@ -37,7 +37,7 @@ Chosen option: Allow `the use of "config-snippets annotations" with Ingress`, bu
 * Platform security is at a small risk if this feature is misused by application developers.
 * Platform stability is at a small risk if this feature is misused by application developers.
 
-## Recommendation to Operators
+## Recommendation to Platform Administrators
 
 If you enable this feature, then make sure application developers understand and accept the added stability and security risks. A message as follows could be used:
 ```

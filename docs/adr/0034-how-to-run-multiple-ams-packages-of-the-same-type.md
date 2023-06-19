@@ -56,7 +56,7 @@ Respect [ADR-0022](0022-use-dedicated-nodes-for-additional-services.md) and add 
 * The infrastructure footprint is increased for option 2.
 * With options 1 and 3 the stability of the AMS package is reduced, because if 1 node is unresponsive then it will affect not 1 AMS package, but multiple AMS packages.
 
-## Recommendations to Operators
+## Recommendations to Platform Administrators
 
 - Use label like: `elastisys.io/ams-cluster-name`
 - Update the AMS repo and documentation with this and set it by default to automatically picked up from kubectl
