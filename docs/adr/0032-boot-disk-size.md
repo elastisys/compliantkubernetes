@@ -6,13 +6,13 @@
 
 ## Context and Problem Statement
 
-We have often defaulted to using boot disks of 50GB where possible but as of late we have noticed that for some environments this is not sufficient. We also noticed that the available space is commonly filled up by customer container images.
+We have often defaulted to using boot disks of 50GB where possible but as of late we have noticed that for some environments this is not sufficient. We also noticed that the available space is commonly filled up by application developer container images.
 We would like to have same boot disk sizes for all our nodes on all the cloud providers if possible.
 Should we increase the boot disk size to a bigger size?
 
 ## Decision Drivers
 
-* We want to best serve our customer needs.
+* We want to best serve the application developer needs.
 * We want to find a solution which is scalable and minimizes administrator burden.
 * We don't want to waste infrastructure.
 

@@ -24,7 +24,7 @@ Where should we run ArgoCD?
 
 ## Decision Outcome
 
-Chosen option: "Run ArgoCD services on Elastisys Nodes, and scale up the nodes.",  because it improves the stability and security of the platform, avoids resource waste and makes the ArgoCD service more affordable to our customers.
+Chosen option: "Run ArgoCD services on Elastisys Nodes, and scale up the nodes.",  because it improves the stability and security of the platform, avoids resource waste and makes the ArgoCD service more affordable to the application developers.
 
 Scale up the Elastisys Nodes to 4C8GB before installing managed ArgoCD.
 

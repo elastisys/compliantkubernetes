@@ -16,7 +16,7 @@ Feature can be delivered ...
     * Feature is well-understood and aligned in marketing, sales, product and operations
     * Feature is clearly covered by ToS
     * Feature is implemented using a stable upstream API
-    * Feature is used by at least 2 customers
+    * Feature is used by at least 2 application developers
     * Feature generates a manageable number of service tickets, whether questions or change orders
     * Feature has well understood packaging and pricing
     * Feature can be billed easily
@@ -34,7 +34,7 @@ Feature can be delivered ...
     * Feature integrates well with Ops observability (alerting, logging, metrics)
 
 * ... without compromising our security posture
-    * Feature has good and well-understood access control towards customer
+    * Feature has good and well-understood access control towards application developer
     * Feature does not expose platform to additional risk (needs escalated privilegies that were not analyzed, etc.)
     * Feature has good and well-understood security patching
     * Feature has good and well-understood upgrades
@@ -54,7 +54,7 @@ It is the role of our QA manager to decide how to apply these criteria to each f
 When you have created your Compliant Kubernetes cluster it can be wise to run some checks to ensure that it works as expected.
 This document details some snippets that you can follow in order to ensure some functionality of the cluster.
 
-## Customer API and Harbor access
+## Application developer API and Harbor access
 
 ### Pre-requisites
 - You've got Docker installed.

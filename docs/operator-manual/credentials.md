@@ -61,7 +61,7 @@ SSH Keys
 PGP Keys
 --------
 
-* Purpose: encrypt/decrypt sensitive information, e.g., service account credentials, customer names, incident reports, financial information, etc.
+* Purpose: encrypt/decrypt sensitive information, e.g., service account credentials, application developer names, incident reports, financial information, etc.
 * Owner: administrator
 * Type: individual credentials
 * Use for:
