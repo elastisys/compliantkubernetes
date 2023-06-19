@@ -80,9 +80,15 @@ To take a snapshot on-demand, execute
 
 Set the following variables
 
-- `user` - OpenSearch user with permissions to manage snapshots, usually `admin`
-- `password` - password for the above user
-- `os_url` - URL to OpenSearch
+1. OpenSearch user with permissions to manage snapshots, usually `admin`
+1. The password for the above user
+1. The URL to OpenSearch
+
+```bash
+user=admin
+password=$(sops -d ${CK8S_CONFIG_PATH}/secrets.yaml | yq4 '.opensearch.adminPassword')
+os_url=https://opensearch.$(yq4 '.global.opsDomain' ${CK8S_CONFIG_PATH}/common-config.yaml)
+```
 
 !!!important "Restoring from off-site backup"
     - To restore from an **encrypted** off-site backup:
@@ -191,7 +197,8 @@ Restore one or multiple indices from a snapshot
 
 ```bash
 snapshot_name=<Snapshot name from previous step>
-indices="<list of comma separated indices/index patterns>"
+# Use "-.*" if index per namespace is enabled
+indices="kubernetes-*,kubeaudit-*,other-*,authlog-*"
 
 curl -kL -u "${user}:${password}" -X POST "${os_url}/_snapshot/${snapshot_repo}/${snapshot_name}/_restore?pretty" -H 'Content-Type: application/json' -d'
 {
@@ -262,13 +269,13 @@ Install the OpenSearch suite:
 ./bin/ck8s ops helmfile sc -l group=opensearch apply
 ```
 
-Wait for the the installation to complete.
+Wait for the installation to complete.
 
 After the installation, go back up to the **Restore** section to proceed with the restore.
 If you want to restore all indices, use the following `indices` variable
 
 ```bash
-indices="kubernetes-*,kubeaudit-*,other-*"
+indices="kubernetes-*,kubeaudit-*,other-*,authlog-*"
 ```
 
 !!!note
