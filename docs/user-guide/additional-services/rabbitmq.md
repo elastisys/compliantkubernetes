@@ -8,7 +8,7 @@ RabbitMQ®
     * **Business continuity**: three replicas.
     * **Disaster recovery**:
         * Backup scope includes user definitions, vhost definitions, topology definitions.
-        * Backup does NOT include messages -- RabbitMQ core contributors discourage this.
+        * Backup does NOT include messages -- RabbitMQ core maintainers discourage this.
         * A full backup is taken every day between 0:00 am and 6:00 am CET. The backup retention period is 30 days unless otherwise requested by the customer.
     * **Monitoring, security patching and incident management**: included.
 
