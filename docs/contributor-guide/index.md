@@ -86,7 +86,7 @@ Start by setting up some variables:
 
 ```console
 DOMAIN="example.com"
-IP="203.0.113.123" # IP to LB/ingress endpoint for the service cluster
+IP="203.0.113.123" # IP to LB/ingress endpoint for the management cluster
 CK8S_ENVIRONMENT_NAME="my-cluster-name"
 
 SUBDOMAINS=(  "*.ops.${CK8S_ENVIRONMENT_NAME}"

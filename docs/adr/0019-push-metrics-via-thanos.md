@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-Currently, the service cluster exposes several end-points for workload clusters:
+Currently, the management cluster exposes several end-points for workload clusters:
 
 * Dex, for authentication;
 * OpenSearch, for pushing logs (append-only);
@@ -27,17 +27,17 @@ Shall we push or pull metrics using Thanos?
 ## Decision Drivers
 
 * We want to support multiple workload clusters.
-* We want to untangle the life-cycle of the service cluster and workload cluster.
-* The service cluster acts as a tamper-proof logging environment, hence it should be difficult to tamper with metrics from the workload cluster.
+* We want to untangle the life-cycle of the management cluster and workload cluster.
+* The management cluster acts as a tamper-proof logging environment, hence it should be difficult to tamper with metrics from the workload cluster.
 
 ## Considered Options
 
-1. Push metrics from workload cluster to service cluster.
-1. Pull metrics from workload cluster to service cluster.
+1. Push metrics from workload cluster to management cluster.
+1. Pull metrics from workload cluster to management cluster.
 
 ## Decision Outcome
 
-We chose to push metrics from the workload cluster to the service cluster via
+We chose to push metrics from the workload cluster to the management cluster via
 via [Thanos Receive](https://thanos.io/tip/components/receive.md/),
 because it keeps the "direction" of metrics flow.
 Hence, we keep support for multiple workload clusters without any changes.
@@ -48,9 +48,9 @@ At any rate, even if we end up with Thanos Sidecar, migrating in two steps -- fi
 
 ### Positive Consequences
 
-* All of `*.$opsDomain` can point to the service cluster workers -- optionally fronted by a load-balancer -- which considerably simplifies setup.
-* Multiple workload clusters can push metrics to the service cluster, which paves the path to workload multi-tenancy.
-* The service cluster can be set up first, followed by one-or-more workload clusters.
+* All of `*.$opsDomain` can point to the management cluster workers -- optionally fronted by a load-balancer -- which considerably simplifies setup.
+* Multiple workload clusters can push metrics to the management cluster, which paves the path to workload multi-tenancy.
+* The management cluster can be set up first, followed by one-or-more workload clusters.
 * Workload clusters become more "cattle"-ish.
 
 ### Negative Consequences

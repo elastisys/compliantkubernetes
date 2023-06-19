@@ -8,7 +8,7 @@ Technical Story: https://github.com/elastisys/compliantkubernetes-apps/issues/74
 
 ## Context and Problem Statement
 
-Compliant Kubernetes allows multiple workload clusters to be connected to a single service cluster.
+Compliant Kubernetes allows multiple workload clusters to be connected to a single management cluster.
 This allows the metrics of multiple workload clusters to be inspected via the same dashboards.
 
 How should we organise metrics to allow users and admins to select for which clusters they want to see metrics?

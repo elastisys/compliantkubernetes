@@ -1,4 +1,4 @@
-# Run Cluster API controllers on service cluster
+# Run Cluster API controllers on management cluster
 
 * Status: accepted
 * Deciders: Cluster API management and Tekton meeting
@@ -23,27 +23,27 @@ Where should we run the Cluster API controller?
   - All clusters run the Cluster API controllers and all clusters manage themselves independently.
 * Management cluster
   - A new separate management cluster runs the Cluster API controllers and manages all clusters in the environment.
-* Service cluster
-  - The service cluster runs the Cluster API controllers and manages all clusters in the environment.
+* management cluster
+  - The management cluster runs the Cluster API controllers and manages all clusters in the environment.
 
 ## Decision Outcome
 
-Chosen option: "Service cluster", because it strikes the balance between security, as it has relatively good availability properties and no Kubernetes admin credentials have to be stored in the workload cluster, and maintainability, as clusters can be managed centralised.
+Chosen option: "management cluster", because it strikes the balance between security, as it has relatively good availability properties and no Kubernetes admin credentials have to be stored in the workload cluster, and maintainability, as clusters can be managed centralised.
 
 ### Positive Consequences <!-- optional -->
 
 * Requires no additional resources
 * Requires single instance of Cluster API controllers per environment
 * Requires less deployment and maintenance efforts to manage
-* Service cluster already provides services to allow backups, monitoring, and logging
+* Management cluster already provides services to allow backups, monitoring, and logging
 * Workload cluster will not have Kubernetes admin credentials
 
 ### Negative Consequences <!-- optional -->
 
-* Cluster API controllers availability relies on service cluster
-  - Main consideration is control plane, since service cluster has sufficient nodes for the controller to reschedule
+* Cluster API controllers availability relies on management cluster
+  - Main consideration is control plane, since management cluster has sufficient nodes for the controller to reschedule
   - Workload cluster will still function but it will lose auto heal and auto scaling functions
-* Service cluster will have Kubernetes admin credentials for the workload cluster
+* Management cluster will have Kubernetes admin credentials for the workload cluster
 
 ## Pros and Cons of the Options <!-- optional -->
 
@@ -71,11 +71,11 @@ Chosen option: "Service cluster", because it strikes the balance between securit
 * Good, single cluster has to be bootstrapped
 * Good, will not contain Kubernetes admin credentials in workload cluster
 
-### Service cluster
+### Management cluster
 
 * Good, no additional resource requirements
-* Good, service cluster has required supporting services
-* Bad, workload cluster lose management (auto healing and auto scaling) on service cluster failure, although...
+* Good, management cluster has required supporting services
+* Bad, workload cluster lose management (auto healing and auto scaling) on management cluster failure, although...
 * Good, workload cluster state can be backed up and restored
 * Good, environment can be managed as a group or individually if needed, although...
 * Bad, all cluster can be impacted by configuration mistakes, although...

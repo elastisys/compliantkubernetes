@@ -55,5 +55,5 @@ $ diff -y before-keys.json after-keys.json
 
 ### Negative Consequences
 
-* Dex will have a more permissions in the Service Cluster (see [`rbac.yaml`](https://github.com/dexidp/helm-charts/blob/dex-0.6.3/charts/dex/templates/rbac.yaml))
+* Dex will have a more permissions in the management Cluster (see [`rbac.yaml`](https://github.com/dexidp/helm-charts/blob/dex-0.6.3/charts/dex/templates/rbac.yaml))
 * We will need to closely monitor migration steps for Dex

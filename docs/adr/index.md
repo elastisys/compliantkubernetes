@@ -106,9 +106,9 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0030](0030-run-argocd-on-elastisys-nodes.md) - Run ArgoCD on the Elastisys nodes
 * [ADR-0031](0031-run-csi-cinder-controllerplugin-on-elastisys-nodes.md) - Run csi-cinder-controllerplugin on the Elastisys nodes
 * [ADR-0032](0032-boot-disk-size.md) - Boot disk size on nodes
-* [ADR-0033](0033-run-cluster-api-controllers-on-service-cluster.md) - Run Cluster API controllers on service cluster
+* [ADR-0033](0033-run-cluster-api-controllers-on-service-cluster.md) - Run Cluster API controllers on management cluster
 * [ADR-0034](0034-how-to-run-multiple-ams-packages-of-the-same-type.md) - How to run multiple AMS packages of the same type in the same ck8s environment
-* [ADR-0035](0035-run-tekton-on-service-cluster.md) - Run Tekton on service cluster
+* [ADR-0035](0035-run-tekton-on-service-cluster.md) - Run Tekton on management cluster
 * [ADR-0036](0036-run-ingress-nginx-as-daemonset.md) - Run ingress-nginx as a daemonSet
 * [ADR-0037](0037-enforce-ttl-on-jobs.md) - Enforce TTL on Jobs
 * [ADR-0038](0038-replace-starboard-operator-with-trivy-operator.md) - Replace the starboard-operator with the trivy-operator

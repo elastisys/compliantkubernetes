@@ -23,7 +23,7 @@ Most regulations require logging to a tamper-proof environment. This is usually 
 To achieve this, Compliant Kubernetes is implemented as two Kubernetes clusters
 
 * A **workload cluster**, which hosts your application, and
-* A **service cluster**, which hosts services for monitoring, logging and vulnerability management.
+* A **management cluster**, which hosts services for monitoring, logging and vulnerability management.
 
 ![C4 Model, Level 2 Diagram](img/ck8s-c4model-level2.png)
 
