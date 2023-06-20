@@ -31,7 +31,7 @@ We provide no SLA on the rclone job.
 
 The option `Allow external replication on PostgreSQL` is putting the platform stability and integrity at risk, because external replication is done via the replication slots and if the destination of the replication is unreachable or stopped, then the WAL files are kept on disc until the files are sent to destination and confirmed to be received. This means that the WAL files will pile up until the cluster runs out of space and crashes. This also leads to data loss and data corruption.
 
-On cloud providers that do not have native S3 support with ACL capabilities we need endpoint/credentials from the user to a S3 bucket of their choosing that we can rclone to. We rclone the backups (once per night) in this new S3 bucket and provide credentials to the application developer. We provide no SLA on the rclone job.
+On Infrastructure Providers that do not have native S3 support with ACL capabilities we need endpoint/credentials from the user to a S3 bucket of their choosing that we can rclone to. We rclone the backups (once per night) in this new S3 bucket and provide credentials to the application developer. We provide no SLA on the rclone job.
 The diagram of the solution looks like this:
 ![Diagram](../img/adr-0027.drawio.svg)
 

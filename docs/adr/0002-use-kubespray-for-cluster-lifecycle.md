@@ -11,7 +11,7 @@ Compliant Kubernetes promises: "Multi-cloud. Open source. Compliant". So far, we
 ## Decision Drivers
 
 * We want to differentiate on top of vanilla Kubernetes cluster.
-* We want to be able to run Compliant Kubernetes on top of as many cloud providers as possible.
+* We want to be able to run Compliant Kubernetes on top of as many Infrastructure Providers as possible.
 * We promise building on top of best-of-breeds open source projects.
 * We want to reduce burden with developing and maintaining our in-house tooling for cluster life-cycle management.
 
@@ -29,7 +29,7 @@ We chose kubespray, because it is best aligned with our interests, both feature-
 ### Positive Consequences
 
 * We learn how to use a widely-used tool for cluster lifecycle management.
-* We support many cloud providers.
+* We support many Infrastructure Providers.
 * We can differentiate on top of vanilla Kubernetes.
 
 ### Negative Consequences
@@ -55,7 +55,7 @@ We chose kubespray, because it is best aligned with our interests, both feature-
 
 ### kops
 
-* Good, because it integrates well with the underlying cloud provider (e.g., AWS).
-* Bad, because it supports fewer cloud providers than kubespray.
+* Good, because it integrates well with the underlying Infrastructure Provider (e.g., AWS).
+* Bad, because it supports fewer Infrastructure Providers than kubespray.
 
 NOTE: In the future, we might want to support `compliantkubernetes-apps` on top of both kops and kubespray, but this does not seem to bring value just now.

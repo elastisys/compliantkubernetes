@@ -7,7 +7,7 @@
 ## Context and Problem Statement
 
 We have often defaulted to using boot disks of 50GB where possible but as of late we have noticed that for some environments this is not sufficient. We also noticed that the available space is commonly filled up by application developer container images.
-We would like to have same boot disk sizes for all our nodes on all the cloud providers if possible.
+We would like to have same boot disk sizes for all our nodes on all the Infrastructure Providers if possible.
 Should we increase the boot disk size to a bigger size?
 
 ## Decision Drivers
@@ -42,8 +42,8 @@ Chosen option: Increase the boot disk size to 100GB for all nodes irrespective o
 ## Recommendation to Platform Administrators
 
 * Try to use same VM flavors on all environments
-* Use VM flavor with local disk of 100GB or whichever is closest to this size depending on cloud provider for controlplane nodes.
-* For worker nodes use 100GB boot disk size on cloud providers that allow it and on the ones that we can't use the VM flavor with the closest disk size.
+* Use VM flavor with local disk of 100GB or whichever is closest to this size depending on Infrastructure Provider for controlplane nodes.
+* For worker nodes use 100GB boot disk size on Infrastructure Providers that allow it and on the ones that we can't use the VM flavor with the closest disk size.
 
 ## Links
 

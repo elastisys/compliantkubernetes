@@ -174,7 +174,7 @@ JUMP_NODE=89.145.xxx.yyy  # You have access to this one
 ssh -J ubuntu@$JUMP_NODE ubuntu@$UNHEALTHY_NODE
 ```
 
-Try rebooting the Node via cloud provider specific CLI:
+Try rebooting the Node via Infrastructure Provider specific CLI:
 
 ```bash
 UNHEALTHY_NODE=cksc-worker-2
@@ -378,7 +378,7 @@ Then your Kubernetes data plane Nodes cannot connect to themselves with the IP a
 
 ## How do I check if infrastructure drifted due to manual intervention?
 
-Go to the docs of the cloud provider and run Terraform `plan` instead of `apply`. For Exoscale, it looks as follows:
+Go to the docs of the Infrastructure Provider and run Terraform `plan` instead of `apply`. For Exoscale, it looks as follows:
 
 ```bash
 TF_SCRIPTS_DIR=$(readlink -f compliantkubernetes-kubespray/kubespray/contrib/terraform/exoscale)

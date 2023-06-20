@@ -138,7 +138,7 @@ done
 
 ### Set up Rook
 
-_Only for cloud providers that doesn't natively support storage kubernetes._
+_Only for Infrastructure Providers that doesn't natively support storage kubernetes._
 
 Run the following command to set up Rook.
 

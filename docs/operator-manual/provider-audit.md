@@ -17,31 +17,31 @@ tags:
 - HSLF-FS 2016:40 3 kap. 14 § Fysiskt skydd av informationssystem
 - GDPR Art. 28 Processor
 ---
-# Cloud Provider Audit
+# Infrastructure Provider Audit
 
 !!!note
     This section helps you implement ISO 27001, specifically:
 
     * A.15 Supplier Relationships
 
-This page will help you do your due diligence and ensure you choose a cloud provider that provides a solid foundation for Compliant Kubernetes and your application.
+This page will help you do your due diligence and ensure you choose a Infrastructure Provider that provides a solid foundation for Compliant Kubernetes and your application.
 [Elastisys](https://elastisys.com) regularly uses this template to validate cloud partners, as required for ISO 27001 certification.
 
 ## Rationale
 
-Compliant Kubernetes is designed to build upon the security and compliance of the underlying cloud provider.
+Compliant Kubernetes is designed to build upon the security and compliance of the underlying Infrastructure Provider.
 If you cannot trust the underlying provider with controls such as physical security to the servers, safe disposal of hard drives, access control to infrastructure control plane, then no technical measure will help you achieve your security and compliance goals.
 Trying to take preventive measures in Compliant Kubernetes -- i.e., at the platform level -- is inefficient at best and downright dangerous at worst.
 Failing to due your due diligence will end up in [security theatre](https://en.wikipedia.org/wiki/Security_theater), putting your reputation at risk.
 
 ## Overview
 
-The remainder of this page contains open questions that you should ask your cloud provider. Notice the following:
+The remainder of this page contains open questions that you should ask your Infrastructure Provider. Notice the following:
 
 * Make sure you ask open questions and note down the answers. Burden of proof lies with the provider that they do an excellent job with protecting data.
 * Ask all questions, then evaluate the provider's suitability. It is unlikely that you'll find the perfect provider, but you'll likely find one that is sufficient for your present and future needs.
 * The least expected the answer, the more "digging" is needed.
-* "You" represents the cloud provider and "I" represents the Compliant Kubernetes administrator.
+* "You" represents the Infrastructure Provider and "I" represents the Compliant Kubernetes administrator.
 
 ## Technical Capability Questionnaire
 

@@ -235,7 +235,7 @@ To ensure that you have configured S3 correctly, run the following snippet:
 <!--out-of-date-start-->
 !!!bug "This page is out of date"
     We are currently working on internal documentation to streamline
-    Compliant Kubernetes onboarding for selected cloud providers. Until
+    Compliant Kubernetes onboarding for selected Infrastructure Providers. Until
     those documents are ready, and until we have capacity to make parts of
     that documentation public, this page is out-of-date.
 

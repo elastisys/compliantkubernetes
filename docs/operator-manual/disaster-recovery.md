@@ -40,7 +40,7 @@ It is possible to restore serviecs directly from **unencrypted** off-site backup
 
 See [the instructions in `compliantkubernetes-apps`](https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts/restore-sync) for how to restore off-site backups.
 
-## When a new region/cloud provider is used
+## When a new region/Infrastructure Provider is used
 
 - Configure and set base ck8s-configs:
 
@@ -62,7 +62,7 @@ See [the instructions in `compliantkubernetes-apps`](https://github.com/elastisy
 
 - Configure and set custom ck8s-configs:
 
-  Examples can be files containing Identity Provider, Cloud Provider, or DNS critical information.
+  Examples can be files containing Identity Provider, Infrastructure Provider, or DNS critical information.
 
 ## OpenSearch
 

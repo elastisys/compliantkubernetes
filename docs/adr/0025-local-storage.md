@@ -37,7 +37,7 @@ Chosen option: Use local storage with local-volume-provisioner and move the code
 ### Negative Consequences
 
 * Scaling the storage becomes harder as it will involve replacing the nodes.
-* We are limited by the size of the volumes that are available within the cloud provider offering.
+* We are limited by the size of the volumes that are available within the Infrastructure Provider offering.
 
 ## Recommendation to Platform Administrators
 

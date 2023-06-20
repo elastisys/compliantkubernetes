@@ -19,7 +19,7 @@ The requirements to comply with ISO 27001 are stated in ISO [27001:2013](https:/
 - [Annex 12](https://www.isms.online/iso-27001/annex-a-12-operations-security/), article A.12.4.1 "Event Logging" and A.12.4.3 "Administrator and Operator Logs".
 - [Annex 16](https://www.isms.online/iso-27001/annex-a-16-information-security-incident-management/) which deals with incident management.
 
-In Compliant Kubernetes, OpenSearch is separate from the production workload, hence it complies with A.12.4.2 "Protection of Log Information". The cloud provider should ensure that the clock of Kubernetes nodes is synchronized, hence complying with A.12.4.4 "Clock Synchronisation".
+In Compliant Kubernetes, OpenSearch is separate from the production workload, hence it complies with A.12.4.2 "Protection of Log Information". The Infrastructure Provider should ensure that the clock of Kubernetes nodes is synchronized, hence complying with A.12.4.4 "Clock Synchronisation".
 
 ## OpenSearch
 
