@@ -2,7 +2,7 @@
 
 ## GPU support
 
-Support for GPU nodes in Compliant Kubernetes workload clusters, subject to GPU availability on supported Infrastructure Providers.
+Support for GPU nodes in Compliant Kubernetes Workload Clusters, subject to GPU availability on supported Infrastructure Providers.
 
 ## Secrets management service
 

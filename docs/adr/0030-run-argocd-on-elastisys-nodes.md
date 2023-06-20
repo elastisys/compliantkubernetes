@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-We run additional services in the workload cluster on dedicated nodes, currently databases (PostgreSQL), in-memory caches (Redis), message queues (RabbitMQ) and distributed tracing (Jaeger).
+We run additional services in the Workload Cluster on dedicated nodes, currently databases (PostgreSQL), in-memory caches (Redis), message queues (RabbitMQ) and distributed tracing (Jaeger).
 Where should we run ArgoCD?
 
 ## Decision Drivers

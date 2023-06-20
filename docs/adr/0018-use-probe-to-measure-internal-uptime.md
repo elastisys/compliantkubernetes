@@ -61,7 +61,7 @@ This will generate a metric as follows: `probe_success{cluster="ckdemo-wc", inst
 
 ### Negative Consequences
 
-* We don't currently run Blackbox in the workload cluster, so we'll need a bit of extra capacity.
+* We don't currently run Blackbox in the Workload Cluster, so we'll need a bit of extra capacity.
 
 ## Recommendations to Platform Administrators
 

@@ -26,7 +26,7 @@ Hence, forwarders are subject to the following tensions:
 
 * We want a robust monitoring system.
 * We want to monitor the storage system.
-* We want VM-template-based rendering of the workload cluster, which implies no cloud native storage integration.
+* We want VM-template-based rendering of the Workload Cluster, which implies no cloud native storage integration.
 * We want to make it easier to "cleanup and start from a known good state".
 * We want to have self-healing and avoid manual actions after failure.
 * We want to be able to find the root cause of an incident quickly.

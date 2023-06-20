@@ -8,7 +8,7 @@
 
 [Configuration snippet annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#configuration-snippet) are a powerful tool to allow injecting any kind of Nginx configuration into the Nginx Ingress Controller. For example, it allows things such as header renaming, custom authentication, etc.
 
-However, with great power comes great responsibility. Configuration snippet may break the Ingress Controller and cause downtime for all applications hosted in the workload cluster. Also, it opens up [CVE-2021-25742](https://github.com/kubernetes/ingress-nginx/issues/7837), which means that application developers can exfiltrate all Secrets in the workload cluster.
+However, with great power comes great responsibility. Configuration snippet may break the Ingress Controller and cause downtime for all applications hosted in the Workload Cluster. Also, it opens up [CVE-2021-25742](https://github.com/kubernetes/ingress-nginx/issues/7837), which means that application developers can exfiltrate all Secrets in the Workload Cluster.
 
 How shall we best serve application developers without compromising platform stability and security?
 

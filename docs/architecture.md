@@ -22,7 +22,7 @@ Most regulations require logging to a tamper-proof environment. This is usually 
 
 To achieve this, Compliant Kubernetes is implemented as two Kubernetes clusters
 
-* A **workload cluster**, which hosts your application, and
+* A **Workload Cluster**, which hosts your application, and
 * A **Management Cluster**, which hosts services for monitoring, logging and vulnerability management.
 
 ![C4 Model, Level 2 Diagram](img/ck8s-c4model-level2.png)
@@ -34,7 +34,7 @@ Click on the diagram below to see the nuts-and-bolts of Compliant Kubernetes.
 [![C4 Model, Level 3 Diagram](img/ck8s-c4model-level3.drawio.svg)](img/ck8s-c4model-level3.drawio.svg)
 
 !!!note
-    Due to technical limitations, some compliance-related components still need to run in the workload cluster. These are visible when inspecting the workload cluster, for example, via the [Kubernetes API](user-guide/kubernetes-api.md). Currently, these components are:
+    Due to technical limitations, some compliance-related components still need to run in the Workload Cluster. These are visible when inspecting the Workload Cluster, for example, via the [Kubernetes API](user-guide/kubernetes-api.md). Currently, these components are:
 
     * Falco, for intrusion detection;
     * Prometheus, for collecting metrics;

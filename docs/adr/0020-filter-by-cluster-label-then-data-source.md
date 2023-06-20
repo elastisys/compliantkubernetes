@@ -8,8 +8,8 @@ Technical Story: https://github.com/elastisys/compliantkubernetes-apps/issues/74
 
 ## Context and Problem Statement
 
-Compliant Kubernetes allows multiple workload clusters to be connected to a single Management Cluster.
-This allows the metrics of multiple workload clusters to be inspected via the same dashboards.
+Compliant Kubernetes allows multiple Workload Clusters to be connected to a single Management Cluster.
+This allows the metrics of multiple Workload Clusters to be inspected via the same dashboards.
 
 How should we organise metrics to allow users and admins to select for which clusters they want to see metrics?
 
@@ -44,6 +44,6 @@ In general, we will aim to fix dashboards missing the `cluster` variable upstrea
 ### Negative Consequences
 
 * [Minor] We need to configure data sources in `sc-config.yaml`
-  * For example, if we forget to add the name of a workload cluster, the data source will be missing, but filtering based on `cluster` label is still possible.
+  * For example, if we forget to add the name of a Workload Cluster, the data source will be missing, but filtering based on `cluster` label is still possible.
 * [Minor] Label enforcer uses a bit of resources.
   * However, we already saved a lot by migrating from InfluxDB to Thanos, so we can afford go back a bit.

@@ -403,7 +403,7 @@ At the time of this writing, this cannot be done, but [efforts are underway](htt
 ```
 
 ```bash
-# For the workload clusters
+# For the Workload Clusters
 ./bin/ck8s ops helmfile wc diff  # Respond "n" if you get WARN
 ```
 

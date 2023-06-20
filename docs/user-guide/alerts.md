@@ -55,7 +55,7 @@ Then create a `PrometheusRule` following the examples below or the upstream docu
 
 The [API reference for Prometheus Operator](https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.PrometheusRule) describes how the Kubernetes resource is configured and the [configuration reference for Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) describes the rules themselves.
 
-In Compliant Kubernetes the Prometheus Operator in the workload cluster is configured to pick up all PrometheusRules, regardless in which namespace they are or which labels they have.
+In Compliant Kubernetes the Prometheus Operator in the Workload Cluster is configured to pick up all PrometheusRules, regardless in which namespace they are or which labels they have.
 
 ### Running Example
 

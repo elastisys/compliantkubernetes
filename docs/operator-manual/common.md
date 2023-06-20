@@ -96,7 +96,7 @@ sops ${CK8S_CONFIG_PATH}/secrets.yaml
 ```
 
 !!!tip
-    The default configuration for the Management Cluster and workload cluster are available in the directory `${CK8S_CONFIG_PATH}/defaults/` and can be used as a reference for available options.
+    The default configuration for the Management Cluster and Workload Cluster are available in the directory `${CK8S_CONFIG_PATH}/defaults/` and can be used as a reference for available options.
 
 !!!warning
     Do not modify the read-only default configurations files found in the directory `${CK8S_CONFIG_PATH}/defaults/`. Instead configure the cluster by modifying the regular files `${CK8S_CONFIG_PATH}/sc-config.yaml` and `${CK8S_CONFIG_PATH}/wc-config.yaml` as they will override the default options.
@@ -113,7 +113,7 @@ ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG
 ./bin/ck8s apply sc  # Respond "n" if you get a WARN
 ```
 
-Then the workload clusters:
+Then the Workload Clusters:
 
 ```bash
 for CLUSTER in "${WORKLOAD_CLUSTERS[@]}"; do
@@ -163,7 +163,7 @@ ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG
 ./bin/ck8s test sc  # Respond "n" if you get a WARN
 ```
 
-Then the workload clusters:
+Then the Workload Clusters:
 
 ```bash
 for CLUSTER in "${WORKLOAD_CLUSTERS[@]}"; do
@@ -188,7 +188,7 @@ They perform the following actions:
 1. Delete any remaining PersistentVolumes
 1. Delete the added CustomResourceDefinitions
 
-Note: if user namespaces are managed by Compliant Kubernetes apps then they will also be deleted if you clean up the workload cluster.
+Note: if user namespaces are managed by Compliant Kubernetes apps then they will also be deleted if you clean up the Workload Cluster.
 <!--clean-apps-stop-->
 
 <!--create-s3-buckets-start-->

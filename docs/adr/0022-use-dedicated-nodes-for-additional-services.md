@@ -11,7 +11,7 @@ tags:
 
 ## Context and Problem Statement
 
-We run additional services in the workload cluster, currently databases (PostgreSQL), in-memory caches (Redis), message queues (RabbitMQ) and distributed tracing (Jaeger).
+We run additional services in the Workload Cluster, currently databases (PostgreSQL), in-memory caches (Redis), message queues (RabbitMQ) and distributed tracing (Jaeger).
 
 On what Nodes should they run?
 
@@ -47,7 +47,7 @@ elastisys.io/node-type=jaegertracing:NoSchedule
 ```
 
 !!!important
-    Dedicated Nodes still contain some workload cluster components for logging, monitoring, intrusion detection, etc., so not all their capacity is available to the service.
+    Dedicated Nodes still contain some Workload Cluster components for logging, monitoring, intrusion detection, etc., so not all their capacity is available to the service.
 
 ### Positive Consequences
 
