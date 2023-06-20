@@ -1,5 +1,5 @@
 ---
-description: The journey for application developers in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: The journey for Application Developers in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 ---
 
 # The Journey for Application Developers

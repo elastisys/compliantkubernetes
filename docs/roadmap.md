@@ -6,7 +6,7 @@ Support for GPU nodes in Compliant Kubernetes Workload Clusters, subject to GPU 
 
 ## Secrets management service
 
-Convenient solution to manage secrets for Compliant Kubernetes application developers, such as SOPS or Sealed Secrets.
+Convenient solution to manage secrets for Compliant Kubernetes Application Developers, such as SOPS or Sealed Secrets.
 
 ## SAML support
 
@@ -19,7 +19,7 @@ By default, pull-based CD solutions such as ArgoCD (and Flux, for that matter) r
 
 ## Additional dashboards
 
-User experience for Compliant Kubernetes operators, application developers, and CISOs will be continuously improved,
+User experience for Compliant Kubernetes operators, Application Developers, and CISOs will be continuously improved,
 including addition of single pane of glass dashboards that give overviews of all relevant services.
 
 # Non-Goals

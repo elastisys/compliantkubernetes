@@ -12,7 +12,7 @@ Should we enable kubelet hard eviction so as to behold the vital components?
 ## Decision Drivers
 
 * We want to ensure platform security and stability.
-* We want to make it hard for application developers to break the platform via trivial mistakes.
+* We want to make it hard for Application Developers to break the platform via trivial mistakes.
 * We want to make sure that the critical components are not evicted when nodes are overcommitted.
 
 ## Considered Options
@@ -26,7 +26,7 @@ Should we enable kubelet hard eviction so as to behold the vital components?
 
 Chosen options: `Enable kubelet hard eviction` & `Setup priority class for all our apps` .
 
-The option `Adjust OOM score so that kernel does not OOM critical Pods` is  not viable as it can be used only if we set requests=limits on all our pods (see [here](https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#node-out-of-memory-behavior) and [here](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed)), and this will not allow us to benefit from the burstable capabilities of Kubernetes and have a static allocation of resources which locks the resources on the nodes even if they are not used most of the time. This reduces the available resources for the application developer on the nodes.
+The option `Adjust OOM score so that kernel does not OOM critical Pods` is  not viable as it can be used only if we set requests=limits on all our pods (see [here](https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#node-out-of-memory-behavior) and [here](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed)), and this will not allow us to benefit from the burstable capabilities of Kubernetes and have a static allocation of resources which locks the resources on the nodes even if they are not used most of the time. This reduces the available resources for the Application Developer on the nodes.
 
 ### Positive Consequences
 
@@ -34,9 +34,9 @@ The option `Adjust OOM score so that kernel does not OOM critical Pods` is  not 
 
 ### Negative Consequences
 
-* Application developer pods will be stuck in pending until resources are available and this might make the application developer feel that their pods are less important.
+* Application Developer pods will be stuck in pending until resources are available and this might make the Application Developer feel that their pods are less important.
 * [kubectl may not observe pressure right away](https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#kubelet-may-not-observe-memory-pressure-right-away)
 
 ## Recommendation to Platform Administrators
 
-Test multiple comfigurations using kubelet hard eviction, priotiry classes and other option to obtain the desired behaviour where the nodes do not become unresponsive and our components are not getting evicted when the node is overcommitted by the application developer.
+Test multiple comfigurations using kubelet hard eviction, priotiry classes and other option to obtain the desired behaviour where the nodes do not become unresponsive and our components are not getting evicted when the node is overcommitted by the Application Developer.

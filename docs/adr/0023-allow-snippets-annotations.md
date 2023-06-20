@@ -8,13 +8,13 @@
 
 [Configuration snippet annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#configuration-snippet) are a powerful tool to allow injecting any kind of Nginx configuration into the Nginx Ingress Controller. For example, it allows things such as header renaming, custom authentication, etc.
 
-However, with great power comes great responsibility. Configuration snippet may break the Ingress Controller and cause downtime for all applications hosted in the Workload Cluster. Also, it opens up [CVE-2021-25742](https://github.com/kubernetes/ingress-nginx/issues/7837), which means that application developers can exfiltrate all Secrets in the Workload Cluster.
+However, with great power comes great responsibility. Configuration snippet may break the Ingress Controller and cause downtime for all applications hosted in the Workload Cluster. Also, it opens up [CVE-2021-25742](https://github.com/kubernetes/ingress-nginx/issues/7837), which means that Application Developers can exfiltrate all Secrets in the Workload Cluster.
 
-How shall we best serve application developers without compromising platform stability and security?
+How shall we best serve Application Developers without compromising platform stability and security?
 
 ## Decision Drivers
 
-* We want to best serve application developers.
+* We want to best serve Application Developers.
 * We want to ensure platform stability and security.
 
 ## Considered Options
@@ -22,24 +22,24 @@ How shall we best serve application developers without compromising platform sta
 * Allow `the use of "config-snippets annotations" with Ingress` by default.
 * Disallow `the use of "config-snippets annotations" with Ingress` by default.
 * Never allow `the use of "config-snippets annotations" with Ingress`.
-* Allow `the use of "config-snippets annotations" with Ingress`, but only after application developer accepted the downtime and security risks.
+* Allow `the use of "config-snippets annotations" with Ingress`, but only after Application Developer accepted the downtime and security risks.
 
 ## Decision Outcome
 
-Chosen option: Allow `the use of "config-snippets annotations" with Ingress`, but only after application developer accepted the downtime and security risks.
+Chosen option: Allow `the use of "config-snippets annotations" with Ingress`, but only after Application Developer accepted the downtime and security risks.
 
 ### Positive Consequences
 
-* Several use-cases commonly requested by application developers can be satisfied.
+* Several use-cases commonly requested by Application Developers can be satisfied.
 
 ### Negative Consequences
 
-* Platform security is at a small risk if this feature is misused by application developers.
-* Platform stability is at a small risk if this feature is misused by application developers.
+* Platform security is at a small risk if this feature is misused by Application Developers.
+* Platform stability is at a small risk if this feature is misused by Application Developers.
 
 ## Recommendation to Platform Administrators
 
-If you enable this feature, then make sure application developers understand and accept the added stability and security risks. A message as follows could be used:
+If you enable this feature, then make sure Application Developers understand and accept the added stability and security risks. A message as follows could be used:
 ```
 Hello!
 

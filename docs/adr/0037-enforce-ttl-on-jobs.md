@@ -16,7 +16,7 @@ So, should we enforce the usage of TTL on Jobs?
 
 * We want to maintain platform security and stability.
 * We want to find a solution which is scalable and minimizes MSE burden.
-* We want to best serve the application developers.
+* We want to best serve the Application Developers.
 * We want to make the platform administrator life easier.
 
 ## Considered Options
@@ -33,11 +33,11 @@ We decided for a default Job TTL of 7 days, as this is a good compromise between
 
 ### Positive Consequences
 
-* Application developers don't need to worry about setting any value
+* Application Developers don't need to worry about setting any value
 * We don't have to worry about setting any value for our jobs (assuming we will run Gatekeeper in SC, in the meantime we can just update our Job speces in Apps)
 * There won't be any lingering Jobs in Kubernetes (assuming that no bad finalizers are set)
 * TTL of Jobs will be visible in out IO site and possibly stated in our ToS
 
 ### Negative Consequences
 
-* Some application developers might not agree with our set TTL (not likely though IMO)
+* Some Application Developers might not agree with our set TTL (not likely though IMO)

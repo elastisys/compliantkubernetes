@@ -27,7 +27,7 @@ Elastisys Compliant Kubernetes is an open source, Certified Kubernetes distribut
 
 Getting started guides:
 
-* [for application developers](user-guide/prepare.md)
+* [for Application Developers](user-guide/prepare.md)
 * [for platform administrators](operator-manual/index.md)
 * [for CISOs (Chief Information Security Officers)](ciso-guide/index.md)
 

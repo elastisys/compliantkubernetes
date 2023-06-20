@@ -9,7 +9,7 @@ tags:
 
 ## HNC
 
-[Hierarchical Namespace Controller](https://github.com/kubernetes-sigs/hierarchical-namespaces) (HNC) is included in Compliant Kubernetes. It allows the super application developer to manage namespaces as subnamespaces and delegates access automatically. From the perspective of Kubernetes these are regular namespaces, but these can be modified via a namespaced resource by the user. Building a good namespace structure will enable you to apply namespace-scoped RBAC resources to multiple namespaces at once.
+[Hierarchical Namespace Controller](https://github.com/kubernetes-sigs/hierarchical-namespaces) (HNC) is included in Compliant Kubernetes. It allows the super Application Developer to manage namespaces as subnamespaces and delegates access automatically. From the perspective of Kubernetes these are regular namespaces, but these can be modified via a namespaced resource by the user. Building a good namespace structure will enable you to apply namespace-scoped RBAC resources to multiple namespaces at once.
 
 ## Namespace Management
 

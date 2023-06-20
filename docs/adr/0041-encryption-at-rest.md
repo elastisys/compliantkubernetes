@@ -11,8 +11,8 @@ Encryption-at-rest is a must have for phones and laptops as they can easily be s
 However, in our opinion, it is a nice-to-have addition for servers, which are supposed to be in a physically protected and secure data-center, with the disks being safely disposed.
 The same should be true if the Infrastructure Provideroffers object storage - the disks comprising the storage layer should be nicely tucked away deep inside a secure data-center.
 
-Anyhow, we are sometimes asked by application developers on why we don't simply do full-disk encryption at the VM level, using something like [cryptsetup](https://linux.die.net/man/8/cryptsetup), or why we don't always encrypt data before it is shipped to object storage.
-Furthermore, some application developers require that _all_ data is encrypted-at-rest.
+Anyhow, we are sometimes asked by Application Developers on why we don't simply do full-disk encryption at the VM level, using something like [cryptsetup](https://linux.die.net/man/8/cryptsetup), or why we don't always encrypt data before it is shipped to object storage.
+Furthermore, some Application Developers require that _all_ data is encrypted-at-rest.
 How should we in Compliant Kubernetes handle encryption-at-rest both for VMs and object storage?
 
 ## Decision Drivers
@@ -20,7 +20,7 @@ How should we in Compliant Kubernetes handle encryption-at-rest both for VMs and
 * We want to avoid security theatre.
 * We want to avoid operational complexity.
 * We want to avoid cloud-provider dependent implementation sprawl.
-* We want to make application developers that require encryption-at-rest happy.
+* We want to make Application Developers that require encryption-at-rest happy.
 
 ## Considered Options
 
@@ -56,10 +56,10 @@ Chosen options:
 
 ### Positive Consequences
 
-* We can offer encryption-at-rest for application developers that require it.
+* We can offer encryption-at-rest for Application Developers that require it.
 * We don't increase the operational complexity.
 * We avoid security theatre.
 
 ### Negative Consequences
 
-* We limit what Infrastructure Providers application developers can choose if they require encryption-at-rest.
+* We limit what Infrastructure Providers Application Developers can choose if they require encryption-at-rest.

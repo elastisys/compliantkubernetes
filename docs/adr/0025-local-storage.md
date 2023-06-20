@@ -12,7 +12,7 @@ How should we expose local storage to Managed Services?
 
 ## Decision Drivers
 
-* We want to best serve the application developer needs.
+* We want to best serve the Application Developer needs.
 * We want to offer fast performant Managed Services.
 * We want to find a solution which is scalable and minimizes administrator burden.
 * We want to find a future-proof solution, which exposes local disks to any application.

@@ -63,7 +63,7 @@ If your image runs as root by defaults, but can handle running as another user, 
 [docker-user]: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
 
 
-## How do I give access to a new application developer to a Compliant Kubernetes environment?
+## How do I give access to a new Application Developer to a Compliant Kubernetes environment?
 
 Add the new user to the correct **group via your Identity Provider (IdP)**, and Compliant Kubernetes will automatically pick it up.
 

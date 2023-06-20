@@ -52,9 +52,9 @@ That was very information dense, so let's break it down.
 [Add a new Node](../operator-manual/troubleshooting.md#node-seems-really-not-fine-i-want-a-new-one) of the same type as the other Nodes in the cluster.
 
 If the cluster has 6 Nodes, consider consolidating to 3 Nodes of twice-the-size -- in number of CPUs or memory or both -- if the infrastructure cost is reduced.
-Before doing this, get in touch with application developers to ensure they don't have Kubernetes scheduling constraints that would cause issues on the consolidated environment.
+Before doing this, get in touch with Application Developers to ensure they don't have Kubernetes scheduling constraints that would cause issues on the consolidated environment.
 
-If you are about to double the number of Nodes, get in touch with application developers to ensure their application is not misbehaving, before upscaling.
+If you are about to double the number of Nodes, get in touch with Application Developers to ensure their application is not misbehaving, before upscaling.
 
 ### Optimization
 
@@ -63,7 +63,7 @@ If the cluster has at least 5 Nodes, consider reducing the watermark to 80% to r
 ## Downscaling
 
 We hope that the applications we host will only grow in popularity and that downscaling is never needed.
-Nevertheless, application developer trust us to keep infrastructure costs down, if their application hasn't gone viral -- yet!
+Nevertheless, Application Developer trust us to keep infrastructure costs down, if their application hasn't gone viral -- yet!
 
 ### When?
 
@@ -85,9 +85,9 @@ If any capacity dimension -- as defined above -- was below 33% for at least 3 da
 Make sure to drain and cordon the Node before decommissioning it.
 
 If you are about to go below 3 Nodes, consider replacing the Nodes with 6 Nodes of half-the-size before downscaling.
-Before doing this, get in touch with application developers to ensure they don't have Kubernetes scheduling constraints that would  cause issues on the consolidated environment.
+Before doing this, get in touch with Application Developers to ensure they don't have Kubernetes scheduling constraints that would  cause issues on the consolidated environment.
 
-If you are about to half the number of Nodes, get in touch with application developers to ensure their application is not misbehaving, before downscaling.
+If you are about to half the number of Nodes, get in touch with Application Developers to ensure their application is not misbehaving, before downscaling.
 
 ### Optimization
 
