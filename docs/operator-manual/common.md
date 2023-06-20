@@ -96,7 +96,7 @@ sops ${CK8S_CONFIG_PATH}/secrets.yaml
 ```
 
 !!!tip
-    The default configuration for the management cluster and workload cluster are available in the directory `${CK8S_CONFIG_PATH}/defaults/` and can be used as a reference for available options.
+    The default configuration for the Management Cluster and workload cluster are available in the directory `${CK8S_CONFIG_PATH}/defaults/` and can be used as a reference for available options.
 
 !!!warning
     Do not modify the read-only default configurations files found in the directory `${CK8S_CONFIG_PATH}/defaults/`. Instead configure the cluster by modifying the regular files `${CK8S_CONFIG_PATH}/sc-config.yaml` and `${CK8S_CONFIG_PATH}/wc-config.yaml` as they will override the default options.
@@ -106,7 +106,7 @@ sops ${CK8S_CONFIG_PATH}/secrets.yaml
 <!--install-apps-start-->
 ### Install Compliant Kubernetes apps
 
-Start with the management cluster:
+Start with the Management Cluster:
 
 ```bash
 ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml
@@ -156,7 +156,7 @@ All resources need to have the Ready column True.
 
 After completing the installation step you can test if the apps are properly installed and ready using the commands below.
 
-Start with the management cluster:
+Start with the Management Cluster:
 
 ```bash
 ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml

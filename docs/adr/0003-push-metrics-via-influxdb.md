@@ -6,40 +6,40 @@
 
 ## Context and Problem Statement
 
-We want to support workload multi-tenancy, i.e., one management cluster -- hosting the tamper-proof logging environment -- and multiple workload clusters. Currently, the management cluster exposes two end-points for workload clusters:
+We want to support workload multi-tenancy, i.e., one Management Cluster -- hosting the tamper-proof logging environment -- and multiple workload clusters. Currently, the Management Cluster exposes two end-points for workload clusters:
 
 * Dex, for authentication;
 * Elastisearch, for pushing logs (append-only).
 
-Currently, the management cluster pulls metrics from the workload cluster. This makes it difficult to have multiple workload clusters connected to the same management cluster.
+Currently, the Management Cluster pulls metrics from the workload cluster. This makes it difficult to have multiple workload clusters connected to the same Management Cluster.
 
 ## Decision Drivers
 
 * We want to support workload multi-tenancy.
-* We want to untangle the life-cycle of the management cluster and workload cluster.
-* The management cluster acts as a tamper-proof logging environment, hence it should be difficult to tamper with metrics from the workload cluster.
+* We want to untangle the life-cycle of the Management Cluster and workload cluster.
+* The Management Cluster acts as a tamper-proof logging environment, hence it should be difficult to tamper with metrics from the workload cluster.
 
 ## Considered Options
 
-1. management cluster exposes InfluxDB; workload cluster pushes metrics into InfluxDB.
+1. Management Cluster exposes InfluxDB; workload cluster pushes metrics into InfluxDB.
 2. Migrate from InfluxDB to [Thanos](https://thanos.io/)
 3. Migrate from InfluxDB to [Cortex](https://github.com/cortexproject/cortex)
 
 ## Decision Outcome
 
-We chose to push metrics from the workload cluster to the management cluster via InfluxDB, because it involves the least amount of effort and is sufficient for the current use-cases that we want to support. InfluxDB supports a writer role, which makes overwriting metrics difficult -- unfortunately, not impossible.
+We chose to push metrics from the workload cluster to the Management Cluster via InfluxDB, because it involves the least amount of effort and is sufficient for the current use-cases that we want to support. InfluxDB supports a writer role, which makes overwriting metrics difficult -- unfortunately, not impossible.
 
 ### Positive Consequences
 
-* All of `*.$opsDomain` can point to the management cluster workers -- optionally fronted by a load-balancer -- which considerably simplifies setup.
-* Multiple workload clusters can push metrics to the management cluster, which paves the path to workload multi-tenancy.
-* The management cluster can be set up first, followed by one-or-more workload clusters.
+* All of `*.$opsDomain` can point to the Management Cluster workers -- optionally fronted by a load-balancer -- which considerably simplifies setup.
+* Multiple workload clusters can push metrics to the Management Cluster, which paves the path to workload multi-tenancy.
+* The Management Cluster can be set up first, followed by one-or-more workload clusters.
 * Workload clusters become more "cattle"-ish.
 
 ### Negative Consequences
 
 * Existing Compliant Kubernetes clusters will need some manual migration steps, in particular changing the `prometheus.$opsDomain` DNS entry.
-* The management cluster exposes yet another endpoint, which should only be available to workload clusters and not the Internet. HTTP authentication (over HTTPS) feels sufficient for now, but we need a follow-up decision on how to add another layer of protection to these endpoints.
+* The Management Cluster exposes yet another endpoint, which should only be available to workload clusters and not the Internet. HTTP authentication (over HTTPS) feels sufficient for now, but we need a follow-up decision on how to add another layer of protection to these endpoints.
 * The workload clusters will have to properly label their metrics.
 * Although not easy, metrics can be overwritten from the workload cluster. We will improve on this when (a) demand for closing this risk increases, (b) we re-evaluate long-term metrics storage.
 

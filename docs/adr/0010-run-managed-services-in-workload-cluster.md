@@ -18,12 +18,12 @@ Where should these run?
 * We want to make it difficult for Compliant Kubernetes users to negatively affect managed services.
 * We want to keep support for multiple workload cluster, i.e., application multi-tenancy.
 * Many Infrastructure Providers do not support Service Type LoadBalancer, which complicates exposing non-HTTP services outside a Kubernetes cluster.
-* management cluster might not exist in a future packaging of Compliant Kubernetes.
+* Management Cluster might not exist in a future packaging of Compliant Kubernetes.
 
 ## Considered Options
 
 * Run managed services in workload cluster
-* Run managed services in management cluster
+* Run managed services in Management Cluster
 * Run managed services in yet another cluster
 
 ## Decision Outcome

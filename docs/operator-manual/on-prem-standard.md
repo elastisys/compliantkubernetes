@@ -27,7 +27,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
         The following steps are done from the root of the git repository you created for the cofigurations.
 
     !!! note
-        You can choose names for your management cluster and workload cluster by changing the values for `SERVICE_CLUSTER` and `WORKLOAD_CLUSTERS` respectively.
+        You can choose names for your Management Cluster and workload cluster by changing the values for `SERVICE_CLUSTER` and `WORKLOAD_CLUSTERS` respectively.
 
     ```bash
     export CK8S_CONFIG_PATH=./
@@ -59,7 +59,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     You need to create a domain name to access the different services in your environment. You will need to set up the following DNS entries (replace `example.com` with your domain name).
     - Point these domains to the workload cluster ingress controller (this step is done during Compliant Kubernetes app installation):
         - `*.example.com`
-    - Point these domains to the management cluster ingress controller (this step is done during Compliant Kubernetes app installation):
+    - Point these domains to the Management Cluster ingress controller (this step is done during Compliant Kubernetes app installation):
         - `*.ops.example.com`
         - `dex.example.com`
         - `grafana.example.com`
@@ -68,7 +68,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
     ???+note "If both service and workload clusters are in the same subnet"
 
-        If both the service and workload clusters are in the same subnet, it would be great to configure the following domain names to the private IP addresses of management cluster's worker nodes. (Replace `example.com` with your domain name.)
+        If both the service and workload clusters are in the same subnet, it would be great to configure the following domain names to the private IP addresses of Management Cluster's worker nodes. (Replace `example.com` with your domain name.)
 
         - `*.thanos.ops.example.com`
         - `*.opensearch.ops.example.com`
@@ -77,7 +77,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
 1. Set up load balancer
 
-    You need to set up two load balancers, one for the workload cluster and one for the management cluster.
+    You need to set up two load balancers, one for the workload cluster and one for the Management Cluster.
 
 1. Make sure you have [all necessary tools](getting-started.md).
 
@@ -91,14 +91,14 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     === "For Kubernetes"
 
         ``` markdown
-        * For management cluster: Add `kube_service_addresses: 10.178.0.0/18` and `kube_pods_subnet: 10.178.120.0/18` in `${CK8S_CONFIG_PATH}/sc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` file.
+        * For Management Cluster: Add `kube_service_addresses: 10.178.0.0/18` and `kube_pods_subnet: 10.178.120.0/18` in `${CK8S_CONFIG_PATH}/sc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` file.
         * For workload cluster:  Add `kube_service_addresses: 10.178.0.0/18` and `kube_pods_subnet: 10.178.120.0/18` in `${CK8S_CONFIG_PATH}/wc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` file.
         ```
 
     === "For Docker"
 
         ``` markdown
-        * For management cluster: Added `docker_options: "--default-address-pool base=10.179.0.0/24,size=24"` in `${CK8S_CONFIG_PATH}/sc-config/group_vars/all/docker.yml` file.
+        * For Management Cluster: Added `docker_options: "--default-address-pool base=10.179.0.0/24,size=24"` in `${CK8S_CONFIG_PATH}/sc-config/group_vars/all/docker.yml` file.
         * For workload cluster:  Added `docker_options: "--default-address-pool base=10.179.4.0/24,size=24"` in `${CK8S_CONFIG_PATH}/wc-config/group_vars/all/docker.yml` file.
         ```
 
@@ -120,7 +120,7 @@ Set `kube_oidc_url` in `${CK8S_CONFIG_PATH}/sc-config/group_vars/k8s_cluster/ck8
 
 ### Copy the VMs information to the inventery files
 
-Add the host name, user and IP address of each VM that you prepared above in `${CK8S_CONFIG_PATH}/sc-config/inventory.ini`for management cluster and `${CK8S_CONFIG_PATH}/sc-config/inventory.ini` for workload cluster. Moreover, you also need to add the host names of the master nodes under `[kube_control_plane]`, etdc nodes under `[etcd]` and worker nodes under `[kube_node]`.
+Add the host name, user and IP address of each VM that you prepared above in `${CK8S_CONFIG_PATH}/sc-config/inventory.ini`for Management Cluster and `${CK8S_CONFIG_PATH}/sc-config/inventory.ini` for workload cluster. Moreover, you also need to add the host names of the master nodes under `[kube_control_plane]`, etdc nodes under `[etcd]` and worker nodes under `[kube_node]`.
 
 !!! note
     Make sure that the user has SSH access to the VMs.
@@ -134,7 +134,7 @@ done
 ```
 
 !!! note
-    The kubeconfig for wc `.state/kube_config_wc.yaml` will not be usable until you have installed dex in the management cluster (by deploying apps).
+    The kubeconfig for wc `.state/kube_config_wc.yaml` will not be usable until you have installed dex in the Management Cluster (by deploying apps).
 
 ### Set up Rook
 
@@ -248,7 +248,7 @@ sops ${CK8S_CONFIG_PATH}/secrets.yaml
 ```
 
 !!! tip
-    The default configuration for the management cluster and workload cluster are available in the directory `${CK8S_CONFIG_PATH}/defaults/` and can be used as a reference for available options.
+    The default configuration for the Management Cluster and workload cluster are available in the directory `${CK8S_CONFIG_PATH}/defaults/` and can be used as a reference for available options.
 
 !!! warning
     Do not modify the read-only default configurations files found in the directory `${CK8S_CONFIG_PATH}/defaults/`. Instead configure the cluster by modifying the regular files `${CK8S_CONFIG_PATH}/sc-config.yaml` and `${CK8S_CONFIG_PATH}/wc-config.yaml` as they will override the default options.
@@ -263,7 +263,7 @@ compliantkubernetes-apps/bin/ck8s s3cmd create
 
 ### Install Compliant Kubernetes apps
 
-This will set up apps, first in the management cluster and then in the workload cluster:
+This will set up apps, first in the Management Cluster and then in the workload cluster:
 
 ```bash
 compliantkubernetes-apps/bin/ck8s apply sc
@@ -304,7 +304,7 @@ All resources need to have the `Ready` column `True`.
 
 After completing the installation step you can test if the apps are properly installed and ready using the commands below.
 
-Start with the management cluster:
+Start with the Management Cluster:
 
 ```bash
 compliantkubernetes-apps/bin/ck8s test sc

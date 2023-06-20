@@ -39,7 +39,7 @@ This document highlights the risks that can be mitigated by regularly reviewing 
 
 ## Purpose
 
-Compliant Kubernetes captures application logs and audit logs in a tamper-proof logging environment, which we call the management cluster. By "tamper-proof", we mean that even a complete compromise of production infrastructure does not allow an attacker to erase or change existing log entries, as would be required to hide their activity and avoid suspicion.
+Compliant Kubernetes captures application logs and audit logs in a tamper-proof logging environment, which we call the Management Cluster. By "tamper-proof", we mean that even a complete compromise of production infrastructure does not allow an attacker to erase or change existing log entries, as would be required to hide their activity and avoid suspicion.
 
 !!!note
     Attackers can, however, inject new "weird" logs entries. However, that wouldn't remove their tracks and would only trigger more suspicion.

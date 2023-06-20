@@ -398,7 +398,7 @@ At the time of this writing, this cannot be done, but [efforts are underway](htt
 ## How do I check if `apps` drifted due to manual intervention?
 
 ```bash
-# For management cluster
+# For Management Cluster
 ./bin/ck8s ops helmfile sc diff  # Respond "n" if you get WARN
 ```
 
