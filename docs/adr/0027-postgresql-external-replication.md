@@ -12,7 +12,7 @@ Should we allow and enable external replication for PostgreSQL, or should we off
 ## Decision Drivers
 
 * We want to best serve the Application Developer needs.
-* We want to make the platform administrators life easier.
+* We want to make the Platform Administrators life easier.
 * We want to ensure platform security and stability.
 * We want to make it hard for Application Developers to break the platform via trivial mistakes.
 
@@ -37,8 +37,8 @@ The diagram of the solution looks like this:
 
 ### Positive Consequences
 
-* We make the platform administrators life easier by offering them a possibility to clone/replicate their PostgreSQL cluster from the S3 bucket containing the basebackup and WAL files.
-* Platform administrators can now use 3rd party tools that can pull the basebackup and WAL files and clone the PostgreSQL cluster in another location.
+* We make the Platform Administrators life easier by offering them a possibility to clone/replicate their PostgreSQL cluster from the S3 bucket containing the basebackup and WAL files.
+* Platform Administrators can now use 3rd party tools that can pull the basebackup and WAL files and clone the PostgreSQL cluster in another location.
 * Increase Application Developer autonomy
 
 ### Negative Consequences

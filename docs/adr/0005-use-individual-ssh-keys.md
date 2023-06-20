@@ -50,12 +50,12 @@ BYO-VM and BYO-metal deployments are handled similarly, except that the initial 
 
 ## Recommendations to Platform Administrators
 
-* Platform administrators should devise procedures for onboarding and offboarding member of the on-call team, as well as rotating SSH keys.
+* Platform Administrators should devise procedures for onboarding and offboarding member of the on-call team, as well as rotating SSH keys.
 
 * The public SSH keys of all on-call administrators could be stored in a repository in a single file with one key per line.
 The comment of the key should clearly identify the owner.
 
-* Platform administrator logs (be it stand-alone documents, git or GitOps-like repositories) should clearly list the SSH keys and identities of the administrators configured for each environment.
+* Platform Administrator logs (be it stand-alone documents, git or GitOps-like repositories) should clearly list the SSH keys and identities of the administrators configured for each environment.
 
 ## Links
 

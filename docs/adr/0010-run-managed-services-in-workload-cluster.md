@@ -42,7 +42,7 @@ Chosen option: "run managed services in Workload Cluster".
 
 * Blurs separation of responsibilities between user and administrator.
 * The managed service is easier impacted by user misusage, e.g., bringing a Node into OOM.
-* Workload Cluster can no longer be deployed with “free for all” security. Platform administrators need to push and fight back against loose access control.
+* Workload Cluster can no longer be deployed with “free for all” security. Platform Administrators need to push and fight back against loose access control.
 
 ## Links
 

@@ -56,8 +56,8 @@ Configuration of alerts happens in the OMT.
 
 ## Recommendations to Platform Administrators
 
-* Platform administrators should familiarize themselves with the capabilities of OMT, e.g., OpsGenie. This should be first done using a web UI, since that improves discoverability of such capabilities.
-* When alerting configuration becomes too complex and/or repetitive, platform administrators should employ a configuration management tools, such as Terraform, to configure the OMT.
+* Platform Administrators should familiarize themselves with the capabilities of OMT, e.g., OpsGenie. This should be first done using a web UI, since that improves discoverability of such capabilities.
+* When alerting configuration becomes too complex and/or repetitive, Platform Administrators should employ a configuration management tools, such as Terraform, to configure the OMT.
 
 ## Links
 

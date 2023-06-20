@@ -3,12 +3,12 @@ tags:
 - HIPAA S45 - Access Control - Emergency Access Procedure - § 164.312(a)(2)(ii)
 ---
 # Break-glass
-In this section we  describe a workaround when access  to the environment is broken for  the platform administrators/operators and/or users.
+In this section we  describe a workaround when access  to the environment is broken for  the Platform Administrators/operators and/or users.
 
 
 ## Platform Administrator Access
 
-When Dex or the OpenID provider is malfunctioning, the platform administrator might be unable to access the cluster. The following steps will give you temporary access sufficient for troubleshooting and recovery:
+When Dex or the OpenID provider is malfunctioning, the Platform Administrator might be unable to access the cluster. The following steps will give you temporary access sufficient for troubleshooting and recovery:
 
 1. `SSH` to one of the control-plane nodes.
 

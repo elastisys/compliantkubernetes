@@ -187,7 +187,7 @@ Usage notes:
 
 See also:
 
-* [Open source maintainers on Linux Foundation](https://www.linuxfoundation.org/blog/open-source-maintainers-what-they-need-and-how-to-support-them)
+* [Open source Maintainers on Linux Foundation](https://www.linuxfoundation.org/blog/open-source-Maintainers-what-they-need-and-how-to-support-them)
 
 ## Platform Administrator
 
