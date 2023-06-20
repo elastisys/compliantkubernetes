@@ -40,12 +40,27 @@ Make sure to configure **and test** a receiver for you alerts, e.g., Slack or Op
 !!!note
     If you get an access denied error, check with your Compliant Kubernetes administrator.
 
+### Silencing alerts
+
+Compliant Kubernetes comes with a lot of predefined alerts. As a user you might not find all of them relevant and would want to silence/ignore some of them. You can do this by adding new routes in the secret and set `receiver: 'null'`. Here is an example that would drop all alerts from the kube-system namespace (alerts with the label `namespace=kube-system`):
+
+```yaml
+routes:
+    - receiver: 'null'
+      matchers:
+        - namespace = kube-system
+```
+
+You can match any label in the alerts, read more about how the `matcher` configuration works in the [upstream documentation](https://prometheus.io/docs/alerting/latest/configuration/#matcher).
+
 ## Accessing user AlertManager
 
-If you want to access AlertManager, for example to confirm that its configuration was picked up correctly, or to configure silences, proceed as follows:
+If you want to access AlertManager, for example to confirm that its configuration was picked up correctly, proceed as follows:
 
 1. Type: `kubectl proxy`.
 2. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/alertmanager/services/alertmanager-operated:9093/proxy/) in your browser.
+
+You can configure silences in the UI, but they will not be persisted if alertmanager is restarted. Use the secret mentioned above instead to create silences that persist.
 
 ## Configuring alerts
 
