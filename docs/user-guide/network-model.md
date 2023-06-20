@@ -53,9 +53,9 @@ IP addresses of Pods are not stable. For example, the rollout of a new container
 
 ## Ingress
 
-Your end users should never ever access the private network directly. Instead external access is enabled by creating Ingress objects. Compliant Kubernetes already comes with cert-manager and is already configured with a ClusterIssuer. A secure ACME protocol is used to issue and rotate certificates using the [LetsEncrypt](https://letsencrypt.org/) public service.
+Your End Users should never ever access the private network directly. Instead external access is enabled by creating Ingress objects. Compliant Kubernetes already comes with cert-manager and is already configured with a ClusterIssuer. A secure ACME protocol is used to issue and rotate certificates using the [LetsEncrypt](https://letsencrypt.org/) public service.
 
-Assuming you configured a Service and a Deployment for you application, making end users access your application involves two steps:
+Assuming you configured a Service and a Deployment for you application, making End Users access your application involves two steps:
 
 1. Create the right DNS CNAME record.
 2. Create the right Ingress resource.
@@ -128,7 +128,7 @@ spec:
     If you want to protect your Ingress with OAuth2-based authentication, check out [oauth2-proxy](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/oauth2-proxy.yaml).
 
 !!!important
-    The DNS name in `spec.rules[0].host` and `spec.tls[0].hosts[0]` must be the same as the DNS entry used by your end users, in the example above `demo.example.com`. Otherwise, the end users will get a "Your connection is not private" error.
+    The DNS name in `spec.rules[0].host` and `spec.tls[0].hosts[0]` must be the same as the DNS entry used by your End Users, in the example above `demo.example.com`. Otherwise, the End Users will get a "Your connection is not private" error.
 
 !!!important
     Some load-balancers fronting Compliant Kubernetes do not preserve source IP. This makes source IP allowlisting unusable.

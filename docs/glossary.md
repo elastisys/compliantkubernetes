@@ -90,7 +90,7 @@ Usage notes:
 
 * Do NOT use "Customer" to refer figuratively to [Application Developer](#application-developer).
     Although we are big fans of a customer-driven mindset, there are several way to deliver Compliant Kubernetes commercially. Hence, this usage of the word "Customer" is confusing.
-* Do NOT use "Customer" to refer figuratively to [End user](#end-user).
+* Do NOT use "Customer" to refer figuratively to [End User](#end-user).
     Although we are big fans of a customer-driven mindset, there are several way to deliver Compliant Kubernetes commercially. Hence, this usage of the word "Customer" is confusing.
 * Do NOT use "Data Controller", "Data Processor" or "Data Sub-processor". Determining which entity fulfills these GDPR concepts is usually done via a Data Protection Agreement (DPA). See EDPB [Guidelines 07/2020 on the concepts of controller and processor in the GDPR](https://edpb.europa.eu/system/files/2021-07/eppb_guidelines_202007_controllerprocessor_final_en.pdf).
 
@@ -110,7 +110,7 @@ Usage notes:
 
 See also:
 
-* [End user on Wikipedia](https://en.wikipedia.org/wiki/End_user)
+* [End User on Wikipedia](https://en.wikipedia.org/wiki/End_user)
 
 ## Environment
 

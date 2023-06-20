@@ -48,7 +48,7 @@ It will cordon and reboot the nodes one by one.
 
 ### Upgrading the Compliant Kubernetes application stack
 
-Compliant Kubernetes consists of a multitude of open source components that interact to form a smooth end user experience.
+Compliant Kubernetes consists of a multitude of open source components that interact to form a smooth End User experience.
 In order to free you of the burden of keeping track of when to upgrade the various components, new versions of Complaint Kubernetes are regularly release.
 When a new version is released, it becomes available as a [tagged release](https://github.com/elastisys/compliantkubernetes-apps/tags) in the GitHub repo.
 
