@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.30.1](#v0301) - 2023-06-05
 - [v0.30.0](#v0300) - 2023-05-16
 - [v0.29.0](#v0290) - 2023-03-16
 - [v0.28.1](#v0281) - 2023-03-02
@@ -30,6 +31,21 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.30.1
+
+Released 2023-06-05
+
+#### Updated
+
+- Update Trivy Operator Dashboard to improve the user experience
+- Another network policy fix for Harbor to allow garbage collection
+- Fixed duplicate exception for falco alerts
+- Update Falco rules and falco alert exceptions
+
+#### Changed
+
+- Change Trivy Operator Dashboard to only count image states once per image instead for each namespace and resource
 
 ### v0.30.0
 
