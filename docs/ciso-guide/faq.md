@@ -9,7 +9,7 @@ tags:
 !!!note "TL;DR"
     **Definitely NOT**, you own your application source code and you decide what to do with it.
 
-Elastisys hereby confirms that Compliant Kubernetes and its Additional Managed Services (AMS) are NOT putting application developers (users) in a situation which obliges them to make their software or source code running on Compliant Kubernetes available to the public.
+Elastisys hereby confirms that Compliant Kubernetes and its Additional Managed Services (AMS) are NOT putting Application Developers (users) in a situation which obliges them to make their software or source code running on Compliant Kubernetes available to the public.
 
 Should we at Elastisys become aware of such an issue existing, we will immediately rectify the situation by replacing problematic components. You can read more about how we take architectural decisions [here](../adr/index.md).
 

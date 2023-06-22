@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-We run additional services in the workload cluster, currently databases (PostgreSQL), in-memory caches (Redis) and message queues (RabbitMQ).
+We run additional services in the Workload Cluster, currently databases (PostgreSQL), in-memory caches (Redis) and message queues (RabbitMQ).
 Traditionally, when these services are provided as managed services, they are exposed via a TLS-encrypted endpoint. See examples for:
 
 * [Redis](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-nodejs-get-started#create-a-new-nodejs-app) -- notice `rediss://`;

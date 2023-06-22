@@ -16,11 +16,11 @@ Pending official translation into English, the controls are written in German.
 
 ### APP.4.4.A6 Initialisierung von Pods (S)
 
-Application developers must make sure that initialization happens in [init containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/).
+Application Developers must make sure that initialization happens in [init containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/).
 
 ### APP.4.4.A11 Überwachung der Container (S)
 
-Application developers must ensure that their application has a liveliness and readiness probe, which are configured in the Deployment. This is illustrated by our [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/deployment.yaml).
+Application Developers must ensure that their application has a liveliness and readiness probe, which are configured in the Deployment. This is illustrated by our [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/deployment.yaml).
 
 ### APP.4.4.A12 Absicherung der Infrastruktur-Anwendungen (S)
 

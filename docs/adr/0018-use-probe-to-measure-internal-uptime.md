@@ -61,9 +61,9 @@ This will generate a metric as follows: `probe_success{cluster="ckdemo-wc", inst
 
 ### Negative Consequences
 
-* We don't currently run Blackbox in the workload cluster, so we'll need a bit of extra capacity.
+* We don't currently run Blackbox in the Workload Cluster, so we'll need a bit of extra capacity.
 
-## Recommendations to Operators
+## Recommendations to Platform Administrators
 
 Blackbox should only be used for measuring uptime of internal services, i.e., those that are only exposed within the Kubernetes cluster. Examples include additional services, such as PostgreSQL, Redis and RabbitMQ.
 

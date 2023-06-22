@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-Compliant Kubernetes has the vision to reduce the compliance burden on multiple clouds ("Multi-cloud. Open source. Compliant."). Many of the cloud providers we target do not have a storage provider or do not have a storage provider that integrates with Kubernetes. How should we support PersistentVolumeClaims in such cases?
+Compliant Kubernetes has the vision to reduce the compliance burden on multiple clouds ("Multi-cloud. Open source. Compliant."). Many of the Infrastructure Providers we target do not have a storage provider or do not have a storage provider that integrates with Kubernetes. How should we support PersistentVolumeClaims in such cases?
 
 ## Decision Drivers
 
@@ -27,7 +27,7 @@ Chosen option: "Rook", because it is CNCF graduated, hence it is most likely to 
 
 ### Positive Consequences
 
-* We no longer need to worry about cloud provider without native storage.
+* We no longer need to worry about Infrastructure Provider without native storage.
 
 ### Negative Consequences
 

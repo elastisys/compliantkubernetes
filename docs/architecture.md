@@ -14,7 +14,7 @@ Let us start with the system context.
 
 ![C4 Model, Level 1 Diagram](img/ck8s-c4model-level1.drawio.svg)
 
-Compliance imposes restrictions on all levels of the tech stack. Your compliance focus should mostly lie on your application. Compliant Kubernetes ensures that the platform hosting your application is compliant. Finally, you need the whole software stack on a hardware that is managed in a compliant way, either via an ISO 27001-certified cloud provider or using on-prem hardware.
+Compliance imposes restrictions on all levels of the tech stack. Your compliance focus should mostly lie on your application. Compliant Kubernetes ensures that the platform hosting your application is compliant. Finally, you need the whole software stack on a hardware that is managed in a compliant way, either via an ISO 27001-certified Infrastructure Provider or using on-prem hardware.
 
 ## Level 2: Clusters
 
@@ -22,8 +22,8 @@ Most regulations require logging to a tamper-proof environment. This is usually 
 
 To achieve this, Compliant Kubernetes is implemented as two Kubernetes clusters
 
-* A **workload cluster**, which hosts your application, and
-* A **service cluster**, which hosts services for monitoring, logging and vulnerability management.
+* A **Workload Cluster**, which hosts your application, and
+* A **Management Cluster**, which hosts services for monitoring, logging and vulnerability management.
 
 ![C4 Model, Level 2 Diagram](img/ck8s-c4model-level2.png)
 
@@ -34,7 +34,7 @@ Click on the diagram below to see the nuts-and-bolts of Compliant Kubernetes.
 [![C4 Model, Level 3 Diagram](img/ck8s-c4model-level3.drawio.svg)](img/ck8s-c4model-level3.drawio.svg)
 
 !!!note
-    Due to technical limitations, some compliance-related components still need to run in the workload cluster. These are visible when inspecting the workload cluster, for example, via the [Kubernetes API](user-guide/kubernetes-api.md). Currently, these components are:
+    Due to technical limitations, some compliance-related components still need to run in the Workload Cluster. These are visible when inspecting the Workload Cluster, for example, via the [Kubernetes API](user-guide/kubernetes-api.md). Currently, these components are:
 
     * Falco, for intrusion detection;
     * Prometheus, for collecting metrics;

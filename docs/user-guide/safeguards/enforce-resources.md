@@ -5,7 +5,7 @@ tags:
 <!--
 Note to contributors: Aim for the following format.
 
-* Title: Highlight benefit to application developer
+* Title: Highlight benefit to Application Developer
 * Context
 * Problem
 * Solution

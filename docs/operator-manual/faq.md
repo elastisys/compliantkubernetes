@@ -1,4 +1,4 @@
-# Kubernetes Administrator FAQ
+# Platform Administrator FAQ
 
 ## I updated some OpenSearch options but it didn't work, now what?
 

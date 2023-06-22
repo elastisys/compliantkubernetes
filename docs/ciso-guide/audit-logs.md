@@ -46,7 +46,7 @@ Thanks to integration with [your Identity Provider](../user-guide/kubernetes-api
 
 Your change management or incident management process should ensure that you also cover **why**.
 
-Both users (application developers) and administrators will show in the audit log. The former will change resources related to their application, whereas the latter will change Compliant Kubernetes system components.
+Both users (Application Developers) and administrators will show in the audit log. The former will change resources related to their application, whereas the latter will change Compliant Kubernetes system components.
 
 The exact configuration of the Kubernetes audit logs can be found [here](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/config/common/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml).
 

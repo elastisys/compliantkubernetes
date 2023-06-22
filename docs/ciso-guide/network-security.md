@@ -41,7 +41,7 @@ Therefore, this dashboard should be regularly reviewed, perhaps even daily.
 
 ## Handling Non-Compliance
 
-Make sure you have a proper incident management policy in place. If an attack is ongoing, it might be better to take the system offline to protect data from getting in the wrong hands. Operators need to be trained on what events justify such an extreme action, otherwise, escalating the issue along the reporting chain may add delays that favor the attacker.
+Make sure you have a proper incident management policy in place. If an attack is ongoing, it might be better to take the system offline to protect data from getting in the wrong hands. Platform Administrator need to be trained on what events justify such an extreme action, otherwise, escalating the issue along the reporting chain may add delays that favor the attacker.
 
 In less severe cases, simply contact the developers to investigate their code, fix needless communication attempts or update their NetworkPolicies accordingly to fix any potential misconfiguration.
 

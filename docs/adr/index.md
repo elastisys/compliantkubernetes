@@ -57,7 +57,7 @@ Before taking in any new component to Compliant Kubernetes, we investigate and e
 
 * **community-driven open-source projects**, to reduce the risk of a component becoming abandoned, changing its license or changing direction in the interest of a single entity; as far as possible, we choose [CNCF projects](https://landscape.cncf.io/?project=hosted) (preferably graduated ones) or projects which are governed by at least 3 different entities;
 * **projects with a good security track record**, to avoid unexpected security vulnerabilities or delays in fixing security vulnerabilities; as far as possible, we choose projects with a clear security disclosure process and a clear security announcement process;
-* **projects that are popular**, both from a usage and contribution perspective; as far as possible, we choose projects featuring well-known users and many contributors;
+* **projects that are popular**, both from a usage and contribution perspective; as far as possible, we choose projects featuring well-known users and many Maintainers;
 * **projects that rely on technologies that our team is already trained on**, to reduce the risk of requiring a lot of (initial or ongoing) training; as far as possible, we choose projects that overlap with the projects already on our [tech radar](../tech-radar/index.html);
 * **projects that are simple to install and manage**, to reduce required training and burden on administrators.
 
@@ -84,7 +84,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0007](0007-make-monitoring-forwarders-storage-independent.md) - Make Monitoring Forwarders Storage Independent
 * [ADR-0008](0008-use-hostnetwork-or-loadbalancer-for-ingress.md) - Use HostNetwork or LoadBalancer for Ingress
 * [ADR-0009](0009-use-cluster-issuers-for-letsencrypt.md) - Use ClusterIssuers for LetsEncrypt
-* [ADR-0010](0010-run-managed-services-in-workload-cluster.md) - Run managed services in workload cluster
+* [ADR-0010](0010-run-managed-services-in-workload-cluster.md) - Run managed services in Workload Cluster
 * [ADR-0011](0011-let-upstream-projects-handle-crds.md) - Let upstream projects handle CRDs
 * [ADR-0012](0012-do-not-persist-dex.md) - [Superseded by [ADR-0017](0017-persist-dex.md)] Do not persist Dex
 * [ADR-0013](0013-configure-alerts-in-omt.md) - Configure Alerts in On-call Management Tool (e.g., Opsgenie)
@@ -106,14 +106,14 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0030](0030-run-argocd-on-elastisys-nodes.md) - Run ArgoCD on the Elastisys nodes
 * [ADR-0031](0031-run-csi-cinder-controllerplugin-on-elastisys-nodes.md) - Run csi-cinder-controllerplugin on the Elastisys nodes
 * [ADR-0032](0032-boot-disk-size.md) - Boot disk size on nodes
-* [ADR-0033](0033-run-cluster-api-controllers-on-service-cluster.md) - Run Cluster API controllers on service cluster
+* [ADR-0033](0033-run-cluster-api-controllers-on-service-cluster.md) - Run Cluster API controllers on Management Cluster
 * [ADR-0034](0034-how-to-run-multiple-ams-packages-of-the-same-type.md) - How to run multiple AMS packages of the same type in the same ck8s environment
-* [ADR-0035](0035-run-tekton-on-service-cluster.md) - Run Tekton on service cluster
+* [ADR-0035](0035-run-tekton-on-service-cluster.md) - Run Tekton on Management Cluster
 * [ADR-0036](0036-run-ingress-nginx-as-daemonset.md) - Run ingress-nginx as a daemonSet
 * [ADR-0037](0037-enforce-ttl-on-jobs.md) - Enforce TTL on Jobs
 * [ADR-0038](0038-replace-starboard-operator-with-trivy-operator.md) - Replace the starboard-operator with the trivy-operator
 * [ADR-0040](0040-allow-group-id-0.md) - Allow running containers with primary and supplementary group id 0
-* [ADR-0041](0041-encryption-at-rest.md) - Rely on cloud provider for encryption-at-rest
+* [ADR-0041](0041-encryption-at-rest.md) - Rely on Infrastructure Provider for encryption-at-rest
 
 <!-- adrlogstop -->
 

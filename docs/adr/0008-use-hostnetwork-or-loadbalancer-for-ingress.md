@@ -32,7 +32,7 @@ Chosen options:
     * Where load-balancing does not add value, e.g., if a deployment is planned to have only a single-node or single-worker for the foreseeable future: Point the DNS entry to the worker IP instead.
     * Exoscale currently falls in this category, due to its Kubernetes integration being rather recent.
     * SafeSpring falls in this category, since it is missing load balancers.
-    * If the cloud provider is missing a storage controller, it might be undesirable to perform integration "just" for load-balancing.
+    * If the Infrastructure Provider is missing a storage controller, it might be undesirable to perform integration "just" for load-balancing.
 
 2. Use Service Type LoadBalancer when available. This includes: AWS, Azure, GCP and CityCloud.
 
@@ -47,7 +47,7 @@ Additional considerations: This means that, generally, it will not be possible t
 
 ### Positive Consequences
 
-* We make the best of each cloud provider.
+* We make the best of each Infrastructure Provider.
 * Obeys principle of least astonishment.
 * We do not add a load balancer "just because".
 

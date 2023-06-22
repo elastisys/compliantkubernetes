@@ -20,7 +20,7 @@ cd compliantkubernetes-kubespray
 pip3 install -r kubespray/requirements.txt
 ```
 
-Optional: For debugging, you may want CLI tools to interact with your chosen cloud provider:
+Optional: For debugging, you may want CLI tools to interact with your chosen Infrastructure Provider:
 
 * [AWS CLI](https://github.com/aws/aws-cli)
 * [Exoscale CLI](https://github.com/exoscale/cli)

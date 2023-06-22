@@ -9,6 +9,6 @@ digraph system {
   subgraph cluster_ck8s {
     label="Compliant Kubernetes"
 
-    "Workload cluster" -> "Service cluster"
+    "Workload Cluster" -> "Management Cluster"
   }
 }

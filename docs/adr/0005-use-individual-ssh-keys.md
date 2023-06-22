@@ -48,14 +48,14 @@ The administrator who creates the cluster bootstraps SSH access by providing the
 
 BYO-VM and BYO-metal deployments are handled similarly, except that the initial public SSH key is delivered by email/Slack to the VM/metal administrator.
 
-## Recommendations to Operators
+## Recommendations to Platform Administrators
 
-* Operators should devise procedures for onboarding and offboarding member of the on-call team, as well as rotating SSH keys.
+* Platform Administrators should devise procedures for onboarding and offboarding member of the on-call team, as well as rotating SSH keys.
 
 * The public SSH keys of all on-call administrators could be stored in a repository in a single file with one key per line.
 The comment of the key should clearly identify the owner.
 
-* Operator logs (be it stand-alone documents, git or GitOps-like repositories) should clearly list the SSH keys and identities of the administrators configured for each environment.
+* Platform Administrator logs (be it stand-alone documents, git or GitOps-like repositories) should clearly list the SSH keys and identities of the administrators configured for each environment.
 
 ## Links
 

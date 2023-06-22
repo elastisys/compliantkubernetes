@@ -32,7 +32,7 @@ Chosen option: "Run the csi-cinder-controllerplugin on Elastisys Nodes",  becaus
 
 * We need to change the code to be able to make csi-cinder-controllerplugin run on the Elastisys Nodes.
 
-## Recommendations to Operators
+## Recommendations to Platform Administrators
 
 Specifically, use the following Node labels
 

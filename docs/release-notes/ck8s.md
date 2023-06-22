@@ -119,7 +119,7 @@ Released 2023-01-30
 
 #### Fixed
 
-- **Use FQDN for services connecting from the workload cluster to the service cluster to prevent resolve timeouts.**
+- **Use FQDN for services connecting from the Workload Cluster to the service cluster to prevent resolve timeouts.**
 - **Fixed `KubeletDown` alert rule not alerting if a kubelet was missing.**
 - **Added permissions to the `alerting_full_access` role in Opensearch to be able to view notification channels.**
 - **Added `fluent-plugin-record-modifier` to the fluentd image to prevent mapping errors.**
@@ -185,7 +185,7 @@ Released 2022-09-19
   Automated CIS tests are performed on each node using kube-bench
   Added a CIS kube-bench Grafana dashboard
 - **Added option for kured to notify to slack when draning and rebooting nodes**
-- **Allow users to proxy and port-forward to prometheus running in the workload cluster**
+- **Allow users to proxy and port-forward to prometheus running in the Workload Cluster**
 
 ### v0.25.0
 

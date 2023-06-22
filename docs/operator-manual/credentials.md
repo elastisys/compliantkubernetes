@@ -32,7 +32,7 @@ Single Sign-On (SSO) Credentials
 * Misc:
     * Protect using [2FA](https://en.wikipedia.org/wiki/Multi-factor_authentication)
 
-Cloud Provider (Infrastructure) Credentials
+Infrastructure Provider Credentials
 -------------------------------------------
 
 * Purpose: create infrastructure, e.g., VMs, load balancers, networks, buckets.
@@ -61,7 +61,7 @@ SSH Keys
 PGP Keys
 --------
 
-* Purpose: encrypt/decrypt sensitive information, e.g., service account credentials, customer names, incident reports, financial information, etc.
+* Purpose: encrypt/decrypt sensitive information, e.g., service account credentials, Application Developer names, incident reports, financial information, etc.
 * Owner: administrator
 * Type: individual credentials
 * Use for:
@@ -69,7 +69,7 @@ PGP Keys
 * Do not use for:
     * Encrypting/decrypting individual credentials. These are meant to be individual and never shared.
     * Encrypting/decrypting SSH key. These are meant to be individual and never shared. Prefer [protecting your SSH key with a passphrase](https://martin.kleppmann.com/2013/05/24/improving-security-of-ssh-private-keys.html) or storing it on a [YubiKey](https://en.wikipedia.org/wiki/YubiKey).
-    * Encrypting non-sensitive information. This leads to a culture of "security by obscurity" in which people over-rely on encryption. Prefer being mindful about what data you store and why. If unsure, prefer not storing credentials, as Cloud Provider Credentials and SSH keys should be enough to restore any access.
+    * Encrypting non-sensitive information. This leads to a culture of "security by obscurity" in which people over-rely on encryption. Prefer being mindful about what data you store and why. If unsure, prefer not storing credentials, as Infrastructure Provider Credentials and SSH keys should be enough to restore any access.
 * Important considerations:
     * When generating a GPG key, see [Cryptography](cryptography.md).
 
@@ -91,7 +91,7 @@ Backup and Long-Term Logging Credentials
 
 * Purpose:
     * Allow backup of various components, e.g., PVCs via Velero, Thanos metrics, OpenSearch Indexes, PostgreSQL databases.
-    * Allow long-term logging, e.g., Service Cluster logs
+    * Allow long-term logging, e.g., Management Cluster logs
 * Owner: each Compliant Kubernetes cluster should have their own
 * Type: service account
 * Use for:
@@ -99,9 +99,9 @@ Backup and Long-Term Logging Credentials
     * Logging
 * Do not use for:
     * Other object storage, e.g., Harbor container images
-    * Disaster recovery, investigations. Use Cloud Provider credentials instead.
+    * Disaster recovery, investigations. Use Infrastructure Provider credentials instead.
 * Misc:
-    * Ensure these credentials are **write-only**, if supported by the underlying cloud provider, to comply with [ISO 27001 A.12.3.1 Information Backup](https://www.isms.online/iso-27001/annex-a-12-operations-security/) and [ISO 27001 A.12.4.2 Protection of Log Information](https://www.isms.online/iso-27001/annex-a-12-operations-security/). As of 2021-05-20, this is supported by AWS S3, Exoscale S3, GCP and SafeSpring S3.
+    * Ensure these credentials are **write-only**, if supported by the underlying Infrastructure Provider, to comply with [ISO 27001 A.12.3.1 Information Backup](https://www.isms.online/iso-27001/annex-a-12-operations-security/) and [ISO 27001 A.12.4.2 Protection of Log Information](https://www.isms.online/iso-27001/annex-a-12-operations-security/). As of 2021-05-20, this is supported by AWS S3, Exoscale S3, GCP and SafeSpring S3.
 
 OpsGenie Credentials
 --------------------
@@ -137,7 +137,7 @@ Kubeconfig with OpenID Authentication
     * Investigations
     * "Simple" recovery
 * Misc:
-    * If these credentials become unusable, you are in a "break glass" situation. Use cloud provider credentials or SSH keys to initiate disaster recovery.
+    * If these credentials become unusable, you are in a "break glass" situation. Use Infrastructure Provider credentials or SSH keys to initiate disaster recovery.
 
 Kubeconfig with Client Certificate Key
 --------------------------------------

@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-We run additional services in the workload cluster on dedicated nodes, currently databases (PostgreSQL), in-memory caches (Redis), message queues (RabbitMQ) and distributed tracing (Jaeger).
+We run additional services in the Workload Cluster on dedicated nodes, currently databases (PostgreSQL), in-memory caches (Redis), message queues (RabbitMQ) and distributed tracing (Jaeger).
 Where should we run ArgoCD?
 
 ## Decision Drivers
@@ -24,7 +24,7 @@ Where should we run ArgoCD?
 
 ## Decision Outcome
 
-Chosen option: "Run ArgoCD services on Elastisys Nodes, and scale up the nodes.",  because it improves the stability and security of the platform, avoids resource waste and makes the ArgoCD service more affordable to our customers.
+Chosen option: "Run ArgoCD services on Elastisys Nodes, and scale up the nodes.",  because it improves the stability and security of the platform, avoids resource waste and makes the ArgoCD service more affordable to the Application Developers.
 
 Scale up the Elastisys Nodes to 4C8GB before installing managed ArgoCD.
 
@@ -38,7 +38,7 @@ Scale up the Elastisys Nodes to 4C8GB before installing managed ArgoCD.
 * We need to scale up the Elastisys nodes to 4C8GB
 * We are sharing the Elastisys nodes resources with the other Elastisys platform components, e.g., Ingress Controller.
 
-## Recommendations to Operators
+## Recommendations to Platform Administrators
 
 Specifically, use the following Node labels
 

@@ -48,7 +48,7 @@ It will cordon and reboot the nodes one by one.
 
 ### Upgrading the Compliant Kubernetes application stack
 
-Compliant Kubernetes consists of a multitude of open source components that interact to form a smooth end user experience.
+Compliant Kubernetes consists of a multitude of open source components that interact to form a smooth End User experience.
 In order to free you of the burden of keeping track of when to upgrade the various components, new versions of Complaint Kubernetes are regularly release.
 When a new version is released, it becomes available as a [tagged release](https://github.com/elastisys/compliantkubernetes-apps/tags) in the GitHub repo.
 
@@ -128,7 +128,7 @@ All clusters should stay up to date with the latest Kubespray version used in [c
 
 1. Note what version of Kubespray that is currently used in the cluster and the Kubespray version we want to upgrade to.
 Then check the release notes for each version in between to see if there are anything that might cause any problems, if so then consult the rest of the operations team before proceeding.
-Also check if the newer Kubespray version would upgrade Kubernetes to a new minor version, if so then the customer should get a notice of x weeks before proceeding to let them check for any deprecated APIs that they might be using.
+Also check if the newer Kubespray version would upgrade Kubernetes to a new minor version, if so then the Application Developer should get a notice of x weeks before proceeding to let them check for any deprecated APIs that they might be using.
 You should never upgrade more than one patch version of Kubespray at a time.
 E.g. if you are at Kubespray version 2.13.3 and are going to 2.15.0 then the upgrade path would be 2.13.3 -> 2.13.4 -> 2.14.0 -> 2.14.1 -> 2.14.2 -> 2.15.0.
 Patches that are released to an older minor version can be skipped, e.g. new patches to 2.14 after 2.15 has been released.

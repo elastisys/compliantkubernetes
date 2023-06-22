@@ -28,7 +28,7 @@ Prepare as follows:
 Once you have these in place, we recommend you proceed as follows when receiving a request from a data subject.
 
 1. **Track** the request of the data subject in some internal system, e.g., email or a service ticket system. Try to keep as little personal data as possible, e.g., only contact email.
-2. **Delete data from the production database**. No need to write code. Just issue a command like `DELETE FROM users WHERE userId=?`. Compliant Kubernetes will record in its audit logs that an application developer connected directly to the database. For extra security via traceability, you can even enable PostgreSQL audit logs.
+2. **Delete data from the production database**. No need to write code. Just issue a command like `DELETE FROM users WHERE userId=?`. Compliant Kubernetes will record in its audit logs that an Application Developer connected directly to the database. For extra security via traceability, you can even enable PostgreSQL audit logs.
 3. **Reply** to the data subject with an email like the following. This email assumes the default backup and log retention period of 30 days.
 
     > Hello data subject,

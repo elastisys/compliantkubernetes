@@ -38,8 +38,8 @@ This decision applies for new wrapper scripts. We will not rework old wrapper sc
 
 ### Positive Consequences
 
-* The operations team can encode standard operating procedures and scale ways of working.
-* Customer-facing developers can easily reuse artefacts for new use-cases, without significant development effort.
+* Platform Administrators can encode standard operating procedures and scale ways of working.
+* Our professional services team can easily reuse artefacts for new use-cases, without significant development effort.
 * Newcomers will (hopefully) find the right trade-off of barriers, depending on whether they are looking for flexibility or predictability.
 
 ### Negative Consequences

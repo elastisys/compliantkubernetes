@@ -10,4 +10,4 @@ They perform the following actions:
 4. Delete the added CustomResourceDefinitions
 
 !!!note
-    If user namespaces are managed by Compliant Kubernetes apps then they will also be deleted if you clean up the workload cluster.
+    If user namespaces are managed by Compliant Kubernetes apps then they will also be deleted if you clean up the Workload Cluster.

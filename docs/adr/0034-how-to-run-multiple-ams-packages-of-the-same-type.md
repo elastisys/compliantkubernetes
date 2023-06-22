@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-Some of our customers request multiple AMS packages of the same size or different sizes, using 1 package per request or multiple packages in the same request (batch-order).
+Some of the Application Developers request multiple AMS packages of the same size or different sizes, using 1 package per request or multiple packages in the same request (batch-order).
 How should we add the second or n-th package? Should we scale the nodes vertically or horizontally?
 If we scale horizontally, then in some cases we need to add AMS packages of different sizes and this brings up the problem where we need to stick the package to a specific set of nodes otherwise for example, after a maintenance that reboots the nodes, a postgres-4 package might be scheduled on a node that was intended for a postgres-8 package and the postgres-8 pod will not be able to be scheduled anymore because it does not fit on the postgres-4 node.
 How can we overcome this issue? Should we add a `elastisys.io/ams-cluster-name` label/taint for the AMS with dedicated nodes?
@@ -15,7 +15,7 @@ How can we overcome this issue? Should we add a `elastisys.io/ams-cluster-name` 
 ## Decision Drivers
 
 * We want to deliver a stable and secure platform.
-* We want to best serve our customer needs.
+* We want to best serve the Application Developer needs.
 * We want to find a solution which is scalable and minimizes administrator burden.
 * We don't want to waste infrastructure.
 
@@ -46,9 +46,9 @@ Respect [ADR-0022](0022-use-dedicated-nodes-for-additional-services.md) and add 
 
 * The platform stability and scalability is improved.
 * We provide extra isolation of the AMS.
-* Being able to choose from options of scaling the nodes both vertically and horizontally shows that we are flexible and we can satisfy more of the customer needs.
+* Being able to choose from options of scaling the nodes both vertically and horizontally shows that we are flexible and we can satisfy more of the Application Developer needs.
 * We can add more labels that will better describe and schedulle our AMS services, like `local-disk` and others.
-* With options 1 and 3 more resources are available to the customer.
+* With options 1 and 3 more resources are available to the Application Developer.
 
 ### Negative Consequences
 
@@ -56,7 +56,7 @@ Respect [ADR-0022](0022-use-dedicated-nodes-for-additional-services.md) and add 
 * The infrastructure footprint is increased for option 2.
 * With options 1 and 3 the stability of the AMS package is reduced, because if 1 node is unresponsive then it will affect not 1 AMS package, but multiple AMS packages.
 
-## Recommendations to Operators
+## Recommendations to Platform Administrators
 
 - Use label like: `elastisys.io/ams-cluster-name`
 - Update the AMS repo and documentation with this and set it by default to automatically picked up from kubectl
