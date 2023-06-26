@@ -21,22 +21,12 @@ Disaster recovery is mandated by several regulations and information security st
 
 ## Object storage providers
 
-### Feature matrix
-
-Provider       | Write-only credentials
--------------  | -------------
-AWS S3         | Yes
-Citycloud S3   | No
-Exoscale S3    | Yes
-GCP            | Yes
-Safespring S3  | Yes
-
 ## Off-site backups
 
 Backups can be set up to be replicated off-site using CronJobs.
 
 In version v0.23 these can be **encrypted** before they are sent off-site, which means they must first be restored to be usable. <br/>
-It is possible to restore serviecs directly from **unencrypted** off-site backups with some additional steps.
+It is possible to restore services directly from **unencrypted** off-site backups with some additional steps.
 
 See [the instructions in `compliantkubernetes-apps`](https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts/restore-sync) for how to restore off-site backups.
 
