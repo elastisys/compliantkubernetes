@@ -45,3 +45,29 @@ Certain installations of Compliant Kubernetes may use Min.io for accessing objec
 The exact difference between "aggregate" and "modified version" is [somewhat unclear](https://www.gnu.org/licenses/gpl-faq.en.html#MereAggregation). When using Min.io with Compliant Kubernetes, we only use Min.io via its S3-compatible API. Hence, we determined that Compliant Kubernetes is an "aggregate" work and is unaffected by the ["viral" clauses](https://en.wikipedia.org/wiki/Viral_license) of AGPLv3.
 
 As a result, Compliant Kubernetes continues to be distributed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) as before.
+
+## Can I use Datadog/Logz.io/Elastic Cloud with Compliant Kubernetes?
+
+!!!note "TL;DR"
+    Technically, yes, but legally **NO**. Why?
+
+    * Logs contain personal data.
+    * Personal data should NOT be shipped to US cloud providers.
+
+    Use Compliant Kubernetes's [build-in OpenSearch](../user-guide/logs.md) instead.
+
+Application and platform logs are highly likely to contain personal data.
+Note that, according to [GDPR Art. 4](https://gdpr.fan/a4) any information that can be directly or indirectly related to an individual is personal data.
+There are court rulings clarifying that:
+
+- email addresses and user IDs are personal data;
+- [IP addresses are personal data](http://curia.europa.eu/juris/document/document.jsf?docid=184668&doclang=EN&cid=1095511);
+- [browser-generated information](https://www.judiciary.uk/wp-content/uploads/2018/10/lloyd-v-google-judgment.pdf) (e.g., cookies, URLs, fingerprints, user agents) can be personal data.
+
+According to the [so-called "Schrems II" ruling](https://www.europarl.europa.eu/RegData/etudes/ATAG/2020/652073/EPRS_ATA(2020)652073_EN.pdf), US law -- in particular [US CLOUD Act](https://en.wikipedia.org/wiki/CLOUD_Act) and [US FISA](https://en.wikipedia.org/wiki/Foreign_Intelligence_Surveillance_Act) are incompatible -- with EU GDPR and personal data processing.
+
+Furthermore, according to a [French court ruling](https://iapp.org/news/a/why-this-french-court-decision-has-far-reaching-consequences-for-many-businesses/) it doesn't matter if the data-center is located in the EU/EEA. A US company is still under US jurisdiction and considered at risk of US CLOUD Act and US FISA.
+
+Most Software-as-a-Service log management platforms -- like Datadog, Logz.io and Elastic Cloud -- are operated by US entities and run on US clouds. Hence, using them to process logs poses a high risk that personal data ends up being processed on a US cloud. Therefore, personal data is at risk of US CLOUD Act and US FISA, which is incompatible with GDPR.
+
+Fortunately, Compliant Kubernetes comes with [OpenSearch built-in](../user-guide/logs.md), so you can benefit from full-text search over your application logs while complying with GDPR.
