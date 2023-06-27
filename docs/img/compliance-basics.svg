@@ -88,9 +88,9 @@
 <!-- NSA -->
 <g id="node6" class="node">
 <title>NSA</title>
-<g id="a_node6"><a xlink:href="https://media.defense.gov/2021/Aug/03/2002820425/-1/-1/1/CTR_KUBERNETES%20HARDENING%20GUIDANCE.PDF" xlink:title="NSA" target="_blank">
+<g id="a_node6"><a xlink:href="https://kubernetes.io/blog/2021/10/05/nsa-cisa-kubernetes-hardening-guidance/" xlink:title="NSA/CISA" target="_blank">
 <path fill="none" stroke="black" d="M746,-788C746,-788 662,-788 662,-788 656,-788 650,-782 650,-776 650,-776 650,-764 650,-764 650,-758 656,-752 662,-752 662,-752 746,-752 746,-752 752,-752 758,-758 758,-764 758,-764 758,-776 758,-776 758,-782 752,-788 746,-788"/>
-<text text-anchor="middle" x="704" y="-766.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">NSA</text>
+<text text-anchor="middle" x="704" y="-766.3" font-family="Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-size="14.00">NSA/CISA</text>
 </a>
 </g>
 </g>
@@ -503,7 +503,7 @@
 <g id="node37" class="node">
 <title>createdBy</title>
 <g id="a_node37"><a xlink:href="https://elastisys.com" target="_blank">
-<image xlink:href="logos/created-by.svg" width="201px" height="36px" preserveAspectRatio="xMinYMin meet" x="603.5" y="-52"/>
+<image xlink:href="logos/created-by.svg" width="205px" height="36px" preserveAspectRatio="xMinYMin meet" x="601.5" y="-52"/>
 </a>
 </g>
 </g>
