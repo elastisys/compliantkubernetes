@@ -54,7 +54,7 @@ As a result, Compliant Kubernetes continues to be distributed under [Apache 2.0]
     * Logs contain personal data.
     * Personal data should NOT be shipped to US cloud providers.
 
-    Use Compliant Kubernetes's [build-in OpenSearch](../user-guide/logs.md) instead.
+    Use Compliant Kubernetes's [built-in OpenSearch](../user-guide/logs.md) instead.
 
 Application and platform logs are highly likely to contain personal data.
 Note that, according to [GDPR Art. 4](https://gdpr.fan/a4) any information that can be directly or indirectly related to an individual is personal data.
