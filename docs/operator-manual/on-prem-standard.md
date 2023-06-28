@@ -24,7 +24,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 1. Create a git working folder to store Compliant Kubernetes configurations in a version-controlled manner. Run the following commands from the root of the config repo.
 
     !!! note
-        The following steps are done from the root of the git repository you created for the cofigurations.
+        The following steps are done from the root of the git repository you created for the configurations.
 
     !!! note
         You can choose names for your Management Cluster and Workload Cluster by changing the values for `SERVICE_CLUSTER` and `WORKLOAD_CLUSTERS` respectively.
@@ -39,18 +39,20 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     WORKLOAD_CLUSTERS="wc"
     ```
 
-1. Add the Elastisys Compliant Kubernetes Kubespray repo as `git submodule` to the configuration repo as follows:
+1. Add the Elastisys Compliant Kubernetes Kubespray repo as a `git submodule` to the configuration repo and install pre-requisites as follows:
 
     ```bash
-    git submodule add  https://github.com/elastisys/compliantkubernetes-kubespray
+    git submodule add https://github.com/elastisys/compliantkubernetes-kubespray.git
     git submodule update --init --recursive
-
+    cd compliantkubernetes-kubespray
+    pip3 install -r kubespray/requirements.txt  # this will install ansible
+    ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
     ```
 
-1. Add compliantkubernetes-apps as `git submodule` to the configuration repo and install pre-requisites as follows:
+1. Add the Compliant Kubernetes Apps repo as a `git submodule` to the configuration repo and install pre-requisites as follows:
 
     ```bash
-    https://github.com/elastisys/compliantkubernetes-apps.git
+    git submodule add https://github.com/elastisys/compliantkubernetes-apps.git
     cd compliantkubernetes-apps
     ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
     ```
@@ -66,9 +68,9 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
         - `harbor.example.com`
         - `opensearch.example.com`
 
-    ???+note "If both service and Workload Clusters are in the same subnet"
+    ???+note "If both Management and Workload Clusters are in the same subnet"
 
-        If both the service and Workload Clusters are in the same subnet, it would be great to configure the following domain names to the private IP addresses of Management Cluster's worker nodes. (Replace `example.com` with your domain name.)
+        If both the Management and Workload Clusters are in the same subnet, it would be great to configure the following domain names to the private IP addresses of Management Cluster's worker nodes. (Replace `example.com` with your domain name.)
 
         - `*.thanos.ops.example.com`
         - `*.opensearch.ops.example.com`
@@ -106,7 +108,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "{WORKLOAD_CLUSTERS}"; do
-compliantkubernetes-kubespray/ck8s-kubespray init $CLUSTER $CK8S_CLOUD_PROVIDER $CK8S_PGP_FP
+  compliantkubernetes-kubespray/ck8s-kubespray init $CLUSTER $CK8S_CLOUD_PROVIDER $CK8S_PGP_FP
 done
 ```
 
@@ -118,9 +120,9 @@ To configure OpenID access for Kubernetes API and other services, Dex should be 
 
 Set `kube_oidc_url` in `${CK8S_CONFIG_PATH}/sc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` and `${CK8S_CONFIG_PATH}/wc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` based on your cluster. For example, if your domain is `example.com` then kube_oidc_url is set as `kube_oidc_url: https://dex.example.com` in both files.
 
-### Copy the VMs information to the inventery files
+### Copy the VMs information to the inventory files
 
-Add the host name, user and IP address of each VM that you prepared above in `${CK8S_CONFIG_PATH}/sc-config/inventory.ini`for Management Cluster and `${CK8S_CONFIG_PATH}/sc-config/inventory.ini` for Workload Cluster. Moreover, you also need to add the host names of the master nodes under `[kube_control_plane]`, etdc nodes under `[etcd]` and worker nodes under `[kube_node]`.
+Add the host name, user and IP address of each VM that you prepared above in `${CK8S_CONFIG_PATH}/sc-config/inventory.ini`for Management Cluster and `${CK8S_CONFIG_PATH}/sc-config/inventory.ini` for Workload Cluster. Moreover, you also need to add the host names of the master nodes under `[kube_control_plane]`, etcd nodes under `[etcd]` and worker nodes under `[kube_node]`.
 
 !!! note
     Make sure that the user has SSH access to the VMs.
@@ -129,7 +131,7 @@ Add the host name, user and IP address of each VM that you prepared above in `${
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} ${WORKLOAD_CLUSTERS}; do
-    compliantkubernetes-kubespray/bin/ck8s-kubespray apply $CLUSTER --flush-cache
+  compliantkubernetes-kubespray/bin/ck8s-kubespray apply $CLUSTER --flush-cache
 done
 ```
 
@@ -143,12 +145,18 @@ _Only for Infrastructure Providers that doesn't natively support storage kuberne
 Run the following command to set up Rook.
 
 ```bash
- for CLUSTER in  sc wc; do
-     sops --decrypt ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $CLUSTER.yaml
-     export KUBECONFIG=$CLUSTER.yaml
-     compliantkubernetes-kubespray/rook/deploy-rook.sh
- done
+for CLUSTER in  sc wc; do
+  export KUBECONFIG=${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml
+  compliantkubernetes-kubespray/rook/deploy-rook.sh
+done
 ```
+
+!!! note
+    If the kubeconfig files for the clusters are encrypted with SOPS, you need to decrypt them before using them:
+    ```bash
+    sops--decrypt ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $CLUSTER.yaml
+    export KUBECONFIG=$CLUSTER.yaml
+    ```
 
 Please restart the operator pod, `rook-ceph-operator*`, if some pods stall in the initialization state as shown below:
 
@@ -169,11 +177,11 @@ To test Rook, proceed as follows:
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} apply -f https://raw.githubusercontent.com/rook/rook/release-1.5/cluster/examples/kubernetes/ceph/csi/rbd/pvc.yaml';
+  kubectl --kubeconfig ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml apply -f https://raw.githubusercontent.com/rook/rook/release-1.5/cluster/examples/kubernetes/ceph/csi/rbd/pvc.yaml
 done
 
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} get pvc';
+  kubectl --kubeconfig ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml get pvc
 done
 ```
 
@@ -181,34 +189,35 @@ You should see PVCs in `Bound` state. If you want to clean the previously create
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} delete pvc rbd-pvc';
+  kubectl --kubeconfig ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml delete pvc rbd-pvc
 done
 ```
+
 ## Deploying Compliant Kubernetes Apps
 
-???+note "How to change local DNS IP if you change the default Kubebernetes subnet address"
+???+note "How to change local DNS IP if you change the default Kubernetes subnet address"
 
     You need to change the default coreDNS default IP address in `common-config.yaml` file if  you change the default IP block  used for Kubernetes services above.  To get the coreDNS IP address, run the following commands.
 
     ```bash
     ${CK8S_CONFIG_PATH}/compliantkubernetes-apps/bin/ck8s ops kubectl sc get svc -n kube-system coredns
     ```
-    Once you get the IP address edit `${CK8S_CONFIG_PATH}/scommon-config.yaml` file  and set  the value  to `global.clusterDns` field.
+    Once you get the IP address edit `${CK8S_CONFIG_PATH}/common-config.yaml` file  and set  the value  to `global.clusterDns` field.
 
 
 ???+note "Configure the load balancer IP on the loopback interface for each worker node"
-    The Kubernetes data planenodes (i.e., worker nodes) cannot connect to themselves with the IP address of the load balancer that fronts them. The easiest is to configure the load balancer's IP address on the loopback interface of each nodes. Create `/etc/netplan/20-eip-fix.yaml` file and add the following to it. `${loadblancer_ip_address}` should be replaced with the IP address of the load balancer for each cluster.
+    The Kubernetes data plane nodes (i.e., worker nodes) cannot connect to themselves with the IP address of the load balancer that fronts them. The easiest is to configure the load balancer's IP address on the loopback interface of each nodes. Create `/etc/netplan/20-eip-fix.yaml` file and add the following to it. `${loadblancer_ip_address}` should be replaced with the IP address of the load balancer for each cluster.
 
     ```yaml
     network:
-    version: 2
-    ethernets:
-        "lo:0":
-        match:
+      version: 2
+      ethernets:
+        lo0:
+          match:
             name: lo
-        dhcp4: false
-        addresses:
-        - ${loadblancer_ip_address}/32
+          dhcp4: false
+          addresses:
+          - ${loadblancer_ip_address}/32
     ```
     After adding the above content, run the following command in each worker node:
 
@@ -222,7 +231,7 @@ done
 compliantkubernetes-apps/bin/ck8s init
 ```
 
-This will initialise the configuration in the `${CK8S_CONFIG_PATH}` directory. Generating configuration files `common-config.yaml`, `sc-config.yaml` and `wc-config.yaml`, as well as secrets with randomly generated passwords in `secrets.yaml`. This will also generate read-only default configuration under the directory `defaults/` which can be used as a guide for available and suggested options.
+This will initialize the configuration in the `${CK8S_CONFIG_PATH}` directory. Generating configuration files `common-config.yaml`, `sc-config.yaml` and `wc-config.yaml`, as well as secrets with randomly generated passwords in `secrets.yaml`. This will also generate read-only default configuration under the directory `defaults/` which can be used as a guide for available and suggested options.
 
 ### Configure the apps and secrets
 
@@ -240,7 +249,7 @@ vim ${CK8S_CONFIG_PATH}/common-config.yaml
 Edit the secrets.yaml file and add the credentials for:
 
 - s3 - used for backup storage
-- dex - connectors -- check [your indentiy provider](https://dexidp.io/docs/connectors/).
+- dex - connectors -- check [your identity provider](https://dexidp.io/docs/connectors/).
 - On-call management tool configurations-- Check [supported on-call management tools](https://prometheus.io/docs/alerting/latest/configuration/)
 
 ```bash
@@ -285,7 +294,7 @@ You can check if the system settled as follows.
 
 ```bash
 for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
- compliantkubernetes-apps/bin/ck8s ops kubectl $CLUSTER get --all-namespaces pods
+  compliantkubernetes-apps/bin/ck8s ops kubectl $CLUSTER get --all-namespaces pods
 done
 ```
 
