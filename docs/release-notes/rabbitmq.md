@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes RabbitMQ
 <!-- BEGIN TOC -->
+- [v3.11.18-ck8s1](#v31118-ck8s1) - 2023-07-03
 - [v3.10.7-ck8s1](#v3107-ck8s1) - 2022-09-21
 - [v1.11.1-ck8s2](#v1111-ck8s2) - 2022-06-08
 - [v1.11.1-ck8s1](#v1111-ck8s1) - 2022-03-11
@@ -11,6 +12,15 @@
 
 !!!note
     These are only the user-facing changes.
+
+### v3.11.18-ck8s1
+
+Released 2023-07-03
+
+#### Updated:
+
+- Updated cluster operator to `v2.3.0`, updated server to `3.11.18`
+- Include updated Overview dashboard
 
 ### v3.10.7-ck8s2
 
