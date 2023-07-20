@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.31.0](#v0310) - 2023-07-17
 - [v0.30.1](#v0301) - 2023-06-05
 - [v0.30.0](#v0300) - 2023-05-16
 - [v0.29.0](#v0290) - 2023-03-16
@@ -31,6 +32,25 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.31.0
+
+Released 2023-07-17
+
+#### Updated
+
+- Harbor is upgraded to v2.8.2:
+    - This version drops the support for chartmuseum. If you are using chartmuseum you will need to migrate your [charts](https://github.com/goharbor/harbor/wiki/Migrate-helm-chart-to-oci-registry-in-Harbor)
+    - Dex is now the default login page
+- Ingess-nginx is upgraded to v1.8.0
+- Grafana is upgrade to v9.5.5
+- Opensearch and Opensearch Dashboard are upgraded to v2.8.0
+
+#### Added
+
+- Added RBAC for admin users to view events and logs
+- Possibility to add custom config for node-local-dns
+- Harbor GC is enabled by default and will run every Sunday at midnight UTC
 
 ### v0.30.1
 
