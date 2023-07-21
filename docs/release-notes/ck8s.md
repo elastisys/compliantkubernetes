@@ -40,10 +40,11 @@ Released 2023-07-17
 #### Updated
 
 - Harbor is upgraded to v2.8.2:
-    - This version drops the support for chartmuseum. If you are using chartmuseum you will need to migrate your [charts](https://github.com/goharbor/harbor/wiki/Migrate-helm-chart-to-oci-registry-in-Harbor)
+    - This version drops the support for chartmuseum and replaces it with a OCI compatible chart storage. You can find the documentation for how to use OCI compatible chart storage [here](https://goharbor.io/docs/2.7.0/working-with-projects/working-with-images/managing-helm-charts/#manage-helm-charts-with-the-oci-compatible-registry-of-harbor)
+    - They are also replacing the Notary image signer with Cosign image signer. You can find the documentation for how to use Cosign to sign images [here](https://goharbor.io/docs/2.7.0/working-with-projects/working-with-images/sign-images/#use-cosign-to-sign-artifacts)
     - Dex is now the default login page
 - Ingess-nginx is upgraded to v1.8.0
-- Grafana is upgrade to v9.5.5
+- Grafana is upgraded to v9.5.5
 - Opensearch and Opensearch Dashboard are upgraded to v2.8.0
 
 #### Added
