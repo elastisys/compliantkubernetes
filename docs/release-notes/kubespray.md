@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
+- [v2.22.1-ck8s1](#v2221-ck8s1) - 2023-07-27
 - [v2.21.0-ck8s1](#v2210-ck8s1) - 2023-02-06
 - [v2.20.0-ck8s2](#v2200-ck8s2) - 2022-10-24
 - [v2.20.0-ck8s1](#v2200-ck8s1) - 2022-10-10
@@ -19,6 +20,20 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/CHANGELOG.md).
+
+### v2.22.1-ck8s1
+
+Released 2023-07-27
+
+#### Updated:
+
+- **Updated kubespray to `v1.22.1`** <br/>
+    Kubernetes version upgraded to [v1.26.7](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.26.md#changelog-since-v1250). <br/>
+    This version requires at least terraform version `1.3.0` in order to provision infrastructure using the kubespray provided terraform modules.
+
+#### Changed:
+
+- **Updated the Kubernetes audit log policy file**
 
 ### v2.21.0-ck8s1
 
