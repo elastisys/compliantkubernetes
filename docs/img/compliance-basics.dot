@@ -41,8 +41,8 @@ digraph compliance_basics {
         node[width=1.5, shape=box, style=rounded]
 
         NSA[
-            label="NSA"
-            URL="https://media.defense.gov/2021/Aug/03/2002820425/-1/-1/1/CTR_KUBERNETES%20HARDENING%20GUIDANCE.PDF"
+            label="NSA/CISA"
+            URL="https://kubernetes.io/blog/2021/10/05/nsa-cisa-kubernetes-hardening-guidance/"
         ]
         EDPB[
             label="EDPB"
