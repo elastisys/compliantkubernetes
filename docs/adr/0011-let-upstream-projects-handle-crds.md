@@ -67,7 +67,7 @@ Dex can be configured without CRDs. [ADR-0012](https://github.com/elastisys/comp
 
 ### Prometheus (kube-prometheus-stack)
 
-* Installation: kube-prometheus-stack installs CRDs using [standard Helm mechanism](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/crds).
+* Installation: kube-prometheus-stack installs CRDs using [standard Helm mechanism](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack).
 * Upgrade: kube-prometheus-stack expects you to [run manual upgrade steps](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack#from-14x-to-15x).
 
 ### Velero
