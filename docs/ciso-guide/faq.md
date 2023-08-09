@@ -49,7 +49,7 @@ As a result, Compliant Kubernetes continues to be distributed under [Apache 2.0]
 ## Can I use Datadog/Logz.io/Elastic Cloud with Compliant Kubernetes?
 
 !!!note "TL;DR"
-    Technically, yes, but legally **NO**. Why?
+    Technically, yes, but legally speaking and from a GDPR perspective, **NO**. Why is that?
 
     * Logs contain personal data.
     * Personal data should NOT be shipped to US cloud providers.
