@@ -35,7 +35,9 @@ theme:
   name: material
   font: false
   logo: 'img/logo.png'
-  favicon: 'img/favicon.png'
+  # "The Internet" recommends using absolute URLs for favicons.
+  # At least Firefox seems to like them more.
+  favicon: 'https://elastisys.io/compliantkubernetes/img/favicon.png'
   custom_dir: overrides
   palette:
     scheme: elastisys
