@@ -1,3 +1,8 @@
+---
+tags:
+- HSLF-FS 2016:40 4 kap. 2 § Styrning av behörigheter
+- MSBFS 2020:7 4 kap. 5 §
+---
 # Prepare your Identity Provider (IdP)
 
 !!! elastisys "For Elastisys Managed Services Customers"
