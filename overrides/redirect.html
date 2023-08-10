@@ -31,9 +31,11 @@
 <p>Redirecting to <a href="{{href}}">{{href}}</a>...</p>
 
 <script>
-window.location.replace(
-  "{{href}}" + window.location.search + window.location.hash
-);
+    setTimeout(function () {
+        window.location.replace(
+            "{{href}}" + window.location.search + window.location.hash
+        );
+    }, 500);
 </script>
 
 </body>
