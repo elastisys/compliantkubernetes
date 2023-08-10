@@ -64,22 +64,24 @@ If unsure, ask your Platform Administrators.
 9. Set the **Authorized redirect URIs** to the Dex URL provided by your Administrators.
 This is generally `https://dex.$DOMAIN/callback`.
 If unsure, ask your Platform Administrators.
-11. Finally, securely send, e.g., via [YoPass](https://yopass.elastisys.com), the following information to your Platform Administrators:
+10. Finally, securely send, e.g., via [YoPass](https://yopass.elastisys.com), the following information to your Platform Administrators:
     - client ID;
     - client secret.
 
-To set up groups follow these steps, note that steps 6-8 below can only be done by an administrator.
+To set up groups follow these steps, note that steps 16-18 below can only be done by an administrator.
 
-1. Go to [Google Cloud -- Service accounts](https://console.cloud.google.com/iam-admin/serviceaccounts?orgonly=true).
-2. Make sure that you are in the same project that you created previously (see top menu).
-3. Click on **+ CREATE SERVICE ACCOUNT** and give it a suitable name.
-4. Note down the **Unique ID** of the service account as you will need it soon.
-5. Go to the newly created service account and then under the **KEYS** tab click **ADD KEY** and create a new key of type **JSON**. Save the JSON file for the end.
-6. You need to give the service account read access to groups. Go to the [Google admin console](https://admin.google.com).
-7. Navigate through the menu to **Security > Access and data control > API Controls** and click **Manage Domain Wide Delegation** and then **Add New**.
-8. In the **Client ID** field put the **Unique ID** of the service account from step 4. and in the **Oauth Scopes** field enter this scope: `https://www.googleapis.com/auth/admin.directory.group.readonly`.
-9. Decide on the name of the Google group that should have admin privileges in the Compliant Kubernetes environment.
-10. Finally, securely send, e.g., via [YoPass](https://yopass.elastisys.com), the following information to your Platform Administrators:
+<!-- The sane_lists Markdown extension will make sure the list starts from 11. -->
+
+11. Go to [Google Cloud -- Service accounts](https://console.cloud.google.com/iam-admin/serviceaccounts?orgonly=true).
+12. Make sure that you are in the same project that you created previously (see top menu).
+13. Click on **+ CREATE SERVICE ACCOUNT** and give it a suitable name.
+14. Note down the **Unique ID** of the service account as you will need it soon.
+15. Go to the newly created service account and then under the **KEYS** tab click **ADD KEY** and create a new key of type **JSON**. Save the JSON file for the end.
+16. You need to give the service account read access to groups. Go to the [Google admin console](https://admin.google.com).
+17. Navigate through the menu to **Security > Access and data control > API Controls** and click **Manage Domain Wide Delegation** and then **Add New**.
+18. In the **Client ID** field put the **Unique ID** of the service account from step 4. and in the **Oauth Scopes** field enter this scope: `https://www.googleapis.com/auth/admin.directory.group.readonly`.
+19. Decide on the name of the Google group that should have admin privileges in the Compliant Kubernetes environment.
+20. Finally, securely send, e.g., via [YoPass](https://yopass.elastisys.com), the following information to your Platform Administrators:
     - the JSON file you downloaded;
     - admin group you decided on.
 
