@@ -59,4 +59,29 @@ if(!document.__defineGetter__) {
 <meta name="msapplication-TileColor" content="#2b5797">
 <meta name="msapplication-config" content="https://elastisys.io/compliantkubernetes/img/browserconfig.xml?v=1">
 <meta name="theme-color" content="#ffffff">
+
+<!-- See https://ogp.me/ -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+{% block ogtitle %}
+  {% if page.meta and page.meta.title %}
+  <meta property="og:title" content="{{ page.meta.title }} - {{ config.site_name }}">
+  {% elif page.title and not page.is_homepage %}
+  <meta property="og:title" content="{{ page.title | striptags }} - {{ config.site_name }}">
+  {% else %}
+  <meta property="og:title" content="{{ config.site_name }}">
+  {% endif %}
+{% endblock %}
+{% block ogdescription %}
+  {% if page.meta and page.meta.description %}
+  <meta property="og:description" content="{{ page.meta.description }}">
+  {% endif %}
+{% endblock %}
+<meta property="og:site_name" content="elastisys">
+<meta property="og:image" content="https://elastisys.com/wp-content/uploads/2022/02/Circle-Logo-Icon.png">
+<meta property="og:image:width" content="659">
+<meta property="og:image:height" content="650">
+<meta property="og:image:type" content="image/png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="{{ page.canonical_url }}">
 {% endblock %}
