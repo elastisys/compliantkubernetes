@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.32.0](#v0320) - 2023-08-07
 - [v0.31.0](#v0310) - 2023-07-17
 - [v0.30.1](#v0301) - 2023-06-05
 - [v0.30.0](#v0300) - 2023-05-16
@@ -33,25 +34,51 @@
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
 
+### v0.32.0
+
+Released 2023-08-07
+
+#### Updated
+
+- **Upgraded Falco chart version to `3.3.0` and app version to `0.35.1`.**
+
+#### Added
+
+- **Added support to turn off trailing dots for grafana.**
+  - This fixes an issue with the certificate for Grafana appearing not to be valid on some browsers.
+
+#### Changed
+
+- **Increased window for `FrequentPacketsDroppedFromWorkload` and `FrequentPacketsDroppedToWorkload` alerts.**
+  - To make it less sensitive to semi-consistent blocked network traffic.
+- **Reduced CPU requests for some components in the service cluster.**
+
+#### Fixed
+
+- **Added some default annotations for harbor that will fix issues with not being able to upload larger images.**
+- **Fixed the Gatekeeper Grafana dashboard.**
+  - Updated queries to produce correct numbers
+  - Removed broken/duplicate panels
+
 ### v0.31.0
 
 Released 2023-07-17
 
 #### Updated
 
-- Harbor is upgraded to v2.8.2:
-    - This version drops the support for chartmuseum and replaces it with a OCI compatible chart storage. You can find the documentation for how to use OCI compatible chart storage [here](https://goharbor.io/docs/2.7.0/working-with-projects/working-with-images/managing-helm-charts/#manage-helm-charts-with-the-oci-compatible-registry-of-harbor)
-    - They are also replacing the Notary image signer with Cosign image signer. You can find the documentation for how to use Cosign to sign images [here](https://goharbor.io/docs/2.7.0/working-with-projects/working-with-images/sign-images/#use-cosign-to-sign-artifacts)
-    - Dex is now the default login page
-- Ingess-nginx is upgraded to v1.8.0
-- Grafana is upgraded to v9.5.5
-- Opensearch and Opensearch Dashboard are upgraded to v2.8.0
+- **Harbor is upgraded to `v2.8.2`.**
+    - This version drops the support for chartmuseum and replaces it with a OCI compatible chart storage. You can find the documentation for how to use OCI compatible chart storage [here](https://goharbor.io/docs/2.7.0/working-with-projects/working-with-images/managing-helm-charts/#manage-helm-charts-with-the-oci-compatible-registry-of-harbor).
+    - They are also replacing the Notary image signer with Cosign image signer. You can find the documentation for how to use Cosign to sign images [here](https://goharbor.io/docs/2.7.0/working-with-projects/working-with-images/sign-images/#use-cosign-to-sign-artifacts).
+    - Dex is now the default login page.
+- **Ingess-nginx is upgraded to `v1.8.0`.**
+- **Grafana is upgraded to `v9.5.5`.**
+- **Opensearch and Opensearch Dashboard are upgraded to `v2.8.0`.**
 
 #### Added
 
-- Added RBAC for admin users to view events and logs
-- Possibility to add custom config for node-local-dns
-- Harbor GC is enabled by default and will run every Sunday at midnight UTC
+- **Added RBAC for admin users to view events and logs.**
+- **Possibility to add custom config for node-local-dns.**
+- **Harbor GC is enabled by default and will run every Sunday at midnight UTC.**
 
 ### v0.30.1
 
@@ -59,14 +86,14 @@ Released 2023-06-05
 
 #### Updated
 
-- Update Trivy Operator Dashboard to improve the user experience
-- Another network policy fix for Harbor to allow garbage collection
-- Fixed duplicate exception for falco alerts
-- Update Falco rules and falco alert exceptions
+- **Update Trivy Operator Dashboard to improve the user experience.**
+- **Another network policy fix for Harbor to allow garbage collection.**
+- **Fixed duplicate exception for falco alerts.**
+- **Update Falco rules and falco alert exceptions.**
 
 #### Changed
 
-- Change Trivy Operator Dashboard to only count image states once per image instead for each namespace and resource
+- **Change Trivy Operator Dashboard to only count image states once per image instead for each namespace and resource.**
 
 ### v0.30.0
 
@@ -74,32 +101,32 @@ Released 2023-05-16
 
 #### Added
 
-- Kubernetes Jobs will now have a default TTL of 7 days if unset to ensure resources are cleaned up.
+- **Kubernetes Jobs will now have a default TTL of 7 days if unset to ensure resources are cleaned up.**
 
 #### Updated
 
-- kube-prometheus-stack chart to v45.2.0.
+- **kube-prometheus-stack chart to `v45.2.0`.**
    - the portName for alertmanager and prometheus have been renamed from web to http-web. If this port names are used by you application or to port-forward to prometheus/alertmanager, you will need to update them to http-web or use the port numbers instead (e.g 9090 for prometheus and 9093 for alertmanager);
    - added default metric relabeling for cAdvisor and apiserver metrics to reduce cardinality;
    - alertmanager, using regex field from the Matcher type is deprecated and it will be removed in a future version.
 
 #### Changed
 
-- Kubernetes PodSecurityPolcies have been replaced with Kubernetes Pod Security Standards and additional Gatekeeper Constraints and Mutations.
+- **Kubernetes PodSecurityPolcies have been replaced with Kubernetes Pod Security Standards and additional Gatekeeper Constraints and Mutations.**
    - This should not affect user applications as the default behavior is kept, and the new default restricted Pod Security Standard is slightly less restricted than the previous restricted PodSecurityPolicy following the upstream changes;
    - You might see `warnings` generated by PodSecurity while deploying manifests into your Kubernetes cluster, if fields are unset or do not follow the [Restricted policy for the Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted). If fields are unset, the new Gatekeeper mutations will set defaults, that follow the restricted Pod Security Standards, as the Pods get scheduled.
-- Trivy Operator has replaced Starboard Operator as the online security scanning tool.
+- **Trivy Operator has replaced Starboard Operator as the online security scanning tool.**
    - This includes a new Trivy Operator dashboard and the deprecation of the old Image vulnerabilities dashboard.
-- Both `responseObject` and `requestObject` are no longer dropped in Fluentd from Kubernetes audit events.
-- Changed timekey to stageTimestamp for Kubernetes audit logs. Use auditID to correlate stages of the same request
+- **Both `responseObject` and `requestObject` are no longer dropped in Fluentd from Kubernetes audit events.**
+- **Changed timekey to stageTimestamp for Kubernetes audit logs. Use auditID to correlate stages of the same request.**
 
 #### Removed
 
-- Remove HNC admin-rbac from admin (attached to user admins)
+- **Remove HNC admin-rbac from admin (attached to user admins).**
    - User admins will now only have the HNC user-rbac instead.
-- Removed the ability to edit HierarchyConfiguration for users
+- **Removed the ability to edit HierarchyConfiguration for users.**
    - HierarchyConfiguration controls the Pod Security Standard level, and as such should not be allowed to be changed by a user.
-- Disable Non sudo setuid falco rule
+- **Disable Non sudo setuid falco rule.**
 
 ### v0.29.0
 
@@ -115,7 +142,7 @@ Released 2023-03-16
 
 #### Updated
 
-- **Cert-manager updated to `v1.11.0`**
+- **Cert-manager updated to `v1.11.0`.**
   - The containers in pods created by cert-manager have been renamed to better reflect what they do. This can be breaking for automation that relies on these names being static.
   - The cert-manager Gateway API integration now uses the v1beta1 API version. ExperimentalGatewayAPISupport alpha feature users must upgrade to v1beta of Gateway API.
 
