@@ -43,7 +43,7 @@ This means that your administrator will be setting up a complete PostgreSQL clus
 If you want to use TimescaleDB on your Compliant Kubernetes cluster, ask your administrator to [provision a new standard PostgreSQL cluster](timescaledb.md#provision-a-new-postgresql-cluster) inside your Compliant Kubernetes environment. Then set up the TimescaleDB extension.
 
 {%
-    include "postgresql.md"
+    include "./postgresql.md"
     start="<!--postgresql-setup-start-->"
     end="<!--postgresql-setup-end-->"
 %}
