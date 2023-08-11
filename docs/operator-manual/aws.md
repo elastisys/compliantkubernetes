@@ -1,5 +1,5 @@
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--out-of-date-start-->"
    end="<!--out-of-date-stop-->"
    comments=false
@@ -177,21 +177,21 @@ done
 ## Deploying Compliant Kubernetes Apps
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--clone-apps-start-->"
    end="<!--clone-apps-stop-->"
    comments=false
 %}
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--init-apps-start-->"
    end="<!--init-apps-stop-->"
    comments=false
 %}
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--configure-apps-start-->"
    end="<!--configure-apps-stop-->"
    comments=false
@@ -251,14 +251,14 @@ echo """
 NOTE: 203.0.113.123 is in [TEST-NET-3](https://en.wikipedia.org/wiki/Reserved_IP_addresses) and okey to use as placeholder.
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--install-apps-start-->"
    end="<!--install-apps-stop-->"
    comments=false
 %}
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--settling-start-->"
    end="<!--settling-stop-->"
    comments=false
@@ -288,7 +288,7 @@ kibana.$BASE_DOMAIN   60s A $SC_INGRESS_LB_IP
 ```
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--testing-start-->"
    end="<!--testing-stop-->"
    comments=false
@@ -297,7 +297,7 @@ kibana.$BASE_DOMAIN   60s A $SC_INGRESS_LB_IP
 ## Teardown
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--clean-apps-start-->"
    end="<!--clean-apps-stop-->"
    comments=false

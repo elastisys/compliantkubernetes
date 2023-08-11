@@ -1,5 +1,5 @@
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--out-of-date-start-->"
    end="<!--out-of-date-stop-->"
    comments=false
@@ -367,21 +367,21 @@ Since Safespring does not have a domain name service, use alternatives such as A
 ## Deploying Compliant Kubernetes Apps
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--clone-apps-start-->"
    end="<!--clone-apps-stop-->"
    comments=false
 %}
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--init-apps-start-->"
    end="<!--init-apps-stop-->"
    comments=false
 %}
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--configure-apps-start-->"
    end="<!--configure-apps-stop-->"
    comments=false
@@ -463,7 +463,7 @@ scripts/S3/entry.sh create
 ```
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--test-s3-buckets-start-->"
    end="<!--test-s3-buckets-stop-->"
    comments=false
