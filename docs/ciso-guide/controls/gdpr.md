@@ -1,7 +1,7 @@
 # GDPR (Regulation (EU) 2016/679)
 
 {%
-   include-markdown '_common.include'
+   include-markdown './_common.include'
    start='<!--legal-disclaimer-start-->'
    end='<!--legal-disclaimer-end-->'
 %}

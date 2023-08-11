@@ -22,7 +22,7 @@ But Prometheus can also be instructed to collect specific metrics from your own 
 To instruct Promethus on how to do this, you create a [ServiceMonitor](https://blog.container-solutions.com/prometheus-operator-beginners-guide). This is a Kubernetes resource that configures Prometheus and specifies how to collect metrics from a particular application.
 
 {%
-    include "metrics.md"
+    include "./metrics.md"
     start="<!--user-demo-metrics-start-->"
     end="<!--user-demo-metrics-end-->"
 %}
@@ -39,7 +39,7 @@ Visualizing monitoring metrics is one thing. Sometimes, you may need to act on w
 If you wish to create rules based on application-specific monitoring metrics, you must first create appropriate ServiceMonitors as described above.
 
 {%
-    include "alerts.md"
+    include "./alerts.md"
     start="<!--user-demo-alerts-start-->"
     end="<!--user-demo-alerts-end-->"
 %}
@@ -63,13 +63,13 @@ Not having sufficient capacity is also a kind of disaster, albeit, one that is e
 ### Back up Application Data
 
 {%
-    include "backup.md"
+    include "./backup.md"
     start="<!--user-demo-backup-start-->"
     end="<!--user-demo-backup-end-->"
 %}
 
 {%
-    include "backup.md"
+    include "./backup.md"
     start="<!--user-demo-restore-start-->"
     end="<!--user-demo-restore-end-->"
 %}

@@ -100,7 +100,7 @@ However, there are some restrictions in place for security reasons. In particula
 There are additional safeguards in place that reflect the security posture of Elastisys Compliant Kubernetes that impact your application. These prevent users from doing potentially unsafe things. In particular, users are not allowed to:
 
 {%
-    include "demarcation.md"
+    include "./demarcation.md"
     start="<!--safeguards-start-->"
     end="<!--safeguards-end-->"
 %}
