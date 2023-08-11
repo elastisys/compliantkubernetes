@@ -11,7 +11,7 @@ In this part, you will learn about the things you should do to prepare to get st
 We assume somebody else, your administrator, has already set up the platform for you. You will therefore have received:
 
 {%
-    include "setup.md"
+    include "./setup.md"
     start="<!--bill-of-materials-service-start-->"
     end="<!--bill-of-materials-service-end-->"
 %}
@@ -21,7 +21,7 @@ Do you not already have an Elastisys Compliant Kubernetes platform up and runnin
 ## Install Prerequisite Software
 
 {%
-    include "setup.md"
+    include "./setup.md"
     start="<!--prerequisite-software-start-->"
     end="<!--prerequisite-software-end-->"
 %}
@@ -47,7 +47,7 @@ However, there are some restrictions in place for security reasons. In particula
 There are additional safeguards in place that reflect the security posture of Elastisys Compliant Kubernetes that impact your application. These prevent users from doing potentially unsafe things. In particular, users are not allowed to:
 
 {%
-    include "demarcation.md"
+    include "./demarcation.md"
     start="<!--safeguards-start-->"
     end="<!--safeguards-end-->"
 %}

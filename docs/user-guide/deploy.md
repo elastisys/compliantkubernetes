@@ -17,7 +17,7 @@ We have versions of it for [Node JS](https://github.com/elastisys/compliantkuber
 ## Push Your Container Images
 
 {%
-    include "registry.md"
+    include "./registry.md"
     start="<!--user-demo-registry-start-->"
     end="<!--user-demo-registry-end-->"
 %}
@@ -25,7 +25,7 @@ We have versions of it for [Node JS](https://github.com/elastisys/compliantkuber
 ## Deploy Your Application
 
 {%
-    include "kubernetes-api.md"
+    include "./kubernetes-api.md"
     start="<!--user-demo-kubernetes-api-start-->"
     end="<!--user-demo-kubernetes-api-end-->"
 %}
@@ -33,7 +33,7 @@ We have versions of it for [Node JS](https://github.com/elastisys/compliantkuber
 ## View Application Logs
 
 {%
-    include "logs.md"
+    include "./logs.md"
     start="<!--user-demo-logs-start-->"
     end="<!--user-demo-logs-end-->"
 %}
