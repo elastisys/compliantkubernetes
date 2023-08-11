@@ -1,7 +1,7 @@
 # HIPAA Controls
 
 {%
-   include-markdown '_common.include'
+   include-markdown './_common.include'
    start='<!--legal-disclaimer-start-->'
    end='<!--legal-disclaimer-end-->'
 %}

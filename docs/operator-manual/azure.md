@@ -1,5 +1,5 @@
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--out-of-date-start-->"
    end="<!--out-of-date-stop-->"
    comments=false
@@ -236,14 +236,14 @@ done
 ```
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--deploy-rook-start-->"
    end="<!--deploy-rook-stop-->"
    comments=false
 %}
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--test-rook-start-->"
    end="<!--test-rook-stop-->"
    comments=false
@@ -252,21 +252,21 @@ done
 ## Deploying Compliant Kubernetes Apps
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--clone-apps-start-->"
    end="<!--clone-apps-stop-->"
    comments=false
 %}
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--init-apps-start-->"
    end="<!--init-apps-stop-->"
    comments=false
 %}
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--configure-apps-start-->"
    end="<!--configure-apps-stop-->"
    comments=false
@@ -328,21 +328,21 @@ objectStorage:
 ```
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--install-apps-start-->"
    end="<!--install-apps-stop-->"
    comments=false
 %}
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--settling-start-->"
    end="<!--settling-stop-->"
    comments=false
 %}
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--testing-start-->"
    end="<!--testing-stop-->"
    comments=false
@@ -351,7 +351,7 @@ objectStorage:
 ## Teardown
 
 {%
-   include-markdown "common.md"
+   include-markdown "./common.md"
    start="<!--clean-apps-start-->"
    end="<!--clean-apps-stop-->"
    comments=false
