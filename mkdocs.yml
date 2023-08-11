@@ -85,6 +85,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+  - sane_lists
   - toc:
       permalink: true
   - pymdownx.tasklist:
@@ -103,6 +104,7 @@ nav:
       - 'Step 3: Operate': 'user-guide/operate.md'
     - 'Go Deeper':
       - 'Prepare Your Application': 'user-guide/prepare-application.md'
+      - 'Prepare Your Identity Provider (IdP)': 'user-guide/prepare-idp.md'
       - 'Container registry': 'user-guide/registry.md'
       - 'Continous Development': 'user-guide/continous-development.md'
       - 'Network Model': 'user-guide/network-model.md'
