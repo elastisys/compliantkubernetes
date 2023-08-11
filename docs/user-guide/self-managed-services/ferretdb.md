@@ -1,7 +1,7 @@
 # FerretDB® (self-managed)
 
 {%
-   include-markdown '_common.include'
+   include-markdown './_common.include'
    start='<!--disclaimer-start-->'
    end='<!--disclaimer-end-->'
 %}
