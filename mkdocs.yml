@@ -57,7 +57,7 @@ plugins:
       version_selector: true   # set to false to leave out the version selector
       css_dir: css             # the directory to put the version selector's CSS
       javascript_dir: js       # the directory to put the version selector's JS
-      canonical_version: null
+      canonical_version: compliantkubernetes
   # See ./mkdocs-ciso-controls/README.md
   - ciso-controls:
       root_url: ciso-guide/controls/
