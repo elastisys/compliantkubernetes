@@ -7,6 +7,12 @@ Argo™ CD (preview)
 
     This is a preview feature. For more information, please read [ToS 9.1 Preview Features](https://elastisys.com/legal/terms-of-service/#91-preview-features).
 
+!!!important
+
+    You cannot ask Argo CD to create a Namespace. This also means that you cannot template the Namespace in ApplicationSets.
+
+    Why? See [ADR-0042](../../adr/0042-argocd-dynamic-hnc-namespaces.md)
+
 <figure>
     <img alt="Argo CD Deployment Model" src="../img/argocd.drawio.svg" >
     <figcaption>
