@@ -13,7 +13,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     Decisions regarding the following items should be made before venturing on deploying Compliant Kubernetes.
 
     - Overall architecture, i.e., VM sizes, load-balancer configuration, storage configuration, etc.
-    - Identity Provider (IdP) choice and configuration. See [this blog post](https://elastisys.com/connect-your-idp-to-your-compliant-kubernetes-cluster/).
+    - Identity Provider (IdP) choice and configuration. See [this page](../user-guide/prepare-idp.md).
     - On-call Management Tool (OMT) choice and configuration
 
 1. Prepare Ubuntu-based VMs:
