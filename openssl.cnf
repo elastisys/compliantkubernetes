@@ -1,0 +1,32 @@
+# This file exists for the following reason:
+#
+# $ curl -v https://imy.se
+# *   Trying 193.235.19.122:443...
+# * Connected to imy.se (193.235.19.122) port 443 (#0)
+# * ALPN, offering h2
+# * ALPN, offering http/1.1
+# *  CAfile: /etc/ssl/certs/ca-certificates.crt
+# *  CApath: /etc/ssl/certs
+# * TLSv1.0 (OUT), TLS header, Certificate Status (22):
+# * TLSv1.3 (OUT), TLS handshake, Client hello (1):
+# * TLSv1.2 (IN), TLS header, Certificate Status (22):
+# * TLSv1.3 (IN), TLS handshake, Server hello (2):
+# * TLSv1.2 (OUT), TLS header, Unknown (21):
+# * TLSv1.2 (OUT), TLS alert, handshake failure (552):
+# * error:0A000152:SSL routines::unsafe legacy renegotiation disabled
+# * Closing connection 0
+# curl: (35) error:0A000152:SSL routines::unsafe legacy renegotiation disabled
+#
+# Now, enabling UnsafeLegacyRenegotiation is not great.
+# (See why: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2009-3555)
+# However, for the purpose of link checking, we can make an exception.
+openssl_conf = openssl_init
+
+[openssl_init]
+ssl_conf = ssl_sect
+
+[ssl_sect]
+system_default = system_default_sect
+
+[system_default_sect]
+Options = UnsafeLegacyRenegotiation

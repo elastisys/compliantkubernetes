@@ -68,7 +68,7 @@ Compliant Kubernetes also captures highly privileged SSH access to the worker No
 
     * A.9.2.1 User Registration and Deregistration
 
-    Many data protection regulation will require you to [individually identify administrators](http://localhost:8000/compliantkubernetes/adr/0005-use-individual-ssh-keys/), hence individual SSH keys. This allows you to individually identify administrators in the SSH access log.
+    Many data protection regulation will require you to [individually identify administrators](../adr/0005-use-individual-ssh-keys.md), hence individual SSH keys. This allows you to individually identify administrators in the SSH access log.
 
 ## Audit Logs for Additional Services
 
