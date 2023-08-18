@@ -179,7 +179,7 @@ See also:
 
 ## Maintainer
 
-"Those [contributors](#contributors) who lead an open source project." [Elastisys](https://elastisys.com) is Maintainer of Compliant Kubernetes.
+"Those [contributors](#contributor) who lead an open source project." [Elastisys](https://elastisys.com) is Maintainer of Compliant Kubernetes.
 
 Usage notes:
 

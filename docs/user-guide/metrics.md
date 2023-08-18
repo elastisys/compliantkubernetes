@@ -176,7 +176,7 @@ Then when the targets are active it is possible to see scrape information by nav
 
 ## Grafana Dashboards as Code
 
-You can manage your Grafana Dashboards in a GitOps-fashion using the [Terraform Provider for Grafana](https://registry.terraform.io/providers/grafana/grafana/latest/docs#creating-a-grafana-organization-provider-on-premise).
+You can manage your Grafana Dashboards in a GitOps-fashion using the [Terraform Provider for Grafana](https://registry.terraform.io/providers/grafana/grafana/latest/docs).
 
 Proceed as follows:
 
