@@ -52,7 +52,7 @@ To stick to the general principles above, Compliant Kubernetes puts the followin
 More technically, Compliant Kubernetes does not allow users to:
 
 <!--safeguards-start-->
-* change the Kubernetes API through [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) or [Dynamic Webhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks);
+* change the Kubernetes API through [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) or [Dynamic Webhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#what-are-admission-webhooks);
 * gain more container execution permissions by mutating [PodSecurityPolicies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/); this implies that you cannot run container images as root or mount [hostPaths](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath);
 * mutate ClusterRoles or Roles so as to [escalate privileges](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping);
 * mutate Kubernetes resources in administrator-owned namespaces, such as `monitoring` or `kube-system`;

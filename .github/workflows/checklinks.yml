@@ -10,19 +10,9 @@ jobs:
     name: Check links
     runs-on: ubuntu-latest
     steps:
-      - name: Install linkchecker
-        run: sudo apt install linkchecker
+      - name: Install requirements
+        run: pip3 install -r requirements-linkchecker.txt
       - name: Run linkchecker
-        # We ignore www.imy.se due to the following error:
-        # curl: (35) error:0A000152:SSL routines::unsafe legacy renegotiation disabled
-        # We ignore www.socialstyrelsen.se due to the following error:
-        # Error: ReadTimeout: HTTPSConnectionPool(host='www.socialstyrelsen.se', port=443): Read timed out. (read timeout=60)
         run: |
-          linkchecker \
-            --no-robots \
-            --check-extern \
-            --ignore-url '\/\/localhost' \
-            --ignore-url '\/\/127.0.0.1' \
-            --ignore-url '\/\/www.imy.se' \
-            --ignore-url '\/\/www.socialstyrelsen.se' \
-            https://elastisys.io
+          export OPENSSL_CONF=openssl.cnf
+          linkchecker --config linkchecker.conf https://elastisys.io
