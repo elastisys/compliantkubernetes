@@ -14,7 +14,7 @@ tags:
     * A.14.2.4 Restrictions on Changes to Software Packages
 
 !!!important
-    This safeguard is enabled by default with the enforcement action `deny` since [Compliant Kubernetes apps v0.29.0](../../release-notes.md#v0290). As a result, resources that violate this policy will not be created.
+    This safeguard is enabled by default with the enforcement action `deny` since [Compliant Kubernetes apps v0.29.0](../../release-notes/ck8s.md#v0290). As a result, resources that violate this policy will not be created.
 
 Using the `:latest` tag can lead to inconsistent deployments, where it is difficult to rollback. In Compliant Kubernetes we suggest using explicit tags for your container images. This way you know that image version `v1.0.0` will be deployed if you are using the `:v1.0.0` tag.
 
