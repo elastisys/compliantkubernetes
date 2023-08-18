@@ -10,14 +10,9 @@ jobs:
     name: Check links
     runs-on: ubuntu-latest
     steps:
-      - name: Install linkchecker
-        run: sudo apt install linkchecker
+      - name: Install requirements
+        run: pip3 install -r requirements-linkchecker.txt
       - name: Run linkchecker
         run: |
           export OPENSSL_CONF=openssl.cnf
-          linkchecker \
-            --no-robots \
-            --check-extern \
-            --ignore-url '\/\/localhost' \
-            --ignore-url '\/\/127.0.0.1' \
-            https://elastisys.io
+          linkchecker --config linkchecker.conf https://elastisys.io
