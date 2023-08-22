@@ -115,6 +115,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0040](0040-allow-group-id-0.md) - Allow running containers with primary and supplementary group id 0
 * [ADR-0041](0041-encryption-at-rest.md) - Rely on Infrastructure Provider for encryption-at-rest
 * [ADR-0042](0042-argocd-dynamic-hnc-namespaces.md) - ArgoCD Dynamic subnamespaces
+* [ADR-0043](0043-rclone-and-encryption-adhere-cryptography-policy.md) - Rclone and Encryption adheres Cryptography policy
 <!-- adrlogstop -->
 
 For new ADRs, please use [template.md](template.md) as basis.
