@@ -80,18 +80,23 @@ a[href*="//"]:not([href*="elastisys."])::after {
   flex-flow: row wrap;
   margin: 0;
   padding: 0;
-  gap: 10px;
+  gap: 10px
 }
 
 .md-content .shortcuts ul li {
-  width: 33.33%;
+  width: calc(100% / 3 - 20px);
   list-style-type: none;
   background-color: var(--esys-blue-04); /* TO CHECK */
   text-align: center;
-  padding: 10px 0;
-  margin: auto;
+  padding: 12px 24px;
+  margin: 0;
   border-radius: 20px;
-  flex: 1 100%;
+}
+
+@media (max-width: 1024px /* to check */) {
+  .md-content .shortcuts ul li {
+    width: 100%;
+  }
 }
 
 .md-content .shortcuts ul li a {
