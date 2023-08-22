@@ -75,6 +75,33 @@ a[href*="//"]:not([href*="elastisys."])::after {
   mask-image: none
 }
 
+.md-content .shortcuts ul {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0;
+  padding: 0;
+  gap: 10px;
+}
+
+.md-content .shortcuts ul li {
+  width: 33.33%;
+  list-style-type: none;
+  background-color: var(--esys-blue-04); /* TO CHECK */
+  text-align: center;
+  padding: 10px 0;
+  margin: auto;
+  border-radius: 20px;
+  flex: 1 100%;
+}
+
+.md-content .shortcuts ul li a {
+  background-color: var(--esys-orange-01);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
 .carousel {
   margin: 1rem;
   position: relative;

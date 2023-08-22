@@ -12,16 +12,16 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 <div class="shortcuts">
 <ul>
     <li>
-        <p>For application developers</p>
-        <a role="button" href="./user-guide/">Learn more</a>
+        <strong>For application developers</strong>
+        <p><a role="button" href="./user-guide/">Learn more</a></p>
     </li>
     <li>
-        <p>For CISOs and DPOs</p>
-        <a role="button" href="./ciso-guide/">Learn more</a>
+        <strong>For CISOs and DPOs</strong>
+        <p><a role="button" href="./ciso-guide/">Learn more</a></p>
     </li>
     <li>
-        <p>For platform administrators</p>
-        <a role="button" href="./operator-manual/">Learn more</a>
+        <strong>For platform administrators</strong>
+        </p><a role="button" href="./operator-manual/">Learn more</a></p>
     </li>
 </ul>
 </div>
