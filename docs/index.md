@@ -72,18 +72,29 @@ setInterval(() => {
 }, 2000);
 </script>
 
-## How do I get started?
 
-![The Journey for Application Developers](img/getting-started-developers.png)
 
-Getting started guides:
+## Commercial offering
 
-* [for Application Developers](user-guide/prepare.md)
-* [for Platform Administrators](operator-manual/index.md)
-* [for CISOs (Chief Information Security Officers)](ciso-guide/index.md)
-
-## Would you like to contribute?
-
-We want to build the next generation of cloud native technology where data security and privacy is the default setting.
-
-Join us on our mission as a contributor? Go to the [guide for contributors](contributor-guide/index.md).
+<div class="wrapper">
+    <div class="box">
+        <h3>Managed Services</h3>
+        <p>A full Kubernetes platform, with logging, monitoring, and more. PostgreSQL, RabbitMQ, and Redis on top. All secure and fully managed by us.</p>
+        <button>Learn more</button>
+    </div>
+    <div class="box">
+        <h3>Consulting</h3>
+        <p>Extend your team with our cloud native experts. Develop and deploy apps faster and with more confidence in a DevSecOps fashion.</p>
+        <button>Learn more</button>
+    </div>
+    <div class="box">
+        <h3>Training</h3>
+        <p>Level up your team's skills with our wide range of courses, both tailor-made and official Kubernetes ones from the Linux Foundation.</p>
+        <button>Learn more</button>
+    </div>
+    <div class="box">
+        <h3>Support</h3>
+        <p>Leverage Elastisys Compliant Kubernetes on-prem with implementation and continuous support.</p>
+        <button>Learn more</button>
+    </div>
+</div>
