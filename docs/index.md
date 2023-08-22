@@ -5,14 +5,26 @@ hide:
   - toc
 ---
 
-# Elastisys Compliant Kubernetes
+# Innovate at speed in regulated industries
 
-<p class="hero-text">
-<strong>Innovate at speed in regulated industries</strong>
-</p>
-<p class="hero-text">
 Elastisys Compliant Kubernetes enables organizations across Europe to accelerate innovation through open source cloud-native technology, while ensuring security and regulatory compliance.
-</p>
+
+<div class="shortcuts">
+<ul>
+    <li>
+        <p>For application developers</p>
+        <a role="button" href="./user-guide/">Learn more</a>
+    </li>
+    <li>
+        <p>For CISOs and DPOs</p>
+        <a role="button" href="./ciso-guide/">Learn more</a>
+    </li>
+    <li>
+        <p>For platform administrators</p>
+        <a role="button" href="./operator-manual/">Learn more</a>
+    </li>
+</ul>
+</div>
 
 ## What is Elastisys Compliant Kubernetes?
 
@@ -22,9 +34,9 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 
 <dl id="benefits">
     <dt>Kubernetes Platform</dt>
-    <dd>Built with CNCF projects, public Architectural Decision Records (ADRs), and great application for application developers.</dd>
+    <dd>Built with CNCF projects, public Architectural Decision Records (ADRs), and great documentation for application developers.</dd>
     <dt>GDPR, ISO-27001, NIS2</dt>
-    <dd>Built to enable companies to achieve EU regulator compliance.</dd>
+    <dd>Built to enable companies to achieve EU regulatory compliance.</dd>
     <dt>Cloud agnostic, running in production in 10+ clouds</dt>
     <dd>Managed service available on supported EU clouds, or with enterprise-level support on any cloud or on-premise installation.</dd>
 </dl>
@@ -72,6 +84,18 @@ setInterval(() => {
 }, 2000);
 </script>
 
+<ul class="cncf-links">
+    <li>
+        <img src="logos/cncf-silver-member.png">
+        <br>
+        Maintained by Elastisys, proud CNCF silver member
+    </li>
+    <li>
+        <img src="logos/cncf-certified-kubernetes.png">
+        <br>
+        Our platform is a CNCF Certified Kubernetes Distribution
+    </li>
+</ul>
 
 
 ## Commercial offering
