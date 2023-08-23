@@ -75,31 +75,45 @@ a[href*="//"]:not([href*="elastisys."])::after {
   mask-image: none
 }
 
-.md-content .shortcuts ul {
+/* This looks repetitive, but we need to be more specific than
+ * whatever CSS mkdocs-material provides. */
+.columns-3.columns-3 {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row;
   margin: 0;
   padding: 0;
   gap: 10px
 }
 
-.md-content .shortcuts ul li {
-  width: calc(100% / 3 - 20px);
-  list-style-type: none;
-  background-color: var(--esys-blue-04); /* TO CHECK */
+.columns-3.columns-3 div {
+  width: 100%;
+  background-color: var(--esys-blue-04);
   text-align: center;
   padding: 12px 24px;
   margin: 0;
   border-radius: 20px;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: end;
 }
 
-@media (max-width: 1024px /* to check */) {
-  .md-content .shortcuts ul li {
-    width: 100%;
+.columns-3.columns-3 div dt {
+  font-weight: bold;
+}
+
+.columns-3.columns-3 div dd {
+  margin: 0;
+  padding: 10px;
+}
+
+@media (max-width: 960px) {
+  .columns-3.columns-3 {
+    flex-flow: column;
   }
 }
 
-.md-content .shortcuts ul li a {
+a[role=button] {
   background-color: var(--esys-orange-01);
   color: white;
   padding: 12px 24px;
