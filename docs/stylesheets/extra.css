@@ -95,7 +95,7 @@ a[href*="//"]:not([href*="elastisys."])::after {
 
   display: flex;
   flex-flow: column;
-  justify-content: end;
+  justify-content: space-between;
 }
 
 .columns-3.columns-3 div dt {
@@ -111,6 +111,12 @@ a[href*="//"]:not([href*="elastisys."])::after {
   .columns-3.columns-3 {
     flex-flow: column;
   }
+}
+
+/* Careful ahead: This is "just a bit more" specific that mkdocs-materials,
+ * but less specific than the a[role=button] below. */
+.columns-3 a {
+  color: var(--esys-orange-01);
 }
 
 a[role=button] {

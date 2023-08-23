@@ -34,13 +34,31 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 
 ## Benefits of Elastisys Compliant Kubernetes
 
-<dl id="benefits">
-    <dt>Kubernetes Platform</dt>
-    <dd>Built with CNCF projects, public Architectural Decision Records (ADRs), and great documentation for application developers.</dd>
-    <dt>GDPR, ISO-27001, NIS2</dt>
-    <dd>Built to enable companies to achieve EU regulatory compliance.</dd>
+<dl class="columns-3">
+  <div>
+    <dt>The platform you would build yourself</dt>
+    <dd>
+        Built with CNCF projects,
+        public <a href="./adr">Architectural Decision Records</a>,
+        as well as great documentation for
+            <a href="./user-guide/">application developers</a>.
+    </dd>
+  </div>
+  <div>
+    <dt>Loved❤️ by CISOs👮 and DPOs🧑‍⚖️ </dt>
+    <dd>
+        Built around controls to achieve EU regulatory compliance with:
+        <a href="./ciso-guide/controls/gdpr/">GDPR</a>,
+        <a href="./ciso-guide/controls/iso-27001/">ISO 27001</a>,
+        <a href="./ciso-guide/controls/bsi-it-grundschutz/">NIS2 (BSI IT-Grundschutz)</a>.
+    </dd>
+  </div>
+  <div>
     <dt>Cloud agnostic, running in production in 10+ clouds</dt>
-    <dd>Managed service available on supported EU clouds, or with enterprise-level support on any cloud or on-premise installation.</dd>
+    <dd>
+        Runs on many EU clouds or <a href="../operator-manual/on-prem-standard/">on-prem</a>.
+    </dd>
+  </div>
 </dl>
 
 ## Elastisys Compliant Kubernetes is trusted by industry leaders
