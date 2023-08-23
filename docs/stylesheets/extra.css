@@ -127,6 +127,25 @@ a[role=button] {
   font-size: 14px;
 }
 
+#trusted-by {
+  margin: 0;
+  padding: 0;
+
+  background-color: var(--esys-blue-01);
+
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 10px
+}
+
+#trusted-by li {
+  width: 100%;
+  list-style-type: none;
+  padding: 12px 24px;
+  margin: 0;
+}
+
 .carousel {
   margin: 1rem;
   position: relative;
