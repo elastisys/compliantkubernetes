@@ -77,41 +77,49 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
     <ul>
         <li style="background: red;">1</li>
         <li style="background: blue;">2</li>
-        <li>3</li>
-        <li>4</li>
+        <li style="background: green;">1</li>
+        <li style="background: yellow;">2</li>
     </ul>
 </section>
+
 <script type="text/javascript">
 const customerQuotes = document.getElementById("customer-quotes").querySelector("ul");
 const quotes = customerQuotes.querySelector("li");
 const prevButton = document.getElementById("customer-quotes-prev");
 const nextButton = document.getElementById("customer-quotes-next");
-prevButton.addEventListener("click", () => {
-    const slideWidth = quotes.clientWidth;
-    customerQuotes.scrollLeft -= slideWidth;
-});
-nextButton.addEventListener("click", () => {
-    const slideWidth = quotes.clientWidth;
-    customerQuotes.scrollLeft += slideWidth;
-});
-setInterval(() => {
+const intervalHandle = setInterval(() => {
     const slideWidth = quotes.clientWidth;
     if (! customerQuotes.matches(':hover')) {
         console.log('mouse is not over the element, scrolling')
         var value = (customerQuotes.scrollLeft + slideWidth) % (customerQuotes.children.length * slideWidth);
         customerQuotes.scrollLeft = value;
     }
-}, 2000);
+}, 3000);
+prevButton.addEventListener("click", () => {
+    const slideWidth = quotes.clientWidth;
+    customerQuotes.scrollLeft -= slideWidth;
+    clearInterval(intervalHandle);
+});
+nextButton.addEventListener("click", () => {
+    const slideWidth = quotes.clientWidth;
+    customerQuotes.scrollLeft += slideWidth;
+    clearInterval(intervalHandle);
+});
 </script>
 
-<ul class="cncf-links">
+<ul class="columns-3">
     <li>
-        <img src="logos/cncf-silver-member.png">
+        <img src="img/logos/cncf-member-silver-color.svg">
         <br>
         Maintained by Elastisys, proud CNCF silver member
     </li>
     <li>
-        <img src="logos/cncf-certified-kubernetes.png">
+        <img src="img/logos/kubernetes-kcsp-color.svg">
+        <br>
+        Runs in production
+    </li>
+    <li>
+        <img src="img/logos/certified-kubernetes-color.svg">
         <br>
         Our platform is a CNCF Certified Kubernetes Distribution
     </li>
