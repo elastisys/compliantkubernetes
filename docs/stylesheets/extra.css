@@ -119,7 +119,7 @@ a[href*="//"]:not([href*="elastisys."])::after {
 }
 
 @media (max-width: 960px) {
-  .columns-3.columns-3 {
+  .columns-3.columns-3.columns-3 {
     flex-flow: column;
   }
 }
