@@ -42,6 +42,7 @@ theme:
     scheme: elastisys
   features:
     - content.code.annotate
+    - content.code.copy
     - content.tabs.link
     - navigation.top
 
