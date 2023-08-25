@@ -10,7 +10,7 @@ hide:
 Elastisys Compliant Kubernetes enables organizations across Europe to accelerate innovation through open source cloud-native technology, while ensuring security and regulatory compliance.
 
 <nav>
-<dl class="columns-3">
+<dl class="columns">
   <div>
     <dt>For application developers</dt>
     <dd><a role="button" href="./user-guide/">Learn more</a></dd>
@@ -34,7 +34,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 
 ## Benefits of Elastisys Compliant Kubernetes
 
-<dl class="columns-3">
+<dl class="columns">
   <div>
     <dt>The platform you would build yourself</dt>
     <dd>
@@ -107,7 +107,7 @@ nextButton.addEventListener("click", () => {
 });
 </script>
 
-<ul class="columns-3">
+<ul class="columns">
     <li>
         <img src="img/logos/cncf-member-silver-color.svg">
         <br>
@@ -128,25 +128,51 @@ nextButton.addEventListener("click", () => {
 
 ## Commercial offering
 
-<div class="wrapper">
-    <div class="box">
-        <h3>Managed Services</h3>
-        <p>A full Kubernetes platform, with logging, monitoring, and more. PostgreSQL, RabbitMQ, and Redis on top. All secure and fully managed by us.</p>
-        <button>Learn more</button>
-    </div>
-    <div class="box">
-        <h3>Consulting</h3>
-        <p>Extend your team with our cloud native experts. Develop and deploy apps faster and with more confidence in a DevSecOps fashion.</p>
-        <button>Learn more</button>
-    </div>
-    <div class="box">
-        <h3>Training</h3>
-        <p>Level up your team's skills with our wide range of courses, both tailor-made and official Kubernetes ones from the Linux Foundation.</p>
-        <button>Learn more</button>
-    </div>
-    <div class="box">
-        <h3>Support</h3>
-        <p>Leverage Elastisys Compliant Kubernetes on-prem with implementation and continuous support.</p>
-        <button>Learn more</button>
-    </div>
-</div>
+<nav>
+<dl class="columns">
+  <div>
+    <dt>Managed Services</dt>
+    <dd>
+      <p>
+        A full Kubernetes platform, with logging, monitoring, and more. PostgreSQL, RabbitMQ, and Redis on top. All secure and fully managed by us.
+      </p>
+      <p>
+        <a role="button" href="https://elastisys.com/managed-services/">Learn more</a>
+      </p>
+    </dd>
+  </div>
+  <div>
+    <dt>Consulting</dt>
+    <dd>
+      <p>
+        Extend your team with our cloud native experts. Develop and deploy apps faster and with more confidence in a DevSecOps fashion.
+      </p>
+      <p>
+        <a role="button" href="https://elastisys.com/consulting/">Learn more</a>
+      </p>
+    </dd>
+  </div>
+  <div>
+    <dt>Training</dt>
+    <dd>
+      <p>
+        Level up your team's skills with our wide range of courses, both tailor-made and official Kubernetes ones from the Linux Foundation.
+      </p>
+      <p>
+        <a role="button" href="https://elastisys.com/training/">Learn more</a>
+      </p>
+    </dd>
+  </div>
+  <div>
+    <dt>Support</dt>
+    <dd>
+      <p>
+        Leverage Elastisys Compliant Kubernetes on-prem with implementation and continuous support.
+      </p>
+      <p>
+        <a role="button" href="https://elastisys.com/support/">Learn more</a>
+      </p>
+    </dd>
+  </div>
+</dl>
+</nav>
