@@ -3,9 +3,22 @@
 
 ## Compliant Kubernetes Jaeger
 <!-- BEGIN TOC -->
+- [v1.39.0-ck8s3](#v1390-ck8s3) - 2023-08-24
 - [v1.39.0-ck8s2](#v1390-ck8s2) - 2023-06-12
 - [v1.39.0-ck8s1](#v1390-ck8s1) - 2023-03-07
 <!-- END TOC -->
+
+### v1.39.0-ck8s3
+
+Released 2023-08-24
+
+#### Added
+
+- Add alert for jaeger opensearch
+
+#### Changed
+
+- Changed location for opensearch-curator image.
 
 ### v1.39.0-ck8s2
 
