@@ -126,6 +126,7 @@ nav:
     - 'Safeguards':
       - 'Overview': 'user-guide/safeguards/index.md'
       - 'Enforce No Root': 'user-guide/safeguards/enforce-no-root.md'
+      - 'Enforce Restricted Privileges': 'user-guide/safeguards/enforce-podsecuritypolicies.md'
       - 'Enforce NetworkPolicies': 'user-guide/safeguards/enforce-networkpolicies.md'
       - 'Enforce Resources': 'user-guide/safeguards/enforce-resources.md'
       - 'Enforce Trusted Registries': 'user-guide/safeguards/enforce-trusted-registries.md'
