@@ -94,8 +94,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  margin: 0 auto;
-  padding: 0 1.25rem;
+  margin: 0 0;
+  padding: 0 0;
 }
 
 * {
@@ -128,10 +128,6 @@ ol, li {
 }
 
 .carousel {
-  position: relative;
-  padding-top: 75%;
-  filter: drop-shadow(0 0 10px #0003);
-  perspective: 100px;
 }
 
 .carousel__viewport {
@@ -232,8 +228,7 @@ ol, li {
 .carousel__prev,
 .carousel__next {
   position: absolute;
-  top: 0;
-  margin-top: 37.5%;
+  top: 50%;
   width: 4rem;
   height: 4rem;
   transform: translateY(-50%);
@@ -244,12 +239,12 @@ ol, li {
 
 .carousel::before,
 .carousel__prev {
-  left: -1rem;
+  left: 0;
 }
 
 .carousel::after,
 .carousel__next {
-  right: -1rem;
+  right: 0;
 }
 
 .carousel::before,
