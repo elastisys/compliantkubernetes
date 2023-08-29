@@ -133,45 +133,37 @@ nextButton.addEventListener("click", () => {
   <div>
     <dt>Managed Services</dt>
     <dd>
-      <p>
-        A full Kubernetes platform, with logging, monitoring, and more. PostgreSQL, RabbitMQ, and Redis on top. All secure and fully managed by us.
-      </p>
-      <p>
-        <a role="button" href="https://elastisys.com/managed-services/">Learn more</a>
-      </p>
+      A full Kubernetes platform, with logging, monitoring, and more. PostgreSQL, RabbitMQ, and Redis on top. All secure and fully managed by us.
+    </dd>
+    <dd>
+      <a role="button" href="https://elastisys.com/managed-services/">Learn more</a>
     </dd>
   </div>
   <div>
     <dt>Consulting</dt>
     <dd>
-      <p>
-        Extend your team with our cloud native experts. Develop and deploy apps faster and with more confidence in a DevSecOps fashion.
-      </p>
-      <p>
-        <a role="button" href="https://elastisys.com/consulting/">Learn more</a>
-      </p>
+      Extend your team with our cloud native experts. Develop and deploy apps faster and with more confidence in a DevSecOps fashion.
+    </dd>
+    <dd>
+      <a role="button" href="https://elastisys.com/consulting/">Learn more</a>
     </dd>
   </div>
   <div>
     <dt>Training</dt>
+    <dd class="grow-me">
+      Level up your team's skills with our wide range of courses, both tailor-made and official Kubernetes ones from the Linux Foundation.
+    </dd>
     <dd>
-      <p>
-        Level up your team's skills with our wide range of courses, both tailor-made and official Kubernetes ones from the Linux Foundation.
-      </p>
-      <p>
-        <a role="button" href="https://elastisys.com/training/">Learn more</a>
-      </p>
+      <a role="button" href="https://elastisys.com/training/">Learn more</a>
     </dd>
   </div>
   <div>
     <dt>Support</dt>
+    <dd class="grow-me">
+      Leverage Elastisys Compliant Kubernetes on-prem with implementation and continuous support.
+    </dd>
     <dd>
-      <p>
-        Leverage Elastisys Compliant Kubernetes on-prem with implementation and continuous support.
-      </p>
-      <p>
-        <a role="button" href="https://elastisys.com/support/">Learn more</a>
-      </p>
+      <a role="button" href="https://elastisys.com/support/">Learn more</a>
     </dd>
   </div>
 </dl>
