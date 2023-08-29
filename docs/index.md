@@ -71,41 +71,14 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
     <li><img src="img/logos/orgs/goozo.svg" alt="Logo of Goozo" /></li>
 </ul>
 
-<section id="customer-quotes" class="carousel">
-    <button id="customer-quotes-prev">&#8249;</button>
-    <button id="customer-quotes-next">&#8250;</button>
-    <ul>
-        <li style="background: red;">1</li>
-        <li style="background: blue;">2</li>
-        <li style="background: green;">1</li>
-        <li style="background: yellow;">2</li>
-    </ul>
+<section>
+  <!--
+    The Customer Quotes carousel contains way too much CSS. We don't really want to
+    deal with such complexity, plus the complexity of that CSS interacting with
+    mkdocs-material's CSS. Hence, we separate the two HTMLs.
+  -->
+  <embed type="text/html" src="customer-quotes/" width="100%" height="384px">
 </section>
-
-<script type="text/javascript">
-const customerQuotes = document.getElementById("customer-quotes").querySelector("ul");
-const quotes = customerQuotes.querySelector("li");
-const prevButton = document.getElementById("customer-quotes-prev");
-const nextButton = document.getElementById("customer-quotes-next");
-const intervalHandle = setInterval(() => {
-    const slideWidth = quotes.clientWidth;
-    if (! customerQuotes.matches(':hover')) {
-        console.log('mouse is not over the element, scrolling')
-        var value = (customerQuotes.scrollLeft + slideWidth) % (customerQuotes.children.length * slideWidth);
-        customerQuotes.scrollLeft = value;
-    }
-}, 3000);
-prevButton.addEventListener("click", () => {
-    const slideWidth = quotes.clientWidth;
-    customerQuotes.scrollLeft -= slideWidth;
-    clearInterval(intervalHandle);
-});
-nextButton.addEventListener("click", () => {
-    const slideWidth = quotes.clientWidth;
-    customerQuotes.scrollLeft += slideWidth;
-    clearInterval(intervalHandle);
-});
-</script>
 
 <ul class="columns">
     <li>
