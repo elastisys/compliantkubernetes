@@ -9,8 +9,8 @@ hide:
 
 Elastisys Compliant Kubernetes enables organizations across Europe to accelerate innovation through open source cloud-native technology, while ensuring security and regulatory compliance.
 
-<nav>
-<dl class="columns">
+<nav markdown="1">
+<dl class="columns" markdown="1">
   <div>
     <dt>For application developers</dt>
     <dd><a role="button" href="./user-guide/">Learn more</a></dd>
@@ -21,8 +21,8 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
     <dd><a role="button" href="./ciso-guide/">Learn more</a></dd>
   </div>
 
-  <div>
-    <dt>For platform administrators</dt>
+  <div markdown="span">
+    <dt markdown="span">For platform administrators :simple-twitter:</dt>
     <dd><a role="button" href="./operator-manual/">Learn more</a></dd>
   </div>
 </ul>
