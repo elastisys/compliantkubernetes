@@ -142,8 +142,6 @@ a[role=button] {
   margin: 0;
   padding: 0;
 
-  background-color: var(--esys-blue-01);
-
   display: flex;
   flex-flow: row;
   align-items: center;
