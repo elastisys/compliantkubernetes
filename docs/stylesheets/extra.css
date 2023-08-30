@@ -155,4 +155,11 @@ a[role=button] {
   list-style-type: none;
   padding: 12px 24px;
   margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 960px) {
+  #trusted-by li {
+    padding: 0;
+  }
 }
