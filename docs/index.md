@@ -5,6 +5,8 @@ hide:
   - toc
 ---
 
+<div class="landing-page" markdown="1">
+
 # Innovate at speed in regulated industries
 
 Elastisys Compliant Kubernetes enables organizations across Europe to accelerate innovation through open source cloud-native technology, while ensuring security and regulatory compliance.
@@ -173,3 +175,5 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
   </div>
 </dl>
 </nav>
+
+</div>

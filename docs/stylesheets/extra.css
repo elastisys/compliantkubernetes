@@ -75,9 +75,9 @@ a[href*="//"]:not([href*="elastisys."])::after {
   mask-image: none
 }
 
-/* This looks repetitive, but we need to be more specific than
- * whatever CSS mkdocs-material provides. */
-.columns.columns.columns {
+/* Yes, I know about SCSS, but it felt overkill to pull in another tool just
+ * for this little thingy. */
+.landing-page .columns {
   display: flex;
   flex-flow: row;
   margin: 0;
@@ -85,7 +85,7 @@ a[href*="//"]:not([href*="elastisys."])::after {
   gap: 10px
 }
 
-.columns.columns.columns div {
+.landing-page .columns div {
   width: 100%;
   border: 5px solid var(--esys-blue-04);
   text-align: center;
@@ -97,50 +97,50 @@ a[href*="//"]:not([href*="elastisys."])::after {
   flex-flow: column;
 }
 
-.columns.columns.columns li {
+.landing-page .columns li {
   text-align: center;
   margin: 0;
   padding: 12px 24px;
   list-style-type: none;
 }
 
-.columns.columns.columns img {
+.landing-page .columns img {
   max-width: 256px;
   height: 128px;
 }
 
-.columns.columns.columns div dt {
+.landing-page .columns div dt {
   font-weight: bold;
 }
 
-.columns.columns.columns div dd {
+.landing-page .columns div dd {
   margin: 0;
   padding: 12px;
 }
 
-.columns.columns.columns div dd.grow-me {
+.landing-page .columns div dd.grow-me {
   margin: 0;
   padding: 12px;
   flex-grow: 4;
 }
 
 @media (max-width: 960px) {
-  .columns.columns.columns {
+  .landing-page .columns {
     flex-flow: column;
   }
 }
 
 /* Make emojis look like block elements */
-.columns.columns.columns .twemoji {
+.landing-page .columns .twemoji {
   display: block;
   height: 48px;
 }
 
-.columns.columns.columns .twemoji svg {
+.landing-page .columns .twemoji svg {
   width: initial;
 }
 
-a[role=button] {
+.landing-page a[role=button] {
   background-color: var(--esys-orange-01);
   color: white;
   padding: 12px 24px;
