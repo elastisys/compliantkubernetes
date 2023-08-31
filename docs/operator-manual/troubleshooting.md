@@ -102,9 +102,14 @@ Are the Nodes reporting in on Kubernetes? All Kubernetes Nodes, both control-pla
 If Rook is installed, is Rook doing fine? You should see `HEALTH_OK`.
 
 ```bash
-./bin/ck8s ops kubectl $CLUSTER -n rook-ceph apply -f ./compliantkubernetes-kubespray/rook/toolbox-deploy.yaml
+export CK8S_KUBESPRAY_PATH=/path/to/compliantkubernetes-kubespray
 
-./bin/ck8s ops kubectl $CLUSTER -n rook-ceph exec deploy/rook-ceph-tools -- ceph status'
+./bin/ck8s ops kubectl $CLUSTER -n rook-ceph apply -f $CK8S_KUBESPRAY_PATH/rook/toolbox-deploy.yaml
+```
+
+Once the pod is Ready run:
+```bash
+./bin/ck8s ops kubectl $CLUSTER -n rook-ceph exec deploy/rook-ceph-tools -- ceph status
 ```
 
 ### Are Kubernetes Pods doing fine?
@@ -112,19 +117,19 @@ If Rook is installed, is Rook doing fine? You should see `HEALTH_OK`.
 Pods should be `Running` or `Completed`, and fully `Ready` (e.g., `1/1` or `6/6`)?
 
 ```bash
-./bin/ck8s ops kubectl $CLUSTER get --all-namespaces pods'
+./bin/ck8s ops kubectl $CLUSTER get --all-namespaces pods
 ```
 
 Are all Deployments fine? Deployments should show all Pods Ready, Up-to-date and Available (e.g., `2/2 2 2`).
 
 ```bash
-./bin/ck8s ops kubectl $CLUSTER get --all-namespaces deployments'
+./bin/ck8s ops kubectl $CLUSTER get --all-namespaces deployments
 ```
 
 Are all DaemonSets fine? DaemonSets should show as many Pods Desired, Current, Ready and Up-to-date, as Desired.
 
 ```bash
-./bin/ck8s ops kubectl $CLUSTER get --all-namespaces ds'
+./bin/ck8s ops kubectl $CLUSTER get --all-namespaces ds
 ```
 
 ### Are Helm Releases fine?
