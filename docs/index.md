@@ -11,18 +11,27 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 
 <nav markdown="1">
 <dl class="columns" markdown="1">
-  <div>
-    <dt>For application developers</dt>
+  <div markdown="span">
+    <dt markdown="span">
+      :fontawesome-solid-code:
+      For application developers
+    </dt>
     <dd><a role="button" href="./user-guide/">Learn more</a></dd>
   </div>
 
-  <div>
-    <dt>For CISOs and DPOs</dt>
+  <div markdown="span">
+    <dt markdown="span">
+      :fontawesome-solid-user-secret:
+      For CISOs and DPOs
+    </dt>
     <dd><a role="button" href="./ciso-guide/">Learn more</a></dd>
   </div>
 
   <div markdown="span">
-    <dt markdown="span">For platform administrators :simple-twitter:</dt>
+    <dt markdown="span">
+      :fontawesome-solid-users-gear:
+      For platform administrators
+    </dt>
     <dd><a role="button" href="./operator-manual/">Learn more</a></dd>
   </div>
 </ul>
@@ -34,9 +43,12 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 
 ## Benefits of Elastisys Compliant Kubernetes
 
-<dl class="columns">
-  <div>
-    <dt>The platform you would build yourself</dt>
+<dl class="columns" markdown="1">
+  <div markdown="span">
+    <dt markdown="span">
+      :fontawesome-solid-user-check:
+      The platform you would build yourself
+    </dt>
     <dd>
         Built with CNCF projects,
         public <a href="./adr">Architectural Decision Records</a>,
@@ -44,8 +56,12 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
             <a href="./user-guide/">application developers</a>.
     </dd>
   </div>
-  <div>
-    <dt>Loved❤️ by CISOs👮 and DPOs🧑‍⚖️ </dt>
+
+  <div markdown="span">
+    <dt markdown="span">
+      :fontawesome-solid-heart:
+      Loved❤️ by CISOs👮 and DPOs🧑‍⚖️ 
+    </dt>
     <dd>
         Built around controls to achieve EU regulatory compliance with:
         <a href="./ciso-guide/controls/gdpr/">GDPR</a>,
@@ -53,8 +69,12 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
         <a href="./ciso-guide/controls/bsi-it-grundschutz/">NIS2 (BSI IT-Grundschutz)</a>.
     </dd>
   </div>
-  <div>
-    <dt>Cloud agnostic, running in production in 10+ clouds</dt>
+
+  <div markdown="span">
+    <dt markdown="span">
+      :fontawesome-solid-cloud:
+      Cloud agnostic, running in production in 10+ clouds
+    </dt>
     <dd>
         Runs on many EU clouds or <a href="../operator-manual/on-prem-standard/">on-prem</a>.
     </dd>
@@ -101,10 +121,13 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 
 ## Commercial offering
 
-<nav>
-<dl class="columns">
-  <div>
-    <dt>Managed Services</dt>
+<nav markdown="1">
+<dl class="columns" markdown="1">
+  <div markdown="span">
+    <dt markdown="span">
+      :fontawesome-solid-user-gear:
+      Managed Services
+    </dt>
     <dd>
       A full Kubernetes platform, with logging, monitoring, and more. PostgreSQL, RabbitMQ, and Redis on top. All secure and fully managed by us.
     </dd>
@@ -112,8 +135,11 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
       <a role="button" href="https://elastisys.com/managed-services/">Learn more</a>
     </dd>
   </div>
-  <div>
-    <dt>Consulting</dt>
+  <div markdown="span">
+    <dt markdown="span">
+      :fontawesome-solid-laptop-code:
+      Consulting
+    </dt>
     <dd>
       Extend your team with our cloud native experts. Develop and deploy apps faster and with more confidence in a DevSecOps fashion.
     </dd>
@@ -121,8 +147,11 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
       <a role="button" href="https://elastisys.com/consulting/">Learn more</a>
     </dd>
   </div>
-  <div>
-    <dt>Training</dt>
+  <div markdown="span">
+    <dt markdown="span">
+      :fontawesome-solid-user-graduate:
+      Training
+    </dt>
     <dd class="grow-me">
       Level up your team's skills with our wide range of courses, both tailor-made and official Kubernetes ones from the Linux Foundation.
     </dd>
@@ -130,8 +159,11 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
       <a role="button" href="https://elastisys.com/training/">Learn more</a>
     </dd>
   </div>
-  <div>
-    <dt>Support</dt>
+  <div markdown="span">
+    <dt markdown="span">
+      :fontawesome-solid-handshake:
+      Support
+    </dt>
     <dd class="grow-me">
       Leverage Elastisys Compliant Kubernetes on-prem with implementation and continuous support.
     </dd>

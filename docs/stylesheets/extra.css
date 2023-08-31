@@ -130,6 +130,16 @@ a[href*="//"]:not([href*="elastisys."])::after {
   }
 }
 
+/* Make emojis look like block elements */
+.columns.columns.columns .twemoji {
+  display: block;
+  height: 48px;
+}
+
+.columns.columns.columns .twemoji svg {
+  width: initial;
+}
+
 a[role=button] {
   background-color: var(--esys-orange-01);
   color: white;
