@@ -1,0 +1,94 @@
+/* Stuff on the landing page needs to be more specific than mkdocs-material's CSS. */
+.md-content .landing-page {
+  .columns {
+    display: flex;
+    flex-flow: row;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+
+    @media (max-width: 960px) {
+      flex-flow: column;
+    }
+
+    div {
+      width: 100%;
+      border: 5px solid var(--esys-blue-04);
+      text-align: center;
+      padding: 12px 24px;
+      margin: 0;
+      border-radius: 20px;
+
+      display: flex;
+      flex-flow: column;
+    }
+
+    li {
+      text-align: center;
+      margin: 0;
+      padding: 12px 24px;
+      list-style-type: none;
+    }
+
+    img {
+      max-width: 256px;
+      height: 128px;
+    }
+
+    dt {
+      font-weight: bold;
+    }
+
+    dd {
+      margin: 0;
+      padding: 12px;
+    }
+
+    dd.grow-me {
+      margin: 0;
+      padding: 12px;
+      flex-grow: 4;
+    }
+
+    /* Make emojis look like block elements */
+    .twemoji {
+      display: block;
+      height: 48px;
+    }
+
+    .twemoji svg {
+      width: initial;
+    }
+  } /* .columns */
+
+  a[role=button] {
+    background-color: var(--esys-orange-01);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+  }
+
+  #trusted-by {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 10px;
+  
+    li {
+      width: 100%;
+      list-style-type: none;
+      padding: 12px 24px;
+      margin: 0;
+      text-align: center;
+
+      @media (max-width: 960px) {
+        padding: 0;
+      }
+    }
+  }
+} /* .landing-page */
+

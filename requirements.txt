@@ -29,6 +29,7 @@ mkdocs-include-markdown-plugin>=2.8
 mkdocs-redirects
 mike>=1.1.2
 ./mkdocs-ciso-controls
+mkdocs-extra-sass-plugin @ git+https://github.com/elastisys/mkdocs-extra-sass-plugin@v0.1.1
 
 # Required by mkdocs-material's social plugin
 cairosvg
