@@ -99,7 +99,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
     deal with such complexity, plus the complexity of that CSS interacting with
     mkdocs-material's CSS. Hence, we separate the two HTMLs.
   -->
-  <embed type="text/html" src="customer-quotes/" width="100%" height="384px">
+  <!-- embed type="text/html" src="customer-quotes/" width="100%" height="384px" -->
 </section>
 
 <ul class="columns">
