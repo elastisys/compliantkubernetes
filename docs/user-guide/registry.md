@@ -103,6 +103,9 @@ If OIDC was enabled (e.g. DeX) your Harbor user will be created when you first l
 
 ## Create Tag Retention Rules
 
+!!! note
+    Elastisys recommends that you use tag retention.
+
 Over time the number of artifacts in a repository can rapidly accumulate and can become difficult to manage them and remove the ones that might not be required after a given time, not to mention that they will use large quantities of storage.
 To address this problem Harbor offers the possibility for the application developers that are Harbor system administrators to define rules that govern how many artifacts of a given repository to retain, or for how long to retain certain artifacts. You can create several rules and specify which repositories and tags they apply to.
 
