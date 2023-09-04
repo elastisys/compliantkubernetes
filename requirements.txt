@@ -29,3 +29,7 @@ mkdocs-include-markdown-plugin>=2.8
 mkdocs-redirects
 mike>=1.1.2
 ./mkdocs-ciso-controls
+
+# Required by mkdocs-material's social plugin
+cairosvg
+pillow
