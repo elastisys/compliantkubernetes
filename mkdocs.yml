@@ -51,6 +51,10 @@ extra_css:
   - stylesheets/extra.css
 
 plugins:
+  - social:
+      cards_layout_options:
+        background_color: "#334768"
+        font_family: Poppins
   - include-markdown
   - search
   - mike:

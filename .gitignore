@@ -1,2 +1,6 @@
 *.swp
 site/
+
+# Used by the social plugin
+# https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/
+.cache
