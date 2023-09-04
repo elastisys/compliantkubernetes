@@ -98,7 +98,28 @@ You should see no error message. Note down the `sha256` of the image.
 <!--user-demo-registry-end-->
 
 ## User access
+
 If OIDC was enabled (e.g. DeX) your Harbor user will be created when you first login to the web interface. That user will not have admin privileges, if you need admin rights please contact the administrator by opening a support ticket.
+
+## Create Tag Retention Rules
+
+!!! note
+    Elastisys recommends that you use tag retention.
+
+Over time the number of artifacts in a repository can rapidly accumulate and can become difficult to manage them and remove the ones that might not be required after a given time, not to mention that they will use large quantities of storage.
+To address this problem Harbor offers the possibility for the application developers that are Harbor system administrators to define rules that govern how many artifacts of a given repository to retain, or for how long to retain certain artifacts. You can create several rules and specify which repositories and tags they apply to.
+
+The available options:
+
+| Option   |  Description  |
+|----------|:-------------:|
+| retain the most recently pushed # artifacts | Enter the maximum number of artifacts to retain, keeping the ones that have been pushed most recently. There is no maximum age for an artifact.  |
+| retain the most recently pulled # artifacts | Enter the maximum number of artifacts to retain, keeping only the ones that have been pulled recently. There is no maximum age for an artifact.  |
+| retain the artifacts pushed within the last # days | Enter the number of days to retain artifacts, keeping only the ones that have been pushed during this period. There is no maximum number of artifacts. |
+| retain the artifacts pulled within the last # days | Enter the number of days to retain artifacts, keeping only the ones that have been pulled during this period. There is no maximum number of artifacts. |
+| retain always | Always retain the artifacts identified by this rule. |
+
+For instruction and examples on how to set Tag Retention Rules, please visit the [Harbor documentation](https://goharbor.io/docs/2.8.0/working-with-projects/working-with-images/create-tag-retention-rules/).
 
 ## Further reading
 
