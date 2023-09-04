@@ -12,6 +12,17 @@ repos:
       - id: check-added-large-files
       - id: check-merge-conflict
       - id: no-commit-to-branch
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.4
+    hooks:
+      - id: codespell
+        name: check spelling
+        args:
+          - -I
+          - .codespellignore
+        exclude: ^(site/.*|.*\.dot|.*\.svg|.*\.xml)$
+
   - repo: local
     hooks:
       - id: svg-must-embed

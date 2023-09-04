@@ -1,5 +1,0 @@
-[codespell]
-count =
-summary =
-skip = ./site,*.svg,*.xml,*.dot,./docs/compliantkubernetes/ciso-guide/*.md,.git
-ignore-words-list = aks,
