@@ -42,18 +42,21 @@ Make sure that you use domain listing, groups and IP allowlisting.
 ## Pros and Cons of the Options
 
 ### [option 1] - Expose  Jaeger UI via ingress in wc cluster and use Oauth2-proxy for request authentication.
+![Architecture Diagram](../img/expose-jaeger-ui-option1.svg)
 
 * Good, because we deliver a platform that is easy to use and easy to access.
 * Good, because we serve our customer need
 * Bad, because we lose the ability to audit the access to it as they do not have the concept of users and does not have RBAC.
 
 ### [option 2] - Do not expose Jaeger UI
+![Architecture Diagram](../img/expose-jaeger-ui-option2.svg)
 
 * Good, because the integrity and stability of the platform is kept intact.
 * Bad, because we do not satisfy the customer need to easily access the UI
 * Bad, because we do not serve our customer needs.
 
 ### [option 3] - Expose Jaeger UI, but completely behind oauth2-proxy. Use config domain, groups, IP allowlisting and request logging for protecting it.
+![Architecture Diagram](../img/expose-jaeger-ui-option3.svg)
 
 * Good, because we deliver a platform that is easy to use and easy to access.
 * Good, because we serve our customer need
@@ -62,6 +65,7 @@ Make sure that you use domain listing, groups and IP allowlisting.
 * Bad, because we need to add an additional component that needs to be configured, installed and maintained.
 
 ### [option 4] - Expose Jaeger UI and audit access via request logging in Oath2Proxy.
+![Architecture Diagram](../img/expose-jaeger-ui-option4.svg)
 
 * Good, because we deliver a platform that is easy to use and easy to access.
 * Good, because we serve our customer need
