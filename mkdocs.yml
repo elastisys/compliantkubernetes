@@ -175,6 +175,7 @@ nav:
     - 'GDPR': 'ciso-guide/controls/gdpr.md'
     - 'HIPAA': 'ciso-guide/controls/hipaa.md'
     - 'BSI IT-Grundschutz': 'ciso-guide/controls/bsi-it-grundschutz.md'
+    - 'MDR': 'ciso-guide/controls/mdr.md'
     - 'CISO Dashboards':
       - 'ciso-guide/audit-logs.md'
       - 'ciso-guide/backup.md'

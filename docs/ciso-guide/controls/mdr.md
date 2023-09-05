@@ -1,0 +1,38 @@
+# MDR (Regulation (EU) 2017/745)
+
+{%
+   include-markdown './_common.include'
+   start='<!--legal-disclaimer-start-->'
+   end='<!--legal-disclaimer-end-->'
+%}
+
+!!!note
+    Fully implementing MDR entails a lot of work.
+    Start by employing, hiring or training a person responsible for compliance with MDR. (MDR Art. 15)
+
+    This page only points you to the MDR concerns relevant for Compliant Kubernetes.
+
+If you manufacture a medical devices, then you must comply with MDR.
+
+## Article 110: Data protection
+
+This article makes explicit reference to GDPR. See [GDPR controls](gdpr.md).
+
+## Annex I: General Safety and Performance Requirements
+
+This annex makes reference to information security, for example in 17.2.
+You might want to check [ISO 27001](iso-27001.md) controls, since that is one of the most recognized information security standards.
+
+## Annex VI: UDI-related
+
+This annex makes explicit reference to change management, for example in 6.5.2 and 6.5.3.
+
+See [how many environments](../../user-guide/how-many-environments.md) to reduce the risk associated with updating the Compliant Kubernetes environments hosting your software medical device.
+While rather unlikely, you really want to make sure that your software medical device preserves its original performance with the new version of Kubernetes.
+
+[TAGS]
+
+## Further reading
+
+* [Regulation (EU) 2017/745 on Medical Devices](https://eur-lex.europa.eu/eli/reg/2017/745/2023-03-20)
+* [Medicintekniska produkter on IVO](https://www.ivo.se/vard-omsorgsgivare/anmal-handelse-lamna-underrattelse/medicintekniska-produkter/)
