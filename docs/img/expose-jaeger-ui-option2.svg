@@ -6,7 +6,7 @@
 <g id="clust1" class="cluster">
 <title>cluster_k8s</title>
 <polygon fill="none" stroke="#000000" points="8,-189 8,-307 892.3326,-307 892.3326,-189 8,-189"/>
-<text text-anchor="middle" x="450.1663" y="-290.4" font-family="Times,serif" font-size="14.00" fill="#000000">Kubernetes Cluster (K8s)</text>
+<text text-anchor="middle" x="450.1663" y="-290.4" font-family="Times,serif" font-size="14.00" fill="#000000">WC cluster</text>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_pods</title>
