@@ -1,0 +1,33 @@
+digraph JaegerPortForwardArchitecture {
+  rankdir=LR; // Left to Right layout
+
+  // Kubernetes Cluster
+  subgraph cluster_k8s {
+    label = "WC cluster";
+    node [shape=box];
+
+    // Kubernetes Pods
+    subgraph cluster_pods {
+      label = "K8s Pods";
+      JaegerPod [label="Jaeger Pod"];
+      ApplicationPod [label="Application Pod"];
+    }
+  }
+
+  // Kubectl Port-Forward
+  subgraph cluster_port_forward {
+    label = "Port Forwarding";
+    Kubectl [label="kubectl\nport-forward"];
+  }
+
+  // Local Machine
+  subgraph cluster_local {
+    label = "Local Machine";
+    User [shape=circle, label="User's\nWeb Browser"];
+  }
+
+  // Connections
+  User -> Kubectl [label="Access via Port Forwarding"];
+  Kubectl -> JaegerPod [label="Forwarded Request"];
+  ApplicationPod -> JaegerPod [label="Tracing Data"];
+}
