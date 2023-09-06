@@ -1,8 +1,8 @@
 site_name: Elastisys Compliant Kubernetes
 site_url: https://elastisys.io/
 site_description: >-
-  Compliant Kubernetes is a Kubernetes distribution that reduces the burden
-  for complying with Swedish Healthcare (Patientdatalagen), GDPR and
+  Kubernetes platform to comply with
+  Swedish Healthcare (Patientdatalagen), GDPR and
   ISO 27001.
 site_author: Elastisys AB
 copyright: >-
