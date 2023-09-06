@@ -12,7 +12,10 @@
 
     This page only points you to the MDR concerns relevant for Compliant Kubernetes.
 
-If you manufacture a medical devices, then you must comply with MDR.
+You need to comply with MDR if:
+
+- You place on the market, make available on the market or put into service a medical device for human use and accessories for such devices in the EU
+- You conduct clinical investigations concerning such medical devices and accessories in the EU.
 
 ## Article 110: Data protection
 
