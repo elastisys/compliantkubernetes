@@ -102,6 +102,8 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
   <!-- embed type="text/html" src="customer-quotes/" width="100%" height="384px" -->
 </section>
 
+## Empowering the cloud native community
+
 <ul class="columns">
     <li>
         <img src="img/logos/cncf-member-silver-color.svg">
