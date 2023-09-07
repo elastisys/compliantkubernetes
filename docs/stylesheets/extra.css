@@ -74,3 +74,8 @@ a[href*="//"]:not([href*="elastisys."])::after {
   -webkit-mask-image: none
   mask-image: none
 }
+
+/* Add space around the footer */
+.md-copyright {
+  padding: 24px 0;
+}
