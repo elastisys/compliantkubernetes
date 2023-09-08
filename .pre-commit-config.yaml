@@ -51,7 +51,7 @@ repos:
         files: '.*[.]md$'
       - id: capitalize-common-names
         name: Please capitalize common names
-        entry: ' (git[Hh]ub|kubernetes|trivy|starboard|compliantkubernetes|compliant [Kk]ubernetes)( |, |[.] )'
+        entry: '^[^`]{0,100} (git[Hh]ub|kubernetes|trivy|starboard|compliantkubernetes|compliant [Kk]ubernetes)( |, |[.] )'
         language: pygrep
         files: '.*[.]md$'
       - id: avoid-absolute-urls-for-internal-links
