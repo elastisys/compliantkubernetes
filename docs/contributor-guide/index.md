@@ -80,7 +80,7 @@ To make creating and deletion of buckets easy, we've a script to help you with t
 
 ### DNS
 
-These following snippets can be used to setup/remove all DNS records required for ck8s using exoscales cli.
+These following snippets can be used to setup/remove all DNS records required for Compliant Kubernetes using Exoscale's CLI.
 
 Start by setting up some variables:
 
