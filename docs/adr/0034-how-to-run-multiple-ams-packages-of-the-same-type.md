@@ -1,4 +1,4 @@
-# How to run multiple AMS packages of the same type in the same ck8s environment
+# How to run multiple AMS packages of the same type in the same environment
 
 * Status: accepted
 * Deciders: arch meeting
