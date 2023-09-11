@@ -25,6 +25,10 @@ copyright: >-
   MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.
   <br/>
   Keycloak™ is a trademark of Red Hat Inc.
+  <br/>
+  OpenSearch is a registered trademark of Amazon Web Services.
+  <br/>
+  NGINX is a registered trademark of F5 Inc.
 
 repo_url: https://github.com/elastisys/compliantkubernetes/
 edit_uri: edit/main/docs/
