@@ -41,7 +41,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 
 ## What is Elastisys Compliant Kubernetes?
 
-<embed src="img/marchitecture.drawio.svg" alt="Components of Elastisys Compliant Kubernetes" />
+<img src="img/marchitecture.svg" alt="Components of Elastisys Compliant Kubernetes" />
 
 ## Benefits of Elastisys Compliant Kubernetes
 
