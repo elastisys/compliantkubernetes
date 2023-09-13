@@ -32,7 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 
   --bs-body-font-family: "Roboto",var(--bs-font-sans-serif);
   --bs-heading-color: var(--esys-blue-01);
-  --bs-body-bg: var(--md-default-bg-color); /*> 🎤 Is it by mistake or design? (Lana del Rey) 
+  --bs-body-bg: var(--md-default-bg-color); /*> 🎤 Is it by mistake or design? (Lana del Rey)
     But seriously, did we mean to use this background color on elastisys.io? */
 }
 

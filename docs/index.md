@@ -62,7 +62,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
   <div markdown="span">
     <dt markdown="span">
       :fontawesome-solid-heart:
-      Loved❤️ by CISOs👮 and DPOs🧑‍⚖️ 
+      Loved❤️ by CISOs👮 and DPOs🧑‍⚖️
     </dt>
     <dd>
         Built around controls to achieve EU regulatory compliance with:
