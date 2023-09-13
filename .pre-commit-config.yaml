@@ -35,6 +35,13 @@ repos:
         entry: 'image[^>]* xlink:href="https'
         language: pygrep
         files: '.*[.]svg$'
+      - id: svg-must-not-embed-PNG
+        name: SVGs must NOT embed PNGs
+        entry: 'image[^>]* xlink:href="data:image/png'
+        language: pygrep
+        files: '.*[.]svg$'
+        # We'll deal with these later.
+        exclude: '(\.drawio|ideal-dx|ideal-promotion)\.svg$'
       - id: use-relative-urls
         name: Use relative URLs for internal links
         # Why? Mkdocs wants you to: https://www.mkdocs.org/user-guide/writing-your-docs/#linking-to-pages
