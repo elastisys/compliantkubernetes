@@ -8,7 +8,12 @@ repos:
       - id: end-of-file-fixer
         exclude: '[.](svg|drawio.xml)$'
       - id: check-yaml
-        exclude: '[/](templates[/]|oauth2-proxy.yaml)'
+        # Helm templates are not reaaaally YAML.
+        exclude: '[/]templates[/]'
+        args:
+          # Needed by mkdocs.yaml
+          # Implies --allow-multiple-documents
+          - '--unsafe'
       - id: check-added-large-files
       - id: check-merge-conflict
       - id: no-commit-to-branch
@@ -21,7 +26,7 @@ repos:
         args:
           - -I
           - .codespellignore
-        exclude: ^(site/.*|.*\.dot|.*\.svg|.*\.xml)$
+        exclude: ^(site/.*|.*\.dot|.*\.svg|.*\.xml|.*\.min\.js)$
 
   - repo: local
     hooks:
@@ -30,6 +35,13 @@ repos:
         entry: 'image[^>]* xlink:href="https'
         language: pygrep
         files: '.*[.]svg$'
+      - id: svg-must-not-embed-PNG
+        name: SVGs must NOT embed PNGs
+        entry: 'image[^>]* xlink:href="data:image/png'
+        language: pygrep
+        files: '.*[.]svg$'
+        # We'll deal with these later.
+        exclude: '(\.drawio|ideal-dx|ideal-promotion)\.svg$'
       - id: use-relative-urls
         name: Use relative URLs for internal links
         # Why? Mkdocs wants you to: https://www.mkdocs.org/user-guide/writing-your-docs/#linking-to-pages
