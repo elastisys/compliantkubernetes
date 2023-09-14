@@ -78,7 +78,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
       Cloud agnostic, running in production in 10+ clouds
     </dt>
     <dd>
-        Runs on many EU clouds or <a href="../operator-manual/on-prem-standard/">on-prem</a>.
+        Runs on many EU clouds or <a href="./operator-manual/on-prem-standard/">on-prem</a>.
     </dd>
   </div>
 </dl>
