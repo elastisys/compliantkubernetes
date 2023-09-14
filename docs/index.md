@@ -144,7 +144,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
       :fontawesome-solid-laptop-code:
       Consulting
     </dt>
-    <dd>
+    <dd class="grow-me">
       Extend your team with our cloud native experts. Develop and deploy apps faster and with more confidence in a DevSecOps fashion.
     </dd>
     <dd>
