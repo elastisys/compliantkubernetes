@@ -16,6 +16,8 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     - Identity Provider (IdP) choice and configuration. See [this page](../user-guide/prepare-idp.md).
     - On-call Management Tool (OMT) choice and configuration
 
+1. Make sure you [install all prerequisites](getting-started.md) on your laptop.
+
 1. Prepare Ubuntu-based VMs:
     If you are using public clouds, you can create VMs using the scripts included in Kubespray:
     - For Azure, use [AzureRM scripts](https://github.com/kubernetes-sigs/kubespray/tree/master/contrib/azurerm).

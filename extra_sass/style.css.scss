@@ -1,8 +1,25 @@
 /* Stuff on the landing page needs to be more specific than mkdocs-material's CSS. */
 .md-content .landing-page {
   .columns {
-    display: flex;
     flex-flow: row;
+
+    div {
+      width: 100%;
+    }
+  }
+
+  .columns-2 {
+    flex-flow: row wrap;
+
+    div {
+      flex-grow: 1;
+      width: 40%;
+    }
+  }
+
+  .columns,
+  .columns-2 {
+    display: flex;
     margin: 0;
     padding: 0;
     gap: 10px;
@@ -12,7 +29,6 @@
     }
 
     div {
-      width: 100%;
       border: 5px solid var(--esys-blue-04);
       text-align: center;
       padding: 12px 24px;
