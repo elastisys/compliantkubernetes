@@ -15,5 +15,4 @@ jobs:
         run: pip3 install -r requirements-linkchecker.txt
       - name: Run linkchecker
         run: |
-          export OPENSSL_CONF=openssl.cnf
           linkchecker --config linkchecker.conf https://elastisys.io
