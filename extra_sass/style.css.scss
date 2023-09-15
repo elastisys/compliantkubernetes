@@ -65,6 +65,10 @@
       padding: 12px;
     }
 
+    dt.grow-me {
+      flex-grow: 4;
+    }
+
     dd.grow-me {
       margin: 0;
       padding: 12px;
@@ -118,7 +122,6 @@
 
   img,
   embed {
-    max-height: 80vh;
     width: 100%;
   }
 
