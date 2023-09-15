@@ -1,8 +1,5 @@
 ---
 description: Documentation for Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
-hide:
-  - navigation
-  - toc
 ---
 
 <div class="landing-page" markdown="1">
@@ -22,7 +19,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
   </div>
 
   <div markdown="span">
-    <dt markdown="span">
+    <dt markdown="span" class="grow-me">
       :fontawesome-solid-user-secret:
       For CISOs and DPOs
     </dt>
@@ -126,7 +123,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 ## Commercial offering
 
 <nav markdown="1">
-<dl class="columns" markdown="1">
+<dl class="columns-2" markdown="1">
   <div markdown="span">
     <dt markdown="span">
       :fontawesome-solid-user-gear:
