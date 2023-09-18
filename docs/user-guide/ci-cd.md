@@ -6,10 +6,15 @@ tags:
 - HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
 ---
 
-CI/CD Integration
-=================
+External CI/CD Integration
+==========================
 
-Compliant Kubernetes does not come with a [CI/CD](https://en.wikipedia.org/wiki/CI/CD) solution. Fortunately, it can be easily integrated with your existing CI/CD solution.
+!!!tip
+    Compliant Kubernetes comes with [Argo CD](additional-services/argocd.md) as an Additional Service.
+    Integration with an external CI/CD is non-trivial and time-consuming.
+    Therefore, we only recommend to read this page if you have an existing CI/CD solution in place and determined that migrating to Argo CD is impractical.
+
+This page discusses integration between Compliant Kubernetes and external CI/CD solutions.
 
 !!!important
     Access control is an extremely important topic for passing an audit for compliance with data privacy and data security regulations. For example, Swedish patient data law requires all persons to be identified with individual credentials and that logs should capture who did what.
