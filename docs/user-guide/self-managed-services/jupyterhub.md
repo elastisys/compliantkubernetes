@@ -9,6 +9,9 @@ JupyterHub (self-managed)
 
 JupyterHub brings Jupyter Notebooks to the cloud. It gives the users access to computational environments and resources without burdening users with installation and maintenance tasks. This documents shows a guide on how to setup JupyterHub in a Compliant Kubernetes cluster.
 
+
+![Keycloak Image](img/jupyter.gif)
+
 ## Pushing the JupyeterHub Images to Harbor
 This sections shows how to pull the required images for JupyterHub and push them to another registery. If you are using the managed Harbor as your container registry, please follow [these instructions](../deploy.md) on how to authenticate, create a new project, and how to create a robot account and using it in a pull-secret to be able to pull an image from Harbor to your cluster safely:
 
@@ -20,37 +23,15 @@ TRAEFIK_TAG=v2.10.4
 REGISTRY=harbor.$DOMAIN
 REGISTRY_PROJECT=jupyterhub
 
-docker pull jupyterhub/configurable-http-proxy:$CHP_TAG
-docker tag jupyterhub/configurable-http-proxy:$CHP_TAG $REGISTRY/$REGISTRY_PROJECT/configurable-http-proxy:$CHP_TAG
-docker push $REGISTRY/$REGISTRY_PROJECT/configurable-http-proxy:$CHP_TAG
-
-docker pull jupyterhub/k8s-hub:$JUPYTER_TAG
-docker tag jupyterhub/k8s-hub:$JUPYTER_TAG $REGISTRY/$REGISTRY_PROJECT/k8s-hub:$JUPYTER_TAG
-docker push $REGISTRY/$REGISTRY_PROJECT/k8s-hub:$JUPYTER_TAG
-
-docker pull jupyterhub/k8s-image-awaiter:$JUPYTER_TAG
-docker tag jupyterhub/k8s-image-awaiter:$JUPYTER_TAG $REGISTRY/$REGISTRY_PROJECT/k8s-image-awaiter:$JUPYTER_TAG
-docker push $REGISTRY/$REGISTRY_PROJECT/k8s-image-awaiter:$JUPYTER_TAG
-
-docker pull jupyterhub/k8s-network-tools:$JUPYTER_TAG
-docker tag jupyterhub/k8s-network-tools:$JUPYTER_TAG $REGISTRY/$REGISTRY_PROJECT/k8s-network-tools:$JUPYTER_TAG
-docker push $REGISTRY/$REGISTRY_PROJECT/k8s-network-tools:$JUPYTER_TAG
-
-docker pull jupyterhub/k8s-secret-sync:$JUPYTER_TAG
-docker tag jupyterhub/k8s-secret-sync:$JUPYTER_TAG $REGISTRY/$REGISTRY_PROJECT/k8s-secret-sync:$JUPYTER_TAG
-docker push $REGISTRY/$REGISTRY_PROJECT/k8s-secret-sync:$JUPYTER_TAG
-
-docker pull jupyterhub/k8s-singleuser-sample:$JUPYTER_TAG
-docker tag jupyterhub/k8s-singleuser-sample:$JUPYTER_TAG $REGISTRY/$REGISTRY_PROJECT/k8s-singleuser-sample:$JUPYTER_TAG
-docker push $REGISTRY/$REGISTRY_PROJECT/k8s-singleuser-sample:$JUPYTER_TAG
-
-docker pull registry.k8s.io/pause:$PAUSE_TAG
-docker tag registry.k8s.io/pause:$PAUSE_TAG $REGISTRY/$REGISTRY_PROJECT/pause:$PAUSE_TAG 
-docker push $REGISTRY/$REGISTRY_PROJECT/pause:$PAUSE_TAG 
-
-docker pull traefik:$TRAEFIK_TAG
-docker tag traefik:$TRAEFIK_TAG $REGISTRY/$REGISTRY_PROJECT/traefik:$TRAEFIK_TAG
-docker push $REGISTRY/$REGISTRY_PROJECT/traefik:$TRAEFIK_TAG
+for IMAGE in jupyterhub/configurable-http-proxy:$CHP_TAG jupyterhub/k8s-hub:$JUPYTER_TAG \
+            jupyterhub/k8s-image-awaiter:$JUPYTER_TAG jupyterhub/k8s-network-tools:$JUPYTER_TAG \
+            jupyterhub/k8s-secret-sync:$JUPYTER_TAG jupyterhub/k8s-singleuser-sample:$JUPYTER_TAG \
+            registry.k8s.io/pause:$PAUSE_TAG traefik:$TRAEFIK_TAG 
+do
+docker pull $IMAGE
+docker tag $IMAGE  $REGISTRY/$REGISTRY_PROJECT/${IMAGE#*/}
+docker push $REGISTRY/$REGISTRY_PROJECT/${IMAGE#*/}
+done
 ```
 
 ## Configure and Deploy JupyterHub
@@ -63,10 +44,11 @@ helm repo update
 ### Configuring JupyterHub
 
 
-
 Below is a sample **values.yaml** file that can be used to deploy JupyterHub, please read the notes and change what is necessary. This sample uses [Google OAuth](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google) for authentication and authorization.
+
+**NOTE** Requested recources should be evaluated and reconsidered for production.
 ```yaml
-hub:
+hub: 
   revisionHistoryLimit:
   config:
     GoogleOAuthenticator:
@@ -84,14 +66,14 @@ hub:
         - email@admin # replace this
   image:
     name: $REGISTRY/$REGISTRY_PROJECT/k8s-hub:$TAG # replace this
-  resources: &resourceDefaults # these values are reused but can be specified for each pod
+  resources: &resourceDefaults # (1)
     requests: 
       memory: 512Mi 
       cpu: 10m 
     limits: 
       memory: 1Gi 
       cpu: 1 
-  containerSecurityContext: &SCDefaults # these values are reused to comply with ck8s safeguards
+  containerSecurityContext: &SCDefaults # (2)
     capabilities: 
       drop: ["ALL"] 
     runAsNonRoot: true 
@@ -102,10 +84,10 @@ proxy:
   service:
     type: ClusterIP
   chp:
-    containerSecurityContext: *SCDefaults # reusing values
+    containerSecurityContext: *SCDefaults 
     image:
-      name: $REGISTRY/$REGISTRY_PROJECT/conf-http:$TAG  # replace this
-    resources: *resourceDefaults # reusing values
+      name: $REGISTRY/$REGISTRY_PROJECT/configurable-http-proxy:$TAG  # replace this
+    resources: *resourceDefaults 
   traefik:
     containerSecurityContext: *SCDefaults
     image:
@@ -126,15 +108,14 @@ proxy:
 singleuser:
   networkTools:
     image:
-      name: $REGISTRY/$REGISTRY_PROJECT/network-tools:$TAG # replace this
+      name: $REGISTRY/$REGISTRY_PROJECT/k8s-network-tools:$TAG # replace this
     resources: *resourceDefaults
   cloudMetadata:
-    blockWithIptables: false
-    ip: 169.254.169.254
-  storage:
-    type: none
+    blockWithIptables: false # (3)
+  storage: # (4)
+    type: none 
   image:
-    name: $REGISTRY/$REGISTRY_PROJECT/singleuser:$TAG # replace this
+    name: $REGISTRY/$REGISTRY_PROJECT/k8s-singleuser-sample:$TAG # replace this
   cpu:
     limit: 1
     guarantee: 0.1
@@ -143,12 +124,8 @@ singleuser:
     guarantee: 1G
 
 scheduling:
-  userScheduler:
-    enabled: false
-    containerSecurityContext: *SCDefaults
-    image:
-      name: registry.k8s.io/kube-scheduler:1.0
-    resources: *resourceDefaults
+  userScheduler: 
+    enabled: false 
   userPlaceholder:
     resources: *resourceDefaults
     image:
@@ -181,6 +158,13 @@ ingress:
       secretName: jupyter-secret
 ```
 
+1. The following resources are reused using *resourceDefaults later in this file
+2. The following containerSecurityConstraints are reused using *SCDefaults later in this file
+3.  Block set to true will append a privileged initContainer using the iptables to block the sensitive metadata server at the provided ip. Privileged containers are not allowed in ck8s.
+4. "type: none" disables persistant storage for the user labs. Consolidate with platform administrator before enabling this feature. [for reference](https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/1ebca266bed3e2f38332c5a9a3202f627cba3af0/jupyterhub/values.yaml#L383)
+
+
+
 ### Deploying JupyterHub
 
 To deploy simply use this command in combination with the modified values.yaml as provided above.
@@ -193,3 +177,5 @@ helm upgrade --install jupyterhub jupyterhub/jupyterhub --values values.yml
 ## Further Reading
 - [General Documentation on Setting Up JupyterHub on Kubernetes](https://z2jh.jupyter.org/en/stable/index.html)
     - [Customizing User Management](https://z2jh.jupyter.org/en/stable/administrator/authentication.html)
+
+
