@@ -63,7 +63,131 @@ helm repo update
 ### Configuring JupyterHub
 
 
+
+Below is a sample **values.yaml** file that can be used to deploy JupyterHub, please read the notes and change what is necessary. This sample uses [Google OAuth](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google) for authentication and authorization.
+```yaml
+hub:
+  revisionHistoryLimit:
+  config:
+    GoogleOAuthenticator:
+        client_id: $YOUR_CLIENT_ID # replace this
+        client_secret: $YOUR_CLIENT_SECRET # replace this
+        oauth_callback_url: https://$PROJECT_DOMAIN/hub/oauth_callback # replace this
+        hosted_domain:
+          - $PROJECT_DOMAIN # replace this
+        login_service: Google
+        allow_all: true
+    JupyterHub:
+      admin_access: true
+      authenticator_class: google
+      admin_users: 
+        - email@admin # replace this
+  image:
+    name: $REGISTRY/$REGISTRY_PROJECT/k8s-hub:$TAG # replace this
+  resources: &resourceDefaults # these values are reused but can be specified for each pod
+    requests: 
+      memory: 512Mi 
+      cpu: 10m 
+    limits: 
+      memory: 1Gi 
+      cpu: 1 
+  containerSecurityContext: &SCDefaults # these values are reused to comply with ck8s safeguards
+    capabilities: 
+      drop: ["ALL"] 
+    runAsNonRoot: true 
+    seccompProfile: 
+      type: "RuntimeDefault" 
+
+proxy:
+  service:
+    type: ClusterIP
+  chp:
+    containerSecurityContext: *SCDefaults # reusing values
+    image:
+      name: $REGISTRY/$REGISTRY_PROJECT/conf-http:$TAG  # replace this
+    resources: *resourceDefaults # reusing values
+  traefik:
+    containerSecurityContext: *SCDefaults
+    image:
+      name: $REGISTRY/$REGISTRY_PROJECT/traefik:$TAG  # replace this
+    resources: *resourceDefaults
+  secretSync:
+    containerSecurityContext: *SCDefaults
+    image:
+      name: $REGISTRY/$REGISTRY_PROJECT/k8s-secret-sync:$TAG  # replace this
+    resources: *resourceDefaults
+  https:
+    hosts:
+      - $PROJECT_HOST # replace this
+    type: letsencrypt
+    letsencrypt:
+      contactEmail: email@email.com  # replace this
+
+singleuser:
+  networkTools:
+    image:
+      name: $REGISTRY/$REGISTRY_PROJECT/network-tools:$TAG # replace this
+    resources: *resourceDefaults
+  cloudMetadata:
+    blockWithIptables: false
+    ip: 169.254.169.254
+  storage:
+    type: none
+  image:
+    name: $REGISTRY/$REGISTRY_PROJECT/singleuser:$TAG # replace this
+  cpu:
+    limit: 1
+    guarantee: 0.1
+  memory:
+    limit: 2G
+    guarantee: 1G
+
+scheduling:
+  userScheduler:
+    enabled: false
+    containerSecurityContext: *SCDefaults
+    image:
+      name: registry.k8s.io/kube-scheduler:1.0
+    resources: *resourceDefaults
+  userPlaceholder:
+    resources: *resourceDefaults
+    image:
+      name: $REGISTRY/$REGISTRY_PROJECT/pause:$TAG # replace this
+    containerSecurityContext: *SCDefaults
+
+prePuller:
+  resources: *resourceDefaults
+  containerSecurityContext: *SCDefaults
+  hook:
+    image:
+      name: $REGISTRY/$REGISTRY_PROJECT/k8s-image-awaiter:$TAG # replace this
+    containerSecurityContext: *SCDefaults
+    resources: *resourceDefaults
+  pause:
+    image:
+      name: $REGISTRY/$REGISTRY_PROJECT/pause:$TAG # replace this
+    containerSecurityContext: *SCDefaults
+
+ingress:
+  enabled: true
+  annotations: 
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  ingressClassName: "nginx"
+  hosts: 
+    - $PROJECT_DOMAIN # replace this
+  tls:
+    - hosts:
+        - $PROJECT_DOMAIN # replace this
+      secretName: jupyter-secret
+```
+
 ### Deploying JupyterHub
+
+To deploy simply use this command in combination with the modified values.yaml as provided above.
+```sh
+helm upgrade --install jupyterhub jupyterhub/jupyterhub --values values.yml
+```
+
 
 
 ## Further Reading
