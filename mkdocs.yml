@@ -157,6 +157,7 @@ nav:
     - 'Self-Managed Services':
       - 'FerretDB (self-managed)': 'user-guide/self-managed-services/ferretdb.md'
       - 'Keycloak (self-managed)': 'user-guide/self-managed-services/keycloak.md'
+      - 'JupyterHub (self-managed)': 'user-guide/self-managed-services/jupyterhub.md' 
     - 'Go-live Checklist': 'user-guide/go-live.md'
     - 'Troubleshooting': 'user-guide/troubleshooting.md'
     - 'FAQ': 'user-guide/faq.md'
