@@ -1,4 +1,4 @@
-# JupyterHub (self-managed)
+JupyterHub (self-managed)
 ===========
 
 {%
@@ -9,7 +9,7 @@
 
 JupyterHub brings Jupyter Notebooks to the cloud. It gives the users access to computational environments and resources without burdening users with installation and maintenance tasks. This documents shows a guide on how to setup JupyterHub in a Compliant Kubernetes cluster.
 
-## Pushing the Jupyeterhub images to Harbor
+## Pushing the JupyeterHub Images to Harbor
 This sections shows how to pull the required images for JupyterHub and push them to another registery. If you are using the managed Harbor as your container registry, please follow [these instructions](../deploy.md) on how to authenticate, create a new project, and how to create a robot account and using it in a pull-secret to be able to pull an image from Harbor to your cluster safely:
 
 ```sh
@@ -53,4 +53,18 @@ docker tag traefik:$TRAEFIK_TAG $REGISTRY/$REGISTRY_PROJECT/traefik:$TRAEFIK_TAG
 docker push $REGISTRY/$REGISTRY_PROJECT/traefik:$TRAEFIK_TAG
 ```
 
+## Configure and Deploy JupyterHub
+We chose to work with [official Helm charts](https://hub.jupyter.org/helm-chart/) provided by JupyterHub. They can be downloaded via the webpage or added to your local repository by running:
+```sh
+helm repo add jupyterhub https://hub.jupyter.org/helm-chart/
+helm repo update
+```
+
+### Configuring JupyterHub
+
+
+### Deploying JupyterHub
+
+
+## Further Reading
 
