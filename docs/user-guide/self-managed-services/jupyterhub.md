@@ -67,4 +67,5 @@ helm repo update
 
 
 ## Further Reading
-
+- [General Documentation on Setting Up JupyterHub on Kubernetes](https://z2jh.jupyter.org/en/stable/index.html)
+    - [Customizing User Management](https://z2jh.jupyter.org/en/stable/administrator/authentication.html)
