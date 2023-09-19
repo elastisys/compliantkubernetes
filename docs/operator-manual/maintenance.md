@@ -36,7 +36,7 @@ Let's go through them one by one.
 Security patches for the underlying OS on the nodes is constantly being released, and to ensure your environment is secured, the nodes that run Compliant Kubernetes must be updated with these patches.
 We recommend that you use the [AutomaticSecurityUpdates](https://help.ubuntu.com/community/AutomaticSecurityUpdates) feature that is available in Ubuntu (similar feature exist in other distros) to install these updates.
 Note that the nodes still need to be rebooted for some of these updates to be applied.
-In order to reboot the nodes, you can either use a tool like [kured](https://github.com/weaveworks/kured) or you can do it manually by logging on to the nodes and rebooting them manually.
+In order to reboot the nodes, you can either use a tool like [kured](https://github.com/kubereboot/kured) or you can do it manually by logging on to the nodes and rebooting them manually.
 When doing that, reboot one node at the time and make sure that the rebooted node is 'Ready' and that pods are scheduled to it before you move on to the next, or you risk downtime.
 
 There is a playbook in the compliantkubernetes-kubespray repo that can assist with the reboot of nodes.

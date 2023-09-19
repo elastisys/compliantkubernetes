@@ -102,4 +102,4 @@ Similar to Local Persistent Volumes, but
 
 ## Links
 
-* [Prometheus Operator Storage](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/storage.md)
+* [Prometheus Operator Storage](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md)

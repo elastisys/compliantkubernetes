@@ -111,7 +111,7 @@ class CisoControlsPlugin(mkdocs.plugins.BasePlugin):
     def _render_tag(self, tag):
         tags_index = self._tag_to_tags_index(tag)
         url = self.root_url + \
-            self.slugify(tags_index) + "#" + \
+            self.slugify(tags_index) + "/#" + \
             self.slugify(tag)
         return dict(name = tag, type = type, url = url)
 

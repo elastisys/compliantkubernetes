@@ -61,7 +61,7 @@ Note that, according to [GDPR Art. 4](https://gdpr.fan/a4) any information that 
 There are court rulings clarifying that:
 
 - email addresses and user IDs are personal data;
-- [IP addresses are personal data](http://curia.europa.eu/juris/document/document.jsf?docid=184668&doclang=EN&cid=1095511);
+- [IP addresses are personal data](https://curia.europa.eu/juris/document/document.jsf?docid=184668&doclang=EN&cid=1095511);
 - [browser-generated information](https://www.judiciary.uk/wp-content/uploads/2018/10/lloyd-v-google-judgment.pdf) (e.g., cookies, URLs, fingerprints, user agents) can be personal data.
 
 According to the [so-called "Schrems II" ruling](https://www.europarl.europa.eu/RegData/etudes/ATAG/2020/652073/EPRS_ATA(2020)652073_EN.pdf), US law -- in particular [US CLOUD Act](https://en.wikipedia.org/wiki/CLOUD_Act) and [US FISA](https://en.wikipedia.org/wiki/Foreign_Intelligence_Surveillance_Act) are incompatible -- with EU GDPR and personal data processing.

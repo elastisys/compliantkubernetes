@@ -17,7 +17,7 @@ Compliant Kubernetes promises: "Multi-cloud. Open source. Compliant". So far, we
 
 ## Considered Options
 
-* [Rancher](https://rancher.com/)
+* [Rancher](https://www.rancher.com/)
 * [kubeadm via in-house tools (ck8s-cluster)](https://github.com/elastisys/ck8s-cluster)
 * [kubespray](https://github.com/kubernetes-sigs/kubespray)
 * [kops](https://github.com/kubernetes/kops)

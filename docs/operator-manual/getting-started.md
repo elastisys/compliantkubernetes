@@ -7,9 +7,9 @@ Setting up Compliant Kubernetes consists of two parts: setting up [at least two 
 In theory, any vanilla Kubernetes cluster can be used for Compliant Kubernetes. We suggest the [kubespray](https://github.com/kubernetes-sigs/kubespray) way. To this end, you need:
 
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* [Python3 pip](https://packaging.python.org/guides/installing-using-linux-tools/#installing-pip-setuptools-wheel-with-linux-package-managers)
-* [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli#install-terraform)
-* [Ansible](https://ansible.com)
+* [Python3 pip](https://packaging.python.org/en/latest/guides/installing-using-linux-tools/)
+* [Terraform](https://developer.hashicorp.com/terraform/downloads)
+* [Ansible](https://ansible.com/)
 * [pwgen](https://manpages.ubuntu.com/manpages/trusty/man1/pwgen.1.html)
 
 Ansible is best installed as follows:
@@ -45,7 +45,7 @@ Compliant Kubernetes relies on SSH for accessing nodes. If you haven't already d
 ssh-keygen
 ```
 
-Configuration secrets in Compliant Kubernetes are encrypted using [SOPS](https://github.com/mozilla/sops).
+Configuration secrets in Compliant Kubernetes are encrypted using [SOPS](https://github.com/getsops/sops).
 We currently only support using PGP when encrypting secrets.
 If you haven't already done so, generate your own PGP key as follows:
 

@@ -9,7 +9,7 @@
 We run additional services in the Workload Cluster, currently databases (PostgreSQL), in-memory caches (Redis) and message queues (RabbitMQ).
 Traditionally, when these services are provided as managed services, they are exposed via a TLS-encrypted endpoint. See examples for:
 
-* [Redis](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-nodejs-get-started#create-a-new-nodejs-app) -- notice `rediss://`;
+* [Redis](https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/cache-nodejs-get-started#create-a-new-nodejs-app) -- notice `rediss://`;
 * [RabbitMQ](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/data-protection.html#data-protection-encryption-in-transit);
 * [PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html).
 

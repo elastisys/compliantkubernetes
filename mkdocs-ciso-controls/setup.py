@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="mkdocs-ciso-controls",
-    version="0.0.1",
+    version="0.0.2",
     author="Cristian Klein",
     author_email="cristian.klein@elastisys.com",
     description="Use tags to capture ISMS controls and group them by source.",

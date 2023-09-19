@@ -90,7 +90,7 @@ The screenshot below shows Grafana in "Explore" mode (the compass icon to the le
 
 ![Example of User Demo Metrics](../img/user-demo-metrics.jpeg)
 
-The "Explore" mode is great for developing queries and exploring the data set. If you want to save a query so you can refer back to it, you can create a Dashboard instead. Dashboards consist of multiple Panels, each of which, can display the results of running queries. Learn more [about Grafana panels](https://grafana.com/docs/grafana/latest/panels/).
+The "Explore" mode is great for developing queries and exploring the data set. If you want to save a query so you can refer back to it, you can create a Dashboard instead. Dashboards consist of multiple Panels, each of which, can display the results of running queries. Learn more [about Grafana panels](https://grafana.com/docs/grafana/latest/panels-visualizations/).
 
 !!!note
     You may want to save frequently used Dashboards. Compliant Kubernetes saves and backs these up for you.
