@@ -12,7 +12,7 @@ JupyterHub brings Jupyter Notebooks to the cloud. It gives the users access to c
 ![Keycloak Image](img/jupyter.gif)
 
 ## Pushing the JupyeterHub Images to Harbor
-This sections shows how to pull the required images for JupyterHub and push them to another registery. If you are using the managed Harbor as your container registry, please follow [these instructions](../deploy.md) on how to authenticate, create a new project, and how to create a robot account and using it in a pull-secret to be able to pull an image from Harbor to your cluster safely:
+This sections shows how to pull the required images for JupyterHub and push them to another registry. If you are using the managed Harbor as your container registry, please follow [these instructions](../deploy.md) on how to authenticate, create a new project, and how to create a robot account and using it in a pull-secret to be able to pull an image from Harbor to your cluster safely:
 
 ```sh
 CHP_TAG=4.5.6
@@ -25,7 +25,7 @@ REGISTRY_PROJECT=jupyterhub
 for IMAGE in jupyterhub/configurable-http-proxy:$CHP_TAG jupyterhub/k8s-hub:$JUPYTER_TAG \
             jupyterhub/k8s-image-awaiter:$JUPYTER_TAG jupyterhub/k8s-network-tools:$JUPYTER_TAG \
             jupyterhub/k8s-secret-sync:$JUPYTER_TAG jupyterhub/k8s-singleuser-sample:$JUPYTER_TAG \
-            registry.k8s.io/pause:$PAUSE_TAG traefik:$TRAEFIK_TAG 
+            registry.k8s.io/pause:$PAUSE_TAG traefik:$TRAEFIK_TAG
 do
 docker pull $IMAGE
 docker tag $IMAGE  $REGISTRY/$REGISTRY_PROJECT/${IMAGE#*/}
@@ -44,9 +44,9 @@ helm repo update
 
 Below is a sample **values.yaml** file that can be used to deploy JupyterHub, please read the notes and change what is necessary. This sample uses [Google OAuth](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google) for authentication and authorization.
 
-**NOTE** Requested recources should be evaluated and reconsidered for production. Information about resource allocation and also the enabling of GPU usage can be found [here](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-resources.html#customizing-user-resources)
+**NOTE** Requested resources should be evaluated and reconsidered for production. Information about resource allocation and also the enabling of GPU usage can be found [here](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-resources.html#customizing-user-resources)
 ```yaml
-hub: 
+hub:
   revisionHistoryLimit:
   config:
     GoogleOAuthenticator:
@@ -60,32 +60,32 @@ hub:
     JupyterHub:
       admin_access: true
       authenticator_class: google
-      admin_users: 
+      admin_users:
         - email@admin # replace this
   image:
     name: $REGISTRY/$REGISTRY_PROJECT/k8s-hub:$TAG # replace this
   resources: &resourceDefaults # (1)
-    requests: 
-      memory: 512Mi 
-      cpu: 10m 
-    limits: 
-      memory: 1Gi 
-      cpu: 1 
+    requests:
+      memory: 512Mi
+      cpu: 10m
+    limits:
+      memory: 1Gi
+      cpu: 1
   containerSecurityContext: &SCDefaults # (2)
-    capabilities: 
-      drop: ["ALL"] 
-    runAsNonRoot: true 
-    seccompProfile: 
-      type: "RuntimeDefault" 
+    capabilities:
+      drop: ["ALL"]
+    runAsNonRoot: true
+    seccompProfile:
+      type: "RuntimeDefault"
 
 proxy:
   service:
     type: ClusterIP
   chp:
-    containerSecurityContext: *SCDefaults 
+    containerSecurityContext: *SCDefaults
     image:
       name: $REGISTRY/$REGISTRY_PROJECT/configurable-http-proxy:$TAG  # replace this
-    resources: *resourceDefaults 
+    resources: *resourceDefaults
   traefik:
     containerSecurityContext: *SCDefaults
     image:
@@ -111,7 +111,7 @@ singleuser:
   cloudMetadata:
     blockWithIptables: false # (3)
   storage: # (4)
-    type: none 
+    type: none
   image:
     name: $REGISTRY/$REGISTRY_PROJECT/k8s-singleuser-sample:$TAG # replace this
   cpu:
@@ -122,8 +122,8 @@ singleuser:
     guarantee: 1G
 
 scheduling:
-  userScheduler: 
-    enabled: false 
+  userScheduler:
+    enabled: false
   userPlaceholder:
     resources: *resourceDefaults
     image:
@@ -145,10 +145,10 @@ prePuller:
 
 ingress:
   enabled: true
-  annotations: 
+  annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
   ingressClassName: "nginx"
-  hosts: 
+  hosts:
     - $PROJECT_DOMAIN # replace this
   tls:
     - hosts:
@@ -159,7 +159,7 @@ ingress:
 1. The following resources are reused using *resourceDefaults later in this file
 2. The following containerSecurityContext is reused using *SCDefaults later in this file
 3.  Block set to true will append a privileged initContainer using the iptables to block the sensitive metadata server at the provided ip. Privileged containers are not allowed in ck8s.
-4. "type: none" disables persistant storage for the user labs. Consolidate with platform administrator before enabling this feature. [for reference](https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/1ebca266bed3e2f38332c5a9a3202f627cba3af0/jupyterhub/values.yaml#L383)
+4. "type: none" disables persistent storage for the user labs. Consolidate with platform administrator before enabling this feature. [for reference](https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/1ebca266bed3e2f38332c5a9a3202f627cba3af0/jupyterhub/values.yaml#L383)
 
 ### Deploying JupyterHub
 
@@ -172,7 +172,7 @@ helm upgrade --install jupyterhub jupyterhub/jupyterhub --values values.yml
 
 - Scheduling is disabled because of the worker node restrictions currently in CK8s
 - JupyterHub Admin functionality is limited since it requires container root access.
-- Installing hub-wide python packages is not possible since requires container root acces.
+- Installing hub-wide python packages is not possible since requires container root access.
 - Persistent storage is currently disabled but [can be enabled](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-storage.html) depending on your infrastructure provider.
 - GPU is not enabled currently but [can be enabled](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-resources.html#set-user-gpu-guarantees-limits) depending on your infrastructure provider.
 
