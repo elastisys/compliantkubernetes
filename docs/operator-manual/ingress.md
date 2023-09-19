@@ -44,7 +44,7 @@ ingressNginx:
 If the apps repository is initiated with the correct Infrastructure Provider these config options will get the
 correct defaults.
 
-For more ways to install the Nginx Ingress controller see <https://kubernetes.github.io/ingress-nginx/deploy>
+For more ways to install the Nginx Ingress controller see [the upstream documentation](https://kubernetes.github.io/ingress-nginx/deploy/).
 
 ## Ingress resource
 

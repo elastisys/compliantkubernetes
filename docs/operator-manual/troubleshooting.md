@@ -355,8 +355,8 @@ Re-apply `apps` according to documentation.
 
 Follow cert-manager's troubleshooting, specifically:
 
-* [Troubleshooting](https://cert-manager.io/docs/faq/troubleshooting/)
-* [Troubleshooting Issuing ACME Certificates](https://cert-manager.io/docs/faq/acme/)
+* [Troubleshooting](https://cert-manager.io/docs/troubleshooting/)
+* [Troubleshooting Issuing ACME Certificates](https://cert-manager.io/docs/troubleshooting/acme/)
 
 ### Failed to perform self check: no such host
 

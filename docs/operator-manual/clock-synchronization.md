@@ -20,4 +20,4 @@ Clock synchronization is important for the following reasons:
 Be aware of the following:
 
 - Some regulations require synchronization with **at least two** clock sources. This could be two different NTP servers which can be traced to two different atomic clocks.
-- Some regulations require synchronization with a specific time source. For example, MSBFS 2020:7 4 kap. 13 § specifically requires synchronization with [ntp.se](https://www.ntp.se).
+- Some regulations require synchronization with a specific time source. For example, MSBFS 2020:7 4 kap. 13 § specifically requires synchronization with [ntp.se](https://www.netnod.se/swedish-distributed-time-service).

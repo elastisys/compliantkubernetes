@@ -115,7 +115,7 @@ kubectl edit rolebinding extra-workload-admins -n user-namespace
 ## Application Metrics (Grafana)
 
 Your administrator will have mapped your IdP groups to the Grafana viewer, editor and admin roles.
-Please read the [upstream documentation](https://grafana.com/docs/grafana/latest/permissions/organization_roles/) to learn more.
+Please read the [upstream documentation](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/) to learn more.
 
 ## Application Logs (OpenSearch Dashboards)
 

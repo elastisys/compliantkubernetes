@@ -48,11 +48,10 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
       :fontawesome-solid-user-check:
       The platform you would build yourself
     </dt>
-    <dd>
+    <dd markdown="span">
         Built with CNCF projects,
-        public <a href="./adr">Architectural Decision Records</a>,
-        as well as great documentation for
-            <a href="./user-guide/">application developers</a>.
+        public [Architectural Decision Records](adr/index.md),
+        as well as great documentation for [application developers](user-guide/index.md).
     </dd>
   </div>
 
