@@ -9,7 +9,6 @@ JupyterHub (self-managed)
 
 JupyterHub brings Jupyter Notebooks to the cloud. It gives the users access to computational environments and resources without burdening users with installation and maintenance tasks. This documents shows a guide on how to setup JupyterHub in a Compliant Kubernetes cluster.
 
-
 ![Keycloak Image](img/jupyter.gif)
 
 ## Pushing the JupyeterHub Images to Harbor
@@ -43,10 +42,9 @@ helm repo update
 
 ### Configuring JupyterHub
 
-
 Below is a sample **values.yaml** file that can be used to deploy JupyterHub, please read the notes and change what is necessary. This sample uses [Google OAuth](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google) for authentication and authorization.
 
-**NOTE** Requested recources should be evaluated and reconsidered for production.
+**NOTE** Requested recources should be evaluated and reconsidered for production. Information about resource allocation and also the enabling of GPU usage can be found [here](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-resources.html#customizing-user-resources)
 ```yaml
 hub: 
   revisionHistoryLimit:
@@ -159,11 +157,9 @@ ingress:
 ```
 
 1. The following resources are reused using *resourceDefaults later in this file
-2. The following containerSecurityConstraints are reused using *SCDefaults later in this file
+2. The following containerSecurityContext is reused using *SCDefaults later in this file
 3.  Block set to true will append a privileged initContainer using the iptables to block the sensitive metadata server at the provided ip. Privileged containers are not allowed in ck8s.
 4. "type: none" disables persistant storage for the user labs. Consolidate with platform administrator before enabling this feature. [for reference](https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/1ebca266bed3e2f38332c5a9a3202f627cba3af0/jupyterhub/values.yaml#L383)
-
-
 
 ### Deploying JupyterHub
 
@@ -172,10 +168,17 @@ To deploy simply use this command in combination with the modified values.yaml a
 helm upgrade --install jupyterhub jupyterhub/jupyterhub --values values.yml
 ```
 
+## Known Issues / Limitations
 
+- Scheduling is disabled because of the worker node restrictions currently in CK8s
+- JupyterHub Admin functionality is limited since it requires container root access.
+- Installing hub-wide python packages is not possible since requires container root acces.
+- Persistent storage is currently disabled but [can be enabled](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-storage.html) depending on your infrastructure provider.
+- GPU is not enabled currently but [can be enabled](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-resources.html#set-user-gpu-guarantees-limits) depending on your infrastructure provider.
 
 ## Further Reading
 - [General Documentation on Setting Up JupyterHub on Kubernetes](https://z2jh.jupyter.org/en/stable/index.html)
     - [Customizing User Management](https://z2jh.jupyter.org/en/stable/administrator/authentication.html)
-
-
+    - [Customizing User Storage](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-storage.html)
+    - [Customizing User Environment](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-environment.html)
+    - [Customizing User Resources](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-resources.html)
