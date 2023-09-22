@@ -11,27 +11,7 @@ JupyterHub brings Jupyter Notebooks to the cloud. It gives the users access to c
 
 ![Keycloak Image](img/jupyter.gif)
 
-## Pushing the JupyeterHub Images to Harbor
-This sections shows how to pull the required images for JupyterHub and push them to another registry. If you are using the managed Harbor as your container registry, please follow [these instructions](../deploy.md) on how to authenticate, create a new project, and how to create a robot account and using it in a pull-secret to be able to pull an image from Harbor to your cluster safely:
 
-```sh
-CHP_TAG=4.5.6
-JUPYTER_TAG=3.0.3
-PAUSE_TAG=3.9
-TRAEFIK_TAG=v2.10.4
-REGISTRY=harbor.$DOMAIN
-REGISTRY_PROJECT=jupyterhub
-
-for IMAGE in jupyterhub/configurable-http-proxy:$CHP_TAG jupyterhub/k8s-hub:$JUPYTER_TAG \
-            jupyterhub/k8s-image-awaiter:$JUPYTER_TAG jupyterhub/k8s-network-tools:$JUPYTER_TAG \
-            jupyterhub/k8s-secret-sync:$JUPYTER_TAG jupyterhub/k8s-singleuser-sample:$JUPYTER_TAG \
-            registry.k8s.io/pause:$PAUSE_TAG traefik:$TRAEFIK_TAG
-do
-docker pull $IMAGE
-docker tag $IMAGE  $REGISTRY/$REGISTRY_PROJECT/${IMAGE#*/}
-docker push $REGISTRY/$REGISTRY_PROJECT/${IMAGE#*/}
-done
-```
 
 ## Configure and Deploy JupyterHub
 We chose to work with [official Helm charts](https://hub.jupyter.org/helm-chart/) provided by JupyterHub. They can be downloaded via the webpage or added to your local repository by running:
@@ -63,7 +43,7 @@ hub:
       admin_users:
         - email@example.com # replace this
   image:
-    name: $REGISTRY/$REGISTRY_PROJECT/k8s-hub:$TAG # replace this
+    name:  k8s-hub  # replace this
   resources: &resourceDefaults # (1)
     requests:
       memory: 512Mi
@@ -84,17 +64,17 @@ proxy:
   chp:
     containerSecurityContext: *SCDefaults
     image:
-      name: $REGISTRY/$REGISTRY_PROJECT/configurable-http-proxy:$TAG  # replace this
+      name:  configurable-http-proxy   # replace this
     resources: *resourceDefaults
   traefik:
     containerSecurityContext: *SCDefaults
     image:
-      name: $REGISTRY/$REGISTRY_PROJECT/traefik:$TAG  # replace this
+      name:  traefik   # replace this
     resources: *resourceDefaults
   secretSync:
     containerSecurityContext: *SCDefaults
     image:
-      name: $REGISTRY/$REGISTRY_PROJECT/k8s-secret-sync:$TAG  # replace this
+      name:  k8s-secret-sync   # replace this
     resources: *resourceDefaults
   https:
     hosts:
@@ -106,14 +86,14 @@ proxy:
 singleuser:
   networkTools:
     image:
-      name: $REGISTRY/$REGISTRY_PROJECT/k8s-network-tools:$TAG # replace this
+      name:  k8s-network-tools  # replace this
     resources: *resourceDefaults
   cloudMetadata:
     blockWithIptables: false # (3)
   storage: # (4)
     type: none
   image:
-    name: $REGISTRY/$REGISTRY_PROJECT/k8s-singleuser-sample:$TAG # replace this
+    name:  k8s-singleuser-sample  # replace this
   cpu:
     limit: 1
     guarantee: 0.1
@@ -127,7 +107,7 @@ scheduling:
   userPlaceholder:
     resources: *resourceDefaults
     image:
-      name: $REGISTRY/$REGISTRY_PROJECT/pause:$TAG # replace this
+      name:  pause  # replace this
     containerSecurityContext: *SCDefaults
 
 prePuller:
@@ -135,12 +115,12 @@ prePuller:
   containerSecurityContext: *SCDefaults
   hook:
     image:
-      name: $REGISTRY/$REGISTRY_PROJECT/k8s-image-awaiter:$TAG # replace this
+      name:  k8s-image-awaiter  # replace this
     containerSecurityContext: *SCDefaults
     resources: *resourceDefaults
   pause:
     image:
-      name: $REGISTRY/$REGISTRY_PROJECT/pause:$TAG # replace this
+      name:  pause  # replace this
     containerSecurityContext: *SCDefaults
 
 ingress:
@@ -161,6 +141,28 @@ ingress:
 3.  Block set to true will append a privileged initContainer using the iptables to block the sensitive metadata server at the provided ip. Privileged containers are not allowed in ck8s.
 4. "type: none" disables persistent storage for the user labs. Consolidate with platform administrator before enabling this feature. [for reference](https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/1ebca266bed3e2f38332c5a9a3202f627cba3af0/jupyterhub/values.yaml#L383)
 5. Use [this guide](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google) to get your client_id and client_secret through the [Google API Console](https://console.developers.google.com/).
+
+### Pushing the JupyeterHub Images to Harbor
+This sections shows how to pull the required images for JupyterHub and push them to another registry. If you are using the managed Harbor as your container registry, please follow [these instructions](../deploy.md) on how to authenticate, create a new project, and how to create a robot account and using it in a pull-secret to be able to pull an image from Harbor to your cluster safely. **NOTE** This command should be run in the same directory as the location of values.yaml file, since it will automatically update it with the correct images. If not, you will need to manually set the correct images by hand in the values.yaml
+
+```sh
+DOMAIN=examle.com # Replace this
+REGISTRY=harbor.$DOMAIN
+REGISTRY_PROJECT=jupyterhub
+
+IMAGES=$(helm show chart jupyterhub/jupyterhub | grep image: | awk  '{print $3}')
+
+for IMAGE in $IMAGES
+do
+
+docker pull $IMAGE
+docker tag $IMAGE  $REGISTRY/$REGISTRY_PROJECT/${IMAGE#*/}
+docker push $REGISTRY/$REGISTRY_PROJECT/${IMAGE#*/}
+IMAGE_NAME=${IMAGE#*/} # Remove repository information
+sed -i 's|name: '"${IMAGE_NAME%:*}"'|name: '"$REGISTRY/$REGISTRY_PROJECT/${IMAGE_NAME}"'|g' values.yaml
+
+done
+```
 
 ### Deploying JupyterHub
 
