@@ -31,7 +31,7 @@ hub:
   config:
     GoogleOAuthenticator: #(5)
         client_id: $YOUR_CLIENT_ID # replace this
-        client_secret: $YOUR_CLIENT_SECRET # replace this
+        client_secret: $YOUR_CLIENT_SECRET # (6) replace this
         oauth_callback_url: https://$PROJECT_DOMAIN/hub/oauth_callback # replace this
         hosted_domain:
           - $PROJECT_DOMAIN # replace this
@@ -43,7 +43,8 @@ hub:
       admin_users:
         - email@example.com # replace this
   image:
-    name:  k8s-hub  # replace this
+    name: k8s-hub
+
   resources: &resourceDefaults # (1)
     requests:
       memory: 512Mi
@@ -64,36 +65,36 @@ proxy:
   chp:
     containerSecurityContext: *SCDefaults
     image:
-      name:  configurable-http-proxy   # replace this
+      name: configurable-http-proxy
     resources: *resourceDefaults
   traefik:
     containerSecurityContext: *SCDefaults
     image:
-      name:  traefik   # replace this
+      name: traefik
     resources: *resourceDefaults
   secretSync:
     containerSecurityContext: *SCDefaults
     image:
-      name:  k8s-secret-sync   # replace this
+      name: k8s-secret-sync
     resources: *resourceDefaults
   https:
     hosts:
       - $PROJECT_DOMAIN # replace this
     type: letsencrypt
     letsencrypt:
-      contactEmail: email@email.com  # replace this
+      contactEmail: email@email.com
 
 singleuser:
   networkTools:
     image:
-      name:  k8s-network-tools  # replace this
+      name: k8s-network-tools
     resources: *resourceDefaults
   cloudMetadata:
     blockWithIptables: false # (3)
   storage: # (4)
     type: none
   image:
-    name:  k8s-singleuser-sample  # replace this
+    name: k8s-singleuser-sample
   cpu:
     limit: 1
     guarantee: 0.1
@@ -107,7 +108,7 @@ scheduling:
   userPlaceholder:
     resources: *resourceDefaults
     image:
-      name:  pause  # replace this
+      name: pause
     containerSecurityContext: *SCDefaults
 
 prePuller:
@@ -115,12 +116,12 @@ prePuller:
   containerSecurityContext: *SCDefaults
   hook:
     image:
-      name:  k8s-image-awaiter  # replace this
+      name: k8s-image-awaiter
     containerSecurityContext: *SCDefaults
     resources: *resourceDefaults
   pause:
     image:
-      name:  pause  # replace this
+      name: pause
     containerSecurityContext: *SCDefaults
 
 ingress:
@@ -141,12 +142,15 @@ ingress:
 3.  Block set to true will append a privileged initContainer using the iptables to block the sensitive metadata server at the provided ip. Privileged containers are not allowed in ck8s.
 4. "type: none" disables persistent storage for the user labs. Consolidate with platform administrator before enabling this feature. [for reference](https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/1ebca266bed3e2f38332c5a9a3202f627cba3af0/jupyterhub/values.yaml#L383)
 5. Use [this guide](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google) to get your client_id and client_secret through the [Google API Console](https://console.developers.google.com/).
+6. This should not be treated as a secret. See risk analysis [here](https://github.com/dexidp/dex/issues/469) and [here](https://security.stackexchange.com/questions/225809/what-is-the-worst-i-can-do-if-i-know-openid-connect-client-secret).
 
 ### Pushing the JupyeterHub Images to Harbor
-This sections shows how to pull the required images for JupyterHub and push them to another registry. If you are using the managed Harbor as your container registry, please follow [these instructions](../deploy.md) on how to authenticate, create a new project, and how to create a robot account and using it in a pull-secret to be able to pull an image from Harbor to your cluster safely. **NOTE** This command should be run in the same directory as the location of values.yaml file, since it will automatically update it with the correct images. If not, you will need to manually set the correct images by hand in the values.yaml
+This sections shows how to pull the required images for JupyterHub and push them to another registry. If you are using the managed Harbor as your container registry, please follow [these instructions](../deploy.md) on how to authenticate, create a new project, and how to create a robot account and using it in a pull-secret to be able to pull an image from Harbor to your cluster safely.
+
+**NOTE** Run the following commands in the same directory as the location of your values.yaml file, since it will automatically update it with the correct images. If not, images will need to be manually set in the values.yaml.
 
 ```sh
-DOMAIN=examle.com # Replace this
+DOMAIN=example.com # Replace this
 REGISTRY=harbor.$DOMAIN
 REGISTRY_PROJECT=jupyterhub
 
@@ -159,7 +163,7 @@ docker pull $IMAGE
 docker tag $IMAGE  $REGISTRY/$REGISTRY_PROJECT/${IMAGE#*/}
 docker push $REGISTRY/$REGISTRY_PROJECT/${IMAGE#*/}
 IMAGE_NAME=${IMAGE#*/} # Remove repository information
-sed -i 's|name: '"${IMAGE_NAME%:*}"'|name: '"$REGISTRY/$REGISTRY_PROJECT/${IMAGE_NAME}"'|g' values.yaml
+sed -i 's|name: '"${IMAGE_NAME%:*}"'|name: '"$REGISTRY/$REGISTRY_PROJECT/${IMAGE_NAME%:*}"'|g' values.yaml
 
 done
 ```
