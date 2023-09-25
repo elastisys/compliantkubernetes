@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.32.1](#v0321) - 2023-09-25
 - [v0.32.0](#v0320) - 2023-08-07
 - [v0.31.0](#v0310) - 2023-07-17
 - [v0.30.1](#v0301) - 2023-06-05
@@ -33,6 +34,19 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.32.1
+
+Released 2023-09-25
+
+### Changed
+
+- **Use swift as default for Thanos and Harbor rclone-sync job.**
+  - If sync is enabled and swift is used for Harbor or Thanos then the sync job will automatically use swift
+- **Allow domains to be used for swift in rclone-sync.**
+
+### Fixed
+- **Only check for swift if sync default buckets is enabled with harbor or thanos using swift.**
 
 ### v0.32.0
 
