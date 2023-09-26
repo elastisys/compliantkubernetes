@@ -34,7 +34,7 @@ hub:
         client_secret: $YOUR_CLIENT_SECRET # (6) replace this
         oauth_callback_url: https://$PROJECT_DOMAIN/hub/oauth_callback # replace this
         hosted_domain:
-          - $PROJECT_DOMAIN # replace this
+          - example.com # replace this the email domain which are allowed to log in to JupyterHub
         login_service: Google
         allow_all: true
     JupyterHub:
