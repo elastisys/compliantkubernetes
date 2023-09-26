@@ -8,7 +8,7 @@ Argo™ CD (preview)
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
-    You can order Managed Argo™ CD by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
+    You can order Managed Argo™ CD by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/).
 
     This is a preview feature. For more information, please read [ToS 9.1 Preview Features](https://elastisys.com/legal/terms-of-service/#91-preview-features).
 

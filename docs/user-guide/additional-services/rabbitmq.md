@@ -3,7 +3,7 @@ RabbitMQ®
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
-    You can order Managed RabbitMQ® by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals). Here are the highlights:
+    You can order Managed RabbitMQ® by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/). Here are the highlights:
 
     * **Business continuity**: three replicas.
     * **Disaster recovery**:

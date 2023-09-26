@@ -11,7 +11,7 @@ tags:
 ---
 !!! elastisys "For Elastisys Managed Services Customers"
 
-    You can order a new environment by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
+    You can order a new environment by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/).
 
     If you have multiple Environments, and one or more have been clearly designated to be non-production Environments, Elastisys will apply major and minor updates to your non-production Environment(s) at least five working days before applying said update to your production Environment(s).
 

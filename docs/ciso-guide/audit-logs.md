@@ -84,5 +84,5 @@ Out of all additional services, audit logging for the [database](../user-guide/a
 
 ## Further Reading
 
-* [Kubernetes Auditing](https://kubernetes.io/docs/tasks/debug-application-cluster/audit/)
+* [Kubernetes Auditing](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/)
 * [pgaudit](https://www.pgaudit.org/)

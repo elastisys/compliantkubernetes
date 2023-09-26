@@ -3,7 +3,7 @@ Jaeger™ (preview)
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
-    You can order Managed Jaeger™ by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
+    You can order Managed Jaeger™ by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/).
 
     This is a preview feature. For more information, please read [ToS 9.1 Preview Features](https://elastisys.com/legal/terms-of-service/#91-preview-features).
 
@@ -56,4 +56,4 @@ Check out the [release notes](../../release-notes/jaeger.md) for the Jaeger setu
 
 ## Further Reading
 
-* [Jaeger documentation](https://www.jaegertracing.io/docs/latest/)
+* [Jaeger documentation](https://www.jaegertracing.io/docs/1.49/)
