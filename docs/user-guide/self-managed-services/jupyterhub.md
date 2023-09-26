@@ -22,10 +22,14 @@ helm repo update
 
 ### Configuring JupyterHub
 
-Below is a sample **values.yaml** file that can be used to deploy JupyterHub, please read the notes and change what is necessary. This sample uses [Google OAuth](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google) for authentication and authorization.
+Below is a sample `values.yaml` file that can be used to deploy JupyterHub, please read the notes and change what is necessary. This sample uses [Google OAuth](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google) for authentication and authorization.
 
-**NOTE** Requested resources should be evaluated and reconsidered for production. Information about resource allocation and also the enabling of GPU usage can be found [here](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-resources.html#customizing-user-resources)
+!!!note
+    Requested resources should be evaluated and reconsidered for production. Information about resource allocation and also the enabling of GPU usage can be found [here](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-resources.html#customizing-user-resources)
 ```yaml
+imagePullSecrets:
+  - pull-secret # create this secret in the next section
+
 hub:
   revisionHistoryLimit:
   config:
@@ -147,7 +151,8 @@ ingress:
 ### Pushing the JupyeterHub Images to Harbor
 This sections shows how to pull the required images for JupyterHub and push them to another registry. If you are using the managed Harbor as your container registry, please follow [these instructions](../deploy.md) on how to authenticate, create a new project, and how to create a robot account and using it in a pull-secret to be able to pull an image from Harbor to your cluster safely.
 
-**NOTE** Run the following commands in the same directory as the location of your values.yaml file, since it will automatically update it with the correct images. If not, images will need to be manually set in the values.yaml.
+!!!note
+    Run the following commands in the same directory as the location of your `values.yaml` file, since it will automatically update it with the correct images. If not, images will need to be manually set in the `values.yaml`.
 
 ```sh
 DOMAIN=example.com # Replace this
@@ -170,16 +175,16 @@ done
 
 ### Deploying JupyterHub
 
-To deploy simply use this command in combination with the modified values.yaml as provided above.
+To deploy simply use this command in combination with the modified `values.yaml` as provided above.
 ```sh
 helm upgrade --install jupyterhub jupyterhub/jupyterhub --values values.yaml
 ```
 
 ## Known Issues / Limitations
 
-- Jupyterhubs custom user scheduler is disabled (which [can help with efficient node downscaling](https://z2jh.jupyter.org/en/latest/administrator/optimization.html#scaling-down-efficiently)). For safety reasons, developers in Compliant Kubernetes do not have the rights required to deploy it.
+- JupyterHub's custom user scheduler is disabled (which [can help with efficient node downscaling](https://z2jh.jupyter.org/en/latest/administrator/optimization.html#scaling-down-efficiently)). For safety reasons, developers in Compliant Kubernetes do not have the rights required to deploy it.
 
-- JupyterHub Admin functionality is limited since some of the admin functions require container root access. Pre-installed python packages for users can not be added through the admin interface. They can be added by [modifying the Docker image](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-environment.html#choose-and-use-an-existing-docker-image), pushing it to your image registry and redeploying JupyterHub. **NOTE** Users can still install their own packages.
+- JupyterHub's Admin functionality is limited since some of the admin functions require container root access. Pre-installed python packages for users can not be added through the admin interface. They can be added by [modifying the Docker image](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-environment.html#choose-and-use-an-existing-docker-image), pushing it to your image registry and redeploying JupyterHub. **NOTE** Users can still install their own packages.
 
 - Persistent storage is currently disabled for Jypyter lab instances but [can be enabled](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-storage.html). It is disabled since Jupyter will allocate new storage for each user and should be carefully considered before it is enabled. This means that the workspace will be reset when the pod crashes or is scaled down from not being used. This includes code added to the lab and installed packages.
 
