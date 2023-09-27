@@ -70,7 +70,7 @@ When a new version is released, it becomes available as a [tagged release](https
 velero get backup
 ```
 
-- [ ] Silence the notifications for the alerts. e.g you can use [alertmanager silences](https://prometheus.io/docs/alerting/latest/alertmanager/#silences);
+- [ ] Silence the notifications for the alerts. e.g you can use [alertmanager silences](https://prometheus.io/docs/introduction/overview/alerting/latest/alertmanager/#silences);
 
 ### Upgrading compliantkubernetes-apps
 

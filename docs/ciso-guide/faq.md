@@ -15,7 +15,7 @@ Should we at Elastisys become aware of such an issue existing, we will immediate
 
 As evidence, that the architectural decision process works – in particular when it comes to licensing issues – here are some decisions we took:
 
-* We decided only to offer TimescaleDB Apache 2 Edition (licensed under Apache 2.0) and NOT TimescaleDB “Community Edition” (licensed under the Timescale license). The Timescale license contains some problematic clauses and is, to our knowledge, not tested in court. You can read more about the subtle differences between the TimescaleDB versions [by opening this link](https://docs.timescale.com/timescaledb/latest/timescaledb-edition-comparison/).
+* We decided only to offer TimescaleDB Apache 2 Edition (licensed under Apache 2.0) and NOT TimescaleDB “Community Edition” (licensed under the Timescale license). The Timescale license contains some problematic clauses and is, to our knowledge, not tested in court. You can read more about the subtle differences between the TimescaleDB versions [by opening this link](https://docs.timescale.com/about/latest/timescaledb-editions/).
 * We replaced Elasticsearch with OpenSearch (licensed under Apache 2.0), when Elasticsearch changed to the Elastic license. You can read more about the context [by opening this link](https://opensearch.org/faq/).
 * We replaced InfluxDB with Thanos. This was due to the fact that the open-source version was too limiting. You can read more about this decision [by opening this link](../adr/0019-push-metrics-via-thanos.md).
 * We made a risk assessment regarding Grafana, and determined that its AGPL license does not pose a problem. You can read more about our assessment below.

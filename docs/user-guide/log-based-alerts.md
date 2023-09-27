@@ -42,7 +42,7 @@ We start with creating a notification channel, which enables sending messages di
 
      -  **Name** - Name of the destination - for example **user-demo-404-slack-notify**
      -  **Channel type** - choose **Slack**
-     -  **Slack webhook URL** - Create a Slack Webhook following [Slack documentation](https://api.slack.com/incoming-webhooks). Paste the webhook URL
+     -  **Slack webhook URL** - Create a Slack Webhook following [Slack documentation](https://api.slack.com/messaging/webhooks). Paste the webhook URL
 
 
 - Test that the Slack integration works by clicking **Send test message** button and check if you receive a test message in your Slack Channel.

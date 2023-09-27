@@ -48,4 +48,4 @@ Chosen option: "run managed services in Workload Cluster".
 
 * [Service Type LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)
 * [Exposing TCP and UDP services with ingress-nginx](https://kubernetes.github.io/ingress-nginx/user-guide/exposing-tcp-udp-services/)
-* [Redis Security](https://redis.io/topics/security)
+* [Redis Security](https://redis.io/topics/security/)

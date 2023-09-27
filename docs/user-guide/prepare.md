@@ -4,7 +4,7 @@ description: Learn how to prepare for Elastisys Compliant Kubernetes, the securi
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
-    You can order Managed Compliant Kubernetes by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals). Here are the highlights:
+    You can order Managed Compliant Kubernetes by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/). Here are the highlights:
 
     * **Infrastructure provider**: You choose it, among the Elastisys Partners.
     * **Business Continuity**: Kubernetes Cluster always feature 3 control plane Nodes.

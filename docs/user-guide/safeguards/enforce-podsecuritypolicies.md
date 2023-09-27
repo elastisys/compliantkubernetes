@@ -24,7 +24,7 @@ $ kubectl -n <namespace> get events
     - [ToS A1.3 Security Measures](https://elastisys.com/legal/terms-of-service/#a13-security-measures)
     - [ToS A2.3 Safeguards](https://elastisys.com/legal/terms-of-service/#a23-safeguards).
 
-    If any of these restrictions causes friction when deploying your application, please file a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals) and we'll happily advise you on how to reduce privileges required by your application.
+    If any of these restrictions causes friction when deploying your application, please file a [service ticket](https://elastisys.atlassian.net/servicedesk/) and we'll happily advise you on how to reduce privileges required by your application.
 
 Kubernetes by default allows any Pod to run with any privileges it requests, which easily allows an application to take full control over a cluster and everything in it.
 To minimise this risk Compliant Kubernetes employs two systems to restrict what privileges an application can request:

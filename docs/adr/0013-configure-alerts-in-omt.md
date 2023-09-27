@@ -62,6 +62,6 @@ Configuration of alerts happens in the OMT.
 ## Links
 
 * [Opsgenie documentation](https://docs.opsgenie.com/)
-* [Alertmanager documentation](https://prometheus.io/docs/alerting/latest/alertmanager/)
+* [Alertmanager documentation](https://prometheus.io/docs/introduction/overview/alerting/latest/alertmanager/)
 * [Terraform Opsgenie provider](https://registry.terraform.io/providers/opsgenie/opsgenie/latest/docs)
 * [Pulumni Opsgenie module](https://www.pulumi.com/registry/packages/opsgenie/api-docs/)

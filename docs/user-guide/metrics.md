@@ -187,6 +187,6 @@ Proceed as follows:
 
 ## Further reading
 
-* [Prometheus](https://prometheus.io/docs/)
+* [Prometheus](https://prometheus.io/docs/introduction/overview/)
 * [Grafana](https://grafana.com/docs/grafana/latest/)
 * [Terraform Provider for Grafana](https://registry.terraform.io/providers/grafana/grafana/latest)
