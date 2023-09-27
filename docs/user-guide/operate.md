@@ -34,7 +34,7 @@ Go deeper into [metrics](metrics.md).
 Visualizing monitoring metrics is one thing. Sometimes, you may need to act on what they show, immediately. For that reason, the Prometheus monitoring system includes AlertManager.
 
 * Prometheus is responsible for maintaining a set of Rules, which express trigger conditions via expressions. Once a rule has triggered, it has entered an alerting state.
-* AlertManager is responsible for forwarding information about any rules in the alerting state to your chosen destination, which could be your company's Slack or similar. [A number of integrations are available](https://prometheus.io/docs/introduction/overview/alerting/latest/configuration/).
+* AlertManager is responsible for forwarding information about any rules in the alerting state to your chosen destination, which could be your company's Slack or similar. [A number of integrations are available](https://prometheus.io/docs/alerting/latest/configuration/).
 
 If you wish to create rules based on application-specific monitoring metrics, you must first create appropriate ServiceMonitors as described above.
 

@@ -252,7 +252,7 @@ Edit the secrets.yaml file and add the credentials for:
 
 - s3 - used for backup storage
 - dex - connectors -- check [your identity provider](https://dexidp.io/docs/connectors/).
-- On-call management tool configurations-- Check [supported on-call management tools](https://prometheus.io/docs/introduction/overview/alerting/latest/configuration/)
+- On-call management tool configurations-- Check [supported on-call management tools](https://prometheus.io/docs/alerting/latest/configuration/)
 
 ```bash
 sops ${CK8S_CONFIG_PATH}/secrets.yaml

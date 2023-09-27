@@ -6,7 +6,7 @@ tags:
 
 # Alerts
 
-Compliant Kubernetes (CK8S) includes alerts via [Alertmanager](https://prometheus.io/docs/introduction/overview/alerting/latest/alertmanager/).
+Compliant Kubernetes (CK8S) includes alerts via [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/).
 
 !!!important
     By default, you will get some platform alerts. This may benefit you, by giving you improved "situational awareness". Please decide if these alerts are of interest to you or not. Feel free to silence them, as the Compliant Kubernetes administrator will take responsibility for them.
@@ -19,11 +19,11 @@ Many regulations require you to have an incident management process. Alerts help
 
 ## Enabling user alerts
 
-User alerts are handled by a project called [AlertManager](https://prometheus.io/docs/introduction/overview/alerting/latest/alertmanager/), which needs to be enabled by the administrator. Get in touch with the administrator and they will be happy to help.
+User alerts are handled by a project called [AlertManager](https://prometheus.io/docs/alerting/latest/alertmanager/), which needs to be enabled by the administrator. Get in touch with the administrator and they will be happy to help.
 
 ## Configuring user alerts
 
-User alerts are configured via the Secret `alertmanager-alertmanager` located in the `alertmanager` namespace. This configuration file is specified [here](https://prometheus.io/docs/introduction/overview/alerting/latest/configuration/#configuration-file).
+User alerts are configured via the Secret `alertmanager-alertmanager` located in the `alertmanager` namespace. This configuration file is specified [here](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file).
 
 ```bash
 # retrieve the old configuration
@@ -51,7 +51,7 @@ routes:
         - namespace = kube-system
 ```
 
-You can match any label in the alerts, read more about how the `matcher` configuration works in the [upstream documentation](https://prometheus.io/docs/introduction/overview/alerting/latest/configuration/#matcher).
+You can match any label in the alerts, read more about how the `matcher` configuration works in the [upstream documentation](https://prometheus.io/docs/alerting/latest/configuration/#matcher).
 
 ## Accessing user AlertManager
 
@@ -68,7 +68,7 @@ Before setting up an alert, you must first [collect metrics](metrics.md) from yo
 
 Then create a `PrometheusRule` following the examples below or the upstream documentation with an expression that evaluates to the condition to alert on. Prometheus will pick them up, evaluate them, and then send notifications to AlertManager.
 
-The [API reference for Prometheus Operator](https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.PrometheusRule) describes how the Kubernetes resource is configured and the [configuration reference for Prometheus](https://prometheus.io/docs/introduction/overview/prometheus/latest/configuration/alerting_rules/) describes the rules themselves.
+The [API reference for Prometheus Operator](https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.PrometheusRule) describes how the Kubernetes resource is configured and the [configuration reference for Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) describes the rules themselves.
 
 In Compliant Kubernetes the Prometheus Operator in the Workload Cluster is configured to pick up all PrometheusRules, regardless in which namespace they are or which labels they have.
 
