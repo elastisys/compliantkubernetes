@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.33.0](#v0330) - 2023-09-28
 - [v0.32.0](#v0320) - 2023-08-07
 - [v0.31.0](#v0310) - 2023-07-17
 - [v0.30.1](#v0301) - 2023-06-05
@@ -33,6 +34,23 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.33.0
+
+Released 2023-09-28
+
+
+#### Changed
+
+- **Increased the default `proxy-buffer-size` setting in ingress-nginx to `8k`.**
+
+#### Fixed
+
+- **Refer to Grafana, OpenSearch and Harbor as Web Portals in Grafana and OpenSearch welcome dashboards**
+
+#### Removed
+
+- **Removed the deprecated grafana dashboard Image vulnerabilities.**
 
 ### v0.32.0
 
