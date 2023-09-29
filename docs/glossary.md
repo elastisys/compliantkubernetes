@@ -135,7 +135,12 @@ See also:
 
 ## Identity Provider
 
-An Identity Provider (IdP) is a system that offers user authentication as a service. Examples include [Keycloak](https://www.keycloak.org/), [Azure Active Directory](https://azure.microsoft.com/en-us/products/active-directory), [Google Identity](https://developers.google.com/identity/openid-connect/openid-connect#setredirecturi) and [jumpcloud](https://jumpcloud.com/).
+An Identity Provider (IdP) is a system that offers user authentication as a service. Examples include:
+
+- [Keycloak](https://www.keycloak.org/)
+- [Microsoft Entra ID](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id) previously known as Azure Active Directory
+- [Google Identity](https://developers.google.com/identity/openid-connect/openid-connect#setredirecturi)
+- [jumpcloud](https://jumpcloud.com/)
 
 Usage notes:
 
