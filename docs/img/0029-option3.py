@@ -1,4 +1,4 @@
-from diagrams import Diagram, Cluster, Edge
+from diagrams import Diagram, Cluster, Edge, Node
 from diagrams.onprem.client import User
 from diagrams.onprem.network import Nginx
 from diagrams.onprem.auth import Oauth2Proxy
@@ -7,14 +7,19 @@ from diagrams.onprem.tracing import Jaeger
 from diagrams.k8s.network import SVC
 from diagrams.custom import Custom
 
-with Diagram(name="Option-3:  Expose Jaeger UI, but completely behind oauth2-proxy. Use config domain, groups, IP allowlisting and request logging for protecting it", show=False):
+with Diagram(
+        name="Option-3:  Expose Jaeger UI, but completely behind oauth2-proxy. Use config domain, groups, IP allowlisting and request logging for protecting it",
+        filename="adr-0029-option3.png",
+        show=False):
     user = User("Jaeger user")
     dex = Dex("Dex")
 
 
     with Cluster("ck8s workload cluster"):
        custom = [Custom("", "./0029-Jaeger-UI.png")]
-       custom2 = [Custom("", "./0029-note1.png")]
+       labels = ("IP allowlist managed at Ingress")
+       custom2 = Node(labels,
+            style="note", width="3", labelloc="t")
        custom3 = [Custom("", "./0029-note2.png")]
        svc = SVC("jaeger-query")
 
