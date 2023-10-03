@@ -26,13 +26,16 @@ User alerts are handled by a project called [AlertManager](https://prometheus.io
 User alerts are configured via the Secret `alertmanager-alertmanager` located in the `alertmanager` namespace. This configuration file is specified [here](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file).
 
 ```bash
-# retrieve the old configuration
+# retrieve the old configuration:
 kubectl get -n alertmanager secret alertmanager-alertmanager -o jsonpath='{.data.alertmanager\.yaml}' | base64 -d > alertmanager.yaml
 
 # edit alertmanager.yaml as needed
 
-# patch the new configuration
-kubectl patch -n alertmanager secret alertmanager-alertmanager -p "'{\"data\":{\"alertmanager.yaml\":\"$(base64 -w 0 < alertmanager.yaml)\"}}'"
+# patch the new configuration:
+kubectl patch -n alertmanager secret alertmanager-alertmanager -p "{\"data\":{\"alertmanager.yaml\":\"$(base64 -w 0 < alertmanager.yaml)\"}}"
+
+# mac users may need to omit -w 0 arguments to base64:
+kubectl patch -n alertmanager secret alertmanager-alertmanager -p "{\"data\":{\"alertmanager.yaml\":\"$(base64 < alertmanager.yaml)\"}}"
 ```
 
 Make sure to configure **and test** a receiver for you alerts, e.g., Slack or OpsGenie.
