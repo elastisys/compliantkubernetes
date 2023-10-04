@@ -16,3 +16,8 @@ jobs:
         run: |
           python3 -m pip install -r ./requirements.txt
           mkdocs build
+      - name: Check for stranded HTML tags in the rendered HTML which indicate broken Markdown code
+        run: |
+          FILES=$(find site -name '*.html' -print)
+          echo "Checking $(echo $FILES | wc -w) files ..."
+          ! egrep '&lt;(br|div|img|p)' $FILES
