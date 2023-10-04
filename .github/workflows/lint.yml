@@ -20,4 +20,4 @@ jobs:
         run: |
           FILES=$(find site -name '*.html' -print)
           echo "Checking $(echo $FILES | wc -w) files ..."
-          ! egrep '&lt;(br|img)' $FILES
+          ! egrep '&lt;(br|div|img|p)' $FILES
