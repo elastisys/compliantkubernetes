@@ -17,7 +17,7 @@ PostgreSQL®
 
     For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
 
-<figure markdown>
+<figure>
     <img alt="PostgreSQL Deployment Model" src="../img/postgresql.drawio.svg" >
     <figcaption>
         <strong>PostgreSQL on Compliant Kubernetes Deployment Model</strong>
