@@ -9,14 +9,14 @@ from diagrams.custom import Custom
 from diagrams.onprem.aggregator import Fluentd
 
 
-with Diagram(name="Option-4: Expose Jaeger UI and audit access via request logging in Oath2Proxy", show=False,direction="LR"):
+with Diagram(name="Option-4: Expose Jaeger UI and audit access via request logging in Oath2Proxy", show=False,direction="LR",filename="adr-0029-option4"):
     user = User("Jaeger user")
     dex = Dex("Dex")
 
     with Cluster("ck8s workload cluster"):
        svc = SVC("jaeger-query")
-       custom = [Custom("", "./0029-Jaeger-UI.png")]
-       svc >> Edge(label="5. Jaeger UI",color="darkgreen") >> custom
+       jaeger_ui = [Custom("", "./adr-0029-Jaeger-UI.png")]
+       svc >> Edge(label="5. Jaeger UI",color="darkgreen") >> jaeger_ui
 
        logging = Fluentd("logging")
 

@@ -28,4 +28,5 @@ mkdocs-material-extensions>=1.0
 mkdocs-include-markdown-plugin>=2.8
 mkdocs-redirects
 mike>=1.1.2
+diagram
 ./mkdocs-ciso-controls

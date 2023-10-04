@@ -9,21 +9,23 @@ from diagrams.custom import Custom
 
 with Diagram(
         name="Option-3:  Expose Jaeger UI, but completely behind oauth2-proxy. Use config domain, groups, IP allowlisting and request logging for protecting it",
-        filename="adr-0029-option3.png",
+        filename="adr-0029-option3",
         show=False):
     user = User("Jaeger user")
     dex = Dex("Dex")
 
 
     with Cluster("ck8s workload cluster"):
-       custom = [Custom("", "./0029-Jaeger-UI.png")]
-       labels = ("IP allowlist managed at Ingress")
-       custom2 = Node(labels,
-            style="note", width="3", labelloc="t")
-       custom3 = [Custom("", "./0029-note2.png")]
+       jaeger_ui = [Custom("", "./0029-Jaeger-UI.png")]
+       ingress_label = ("IP allowlist\n managed at\n Ingress")
+       oauth2_label = ("OAuth2 Additional\n protection like\n Domain,Groups,Request\n logging")
+       ingress_node = Node(ingress_label,
+            style="note", width="1.2", labelloc="t")
+       oauth2_node = Node(oauth2_label,
+            style="note", width="2.3", labelloc="t")
        svc = SVC("jaeger-query")
 
-       svc >> Edge(label="5. Jaeger UI",color="black",fontsize="12") >> custom
+       svc >> Edge(label="5. Jaeger UI",color="black",fontsize="12") >> jaeger_ui
 
 
        with Cluster("Authorization workflows"):
@@ -35,6 +37,6 @@ with Diagram(
          dex >> Edge(label="",color="darkorange",style="dashed",fontsize="12") >> oauth2Proxy
          oauth2Proxy >> Edge(label="4. Upstream jaeger internal service",color="darkorange",fontsize="12") >> svc
 
-         oauth2Proxy >> Edge(label="",style="dashed") >> custom3
+         oauth2Proxy >> Edge(label="",style="dashed") >> oauth2_node
          user >> Edge(label="1. https://jaeger.abc-ck8s.com",color="darkgreen",fontsize="12") >> ingress
-         ingress >> Edge(label="",style="dashed") >> custom2
+         ingress >> Edge(label="",style="dashed") >> ingress_node

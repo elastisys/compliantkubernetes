@@ -42,21 +42,21 @@ Make sure that you use domain listing, groups and IP allowlisting.
 ## Pros and Cons of the Options
 
 ### [option 1] - Expose  Jaeger UI via ingress in wc cluster and use Oauth2-proxy for request authentication.
-![Architecture Diagram](../img/option-1:_expose_jaeger_ui_via_ingress_in_wc_cluster_and_use_oauth2-proxy_for_request_authentication.png)
+![Architecture Diagram](../img/adr/adr-0029-option1.png)
 
 * Good, because we deliver a platform that is easy to use and easy to access.
 * Good, because we serve our customer need
 * Bad, because we lose the ability to audit the access to it as they do not have the concept of users and does not have RBAC.
 
 ### [option 2] - Do not expose Jaeger UI
-![Architecture Diagram](../img/option-2:_do_not_expose_jaeger_ui.png)
+![Architecture Diagram](../img/adr/adr-0029-option2.png)
 
 * Good, because the integrity and stability of the platform is kept intact.
 * Bad, because we do not satisfy the customer need to easily access the UI
 * Bad, because we do not serve our customer needs.
 
 ### [option 3] - Expose Jaeger UI, but completely behind oauth2-proxy. Use config domain, groups, IP allowlisting and request logging for protecting it.
-![Architecture Diagram](../img/option-3:_expose_jaeger_ui,_but_completely_behind_oauth2-proxy._use_config_domain,_groups,_ip_allowlisting_and_request_logging_for_protecting_it.png)
+![Architecture Diagram](../img/adr/adr-0029-option3.png)
 
 * Good, because we deliver a platform that is easy to use and easy to access.
 * Good, because we serve our customer need
@@ -65,7 +65,7 @@ Make sure that you use domain listing, groups and IP allowlisting.
 * Bad, because we need to add an additional component that needs to be configured, installed and maintained.
 
 ### [option 4] - Expose Jaeger UI and audit access via request logging in Oath2Proxy.
-![Architecture Diagram](../img/option-4:_expose_jaeger_ui_and_audit_access_via_request_logging_in_oath2proxy.png)
+![Architecture Diagram](../img/adr/adr-0029-option4.png)
 
 * Good, because we deliver a platform that is easy to use and easy to access.
 * Good, because we serve our customer need
