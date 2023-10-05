@@ -22,12 +22,12 @@ Redis™
 
 This page will help you succeed in connecting your application to a low-latency in-memory cache Redis which meets your security and compliance requirements.
 
-!!!important "Important: Improve Access Control with NetworkPolicies"
+!!!important "Important: Access Control with NetworkPolicies"
     Please note the follow information about [Redis access control](https://redis.io/topics/security/) from the upstream documentation:
 
     > Redis is designed to be accessed by trusted clients inside trusted environments.
 
-    For improved security, discuss with your service-specific administrator what Pods and/or Namespaces need access to the Redis cluster. They can then set up the necessary [NetworkPolicies](../safeguards/enforce-networkpolicies.md).
+    Redis access is protected by [NetworkPolicies](../safeguards/enforce-networkpolicies.md). To allow your applications access to a Redis cluster the Pods need to be labeled with `elastisys.io/redis-<cluster_name>-access: allow`.
 
 !!!important "Important: No Disaster Recovery"
 
@@ -61,6 +61,9 @@ metadata:
   name: $CONFIG_MAP
   namespace: $NAMESPACE
 data:
+  # REDIS_CLUSTER_NAME is the name of the Redis Cluster. You need to know the name to label your Pods correctly for network access.
+  REDIS_CLUSTER_NAME: $REDIS_CLUSTER_NAME
+
   # REDIS_SENTINEL_HOST represents a cluster-scoped Redis Sentinel host, which only makes sense inside the Kubernetes cluster.
   # E.g., rfs-redis-cluster.redis-system
   REDIS_SENTINEL_HOST: $REDIS_SENTINEL_HOST
@@ -104,6 +107,16 @@ data:
     REDIS_SENTINEL_HOST: $REDIS_SENTINEL_HOST
     REDIS_SENTINEL_PORT: "$REDIS_SENTINEL_PORT"
 EOF
+```
+
+## Allow your Pods to communicate with the Redis cluster
+
+The Redis cluster is protected by Network Policies. Add the following label to your Pods: `elastisys.io/redis-<cluster_name>-access: allow`
+
+`cluster_name` can be retrieved from the ConfigMap provided by your administrator:
+
+```bash
+kubectl -n $NAMESPACE get configmap $CONFIG_MAP -o 'jsonpath={.data.REDIS_CLUSTER_NAME}'
 ```
 
 ## Expose Redis Connection Parameters to Your Application
