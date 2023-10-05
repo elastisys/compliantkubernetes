@@ -1,5 +1,6 @@
 *.swp
 site/
+.venv
 
 # Used by the social plugin
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/
