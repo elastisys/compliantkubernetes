@@ -7,6 +7,11 @@ Jaeger™ (preview)
 
     This is a preview feature. For more information, please read [ToS 9.1 Preview Features](https://elastisys.com/legal/terms-of-service/#91-preview-features).
 
+!!!Note
+      Since `jaeger-agent` is deprecated in [upstream](https://www.jaegertracing.io/docs/1.44/architecture/#agent) and If you are using `Jaeger SDK` client libraries , we recommend migrating the client libraries from `Jaeger SDK` to `OTEL(OpenTelemetry) SDK` and send traces directly to Jaeger collector using `OTLP` protocol. You can read more informations [here](https://www.jaegertracing.io/docs/1.49/architecture/#direct-to-storage)
+
+      We will remove `jaeger-agent` from our future releases too.
+
 <figure>
     <img alt="Jaeger Deployment Model" src="../img/jaeger.drawio.svg" >
     <figcaption>
