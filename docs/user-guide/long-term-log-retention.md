@@ -5,7 +5,7 @@ tags:
 ---
 # Long-term log retention
 
-Compliant Kubernetes by default sets an retention of 30 days for logs, with an additional 30 days though backups of this logs, within OpenSearch.
+Compliant Kubernetes by default sets an retention of 30 days for logs.
 Many regulators, including Swedish Healthcare, require a minimum of 5 year log retention.
 
 This is not provided at the platform level by Compliant Kubernetes as it runs the risk of GDPR non-complicance.
