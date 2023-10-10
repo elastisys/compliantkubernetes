@@ -157,7 +157,7 @@ A supplier of Virtual or Bare-metal Machines, networks, load balancers, block st
 
 Usage notes:
 
-* Do NOT use "Data Processor" or "Data Sub-processor". Determining which entity fulfills these GDPR concepts is usually done via a Data Protection Agreement (DPA). See EDPB [Guidelines 07/2020 on the concepts of controller and processor in the GDPR](https://edpb.europa.eu/system/files/2021-07/eppb_guidelines_202007_controllerprocessor_final_en.pdf).
+* Do NOT use "Data Processor" or "Data Sub-processor". Determining which entity fulfills these GDPR concepts is usually done via a Data Protection Agreement (DPA). See EDPB [Guidelines 07/2020 on the concepts of controller and processor in the GDPR](https://edpb.europa.eu/our-work-tools/documents/public-consultations/2020/guidelines-072020-concepts-controller-and_en).
 
 See also:
 
