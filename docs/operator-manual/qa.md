@@ -20,6 +20,8 @@ Feature can be delivered ...
     * Feature generates a manageable number of service tickets, whether questions or change orders
     * Feature has well understood packaging and pricing
     * Feature can be billed easily
+    * Feature integrates well with application developer observability (alerting, logging, metrics)
+    * Feature integrates well with application developer authentication
 
 * ... without ruining admin's life
     * At least 2 admins have required training
