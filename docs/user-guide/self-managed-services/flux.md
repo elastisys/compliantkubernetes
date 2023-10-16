@@ -19,7 +19,7 @@ Flux is a [CNCF Graduated project](https://www.cncf.io/projects/flux/).
 
 This page will help you install Flux in a Compliant Kubernetes environment.
 
-# Initial Prep
+## Initial Prep
 
 ### Dependencies
 
@@ -113,11 +113,13 @@ subjects:
   namespace: flux-system
 ```
 
-# Setup
+## Setup
 
 ### Generate Manifests
 
-*Note: Installing Flux with `flux bootstrap` command does not work when installing in a Compliant Kubernetes environment, please follow our instructions instead.*
+!!! note "Note"
+
+    Installing Flux with `flux bootstrap` command does not work when installing in a Compliant Kubernetes environment, please follow our instructions instead.
 
 The script below can be used to generate Flux manifests and a basic cluster folder structure similar to `flux bootstrap`. Be sure to configure the environment variables in the script.
 
@@ -159,7 +161,9 @@ curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/u
 
 Commit and push the files to the repository.
 
-*Warning: If you created your SSH keys in the repository folder, make sure you do not push these to the repository.*
+!!! warning "Warning"
+
+    If you created your SSH keys in the repository folder, make sure you do not push these to the repository.
 
 ### Install
 
@@ -167,17 +171,17 @@ Simply install by applying the kustomization.
 
 `kubectl apply -k clusters/$CLUSTER_NAME/flux-system`
 
-# Further reading
+## Further reading
 
-[Flux core concepts](https://fluxcd.io/flux/concepts/)
+* [Flux core concepts](https://fluxcd.io/flux/concepts/)
 
-[Flux multi-tenancy](https://fluxcd.io/flux/installation/configuration/multitenancy/)
+* [Flux multi-tenancy](https://fluxcd.io/flux/installation/configuration/multitenancy/)
 
-[Controller options](https://fluxcd.io/flux/installation/configuration/boostrap-customization/)
+* [Controller options](https://fluxcd.io/flux/installation/configuration/boostrap-customization/)
 
-[Flux components](https://fluxcd.io/flux/components/)
+* [Flux components](https://fluxcd.io/flux/components/)
 
-# Known Issues
+## Known Issues
 
 #### Role and Rolebindings does not apply correctly
 
@@ -189,6 +193,6 @@ Flux uses the [server-side apply](https://kubernetes.io/docs/reference/using-api
 
 You can workaround this using the Flux Kustomization [dependsOn](https://fluxcd.io/flux/components/kustomize/kustomizations/#dependencies) functionality. By splitting the Roles and Rolebindings into separate folders and then creating two Kustomizations for them where the Rolebindings will depend on the Roles. Then the roles will be applied before the rolebindings and so the issue will not occur. Refer to the previous link for an example.
 
-# Notes
+## Notes
 
 We do not use the [multi-tenancy model](https://fluxcd.io/flux/installation/configuration/multitenancy/) described in Flux documentation since this is a self-managed service and we do not want Flux to be able to do privilege escalation using [impersonation](https://kubernetes.io/docs/concepts/security/rbac-good-practices/#impersonate-verb). But you can still configure the flags to, for example deny cross namespace references.
