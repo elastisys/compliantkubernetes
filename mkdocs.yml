@@ -91,8 +91,8 @@ markdown_extensions:
   - meta
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       use_pygments: true
   - pymdownx.snippets:
@@ -160,6 +160,7 @@ nav:
       - 'JupyterHub (self-managed)': 'user-guide/self-managed-services/jupyterhub.md'
       - 'SealedSecrets (self-managed)': 'user-guide/self-managed-services/sealedsecrets.md'
       - 'MongoDB (self-managed)': 'user-guide/self-managed-services/mongodb.md'
+      - 'SjuNet (self-managed)': 'user-guide/self-managed-services/sjunet.md'
     - 'Go-live Checklist': 'user-guide/go-live.md'
     - 'Troubleshooting': 'user-guide/troubleshooting.md'
     - 'FAQ': 'user-guide/faq.md'
