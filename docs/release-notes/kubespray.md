@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
+- [v2.23.0-ck8s1](#v2221-ck8s1) - 2023-10-16
 - [v2.22.1-ck8s1](#v2221-ck8s1) - 2023-07-27
 - [v2.21.0-ck8s1](#v2210-ck8s1) - 2023-02-06
 - [v2.20.0-ck8s2](#v2200-ck8s2) - 2022-10-24
@@ -21,13 +22,23 @@
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/CHANGELOG.md).
 
+## v2.23.0-ck8s1
+
+Released 2023-10-16
+
+### Updated
+
+- Rook version v1.11.9 and Ceph v17.2.6
+- **Updated kubespray to `v2.23.0`** <br/>
+    Kubernetes version upgraded to [v1.27.5](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.27.md#changelog-since-v1275). <br/>
+
 ### v2.22.1-ck8s1
 
 Released 2023-07-27
 
 #### Updated:
 
-- **Updated kubespray to `v1.22.1`** <br/>
+- **Updated kubespray to `v2.22.1`** <br/>
     Kubernetes version upgraded to [v1.26.7](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.26.md#changelog-since-v1250). <br/>
     This version requires at least terraform version `1.3.0` in order to provision infrastructure using the kubespray provided terraform modules.
 
@@ -41,7 +52,7 @@ Released 2023-02-06
 
 #### Updated:
 
-- **Updated kubespray to `v1.21.0`** <br/>
+- **Updated kubespray to `v2.21.0`** <br/>
     Kubernetes version upgraded to [v1.25.6](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.25.md#v1256) in which Pod Security Policies (PSPs) are removed. You should not upgrade to this version if you are using PSPs. To deploy [Compliant Kubernetes Apps](https://github.com/elastisys/compliantkubernetes-apps) on this version it needs to be on a compatible version which depends on [this issue](https://github.com/elastisys/compliantkubernetes-apps/issues/1218). <br/>
     This version requires at least terraform version `0.14.0` in order to provision infrastructure using the kubespray provided terraform modules.
 - **Upgraded rook-ceph operator to `v1.10.5` and ceph to `v17.2.5`** <br/>
