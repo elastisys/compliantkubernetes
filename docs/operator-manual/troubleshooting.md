@@ -195,7 +195,7 @@ If using Rook make sure its health goes back to `HEALTH_OK`.
 Incorrect time on a Node can have sever consequences with replication and monitoring.
 In fact, if you follow ISO 27001, [A.12.4.4 Clock Synchronisation](https://www.isms.online/iso-27001/annex-a-12-operations-security/) requires you to ensure clocks are synchronized.
 
-These days, Linux distributions should come out-of-the-box with [timesyncd](https://www.freedesktop.org/software/systemd/man/systemd-timesyncd.service.html) for time synchronization via NTP.
+These days, Linux distributions should come out-of-the-box with [timesyncd](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html) for time synchronization via NTP.
 
 To figure out what is wrong, SSH into the target Node and try the following:
 
