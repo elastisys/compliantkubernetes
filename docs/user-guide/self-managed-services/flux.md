@@ -25,17 +25,17 @@ This page will help you install Flux in a Compliant Kubernetes environment.
 
 This guide depends on the [self-managed cluster resources](../../operator-manual/user-managed-crds.md) feature to be enabled. This is so Flux gets the necessary CRDs and ClusterRoles installed.
 
-Flux also requires the image repository `ghcr.io/fluxcd` to be whitelisted. Ask your platform administrator to do this while enabling the self-managed cluster resources feature.
+Flux also requires the image repository `ghcr.io/fluxcd` to be allowlisted. Ask your platform administrator to do this while enabling the self-managed cluster resources feature.
 
 ### Git
 
-You need to setup a git repository that will contain the manifest files. This can be a personal or organization repository. *It is recommended that it is a private repository.*
+You need to setup a Git repository that will contain the manifest files. This can be a personal or organization repository. *It is strongly recommended that it is a private (as in: not public) repository.*
 
-Next you need to generate an SSH key that will be used to communicate with the git repository. The private key will be used as a Kubernetes secret in a later step.
+Next you need to generate an SSH key that will be used to communicate with the Git repository. The private key will be used as a Kubernetes Secret in a later step.
 ```
 ssh-keygen -t rsa -C "flux-deploymentkey" -f <path-to-store-key>
 ```
-After you have generated an SSH Key, you want to add it as a deploy key in your git repository. This can be done through `Settings` -> `Deploy keys`. Copy your public key that you just generated and paste here.
+After you have generated an SSH Key, you want to add it as a deploy key in your Git repository. This can be done through `Settings` -> `Deploy keys`. Copy your public key that you just generated and paste here.
 
 ### Kubernetes
 
@@ -43,11 +43,11 @@ In Kubernetes you will need to:
 
 1. Install CRDs
 
-2. Create a namespace for Flux
+2. Create a Namespace for Flux
 
-3. Create a git secret in the namespace
+3. Create a Git Secret in the Namespace
 
-4. Create roles/rolebindings for Flux.
+4. Create Roles/RoleBindings for Flux.
 
 ##### CRDs
 
@@ -64,36 +64,41 @@ kubectl apply -k crds
 
 ##### Namespace
 
-You need create a namespace where Flux will work. This namespace should be called `flux-system`. Create this [sub-namespace](../namespaces.md) under eg. `production`.
+You need create a Namespace where Flux will work. This Namespace should be called `flux-system`. Create this [sub-namespace](../namespaces.md) under eg. `production`.
 
 `kubectl hns create -n production flux-system`
 
 ##### Git Secret
 
-Next to allow Flux to interact with your Git Repository you need to create a secret containing the ssh private key created earlier. This can be done with the Flux CLI:
+Next to allow Flux to interact with your Git Repository you need to create a Secret containing the ssh private key created earlier. This can be done with the Flux CLI:
 ```
 flux create secret git <repo-name>-auth \
     --url=ssh://git@github.com/<owner>/<repo-name>.git \
     --private-key-file=<path-to-ssh-private-key>
 ```
 
-##### Roles and Rolebindings
+##### Roles and RoleBindings
 
-You will need to create the necessary roles for Flux to function. This needs to be done in every namespace that you want Flux to work in. Or alternatively, in the parent namespace where `flux-system` was created from. This way all namespaces created under the same parent namespace will inherit the roles and rolebindings. You can add these roles to another parent namespace, eg. `staging`, to get Flux to work with the `staging` namespace and any namespace anchored to it.
+You need to create the necessary Roles for Flux to function. This needs to be done in every Namespace that you want Flux to work in.
+
+Since Compliant Kubernetes uses the Hierarchical Namespace Controller, the easiest way to achieve this is to place the Roles and RoleBindings in the parent namespace where `flux-system` was created from. By doing so, all Namespaces created under the same parent Namespace will inherit the Roles and RoleBindings.
+
+If you have multiple Namespaces that ought to be targets for Flux, you can add the Roles and RoleBindings to more than one "parent" Namespace. For instance, to `staging`, to get Flux to work with the `staging` Namespace and any Namespace anchored to it.
 
 ```
 mkdir roles
 
-# Fetches the necessary roles and saves it in the roles directory
-curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/user-guide/self-managed-services/flux-files/all-controllers-role.yaml > roles/all-controllers-role.yaml
-curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/user-guide/self-managed-services/flux-files/source-controller-role.yaml > roles/source-controller-role.yaml
+# Fetches the necessary Roles and saves it in the roles directory
+curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/user-guide/self-managed-services/flux-files/roles/all-controllers-role.yaml > roles/all-controllers-role.yaml
+curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/user-guide/self-managed-services/flux-files/roles/source-controller-role.yaml > roles/source-controller-role.yaml
+curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/user-guide/self-managed-services/flux-files/roles/kustomization.yaml > roles/kustomization.yaml
 
-# Edit the namespace of the roles/rolebindings
+# If you installed Flux in another Namespace other than production, edit the Namespace in roles/kustomization.yaml
 
-kubectl apply -f roles
+kubectl apply -k roles
 ```
 
-The kustomize and helm controller needs some extra permissions as well since it wants to deploy. The simplest is to add these controller serviceaccounts to the `extra-workload-admins` rolebinding in the parent namespace eg. `production`. This will grant Flux the maximum permission an application developer can give in the namespaces where it is configured. Edit the rolebinding and add the lines below.
+The kustomize and helm controller needs some extra permissions as well since it wants to deploy. The simplest is to add these controller ServiceAccounts to the `extra-workload-admins` RoleBinding in the parent Namespace eg. `production`. This will grant Flux the maximum permission an application developer can give in the Namespaces where it is configured. Edit the RoleBinding and add the lines below.
 
 ```
 kubectl edit rolebindings extra-workload-admins -n production
@@ -183,15 +188,15 @@ Simply install by applying the kustomization.
 
 ## Known Issues
 
-#### Role and Rolebindings does not apply correctly
+#### Role and RoleBindings does not apply correctly
 
 Error produced: `Error from server (NotFound): error when creating "roles/": roles.rbac.authorization.k8s.io "role" not found`
 
-There is a [known issue](https://github.com/fluxcd/flux2/discussions/3203) with Role and Rolebindings not being able to be applied together using Flux in a GitOps way. For example, if you apply a role and a rolebinding that uses the role, then Flux will fail to apply. If the role already exists in the cluster then Flux will succeed.
+There is a [known issue](https://github.com/fluxcd/flux2/discussions/3203) with Role and RoleBindings not being able to be applied together using Flux in a GitOps way. For example, if you apply a Role and a RoleBinding that uses the Role, then Flux will fail to apply. If the Role already exists in the cluster then Flux will succeed.
 
-Flux uses the [server-side apply](https://kubernetes.io/docs/reference/using-api/server-side-apply/), which requires the ‘bind’ permission to properly apply Rolebindings. And we cannot give you this due to [privilege escalation issues](https://kubernetes.io/docs/concepts/security/rbac-good-practices/#bind-verb) with this permission.
+Flux uses the [server-side apply](https://kubernetes.io/docs/reference/using-api/server-side-apply/), which requires the ‘bind’ permission to properly apply RoleBindings. And we cannot give you this due to [privilege escalation issues](https://kubernetes.io/docs/concepts/security/rbac-good-practices/#bind-verb) with this permission.
 
-You can workaround this using the Flux Kustomization [dependsOn](https://fluxcd.io/flux/components/kustomize/kustomizations/#dependencies) functionality. By splitting the Roles and Rolebindings into separate folders and then creating two Kustomizations for them where the Rolebindings will depend on the Roles. Then the roles will be applied before the rolebindings and so the issue will not occur. Refer to the previous link for an example.
+You can workaround this using the Flux Kustomization [dependsOn](https://fluxcd.io/flux/components/kustomize/kustomizations/#dependencies) functionality. By splitting the Roles and RoleBindings into separate folders and then creating two Kustomizations for them where the RoleBindings will depend on the Roles. Then the Roles will be applied before the RoleBindings and so the issue will not occur. Refer to the previous link for an example.
 
 ## Notes
 

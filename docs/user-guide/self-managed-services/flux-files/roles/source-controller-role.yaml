@@ -3,7 +3,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: flux-source-controller-role
-  namespace: <parent-namespace>
 rules:
 - apiGroups:
   - ""
@@ -32,7 +31,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: flux-source-controller-rb
-  namespace: <parent-namespace>
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
