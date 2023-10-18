@@ -22,6 +22,24 @@ jobs:
       - name: Configure Git user
         run: git fetch origin gh-pages --depth=1
 
+      - name: Show CI environment for debugging
+        run: |
+          set -x
+
+          id
+          pwd
+
+          git log -1
+          git status
+
+          cat /etc/lsb-release
+          dpkg -l
+
+          python3 --version
+          pip3 list
+
+          set +x
+
       - name: Deploy with mike
         run: |
           if [ "$GITHUB_REF_NAME" == "main" ]; then

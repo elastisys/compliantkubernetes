@@ -14,7 +14,7 @@
 
     Make sure to load-test your application with FerretDB before going into production.
 
-[FerretDB](https://www.ferretdb.io/) is a database that is an open-source alternative to MongoDB that uses PostgreSQL as its backend database. This documentation details how to run FerretDB in a Compliant Kubernetes cluster using the Managed [PostgreSQL service](../additional-services/postgresql.md).
+[FerretDB](https://www.ferretdb.com/) is a database that is an open-source alternative to MongoDB that uses PostgreSQL as its backend database. This documentation details how to run FerretDB in a Compliant Kubernetes cluster using the Managed [PostgreSQL service](../additional-services/postgresql.md).
 
 ## Pushing FerretDB image to Harbor
 

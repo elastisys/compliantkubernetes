@@ -158,6 +158,11 @@ The remainder of this page contains open questions that you should ask your Infr
     1. How often do you test disaster recovery? How did the last test go?
 1. What is your use of cryptography policy?
 1. How do you deal with DDoS attacks?
+1. Who are your colocation providers? Are they subprocessors? See [Guidance from the Danish Data Protection Authority](https://www.datatilsynet.dk/afgoerelser/afgoerelser/2023/mar/skal-leverandoeren-af-colocation-anses-som-databehandler).
+    1. Does your colocation provider have access to personal data, e.g. access to the server cabinet and can access the information that is processed on the servers or transferred via switches?
+    1. Can your colocation provider replace hard drives, memory, etc.?
+    1. Can your colocation provider move, restart or otherwise handle the servers?
+    1. Does your colocation provider provide additional services beyond physical facilities as well as electricity and Internet?
 
 ## Legal issues
 

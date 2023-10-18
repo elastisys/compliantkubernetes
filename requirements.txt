@@ -20,7 +20,7 @@
 
 # Direct dependencies
 mkdocs>=1.4
-mkdocs-material>=8.2, <9.2
+mkdocs-material>=9.4
 Pygments>=2.10
 markdown>=3.2
 pymdown-extensions>=9.0
@@ -28,6 +28,7 @@ mkdocs-material-extensions>=1.0
 mkdocs-include-markdown-plugin>=2.8
 mkdocs-redirects
 mike>=1.1.2
+diagram
 ./mkdocs-ciso-controls
 mkdocs-extra-sass-plugin @ git+https://github.com/elastisys/mkdocs-extra-sass-plugin@v0.1.1
 
