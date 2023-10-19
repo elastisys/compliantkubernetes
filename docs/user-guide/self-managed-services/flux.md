@@ -176,6 +176,10 @@ Simply install by applying the kustomization.
 
 `kubectl apply -k clusters/$CLUSTER_NAME/flux-system`
 
+Now that it has been installed, you are ready to use Flux on Compliant Kubernetes!
+
+Read the Further Reading, keep in mind the (updated) list of Known Issues, both of which are found below.
+
 ## Further reading
 
 * [Flux core concepts](https://fluxcd.io/flux/concepts/)
@@ -200,4 +204,8 @@ You can workaround this using the Flux Kustomization [dependsOn](https://fluxcd.
 
 ## Notes
 
-We do not use the [multi-tenancy model](https://fluxcd.io/flux/installation/configuration/multitenancy/) described in Flux documentation since this is a self-managed service and we do not want Flux to be able to do privilege escalation using [impersonation](https://kubernetes.io/docs/concepts/security/rbac-good-practices/#impersonate-verb). But you can still configure the flags to, for example deny cross namespace references.
+For security reasons, Elastisys has not enabled the [multi-tenancy model](https://fluxcd.io/flux/installation/configuration/multitenancy/) described in Flux documentation. Doing so requires giving Flux implicit ClusterAdmin permissions using [impersonation](https://kubernetes.io/docs/concepts/security/rbac-good-practices/#impersonate-verb), and to then trust that its use of it is correct and secure.
+
+When using Flux as a self-managed service, it is important to ensure that excessive permissions cannot be gained through exploiting privilege escalation with Flux.
+
+The multitenancy feature flags can still be used by you, however, to, for example, deny cross namespace references.
