@@ -7,14 +7,14 @@
 %}
 
 !!!note
-    Fully implementing MDR entails a lot of work.
-    Start by employing, hiring or training a person responsible for compliance with MDR. (MDR Art. 15)
+    CE certification of a medical device according to the EU MDR can lead a huge commercial benefit, but it is a significant project.
+    To start the certification process thorough knowledge of the regulation is required.
 
     This page only points you to the MDR concerns relevant for Compliant Kubernetes.
 
 If you place or make a medical device available, or put them into service, on the European market, then you must comply with the Medical Device Regulation (MDR).
 
-At least one application running on top of Compliant Kubernetes was certified according to MDR as a software medical device class IIa.
+As of 2023, there is at least one Medical Device Software running on Compliant Kubernetes that is CE certified according to MDR class IIa.
 
 ## Article 110: Data protection
 
