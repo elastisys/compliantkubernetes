@@ -1,0 +1,127 @@
+/* Stuff on the landing page needs to be more specific than mkdocs-material's CSS. */
+.md-content .landing-page {
+  /* .columns */
+}
+.md-content .landing-page .columns {
+  flex-flow: row;
+}
+.md-content .landing-page .columns div {
+  width: 100%;
+}
+.md-content .landing-page .columns-2 {
+  flex-flow: row wrap;
+}
+.md-content .landing-page .columns-2 div {
+  flex-grow: 1;
+  width: 40%;
+}
+@media (max-width: 960px) {
+  .md-content .landing-page .columns-2 div {
+    width: 100%;
+  }
+}
+.md-content .landing-page .columns,
+.md-content .landing-page .columns-2 {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 10px;
+  /* Make emojis look like block elements */
+}
+@media (max-width: 960px) {
+  .md-content .landing-page .columns,
+  .md-content .landing-page .columns-2 {
+    flex-flow: column;
+  }
+}
+.md-content .landing-page .columns div,
+.md-content .landing-page .columns-2 div {
+  border: 5px solid var(--esys-blue-04);
+  text-align: center;
+  padding: 12px 24px;
+  margin: 0;
+  border-radius: 20px;
+  display: flex;
+  flex-flow: column;
+}
+.md-content .landing-page .columns li,
+.md-content .landing-page .columns-2 li {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 12px 24px;
+  list-style-type: none;
+}
+.md-content .landing-page .columns img,
+.md-content .landing-page .columns-2 img {
+  max-width: 256px;
+  height: 128px;
+}
+.md-content .landing-page .columns dt,
+.md-content .landing-page .columns-2 dt {
+  font-weight: bold;
+}
+.md-content .landing-page .columns dd,
+.md-content .landing-page .columns-2 dd {
+  margin: 0;
+  padding: 12px;
+}
+.md-content .landing-page .columns dt.grow-me,
+.md-content .landing-page .columns-2 dt.grow-me {
+  flex-grow: 4;
+}
+.md-content .landing-page .columns dd.grow-me,
+.md-content .landing-page .columns-2 dd.grow-me {
+  margin: 0;
+  padding: 12px;
+  flex-grow: 4;
+}
+.md-content .landing-page .columns .twemoji,
+.md-content .landing-page .columns-2 .twemoji {
+  display: block;
+  height: 48px;
+  margin-bottom: 12px;
+}
+.md-content .landing-page .columns .twemoji svg,
+.md-content .landing-page .columns-2 .twemoji svg {
+  width: initial;
+}
+.md-content .landing-page a[role=button] {
+  background-color: var(--esys-orange-01);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: block;
+  width: fit-content;
+  margin: auto;
+}
+.md-content .landing-page .columns-always {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 10px;
+}
+.md-content .landing-page .columns-always li {
+  width: 100%;
+  list-style-type: none;
+  padding: 12px 24px;
+  margin: 0;
+  text-align: center;
+}
+@media (max-width: 960px) {
+  .md-content .landing-page .columns-always li {
+    padding: 0;
+  }
+}
+.md-content .landing-page img,
+.md-content .landing-page embed {
+  width: 100%;
+}
+.md-content .landing-page h2 {
+  margin: 2em 0 1em;
+}
+
+/* .landing-page */

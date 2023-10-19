@@ -1,3 +1,11 @@
+// If you change this file, please regenerate it as follows:
+//
+//    npm install -g sass
+//    sass extra_sass/style.css.scss > docs/stylesheets/style.css
+//
+// This is not done automatically, since the `extra-sass` mkdocs plugins
+// adds 7 second to each build, which is tedious with `mkdocs serve`.
+
 /* Stuff on the landing page needs to be more specific than mkdocs-material's CSS. */
 .md-content .landing-page {
   .columns {
