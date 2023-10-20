@@ -160,7 +160,7 @@ nav:
       - 'JupyterHub (self-managed)': 'user-guide/self-managed-services/jupyterhub.md'
       - 'SealedSecrets (self-managed)': 'user-guide/self-managed-services/sealedsecrets.md'
       - 'MongoDB (self-managed)': 'user-guide/self-managed-services/mongodb.md'
-      - 'SjuNet (self-managed)': 'user-guide/self-managed-services/sjunet.md'
+      - 'Sjunet (self-managed)': 'user-guide/self-managed-services/sjunet.md'
     - 'Go-live Checklist': 'user-guide/go-live.md'
     - 'Troubleshooting': 'user-guide/troubleshooting.md'
     - 'FAQ': 'user-guide/faq.md'
