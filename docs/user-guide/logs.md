@@ -52,7 +52,7 @@ Before we dive in further, let us discuss the type of logs ingested into OpenSea
 
   - **Authlog** includes information about system authorization, along with user logins and the authentication mechanism that were used. Such as SSH access to the Nodes. This is mostly related to the ISO 27001 requirement A.12.4.3 "Administrator and Operator Logs".
 
-  -  **Others** logs other than the above two are indexed and shipped to OpenSearch as *others*. These logs are collected from the Node's [`journald`](https://www.freedesktop.org/software/systemd/man/systemd-journald.service.html#) logging system.
+  -  **Others** logs other than the above two are indexed and shipped to OpenSearch as *others*. These logs are collected from the Node's [`journald`](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) logging system.
 
 !!!note
     **Users** can only view the logs of **kubernetes** and **kubeaudit**. **authlog** and **others** are for Compliant Kubernetes administrators.
