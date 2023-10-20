@@ -114,7 +114,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
     <li>
         <img src="img/logos/certified-kubernetes-color.svg">
         <br>
-        Our platform is a CNCF Certified Kubernetes Distribution
+        Our platform is a CNCF Certified Kubernetes® Distribution
     </li>
 </ul>
 
