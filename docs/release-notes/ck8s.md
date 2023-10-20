@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.32.2](#v0322) - 2023-10-20
 - [v0.32.0](#v0320) - 2023-08-07
 - [v0.31.0](#v0310) - 2023-07-17
 - [v0.30.1](#v0301) - 2023-06-05
@@ -33,6 +34,16 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md).
+
+### v0.32.2
+
+Released 2023-10-20
+
+#### Updated
+
+- **Ingress-nginx controller to 1.8.4 and chart to 4.7.3 (HTTP/2 fix for CVE-2023-44487)**
+    - a limit of no more than 2 * max_concurrent_streams new streams per one event loop iteration was introduced
+    - refused streams are now limited to maximum of max_concurrent_streams and 100
 
 ### v0.32.0
 
