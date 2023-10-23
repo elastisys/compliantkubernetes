@@ -19,11 +19,18 @@ For generating figures, please install:
 sudo apt-get install graphviz make
 ```
 
+For generating `docs/stylesheets/style.css`, please install:
+
+```
+npm install -g sass
+```
+
 ## Usage
 
 * To view locally: `mike deploy compliantkubernetes ck8s -t 'main'` and then `mike serve`.
 * To re-generate figures: `make -C docs/img`. **For simplicity, please commit generated figures. Prefer PNG (width == 1200px), to facilitate embedded logos.**
 * For continuous preview of figures: `make -C docs/img preview`.
+* To generate `docs/stylesheets/style.css`, please use `sass extra_sass/style.css.scss > docs/stylesheets/style.css`.
 
 ## Tech Stack
 
@@ -32,6 +39,7 @@ sudo apt-get install graphviz make
 * [GitHub Pages](https://pages.github.com/)
 * [Graphviz](https://graphviz.org/)
 * [mike](https://github.com/jimporter/mike)
+* [sass](https://www.npmjs.com/package/sass)
 
 ## Deployment
 
