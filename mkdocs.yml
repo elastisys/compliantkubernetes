@@ -162,6 +162,7 @@ nav:
       - 'MongoDB (self-managed)': 'user-guide/self-managed-services/mongodb.md'
       - 'Sjunet (self-managed)': 'user-guide/self-managed-services/sjunet.md'
       - 'Flux (self-managed)': 'user-guide/self-managed-services/flux.md'
+      - 'PgBouncer (self-managed)': 'user-guide/self-managed-services/pgbouncer.md'
     - 'Go-live Checklist': 'user-guide/go-live.md'
     - 'Troubleshooting': 'user-guide/troubleshooting.md'
     - 'FAQ': 'user-guide/faq.md'
