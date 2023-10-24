@@ -56,7 +56,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     ```bash
     git submodule add https://github.com/elastisys/compliantkubernetes-apps.git
     cd compliantkubernetes-apps
-    ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
+    ./bin/ck8s install-requirements
     ```
 
 1. Create the domain name.
@@ -326,3 +326,27 @@ Then the Workload Clusters:
 ```bash
 compliantkubernetes-apps/bin/ck8s test wc
 ```
+
+### Operate
+
+The following endpoints can be probed to ensure Compliant Kubernetes services are up and running:
+
+```bash
+curl --head https://dex.$DOMAIN/healthz
+curl --head https://harbor.$DOMAIN/healthz
+curl --head https://grafana.$DOMAIN/healthz
+curl --head https://grafana.ops.$DOMAIN/healthz
+curl --head app.$DOMAIN/healthz  # Pokes the WC Ingress Controller
+curl --head app.ops.$DOMAIN/healthz  # Pokes the SC Ingress Controller
+# All commands above should return 'HTTP/2 200'
+
+curl --head -k https://kube-apiserver.$DOMAIN
+curl --head https://notary.harbor.$DOMAIN
+curl --head https://thanos-receiver.ops.$DOMAIN
+curl --head https://opensearch.ops.$DOMAIN
+curl --head https://opensearch.$DOMAIN/api/status
+# The two commands above should return 'HTTP/2 401'
+```
+
+!!! note
+    Some of these subdomains can be overwritten in config (see example [here](https://github.com/elastisys/compliantkubernetes-apps/blob/v0.33.0/config/config/common-config.yaml#L260))

@@ -58,7 +58,7 @@ If you haven't done so already, clone the `compliantkubernetes-apps` repo and in
 ```bash
 git clone https://github.com/elastisys/compliantkubernetes-apps.git
 cd compliantkubernetes-apps
-ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
+./bin/ck8s install-requirements
 ```
 <!--clone-apps-stop-->
 

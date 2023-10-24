@@ -29,12 +29,12 @@ Optional: For debugging, you may want CLI tools to interact with your chosen Inf
 
 ## Pre-requisites for compliantkubernetes-apps
 
-Using Ansible, these can be retrieved as follows:
+Install pre-requisites for compliantkubernetes-apps:
 
 ```shell
 git clone https://github.com/elastisys/compliantkubernetes-apps
 cd compliantkubernetes-apps
-ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
+./bin/ck8s install-requirements
 ```
 
 ## Misc
