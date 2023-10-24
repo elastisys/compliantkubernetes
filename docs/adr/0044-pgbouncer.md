@@ -32,7 +32,7 @@ Should we enable the PgBouncer feature in our PostgreSQL offering, or should we 
     - `Good`, because the integrity, security and stability of the platform is kept intact.
     - `Bad`, because we add burden onto the Application Developers.
 
-3. We can deploy PgBouncer as a separate managed service without using our upstream postgres-operator resources in managed postgres offering.
+3. We can deploy PgBouncer as a separate managed service without using our upstream postgres-operator resources in managed PostgreSQL offering.
 
     - `Good`, because we satisfy the Application Developers' needs.
     - `Bad`, because the technical overhead of offering a pooler is too big and needs to be configured, installed and maintained.
