@@ -1,0 +1,60 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- gotk-components.yaml
+- gotk-sync.yaml
+
+patches:
+  # Remove all resourcequotas
+  - patch: |
+      apiVersion: v1
+      kind: ResourceQuota
+      metadata:
+        name: any-resourcequota
+      $patch: delete
+    target:
+      kind: ResourceQuota
+  # Remove all namespaces
+  - patch: |
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: any-namespace
+      $patch: delete
+    target:
+      kind: Namespace
+  # Remove all clusterroles
+  - patch: |
+      apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      metadata:
+        name: any-clusterrole
+      $patch: delete
+    target:
+      kind: ClusterRole
+  # Remove all clusterrolesbindings
+  - patch: |
+      apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      metadata:
+        name: any-clusterrolebinding
+      $patch: delete
+    target:
+      kind: ClusterRoleBinding
+  # Remove all CRDS
+  - patch: |
+      apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
+      metadata:
+        name: any-crd
+      $patch: delete
+    target:
+      kind: CustomResourceDefinition
+  ## Note: For testing you can lower the CPU requests if needed.
+  # Lower CPU of all deployments
+  #- patch: |-
+  #    - op: replace
+  #      path: /spec/template/spec/containers/0/resources/requests/cpu
+  #      value: 10m
+  #  target:
+  #    kind: Deployment

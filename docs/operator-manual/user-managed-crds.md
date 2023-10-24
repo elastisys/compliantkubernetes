@@ -10,6 +10,7 @@ The list of currently supported applications for self-management is:
 
 - SealedSecrets
 - MongoDB
+- Flux
 
 ## Limitations
 
@@ -25,11 +26,14 @@ To enable it, add the following snippet to the environments `wc-config.yaml` fil
 
 ```yaml
 user:
- # Enable Sealed Secrets
+  # Enable Sealed Secrets
   sealedSecrets:
     enabled: true
   # Enable MongoDB
   mongodb:
+    enabled: true
+  # Enable Flux
+  fluxv2:
     enabled: true
 
 gatekeeper:

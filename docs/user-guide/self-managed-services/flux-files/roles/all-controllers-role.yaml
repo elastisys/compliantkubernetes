@@ -1,0 +1,53 @@
+# Allows controllers to manage leases, and create events in the namespaces.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: flux-all-controllers-role
+rules:
+- apiGroups:
+  - "coordination.k8s.io"
+  resources:
+  - leases
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - ""
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: flux-all-controllers-rb
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: flux-all-controllers-role
+subjects:
+  - kind: ServiceAccount
+    name: kustomize-controller
+    namespace: flux-system
+  - kind: ServiceAccount
+    name: helm-controller
+    namespace: flux-system
+  - kind: ServiceAccount
+    name: source-controller
+    namespace: flux-system
+  - kind: ServiceAccount
+    name: notification-controller
+    namespace: flux-system
+  - kind: ServiceAccount
+    name: image-reflector-controller
+    namespace: flux-system
+  - kind: ServiceAccount
+    name: image-automation-controller
+    namespace: flux-system

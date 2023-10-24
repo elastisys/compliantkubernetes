@@ -1,0 +1,41 @@
+# Allows the source-controller to read/manage secrets and configmaps in the configured namespaces.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: flux-source-controller-role
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  - configmaps
+  - serviceaccounts
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+    - ""
+  resources:
+    - configmaps
+  verbs:
+    - get
+    - list
+    - watch
+    - create
+    - update
+    - patch
+    - delete
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: flux-source-controller-rb
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: flux-source-controller-role
+subjects:
+- kind: ServiceAccount
+  name: source-controller
+  namespace: flux-system
