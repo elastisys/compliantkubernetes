@@ -32,11 +32,16 @@ Should we enable the PgBouncer feature in our PostgreSQL offering, or should we 
     - `Good`, because the integrity, security and stability of the platform is kept intact.
     - `Bad`, because we add burden onto the Application Developers.
 
+3. We can deploy PgBouncer as a separate managed service without using our upstream postgres-operator resources in managed postgres offering.
+
+    - `Good`, because we satisfy the Application Developers' needs.
+    - `Bad`, because the technical overhead of offering a pooler is too big and needs to be configured, installed and maintained.
+
 ## Decision Outcome
 
 Chosen option: 2
 
-After careful evaluation and analysis, we have decided not to offer PgBouncer as a part of our PostgreSQL offering and instead provide the public documentation for Application Developers how to configure it. See [here](https://github.com/elastisys/compliantkubernetes/pull/714/files)
+After careful evaluation and analysis, we have decided not to offer PgBouncer as a part of our PostgreSQL offering and instead provide the public documentation for Application Developers on how to configure it. See [here](https://github.com/elastisys/compliantkubernetes/pull/714/files)
 
 We will continue to monitor our upstream [postgres-operator](https://github.com/zalando/postgres-operator/tree/master) features and once our security concerns are addressed in upstreams, We may revisit this decision as needed to ensure it aligns with our evolving requirements.
 
