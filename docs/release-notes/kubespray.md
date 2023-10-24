@@ -3,7 +3,7 @@
 
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
-- [v2.23.0-ck8s1](#v2221-ck8s1) - 2023-10-16
+- [v2.23.0-ck8s1](#v2230-ck8s1) - 2023-10-16
 - [v2.22.1-ck8s1](#v2221-ck8s1) - 2023-07-27
 - [v2.21.0-ck8s1](#v2210-ck8s1) - 2023-02-06
 - [v2.20.0-ck8s2](#v2200-ck8s2) - 2022-10-24
@@ -30,7 +30,7 @@ Released 2023-10-16
 
 - Rook version v1.11.9 and Ceph v17.2.6
 - **Updated kubespray to `v2.23.0`** <br/>
-    Kubernetes version upgraded to [v1.27.5](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.27.md#changelog-since-v1275). <br/>
+    Kubernetes version upgraded to [v1.27.5](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.27.md#changelog-since-v1260). <br/>
 
 ### v2.22.1-ck8s1
 
