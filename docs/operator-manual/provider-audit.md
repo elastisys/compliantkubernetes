@@ -62,7 +62,7 @@ The remainder of this page contains open questions that you should ask your Infr
     1. Do you have a Terraform provider for your API?
     1. Do you have pre-uploaded Ubuntu images? Which?
         1. Do these images have [AutomaticSecurityUpdates by default](https://help.ubuntu.com/community/AutomaticSecurityUpdates)?
-        1. Do these images have [NTP enabled by default](https://ubuntu.com/server/docs/network-ntp)?
+        1. Do these images have [NTP enabled by default](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html)?
     1. Do you have a Kubernetes integration for your IaaS?
         1. Can I use a [cloud-controller](https://kubernetes.io/docs/concepts/architecture/cloud-controller/) for automatic discovery of Nodes and labeling Nodes with the right Zone?
     1. Can you handle large diurnal capacity changes, a.k.a., auto-scaling? E.g., 40 VMs from 6.00 to 10.00, but only 10 VMs from 10.00-6.00.
