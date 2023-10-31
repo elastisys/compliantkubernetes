@@ -14,7 +14,7 @@ Where should we run ArgoCD?
 * We want to deliver a stable and secure platform.
 * We want to deliver an affordable adittional managed service and avoid resource waste.
 * ArgoCD has a small footprint, e.g., 200m CPU and 0.5GB RAM for one of our largest deployments.
-* Want want to keep application Nodes "light", so the application team knows what capacity is available for their application.
+* We want to keep application Nodes "light", so the application team knows what capacity is available for their application.
 
 ## Considered Options
 
