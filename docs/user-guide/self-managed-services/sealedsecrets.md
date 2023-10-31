@@ -61,6 +61,9 @@ resources:
     memory: 256Mi
 ```
 
+!!! important
+    Add the namespaces that should support creation of SealedSecrets to the `additionalNamespaces` list. If this list is empty the SealedSecrets controller will output an error when attempting to create a SealedSecret as it attempts to get secrets at cluster level.
+
 You are now ready to install Sealed Secrets
 
 ```console
@@ -73,7 +76,6 @@ helm upgrade --install sealed-secrets -n sealed-secrets --version 2.13.1 sealed-
     However the controller is installed in the namespace `sealed-secrets`.
     As such you need to follow this [guide](https://github.com/bitnami-labs/sealed-secrets/tree/release/v0.24.2#how-to-use-kubeseal-if-the-controller-is-not-running-within-the-kube-system-namespace) to use `kubeseal`
 
-
 ## Further Reading
 
 Please refer to the official documentation how to operate and use Sealed Secrets.
@@ -81,3 +83,4 @@ Please refer to the official documentation how to operate and use Sealed Secrets
 - [Documentation](https://github.com/bitnami-labs/sealed-secrets/tree/release/v0.24.2#usage)
 - [Tutorials](https://docs.bitnami.com/tutorials/sealed-secrets)
 - [Crypto](https://github.com/bitnami-labs/sealed-secrets/blob/release/v0.24.2/docs/developer/crypto.md)
+- [SealedSecrets with Elastisys Managed Argo CD](../additional-services/argocd.md#with-sealedsecrets)

@@ -42,6 +42,136 @@ Before going into production, don't forget to go through the [go-live checklist]
 
 Check out the [release notes](../../release-notes/argocd.md) for the Argo CD setup that runs in Compliant Kubernetes environments!
 
+## Secret Management
+
+Secret values should never be stored in plain-text in code repositories. The following sections will describe two supported approaches on how Application Developers can do secret management with Elastisys Managed Argo CD.
+
+### With Helm Secrets
+
+Argo CD can be configured to decrypt files encrypted with `sops` using [Helm Secrets](https://github.com/jkroepke/helm-secrets#helm-secrets). To be able to use Helm-secrets with Argo CD, you will need to contact your Platform Administrator requesting that you want to use this feature and for which OIDC group, users or ServiceAccounts (otherwise the Application Developer group used for accessing the cluster is assumed). Once your Platform Administrator has approved your request, you should be able to create and manage a Kubernetes Secret resource in the `argocd-system` namespace as instructed below.
+
+The following steps will show how to get started with encrypting files using `sops` and `gpg`, storing the encrypted files in a Helm chart, and lastly deploying the Helm chart with Argo CD.
+
+1. Generate a new GPG key-pair (make sure not to add a passphrase as otherwise Argo CD will not be able to use the key) and then export the private key. The following example will create a GPG key and export the private key to a file named `private.asc`:
+
+    ```bash
+    gpg --batch --rfc4880 --passphrase '' --quick-generate-key "set-me@example.com" default default
+    fpr=$(gpg --with-colons --list-keys "set-me@example.com" | awk -F: '$1 == "fpr" {print $10; exit}')
+    gpg --output "private.asc" --armor --export-secret-key $fpr
+    ```
+
+2. For Argo CD to be able to use this key for decrypting `sops` encrypted values files in your Helm charts, you will need to create a Kubernetes Secret in the `argocd-system` namespace named `helm-secrets-private-keys`. This secret will then be mounted and read by the Argo CD repo server. Create the Secret using the private key file created in the previous step:
+
+    ```bash
+    PRIVATE_KEY_FILE="private.asc"
+    kubectl -n argocd-system create secret generic helm-secrets-private-keys --from-file=key.asc=$PRIVATE_KEY_FILE --dry-run=client -oyaml | \
+        kubectl label -f- -oyaml argocd.argoproj.io/secret-type=repository --dry-run=client --local | \
+        kubectl create -f-
+    ```
+
+    Deploy the Secret:
+
+    ```bash
+    kubectl create -f helm-secrets-private-keys.yaml
+    ```
+
+    !!! note
+        Once your Platform Administrator has enabled Helm-secrets with Argo CD, the Argo CD repo server pod will not be able to initialize if this secret does not exist. Check pods in the `argocd-system` namespace after creating the secret to confirm that the secret got mounted properly by the repo server:
+
+        ```console
+        $ kubectl get pods -n argocd-system -l app.kubernetes.io/component=repo-server
+        NAME                                  READY   STATUS    RESTARTS   AGE
+        argocd-repo-server-77fd58b498-kjm95   1/1     Running   0          3m45s
+        ```
+
+3. Create a `.sops.yaml` file in the Helm chart in which you want to use Helm Secrets. Add your GPG **public** key to this file. You can get the public key with:
+
+    ```bash
+    gpg --list-key "set-me@example.com"
+    ```
+
+    The `.sops.yaml` file should look something like this:
+
+    ```yaml
+    ---
+    creation_rules:
+    - pgp: <public-gpg-key>
+    ```
+
+4. Create a values file in your Helm chart repository and put values that should be encrypted into this file:
+
+    ```bash
+    touch secrets.yaml
+    ```
+
+    These values can then be referenced in templates as any other Helm values.
+
+5. Encrypt the values file using `sops` (as long as there is a `.sops.yaml` file in the same folder containing your public GPG key you do not have to specify the GPG key when running the following command):
+
+    ```bash
+    sops --encrypt --in-place secrets.yaml
+    ```
+
+    To test using the now encrypted `secrets.yaml` file together with the Helm chart, [install the Helm Secrets plugin](https://github.com/jkroepke/helm-secrets/wiki/Installation), and then run the following from the root folder of the Helm chart to template the Helm chart:
+
+    ```bash
+    helm template . --values secrets://secrets.yaml
+    ```
+
+6. The file `secrets.yaml` can now safely be stored in a code repository as long as it is encrypted.
+
+    !!! tip
+        To edit values in the encrypted values file, you can use `sops` which will open the file in clear text in a configured editor:
+
+        ```bash
+        sops secrets.yaml
+        ```
+
+        There is also a [VSCode plugin](https://marketplace.visualstudio.com/items?itemName=signageos.signageos-vscode-sops) which can simplify editing `sops` encrypted files directly in the VSCode editor.
+
+    !!! tip
+        Add a [pre-commit hook](https://github.com/yuvipanda/pre-commit-hook-ensure-sops) to ensure to not push files containing sensitive data that are not encrypted with `sops`.
+
+7. In Argo CD, when you create your Application, add the secret values file (`secrets.yaml`) as follow:
+
+    ![argocd-helm-secrets](./img/argocd-helm-secrets.png)
+
+    Here, `secrets.yaml` is the relative path and name of the file containing encrypted values.
+
+### With SealedSecrets
+
+The following steps assumes SealedSecrets is installed in the cluster. For installing SealedSecrets in a Compliant Kubernetes cluster, refer to [the self-managed guide](../self-managed-services/sealedsecrets.md). You will need to contact your Platform Administrator requesting that you want to use SealedSecrets together with Argo CD.
+
+1. Create a SealedSecret, the following steps will create a SealedSecret for the namespace in the current Kubernetes context:
+
+    ```bash
+    export SEALED_SECRETS_CONTROLLER_NAMESPACE=sealed-secrets # set this to the namespace in which the controller is running in
+    export SECRET_VALUE=<secret-data> # this will be a value that should be encrypted/sealed
+    export KEY=foo # the key used for referencing SECRET_VALUE in the secret
+
+    kubectl create secret generic mysecret --dry-run=client --from-literal=$KEY=$SECRET_VALUE -o yaml | \
+        kubeseal --format yaml > mysealedsecret.yaml
+    ```
+
+    !!! note
+        With SealedSecrets it is possible to set a *scope* of a secret. By default this scope is set to `strict` in which the SealedSecret controller uses the name and namespace of the secret as attributes during encryption, hence, the SealedSecret needs to be created with the same values for these attributes if the controller is to be able to decrypt the SealedSecret. It is possible to change the scope with the `--scope` flag for `kubeseal`, refer to the [official documentation for SealedSecrets](https://github.com/bitnami-labs/sealed-secrets#scopes) for possible scopes.
+
+2. The generated SealedSecret manifest file `mysealedsecret.yaml` will contain the encrypted `$SECRET_VALUE` and is safe to store on, for example, GitHub. Push this manifest file to the repository containing the rest of your application manifests.
+
+3. Deploy the application containing the SealedSecret with Argo CD as any other application.
+
+### Can I use HashiCorp Vault for secret management?
+
+Currently, Elastisys Managed Argo CD does not support using HashiCorp's Vault for secret management in Argo CD, and there is no plan to support it, here are some of the reasoning behind this decision:
+
+- [Vault is not open-source](https://www.hashicorp.com/license-faq)
+- [Vault tends to want to centralize very powerful credentials](https://developer.hashicorp.com/vault/tutorials/db-credentials/database-root-rotation#challenge)
+- [Vault is recommended to run on dedicated machines (see **Single Tenancy**)](https://developer.hashicorp.com/vault/tutorials/operations/production-hardening#baseline-recommendations)
+- [Vault considers its own storage to be outside of its threat model, and thus, Vault has no defenses in place if its backend is attacked](https://developer.hashicorp.com/vault/docs/internals/security)
+- [Vault also considers memory analysis attacks outside of its threat model, so Vault has no defense against it](https://developer.hashicorp.com/vault/docs/internals/security)
+
 ## Further Reading
 
-* [ArgoCD documentation](https://argo-cd.readthedocs.io/en/stable/)
+* [Argo CD documentation](https://argo-cd.readthedocs.io/en/stable/)
+* [Helm Secrets usage](https://github.com/jkroepke/helm-secrets/wiki/Usage)
+* [SOPS](https://github.com/getsops/sops#sops-secrets-operations)
