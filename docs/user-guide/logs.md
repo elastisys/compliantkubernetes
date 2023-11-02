@@ -75,7 +75,7 @@ We can see the dynamic mapping of all the document fields :
 
 And OpenSearch was able to infere that **release_date** is of type **date**, and **title** is of type **text**.
 
-You should be aware that OpenSearch type detection is based on some Internal rules, which by no means will infere the correct type for every field. Let's take this example : 
+You should be aware that OpenSearch type detection is based on some Internal rules, which by no means will infere the correct type for every field. Let's take this example:
 
 We will recreate the **movies** index, and add a new field called `duration_minutes`, and wrap the value in quotes:
 
@@ -95,7 +95,7 @@ Checking the dynamic mapping again, we can see that Opensearch was able to detec
 
 ![Get Mapping](../img/dynamic_mapping_6.png)
 
-  Although OpenSearch was able to detect the numeric type, **long** in our case is not the best data type, as it is an inefficient use of memory space. A better data type here could be **short**. 
+Although OpenSearch was able to detect the numeric type, **long** in our case is not the best data type, as it is an inefficient use of memory space. A better data type here could be **short**.
 
 | Field data type | Description                                                      |
 |-----------------|------------------------------------------------------------------|
@@ -109,7 +109,7 @@ Dynamic mappings are fine when you're getting started with elasticsearch or when
 
 ### Explicit mapping
 
-Explicit mappings allow us to be more precise with our field definitions taking the creative control away from elasticsearch. We describe everything upfront providing the structure of our data and the relevant propeties.
+Explicit mappings allow us to be more precise with our field definitions taking the creative control away from elasticsearch. We describe everything upfront providing the structure of our data and the relevant properties.
 
 Here is an example where we define explicitly the fields type of an index :
 
@@ -117,7 +117,7 @@ Here is an example where we define explicitly the fields type of an index :
 
 An explicit mapping only bypasses the type inference that elasticsearch does for the fields we provide in the explicit mapping. If we index a document with a field not described in the explicit mapping, elasticsearch will still add that new field to the mapping and infer data type to use.
 
-Let's index a new document containing a new field `producer`: 
+Let's index a new document containing a new field `producer`:
 
 ![Add new field](../img/explicit_mapping_1.png)
 
@@ -127,9 +127,9 @@ The document gets indexed fine, and the mapping now contains the additional fiel
 
 But now if start adding all sorts of fields we don't know about, we're going to start having problems, and will probably end up with bad quality data, which will make it more difficult to work with.
 
-There are some options on how to deal when documents contains new fields that were not explicitly defined in the mapping. We can tell Elastisearch to either reject the document completly or we can allow the document to be indexed but ignore fields not in the explicit mapping.
+There are some options on how to deal when documents contains new fields that were not explicitly defined in the mapping. We can tell Elastisearch to either reject the document completely or we can allow the document to be indexed but ignore fields not in the explicit mapping.
 
-Let's configure the index to reject documents that contains fields not defined in the explicit mapping, to do this we set *dynamic* to *strict*: 
+Let's configure the index to reject documents that contains fields not defined in the explicit mapping, to do this we set *dynamic* to *strict*:
 
 ![Strict Dynamic](../img/explicit_mapping_3.png)
 
@@ -137,12 +137,12 @@ If we try now to index a document with a field not in the explicit mapping, we'l
 
 ![Error Dynamic](../img/explicit_mapping_4.png)
 
-This is really handy as it will prevent field count explosion, especially in production environments, as the fields will always be increasing as clients can add documents with previously unmapped fields. 
+This is really handy as it will prevent field count explosion, especially in production environments, as the fields will always be increasing as clients can add documents with previously unmapped fields.
 However this might be too strict in some cases, so an alternative is still to allow the document to be indexed but ignore fields not defined in the explicit mapping. To do this we set dynamic to false :
 
 ![Ignore Fields](../img/explicit_mapping_5.png)
 
-Now we won't get an error when we index with the same document, and the field is not in the mapping for the index 
+Now we won't get an error when we index with the same document, and the field is not in the mapping for the index
 
 ![Get Mapping](../img/explicit_mapping_6.png)
 
