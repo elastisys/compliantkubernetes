@@ -15,7 +15,7 @@ MongoDB Community Operator (self-managed)
 
 This page will help you to install [MongoDB Community Operator](https://github.com/mongodb/mongodb-kubernetes-operator), so that you are allowed to install the cluster-wide resources that are required by MongoDB.
 
-This guide is a complement to the [MongoDB Community Operator's](https://github.com/mongodb/mongodb-kubernetes-operator/tree/v0.8.2) own documentation.
+This guide is a complement to the [MongoDB Community Operator's](https://github.com/mongodb/mongodb-kubernetes-operator/tree/v0.8.3) own documentation.
 
 # Preparation
 
@@ -36,14 +36,17 @@ metadata:
 
 ## Install MongoDB Community Operator
 
+!!! Note "Supported versions"
+    This installation guide has been tested with MongoDB Community Operator version [0.8.3](https://github.com/mongodb/mongodb-kubernetes-operator/blob/v0.8.3/docs/install-upgrade.md).
 
-Please follow the official documentation for the [MongoDB Community Operator](https://github.com/mongodb/mongodb-kubernetes-operator/blob/v0.8.2/docs/install-upgrade.md).
+Please follow the official documentation for the [MongoDB Community Operator](https://github.com/mongodb/mongodb-kubernetes-operator/blob/v0.8.3/docs/install-upgrade.md).
 Be sure to read through the documentation fully.
 
 If default configuration choices are to your liking, you should be able to install the MongoDB Community Operator as follows:
 
 ```
-helm upgrade --install community-operator mongodb/community-operator --namespace mongodb
+helm repo add mongodb https://mongodb.github.io/helm-charts
+helm upgrade --install community-operator mongodb/community-operator --namespace mongodb --version 0.8.3
 ```
 
 ## Further Reading
@@ -51,6 +54,6 @@ helm upgrade --install community-operator mongodb/community-operator --namespace
 Please refer to the official documentation how to operate and connect to MongoDB.
 
 - [Documentation](https://www.mongodb.com/docs/)
-- [Operator Documentation](https://github.com/mongodb/mongodb-kubernetes-operator/blob/v0.8.2/docs/README.md)
-- [Deploy Configuration](https://github.com/mongodb/mongodb-kubernetes-operator/blob/v0.8.2/docs/deploy-configure.md)
-- [Secure MongoDB Resources](https://github.com/mongodb/mongodb-kubernetes-operator/blob/v0.8.2/docs/secure.md)
+- [Operator Documentation](https://github.com/mongodb/mongodb-kubernetes-operator/blob/v0.8.3/docs/README.md)
+- [Deploy Configuration](https://github.com/mongodb/mongodb-kubernetes-operator/blob/v0.8.3/docs/deploy-configure.md)
+- [Secure MongoDB Resources](https://github.com/mongodb/mongodb-kubernetes-operator/blob/v0.8.3/docs/secure.md)

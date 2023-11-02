@@ -19,6 +19,9 @@ Flux is a [CNCF Graduated project](https://www.cncf.io/projects/flux/).
 
 This page will help you install Flux in a Compliant Kubernetes environment.
 
+!!! Note "Supported versions"
+    This installation guide has been tested with Flux version [2.1.2](https://github.com/fluxcd/flux2/tree/v2.1.2).
+
 ## Initial Prep
 
 ### Dependencies
@@ -56,8 +59,8 @@ You need to apply the Custom Resource Definitions (CRDs) required by Flux. This 
 ```
 mkdir crds
 
-# Fetches latest Flux CRDs and saves it in the crds directory
-curl https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/crds/kustomization.yaml > crds/kustomization.yaml
+# Fetches Flux CRDs for v2.1.2 and saves it in the crds directory
+curl https://raw.githubusercontent.com/fluxcd/flux2/v2.1.2/manifests/crds/kustomization.yaml > crds/kustomization.yaml
 
 kubectl apply -k crds
 ```
