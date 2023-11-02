@@ -15,7 +15,7 @@ SealedSecrets (self-managed)
 
 This page will help you to install [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets), so that you are allowed to install the cluster-wide resources that are required by Sealed Secrets.
 
-This guide is a complement to [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets/tree/v0.23.1) own documentation.
+This guide is a complement to [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets/tree/v0.24.2) own documentation.
 
 # Preparation
 
@@ -36,7 +36,10 @@ metadata:
 
 ## Install Sealed Secrets
 
-Sealed Secrets have a section in their documentation about installing Sealed Secrets into a [restricted environment](https://github.com/bitnami-labs/sealed-secrets/tree/v0.23.1#helm-chart-on-a-restricted-environment), where they give a `config.yaml` that defines what should be installed.
+!!! Note "Supported versions"
+    This installation guide has been tested with Sealed Secrets version [0.24.2](https://github.com/bitnami-labs/sealed-secrets/tree/release/v0.24.2) and Helm Chart version [2.13.1](https://github.com/bitnami-labs/sealed-secrets/tree/helm-v2.13.1/helm/sealed-secrets).
+
+Sealed Secrets have a section in their documentation about installing Sealed Secrets into a [restricted environment](https://github.com/bitnami-labs/sealed-secrets/tree/v0.24.2#helm-chart-on-a-restricted-environment), where they give a `config.yaml` that defines what should be installed.
 
 The following `config.yaml` is an example of what is required to install Sealed Secrets into Compliant Kubernetes.
 
@@ -47,6 +50,7 @@ serviceAccount:
 rbac:
   create: false
   clusterRole: false
+## Add your namespace(s) here
 additionalNamespaces: []
 resources:
   requests:
@@ -60,19 +64,20 @@ resources:
 You are now ready to install Sealed Secrets
 
 ```console
-helm upgrade --install sealed-secrets -n sealed-secrets sealed-secrets/sealed-secrets -f config.yaml
+helm repo add sealed-secrets https://bitnami-labs.github.io/sealed-secrets
+helm upgrade --install sealed-secrets -n sealed-secrets --version 2.13.1 sealed-secrets/sealed-secrets -f config.yaml
 ```
 
 !!! Note "Note about `kubeseal`"
     The Sealed Secrets cli tool `kubeseal` expects the controller to be installed in the namespace `kube-system`.
     However the controller is installed in the namespace `sealed-secrets`.
-    As such you need to follow this [guide](https://github.com/bitnami-labs/sealed-secrets#how-to-use-kubeseal-if-the-controller-is-not-running-within-the-kube-system-namespace) to use `kubeseal`
+    As such you need to follow this [guide](https://github.com/bitnami-labs/sealed-secrets/tree/release/v0.24.2#how-to-use-kubeseal-if-the-controller-is-not-running-within-the-kube-system-namespace) to use `kubeseal`
 
 
 ## Further Reading
 
 Please refer to the official documentation how to operate and use Sealed Secrets.
 
-- [Documentation](https://github.com/bitnami-labs/sealed-secrets#usage)
+- [Documentation](https://github.com/bitnami-labs/sealed-secrets/tree/release/v0.24.2#usage)
 - [Tutorials](https://docs.bitnami.com/tutorials/sealed-secrets)
-- [Crypto](https://github.com/bitnami-labs/sealed-secrets/blob/main/docs/developer/crypto.md)
+- [Crypto](https://github.com/bitnami-labs/sealed-secrets/blob/release/v0.24.2/docs/developer/crypto.md)
