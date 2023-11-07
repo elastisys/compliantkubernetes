@@ -176,6 +176,7 @@ nav:
       - 'Sizing' : 'operator-manual/cluster-sizing.md'
       - 'Ingress': 'operator-manual/ingress.md'
       - 'Access Control': 'operator-manual/access-control.md'
+      - 'OpenSearch Mappings': 'operator-manual/opensearch-mappings.md'
       - 'User Alerts': 'operator-manual/user-alerts.md'
       - 'User Managed CRDs (preview)': 'operator-manual/user-managed-crds.md'
     - 'Disaster Recovery': 'operator-manual/disaster-recovery.md'
