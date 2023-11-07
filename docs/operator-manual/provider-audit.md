@@ -163,6 +163,8 @@ The remainder of this page contains open questions that you should ask your Infr
     1. Can your colocation provider replace hard drives, memory, etc.?
     1. Can your colocation provider move, restart or otherwise handle the servers?
     1. Does your colocation provider provide additional services beyond physical facilities as well as electricity and Internet?
+1. When did you perform the last penetration test?
+    1. Can you share anything about the major findings and how you resolved them?
 
 ## Legal issues
 
