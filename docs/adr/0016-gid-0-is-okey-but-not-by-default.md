@@ -59,4 +59,4 @@ In case [ID mapping][idmapping] is implemented in container runtimes and Kuberne
 [github-search]: https://github.com/search?l=Dockerfile&q=%22chgrp+-R%22&type=Code
 [cve]: https://nvd.nist.gov/vuln/detail/CVE-2020-8554
 [psa]: https://kubernetes.io/docs/concepts/security/pod-security-admission/
-[idmapping]: https://kernelnewbies.org/Linux_5.12#ID_mapping_in_mounts
+[idmapping]: https://lwn.net/Articles/896255/
