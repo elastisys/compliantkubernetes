@@ -137,6 +137,7 @@ nav:
       - 'Demarcation': 'user-guide/demarcation.md'
       - 'How to Delegate': 'user-guide/delegation.md'
       - 'How many environments?': 'user-guide/how-many-environments.md'
+      - 'Cluster API': 'user-guide/cluster-api.md'
     - 'Safeguards':
       - 'Overview': 'user-guide/safeguards/index.md'
       - 'Enforce No Root': 'user-guide/safeguards/enforce-no-root.md'
