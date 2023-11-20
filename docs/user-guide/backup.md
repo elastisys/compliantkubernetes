@@ -12,13 +12,22 @@ tags:
 
 # Backups
 
+!!!important
+    Compliant Kubernetes comes with a default backup retention time of 30 days, which was assessed suitable for most use-cases.
+
+    You should be aware that some data protection regulations put a **minimum requirement** on backup retention time, while some data protection regulations put a **maximum requirement** on backup retention time.
+
+    For example, Swedish Patient Data Laws ([HSLF-FS 2016:40](https://www.socialstyrelsen.se/globalassets/sharepoint-dokument/artikelkatalog/foreskrifter-och-allmanna-rad/2016-4-44.pdf) 3 kap. 13 §) says the following:
+
+    > The healthcare provider must decide how long the backup copies are to be saved [...].
+
+    This can be interpreted as setting a minimum backup retention time.
+
+    At the other end, too long backup retention time clash with GDPR Art. 17 "Right to erasure (‘right to be forgotten’)". For more details, see [How do I comply with GDPR Art. 17](../ciso-guide/gdpr-art-17/).
+
+    Make sure you research regulations applicable to your organization to determine if the default backup retention time is suitable for your organization.
+
 Compliant Kubernetes (CK8S) includes backup functionality through Velero, a backup tool for Kubernetes Resources and Persistent Volumes. For backup of container images, Harbor is used instead.
-
-## Compliance needs
-
-The requirements to comply with ISO 27001 are stated in ISO [27001:2013](https://www.isms.online/iso-27001/). The annexes that are relevant to backups are:
-
-- [Annex 12](https://www.isms.online/iso-27001/annex-a-12-operations-security/), article A.12.3.1 "Information Backup".
 
 ## What is Velero?
 
