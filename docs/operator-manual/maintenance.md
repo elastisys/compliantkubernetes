@@ -52,7 +52,7 @@ Compliant Kubernetes consists of a multitude of open source components that inte
 In order to free you of the burden of keeping track of when to upgrade the various components, new versions of Complaint Kubernetes are regularly release.
 When a new version is released, it becomes available as a [tagged release](https://github.com/elastisys/compliantkubernetes-apps/tags) in the GitHub repo.
 
-> Before upgrading to a new release, please review the [changelog](https://github.com/elastisys/compliantkubernetes-apps/blob/main/CHANGELOG.md) if possible, apply the upgrade to a staging environment before upgrading any environments with production data.
+> Before upgrading to a new release, please review the [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog) if possible, apply the upgrade to a staging environment before upgrading any environments with production data.
 
 ### Prerequisites
 
