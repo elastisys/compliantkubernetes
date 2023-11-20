@@ -23,7 +23,7 @@ tags:
 
     This can be interpreted as setting a minimum backup retention time.
 
-    At the other end, too long backup retention time clash with GDPR Art. 17 "Right to erasure (‘right to be forgotten’)". For more details, see [How do I comply with GDPR Art. 17](../ciso-guide/gdpr-art-17/).
+    At the other end, too long backup retention time clash with GDPR Art. 17 "Right to erasure (‘right to be forgotten’)". For more details, see [How do I comply with GDPR Art. 17](../ciso-guide/gdpr-art-17.md).
 
     Make sure you research regulations applicable to your organization to determine if the default backup retention time is suitable for your organization.
 
