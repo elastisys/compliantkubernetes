@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.34.0](#v0331) - 2023-11-21
 - [v0.33.1](#v0331) - 2023-10-20
 - [v0.32.2](#v0322) - 2023-10-20
 - [v0.33.0](#v0330) - 2023-09-28
@@ -36,6 +37,29 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
+
+### v0.34.0
+
+Released 2023-11-23
+
+!!! danger "Security Notice(s)"
+
+    - New curl release (CVE-2023-38545 and CVE-2023-38546)
+    - New Go release (https://github.com/advisories/GHSA-qppj-fm5r-hxr3 and https://github.com/advisories/GHSA-4374-p667-p6c8)
+    - Fix for HTTP/2 Rapid Reset Attack [CVE-2023-44487](https://nvd.nist.gov/vuln/detail/CVE-2023-44487)
+
+### Feature(s)
+
+- Dashboard for visualizing how spread-out pods are across nodes
+- Application developers can now self manage CRDs for MongoDB, SealedSecrets and Flux
+- Upgrade HNC and expose opt-in propagation
+
+### Improvement(s)
+
+- Update Gatekeeper violation messages
+- Add Network Policies for hnc
+- Upgrade Ingress-NGINX controller to 1.8.4 and chart to 4.7.3
+- Upgrade Falco chart and rework exceptions
 
 ### v0.33.1
 
