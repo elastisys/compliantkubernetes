@@ -183,24 +183,24 @@ A very short example of index mapping is displayed and commented below:
 
 ```json
 {
-  "movies": {                           # Index name we're looking at 
+  "movies": {                           # Index name we're looking at
     "mappings": {
         "properties": {
           "release_date": {             # The release_date field is of
-            "type": "date"              # date format allowing for time based 
+            "type": "date"              # date format allowing for time based
           },                            # searching, eg between 1970 and 2000
-          "title": {                    # The title field stores the title, 
+          "title": {                    # The title field stores the title,
             "type": "text",             # and is of type text,
-            "fields": {                 # and also a keyword 
+            "fields": {                 # and also a keyword
               "keyword": {              # less than 256 bytes in length
-                "type": "keyword",      # the default limit is to avoid 
+                "type": "keyword",      # the default limit is to avoid
                 "ignore_above": 256     # the excessive disk/memory usage
-              }                         
-            }                           
+              }
+            }
           },
-        }                               
-    }                                  
-  }                                     
+        }
+    }
+  }
 }
 ```
 
