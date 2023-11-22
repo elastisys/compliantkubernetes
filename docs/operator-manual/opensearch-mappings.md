@@ -74,7 +74,7 @@ Although OpenSearch was able to detect the numeric type, **long** in our case is
 | short           | A signed 16-bit integer. Minimum is −2 <sup>15</sup> . Maximum is 2 <sup>15 − 1</sup>. |
 | long            | A signed 64-bit integer. Minimum is −2 <sup>63</sup> . Maximum is 2 <sup>63 − 1</sup>  |
 
-To learn more, see [Numeric field types]https://opensearch.org/docs/latest/field-types/supported-field-types/numeric/)
+To learn more, see [Numeric field types](https://opensearch.org/docs/latest/field-types/supported-field-types/numeric/)
 
 
 Dynamic mappings are fine when you're getting started with elasticsearch or when you're working with a new dataset. Once you have a more concrete idea of how you want to use the data, you want to be much more deliberate with your mappings, this is where an explicit mapping will be beneficial.
