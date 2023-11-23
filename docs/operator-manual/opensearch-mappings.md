@@ -41,7 +41,7 @@ Let's create an index called **movies**, and add a document:
 
 ![Create Index](../img/dynamic_mapping_1.png)
 
-We can see the dynamic mapping of all the document fields :
+We can see the dynamic mapping of all the document fields:
 
 ![Get Mapping](../img/dynamic_mapping_2.png)
 
@@ -83,7 +83,7 @@ Dynamic mappings are fine when you're getting started with elasticsearch or when
 
 Explicit mappings allow us to be more precise with our field definitions taking the creative control away from elasticsearch. We describe everything upfront providing the structure of our data and the relevant properties.
 
-Here is an example where we define explicitly the fields type of an index :
+Here is an example where we define explicitly the fields type of an index:
 
 ![Explicit Mapping](../img/dynamic_mapping_7.png)
 
@@ -105,12 +105,12 @@ Let's configure the index to reject documents that contains fields not defined i
 
 ![Strict Dynamic](../img/explicit_mapping_3.png)
 
-If we try now to index a document with a field not in the explicit mapping, we'll get an error :
+If we try now to index a document with a field not in the explicit mapping, we'll get an error:
 
 ![Error Dynamic](../img/explicit_mapping_4.png)
 
 This is really handy as it will prevent field count explosion, especially in production environments, as the fields will always be increasing as clients can add documents with previously unmapped fields.
-However this might be too strict in some cases, so an alternative is still to allow the document to be indexed but ignore fields not defined in the explicit mapping. To do this we set dynamic to false :
+However this might be too strict in some cases, so an alternative is still to allow the document to be indexed but ignore fields not defined in the explicit mapping. To do this we set dynamic to false:
 
 ![Ignore Fields](../img/explicit_mapping_5.png)
 
