@@ -178,7 +178,7 @@ For example, if you index an integer field without pre-defining the mapping, Ope
 Importantly, a field can only be of *one* type, sending data of another type can result in a _mapping conflict_ and data being rejected.
 
 In Compliant Kubernetes, index mappings are dynamically created from the data you send in.
-To set explicit mappings, reach out to your platform administrator. 
+To set explicit mappings, reach out to your platform administrator.
 A mapping conflict occurs when you try to send data into a field that already has a mapping created but the data doesn't meet the same type (date, integer, string, etc.)
 
 
