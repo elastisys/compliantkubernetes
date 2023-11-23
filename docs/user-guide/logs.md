@@ -177,7 +177,7 @@ Mappings can be created:
 2. Explicitly on index creation
 3. Using [Templates](https://opensearch.org/docs/latest/im-plugin/index-templates/)
 
-Usually, OpenSearch mappings are built from the OpenSearch templates, for fields that don't have settings specified in the templates, the mappings are created dynamically from the data you send in. A mapping conflict occurs when you try to send data into a field that already has a mapping created but the data doesn't meet the same type (date, integer, string, etc.)
+Usually, OpenSearch mappings are built from the OpenSearch templates, for fields that don't have settings specified in the templates, the mappings are created dynamically from the data you send in, which is the default behavior in Compliant Kubernetes. A mapping conflict occurs when you try to send data into a field that already has a mapping created but the data doesn't meet the same type (date, integer, string, etc.)
 
 A very short example of index mapping is displayed and commented below:
 
