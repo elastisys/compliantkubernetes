@@ -1,7 +1,7 @@
 
 # OpenSearch Mappings
 
-OpenSearch organizes data into indexes. Each index is a collection of JSON documents. If you have a set of log lines that you want to add to OpenSearch, you must first convert them to JSON. A simple JSON document for a movie might look like this:
+OpenSearch organizes data into indices. Each index is a collection of JSON documents. If you have a set of log lines that you want to add to OpenSearch, you must first convert them to JSON. A simple JSON document for a movie might look like this:
 
 ```json
 {
