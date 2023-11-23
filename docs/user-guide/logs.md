@@ -167,17 +167,20 @@ The figure below shows the search result for **OPA** logs.
 
 An index mapping specifies the data structure of the data within that index, listing all the fields and their data types.
 
-For example, if you index an integer field without pre-defining the mapping, OpenSearch sets the mapping of that field as long.
-
-Importantly, a field can only be of *one* type, sending data of another type can result in a mapping conflict and data being rejected.
-
 Mappings can be created:
 
 1. Dynamically by OpenSearch
 2. Explicitly on index creation
 3. Using [Templates](https://opensearch.org/docs/latest/im-plugin/index-templates/)
 
-Usually, OpenSearch mappings are built from the OpenSearch templates, for fields that don't have settings specified in the templates, the mappings are created dynamically from the data you send in, which is the default behavior in Compliant Kubernetes. A mapping conflict occurs when you try to send data into a field that already has a mapping created but the data doesn't meet the same type (date, integer, string, etc.)
+For example, if you index an integer field without pre-defining the mapping, OpenSearch sets the mapping of that field as long.
+
+Importantly, a field can only be of *one* type, sending data of another type can result in a _mapping conflict_ and data being rejected.
+
+In Compliant Kubernetes, index mappings are dynamically created from the data you send in.
+To set explicit mappings, reach out to your platform administrator. 
+A mapping conflict occurs when you try to send data into a field that already has a mapping created but the data doesn't meet the same type (date, integer, string, etc.)
+
 
 A very short example of index mapping is displayed and commented below:
 
