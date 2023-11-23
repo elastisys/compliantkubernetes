@@ -37,7 +37,7 @@ You can define how documents and their fields are stored and indexed by creating
 
 When you index a document, OpenSearch adds fields automatically with dynamic mapping. You can also explicitly add fields to an index mapping.
 
-Let's create an index called **movies**, and add a document :
+Let's create an index called **movies**, and add a document:
 
 ![Create Index](../img/dynamic_mapping_1.png)
 
