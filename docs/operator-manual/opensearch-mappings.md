@@ -45,7 +45,7 @@ We can see the dynamic mapping of all the document fields :
 
 ![Get Mapping](../img/dynamic_mapping_2.png)
 
-And OpenSearch was able to infere that **release_date** is of type **date**, and **title** is of type **text**.
+OpenSearch was able to infere that **release_date** is of type **date**, and **title** is of type **text**.
 
 You should be aware that OpenSearch type detection is based on some Internal rules, which by no means will infere the correct type for every field. Let's take this example:
 
