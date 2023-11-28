@@ -102,17 +102,17 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 
 <ul class="columns">
     <li>
-        <img src="img/logos/cncf-member-silver-color.svg">
+        <img src="img/logos/cncf-member-silver-color.svg" alt="Logo of Cloud Native Computing Foundation Silver Member">
         <br>
         Maintained by Elastisys, proud CNCF silver member
     </li>
     <li>
-        <img src="img/logos/kubernetes-kcsp-color.svg">
+        <img src="img/logos/kubernetes-kcsp-color.svg" alt="Logo of Certified Kubernetes Service Provider">
         <br>
         Runs in production hosting critical applications
     </li>
     <li>
-        <img src="img/logos/certified-kubernetes-color.svg">
+        <img src="img/logos/certified-kubernetes-color.svg" alt="Logo of Certified Kubernetes">
         <br>
         Our platform is a CNCF Certified Kubernetes® Distribution
     </li>
