@@ -1,16 +1,15 @@
 <!--deploy-rook-start-->
 ### Deploy Rook
 
-To deploy Rook, please go to the `compliantkubernetes-kubespray` repo root directory and run the following.
+To deploy Rook, go to the `compliantkubernetes-kubespray` repo, change directory to `rook` and follow the instructions [here](https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/rook#rook-ceph) for each cluster.
 
-```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+!!! note
+    If the kubeconfig files for the clusters are encrypted with SOPS, you need to decrypt them before using them:
+
+    ```bash
     sops --decrypt ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $CLUSTER.yaml
     export KUBECONFIG=$CLUSTER.yaml
-    ./rook/deploy-rook.sh
-    shred -zu $CLUSTER.yaml
-done
-```
+    ```
 
 Please restart the operator pod, `rook-ceph-operator*`, if some pods stalls in initialization state as shown below:
 
@@ -20,30 +19,41 @@ rook-ceph     rook-ceph-crashcollector-minion-1-5cfb88b66f-mggrh   0/1     Init:
 rook-ceph     rook-ceph-crashcollector-minion-2-5c74ffffb6-jwk55   0/1     Init:0/2   0          14m
 ```
 
-!!!important
+!!! warning
     Pods in pending state usually indicate resource shortage. In such cases you need to use bigger instances.
 <!--deploy-rook-stop-->
 
 <!--test-rook-start-->
 ### Test Rook
 
+!!! note
+    If the Workload Cluster kubeconfig is configured with authentication to Dex running in the Management Cluster, part of apps needs to be deployed before it is possible to run the commands below for `wc`.
+
 To test Rook, proceed as follows:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} apply -f https://raw.githubusercontent.com/rook/rook/release-1.5/cluster/examples/kubernetes/ceph/csi/rbd/pvc.yaml';
+for CLUSTER in sc wc; do
+    kubectl --kubeconfig ${CK8S_CONFIG_PATH}/.state/kube_config_${CLUSTER}.yaml -n default apply -f https://raw.githubusercontent.com/rook/rook/v1.11.9/deploy/examples/csi/rbd/pvc.yaml
+    kubectl --kubeconfig ${CK8S_CONFIG_PATH}/.state/kube_config_${CLUSTER}.yaml -n default apply -f https://raw.githubusercontent.com/rook/rook/v1.11.9/deploy/examples/csi/rbd/pod.yaml
 done
 
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} get pvc';
+for CLUSTER in sc wc; do
+    kubectl --kubeconfig ${CK8S_CONFIG_PATH}/.state/kube_config_${CLUSTER}.yaml -n default get pvc rbd-pvc
+    kubectl --kubeconfig ${CK8S_CONFIG_PATH}/.state/kube_config_${CLUSTER}.yaml -n default get pod csirbd-demo-pod
 done
 ```
 
-You should see PVCs in Bound state. If you want to clean the previously created PVCs:
+You should see PVCs in Bound state, and that the pods which mounts the volumes are running.
+
+!!! important
+    If you have taints on certain nodes which should support running pods that mounts `rook-ceph` PVCs, you need to ensure these nodes are tolerated by the rook-ceph DaemonSet `csi-rbdplugin`, otherwise, pods on these nodes will not be able to attach or mount the volumes.
+
+If you want to clean the previously created PVCs:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml 'kubectl --kubeconfig {} delete pvc rbd-pvc';
+for CLUSTER in sc wc; do
+    kubectl --kubeconfig ${CK8S_CONFIG_PATH}/.state/kube_config_${CLUSTER}.yaml -n default delete pvc rbd-pvc
+    kubectl --kubeconfig ${CK8S_CONFIG_PATH}/.state/kube_config_${CLUSTER}.yaml -n default delete pod csirbd-demo-pod
 done
 ```
 <!--test-rook-stop-->
@@ -58,7 +68,17 @@ If you haven't done so already, clone the `compliantkubernetes-apps` repo and in
 ```bash
 git clone https://github.com/elastisys/compliantkubernetes-apps.git
 cd compliantkubernetes-apps
-./bin/ck8s install-requirements
+compliantkubernetes-apps/bin/ck8s install-requirements
+```
+
+Export the following variables before initializing apps config:
+
+```bash
+export CK8S_ENVIRONMENT_NAME=my-environment-name
+export CK8S_FLAVOR=# [dev|prod] # defaults to dev
+export CK8S_CONFIG_PATH=~/.ck8s/my-cluster-path
+export CK8S_CLOUD_PROVIDER=# [exoscale|safespring|citycloud|aws|baremetal]
+export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
 ```
 <!--clone-apps-stop-->
 
@@ -66,13 +86,7 @@ cd compliantkubernetes-apps
 ### Initialize the apps configuration
 
 ```bash
-export CK8S_ENVIRONMENT_NAME=my-environment-name
-#export CK8S_FLAVOR=[dev|prod] # defaults to dev
-export CK8S_CONFIG_PATH=~/.ck8s/my-cluster-path
-export CK8S_CLOUD_PROVIDER=# [exoscale|safespring|citycloud|aws|baremetal]
-export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
-
-./bin/ck8s init
+compliantkubernetes-apps/bin/ck8s init both
 ```
 
 This will initialise the configuration in the `${CK8S_CONFIG_PATH}` directory. Generating configuration files `sc-config.yaml` and `wc-config.yaml`, as well as secrets with randomly generated passwords in `secrets.yaml`. This will also generate read-only default configuration under the directory `defaults/` which can be used as a guide for available and suggested options.
@@ -91,7 +105,19 @@ Note that, the latter is encrypted.
 
 ```bash
 vim ${CK8S_CONFIG_PATH}/sc-config.yaml
+
 vim ${CK8S_CONFIG_PATH}/wc-config.yaml
+
+vim ${CK8S_CONFIG_PATH}/common-config.yaml
+```
+
+Edit the secrets.yaml file and add the credentials for:
+
+- s3 - used for backup storage
+- dex - connectors -- check [your identity provider](https://dexidp.io/docs/connectors/).
+- On-call management tool configurations-- Check [supported on-call management tools](https://prometheus.io/docs/alerting/latest/configuration/)
+
+```bash
 sops ${CK8S_CONFIG_PATH}/secrets.yaml
 ```
 
@@ -109,17 +135,13 @@ sops ${CK8S_CONFIG_PATH}/secrets.yaml
 Start with the Management Cluster:
 
 ```bash
-ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml
-./bin/ck8s apply sc  # Respond "n" if you get a WARN
+compliantkubernetes-apps/bin/ck8s apply sc
 ```
 
-Then the Workload Clusters:
+Then the Workload Cluster:
 
 ```bash
-for CLUSTER in "${WORKLOAD_CLUSTERS[@]}"; do
-    ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
-    ./bin/ck8s apply wc  # Respond "n" if you get a WARN
-done
+compliantkubernetes-apps/bin/ck8s apply wc
 ```
 <!--install-apps-stop-->
 
@@ -129,21 +151,25 @@ done
 !!!important
     Leave sufficient time for the system to settle, e.g., request TLS certificates from LetsEncrypt, perhaps as much as 20 minutes.
 
+Check if all helm charts succeeded.
+
+```bash
+compliantkubernetes-apps/bin/ck8s ops helm wc list -A --all
+```
+
 You can check if the system settled as follows:
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
-        'kubectl --kubeconfig {} get --all-namespaces pods'
+for CLUSTER in sc wc; do
+    compliantkubernetes-apps/bin/ck8s ops kubectl ${CLUSTER} get --all-namespaces pods
 done
 ```
 
 Check the output of the command above. All Pods needs to be Running or Completed.
 
 ```bash
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
-    sops exec-file ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml \
-        'kubectl --kubeconfig {} get --all-namespaces issuers,clusterissuers,certificates'
+for CLUSTER in sc wc; do
+    compliantkubernetes-apps/bin/ck8s ops kubectl ${CLUSTER} get --all-namespaces issuers,clusterissuers,certificates
 done
 ```
 
@@ -154,21 +180,11 @@ All resources need to have the Ready column True.
 <!--testing-start-->
 ### Testing
 
-After completing the installation step you can test if the apps are properly installed and ready using the commands below.
-
-Start with the Management Cluster:
+After completing the installation step you can test if the apps are properly installed and ready using the commands below:
 
 ```bash
-ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml
-./bin/ck8s test sc  # Respond "n" if you get a WARN
-```
-
-Then the Workload Clusters:
-
-```bash
-for CLUSTER in "${WORKLOAD_CLUSTERS[@]}"; do
-    ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_wc.yaml
-    ./bin/ck8s test wc  # Respond "n" if you get a WARN
+for CLUSTER in sc wc; do
+    compliantkubernetes-apps/bin/ck8s test ${CLUSTER}
 done
 ```
 
@@ -202,10 +218,10 @@ The script uses `s3cmd` in the background and gets configuration and credentials
 scripts/S3/entry.sh create
 ```
 
-!!!important
+!!! warning
 
     You should not use your own credentials for S3.
-    Rather create a new set of credentials with write-only access, when supported by the object storage provider ([check a feature matrix](disaster-recovery.md#feature-matrix)).
+    Rather create a new set of credentials with write-only access, when supported by the object storage provider.
 
 <!--create-s3-buckets-stop-->
 

@@ -42,18 +42,19 @@ Code snippets should be written in a way that is transparent, predictable and fl
 
 Examples:
 
-```
+```bash
 ## Config snippet, almost always requires human input
 export CK8S_ENVIRONMENT_NAME=my-environment-name
 #export CK8S_FLAVOR=[dev|prod] # defaults to dev
 export CK8S_CONFIG_PATH=~/.ck8s/my-cluster-path
 export CK8S_CLOUD_PROVIDER=# [exoscale|safespring|citycloud|aws|baremetal]
 export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
-./bin/ck8s init
+export CLUSTERS=( "sc" "wc" )
+./bin/ck8s init both
 
 ## Apply snippets
 # Good, because administrator can review command, change command as necessary, review its effects and approves those effects
-for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
+for CLUSTER in "${CLUSTERS[@]}"; do
     pushd inventory/$CLUSTER
     terraform init ../../contrib/terraform/exoscale
     terraform apply \
@@ -64,7 +65,6 @@ for CLUSTER in ${SERVICE_CLUSTER} "${WORKLOAD_CLUSTERS[@]}"; do
 done
 
 # Okay
-ln -sf $CK8S_CONFIG_PATH/.state/kube_config_${SERVICE_CLUSTER}.yaml $CK8S_CONFIG_PATH/.state/kube_config_sc.yaml
 ./bin/ck8s apply sc  # Respond "n" if you get a WARN
 
 # Bad, because the effects are difficult to predict and adjust
@@ -90,12 +90,12 @@ kubectl delete all --all --all-namespaces
 Files ending in `*.drawio.svg` are produced using [diagrams.net](https://www.diagrams.net/). They are exported as follows:
 
 1. File -> Export As -> SVG
-2. Change "zoom" to 100%.
-3. Enable "Embed Images".
-4. Enable "Embed Fonts".
-5. Enable "Include a copy of my diagram".
-6. Select "Links: In new window".
-6. Leave everything else as default.
+1. Change "zoom" to 100%.
+1. Enable "Embed Images".
+1. Enable "Embed Fonts".
+1. Enable "Include a copy of my diagram".
+1. Select "Links: In new window".
+1. Leave everything else as default.
 
 To facilitate editing architecture diagrams, import the [Compliant Kubernetes DrawIO library](docs/img/ck8s-library.drawio.xml).
 
@@ -103,13 +103,13 @@ To facilitate editing architecture diagrams, import the [Compliant Kubernetes Dr
 
 Other diagrams are produced in graphviz. To regenerate them, edit the relevant `dot` file, then type:
 
-```
+```bash
 make -C docs/img
 ```
 
 For "live preview" open the output file (e.g., SVG or PNG) in a viewer supporting live refresh (e.g., eog), then type:
 
-```
+```bash
 make -C docs/img preview
 ```
 

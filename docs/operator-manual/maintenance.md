@@ -43,7 +43,7 @@ There is a playbook in the compliantkubernetes-kubespray repo that can assist wi
 It will cordon and reboot the nodes one by one.
 
 ```bash
-./bin/ck8s-kubespray reboot-nodes <prefix> [--extra-vars manual_prompt=true] [<options>]
+./bin/ck8s-kubespray reboot-nodes <wc|sc> [--extra-vars manual_prompt=true] [<options>]
 ```
 
 ### Upgrading the Compliant Kubernetes application stack
@@ -92,7 +92,7 @@ Then check the release notes for each version in between to see if there are any
     This will take a backup into `backups/` before modifying any files.
 
     ```bash
-    ./bin/ck8s init
+    ./bin/ck8s init both
     ```
 
 1. Check if there is a [migration document](https://github.com/elastisys/compliantkubernetes-apps/tree/main/migration) for the release you want to upgrade to, (e.g. [for upgrade to 0.11.0](https://github.com/elastisys/compliantkubernetes-apps/blob/5d8f4f1b3cc053b3b515711549ab80df9617f2f4/migration/v0.10.x-v0.11.x/upgrade-apps.md) ) and follow the instructions there.
