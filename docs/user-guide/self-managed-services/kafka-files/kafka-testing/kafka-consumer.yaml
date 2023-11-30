@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kafka-consumer
+  namespace: kafka
+spec:
+  containers:
+  - image: quay.io/strimzi/kafka:0.38.0-kafka-3.6.0
+    name: kafka-consumer
+    resources:
+      requests:
+        memory: 128Mi
+        cpu: 200m
+      limits:
+        memory: 256Mi
+        cpu: 400m
+    command: ["sleep"]
+    args: ["5000"]
+  restartPolicy: Never
