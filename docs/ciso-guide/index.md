@@ -1,18 +1,15 @@
-# CISO Guide Overview
+# CISO and DPO Guide Overview
 
-This guide is for the Chief Information Security Officer (CISO) who needs to prove to an internal or external auditor that the application runs on top of a compliant platform.
+This guide helps you prove to an internal or external auditor that the application runs on top of a compliant platform.
 
-The CISO can be described via the following user stories:
+Resources for the Chief Information Security Officer (CISO) or equivalent:
 
-* As an information security officer, I want to audit the Compliant Kubernetes cluster, so as to comply with continuous compliance policies.
-* As an information security officer, I want to quickly identify compliance violation and convert them into actionable tasks for developers.
+* [ISO 27001](./controls/iso-27001.md)
+* [NIS2](./nis2.md)
 
-![Overview of User Roles and Stories](../img/user-overview.png)
+Resources for the Data Protection Officers (DPO) or equivalent:
 
-The CISO only needs:
+* [GDPR](./controls/gdpr.md)
+* [HSLF-FS 2016:40](./controls/hslf-fs-201640.md)
 
-* a modern browser (recent versions of Chrome, Firefox or Edge will do);
-* the URL to the Compliant Kubernetes dashboard (usually https://grafana.example.com);
-* credentials for the Compliant Kubernetes cluster.
-
-If in doubt, contact the Compliant Kubernetes administrator.
+You might also want to read the [Frequently Asked Questions (FAQ)](faq.md).
