@@ -20,7 +20,7 @@
 <!-- END TOC -->
 
 !!!note
-    For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/CHANGELOG.md).
+    For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/changelog/).
 
 ## v2.23.0-ck8s1
 
