@@ -60,19 +60,20 @@ a[href*="//"]:not([href*="elastisys."])::after {
  */
 .md-typeset .admonition.elastisys,
 .md-typeset details.elastisys {
-  border-color: var(--md-primary-fg-color);
+  border-color: var(--esys-blue-03);
 }
 .md-typeset .elastisys > .admonition-title,
 .md-typeset .elastisys > summary {
-  background-color: rgba(43, 155, 70, 0.1);
+  background-color: var(--esys-blue-04);
 }
-.md-typeset .elastisys > .admonition-title::before,
-.md-typeset .elastisys > summary::before {
+.md-typeset .elastisys.elastisys > .admonition-title::before,
+.md-typeset .elastisys.elastisys > summary::before {
   background-image:
     url('../img/logos/elastisys-logo-icon.svg');
   background-size: cover;
-  -webkit-mask-image: none
-  mask-image: none
+  -webkit-mask-image: none;
+  mask-image: none;
+  background-color: inherit;
 }
 
 /* Add space around the footer */
