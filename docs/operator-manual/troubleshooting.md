@@ -1,5 +1,12 @@
 # Troubleshooting Tools
 
+!!! elastisys-self-managed "For Elastisys Self-Managed Customers"
+    Please start by running [these commands](#i-have-no-clue-where-to-start).
+
+    If you are stuggling, don't hesitate to [file a ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
+    Please send us your terminal in a text format.
+    We need to look both at the commands you typed and their output.
+
 Help! Something is wrong with my Compliant Kubernetes cluster. Fear no more, this guide will help you make sense.
 
 This guide assumes that:
