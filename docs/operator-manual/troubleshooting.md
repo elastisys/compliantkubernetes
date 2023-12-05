@@ -3,7 +3,7 @@
 !!! elastisys-self-managed "For Elastisys Self-Managed Customers"
     Please start by running [these commands](#i-have-no-clue-where-to-start).
 
-    If you are stuggling, don't hesitate to [file a ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
+    If you are struggling, don't hesitate to [file a ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
     Please send us your terminal in a text format.
     We need to look both at the commands you typed and their output.
 
