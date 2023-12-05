@@ -313,7 +313,7 @@ To configure Email service for example:
             port: 587
             from: $email-username
     ```
-    
+
 3. Subscribe to notifications by adding the notifications.argoproj.io/subscribe.on-sync-succeeded.gmail annotation to the Argo CD application:
 
 ```console
