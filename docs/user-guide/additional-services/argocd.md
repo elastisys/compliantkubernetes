@@ -170,6 +170,52 @@ Currently, Elastisys Managed Argo CD does not support using HashiCorp's Vault fo
 - [Vault considers its own storage to be outside of its threat model, and thus, Vault has no defenses in place if its backend is attacked](https://developer.hashicorp.com/vault/docs/internals/security)
 - [Vault also considers memory analysis attacks outside of its threat model, so Vault has no defense against it](https://developer.hashicorp.com/vault/docs/internals/security)
 
+## Argo CD Notifications
+
+Argo CD Notifications continuously monitors Argo CD applications and provides a flexible way to notify users about important changes in the application state. Using a flexible mechanism of [triggers](https://argocd-notifications.readthedocs.io/en/stable/triggers/) and [templates](https://argocd-notifications.readthedocs.io/en/stable/templates/) you can configure when the notification should be sent as well as notification content.    
+
+To configure Argo CD Notifications, make sure you are allowed to update the current kubernetes objects:
+    - secret/argocd-notifications-secret
+    - configmap/argocd-notifications-cm
+
+For Elastisys Managed Argo CD, you should be able to modify those objects if you belong to any customer admin group, or if you are a customer admin user.
+
+In case you're not, ask your platform administrator to add you accordingly.
+
+Argo CD Notifications includes the [catalog](https://argocd-notifications.readthedocs.io/en/stable/catalog/) of useful triggers and templates. So you can just use them instead of reinventing new ones.
+
+!!! note
+    In case you don't have the catalog triggers & templates included, add them to the argocd-notifications-cm ConfigMap.
+
+    ```console
+    $ kubectl edit cm/argocd-notifications-cm -n argocd-system
+    ```
+
+    And add the [following templates and triggers definitions](https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/catalog/install.yaml)
+
+    ```yaml
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+    name: argocd-notifications-cm
+    data:
+        context: |
+            argocdUrl: "https://argocd.example.com"
+        template.app-deployed: |
+            ...
+        template.app-health-degraded: |
+            ...
+        template.app-sync-failed: |
+            ...
+        template.app-sync-running: |
+            ...
+        trigger.on-deployed: |
+            ...
+        trigger.on-sync-succeeded: |
+            ...
+    ```
+
+
 ## Further Reading
 
 * [Argo CD documentation](https://argo-cd.readthedocs.io/en/stable/)
