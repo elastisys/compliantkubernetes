@@ -174,7 +174,7 @@ Currently, Elastisys Managed Argo CD does not support using HashiCorp's Vault fo
 
 Argo CD Notifications continuously monitors Argo CD applications and provides a flexible way to notify users about important changes in the application state. Using a flexible mechanism of [triggers](https://argocd-notifications.readthedocs.io/en/stable/triggers/) and [templates](https://argocd-notifications.readthedocs.io/en/stable/templates/) you can configure when the notification should be sent as well as notification content.
 
-To configure Argo CD notifications, make sure you are allowed to update the current kubernetes objects:
+To configure Argo CD notifications, make sure you are allowed to update the current Kubernetes objects:
 
 - secret/argocd-notifications-secret
 - configmap/argocd-notifications-cm
