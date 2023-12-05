@@ -25,7 +25,7 @@ We recommend you to proceed in 4 steps as shown below:
         Start with Compliant Kubernetes managed by an experienced platform team on a trusted EU cloud infrastructure.
     </dd>
     <dd>
-      <a role="button" href="https://elastisys.com/managed-services/">Learn more</a>
+      <a role="button" href="https://elastisys.com/managed-services/">Go to Managed Services</a>
     </dd>
   </div>
   <div markdown="span">
@@ -37,7 +37,7 @@ We recommend you to proceed in 4 steps as shown below:
       Clarify the capabilities of your infrastructure and ways of working with your infrastructure team.
     </dd>
     <dd>
-      <a role="button" href="./provider-audit/">Learn more</a>
+      <a role="button" href="./provider-audit/">Go to Provider Audit</a>
     </dd>
   </div>
   <div markdown="span">
@@ -49,7 +49,7 @@ We recommend you to proceed in 4 steps as shown below:
       Now that the infrastructure is in place, you're ready to configure and install Compliant Kubernetes.
     </dd>
     <dd>
-      <a role="button" href="./on-prem-standard/">Learn more</a>
+      <a role="button" href="./on-prem-standard/">Setup Compliant Kubernetes</a>
     </dd>
   </div>
   <div markdown="span">
@@ -61,7 +61,7 @@ We recommend you to proceed in 4 steps as shown below:
       Practice [maintenance](maintenance.md), [capacity management](capacity-management.md) and [troubleshooting](troubleshooting.md).
     </dd>
     <dd>
-      <a role="button" href="https://elastisys.com/free-guide-how-to-operate-a-secure-kubernetes-platform/">Learn more</a>
+      <a role="button" href="https://elastisys.com/free-guide-how-to-operate-a-secure-kubernetes-platform/">Learn how to operate a Kubernetes platform</a>
     </dd>
   </div>
 </dl>

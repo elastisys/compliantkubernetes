@@ -76,3 +76,8 @@ repos:
         entry: 'compliantkubernetes.io(?!\/nobackup)'
         language: pygrep
         files: '.*[.]md$'
+      - id: avoid-non-descriptive-link-text
+        name: Avoid non-descriptive link text (see https://developers.google.com/search/docs/crawling-indexing/links-crawlable#write-good-anchor-text)
+        entry: '(?i)<a[^>]*>(read more|click here|learn more)</a>'
+        language: pygrep
+        files: '.*[.]md$'
