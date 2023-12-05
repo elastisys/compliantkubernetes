@@ -64,7 +64,7 @@ a[href*="//"]:not([href*="elastisys."])::after {
 }
 .md-typeset .elastisys > .admonition-title,
 .md-typeset .elastisys > summary {
-  background-color: var(--esys-blue-04);
+  background-color: var(--esys-gray-04);
 }
 .md-typeset .elastisys.elastisys > .admonition-title::before,
 .md-typeset .elastisys.elastisys > summary::before {
