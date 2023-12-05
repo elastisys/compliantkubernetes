@@ -299,9 +299,7 @@ To configure Email service for example:
             port: 465
             from: $email-username
     ```
-    
     In case you want to use a separate SMTP server instead of gmail
-
     ```yaml
     apiVersion: v1
     kind: ConfigMap
