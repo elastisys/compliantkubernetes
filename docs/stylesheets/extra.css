@@ -60,19 +60,41 @@ a[href*="//"]:not([href*="elastisys."])::after {
  */
 .md-typeset .admonition.elastisys,
 .md-typeset details.elastisys {
-  border-color: var(--md-primary-fg-color);
+  border-color: var(--esys-blue-03);
 }
 .md-typeset .elastisys > .admonition-title,
 .md-typeset .elastisys > summary {
-  background-color: rgba(43, 155, 70, 0.1);
+  background-color: var(--esys-gray-04);
 }
-.md-typeset .elastisys > .admonition-title::before,
-.md-typeset .elastisys > summary::before {
+.md-typeset .elastisys.elastisys > .admonition-title::before,
+.md-typeset .elastisys.elastisys > summary::before {
   background-image:
     url('../img/logos/elastisys-logo-icon.svg');
   background-size: cover;
-  -webkit-mask-image: none
-  mask-image: none
+  -webkit-mask-image: none;
+  mask-image: none;
+  background-color: inherit;
+}
+
+/* Configure the `elastisys-self-managed` custom admonition
+ * https://squidfunk.github.io/mkdocs-material/reference/admonitions/#custom-admonitions
+ */
+.md-typeset .admonition.elastisys-self-managed,
+.md-typeset details.elastisys-self-managed {
+  border-color: var(--esys-orange-03);
+}
+.md-typeset .elastisys-self-managed.elastisys-self-managed > .admonition-title,
+.md-typeset .elastisys-self-managed.elastisys-self-managed > summary {
+  background-color: var(--esys-orange-04);
+}
+.md-typeset .elastisys-self-managed.elastisys-self-managed > .admonition-title::before,
+.md-typeset .elastisys-self-managed.elastisys-self-managed > summary::before {
+  background-image:
+    url('../img/logos/elastisys-logo-icon.svg');
+  background-size: cover;
+  -webkit-mask-image: none;
+  mask-image: none;
+  background-color: inherit;
 }
 
 /* Add space around the footer */
