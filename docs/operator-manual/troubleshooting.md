@@ -13,7 +13,7 @@ This guide assumes that:
 
 * You have [pre-requisites](getting-started.md) installed.
 * Your environment variables, in particular `CK8S_CONFIG_PATH` is set, and `CLUSTER` set to either `sc` or `wc`.
-* Your config folder is available.
+* Your configuration folder is available.
 * `compliantkubernetes-apps` and `compliantkubernetes-kubespray` is available.
 
 !!!important
@@ -21,7 +21,7 @@ This guide assumes that:
     `./bin/ck8s-kubespray` references the `compliantkubernetes-kubespray` CLI
 
 !!!important
-    For some of the ansible commands below, you might require root privileges. To run commands as a privileged user with ansible, use the `--become, -b` flag.
+    For some of the Ansible commands below, you might require root privileges. To run commands as a privileged user with Ansible, use the `--become, -b` flag.
 
     Example:
     `ansible -i inventory.ini -b all -m ping`
@@ -38,7 +38,7 @@ ansible -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini all -m ping
 
 ### Are the Nodes "doing fine"?
 
-Dmesg should not display unexpected messages. [OOM](https://en.wikipedia.org/wiki/Out_of_memory) will show up here.
+`dmesg` should not display unexpected messages. [OOM](https://en.wikipedia.org/wiki/Out_of_memory) will show up here.
 
 ```bash
 ansible -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; dmesg | tail -n 10'
@@ -436,7 +436,7 @@ First try to delete the backup
 ./velero backup delete velero-daily-backup-20211005143248
 ```
 
-Then kill all the pods under the velero namespace
+Then kill all the pods under the `velero` Namespace:
 ```bash
 ./bin/ck8s ops kubectl wc delete pods -n velero --all
 ```

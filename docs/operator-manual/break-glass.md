@@ -21,9 +21,9 @@ When Dex or the OpenID provider is malfunctioning, the Platform Administrator mi
     ```
 ## Kubernetes User Access
 
-> **_NOTE:_** This is a temporary solution and access should be disabled once the issue with dex is resolved.
+> **_NOTE:_** This is a temporary solution and access should be disabled once the issue with Dex is resolved.
 
-If dex is broken, you can manually create a `kubeconfig` file for a user. While there are different ways to create `kubeconfig` files, we will will use the X.509 client certificates with OpenSSL. Follow the steps below to create a user `kubeconfig` file.
+If Dex is broken, you can manually create a `kubeconfig` file for a user. While there are different ways to create `kubeconfig` files, we will use the X.509 client certificates with OpenSSL. Follow the steps below to create a user `kubeconfig` file.
 
 1. Create a private key:
     ```
@@ -66,7 +66,7 @@ If dex is broken, you can manually create a `kubeconfig` file for a user. While 
     ```
     The certificate value is in Base64-encoded format under `status.certificate`. Put the content under `client-certificate-data:`.  And also get the base64 encoded content for the private key and put it under `client-key-data:`. To get the base64 encoded content `cat user1.key | base64 | tr -d '\n'`.
 
-    The kubeconfig file for `user1` user looks like:
+    The `kubeconfig` file for `user1` user looks like:
 
         ```yaml
         apiVersion: v1

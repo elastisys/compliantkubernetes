@@ -1,26 +1,63 @@
-# Brands, Organization and Project Names
+# Brands and Organization
 Atlassian
 Datatilsynet
-Elastisys
-ELASTISYS
+Goozo
+(?i)Elastisys
+Exoscale
 GMail
 IMY
+Spotahome
 Telavox
+Tempus
+Vivium
+Zalando
+
+# Project Names
+Ansible
+Ceph
+Configurer
+Dex
+etcd
+Falco
+Keycloak
+Grafana
+Graphviz
+Kubespray
+mkdocs
+OpenSearch
+systemd
+Tekton
+timesyncd
+Thanos
+Trivy
+Velero
 Yopass
 
 # General technical terms
 API
 (?i)allowlisting
+CISO
+CPU
 colocation
+datacenter
 (?i)downsampled
 failover
+LB
+loopback
+IDP
+IP
+offboarding
+onboarding
 SLA
+unencrypted
 VM
 
 # Kubernetes terms
 Autoscaler
-namespace
+CRD
+Namespace
 RBAC
+PVC
 
 # RabbitMQ terms
 vhost
@@ -30,6 +67,7 @@ alia
 (?i)arbitrations
 decompile
 DPA
+DPO
 facto
 jure
 (?i)majeure
@@ -38,3 +76,6 @@ kap
 subclause
 sublicense
 (?i)subprocessor
+
+# Swedish words
+skyddsklass

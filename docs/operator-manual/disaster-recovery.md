@@ -205,7 +205,7 @@ Data in OpenSearch Dashboards (saved searches, visualizations, dashboards, etc) 
 
 This will overwrite anything in the current `.opensearch_dashboards_x` index. If there is something new that should be saved, then [export](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_export) the saved objects and [import](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_import) them after the restore.
 
-There can be multiple `.opensearch_dashboards` indices in Opensearch, the current index should be the one you want to restore. To view your dashboard indices, follow these steps.
+There can be multiple `.opensearch_dashboards` indices in OpenSearch, the current index should be the one you want to restore. To view your dashboard indices, follow these steps.
 
 ```bash
 snapshot_name=<Snapshot name from previous step>
@@ -226,7 +226,7 @@ curl -kL -u "${user}:${password}" -X GET "${os_url}/_snapshot/${snapshot_repo}/$
 ```
 
 !!!note
-    If you visit the `"<os_url>/app/dashboards"` page in the Opensearch GUI after deleting the index and before restoring the index, another empty index `.opensearch_dashboards` will be created. You need to delete this manually, which can be done with
+    If you visit the `"<os_url>/app/dashboards"` page in the OpenSearch GUI after deleting the index and before restoring the index, another empty index `.opensearch_dashboards` will be created. You need to delete this manually, which can be done with
     ```bash
     `curl -kL -u "${user}:${password}" -X DELETE "${os_url}/.opensearch_dashboards?pretty"`
     ```
@@ -297,7 +297,7 @@ Instructions for how to restore Harbor can be found in `compliantkubernetes-apps
 ## Velero
 
 These instructions make use of the Velero CLI, you can download it [here](https://github.com/vmware-tanzu/velero/releases/tag/v1.7.1) (version 1.7.1).
-The CLI needs the env variable `KUBECONFIG` set to the path of a decrypted kubeconfig.
+The CLI needs the environment variable `KUBECONFIG` set to the path of a decrypted KUBECONFIG.
 Read more about Velero [here](../user-guide/backup.md).
 
 !!!note
@@ -335,7 +335,7 @@ velero restore create --from-schedule velero-daily-backup --wait
 ```
 
 This command will wait until the restore has finished.
-You can also do partial restorations, e.g. just restoring one namespace, by using different arguments.
+You can also do partial restorations, e.g. just restoring one Namespace, by using different arguments.
 You can also restore from manual backups by using the flag `--from-backup <backup-name>`
 
 Persistent Volumes are only restored if a Pod with the backup annotation is restored.
@@ -351,7 +351,7 @@ If a clean wipe is the desired behavior, then the volume must be wiped manually 
 
     Recover the encrypted bucket into the main S3 service and reconfigure Velero to use this bucket, then follow the regular instructions.
 
-    The references in Kubernetes might need to be deleted so Velero can resync from the bucket:
+    The references in Kubernetes might need to be deleted so Velero can resynchronize from the bucket:
 
     ```bash
     # Note that this is only backup metadata
@@ -432,21 +432,21 @@ This refers to the user Grafana, not the ops Grafana.
 
 Grafana is set up to be included in the daily Velero backup.
 We then include the Grafana deployment, pod, and PVC (including the data).
-Manual backups can be taken using velero (include the same resources).
+Manual backups can be taken using Velero (include the same resources).
 
 ### Restore
 
 To restore the Grafana backup you must:
 
 - Have Grafana installed
-- Delete the grafana deployment, PVC and PV
+- Delete the Grafana deployment, PVC and PV
 
     ```bash
     ./bin/ck8s ops kubectl sc delete deploy -n monitoring user-grafana
     ./bin/ck8s ops kubectl sc delete pvc -n monitoring user-grafana
     ```
 
-- Restore the velero backup
+- Restore the Velero backup
 
     ```bash
     velero restore create --from-schedule velero-daily-backup --wait
