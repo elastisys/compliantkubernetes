@@ -1,0 +1,40 @@
+# Brands, Organization and Project Names
+Atlassian
+Datatilsynet
+Elastisys
+ELASTISYS
+GMail
+IMY
+Telavox
+Yopass
+
+# General technical terms
+API
+(?i)allowlisting
+colocation
+(?i)downsampled
+failover
+SLA
+VM
+
+# Kubernetes terms
+Autoscaler
+namespace
+RBAC
+
+# RabbitMQ terms
+vhost
+
+# Legal terms
+alia
+(?i)arbitrations
+decompile
+DPA
+facto
+jure
+(?i)majeure
+kap
+(?i)severability
+subclause
+sublicense
+(?i)subprocessor
