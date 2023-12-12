@@ -177,7 +177,7 @@ Argo CD Notifications continuously monitors Argo CD applications and provides a 
 To configure Argo CD notifications, make sure you are allowed to update the current Kubernetes objects:
 
 - secret/argocd-notifications-secret
-- configmap/argocd-notifications-cm
+- `configmap/argocd-notifications-cm`
 
 For Elastisys Managed Argo CD, you should be able to modify those objects if you belong to any customer admin group, or if you are a customer admin user.
 
