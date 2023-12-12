@@ -170,6 +170,162 @@ Currently, Elastisys Managed Argo CD does not support using HashiCorp's Vault fo
 - [Vault considers its own storage to be outside of its threat model, and thus, Vault has no defenses in place if its backend is attacked](https://developer.hashicorp.com/vault/docs/internals/security)
 - [Vault also considers memory analysis attacks outside of its threat model, so Vault has no defense against it](https://developer.hashicorp.com/vault/docs/internals/security)
 
+## Argo CD Notifications
+
+Argo CD Notifications continuously monitors Argo CD applications and provides a flexible way to notify users about important changes in the application state. Using a flexible mechanism of [triggers](https://argocd-notifications.readthedocs.io/en/stable/triggers/) and [templates](https://argocd-notifications.readthedocs.io/en/stable/templates/) you can configure when the notification should be sent as well as notification content.
+
+To configure Argo CD notifications, make sure you are allowed to update the current Kubernetes objects:
+
+- `secret/argocd-notifications-secret`
+- `configmap/argocd-notifications-cm`
+
+For Elastisys Managed Argo CD, you should be able to modify those objects if you belong to any customer admin group, or if you are a customer admin user.
+
+In case you're not, ask your platform administrator to add you accordingly.
+
+### Triggers & Templates
+
+The trigger defines the condition when the notification should be sent. The definition includes name, condition and notification templates reference.
+
+The notification template is used to generate the notification content. Templates are meant to be reusable and can be referenced by multiple triggers.
+
+Both triggers & notification templates can be configured in `argocd-notifications-cm` ConfigMap.
+
+Argo CD Notifications includes the [catalog](https://argocd-notifications.readthedocs.io/en/stable/catalog/) of useful triggers and templates. So you can just use them instead of reinventing new ones.
+
+!!! note
+    The catalog triggers and templates can be found in the **argocd-notifications-cm** ConfigMap.
+
+    ```console
+    $ kubectl edit cm/argocd-notifications-cm -n argocd-system
+    ```
+
+    If you don't have any triggers or templates defined, you can add the [catalog template and trigger definitions](https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/catalog/install.yaml)
+
+    ```yaml
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+    name: argocd-notifications-cm
+    data:
+        context: |
+            argocdUrl: "https://argocd.example.com"
+        template.app-deployed: |
+            ...
+        template.app-health-degraded: |
+            ...
+        template.app-sync-failed: |
+            ...
+        template.app-sync-running: |
+            ...
+        template.app-sync-status-unknown: |
+            ...
+        template.app-sync-succeeded: |
+            ...
+        trigger.on-deployed: |
+            ...
+        trigger.on-sync-failed: |
+            ...
+        trigger.on-sync-running: |
+            ...
+        trigger.on-sync-status-unknown: |
+            ...
+        trigger.on-sync-succeeded: |
+            ...
+    ```
+
+### Notification Services
+
+The notification services represent integration with services such as slack, email or custom webhook. Services are configured in `argocd-notifications-cm` ConfigMap using `service.<type>.(<custom-name>)` keys and might reference sensitive data from `argocd-notifications-secret` Secret.
+
+Argo CD Notifications support multiple [service types](https://argocd-notifications.readthedocs.io/en/stable/services/overview/#service-types), and provide detailed steps on how to configure each service. To learn more, see [Notification services](https://argocd-notifications.readthedocs.io/en/stable/services/overview/).
+
+### Subscriptions
+
+The subscription to Argo CD application events can be defined using `notifications.argoproj.io/subscribe.<trigger>.<service>: <recipient>` annotation. For example, the following annotation subscribes two Slack channels to notifications about every successful synchronization of the Argo CD application:
+
+```console
+$ kubectl edit Application my-argo-application
+```
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-argo-application
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: my-channel1;my-channel2
+```
+
+### Example
+
+To configure Email service for example:
+
+1. Add Email username and password token to `argocd-notifications-secret` secret
+
+    ```console
+    $ echo -n "sender@example.com" | base64 -w0 # c2VuZGVyQGV4YW1wbGUuY29t
+    $ echo -n "secretPassword" | base64 -w0 #  c2VjcmV0UGFzc3dvcmQ=
+    $ kubectl edit -n argocd-system argocd-notifications-secret
+    ```
+    ```yaml
+    apiVersion: v1
+    kind: Secret
+    metadata:
+        name: argocd-notifications-secret
+        namespace: argocd-system
+    data:
+        email-username: c2VuZGVyQGV4YW1wbGUuY29t
+        email-password: c2VjcmV0UGFzc3dvcmQ=
+    ```
+
+2. Register Email notification service
+
+    ```console
+    $ kubectl edit -n argocd-system argocd-notifications-cm
+    ```
+
+    Add the service under the ConfigMap data
+
+    ```yaml
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+        name: argocd-notifications-cm
+    data:
+        service.email.gmail: |
+            username: $email-username
+            password: $email-password
+            host: smtp.gmail.com
+            port: 465
+            from: $email-username
+    ```
+    In case you want to use a separate SMTP server instead of gmail
+    ```yaml
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+        name: argocd-notifications-cm
+    data:
+        service.email.custom: |
+            username: $email-username
+            password: $email-password
+            host: smtp.custom.com
+            port: 587
+            from: $email-username
+    ```
+
+3. Subscribe to notifications by adding the notifications.argoproj.io/subscribe.on-sync-succeeded.gmail annotation to the Argo CD application:
+
+```console
+$ kubectl patch app my-argo-application -p '{"metadata": {"annotations": {"notifications.argoproj.io/subscribe.on-sync-succeeded.gmail":"receiver@example.com"}}}' --type merge
+```
+
+Now, if we try syncing an application, we will get the notification once sync is completed.
+
+!!! note
+    Email notification will not work if the sender has 2FA enabled.
+
+
 ## Further Reading
 
 * [Argo CD documentation](https://argo-cd.readthedocs.io/en/stable/)
