@@ -260,7 +260,7 @@ metadata:
 
 To configure Email service for example:
 
-1. Add Email username and password token to argocd-notifications-secret secret
+1. Add Email username and password token to `argocd-notifications-secret` secret
 
     ```console
     $ echo -n "sender@example.com" | base64 -w0 # c2VuZGVyQGV4YW1wbGUuY29t
