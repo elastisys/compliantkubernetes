@@ -147,6 +147,7 @@ nav:
       - 'Enforce Trusted Registries': 'user-guide/safeguards/enforce-trusted-registries.md'
       - 'Enforce No Latest Tag': 'user-guide/safeguards/enforce-no-latest-tag.md'
       - 'Enforce Job TTL': 'user-guide/safeguards/enforce-job-ttl.md'
+      - 'Default Pod Topology Spread Constraints': 'user-guide/safeguards/default-pod-topology-spread-constraints.md'
     - 'Additional Services':
       - 'Overview': 'user-guide/additional-services/index.md'
       - 'PostgreSQL': 'user-guide/additional-services/postgresql.md'

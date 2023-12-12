@@ -81,13 +81,16 @@ prometheusRule:
 ## Topology spread constraints rely on node labels to identify the topology domain(s) that each Node is in.
 ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
 ##
-topologySpreadConstraints:
-  - maxSkew: 1
-    whenUnsatisfiable: DoNotSchedule
-    topologyKey: kubernetes.io/hostname
-    ## Comment the line above and uncomment the line below if you want your application to tolerate Zone failures.
-    ## Ref: https://kubernetes.io/docs/reference/labels-annotations-taints/#topologykubernetesiozone
-    # topologyKey: topology.kubernetes.io/zone
+#topologySpreadConstraints:
+#  ## Compliant Kubernetes environments come with strong cluster-level default topology constraints.
+#  ## Only uncomment these lines if you need customization.
+#  ## Ref: https://elastisys.io/compliantkubernetes/user-guide/safeguards/default-pod-topology-spread-constraints/
+#  - maxSkew: 1
+#    whenUnsatisfiable: DoNotSchedule
+#    topologyKey: kubernetes.io/hostname
+#    ## Comment the line above and uncomment the line below if you want your application to tolerate Zone failures.
+#    ## Ref: https://kubernetes.io/docs/reference/labels-annotations-taints/#topologykubernetesiozone
+#    # topologyKey: topology.kubernetes.io/zone
 
 ## Network Policy configuration
 ## ref: https://kubernetes.io/docs/concepts/services-networking/network-policies/
