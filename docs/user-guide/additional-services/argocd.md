@@ -242,7 +242,7 @@ Argo CD Notifications support multiple [service types](https://argocd-notificati
 
 ### Subscriptions
 
-The subscription to Argo CD application events can be defined using notifications.argoproj.io/subscribe.<trigger>.<service>: <recipient> annotation. For example, the following annotation subscribes two Slack channels to notifications about every successful synchronization of the Argo CD application:
+The subscription to Argo CD application events can be defined using `notifications.argoproj.io/subscribe.<trigger>.<service>: <recipient>` annotation. For example, the following annotation subscribes two Slack channels to notifications about every successful synchronization of the Argo CD application:
 
 ```console
 $ kubectl edit Application my-argo-application
