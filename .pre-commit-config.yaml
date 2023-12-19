@@ -28,6 +28,13 @@ repos:
           - .codespellignore
         exclude: ^(site/.*|.*\.dot|.*\.svg|.*\.xml|.*\.min\.js)$
 
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v8.56.0
+    hooks:
+      - id: eslint
+        exclude: ^(user-demo/|docs/customer-quotes/|docs/tech-radar/)
+
+
   - repo: local
     hooks:
       - id: svg-must-embed
