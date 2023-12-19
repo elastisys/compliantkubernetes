@@ -19,11 +19,6 @@ tags:
 ---
 # Infrastructure Provider Audit
 
-!!!note
-    This section helps you implement ISO 27001, specifically:
-
-    * A.15 Supplier Relationships
-
 This page will help you do your due diligence and ensure you choose a Infrastructure Provider that provides a solid foundation for Compliant Kubernetes and your application.
 [Elastisys](https://elastisys.com) regularly uses this template to validate cloud partners, as required for ISO 27001 certification.
 
@@ -165,6 +160,11 @@ The remainder of this page contains open questions that you should ask your Infr
     1. Does your colocation provider provide additional services beyond physical facilities as well as electricity and Internet?
 1. When did you perform the last penetration test?
     1. Can you share anything about the major findings and how you resolved them?
+
+!!! elastisys-self-managed "For Elastisys Self-Managed Customers"
+    Feel free to skip the questions below.
+    They are designed for our [Managed Service](https://elastisys.com/managed-services/) and might not be relevant for you.
+    We share them here for the sake of full transparency.
 
 ## Legal issues
 
