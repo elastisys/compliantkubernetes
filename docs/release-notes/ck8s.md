@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.35.0](#v0350) - 2023-12-20
 - [v0.34.0](#v0340) - 2023-11-21
 - [v0.33.1](#v0331) - 2023-10-20
 - [v0.32.2](#v0322) - 2023-10-20
@@ -37,6 +38,28 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
+
+## v0.35.0
+
+Released 2023-12-20
+
+!!! danger "Security Notice(s)"
+
+    - Enabling "chroot" for the ingress-nginx controller is one way to limit nginx inside the ingress-nginx controller container from having access to list secrets cluster-wide.
+      Note that this also allows the controller to use the `unshare` and `clone` syscalls which are not normally allowed when using the default seccompProfile.
+
+!!! warning "Application Developer Notice(s)"
+
+    - As of Harbor v2.9, Notary V1 is **removed**. If you rely on this for artifact signing, you will need to migrate to one of the alternatives. You can read more about this [here](https://github.com/goharbor/harbor/wiki/Harbor-Deprecates-Notary-v1-Support-in-v2.9.0).
+
+### Feature(s)
+
+- Added option to run nginx in chroot
+- Added support for self-managed Kafka
+
+### Improvement(s)
+
+- Upgrade Harbor to v2.9.1
 
 ### v0.34.0
 
