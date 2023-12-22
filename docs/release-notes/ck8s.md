@@ -39,6 +39,18 @@
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
 
+## v0.34.1
+
+Released 2023-12-22
+
+### Improvement(s)
+
+- Updated trivy-operator helm chart to v0.19.1 and application to v0.17.1
+
+### Other(s)
+
+- bug - Fixed issue where large harbor backups would fail
+
 ## v0.35.0
 
 Released 2023-12-20
