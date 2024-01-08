@@ -114,7 +114,7 @@ See also:
 
 ## Environment
 
-One instance of a Compliant Kubernetes deployment. One Environment is compose of two [Kubernetes Clusters](#kubernetes-cluster), the [Management Cluster](#management-cluster) and [Workload Cluster](#workload-cluster).
+One instance of a Compliant Kubernetes deployment. One Environment is composed of two [Kubernetes Clusters](#kubernetes-cluster), the [Management Cluster](#management-cluster) and [Workload Cluster](#workload-cluster).
 
 Usage notes:
 
