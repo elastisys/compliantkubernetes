@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
+- [v2.23.0-ck8s2](#v2230-ck8s2) - 2024-01-11
 - [v2.23.0-ck8s1](#v2230-ck8s1) - 2023-10-16
 - [v2.22.1-ck8s1](#v2221-ck8s1) - 2023-07-27
 - [v2.21.0-ck8s1](#v2210-ck8s1) - 2023-02-06
@@ -21,6 +22,14 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/changelog/).
+
+## v2.23.0-ck8s2
+
+Released 2024-01-11
+
+### Updated
+
+- Fixed a bug that was making kubespray fail when running the `scale.yml` playbook.
 
 ## v2.23.0-ck8s1
 
