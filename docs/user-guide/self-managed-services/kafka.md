@@ -1,3 +1,9 @@
+---
+social:
+  cards_layout_options:
+    title: Kafka är jättebra    
+---
+
 Kafka® (self-managed)
 ===========
 
