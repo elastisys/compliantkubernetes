@@ -1,6 +1,6 @@
 site_name: Elastisys Compliant Kubernetes
 site_url: https://elastisys.io/
-site_description: Kubernetes platform designed for security and compliance with ISO27001 and EU regulations: GDPR, NIS2, …
+site_description: "Kubernetes platform designed for security and compliance with ISO27001 and EU regulations: GDPR, NIS2, …"
 site_author: Elastisys AB
 copyright: >-
   Copyright © Elastisys AB
