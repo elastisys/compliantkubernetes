@@ -4,6 +4,8 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.35.1](#v0351) - 2024-01-16
+- [v0.34.1](#v0341) - 2023-12-22
 - [v0.35.0](#v0350) - 2023-12-20
 - [v0.34.0](#v0340) - 2023-11-21
 - [v0.33.1](#v0331) - 2023-10-20
@@ -38,6 +40,14 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
+
+## v0.35.1
+
+Released 2024-01-16
+
+### Improvement(s)
+
+- Added more configuration options for Trivy-Operator
 
 ## v0.34.1
 
