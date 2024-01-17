@@ -65,10 +65,10 @@ To access the management UI, proceed as follows:
     export RABBITMQ_NAMESPACE=   # Get this from your administrator
 
     echo -n "RabbitMQ admin username: "
-    kubectl -n rabbitmq-system get secret rabbitmq-cluster-default-user -o jsonpath="{.data.username}" | base64 --decode && echo
+    kubectl -n "${RABBITMQ_NAMESPACE}" get secret "${RABBITMQ_CLUSTER}-default-user" -o jsonpath="{.data.username}" | base64 --decode && echo
 
     echo -n "RabbitMQ admin password: "
-    kubectl -n rabbitmq-system get secret rabbitmq-cluster-default-user -o jsonpath="{.data.password}" | base64 --decode && echo
+    kubectl -n "${RABBITMQ_NAMESPACE}" get secret "${RABBITMQ_CLUSTER}-default-user" -o jsonpath="{.data.password}" | base64 --decode && echo
     ```
 
     !!!danger
@@ -77,7 +77,7 @@ To access the management UI, proceed as follows:
 2. Start the port-forwarding:
 
     ```bash
-    kubectl port-forward -n ${RABBITMQ_NAMESPACE} svc/${RABBITMQ_CLUSTER} 15672
+    kubectl port-forward -n "${RABBITMQ_NAMESPACE}" "svc/${RABBITMQ_CLUSTER}" 15672
     ```
 
 3. Open the [admin dashboard](http://localhost:15672) (at http://localhost:15672) and log in using the credentials retrieved in step 1.
