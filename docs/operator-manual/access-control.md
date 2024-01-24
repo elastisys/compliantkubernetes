@@ -139,7 +139,7 @@ This is configured via `sc-config.yaml`
 opensearch:
   extraRoleMappings:
     # Application developer access
-    - mapping_name: kibana_user 
+    - mapping_name: kibana_user
       definition:
         users:
           - user@domain.tld
@@ -160,7 +160,7 @@ opensearch:
       definition:
         users:
           - user@domain.tld
-    # Administrator access 
+    # Administrator access
     - mapping_name: all_access
       definition:
         users:
