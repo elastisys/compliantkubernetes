@@ -4,6 +4,8 @@ tags:
 - BSI IT-Grundschutz APP.4.4.A2
 - BSI IT-Grundschutz APP.4.4.A10
 - HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
+- NIST SP 800-171 3.5.1
+- NIST SP 800-171 3.5.2
 ---
 
 External CI/CD Integration

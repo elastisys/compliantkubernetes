@@ -4,6 +4,7 @@ tags:
 - ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
 - HIPAA S17 - Security Awareness, Training, and Tools - Protection from Malicious Software - § 164.308(a)(5)(ii)(B)
 - MSBFS 2020:7 4 kap. 20 §
+- NIST SP 800-171 3.1.13
 ---
 
 # Harbor - private container registry

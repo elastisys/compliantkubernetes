@@ -5,6 +5,8 @@ tags:
 - ISO 27001 A.16 Information Security Incident Management
 - HIPAA S20 - Security Incident Procedures - § 164.308(a)(6)
 - MSBFS 2020:7 4 kap. 18 §
+- NIST SP 800-171 3.14.6
+- NIST SP 800-171 3.14.7
 ---
 # Intrusion Detection Dashboard
 

@@ -1,6 +1,8 @@
 ---
 tags:
 - MSBFS 2020:7 2 kap. 4 §
+- NIST SP 800-171 3.1.11
+- NIST SP 800-171 3.12.4
 ---
 # Architecture
 

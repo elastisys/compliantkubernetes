@@ -2,6 +2,7 @@
 tags:
 - ISO 27001 A.12.4.4 Clock Synchronization
 - MSBFS 2020:7 4 kap. 13 §
+- NIST SP 800-171 3.3.7
 ---
 # Clock Synchronization
 

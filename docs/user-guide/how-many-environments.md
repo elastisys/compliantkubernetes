@@ -8,6 +8,7 @@ tags:
 - BSI IT-Grundschutz APP.4.4.A1
 - BSI IT-Grundschutz APP.4.4.A15
 - MDR Annex VI UDI-related
+- NIST SP 800-171 3.4.4
 ---
 !!! elastisys "For Elastisys Managed Services Customers"
 

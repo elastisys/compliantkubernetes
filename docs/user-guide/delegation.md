@@ -9,6 +9,10 @@ tags:
 - HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
 - MSBFS 2020:7 4 kap. 3 §
 - MSBFS 2020:7 4 kap. 4 §
+- NIST SP 800-171 3.1.2
+- NIST SP 800-171 3.1.4
+- NIST SP 800-171 3.1.5
+- NIST SP 800-171 3.1.6
 ---
 
 # How to Delegate?

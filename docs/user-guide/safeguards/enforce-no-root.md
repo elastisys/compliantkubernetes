@@ -3,6 +3,7 @@ tags:
 - ISO 27001 A.9.4.4 Use of Privileged Utility Programmes
 - ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
 - ISO 27001 A.14.2.5 Secure System Engineering Principles
+- NIST SP 800-171 3.1.7
 ---
 
 # Reduce blast radius: Preventing forgotten roots

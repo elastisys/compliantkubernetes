@@ -3,6 +3,10 @@ description: How access to the Kubernetes API works in Elastisys Compliant Kuber
 tags:
 - HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
 - HSLF-FS 2016:40 4 kap. 2 § Styrning av behörigheter
+- NIST SP 800-171 3.1.13
+- NIST SP 800-171 3.5.4
+- NIST SP 800-171 3.5.5
+- NIST SP 800-171 3.5.6
 ---
 
 # Kubernetes API

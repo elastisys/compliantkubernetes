@@ -4,6 +4,8 @@ tags:
 - ISO 27001 A.12.4.1 Event Logging
 - ISO 27001 A.12.4.3 Administrator & Operator Logs
 - ISO 27001 A.16 Information Security Incident Management
+- NIST SP 800-171 3.1.13
+- NIST SP 800-171 3.12.3
 ---
 
 # Logging

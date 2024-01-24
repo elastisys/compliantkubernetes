@@ -4,6 +4,8 @@ tags:
     ISO 27001 A.14.1.1 Information Security Requirements Analysis &
     Specification
   - ISO 27001 A.14.2.4 Restrictions on Changes to Software Packages
+  - NIST SP 800-171 3.13.2
+  - NIST SP 800-171 3.13.3
 ---
 # Architectural Decision Log
 
