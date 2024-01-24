@@ -129,6 +129,8 @@ user:
 
 ## Users onboarding
 
+This describes how to create Super application developers
+
 ### OpenSearch
 
 This is configured via `sc-config.yaml`
@@ -166,3 +168,29 @@ opensearch:
         backend_roles:
           - group@domain.tld
 ```
+
+### Grafana
+
+1. Super application developer logs in to Grafana via OpenID
+
+2. Administrator logs in to Grafana via static admin user.
+!!!note
+    To get the static admin username and password you need to have access to the SC cluster and then run
+
+    `kubectl get secret user-grafana -n monitoring -o json | jq '.data | map_values(@base64d)'`
+
+3. Administrator promotes the OpenID user to Grafana admin at `grafana.domain.tld/admin/users`
+
+### Harbor
+
+1. Super application developer logs in to Harbor via OpenID
+
+2. Administrator logs in to Harbor via static admin user.
+!!!note
+    To get the static admin username and password you need to have access to the SC cluster and then run
+
+    `kubectl get secret harbor-init-secret -n harbor -o json | jq '.data."harbor-password"'`
+
+    Username is: admin
+
+3. Administrator promotes the OpenID user to Harbor admin at `grafana.domain.tld/harbor/users`
