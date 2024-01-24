@@ -6,6 +6,9 @@ tags:
 - HIPAA S18 - Security Awareness, Training, and Tools - Log-in Monitoring - § 164.308(a)(5)(ii)(C)
 - MSBFS 2020:7 4 kap. 17 §
 - HSLF-FS 2016:40 4 kap. 9 § Kontroll av åtkomst till uppgifter
+- NIST SP 800-171 3.3.3
+- NIST SP 800-171 3.3.5
+- NIST SP 800-171 3.3.6
 ---
 # Log Review
 

@@ -1,3 +1,7 @@
+---
+tags:
+- NIST SP 800-171 3.1.7
+---
 # Reduce blast radius: Enforcing restricted privileges
 
 This page helps you understand why warnings are emitted when deploying workloads similar to:

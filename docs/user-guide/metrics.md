@@ -3,6 +3,7 @@ description: How to work with monitoring metrics on Elastisys Compliant Kubernet
 tags:
 - ISO 27001 A.12.1.3 Capacity Management
 - ISO 27001 A.16 Information Security Incident Management
+- NIST SP 800-171 3.1.13
 ---
 
 # Metrics

@@ -16,6 +16,7 @@ tags:
 - HSLF-FS 2016:40 3 kap. 9 § Upphandling och utveckling
 - HSLF-FS 2016:40 3 kap. 14 § Fysiskt skydd av informationssystem
 - GDPR Art. 28 Processor
+- NIST SP 800-171 3.13.16
 ---
 # Infrastructure Provider Audit
 

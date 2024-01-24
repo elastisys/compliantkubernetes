@@ -12,6 +12,11 @@ tags:
 - MSBFS 2020:7 4 kap. 2 §
 - MSBFS 2020:7 4 kap. 7 §
 - HSLF-FS 2016:40 3 kap. 15 § Behandling av personuppgifter i öppna nät
+- NIST SP 800-171 3.1.20
+- NIST SP 800-171 3.4.7
+- NIST SP 800-171 3.13.1
+- NIST SP 800-171 3.13.6
+- NIST SP 800-171 3.13.8
 ---
 
 Network Model

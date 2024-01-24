@@ -3,6 +3,8 @@ description: How to configure your Identity Provider (IdP) for Single Sign-on (S
 tags:
 - HSLF-FS 2016:40 4 kap. 2 § Styrning av behörigheter
 - MSBFS 2020:7 4 kap. 5 §
+- NIST SP 800-171 3.1.1
+- NIST SP 800-171 3.3.2
 ---
 # Prepare your Identity Provider (IdP)
 

@@ -4,6 +4,8 @@ tags:
 - BSI IT-Grundschutz APP.4.4.A21
 - HIPAA S16 - Security Awareness and Training - Security Reminders - § 164.308(a)(5)(ii)(A)
 - MSBFS 2020:7 4 kap. 12 §
+- NIST SP 800-171 3.4.5
+- NIST SP 800-171 3.7.1
 ---
 # Maintaining and Upgrading your Compliant Kubernetes environment.
 

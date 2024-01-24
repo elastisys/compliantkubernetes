@@ -1,6 +1,8 @@
 ---
 tags:
 - ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
+- NIST SP 800-171 3.4.8
+- NIST SP 800-171 3.4.9
 ---
 <!--
 Note to contributors: Aim for the following format.
