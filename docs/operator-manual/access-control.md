@@ -93,9 +93,6 @@ harbor:
 
 ### Grafana
 
-!!!note
-    This section assumes that [elastisys/compliantkubernetes-apps/pull/450](https://github.com/elastisys/compliantkubernetes-apps/pull/450) is merged
-
 #### OPS Grafana
 
 ```yaml
@@ -129,7 +126,7 @@ user:
 
 ## Users onboarding
 
-This describes how to create Super application developers
+This describes how to create Application Developers who should be Administrators.
 
 ### OpenSearch
 
@@ -171,7 +168,7 @@ opensearch:
 
 ### Grafana
 
-1. Super application developer logs in to Grafana via OpenID
+1. Application Developer logs in to Grafana via OpenID
 
 2. Administrator logs in to Grafana via static admin user.
 !!!note
@@ -183,7 +180,7 @@ opensearch:
 
 ### Harbor
 
-1. Super application developer logs in to Harbor via OpenID
+1. Application Developer logs in to Harbor via OpenID
 
 2. Administrator logs in to Harbor via static admin user.
 !!!note
