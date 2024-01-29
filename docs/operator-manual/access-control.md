@@ -126,7 +126,7 @@ user:
 
 ## Users onboarding
 
-This describes how to create Application Developers who should be Administrators.
+This describes how to configure Compliant Kubernetes with the Application Developers who should be OpenSearch, Grafana or Harbor Administrators.
 
 ### OpenSearch
 
