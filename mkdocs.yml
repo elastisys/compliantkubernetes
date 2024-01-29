@@ -244,6 +244,7 @@ nav:
   - 'Release Notes':
     - 'Compliant Kubernetes': 'release-notes/ck8s.md'
     - 'CK8S Kubespray': 'release-notes/kubespray.md'
+    - 'CK8S Cluster API': 'release-notes/capi.md'
     - 'CK8S PostgreSQL': 'release-notes/postgres.md'
     - 'CK8S RabbitMQ': 'release-notes/rabbitmq.md'
     - 'CK8S Redis': 'release-notes/redis.md'
