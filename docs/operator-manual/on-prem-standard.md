@@ -32,7 +32,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     export CK8S_CONFIG_PATH=./
     export CK8S_ENVIRONMENT_NAME=<my-ck8s-cluster>
     export CK8S_CLOUD_PROVIDER=[exoscale|safespring|citycloud|elastx|aws|baremetal]
-    export CK8S_FLAVOR=[dev|prod] # defaults to dev
+    export CK8S_FLAVOR=[dev|prod|air-gapped] # defaults to dev
     export CK8S_PGP_FP=<PGP-fingerprint> # retrieve with gpg --list-secret-keys
     export DOMAIN=example.com # your domain
     export CLUSTERS=( "sc" "wc" )

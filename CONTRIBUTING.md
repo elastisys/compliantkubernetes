@@ -45,7 +45,7 @@ Examples:
 ```bash
 ## Config snippet, almost always requires human input
 export CK8S_ENVIRONMENT_NAME=my-environment-name
-#export CK8S_FLAVOR=[dev|prod] # defaults to dev
+#export CK8S_FLAVOR=[dev|prod|air-gapped] # defaults to dev
 export CK8S_CONFIG_PATH=~/.ck8s/my-cluster-path
 export CK8S_CLOUD_PROVIDER=# [exoscale|safespring|citycloud|aws|baremetal]
 export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
