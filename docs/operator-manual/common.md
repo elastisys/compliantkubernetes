@@ -149,7 +149,7 @@ compliantkubernetes-apps/bin/ck8s apply wc
 ### Settling
 
 !!!important
-    Leave sufficient time for the system to settle, e.g., request TLS certificates from LetsEncrypt, perhaps as much as 20 minutes.
+    Leave sufficient time for the system to settle, e.g., request TLS certificates from Let's Encrypt, perhaps as much as 20 minutes.
 
 Check if all helm charts succeeded.
 

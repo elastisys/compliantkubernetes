@@ -345,7 +345,7 @@ Released 2022-09-19
 
 #### Added
 
-- **Option to create custom solvers for letsencrypt issuers, including a simple way to add secrets**
+- **Option to create custom solvers for Let's Encrypt issuers, including a simple way to add secrets**
 - **Kube-bench runs on every node**
   Automated CIS tests are performed on each node using kube-bench
   Added a CIS kube-bench Grafana dashboard

@@ -56,7 +56,7 @@ If unsure, ask your Platform Administrators.
 !!! important
     Some steps can only be done by an administrator account for a managed Google service,such as Google Workspace or Cloud Identity. (See [this Google support page](https://support.google.com/a/answer/6375836?hl=en-GB).)
 
-1. Go to [Goole Cloud -- Credentials](https://console.cloud.google.com/apis/credentials).
+1. Go to [Google Cloud -- Credentials](https://console.cloud.google.com/apis/credentials).
 2. Create a new project through the top menu.
 3. In the new project, go to **OAuth consent screen** on the left side menu and create an internal consent screen.
 4. Go to **Enabled APIs & services** on the left side menu and then click **+ ENABLE APIS AND SERVICES**.

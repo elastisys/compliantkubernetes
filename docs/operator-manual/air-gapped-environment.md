@@ -16,7 +16,7 @@ The following is a generic system context diagram over an air-gapped environment
 
 !!!note
 
-    \* For Certificate Provisioning, you may want to allow DNS01 or HTTP01 challenges to a public certificate authority, such as [LetsEncrypt](https://letsencrypt.org/). However, if you want the whole environment to be truly air-gapped, then you need to figure out an air-gapped solution for PKI.
+    \* For Certificate Provisioning, you may want to allow DNS01 or HTTP01 challenges to a public certificate authority, such as [Let's Encrypt](https://letsencrypt.org/). However, if you want the whole environment to be truly air-gapped, then you need to figure out an air-gapped solution for PKI.
 
 ## Configuring Air-gapped Compliant Kubernetes Apps
 

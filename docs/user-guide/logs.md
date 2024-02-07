@@ -25,7 +25,7 @@ In Compliant Kubernetes, OpenSearch is separate from the production workload, he
 
 ## OpenSearch
 
-Raw logs in CK8s are normalized, filtered, and processed by [fluentd](https://www.fluentd.org/) and shipped to [OpenSearch](https://opensearch.org/) for storage and analysis. OpenSearch is derived from the fully open source version of Elasticsearch called  [Open Distro for Elasticsearch](https://logz.io/blog/open-distro-for-elasticsearch/).
+Raw logs in CK8s are normalized, filtered, and processed by [Fluentd](https://www.fluentd.org/) and shipped to [OpenSearch](https://opensearch.org/) for storage and analysis. OpenSearch is derived from the fully open source version of Elasticsearch called  [Open Distro for Elasticsearch](https://logz.io/blog/open-distro-for-elasticsearch/).
 
 OpenSearch provides a powerful, easy-to-use event monitoring and alerting system, enabling you to monitor, search, visualize your data among other things. OpenSearch Dashboards is used as visualization and analysis interface for OpenSearch for all your logs.
 
@@ -42,7 +42,7 @@ From here click "Visualize & analyze" to continue and you will be greeted with t
 
 Since we are concerned with searching logs and their visualization, we will focus on these three features indicated by the red rectangle in the figure above. If you are interested to know more about the rest please visit the [official OpenSearch Dashboards documentation](https://opensearch.org/docs/latest/dashboards/index/).
 
-Before we dive in further, let us discuss the type of logs ingested into OpenSearch. Logs in CK8s cluster are filtered and indexed by fluentd into four categories.
+Before we dive in further, let us discuss the type of logs ingested into OpenSearch. Logs in CK8s cluster are filtered and indexed by Fluentd into four categories.
 
 **Application level logs**
 
@@ -63,7 +63,7 @@ Let us dive into it then.
 
 ### Data Visualization and Exploration
 
-As you can see in the figure above, data visualization and exploration in OpenSearch Dashboards has three components: **Discover**, **Visualize** and **Dashboard**. The following section describes each components using examples.
+As you can see in the figure above, data visualization and exploration in OpenSearch Dashboards has three components: **Discover**, **Visualize** and **Dashboard**. The following section describes each component using examples.
 
 !!!note
     These following examples were created for Open Distro for Elasticsearch and Kibana, however the user experience is the same when using OpenSearch Dashboards.
@@ -291,7 +291,7 @@ This dashboard can be viewed to get a quick overview of the cluster's state.
 - ### other
     - error OR critical OR alert OR warning = System logs of priority 1-4
 - ### authlog
-    - number of authlog seassions = Authlog seassions
+    - number of authlog sessions = Authlog sessions
 
 ## Further Reading
 

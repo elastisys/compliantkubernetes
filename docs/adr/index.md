@@ -85,7 +85,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0006](0006-use-standard-kubeconfig-mechanisms.md) - Use Standard Kubeconfig Mechanisms
 * [ADR-0007](0007-make-monitoring-forwarders-storage-independent.md) - Make Monitoring Forwarders Storage Independent
 * [ADR-0008](0008-use-hostnetwork-or-loadbalancer-for-ingress.md) - Use HostNetwork or LoadBalancer for Ingress
-* [ADR-0009](0009-use-cluster-issuers-for-letsencrypt.md) - Use ClusterIssuers for LetsEncrypt
+* [ADR-0009](0009-use-cluster-issuers-for-letsencrypt.md) - Use ClusterIssuers for Let's Encrypt
 * [ADR-0010](0010-run-managed-services-in-workload-cluster.md) - Run managed services in Workload Cluster
 * [ADR-0011](0011-let-upstream-projects-handle-crds.md) - Let upstream projects handle CRDs
 * [ADR-0012](0012-do-not-persist-dex.md) - [Superseded by [ADR-0017](0017-persist-dex.md)] Do not persist Dex

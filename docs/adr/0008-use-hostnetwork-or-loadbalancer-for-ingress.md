@@ -36,7 +36,7 @@ Chosen options:
 
 2. Use Service Type LoadBalancer when available. This includes: AWS, Azure, GCP and CityCloud.
 
-Additional considerations: This means that, generally, it will not be possible to set up the correct DNS entries until *after* we apply Compliant Kubernetes Apps. There is a risk for "the Internet" -- LetsEncrypt specifically -- to perform DNS lookups too soon and cause negative DNS caches with a long lifetime. Therefore, placeholder IP addresses must be used, e.g.:
+Additional considerations: This means that, generally, it will not be possible to set up the correct DNS entries until *after* we apply Compliant Kubernetes Apps. There is a risk for "the Internet" -- Let's Encrypt specifically -- to perform DNS lookups too soon and cause negative DNS caches with a long lifetime. Therefore, placeholder IP addresses must be used, e.g.:
 
 ```
 *.$BASE_DOMAIN     60s A 203.0.113.123

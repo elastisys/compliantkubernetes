@@ -85,7 +85,7 @@ To start, make sure you configure the Kubernetes cluster with an image pull secr
 !!!important
     Using your own registry credentials as an image pull secret, instead of creating a robot account, is against best practices and may violate data privacy regulations.
 
-    Your registry credentials identify **you** and allow you to both push and pull images. A robot account should identify the Kubernetes cluster and be only allowed to pull images.
+    Your registry credentials identify **you** and allow you to both push and pull images. A robot account should identify the Kubernetes cluster and only be allowed to pull images.
 
 ```bash
 DOCKER_USER='robot$name'       # enter robot account name
@@ -120,7 +120,7 @@ git clone https://github.com/elastisys/compliantkubernetes/
 cd compliantkubernetes/user-demo
 ```
 
-Ensure you use the right registry project and image tag, i.e., those that you pushed in the [previous example](registry.md#build-and-push-the-image)
+Ensure you use the right registry project and image tag, i.e., those that you pushed in the [previous example](registry.md#build-and-push-the-image):
 
 ```bash
 REGISTRY_PROJECT=demo
