@@ -53,7 +53,7 @@ index_permissions:
   - search
 ```
 
-With `${DOMAIN}` set to the domain of your environment, the variables then needed to connect the becomes:
+With `${DOMAIN}` set to the domain of your environment, the variables then needed to connect becomes:
 
 ```bash
 export OS_PROTOCOL="https"
@@ -151,7 +151,7 @@ For more complex tasks checkout [the OpenSearch REST API reference](https://open
 ## Exporting indices
 
 With Elasticdump it is possible to export logs out to the console, to file, or to S3.
-In these example snippets we well export them to S3.
+In these example snippets we will export them to S3.
 To be able to do some management functions we will also use [s3cmd](https://github.com/s3tools/s3cmd), most importantly to be able to check for existing exports.
 
 Using S3 both for Elasticdump and s3cmd will require the following variables:

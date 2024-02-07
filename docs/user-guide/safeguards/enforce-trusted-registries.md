@@ -52,7 +52,7 @@ The resolution is rather simple. You have two options:
 !!!important
     Instead of adding a not-really-trusted registry to the set of trusted registries, prefer mirroring some public images in your Compliant Kubernetes registry.
 
-If your administrator has not enforced this policy yet, you can view current violations of the policy by running
+If your administrator has not enforced this policy yet, you can view current violations of the policy by running:
 ```bash
 kubectl get k8sallowedrepos.constraints.gatekeeper.sh require-harbor-repo -ojson | jq .status.violations
 ```

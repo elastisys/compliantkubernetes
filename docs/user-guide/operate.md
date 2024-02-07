@@ -19,7 +19,7 @@ Grafana visually displays the monitoring data that Prometheus has collected on y
 
 But Prometheus can also be instructed to collect specific metrics from your own application. Perhaps this is more useful to you than monitoring metrics that relate to cluster health (in particular if somebody else managed Elastisys Compliant Kubernetes for you).
 
-To instruct Promethus on how to do this, you create a [ServiceMonitor](https://blog.container-solutions.com/prometheus-operator-beginners-guide). This is a Kubernetes resource that configures Prometheus and specifies how to collect metrics from a particular application.
+To instruct Prometheus on how to do this, you create a [ServiceMonitor](https://blog.container-solutions.com/prometheus-operator-beginners-guide). This is a Kubernetes resource that configures Prometheus and specifies how to collect metrics from a particular application.
 
 {%
     include "./metrics.md"
@@ -92,6 +92,6 @@ Compliant Kubernetes can also be integrated with an [external CI/CD](ci-cd.md), 
 
 ## Next step? Going deeper!
 
-By now, you're fully up and running! You have an application, updating it is a breeze, and you can monitor it and look at its logs. The next step is to open the "Go deeper" section of this documentation and read up on more topics that interest you.
+By now, you're fully up and running! You have an application, updating it is a breeze, and you can monitor it and look at its logs. The next step is to open the "Go Deeper" section of this documentation and read up on more topics that interest you.
 
 Thank you for starting your journey beyond the clouds with Elastisys Compliant Kubernetes!

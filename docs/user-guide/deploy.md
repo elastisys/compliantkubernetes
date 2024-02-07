@@ -8,7 +8,7 @@ Hello again, Application Developer! In this step, we will walk you through what 
 
 ## Demo Application Available
 
-In case you are just reading along, or do not already have a [containerized application prepared](prepare.md), we have developed a demo application which allows you to quickly explore the benfits of Elastisys Compliant Kubernetes.
+In case you are just reading along, or do not already have a [containerized application prepared](prepare.md), we have developed a demo application which allows you to quickly explore the benefits of Elastisys Compliant Kubernetes.
 
 The provided artifacts, including Dockerfile and Helm Chart, allow you to quickly get started on your journey to become an agile organization with zero compromise on compliance with data protection regulations.
 

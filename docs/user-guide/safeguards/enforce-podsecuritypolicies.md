@@ -58,21 +58,21 @@ This standard includes the following:
 
 - Escalation and privileged mode are disallowed.
 
-    Usually applications don't need this unless they need to have low-level access to the nodes to access and manage hardware
+    Usually applications don't need this unless they need to have low-level access to the nodes to access and manage hardware.
 
-- Host namespaces, host networks, host ports, and host paths are disallowed
+- Host namespaces, host networks, host ports, and host paths are disallowed.
 
     Usually applications don't need this unless they need to have low-level access to the nodes to access and manage system resources.
 
-- Running with the seccomp profile `Localhost` or `RuntimeDefault` (set by default)
+- Running with the seccomp profile `Localhost` or `RuntimeDefault` (set by default).
 
-    This restricts the system call applications can make, [the `RuntimeDefault` profile is provided by containerd](https://github.com/containerd/containerd/blob/main/contrib/seccomp/seccomp_default.go#L55), the container runtime, with sane default that should not be an issue for most applications.
+    This restricts the system call applications can make, [the `RuntimeDefault` profile is provided by containerd](https://github.com/containerd/containerd/blob/main/contrib/seccomp/seccomp_default.go#L55), the container runtime, with sane defaults that should not be an issue for most applications.
 
-- Running as non root user (with a non-zero UID)
+- Running as non root user (with a non-zero UID).
 
     Recommended is to run a high UID and GID over 10000 that doesn't match with other running software.
 
-- Running with the `NET_BIND_SERVICE` capability added and `ALL` capabilities dropped (set by default)
+- Running with the `NET_BIND_SERVICE` capability added and `ALL` capabilities dropped (set by default).
 
     Usually applications don't need any capabilities unless they need to have low-level access to the nodes to access and manage system resources. The `NET_BIND_SERVICE` is an exception that allows processes to bind ports under 1024.
 

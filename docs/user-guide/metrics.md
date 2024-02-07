@@ -20,7 +20,7 @@ The requirements to comply with ISO 27001 are stated in ISO [27001:2013](https:/
 ### Capacity management
 Article A.12.1.3 states that "The use of resources must be monitored, tuned and projections made of future capacity requirements to ensure the required system performance to meet the business objectives."
 
-* Promethus and Grafana helps with this as the resource usage, such as storage capacity, CPU, and network usage can be monitored. Using visualization in Grafana, projections can be made as to future capacity requirements.
+* Prometheus and Grafana helps with this as the resource usage, such as storage capacity, CPU, and network usage can be monitored. Using visualization in Grafana, projections can be made as to future capacity requirements.
 
 The article goes on to say that "Capacity management also needs to be: Pro-active – for example, using capacity considerations as part of change management; Re-active – e.g. triggers and alerts for when capacity usage is reaching a critical point so that timely increases, temporary or permanent can be made."
 
@@ -32,7 +32,7 @@ Annex A.16.1 is about management of information security incidents, events and w
 Prometheus and Grafana can help with this by making it easier to:
 
 * collect evidence as soon as possible after the occurrence.
-* conduct an information security forensics analysis
+* conduct an information security forensics analysis.
 * communicate the existence of the information security incident or any relevant details to the leadership.
 
 ## Prometheus and Grafana in Compliant Kubernetes
@@ -51,8 +51,8 @@ Compliant Kubernetes installs the prometheus-operator by default. The Prometheus
 
 #### Accessing Prometheus
 If you want to access the web interface of Prometheus, proceed as follows:
-    1. Type: `kubectl proxy`
-    2. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/monitoring/services/kube-prometheus-stack-prometheus:9090/proxy/) in your browser
+1. Type: `kubectl proxy`
+2. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/monitoring/services/kube-prometheus-stack-prometheus:9090/proxy/) in your browser
 
 The Prometheus UI is only available by default starting in Compliant Kubernetes version 0.26.
 
@@ -100,7 +100,7 @@ The "Explore" mode is great for developing queries and exploring the data set. I
 
 ### Troubleshooting metrics collection
 
-It is possible to see if monitors are picked up by [accessing Prometheus' web interface](#accessing-prometheus). Navigating to "Status" > "Service Discovery" will show all monitors picked by Prometheus, and the "(x/y active targets)" will show how many targets of those monitors are active. Active targets are actively scraped by Prometheus and inactive targets are those that fail to match the selectors of the monitor.
+It is possible to see if monitors are picked up by [accessing Prometheus web interface](#accessing-prometheus). Navigating to "Status" > "Service Discovery" will show all monitors picked by Prometheus, and the "(x/y active targets)" will show how many targets of those monitors are active. Active targets are actively scraped by Prometheus and inactive targets are those that fail to match the selectors of the monitor.
 
 Monitors can be expanded further down to list and inspect its targets, within each one the "Discovered Labels" column will list information about the object in Kubernetes and in the "Target Labels" it will show the labels recorded from the target.
 

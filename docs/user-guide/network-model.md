@@ -58,7 +58,7 @@ IP addresses of Pods are not stable. For example, the rollout of a new container
 
 ## Ingress
 
-Your End Users should never ever access the private network directly. Instead external access is enabled by creating Ingress objects. Compliant Kubernetes already comes with cert-manager and is already configured with a ClusterIssuer. A secure ACME protocol is used to issue and rotate certificates using the [LetsEncrypt](https://letsencrypt.org/) public service.
+Your End Users should never ever access the private network directly. Instead external access is enabled by creating Ingress objects. Compliant Kubernetes already comes with cert-manager and is already configured with a ClusterIssuer. A secure ACME protocol is used to issue and rotate certificates using the [Let's Encrypt](https://letsencrypt.org/) public service.
 
 Assuming you configured a Service and a Deployment for you application, making End Users access your application involves two steps:
 
@@ -77,7 +77,7 @@ demo.example.com. 900 CNAME app.$DOMAIN.
 
 where `$DOMAIN` is the environment-specific variable [you received from the administrator](prepare.md#access-your-web-portals). The line above is presented in [DNS Zone file](https://en.wikipedia.org/wiki/Zone_file) format and is widely accepted by DNS providers.
 
-After configuration, make sure the DNS record is properly configured and propagaged, by typing:
+After configuration, make sure the DNS record is properly configured and propagated, by typing:
 
 ```bash
 host -a demo.example.com.
@@ -142,7 +142,7 @@ spec:
 
     ![HTTP request headers shown in the user demo](img/http-request-headers.png)
 
-## LetsEncrypt
+## Let's Encrypt
 
 Let’s Encrypt is a certificate authority that provides free SSL/TLS certificates via an automated process. Their certificates are accepted by most of today’s browsers.
 
@@ -170,7 +170,7 @@ spec:
 2.  Reference to the issuer to use.
 3.  The created certificate is stored in this secret.
 
-And you can directly link a certificate to an Ingress object :
+And you can directly link a certificate to an Ingress object:
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -205,26 +205,26 @@ spec:
 
 ### Let's Encrypt Environments
 
-LetsEncrypt provides two environments as part of their ACME V2 standardization: Staging & Production.
+Let's Encrypt provides two environments as part of their ACME V2 standardization: Staging & Production.
 
-The ACME URL for LetsEncrypt ACME v2 staging environment is: https://acme-staging-v02.api.letsencrypt.org/directory
+The ACME URL for Let's Encrypt ACME v2 staging environment is: https://acme-staging-v02.api.letsencrypt.org/directory
 
-The ACME URL for LetsEncrypt ACME v2 production environment is: https://acme-v02.api.letsencrypt.org/directory
+The ACME URL for Let's Encrypt ACME v2 production environment is: https://acme-v02.api.letsencrypt.org/directory
 
 Both environments serve to issue valid certificates, the difference is the CA, on staging, the CA is not trusted by any application, web browser ..
 
 We highly recommend testing against the Let’s Encrypt staging environment and use it for any non-production workloads. This will allow you to get things right before issuing trusted certificates and reduce the chance of you running up against rate limits. It should be to test that your client is working fine and can generate the challenges, certificates…
 
 !!!important
-    Certificates issued by the LetsEncrypt staging environment are signed by untrusted authorities, similar to self-signed certificates. They are typically not used in production environments.
+    Certificates issued by the Let's Encrypt staging environment are signed by untrusted authorities, similar to self-signed certificates. They are typically not used in production environments.
 
 ### Rate Limits
 
-LetsEncrypt provides rate-limits on generated certificates to ensure fair usage across all clients. The production environment limits can be exceeded more frequently in environments certificates are installed or reinstalled frequently. This can result in failed installations due to rate limit exceptions on certificate generation.
+Let's Encrypt provides rate-limits on generated certificates to ensure fair usage across all clients. The production environment limits can be exceeded more frequently in environments certificates are installed or reinstalled frequently. This can result in failed installations due to rate limit exceptions on certificate generation.
 
-In such environments, it is better to use the LetsEncrypt staging environment, which has much higher limits than the production environment.
+In such environments, it is better to use the Let's Encrypt staging environment, which has much higher limits than the production environment.
 
-The default rate limits for the production environment are listed in the following page by letencrypt : [Production Rate Limits](https://letsencrypt.org/docs/rate-limits/).
+The default rate limits for the production environment are listed in the following page by Let's Encrypt: [Production Rate Limits](https://letsencrypt.org/docs/rate-limits/).
 
 The staging environment uses the same rate limits as described for the production environment with some exceptions that are listed here : [Staging Rate Limits](https://letsencrypt.org/docs/staging-environment/).
 

@@ -32,7 +32,7 @@ To fix this, you have the following options:
 
 - Use a meaningful tag for your images i.e. `v1.0.0`.
 
-If your administrator has not enforced this policy yet, you can view current violations of the policy by running
+If your administrator has not enforced this policy yet, you can view current violations of the policy by running:
 ```bash
 kubectl get k8sdisallowedtags.constraints.gatekeeper.sh container-image-must-not-have-disallowed-tags -ojson | jq .status.violations
 ```

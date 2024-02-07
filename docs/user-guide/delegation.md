@@ -100,7 +100,7 @@ kubectl apply -f my-role-binding.yaml
 
 ### Add a User admin
 
-In Compliant Kubernetes v0.21.0 User admins can now add more `User admins` themselves.
+Since Compliant Kubernetes v0.21.0 User admins can now add more `User admins` themselves.
 
 #### Steps:
 

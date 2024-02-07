@@ -43,7 +43,7 @@ The following are instructions for backing up and restoring resources.
 
 Compliant Kubernetes takes a daily backup of all Kubernetes Resources in all user namespaces. Persistent Volumes will be backed up if they are tied to a Pod. If backups are not wanted the label `compliantkubernetes.io/nobackup` can be added to opt-out of the daily backups.
 
-Application metrics (Grafana) and application log (Kibana) dashboards are also backup up by default.
+Application metrics (Grafana) and application log (OpenSearch) dashboards are also backed up by default.
 
 By default, backups are stored for 720 hours (30 days).
 

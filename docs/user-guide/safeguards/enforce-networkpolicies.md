@@ -23,7 +23,7 @@ NetworkPolicies are useful in two cases: segregating tenants hosted in the same 
 
 Say you want to host a separate instance of your application for each tenant. For example, your end-users may belong to different -- potentially competing -- organizations, and you promised them to take extra care of not mixing their data. Say you want to reduce complexity by hosting all tenants inside the same environment, but without compromising data protection.
 
-Each application instance could be installed as a separate Helm Release, perhaps even in its own Namespace. These instances should be segregated from other application instances using NetworkPolicies. This insures that network traffic from one application instance cannot reach another application instance. Besides reducing attack surface, it also prevents embarrassing mistakes, like connecting one application to the database of another.
+Each application instance could be installed as a separate Helm Release, perhaps even in its own Namespace. These instances should be segregated from other application instances using NetworkPolicies. This ensures that network traffic from one application instance cannot reach another application instance. Besides reducing attack surface, it also prevents embarrassing mistakes, like connecting one application to the database of another.
 
 ## Further segregation of application components
 
@@ -44,7 +44,7 @@ Error: admission webhook "validation.gatekeeper.sh" denied the request: [denied 
 
 Then you are missing NetworkPolicies which select your Pods. The [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/networkpolicy.yaml) gives a good example to get you started.
 
-If your administrator has not enforced this policy yet, you can view current violations of the policy by running
+If your administrator has not enforced this policy yet, you can view current violations of the policy by running:
 ```bash
 kubectl get k8srequirenetworkpolicy.constraints.gatekeeper.sh require-networkpolicy -ojson | jq .status.violations
 ```

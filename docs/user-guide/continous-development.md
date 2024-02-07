@@ -44,7 +44,7 @@ skaffold init
 This command will scan the current project for images to build and Kubernetes manifests to deploy. For each image that
 Skaffold finds you will be prompted to specify how to build them, or if they are not built by the current project.
 
-The first image Skaffold finds is busybox, however this image is not built from this project, so choose
+The first image Skaffold finds is busybox, however this image is not built from this project, so choose:
 `None (image not built from these sources)`
 
 ![Skaffold init Output1](img/skaffold-busybox.png)
@@ -60,7 +60,7 @@ Skaffold will then create the `skaffold.yaml` file containing our configuration.
 Helm Chart that deploys the `user-demo` image.
 
 The `skaffold.yaml` must then be configured to use the correct domain and project for the image
-([More info](registry.md#configure-container-registry-credentials)). You need push access to this repository.
+([More info](registry.md#configure-container-registry-credentials)). You need push access to this repository
 (Optionally add a hostname to access the application).
 
 ```diff
@@ -79,7 +79,7 @@ build:
 +   ingress.hostname: demo.<DOMAIN>     # (Optional)
 ```
 
-If the repository is private, a pull secret must be created to use it in Kubernetes, see [Configure an Image Pull Secret](kubernetes-api.md#configure-an-image-pull-secret)
+If the repository is private, a pull secret must be created to use it in Kubernetes, see [Configure an Image Pull Secret](kubernetes-api.md#configure-an-image-pull-secret).
 
 ### Developing
 
