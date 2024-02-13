@@ -12,34 +12,47 @@ Keeping the application secure means having sufficient capacity in the environme
 
 Compliant Kubernetes environments are set up to withstand either:
 
-- a single Node failure (Node resilient); or
+- a single Node failure per Node Group (Node resilient); or
 - a single Zone failure (Zone resilient).
 
-Zone resilient environments are set up over three Zones, two active and one arbiter. The arbiter only runs some control-plane components (e.g., Kubernetes Data Plane, Ceph Mon), whereas the active Zones run both control-plane and data-plane components (e.g., Ceph OSD, Kubernetes data plane Nodes).
+Node resilient environments are set up with enough resources allocated to withstand a single Node failure on a per Node Group basis (e.g., control-plane, worker). In other words, the environment should be able to withstand a control-plane Node and worker Node failing simultaneously.
+
+Zone resilient environments are set up over three Zones. All components that have HA capabilities will be spread across all three Zones, such that the environment can withstand a complete Zone failure (e.g., Kubernetes Control Plane, Ceph Mon, Opensearch etc.).
 
 ## Upscaling
 
+Compliant Kubernetes uses a combination of alerts for both individual Nodes as well as Node Groups, which are also monitored and visualized in a Grafana dashboard.
+
 ### When?
 
-Compliant Kubernetes triggers a P2 alert when any capacity dimension is predicted to exceed 66% (for Node resilient) or 50% (for Zone resilient) within 3 days.
+Compliant Kubernetes triggers a P1 alert when:
 
-That was very information dense, so let's break it down.
+- The average CPU usage for a Node or Node Group, over one hour, is above 95%.
+- The average memory usage for a Node or Node Group, over one hour, is above 85%.
 
-* **Why a P2 alert?** P2 alerts are events that need to be dealt with within a business day. Capacity can be easily predicted and added in advance. Excess capacity is cheaper than frustrated administrators. There is no need to disturb anyone's sleep.
-* **What capacity dimensions?**
+
+* **Why a P1 alert?** P1 alerts are events that need immediate attention, which makes them suitable for scenarios with a higher usage threshold over a shorter timespan. If the alert is triggered for a single Node, the administrator can attempt to redistribute the workload more evenly across the Node Group. If the alert is triggered for a Node Group, that Node Group needs to be scaled up.
+
+Compliant Kubernetes triggers a P2 alert when:
+
+- The average CPU or memory usage for a Node Group, over 24 hours, is above 75%.
+
+* **Why a P2 alert?** P2 alerts are events that need to be dealt with within a business day. This makes them suitable for scenarios with a lower usage threshold over a longer timespan, giving administrators enough time to take action. Excess capacity is cheaper than frustrated administrators. There is no need to disturb anyone's sleep.
+
+### Metrics
+
+* **Why memory and CPU usage?**
+  * These are the resource metrics that are directly tied to the Nodes, and represent how much of the resource is actually used and how much is available. If usage gets close to 100% of capacity, it will start impacting applications.
+  * That isn't to say that these are the only capacity metrics to take into account. Other metrics are useful too, but are often not cause for an immediate scale-up and instead require further investigation. These other metrics include:
     * CPU:
         * sum of (Kubernetes) CPU requests to CPU allocatable;
-        * sum of CPU used to CPU allocatable;
-        * load average: since this is not a percentage, scale up when above 3;
+        * load average;
     * Memory:
         * sum of (Kubernetes) memory request to memory allocatable;
-        * sum of memory [non-available](https://superuser.com/questions/980820/what-is-the-difference-between-memfree-and-memavailable-in-proc-meminfo) to memory total;
     * Storage:
         * host disk used to size;
         * PersistentVolumeClaim used to size;
         * Rook/Ceph OSD used to size;
-* **Why 66% or 50%?** Most Node-resilient Kubernetes clusters will feature 3 Nodes (see discussion below about too many Nodes). Hence, 1 extra Node means 66% capacity. Zone-resilient environments need 50% extra capacity, so that each active Zone can take over the load of the other active Zone.
-* **Why within 3 days?** This should ensure sufficient time to act on the capacity shortage, without ruining anyone's weekend.
 
 !!!note
     Compliant Kubernetes can be configured to [require resource requests](../user-guide/safeguards/enforce-resources.md) for all Pods.
@@ -55,10 +68,6 @@ If the cluster has 6 Nodes, consider consolidating to 3 Nodes of twice-the-size 
 Before doing this, get in touch with Application Developers to ensure they don't have Kubernetes scheduling constraints that would cause issues on the consolidated environment.
 
 If you are about to double the number of Nodes, get in touch with Application Developers to ensure their application is not misbehaving, before upscaling.
-
-### Optimization
-
-If the cluster has at least 5 Nodes, consider reducing the watermark to 80% to reduce extra capacity.
 
 ## Downscaling
 
@@ -81,8 +90,7 @@ The capacity of the environment should be regularly reviewed, for example, after
 
 ### How?
 
-If any capacity dimension -- as defined above -- was below 33% for at least 3 days, then remove one Node at a time, until capacity is above 33%.
-Make sure to drain and cordon the Node before decommissioning it.
+If a decision has been made to downscale, make sure to drain and cordon the Node before decommissioning it.
 
 If you are about to go below 3 Nodes, consider replacing the Nodes with 6 Nodes of half-the-size before downscaling.
 Before doing this, get in touch with Application Developers to ensure they don't have Kubernetes scheduling constraints that would  cause issues on the consolidated environment.
