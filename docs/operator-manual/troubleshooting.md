@@ -169,7 +169,7 @@ ansible-inventory -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini --list 
 
 `ansible_host` is usually the public IP, while `ip` is usually the private IP.
 
-## Node cannot be access via SSH
+## Node cannot be accessed via SSH
 
 !!!important
     Make sure it is "not you". Are you well connected to the VPN? Is this the only Node which lost SSH access?
