@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.36.0](#v0360) - 2024-02-12
 - [v0.34.2](#v0342) - 2024-01-16
 - [v0.35.1](#v0351) - 2024-01-16
 - [v0.34.1](#v0341) - 2023-12-22
@@ -41,6 +42,24 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
+
+## v0.36.0
+
+Released 2024-02-12
+
+### Feature(s)
+
+- Added some initial disk performance alerts
+- Added probe ingress to monitor services
+
+### Improvement(s)
+
+- Upgrade Velero to v1.11.1
+
+### Other(s)
+
+- bug - Fixed issue where large harbor backups would fail
+- clean-up - Removed the ciskubernetesbenchmark dashboard from Grafana
 
 ## v0.34.2
 
