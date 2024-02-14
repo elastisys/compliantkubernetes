@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
+- [v2.24.0-ck8s1](#v2240-ck8s1) - 2024-02-08
 - [v2.23.0-ck8s2](#v2230-ck8s2) - 2024-01-11
 - [v2.23.0-ck8s1](#v2230-ck8s1) - 2023-10-16
 - [v2.22.1-ck8s1](#v2221-ck8s1) - 2023-07-27
@@ -23,19 +24,26 @@
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/changelog/).
 
-## v2.23.0-ck8s2
+### v2.24.0-ck8s1
+
+#### Updated
+
+- **Updated kubespray to `v2.24.0`** <br/>
+    Kubernetes version upgraded to [v1.28.6](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.28.md#changelog-since-v1270). <br/>
+
+### v2.23.0-ck8s2
 
 Released 2024-01-11
 
-### Updated
+#### Updated
 
 - Fixed a bug that was making kubespray fail when running the `scale.yml` playbook.
 
-## v2.23.0-ck8s1
+### v2.23.0-ck8s1
 
 Released 2023-10-16
 
-### Updated
+#### Updated
 
 - Rook version v1.11.9 and Ceph v17.2.6
 - **Updated kubespray to `v2.23.0`** <br/>
