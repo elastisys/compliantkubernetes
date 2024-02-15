@@ -132,7 +132,7 @@ For more information about using Keycloak to secure/protect your applications, s
 - [Production Configuration](https://www.keycloak.org/server/configuration-production)
 - [Reverse Proxy](https://www.keycloak.org/server/reverseproxy)
     - [Ingress Nginx](https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/)
-    - [Oauth2-Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/oauth_provider#keycloak-auth-provider)
+    - [Oauth2-Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak)
         - Note: the “oidc-issuer-url” may be outdated in the guide. See [this issue.](https://stackoverflow.com/questions/70577004/keycloak-could-not-find-resource-for-full-path)
         - Note: Keycloak realm steps may be different if you are using the new admin console. Instructions for that can be found on their [github](https://github.com/oauth2-proxy/oauth2-proxy/blob/master/docs/docs/configuration/providers/keycloak_oidc.md).
 - [Securing your applications](https://www.keycloak.org/docs/latest/securing_apps/index.html)
