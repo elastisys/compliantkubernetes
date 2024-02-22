@@ -13,7 +13,7 @@ TimescaleDB®
         * A full backup is taken every day between 0:00 am and 6:00 am CET. The backup retention period is 30 days unless otherwise requested by the customer.
         * Point-in-Time Recovery (PITR) is provided for the last 7 days with a recovery point objective of 5 minutes.
         * Long-term backup schemes can be enabled after discussion with the customer.
-    * **Only open-source features are included**
+    * **Only Apache 2 edition features are included, read more about why [here](../../ciso-guide/faq.md).**
     * **Monitoring, security patching and incident management**: included.
 
     For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification-managed-services-only).
