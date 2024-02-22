@@ -125,6 +125,12 @@
       @media (max-width: 960px) {
         padding: 0;
       }
+
+      img {
+        /* Make logos fit in a uniform row */
+        max-height: 50px;
+        width: auto;
+      }
     }
   }
 
