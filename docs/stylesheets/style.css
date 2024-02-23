@@ -116,6 +116,11 @@
     padding: 0;
   }
 }
+.md-content .landing-page .columns-always li img {
+  /* Make logos fit in a uniform row */
+  max-height: 50px;
+  width: auto;
+}
 .md-content .landing-page img,
 .md-content .landing-page embed {
   width: 100%;

@@ -84,9 +84,9 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 <ul class="columns-always">
     <li><img src="img/logos/orgs/carasent.png" alt="Logo of Carasent" /></li>
     <li><img src="img/logos/orgs/elsa.svg" alt="Logo of Elsa Science" /></li>
-    <li><img src="img/logos/orgs/vivium.png" alt="Logo of Vivium" /></li>
+    <li><img src="img/logos/orgs/prorenata.svg" alt="Logo of Prorenata" /></li>
     <li><img src="img/logos/orgs/tempus.png" alt="Logo of Tempus" /></li>
-    <li><img src="img/logos/orgs/goozo.png" alt="Logo of Goozo" /></li>
+    <li><img src="img/logos/orgs/rise-logo-black.svg" alt="Logo of RISE" /></li>
 </ul>
 
 <section>
