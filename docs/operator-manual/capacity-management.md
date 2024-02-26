@@ -19,6 +19,16 @@ Node resilient environments are set up with enough resources allocated to withst
 
 Zone resilient environments are set up over three Zones. All components that have HA capabilities will be spread across all three Zones, such that the environment can withstand a complete Zone failure (e.g., Kubernetes Control Plane, Ceph Mon, Opensearch etc.).
 
+## Defining Node Groups
+
+Node Groups are meant to represent a logical grouping of Nodes, for example the worker Nodes in a Cluster. In practice, these Node Groups are defined by labeling all Nodes with the name of the Node Group that they belong to:
+
+```bash
+kubectl label node <node-name> elastisys.io/node-group=<node-group>
+```
+
+These labels are required for the monitoring and alerting described on this page to function.
+
 ## Upscaling
 
 Compliant Kubernetes uses a combination of alerts for both individual Nodes as well as Node Groups, which are also monitored and visualized in a Grafana dashboard.
