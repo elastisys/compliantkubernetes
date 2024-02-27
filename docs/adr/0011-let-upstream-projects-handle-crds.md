@@ -1,6 +1,6 @@
-# Let upstream projects handle CRDs
+# [Superseded by [ADR-0046](0046-handle-crds.md)] Let upstream projects handle CRDs
 
-* Status: accepted
+* Status: superseded by [ADR-0046](0046-handle-crds.md)
 * Deciders: Compliant Kubernetes Arch Meeting
 * Date: 2021-04-29
 
