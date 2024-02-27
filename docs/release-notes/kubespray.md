@@ -3,6 +3,7 @@
 
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
+- [v2.23.0-ck8s3](#v2230-ck8s3) - 2024-02-27
 - [v2.24.0-ck8s1](#v2240-ck8s1) - 2024-02-08
 - [v2.23.0-ck8s2](#v2230-ck8s2) - 2024-01-11
 - [v2.23.0-ck8s1](#v2230-ck8s1) - 2023-10-16
@@ -23,6 +24,14 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/changelog/).
+
+### v2.23.0-ck8s3
+
+#### Updated
+
+- Upgrade containerd to 1.7.13, runc to 1.1.12 and Kubernetes to 1.27.10
+
+    This is needed to fix [CVE-2024-21626](https://github.com/advisories/GHSA-xr7r-f8xq-vfvv)
 
 ### v2.24.0-ck8s1
 
