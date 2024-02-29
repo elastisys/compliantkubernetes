@@ -62,13 +62,14 @@ If the status is `Ok` then the subnamespace is ready to go.
 
 ## Resource Propagation
 
-When a subnamespace is created all `Roles` and `RoleBindings` will propagate from the parent namespace to the descendant namespace to ensure that correct access is set. This is what lets you apply namespace-scoped RBAC resources to multiple namespaces at once.
+When a subnamespace is created all `Roles`, `RoleBindings` and `NetworkPolicies` will propagate from the parent namespace to the descendant namespace to ensure that correct access is set. This is what lets you apply namespace-scoped RBAC resources to multiple namespaces at once.
 Propagated copies cannot be modified, these types of resources cannot be created in a parent namespace if it conflicts with a resource in a descendant namespace.
-To put an exception annotate the `Role` or `RoleBinding` with `propagate.hnc.x-k8s.io/none: "true"` to prevent if from being propagated at all.
+To put an exception, annotate the `Role`, `RoleBinding` or `NetworkPolicy` with `propagate.hnc.x-k8s.io/none: "true"` to prevent it from being propagated at all.
 Another option is to only propagate to selected descendant namespaces use `propagate.hnc.x-k8s.io/treeSelect: ...`, include descendant namespaces with `<descendant-namespace>` or exclude namespaces with `!<descendant-namespace>`.
 
-!!!note
-    In Compliant Kubernetes `v0.27.0` and later `NetworkPolicies` will also propagate from the parent namespace to the descendant namespace just like `Roles` and `Rolebindings`.
+### Opt-in Propagation
+
+HNC has the option to enable opt-in propagation for additional resources such as `Secrets`. This allows you to specify additional resources that you want propagated, but only if the object has a valid [selector annotation](https://github.com/kubernetes-sigs/hierarchical-namespaces/blob/master/docs/user-guide/how-to.md#limit-the-propagation-of-an-object-to-descendant-namespaces) set, while ignoring others. If you want to enable this feature, you can file a service ticket or contact your Platform Administrator with a list of resources that you want it enabled for.
 
 ## Further Reading
 
