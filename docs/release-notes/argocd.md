@@ -16,21 +16,15 @@ Released 2024-01-30
 
 - Updated ArgoCD to `v2.9.5`.
 
-<!-- -->
-> [!IMPORTANT]
-> **Platform Administrator Notice(s)**
-> - Application Developers can with these change choose to either use `age` or `gpg` encryption to use with their Helm secrets, as long as an Platform Administrator configures ArgoCD with the correct `helmSecrets.type` for them.
-> - Customer access to the Argo CD GUI is now configured through `customerAdminGroups`, `customerDevGroups` and/or `customerAdminUsers`.
-<!-- -->
-> [!NOTE]
-> **Application Developer Notice(s)**
-> - Application Developers now have to give Secret  `helm-secrets-private-keys` in the `argocd-system` namespace (used for storing encryption keys) a different label-value than before. The label has to be: `argocd.argoproj.io/secret-type=helm-secrets`The label for Secrets named `repo-*` remains the same, i.e.: `argocd.argoproj.io/secret-type=repository`.
-> - Fixes so that Application Developers have correct permissions for getting and editing argo notifications configmap in the argocd-system namespace.
+
+#### Changed
+
+- Secret  `helm-secrets-private-keys` in the `argocd-system` namespace (used for storing encryption keys) now uses a different label-value than before. The label has to be: `argocd.argoproj.io/secret-type=helm-secrets`
 
 #### Added
 
-- Added networkpolicy generator chart, rules and policies
-- Added templating for supporting age
+- Added networkpolicies for Argo CD components
+- Added support for age encryptied helm secrets
 - Added vals as a secret backend
 
 ### v2.7.14-ck8s1
