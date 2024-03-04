@@ -23,7 +23,7 @@ User alerts are handled by a project called [AlertManager](https://prometheus.io
 
 ## Configuring user alerts
 
-User alerts are configured via the Secret `alertmanager-alertmanager` located in the `alertmanager` namespace. This configuration file is specified [here](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file).
+User alerts are configured via the Secret `alertmanager-alertmanager` located in the `alertmanager` namespace. This configuration file is specified [here](https://prometheus.io/docs/alerting/latest/configuration/#file-layout-and-global-settings).
 
 ```bash
 # retrieve the old configuration:

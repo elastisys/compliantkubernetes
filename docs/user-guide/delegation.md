@@ -58,7 +58,7 @@ Kubernetes uses the following concepts for [access control](https://kubernetes.i
 * [Roles (and ClusterRoles)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) -- these define a set of permissions, i.e., allowed API operations;
 * [RoleBindings (and ClusterRoleBindings)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) -- these associate Roles, i.e., a set of permissions, with users, groups or ServiceAccounts.
 
-For delegating permissions to ServiceAccounts, follow the example on the [CI/CD page](ci-cd.md#push-style-cicd).
+For delegating permissions to ServiceAccounts, follow the example on the [CI/CD page](ci-cd.md#external-cicd).
 
 The next section present delegation to users and groups.
 

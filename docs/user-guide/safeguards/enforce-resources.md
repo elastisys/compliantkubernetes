@@ -25,7 +25,7 @@ Note to contributors: Aim for the following format.
 
 ## Problem
 
-A major source of application downtime is insufficient capacity. For example, if a Node reaches 100% CPU utilization, then application Pods hosted on it will run slow, leading to bad end-user experience. If a Node runs into memory pressure, the application will run slower, as less memory is available for the [page cache](https://en.wikipedia.org/wiki/Page_cache). High memory pressure may lead to the Node triggering the infamous [Out-of-Memory (OOM) Killer](https://en.wikipedia.org/wiki/Out_of_memory#Out_of_memory_management), killing a victim, either your application or a platform component.
+A major source of application downtime is insufficient capacity. For example, if a Node reaches 100% CPU utilization, then application Pods hosted on it will run slow, leading to bad end-user experience. If a Node runs into memory pressure, the application will run slower, as less memory is available for the [page cache](https://en.wikipedia.org/wiki/Page_cache). High memory pressure may lead to the Node triggering the infamous [Out-of-Memory (OOM) Killer](https://en.wikipedia.org/wiki/Out_of_memory#Recovery), killing a victim, either your application or a platform component.
 
 ## Solution
 

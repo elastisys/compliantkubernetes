@@ -9,7 +9,7 @@ Additional Services
 
     You can order Managed Additional Services by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/).
 
-    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
+    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification-managed-services-only).
 
 ![Illustration of Compliant Kubernetes as the hourglass waist](img/additional-services.drawio.svg)
 

@@ -21,7 +21,7 @@ How should we expose additional services in Compliant Kubernetes? With or withou
 
 * We want to stick to best practices and sane defaults.
 * We want to make it easy to port applications to Compliant Kubernetes and its additional services.
-* Some services are performance-sensitive: Redis [suffers a significant performance drop with TLS](https://dzone.com/articles/redis-tls-can-significantly-reduce-performance-a-l#:~:text=To%20summarize%20performance%3A,drop%20after%20adding%20additional%20threads).
+* Some services are performance-sensitive: Redis [suffers a significant performance drop with TLS](https://dzone.com/articles/redis-tls-can-significantly-reduce-performance-a-l)
 * The Spotahome Redis Operator [does not support TLS](https://github.com/spotahome/redis-operator/issues/268).
 * Some services are performance-insensitive: PostgreSQL and RabbitMQ feature negligible performance impact with TLS.
 

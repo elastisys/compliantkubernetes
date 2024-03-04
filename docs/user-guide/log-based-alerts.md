@@ -68,7 +68,7 @@ Next, we can proceed with creating a monitor that will use our newly created cha
      ![OpenSearch Monitor 1](../img/monitor-creation-1.png)
 
      - **Monitor name** - Name of the monitor, for example **user-demo-404-error**
-     - **Monitor type** - Select **Per query monitor** - For more information check OpenSearch documentation on [Monitor types](https://opensearch.org/docs/latest/monitoring-plugins/alerting/monitors/#create-a-monitor)
+     - **Monitor type** - Select **Per query monitor** - For more information check OpenSearch documentation on [Monitor types](https://opensearch.org/docs/latest/observing-your-data/alerting/monitors/#monitor-types)
      - **Schedule** - How often to monitor, for example, to check every 1 minute, set:
           - **Frequency** - **By interval**
           - **Run every** - **1 Minutes**
