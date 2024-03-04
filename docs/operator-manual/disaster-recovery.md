@@ -272,7 +272,7 @@ indices="kubernetes-*,kubeaudit-*,other-*,authlog-*"
 !!!note
     This process assumes that you are using the same S3 bucket as your previous cluster. If you aren't:
 
-    - Register a new S3 snapshot repository to the old bucket as [described here](https://opensearch.org/docs/latest/opensearch/snapshot-restore/#register-repository)
+    - Register a new S3 snapshot repository to the old bucket as [described here](https://opensearch.org/docs/latest/tuning-your-cluster/availability-and-recovery/snapshots/snapshot-restore/#register-repository)
     - Use the newly registered snapshot repository in the restore process
 
 ## Harbor

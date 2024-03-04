@@ -14,7 +14,7 @@ description: Learn how to prepare for Elastisys Compliant Kubernetes, the securi
         * RPO: daily, 3 backups
     * **Monitoring, security patching and incident management**: included.
 
-    For more information, please read [ToS Appendix 2 Managed Compliant Kubernetes Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-2-managed-compliant-kubernetes-service-specification).
+    For more information, please read [ToS Appendix 2 Managed Compliant Kubernetes Service Specification](appendix-2-managed-compliant-kubernetes-service-specification-managed-services-only).
 
 # Step 1: Prepare
 
@@ -95,7 +95,7 @@ Your web portals are available at:
 
 Elastisys Compliant Kubernetes runs containerized applications in a Kubernetes platform. It is a Certified Kubernetes distribution, which means that if an application is possible to deploy on a standard Kubernetes environment, it can be deployed on Elastisys Compliant Kubernetes.
 
-However, there are some restrictions in place for security reasons. In particular, **containers cannot be run as root**. Following this [best practice](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user) is a simple way to ensure additional security for your containerized applications deployed in Kubernetes.
+However, there are some restrictions in place for security reasons. In particular, **containers cannot be run as root**. Following this [best practice](https://docs.docker.com/develop/develop-images/instructions/#user) is a simple way to ensure additional security for your containerized applications deployed in Kubernetes.
 
 There are additional safeguards in place that reflect the security posture of Elastisys Compliant Kubernetes that impact your application. These prevent users from doing potentially unsafe things. In particular, users are not allowed to:
 

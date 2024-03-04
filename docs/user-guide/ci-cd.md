@@ -147,7 +147,7 @@ users:
 ```
 
 The generated `kubeconfig_ci_cd.yaml` can then be used in your CI/CD pipeline.
-Note that, `KUBECONFIG`s -- especially the token -- **must** be treated as a secret and injected into the CI/CD pipeline via a proper secrets handing feature, such as GitLab CI's [protected variable](https://docs.gitlab.com/ee/ci/variables/#protect-a-cicd-variable) and GitHub Action's [secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#using-encrypted-secrets-in-a-workflow).
+Note that, `KUBECONFIG`s -- especially the token -- **must** be treated as a secret and injected into the CI/CD pipeline via a proper secrets handing feature, such as GitLab CI's [protected variable](https://docs.gitlab.com/ee/ci/variables/#protect-a-cicd-variable) and GitHub Action's [secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#using-secrets-in-a-workflow).
 
 ## Example: GitHub Actions
 
