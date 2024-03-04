@@ -15,7 +15,7 @@ PostgreSQL®
         * Long-term backup schemes can be enabled after discussion with the customer.
     * **Monitoring, security patching and incident management**: included.
 
-    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
+    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification-managed-services-only).
 
 <figure>
     <img alt="PostgreSQL Deployment Model" src="../img/postgresql.drawio.svg" >
