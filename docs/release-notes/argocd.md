@@ -12,7 +12,7 @@
 
 Released 2024-01-30
 
-#### Updated:
+#### Updated
 
 - Updated ArgoCD to `v2.9.5`.
 
