@@ -87,12 +87,12 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0008](0008-use-hostnetwork-or-loadbalancer-for-ingress.md) - Use HostNetwork or LoadBalancer for Ingress
 * [ADR-0009](0009-use-cluster-issuers-for-letsencrypt.md) - Use ClusterIssuers for Let's Encrypt
 * [ADR-0010](0010-run-managed-services-in-workload-cluster.md) - Run managed services in Workload Cluster
-* [ADR-0011](0011-let-upstream-projects-handle-crds.md) - Let upstream projects handle CRDs
+* [ADR-0011](0011-let-upstream-projects-handle-crds.md) - [Superseded by [ADR-0046](0046-handle-crds.md)] Let upstream projects handle CRDs
 * [ADR-0012](0012-do-not-persist-dex.md) - [Superseded by [ADR-0017](0017-persist-dex.md)] Do not persist Dex
 * [ADR-0013](0013-configure-alerts-in-omt.md) - Configure Alerts in On-call Management Tool (e.g., Opsgenie)
 * [ADR-0014](0014-use-bats-for-testing-bash-wrappers.md) - Use bats for testing bash wrappers
 * [ADR-0015](0015-we-believe-in-community-driven-open-source.md) - We believe in community-driven open source
-* [ADR-0016](0016-gid-0-is-okey-but-not-by-default.md) - gid=0 is okay, but not by default
+* [ADR-0016](0016-gid-0-is-okey-but-not-by-default.md) - [Superseded by [ADR-0040](0040-allow-group-id-0.md)] gid=0 is okay, but not by default
 * [ADR-0017](0017-persist-dex.md) - Persist Dex
 * [ADR-0018](0018-use-probe-to-measure-internal-uptime.md) - Use Probe to Measure Uptime of Internal Compliant Kubernetes Services
 * [ADR-0019](0019-push-metrics-via-thanos.md) - Push Metrics via Thanos
@@ -110,7 +110,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0031](0031-run-csi-cinder-controllerplugin-on-elastisys-nodes.md) - Run csi-cinder-controllerplugin on the Elastisys nodes
 * [ADR-0032](0032-boot-disk-size.md) - Boot disk size on nodes
 * [ADR-0033](0033-run-cluster-api-controllers-on-service-cluster.md) - Run Cluster API controllers on Management Cluster
-* [ADR-0034](0034-how-to-run-multiple-ams-packages-of-the-same-type.md) - How to run multiple AMS packages of the same type in the same ck8s environment
+* [ADR-0034](0034-how-to-run-multiple-ams-packages-of-the-same-type.md) - How to run multiple AMS packages of the same type in the same environment
 * [ADR-0035](0035-run-tekton-on-service-cluster.md) - Run Tekton on Management Cluster
 * [ADR-0036](0036-run-ingress-nginx-as-daemonset.md) - Run ingress-nginx as a daemonSet
 * [ADR-0037](0037-enforce-ttl-on-jobs.md) - Enforce TTL on Jobs
@@ -118,9 +118,11 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0039](0039-application-dev-permissions.md) - Application developer privilege elevation
 * [ADR-0040](0040-allow-group-id-0.md) - Allow running containers with primary and supplementary group id 0
 * [ADR-0041](0041-encryption-at-rest.md) - Rely on Infrastructure Provider for encryption-at-rest
-* [ADR-0042](0042-argocd-dynamic-hnc-namespaces.md) - ArgoCD Dynamic subnamespaces
-* [ADR-0043](0043-rclone-and-encryption-adhere-cryptography-policy.md) - Rclone and Encryption adheres Cryptography policy
-* [ADR-0044](0044-argocd-managing-its-own-namespace.md) - ArgoCD does not get to manage its own namespace.
+* [ADR-0042](0042-argocd-dynamic-hnc-namespaces.md) - ArgoCD with dynamic HNC namespaces
+* [ADR-0043](0043-rclone-and-encryption-adhere-cryptography-policy.md) - Rclone and Encryption adheres Cryptography Policy
+* [ADR-0044](0044-argocd-managing-its-own-namespace.md) - ArgoCD is not allowed to manage its own namespace.
+* [ADR-0046](0046-handle-crds.md) - Handle all CRDs with the standard Helm CRD management
+
 <!-- adrlogstop -->
 
 For new ADRs, please use [template.md](template.md) as basis.
