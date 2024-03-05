@@ -24,7 +24,7 @@ Released 2024-01-30
 #### Added
 
 - Added networkpolicies for Argo CD components
-- Added support for age encryptied helm secrets
+- Added support for age encrypted helm secrets
 - Added vals as a secret backend
 
 ### v2.7.14-ck8s1
