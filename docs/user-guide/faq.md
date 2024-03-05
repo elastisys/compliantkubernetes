@@ -60,7 +60,7 @@ If your image runs as root by defaults, but can handle running as another user, 
 ```
 
 [harbor-oidc-docker]: https://goharbor.io/docs/1.10/administration/configure-authentication/oidc-auth/#using-oidc-from-the-docker-or-helm-cli
-[docker-user]: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
+[docker-user]: https://docs.docker.com/develop/develop-images/instructions/#user
 
 
 ## How do I give access to a new Application Developer to a Compliant Kubernetes environment?
