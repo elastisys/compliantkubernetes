@@ -9,7 +9,7 @@ Redis™
     * **Disaster recovery**: none -- we recommend against using Redis as a primary database.
     * **Monitoring, security patching and incident management**: included.
 
-    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
+    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification-managed-services-only).
 
 <figure>
     <img alt="Redis Deployment Model" src="../img/redis.drawio.svg" >
