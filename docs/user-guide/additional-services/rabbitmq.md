@@ -12,7 +12,7 @@ RabbitMQ®
         * A full backup is taken every day between 0:00 am and 6:00 am CET. The backup retention period is 30 days unless otherwise requested by the customer.
     * **Monitoring, security patching and incident management**: included.
 
-    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
+    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification-managed-services-only).
 
 <figure>
     <img alt="RabbitMQ Deployment Model" src="../img/rabbitmq.drawio.svg" >
