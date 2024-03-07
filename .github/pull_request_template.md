@@ -5,5 +5,5 @@
 
 Quality gates:
 
-- [ ] I'm aware of the [Contributor Guide](https://github.com/elastisys/compliantkubernetes/blob/main/CONTRIBUTING.md) and did my best to stick to it.
-- [ ] I'm aware of the [Glossary](https://elastisys.io/compliantkubernetes/glossary/) and did my best to stick to it.
+- [ ] I'm aware of the [Contributor Guide](CONTRIBUTING.md) and did my best to stick to it.
+- [ ] I'm aware of the [Glossary](docs/glossary.md) and did my best to stick to it.
