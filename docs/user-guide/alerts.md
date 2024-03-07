@@ -17,9 +17,6 @@ Compliant Kubernetes (CK8S) includes alerts via [Alertmanager](https://prometheu
 
 Many regulations require you to have an incident management process. Alerts help you discover abnormal application behavior that need attention. This maps to [ISO 27001 – Annex A.16: Information Security Incident Management](https://www.isms.online/iso-27001/annex-a-16-information-security-incident-management/).
 
-## Enabling user alerts
-
-User alerts are handled by a project called [AlertManager](https://prometheus.io/docs/alerting/latest/alertmanager/), which needs to be enabled by the administrator. Get in touch with the administrator and they will be happy to help.
 
 ## Configuring user alerts
 
@@ -56,20 +53,20 @@ routes:
 
 You can match any label in the alerts, read more about how the `matcher` configuration works in the [upstream documentation](https://prometheus.io/docs/alerting/latest/configuration/#matcher).
 
-## Accessing user AlertManager
+## Accessing user Alertmanager
 
-If you want to access AlertManager, for example to confirm that its configuration was picked up correctly, proceed as follows:
+If you want to access Alertmanager, for example to confirm that its configuration was picked up correctly, proceed as follows:
 
 1. Type: `kubectl proxy`.
 2. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/alertmanager/services/alertmanager-operated:9093/proxy/) in your browser.
 
-You can configure silences in the UI, but they will not be persisted if alertmanager is restarted. Use the secret mentioned above instead to create silences that persist.
+You can configure silences in the UI, but they will not be persisted if Alertmanager is restarted. Use the secret mentioned above instead to create silences that persist.
 
 ## Configuring alerts
 
 Before setting up an alert, you must first [collect metrics](metrics.md) from your application by setting up either ServiceMonitors or PodMonitors. In general ServiceMonitors are recommended over PodMonitors, and it is the most common way to configure metrics collection.
 
-Then create a `PrometheusRule` following the examples below or the upstream documentation with an expression that evaluates to the condition to alert on. Prometheus will pick them up, evaluate them, and then send notifications to AlertManager.
+Then create a `PrometheusRule` following the examples below or the upstream documentation with an expression that evaluates to the condition to alert on. Prometheus will pick them up, evaluate them, and then send notifications to Alertmanager.
 
 The [API reference for Prometheus Operator](https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.PrometheusRule) describes how the Kubernetes resource is configured and the [configuration reference for Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) describes the rules themselves.
 
@@ -85,7 +82,7 @@ The user demo already includes a [PrometheusRule](https://github.com/elastisys/c
 --8<---- "user-demo/deploy/ck8s-user-demo/templates/prometheusrule.yaml"
 ```
 
-The screenshot below gives an example of the application alert, as seen in AlertManager.
+The screenshot below gives an example of the application alert, as seen in Alertmanager.
 
 ![Example of User Demo Alerts](../img/user-demo-alerts.png)
 
