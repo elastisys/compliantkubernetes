@@ -1,8 +1,5 @@
 # Glossary
 
-!!!important
-    Harmonization of documentation with this glossary is underway. (See [#609](https://github.com/elastisys/compliantkubernetes/issues/609))
-
 > There are only two hard things in Computer Science: cache invalidation and naming things.
 >
 > — Phil Karlton
@@ -158,15 +155,12 @@ A supplier of Virtual or Bare-metal Machines, networks, load balancers, block st
 Usage notes:
 
 * Do NOT use "Data Processor" or "Data Sub-processor". Determining which entity fulfills these GDPR concepts is usually done via a Data Protection Agreement (DPA). See EDPB [Guidelines 07/2020 on the concepts of controller and processor in the GDPR](https://edpb.europa.eu/our-work-tools/documents/public-consultations/2020/guidelines-072020-concepts-controller-and_en).
+* Do NOT use "Cloud Provider", as this is easily confused with "Platform-as-a-Service Cloud Provider".
 
 See also:
 
 * [Architecture Diagram Level 1: System Context](architecture.md#level-1-system-context)
 * [Infrastructure provider on The Cluster API Book](https://cluster-api.sigs.k8s.io/user/concepts.html#infrastructure-provider)
-
-Usage notes:
-
-* Do NOT use "Cloud Provider", as this is easily confused with "Platform-as-a-Service Cloud Provider".
 
 ## Management Cluster
 
