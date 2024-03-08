@@ -1,11 +1,5 @@
 # Contributor Guide
 
-> Documentation is like sex:
-> when it is good, it is very, very good;
-> and when it is bad, it is better than nothing
->
-> (Pretty inappropriate programmer humor.)
-
 * Done today is better than perfect tomorrow.
 * Write for the project, not the company.
 * A picture is worth 1000 words. Use Graphviz, Terminal screenshots, or GIFs. Focus on the content, leave aesthetics for another day. Prefer PNG with a width of 1200px.
