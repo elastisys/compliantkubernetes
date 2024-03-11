@@ -8,7 +8,16 @@ Argo™ CD (preview)
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
-    You can order Managed Argo™ CD by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/).
+    You can order Managed Argo™ CD by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/). Here are the highlights:
+
+    * **Disaster recovery**:
+        * Backup scope includes Argo CD resources that can be created by application developers, such as: ApplicationSets, Applications, AppProjects, Secrets and ConfigMaps as needed to store configuration on repositories and notifications.
+        * A Velero backup is taken every day between 0:00 am and 6:00 am CET. The backup retention period is 30 days unless otherwise requested by the customer.
+        * Recovery point objective (RPO): 1 day.
+        * Recovery time objective (RTO): 4 hours.
+    * **Monitoring, security patching and incident management**: included.
+
+    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification-managed-services-only).
 
     This is a preview feature. For more information, please read [ToS 9.1 Preview Features](https://elastisys.com/legal/terms-of-service/#91-preview-features).
 
