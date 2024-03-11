@@ -121,8 +121,9 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0042](0042-argocd-dynamic-hnc-namespaces.md) - ArgoCD with dynamic HNC namespaces
 * [ADR-0043](0043-rclone-and-encryption-adhere-cryptography-policy.md) - Rclone and Encryption adheres Cryptography Policy
 * [ADR-0044](0044-argocd-managing-its-own-namespace.md) - ArgoCD is not allowed to manage its own namespace.
-* [ADR-0045](0045-use-specialised-prebuilt-images.md) - Use specialised, prebuilt images
+* [ADR-0045](0045-use-specialised-prebuilt-images.md) - Use specialised prebuilt images
 * [ADR-0046](0046-handle-crds.md) - Handle all CRDs with the standard Helm CRD management
+* [ADR-0047](0047-kubernetes-versions.md) - When to upgrade to new Kubernetes versions
 
 <!-- adrlogstop -->
 
