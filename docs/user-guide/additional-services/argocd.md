@@ -11,7 +11,7 @@ Argo™ CD (preview)
     You can order Managed Argo™ CD by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/). Here are the highlights:
 
     * **Disaster recovery**:
-        * Backup scope includes Argo CD resources that can be created by application developers, such as: 
+        * Backup scope includes Argo CD resources that can be created by application developers, such as:
             * ApplicationSets
             * Applications
             * AppProjects
