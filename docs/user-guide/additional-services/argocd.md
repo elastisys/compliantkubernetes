@@ -17,7 +17,6 @@ Argo™ CD (preview)
             * AppProjects
             * Secrets and ConfigMaps as needed to store configuration on repositories and notifications.
         * A backup is taken every day between 0:00 am and 6:00 am CET. The backup retention period is 30 days unless otherwise requested by the customer.
-        * Recovery point objective (RPO): 1 day.
         * Recovery time objective (RTO): 4 hours.
     * **Monitoring, security patching and incident management**: included.
 
