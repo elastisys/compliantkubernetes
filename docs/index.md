@@ -162,13 +162,13 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
   <div markdown="span">
     <dt markdown="span">
       :fontawesome-solid-handshake:
-      Support
+      Self-Managed
     </dt>
     <dd class="grow-me">
       Leverage Elastisys Compliant Kubernetes on-prem with implementation and continuous support.
     </dd>
     <dd>
-      <a role="button" href="https://elastisys.com/support/">Go to Support</a>
+      <a role="button" href="https://elastisys.com/self-managed/">Go to Self-Managed</a>
     </dd>
   </div>
 </dl>
