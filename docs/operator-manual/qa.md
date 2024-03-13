@@ -11,7 +11,11 @@ When we say "quality", we really refer to the following quality criteria.
 Feature can be delivered ...
 
 * ... at scale
-    * Feature has good user-facing documentation
+    * Feature has good developer-facing documentation. The documentation includes:
+        * the [happy path](https://en.wikipedia.org/wiki/Happy_path);
+        * a running example based on the [user demo](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo), if applicable;
+        * limitations, if applicable;
+        * further reading.
     * Feature is self-serviced
     * Feature is well-understood and aligned in marketing, sales, product and operations
     * Feature is clearly covered by ToS
