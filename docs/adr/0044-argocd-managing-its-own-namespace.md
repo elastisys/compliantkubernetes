@@ -10,7 +10,7 @@ Currently, ArgoCD is setup in namespaced mode.
 We give it a [list of Namespaces](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters) that ArgoCD should manage and a list of permissions that it has on those namespaces through ArgoCD's [inclusions](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#resource-exclusioninclusion) and Kubernetes RBAC to the service account to back this.
 This service account has a larger set of permissions than a developer's most privileged accounts do.
 
-If an Application Developer wants to deploy resources other than ArgoCD `apps`, `applicationSets`, and `appProjects` into the `argocd-system` namespace via ArgoCD itself, it will fail since `argocd-system` is not a managed namespace in ArgoCD.
+If an Application Developer wants to deploy ArgoCD resources such as `apps`, `applicationSets`, and `appProjects` into the `argocd-system` namespace via ArgoCD itself, it will fail since `argocd-system` is not a managed namespace in ArgoCD. This restriction prevents users from using features like Apps of Apps.
 
 Do we want to make `argocd-system` a managed namespace in our ArgoCD offering?
 
@@ -45,3 +45,4 @@ Chosen option:
 
 - An Application Developer may also not be able to deploy standard Kubernetes resources via ArgoCD into `argocd-system` namespaces.
     - This should not count as a negative consequence, because our current security stance is that Application Developers should not be supposed to deploy into the `argocd-system` Namespace at all.
+- Features such as Apps of Apps will not be available in our offering.
