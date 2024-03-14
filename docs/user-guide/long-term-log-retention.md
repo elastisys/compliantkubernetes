@@ -29,6 +29,8 @@ Down below are some examples how to discover indices to export from OpenSearch, 
 !!!info
 
 	To access OpenSearch contact your Compliant Kubernetes administrator and ask them to create a user with suitable permissions listed here below.
+	For Elastisys managed services customers this can be done by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/).
+
 
 This is the permissions required for the OpenSearch API snippets and the permissions required by Elasticdump:
 
