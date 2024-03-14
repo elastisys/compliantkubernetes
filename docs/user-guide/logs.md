@@ -251,6 +251,10 @@ The screenshot below gives an example of log entries produced by the user demo a
 
 At the moment the reporting feature in OpenSearch doesn't work so instead we recommend you to use [elasticsearch-dump](https://github.com/elasticsearch-dump/elasticsearch-dump).
 
+!!! elastisys "For Elastisys Managed Services Customers"
+
+  Elasticsearch-dump is not enabled by default, but can be requested by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/).
+
 Example of exporting the `kubernetes-*` index pattern to a folder `opensearch-dump`:
 
 ```bash
