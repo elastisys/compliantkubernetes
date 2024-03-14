@@ -253,7 +253,7 @@ At the moment the reporting feature in OpenSearch doesn't work so instead we rec
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
-  Elasticsearch-dump is not enabled by default, but can be requested by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/).
+    Elasticsearch-dump is not enabled by default, but can be requested by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/).
 
 Example of exporting the `kubernetes-*` index pattern to a folder `opensearch-dump`:
 
