@@ -13,10 +13,21 @@ TimescaleDB®
         * A full backup is taken every day between 0:00 am and 6:00 am CET. The backup retention period is 30 days unless otherwise requested by the customer.
         * Point-in-Time Recovery (PITR) is provided for the last 7 days with a recovery point objective of 5 minutes.
         * Long-term backup schemes can be enabled after discussion with the customer.
-    * **Only Apache 2 edition features are included, read more about why [here](../../ciso-guide/faq.md).**
+    * **Only Apache 2 edition features are included (see below)**
     * **Monitoring, security patching and incident management**: included.
 
     For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
+
+!!! danger "Open source vs source available"
+    Please note that there are [two versions of TimescaleDB](https://docs.timescale.com/about/latest/timescaledb-editions/):
+
+    * TimescaleDB Apache 2 Edition, which is open source;
+    * TimescaleDB "Community Edition", which -- despite its misleading name -- is **not** open source.
+
+    Although the so-called "Community Edition" is [source-available](https://en.wikipedia.org/wiki/Source-available_software), it is technically proprietary, given that it is licensed under the [Timescale License (TSL)](https://github.com/timescale/timescaledb/blob/main/tsl/LICENSE-TIMESCALE).
+    Amongst others, the TSL prohibits using TimescaleDB "Community Edition" for database-as-a-service.
+
+    Therefore, Elastisys does not offer TimescaleDB "Community Edition".
 
 <figure>
     <img alt="TimescaleDB Deployment Model" src="../img/timescaledb.drawio.svg" >
