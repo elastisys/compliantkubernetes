@@ -19,7 +19,7 @@ TimescaleDB®
     For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification-managed-services-only).
 
 !!! danger "Open source vs source available"
-    
+
     Please note that there are [two versions of TimescaleDB](https://docs.timescale.com/about/latest/timescaledb-editions/):
 
     * TimescaleDB Apache 2 Edition, which is open source;
