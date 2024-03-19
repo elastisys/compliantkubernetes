@@ -53,7 +53,7 @@ Feature can be delivered ...
 These criteria should be taken as a direction, not a "task list".
 For some features, some of these criteria won't apply.
 For other features, we might accept that some of these criteria cannot be fully satisfied.
-It is the role of our Quality Assurance Manager (QAM) to decide how to apply these criteria to each feature.
+It is the role of our Quality Assurance Engineer (QAE) to decide how to apply these criteria to each feature.
 
 ## Quality Assurance (QA)
 
