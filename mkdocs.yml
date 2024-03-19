@@ -83,6 +83,7 @@ plugins:
         'operator-manual/ovh-managed-kubernetes.md': 'operator-manual/on-prem-standard.md'
         'operator-manual/safespring.md': 'operator-manual/on-prem-standard.md'
         'release-notes.md': 'release-notes/ck8s.md'
+        'operator-manual/qa.md': 'quality-criteria.md'
 
 markdown_extensions:
   - attr_list
@@ -189,7 +190,6 @@ nav:
     - 'Provider Audit': 'operator-manual/provider-audit.md'
     - 'Standard Template for on-prem Environment': 'operator-manual/on-prem-standard.md'
     - 'Air-gapped Environment': 'operator-manual/air-gapped-environment.md'
-    - 'QA': 'operator-manual/qa.md'
     - 'Advanced Configuration':
       - 'Overview' : 'operator-manual/configure.md'
       - 'Sizing' : 'operator-manual/cluster-sizing.md'
@@ -242,6 +242,7 @@ nav:
     - 'Architecture': 'architecture.md'
     - 'Architectural Decision Log': 'adr/index.md'
     - 'Tech Radar': 'tech-radar/index.html'
+    - 'Quality Criteria': 'quality-criteria.md'
   - 'Release Notes':
     - 'Compliant Kubernetes': 'release-notes/ck8s.md'
     - 'CK8S Kubespray': 'release-notes/kubespray.md'
