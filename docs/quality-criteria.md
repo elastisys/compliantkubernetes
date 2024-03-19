@@ -53,4 +53,13 @@ Feature can be delivered ...
 These criteria should be taken as a direction, not a "task list".
 For some features, some of these criteria won't apply.
 For other features, we might accept that some of these criteria cannot be fully satisfied.
-It is the role of our QA manager to decide how to apply these criteria to each feature.
+It is the role of our Quality Assurance Manager (QAM) to decide how to apply these criteria to each feature.
+
+## Quality Assurance (QA)
+
+Each release of Compliant Kubernetes is quality assured.
+Some, but not all, of the quality assurance steps are public.
+Please find them linked below:
+
+- [Compliant Kubernetes Kubespray Release Checklist](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/.github/ISSUE_TEMPLATE/release.md)
+- [Compliant Kubernetes Apps Release Checklist](https://github.com/elastisys/compliantkubernetes-apps/blob/main/.github/ISSUE_TEMPLATE/release.md)
