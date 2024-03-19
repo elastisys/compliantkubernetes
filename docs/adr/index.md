@@ -124,6 +124,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 * [ADR-0045](0045-use-specialised-prebuilt-images.md) - Use specialised prebuilt images
 * [ADR-0046](0046-handle-crds.md) - Handle all CRDs with the standard Helm CRD management
 * [ADR-0047](0047-kubernetes-versions.md) - When to upgrade to new Kubernetes versions
+* [ADR-0048](0048-subscription-per-customer-model-on-azure.md) - Subscription-per-Customer Model for Azure
 
 <!-- adrlogstop -->
 
