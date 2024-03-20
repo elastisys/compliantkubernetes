@@ -3,10 +3,32 @@
 
 ## Compliant Kubernetes Argo CD
 <!-- BEGIN TOC -->
+- [v2.9.9-ck8s1](#v299-ck8s1) - 2024-03-20
 - [v2.9.5-ck8s1](#v295-ck8s1) - 2024-01-30
 - [v2.7.14-ck8s1](#v2714-ck8s1) - 2023-10-31
 - [v2.4.20-ck8s1](#v2420-ck8s1) - 2023-03-29
 <!-- END TOC -->
+
+### v2.9.9-ck8s1
+
+Released 2024-03-20
+
+!!! danger "Security Notice(s)"
+
+    - This upgrade mitigates the following high and medium security vulnerabilities:
+      - [Denial of Service (DoS) Vulnerability Due to Unsafe Array Modification in Multi-threaded Environment](https://github.com/argoproj/argo-cd/security/advisories/GHSA-6v85-wr92-q4p7)
+      - [Bypassing Rate Limit and Brute Force Protection Using Cache Overflow](https://github.com/argoproj/argo-cd/security/advisories/GHSA-2vgg-9h6w-m454)
+      - [Bypassing Brute Force Protection via Application Crash and In-Memory Data Loss](https://github.com/argoproj/argo-cd/security/advisories/GHSA-x32m-mvfj-52xv)
+
+#### Improvement(s)
+
+- Patch ArgoCD to v2.9.9 - See security notice above.
+- Allow application developers to delete and watch ArgoCD resources they create declaratively.
+
+#### Other(s)
+
+- Correct network policies for applicationset controller and repo server to allow ApplicationSets to be created.
+- Correct Gatekeeper policies to allow ArgoCD secrets to be restored.
 
 ### v2.9.5-ck8s1
 
