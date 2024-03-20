@@ -36,6 +36,22 @@ See also:
 * link 1
 -->
 
+## Air-gapped Network
+
+From [Wikipedia](https://en.wikipedia.org/wiki/Air_gap_(networking)):
+
+> An [**air-gapped network**] is a network security measure employed on one or more computers to ensure that a secure computer network is physically isolated from unsecured networks, such as the public Internet or an unsecured local area network. It means a computer or network has no network interface controllers connected to other networks, with a physical or conceptual air gap, analogous to the air gap used in plumbing to maintain water quality.
+
+Usage notes:
+
+* Please avoid "air-gapped environment" to avoid confusion with [Environment](#environment).
+* Please avoid synonymous expressions, like "disconnected network" or "offline environment".
+
+See also:
+
+* [Air gap (networking) on Wikipedia](https://en.wikipedia.org/wiki/Air_gap_(networking))
+
+
 ## Application Developer
 
 A person who writes an application that runs in a Kubernetes cluster.

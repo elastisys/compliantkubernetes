@@ -84,6 +84,7 @@ plugins:
         'operator-manual/safespring.md': 'operator-manual/on-prem-standard.md'
         'release-notes.md': 'release-notes/ck8s.md'
         'operator-manual/qa.md': 'quality-criteria.md'
+        'operator-manual/air-gapped-environment.md': 'operator-manual/air-gapped.md'
 
 markdown_extensions:
   - attr_list
@@ -189,7 +190,7 @@ nav:
     - 'Getting Started': 'operator-manual/getting-started.md'
     - 'Provider Audit': 'operator-manual/provider-audit.md'
     - 'Standard Template for on-prem Environment': 'operator-manual/on-prem-standard.md'
-    - 'Air-gapped Environment': 'operator-manual/air-gapped-environment.md'
+    - 'Air-gapped Network': 'operator-manual/air-gapped.md'
     - 'Advanced Configuration':
       - 'Overview' : 'operator-manual/configure.md'
       - 'Sizing' : 'operator-manual/cluster-sizing.md'
