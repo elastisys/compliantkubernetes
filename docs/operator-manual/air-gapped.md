@@ -10,7 +10,7 @@ In an air-gapped network, machines are isolated from insecure networks such as t
 
 ## System Context Diagram
 
-The following is a generic system context diagram over an air-gapped network consisting of two Compliant Kubernetes Clusters. The diagram shows the Platform Administrator Machine that has access to both the Internet and the air-gapped network. Inside the air-gapped network, Compliant Kubernetes Clusters can access other services residing on the same private network such as an object storage for long-term storage, a container registry mirror, DNS and NTP servers, etc.
+The following is a generic system context diagram over an air-gapped network consisting of a Compliant Kubernetes Environment. The diagram shows the Platform Administrator Machine that has access to both the Internet and the air-gapped network. Inside the air-gapped network, Compliant Kubernetes Clusters can access other services residing on the same private network such as an object storage for long-term storage, a container registry mirror, DNS and NTP servers, etc.
 
 ![Diagram](../img/air-gapped.drawio.png)
 
