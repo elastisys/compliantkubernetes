@@ -1,28 +1,28 @@
-# CK8s in Air-gapped Environments
+# CK8s in Air-gapped Network
 
 !!!warning
 
-    Each air-gapped environment is different. Therefore, this page should only be taken as a guideline, not as "works out-of-the-box instructions". Contact [Elastisys Support](https://elastisys.com/self-managed/) if you need help.
+    Each air-gapped network is different. Therefore, this page should only be taken as a guideline, not as "works out-of-the-box instructions". Contact [Elastisys Support](https://elastisys.com/self-managed/) if you need help.
 
 ## Background
 
-In an air-gapped environment, machines are isolated from insecure networks such as the public Internet. Air-gapping is used for environments that handle highly confidential data such as military or governmental systems, or in life-critical systems, for example, in nuclear power plants or for medical equipment. This document provides guidelines on how to configure Compliant Kubernetes Apps to work inside an air-gapped environment.
+In an air-gapped network, machines are isolated from insecure networks such as the public Internet. Air-gapping is used for networks that handle highly confidential data such as military or governmental systems, or in life-critical systems, for example, in nuclear power plants or for medical equipment. This document provides guidelines on how to configure Compliant Kubernetes Apps to work inside an air-gapped network.
 
 ## System Context Diagram
 
-The following is a generic system context diagram over an air-gapped environment consisting of two Compliant Kubernetes Clusters. The diagram shows the Platform Administrator Machine that has access to both the Internet and the air-gapped environment. Inside the air-gapped environment, Compliant Kubernetes Clusters can access other services residing on the same private network such as an object storage for long-term storage, a container registry mirror, DNS and NTP servers, etc.
+The following is a generic system context diagram over an air-gapped network consisting of two Compliant Kubernetes Clusters. The diagram shows the Platform Administrator Machine that has access to both the Internet and the air-gapped network. Inside the air-gapped network, Compliant Kubernetes Clusters can access other services residing on the same private network such as an object storage for long-term storage, a container registry mirror, DNS and NTP servers, etc.
 
 ![Diagram](../img/air-gapped.drawio.png)
 
 !!!note
 
-    \* For Certificate Provisioning, you may want to allow DNS01 or HTTP01 challenges to a public certificate authority, such as [Let's Encrypt](https://letsencrypt.org/). However, if you want the whole environment to be truly air-gapped, then you need to figure out an air-gapped solution for PKI.
+    \* For Certificate Provisioning, you may want to allow DNS01 or HTTP01 challenges to a public certificate authority, such as [Let's Encrypt](https://letsencrypt.org/). However, if you want the whole network to be truly air-gapped, then you need to figure out an air-gapped solution for PKI.
 
 ## Configuring Air-gapped Compliant Kubernetes Apps
 
-These guidelines will show how to configure Compliant Kubernetes Apps to work in an air-gapped environment. For setting up the Kubernetes layer, please refer to the [Kubespray air-gap installation documentation](https://kubespray.io/#/docs/offline-environment) or [Cluster-API documentation](https://cluster-api.sigs.k8s.io/clusterctl/configuration.html?highlight=release#image-overrides) for further instructions.
+These guidelines will show how to configure Compliant Kubernetes Apps to work in an air-gapped network. For setting up the Kubernetes layer, please refer to the [Kubespray air-gap installation documentation](https://kubespray.io/#/docs/offline-environment) or [Cluster-API documentation](https://cluster-api.sigs.k8s.io/clusterctl/configuration.html?highlight=release#image-overrides) for further instructions.
 
-This guide will assume that you have a Platform Administrator Machine that can access both the Internet and the air-gapped environment over SSH, this includes SSH access to both the Cluster nodes and hosts for the different offline services described in the system context diagram above. This "Platform Administrator Machine" can be your local machine or a bastion host.
+This guide will assume that you have a Platform Administrator Machine that can access both the Internet and the air-gapped network over SSH, this includes SSH access to both the Cluster nodes and hosts for the different offline services described in the system context diagram above. This "Platform Administrator Machine" can be your local machine or a bastion host.
 
 Start by initializing your Compliant Kubernetes Apps config (see the quickstart section [here](https://github.com/elastisys/compliantkubernetes-apps?tab=readme-ov-file#quickstart) for more info on initializing and deploying Compliant Kubernetes Apps) with the `air-gapped` flavor by setting the `CK8S_FLAVOR` environment variable:
 
@@ -32,7 +32,7 @@ export CK8S_FLAVOR=air-gapped
 
 ### Container Images and Registry Mirroring
 
-All container images used for the Kubernetes layer and for Compliant Kubernetes Apps needs to be available in the air-gapped environment. This can be done by setting up a private container registry (e.g. `Harbor`) that can act as a [registry mirror or registry cache](https://docs.docker.com/docker-hub/mirror/). But first these images need to be added to the private container registry. The following sections describes ways of getting images used by Compliant Kubernetes Apps.
+All container images used for the Kubernetes layer and for Compliant Kubernetes Apps needs to be available in the air-gapped network. This can be done by setting up a private container registry (e.g. `Harbor`) that can act as a [registry mirror or registry cache](https://docs.docker.com/docker-hub/mirror/). But first these images need to be added to the private container registry. The following sections describes ways of getting images used by Compliant Kubernetes Apps.
 
 #### Migrating Images From a Running Environment with Script
 
@@ -128,21 +128,21 @@ containerd_registries_mirrors:
 
     Depending on your setup, it might not be possible to run `ck8s update-ips` unless you configure the Platform Administrator Machine to be able to resolve domains configured in the air-gapped DNS server, or use some sort of proxy. Otherwise, configure NetworkPolicies for apps manually in the `*-config.yaml` files.
 
-Some of the apps needs special configurations to work properly in an air-gapped environment, the following sections will describe how to configure these more closely. Some of these values will already be set to `set-me` if you used the `CK8S_FLAVOR=air-gapped` which you need to configure before deploying the apps, however, there are some additional configurations you can make which you might want or need to configure depending on your setup.
+Some of the apps needs special configurations to work properly in an air-gapped network, the following sections will describe how to configure these more closely. Some of these values will already be set to `set-me` if you used the `CK8S_FLAVOR=air-gapped` which you need to configure before deploying the apps, however, there are some additional configurations you can make which you might want or need to configure depending on your setup.
 
 ### Node-local-dns
 
-If you have configured a DNS server inside the air-gapped environment that you want to use for resolving domains used for services running inside the Clusters (e.g. `grafana.air-gapped.internal`), you can configure it as an additional forwarder for `node-local-dns` in `common-config.yaml`:
+If you have configured a DNS server inside the air-gapped network that you want to use for resolving domains used for services running inside the Clusters (e.g. `grafana.air-gapped.internal`), you can configure it as an additional forwarder for `node-local-dns` in `common-config.yaml`:
 
 ```yaml
 nodeLocalDns:
   customConfig: |-
-    example.local:53 {  # <- set the zone name of your environment here
+    example.local:53 {  # <- set the zone name of your air-gapped network here
         log
         errors {
           consolidate 5m ".* i/o timeout$" warning
         }
-        forward . 10.65.131.137 # <- change this to match your environment
+        forward . 10.65.131.137 # <- change this to match your air-gapped network
         bind 169.254.20.10 10.233.0.3
         loadbalance
         cache 5
@@ -152,7 +152,7 @@ nodeLocalDns:
 
 ### Falco
 
-Falco is configured by default to retrieve and update plugins, e.g. Falco rules, from the Internet. In an air-gapped environment you can disable the Falco artifact installer to avoid this, and keep the Falco rules that are packaged with the Falco container image. To disable Falco artifact installer, configure the following in `common-config.yaml`:
+Falco is configured by default to retrieve and update plugins, e.g. Falco rules, from the Internet. In an air-gapped network you can disable the Falco artifact installer to avoid this, and keep the Falco rules that are packaged with the Falco container image. To disable Falco artifact installer, configure the following in `common-config.yaml`:
 
 ```yaml
 falco:
@@ -172,7 +172,7 @@ falco:
     - fileserver.air-gapped.internal:8080/falcoctl/index.yaml
 ```
 
-The default Falco driver in CK8s is `module`. With this driver, Falco will attempt to download the driver from the internet, and if it fails to do so, it will build the module as a fallback, which would be the case in an air-gapped environment. Unless you host driver modules yourself and configure Falco to use this file server instead:
+The default Falco driver in CK8s is `module`. With this driver, Falco will attempt to download the driver from the internet, and if it fails to do so, it will build the module as a fallback, which would be the case in an air-gapped network. Unless you host driver modules yourself and configure Falco to use this file server instead:
 
 ```yaml
 falco:
@@ -196,7 +196,7 @@ falco:
 
 ### OpenSearch
 
-Compliant Kubernetes is configured to store OpenSearch data in Object storage which is configured with plugins. Normally, OpenSearch attempts to download plugins from the Internet. In an air-gapped environment, you can download plugins for OpenSearch manually and host them on a file server inside the air-gapped environment. To download the S3 plugin run:
+Compliant Kubernetes is configured to store OpenSearch data in Object storage which is configured with plugins. Normally, OpenSearch attempts to download plugins from the Internet. In an air-gapped network, you can download plugins for OpenSearch manually and host them on a file server inside the air-gapped network. To download the S3 plugin run:
 
 ```bash
 OPENSEARCH_VERSION=2.8.0  # set the opensearch version of the cluster
@@ -215,7 +215,7 @@ opensearch:
 
 ### Trivy
 
-Trivy checks for vulnerabilities from a vulnerability database as well as a Java index database which are usually downloaded directly from GitHub (`ghcr.io`). In an air-gapped environment, you can download these databases manually and push them to a private registry inside the air-gapped environment. Please [read the air-gapped documentation for Trivy](https://aquasecurity.github.io/trivy/v0.47/docs/advanced/air-gap/#download-the-vulnerability-database) on how to download and copy over this database. The tool [`oras`](https://oras.land/docs/) can be useful for working with and managing OCI repositories.
+Trivy checks for vulnerabilities from a vulnerability database as well as a Java index database which are usually downloaded directly from GitHub (`ghcr.io`). In an air-gapped network, you can download these databases manually and push them to a private registry inside the air-gapped network. Please [read the air-gapped documentation for Trivy](https://aquasecurity.github.io/trivy/v0.47/docs/advanced/air-gap/#download-the-vulnerability-database) on how to download and copy over this database. The tool [`oras`](https://oras.land/docs/) can be useful for working with and managing OCI repositories.
 
 Once the databases are available in the air-gapped private-registry, you need to configure the following variables in `common-config.yaml` for Trivy to download from the private registry:
 
@@ -265,7 +265,7 @@ networkPolicies:
 
 ### Custom alerting receiver
 
-It is possible to configure your own alerting receivers for Alertmanager, which you can use to configure alerting to a on-call service that is available in your air-gapped environment. The following shows a simplified example on how to configure a custom email receiver in `sc-config.yaml`:
+It is possible to configure your own alerting receivers for Alertmanager, which you can use to configure alerting to a on-call service that is available in your air-gapped network. The following shows a simplified example on how to configure a custom email receiver in `sc-config.yaml`:
 
 ```yaml
 alerts:
