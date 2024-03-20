@@ -45,6 +45,7 @@ From [Wikipedia](https://en.wikipedia.org/wiki/Air_gap_(networking)):
 Usage notes:
 
 * Please avoid "air-gapped environment" to avoid confusion with [Environment](#environment).
+* Please avoid synonymous expressions, like "disconnected network" or "offline environment".
 
 See also:
 
