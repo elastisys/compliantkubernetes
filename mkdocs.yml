@@ -129,6 +129,7 @@ extra:
 
 nav:
   - Overview: 'index.md'
+  - 'Mission and Vision': 'mission-and-vision.md'
   - 'For Application Developers':
     - 'Getting Started':
       - 'Step 1: Prepare': 'user-guide/prepare.md'
