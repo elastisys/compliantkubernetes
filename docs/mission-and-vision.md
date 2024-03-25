@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The Compliant Kubernetes Mission and Vision statements support [Elastisys's Mission and Vision](https://elastisys.com/about/).
+The Compliant Kubernetes Mission and Vision statements support [Elastisys' Mission and Vision](https://elastisys.com/about/).
 They provide a "northern star" to orient development.
 
 ## Statements
