@@ -172,15 +172,70 @@ The following steps assumes SealedSecrets is installed in the cluster. For insta
 
 3. Deploy the application containing the SealedSecret with Argo CD as any other application.
 
-### Can I use HashiCorp Vault for secret management?
+### Using vals with HashiCorp's Vault
 
-Currently, Elastisys Managed Argo CD does not support using HashiCorp's Vault for secret management in Argo CD, and there is no plan to support it, here are some of the reasoning behind this decision:
+If you want to use [vals](https://github.com/helmfile/vals) with [Vault](https://www.vaultproject.io/), you will need to contact your Platform Administrator requesting that you want to use vals with Vault together with Argo CD.
 
-- [Vault is not open-source](https://www.hashicorp.com/license-faq)
-- [Vault tends to want to centralize very powerful credentials](https://developer.hashicorp.com/vault/tutorials/db-credentials/database-root-rotation#challenge)
-- [Vault is recommended to run on dedicated machines (see **Single Tenancy**)](https://developer.hashicorp.com/vault/tutorials/operations/production-hardening#baseline-recommendations)
-- [Vault considers its own storage to be outside of its threat model, and thus, Vault has no defenses in place if its backend is attacked](https://developer.hashicorp.com/vault/docs/internals/security)
-- [Vault also considers memory analysis attacks outside of its threat model, so Vault has no defense against it](https://developer.hashicorp.com/vault/docs/internals/security)
+1. Create a secret in the `argocd-system` Namespace called `vals-secret`:
+
+    ```yaml
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: vals-secret
+      namespace: argocd-system
+      labels:
+        argocd.argoproj.io/secret-type: vals-secret
+    type: Opaque
+    data:
+      VAULT_ADDR: ""
+      VAULT_NAMESPACE: ""
+      VAULT_AUTH_METHOD: ""
+      VAULT_ROLE_ID: ""
+      VAULT_SECRET_ID: ""
+      VAULT_TOKEN: ""
+    ```
+
+    Fill out required data in secret to connect it to your Vault.
+
+2. Contact your Platform Administrator to restart the `argocd-repo-server`. It is needed to load your secret environment variables so that Argo CD can connect to your Vault.
+
+3. Argo CD should now be able to connect to your vault, to replace a value with a secret from your Vault, use the following syntax:
+
+    ```
+    secrets+literal://vals!ref+vault://path/to/#/secret
+    ```
+
+    Here's an example of an Argo CD Application manifest:
+
+    ```yaml
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+      name: argocd-application
+      namespace: argocd-system
+      finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    spec:
+      destination:
+          namespace: staging
+          server: https://kubernetes.default.svc
+      project: default
+      source:
+        helm:
+          valueFiles:
+          - values.yaml
+          fileParameters:
+            - name: password
+              path: secrets+literal://vals!ref+vault://secret/user/#/password
+        path: deploy/helm/app
+        repoURL: https://github.com/username/repoistory.git
+        targetRevision: HEAD
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+    ```
 
 ## Argo CD Notifications
 
