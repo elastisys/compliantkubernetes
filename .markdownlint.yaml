@@ -1,0 +1,31 @@
+default: true
+
+MD003: # heading-style
+  style: atx
+MD004: # ul-style
+  style: dash
+MD013: false # line-length - does not support editorconfig
+MD024: # no-duplicate-heading
+  siblings_only: true
+MD029: # ol-prefix
+  style: one
+MD033: # no-inline-html
+  allowed_elements:
+    - a
+    - br
+    - dd
+    - div
+    - dl
+    - dt
+    - img
+    - li
+    - nav
+    - section
+    - ul
+MD046: # code-block-style
+  style: fenced
+MD048: false # code-fence-style - does not support admonitions
+MD049: # emphasis-style
+  style: underscore
+MD050: # strong-style
+  style: asterisk

@@ -34,6 +34,10 @@ repos:
       - id: eslint
         exclude: ^(user-demo/|docs/customer-quotes/|docs/tech-radar/)
 
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.12.1
+    hooks:
+      - id: markdownlint-cli2
 
   - repo: local
     hooks:
