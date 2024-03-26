@@ -7,12 +7,12 @@ Which format and structure should these records follow?
 
 ## Considered Options
 
-* [MADR](https://adr.github.io/madr/) 2.1.2 – The Markdown Architectural Decision Records
-* Formless – No conventions for file format and structure
+- [MADR](https://adr.github.io/madr/) 2.1.2 – The Markdown Architectural Decision Records
+- Formless – No conventions for file format and structure
 
 ## Decision Outcome
 
 Chosen option: "MADR 2.1.2", because
 
-* We need to start somewhere, and it's better to have some format than no format.
-* MADR seems to be good enough for our current needs.
+- We need to start somewhere, and it's better to have some format than no format.
+- MADR seems to be good enough for our current needs.

@@ -1,7 +1,7 @@
 ---
 description: Alerting on metrics with AlertManager in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 tags:
-- ISO 27001 A.16 Information Security Incident Management
+  - ISO 27001 A.16 Information Security Incident Management
 ---
 
 # Alerts
@@ -9,6 +9,7 @@ tags:
 Compliant Kubernetes (CK8S) includes alerts via [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/).
 
 !!!important
+
     By default, you will get some platform alerts. This may benefit you, by giving you improved "situational awareness". Please decide if these alerts are of interest to you or not. Feel free to silence them, as the Compliant Kubernetes administrator will take responsibility for them.
 
     Your focus should be on **user alerts** or **application-level alerts**, i.e., alerts under the control and responsibility of the Compliant Kubernetes user. We will focus on user alerts in this document.
@@ -16,7 +17,6 @@ Compliant Kubernetes (CK8S) includes alerts via [Alertmanager](https://prometheu
 ## Compliance needs
 
 Many regulations require you to have an incident management process. Alerts help you discover abnormal application behavior that need attention. This maps to [ISO 27001 – Annex A.16: Information Security Incident Management](https://www.isms.online/iso-27001/annex-a-16-information-security-incident-management/).
-
 
 ## Configuring user alerts
 
@@ -38,6 +38,7 @@ kubectl patch -n alertmanager secret alertmanager-alertmanager -p "{\"data\":{\"
 Make sure to configure **and test** a receiver for you alerts, e.g., Slack or OpsGenie.
 
 !!!note
+
     If you get an access denied error, check with your Compliant Kubernetes administrator.
 
 ### Silencing alerts
@@ -46,9 +47,9 @@ Compliant Kubernetes comes with a lot of predefined alerts. As a user you might 
 
 ```yaml
 routes:
-    - receiver: 'null'
-      matchers:
-        - namespace = kube-system
+  - receiver: "null"
+    matchers:
+      - namespace = kube-system
 ```
 
 You can match any label in the alerts, read more about how the `matcher` configuration works in the [upstream documentation](https://prometheus.io/docs/alerting/latest/configuration/#matcher).
@@ -57,8 +58,8 @@ You can match any label in the alerts, read more about how the `matcher` configu
 
 If you want to access Alertmanager, for example to confirm that its configuration was picked up correctly, proceed as follows:
 
-1. Type: `kubectl proxy`.
-2. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/alertmanager/services/alertmanager-operated:9093/proxy/) in your browser.
+1.  Type: `kubectl proxy`.
+1.  Open [this link](http://127.0.0.1:8001/api/v1/namespaces/alertmanager/services/alertmanager-operated:9093/proxy/) in your browser.
 
 You can configure silences in the UI, but they will not be persisted if Alertmanager is restarted. Use the secret mentioned above instead to create silences that persist.
 
@@ -90,7 +91,7 @@ The screenshot below gives an example of the application alert, as seen in Alert
 
 ### Detailed example
 
-PrometheusRules have two features, either the rules *alerts* based on expression, or the rules `records` based on a expression.
+PrometheusRules have two features, either the rules _alerts_ based on expression, or the rules `records` based on a expression.
 The former is the way to create alerting rules and the latter is a way to precompute complex queries that will be stored as separate metrics:
 
 ```yaml
@@ -103,21 +104,21 @@ metadata:
   name: prometheus-example-rules
 spec:
   groups:
-  - name: ./example.rules
-    # interval: 30s # optional parameter to configure how often groups of rules are evaluated
-    rules:
-    - alert: ExampleAlert
-      expr: vector(1)
-      # for: 1m # optional parameter to configure how long an alert must be triggered to be fired
-      labels:
-        severity: high
-      annotations:
-        summary: "Example Alert has been fired!"
-        description: "The Example Alert has been fired! It shows the value {{ $value }}."
-    - record: example_record_metric
-      expr: vector(1)
-      labels:
-        record: example
+    - name: ./example.rules
+      # interval: 30s # optional parameter to configure how often groups of rules are evaluated
+      rules:
+        - alert: ExampleAlert
+          expr: vector(1)
+          # for: 1m # optional parameter to configure how long an alert must be triggered to be fired
+          labels:
+            severity: high
+          annotations:
+            summary: "Example Alert has been fired!"
+            description: "The Example Alert has been fired! It shows the value {{ $value }}."
+        - record: example_record_metric
+          expr: vector(1)
+          labels:
+            record: example
 ```
 
 For alert rules labels and annotations can be added or overridden that will become present in the resulting alert notifications, in addition the annotations support Go Templating allowing access to the evaluated value via the `$value` variable and all labels from the expression using the `$labels` variable.

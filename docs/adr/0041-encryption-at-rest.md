@@ -1,8 +1,8 @@
 # Rely on Infrastructure Provider for encryption-at-rest
 
-* Status: accepted
-* Deciders: arch meeting
-* Date: 2023-05-11
+- Status: accepted
+- Deciders: arch meeting
+- Date: 2023-05-11
 
 ## Context and Problem Statement
 
@@ -17,49 +17,49 @@ How should we in Compliant Kubernetes handle encryption-at-rest both for VMs and
 
 ## Decision Drivers
 
-* We want to avoid security theatre.
-* We want to avoid operational complexity.
-* We want to avoid cloud-provider dependent implementation sprawl.
-* We want to make Application Developers that require encryption-at-rest happy.
+- We want to avoid security theatre.
+- We want to avoid operational complexity.
+- We want to avoid cloud-provider dependent implementation sprawl.
+- We want to make Application Developers that require encryption-at-rest happy.
 
 ## Considered Options
 
 VM disk encryption:
 
-1. Store the encryption key on the VM's /boot disk.
+1.  Store the encryption key on the VM's /boot disk.
     This is obvious security theatre. For example, if server disks are stolen, the VM's data is in the hands of the thief.
-1. Let admins type the encryption key on the VM's console.
+1.  Let admins type the encryption key on the VM's console.
     Asking admins to do this is time-consuming, error-prone, effectively jeopardizing uptime. Instead, Compliant Kubernetes recommends automatic VM reboots during application "quiet times", such as at night, to ensure the OS is patched without sacrificing uptime.
-1. Let the VM pull the encryption key via instance metadata or instance configuration.
+1.  Let the VM pull the encryption key via instance metadata or instance configuration.
     This would imply storing the encryption key on the Infrastructure Provider. If the Infrastructure Provider doesn't have encryption-at-rest, then the encryption key is also stored unencrypted, likely on the same server as the VM is running. Hence, this quickly ends up being security theatre.
-1. Let the VM pull the encryption key from an external location which features encryption-at-rest.
+1.  Let the VM pull the encryption key from an external location which features encryption-at-rest.
     This would imply that the VM needs some kind of credentials to authenticate to the external location. Again these credentials are stored unencrypted on the Infrastructure Provider, so we are back to option 3.
-1. Rely on Infrastructure Provider to provide encryption-at-rest.
+1.  Rely on Infrastructure Provider to provide encryption-at-rest.
 
 Object storage encryption:
 
-1. Encrypt data before shipping to object storage.
+1.  Encrypt data before shipping to object storage.
     This is not doable since not all applications that interacts with object storage in Compliant Kubernetes supports this.
     Using a proxy gateway that can handle the encryption could have been a solution, however the only tool that we've found, MinIO Gateway, has been [deprecated](https://blog.min.io/deprecation-of-the-minio-gateway/).
-1. Encrypt data using server-side-encryption.
+1.  Encrypt data using server-side-encryption.
     In Compliant Kubernetes we use Openstack Swift and the S3 API when interacting with object storage.
     Openstack swift has no notion of server-side encryption where the data is encrypted at rest with a user provided key.
     The S3 API has server-side encryption but again some applications in Compliant Kubernetes lacks the features necessary to leverage it.
-1. Rely on Infrastructure Provider to provide encryption-at-rest.
+1.  Rely on Infrastructure Provider to provide encryption-at-rest.
 
 ## Decision Outcome
 
 Chosen options:
 
-* VM disk encryption: "Rely on Infrastructure Provider to provide encryption-at-rest".
-* Object storage encryption: "Rely on Infrastructure Provider to provide encryption-at-rest".
+- VM disk encryption: "Rely on Infrastructure Provider to provide encryption-at-rest".
+- Object storage encryption: "Rely on Infrastructure Provider to provide encryption-at-rest".
 
 ### Positive Consequences
 
-* We can offer encryption-at-rest for Application Developers that require it.
-* We don't increase the operational complexity.
-* We avoid security theatre.
+- We can offer encryption-at-rest for Application Developers that require it.
+- We don't increase the operational complexity.
+- We avoid security theatre.
 
 ### Negative Consequences
 
-* We limit what Infrastructure Providers Application Developers can choose if they require encryption-at-rest.
+- We limit what Infrastructure Providers Application Developers can choose if they require encryption-at-rest.

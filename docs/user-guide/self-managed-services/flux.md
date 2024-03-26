@@ -1,5 +1,4 @@
-Flux™ (self-managed)
-===========
+# Flux™ (self-managed)
 
 {%
  include-markdown './_common.include'
@@ -20,7 +19,7 @@ Flux is a [CNCF Graduated project](https://www.cncf.io/projects/flux/).
 This page will help you install Flux in a Compliant Kubernetes environment.
 
 !!! Note "Supported versions"
-    This installation guide has been tested with Flux version [2.1.2](https://github.com/fluxcd/flux2/tree/v2.1.2).
+This installation guide has been tested with Flux version [2.1.2](https://github.com/fluxcd/flux2/tree/v2.1.2).
 
 ## Initial Prep
 
@@ -32,31 +31,30 @@ Flux also requires the image repository `ghcr.io/fluxcd` to be allowlisted. Ask 
 
 ### Git
 
-You need to setup a Git repository that will contain the manifest files. This can be a personal or organization repository. *It is strongly recommended that it is a private (as in: not public) repository.*
+You need to setup a Git repository that will contain the manifest files. This can be a personal or organization repository. _It is strongly recommended that it is a private (as in: not public) repository._
 
 Next you need to generate an SSH key that will be used to communicate with the Git repository. The private key will be used as a Kubernetes Secret in a later step.
-```
+
+```sh
 ssh-keygen -t rsa -C "flux-deploymentkey" -f <path-to-store-key>
 ```
+
 After you have generated an SSH Key, you want to add it as a deploy key in your Git repository. This can be done through `Settings` -> `Deploy keys`. Copy your public key that you just generated and paste here.
 
 ### Kubernetes
 
 In Kubernetes you will need to:
 
-1. Install CRDs
+1.  Install CRDs
+1.  Create a Namespace for Flux
+1.  Create a Git Secret in the Namespace
+1.  Create Roles/RoleBindings for Flux.
 
-2. Create a Namespace for Flux
-
-3. Create a Git Secret in the Namespace
-
-4. Create Roles/RoleBindings for Flux.
-
-##### CRDs
+#### CRDs
 
 You need to apply the Custom Resource Definitions (CRDs) required by Flux. This is typically not allowed in a Compliant Kubernetes Environment, but with Flux enabled with the self-managed cluster resources feature, this allows you to apply these yourself.
 
-```
+```sh
 mkdir crds
 
 # Fetches Flux CRDs for v2.1.2 and saves it in the crds directory
@@ -65,22 +63,23 @@ curl https://raw.githubusercontent.com/fluxcd/flux2/v2.1.2/manifests/crds/kustom
 kubectl apply -k crds
 ```
 
-##### Namespace
+#### Namespace
 
 You need create a Namespace where Flux will work. This Namespace should be called `flux-system`. Create this [sub-namespace](../namespaces.md) under eg. `production`.
 
 `kubectl hns create -n production flux-system`
 
-##### Git Secret
+#### Git Secret
 
 Next to allow Flux to interact with your Git Repository you need to create a Secret containing the ssh private key created earlier. This can be done with the Flux CLI:
-```
+
+```sh
 flux create secret git <repo-name>-auth \
     --url=ssh://git@github.com/<owner>/<repo-name>.git \
     --private-key-file=<path-to-ssh-private-key>
 ```
 
-##### Roles and RoleBindings
+#### Roles and RoleBindings
 
 You need to create the necessary Roles for Flux to function. This needs to be done in every Namespace that you want Flux to work in.
 
@@ -88,7 +87,7 @@ Since Compliant Kubernetes uses the Hierarchical Namespace Controller, the easie
 
 If you have multiple Namespaces that ought to be targets for Flux, you can add the Roles and RoleBindings to more than one "parent" Namespace. For instance, to `staging`, to get Flux to work with the `staging` Namespace and any Namespace anchored to it.
 
-```
+```sh
 mkdir roles
 
 # Fetches the necessary Roles and saves it in the roles directory
@@ -103,7 +102,7 @@ kubectl apply -k roles
 
 The kustomize and helm controller needs some extra permissions as well since it wants to deploy. The simplest is to add these controller ServiceAccounts to the `extra-workload-admins` RoleBinding in the parent Namespace eg. `production`. This will grant Flux the maximum permission an application developer can give in the Namespaces where it is configured. Edit the RoleBinding and add the lines below.
 
-```
+```sh
 kubectl edit rolebindings extra-workload-admins -n production
 
 ...
@@ -131,7 +130,7 @@ subjects:
 
 The script below can be used to generate Flux manifests and a basic cluster folder structure similar to `flux bootstrap`. Be sure to configure the environment variables in the script.
 
-```
+```sh
 # Generate Manifest files
 
 # Be sure to edit the variables below!
@@ -185,17 +184,17 @@ Read the Further Reading, keep in mind the (updated) list of Known Issues, both 
 
 ## Further reading
 
-* [Flux core concepts](https://fluxcd.io/flux/concepts/)
+- [Flux core concepts](https://fluxcd.io/flux/concepts/)
 
-* [Flux multi-tenancy](https://fluxcd.io/flux/installation/configuration/multitenancy/)
+- [Flux multi-tenancy](https://fluxcd.io/flux/installation/configuration/multitenancy/)
 
-* [Controller options](https://fluxcd.io/flux/installation/configuration/boostrap-customization/)
+- [Controller options](https://fluxcd.io/flux/installation/configuration/boostrap-customization/)
 
-* [Flux components](https://fluxcd.io/flux/components/)
+- [Flux components](https://fluxcd.io/flux/components/)
 
 ## Known Issues
 
-#### Role and RoleBindings does not apply correctly
+### Role and RoleBindings does not apply correctly
 
 Error produced: `Error from server (NotFound): error when creating "roles/": roles.rbac.authorization.k8s.io "role" not found`
 

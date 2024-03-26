@@ -1,9 +1,13 @@
 <!--deploy-rook-start-->
+
+<!-- markdownlint-disable-file first-line-h1 -->
+
 ### Deploy Rook
 
 To deploy Rook, go to the `compliantkubernetes-kubespray` repo, change directory to `rook` and follow the instructions [here](https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/rook#rook-ceph) for each cluster.
 
 !!! note
+
     If the kubeconfig files for the clusters are encrypted with SOPS, you need to decrypt them before using them:
 
     ```bash
@@ -20,13 +24,17 @@ rook-ceph     rook-ceph-crashcollector-minion-2-5c74ffffb6-jwk55   0/1     Init:
 ```
 
 !!! warning
+
     Pods in pending state usually indicate resource shortage. In such cases you need to use bigger instances.
+
 <!--deploy-rook-stop-->
 
 <!--test-rook-start-->
+
 ### Test Rook
 
 !!! note
+
     If the Workload Cluster kubeconfig is configured with authentication to Dex running in the Management Cluster, part of apps needs to be deployed before it is possible to run the commands below for `wc`.
 
 To test Rook, proceed as follows:
@@ -46,6 +54,7 @@ done
 You should see PVCs in Bound state, and that the pods which mounts the volumes are running.
 
 !!! important
+
     If you have taints on certain nodes which should support running pods that mounts `rook-ceph` PVCs, you need to ensure these nodes are tolerated by the rook-ceph DaemonSet `csi-rbdplugin`, otherwise, pods on these nodes will not be able to attach or mount the volumes.
 
 If you want to clean the previously created PVCs:
@@ -56,9 +65,11 @@ for CLUSTER in sc wc; do
     kubectl --kubeconfig ${CK8S_CONFIG_PATH}/.state/kube_config_${CLUSTER}.yaml -n default delete pod csirbd-demo-pod
 done
 ```
+
 <!--test-rook-stop-->
 
 <!--clone-apps-start-->
+
 Now that the Kubernetes clusters are up and running, we are ready to install the Compliant Kubernetes apps.
 
 ### Clone `compliantkubernetes-apps` and Install Pre-requisites
@@ -80,9 +91,11 @@ export CK8S_CONFIG_PATH=~/.ck8s/my-cluster-path
 export CK8S_CLOUD_PROVIDER=# [exoscale|safespring|citycloud|aws|baremetal]
 export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
 ```
+
 <!--clone-apps-stop-->
 
 <!--init-apps-start-->
+
 ### Initialize the apps configuration
 
 ```bash
@@ -98,6 +111,7 @@ ls -l $CK8S_CONFIG_PATH
 <!--init-apps-stop-->
 
 <!--configure-apps-start-->
+
 ### Configure the apps
 
 Edit the configuration files `${CK8S_CONFIG_PATH}/sc-config.yaml`, `${CK8S_CONFIG_PATH}/wc-config.yaml` and `${CK8S_CONFIG_PATH}/secrets.yaml` and set the appropriate values for some of the configuration fields.
@@ -122,14 +136,17 @@ sops ${CK8S_CONFIG_PATH}/secrets.yaml
 ```
 
 !!!tip
+
     The default configuration for the Management Cluster and Workload Cluster are available in the directory `${CK8S_CONFIG_PATH}/defaults/` and can be used as a reference for available options.
 
 !!!warning
+
     Do not modify the read-only default configurations files found in the directory `${CK8S_CONFIG_PATH}/defaults/`. Instead configure the cluster by modifying the regular files `${CK8S_CONFIG_PATH}/sc-config.yaml` and `${CK8S_CONFIG_PATH}/wc-config.yaml` as they will override the default options.
 
 <!--configure-apps-stop-->
 
 <!--install-apps-start-->
+
 ### Install Compliant Kubernetes apps
 
 Start with the Management Cluster:
@@ -143,13 +160,15 @@ Then the Workload Cluster:
 ```bash
 compliantkubernetes-apps/bin/ck8s apply wc
 ```
+
 <!--install-apps-stop-->
 
 <!--settling-start-->
+
 ### Settling
 
 !!!important
-    Leave sufficient time for the system to settle, e.g., request TLS certificates from Let's Encrypt, perhaps as much as 20 minutes.
+Leave sufficient time for the system to settle, e.g., request TLS certificates from Let's Encrypt, perhaps as much as 20 minutes.
 
 Check if all helm charts succeeded.
 
@@ -175,24 +194,29 @@ done
 
 Check the output of the command above.
 All resources need to have the Ready column True.
+n
+
 <!--settling-stop-->
 
 <!--testing-start-->
+
 ### Testing
 
 After completing the installation step you can test if the apps are properly installed and ready using the commands below:
 
 ```bash
 for CLUSTER in sc wc; do
-    compliantkubernetes-apps/bin/ck8s test ${CLUSTER}
+  compliantkubernetes-apps/bin/ck8s test ${CLUSTER}
 done
 ```
 
 Done.
 Navigate to the endpoints, for example `grafana.$BASE_DOMAIN`, `kibana.$BASE_DOMAIN`, `harbor.$BASE_DOMAIN`, etc. to discover Compliant Kubernetes's features.
+
 <!--testing-stop-->
 
 <!--create-s3-buckets-start-->
+
 ### Create S3 buckets
 
 You can use the following script to create required S3 buckets.
@@ -211,6 +235,7 @@ scripts/S3/entry.sh create
 <!--create-s3-buckets-stop-->
 
 <!--test-s3-buckets-start-->
+
 ### Test S3
 
 To ensure that you have configured S3 correctly, run the following snippet:
@@ -231,14 +256,18 @@ To ensure that you have configured S3 correctly, run the following snippet:
     done
 )
 ```
+
 <!--test-s3-buckets-stop-->
 
 <!--out-of-date-start-->
+
 !!!bug "This page is out of date"
+
     We are currently working on internal documentation to streamline
     Compliant Kubernetes onboarding for selected Infrastructure Providers. Until
     those documents are ready, and until we have capacity to make parts of
     that documentation public, this page is out-of-date.
 
     Nevertheless, parts of it are useful. Use at your own risk and don't expect things to work smoothly.
+
 <!--out-of-date-end-->

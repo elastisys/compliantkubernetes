@@ -1,8 +1,8 @@
 # Only allow Ingress Configuration Snippet Annotations after Proper Risk Acceptance
 
-* Status: accepted
-* Deciders: architecture meeting
-* Date: 2022-08-11
+- Status: accepted
+- Deciders: architecture meeting
+- Date: 2022-08-11
 
 ## Context and Problem Statement
 
@@ -14,15 +14,15 @@ How shall we best serve Application Developers without compromising platform sta
 
 ## Decision Drivers
 
-* We want to best serve Application Developers.
-* We want to ensure platform stability and security.
+- We want to best serve Application Developers.
+- We want to ensure platform stability and security.
 
 ## Considered Options
 
-* Allow `the use of "config-snippets annotations" with Ingress` by default.
-* Disallow `the use of "config-snippets annotations" with Ingress` by default.
-* Never allow `the use of "config-snippets annotations" with Ingress`.
-* Allow `the use of "config-snippets annotations" with Ingress`, but only after Application Developer accepted the downtime and security risks.
+- Allow `the use of "config-snippets annotations" with Ingress` by default.
+- Disallow `the use of "config-snippets annotations" with Ingress` by default.
+- Never allow `the use of "config-snippets annotations" with Ingress`.
+- Allow `the use of "config-snippets annotations" with Ingress`, but only after Application Developer accepted the downtime and security risks.
 
 ## Decision Outcome
 
@@ -30,17 +30,18 @@ Chosen option: Allow `the use of "config-snippets annotations" with Ingress`, bu
 
 ### Positive Consequences
 
-* Several use-cases commonly requested by Application Developers can be satisfied.
+- Several use-cases commonly requested by Application Developers can be satisfied.
 
 ### Negative Consequences
 
-* Platform security is at a small risk if this feature is misused by Application Developers.
-* Platform stability is at a small risk if this feature is misused by Application Developers.
+- Platform security is at a small risk if this feature is misused by Application Developers.
+- Platform stability is at a small risk if this feature is misused by Application Developers.
 
 ## Recommendation to Platform Administrators
 
 If you enable this feature, then make sure Application Developers understand and accept the added stability and security risks. A message as follows could be used:
-```
+
+```text
 Hello!
 
 After talking with the team, we have decided that it is okay to enable the `nginx.ingress.kubernetes.io/configuration-snippet` annotation provided that:

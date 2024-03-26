@@ -1,8 +1,8 @@
 # Application developer privilege elevation
 
-* Status: accepted
-* Deciders: Olle, Christian
-* Date: 2023-04-11
+- Status: accepted
+- Deciders: Olle, Christian
+- Date: 2023-04-11
 
 ## Context and Problem Statement
 
@@ -23,12 +23,12 @@ How should we manage such requests and when should the core permissions granted 
 
 ## Considered Options
 
-1. Never elevate privileges for application developers.
-   - Application developer privileges are strictly tied to the running version of Compliant Kubernetes.
-1. Elevate privileges on a case-by-case basis
-   - Application developers can request additional privileges.
-     The request can be accepted or rejected by the Platform administrators.
-     If accepted, the elevated privileges should, if possible, be implemented into the core platform.
+1.  Never elevate privileges for application developers.
+    - Application developer privileges are strictly tied to the running version of Compliant Kubernetes.
+1.  Elevate privileges on a case-by-case basis
+    - Application developers can request additional privileges.
+      The request can be accepted or rejected by the Platform administrators.
+      If accepted, the elevated privileges should, if possible, be implemented into the core platform.
 
 ## Decision Outcome
 

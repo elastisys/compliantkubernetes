@@ -1,10 +1,10 @@
 # Filter by cluster label then data source
 
-* Status: accepted
-* Deciders: arch meeting
-* Date: 2021-01-27
+- Status: accepted
+- Deciders: arch meeting
+- Date: 2021-01-27
 
-Technical Story: https://github.com/elastisys/compliantkubernetes-apps/issues/742
+Technical Story: <https://github.com/elastisys/compliantkubernetes-apps/issues/742>
 
 ## Context and Problem Statement
 
@@ -15,16 +15,16 @@ How should we organise metrics to allow users and admins to select for which clu
 
 ## Decision Drivers
 
-* We want to be able to see metrics for a single cluster, for multiple cluster, and even for all clusters.
-* We want to be able to reuse upstream dashboards, and [some are missing filters](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/alertmanager-overview.yaml) for the `cluster` variable.
-* We want to stay flexible.
+- We want to be able to see metrics for a single cluster, for multiple cluster, and even for all clusters.
+- We want to be able to reuse upstream dashboards, and [some are missing filters](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/alertmanager-overview.yaml) for the `cluster` variable.
+- We want to stay flexible.
 
 ## Considered Options
 
-* Use only the `cluster` label and expose a single data source.
-* Expose multiple data sources and ignore the `cluster` label.
-* Filter primarily by `cluster` label, but allow filtering by data source.
-* Filter primarily by data source, but allow filtering by `cluster` label.
+- Use only the `cluster` label and expose a single data source.
+- Expose multiple data sources and ignore the `cluster` label.
+- Filter primarily by `cluster` label, but allow filtering by data source.
+- Filter primarily by data source, but allow filtering by `cluster` label.
 
 ## Decision Outcome
 
@@ -38,12 +38,12 @@ In general, we will aim to fix dashboards missing the `cluster` variable upstrea
 
 ### Positive Consequences
 
-* We support both dashboards with `cluster` filter and without
-* We can enforce metrics multi-tenancy, i.e., map Grafana users/orgs to datasources, to filter some metrics out.
+- We support both dashboards with `cluster` filter and without
+- We can enforce metrics multi-tenancy, i.e., map Grafana users/orgs to datasources, to filter some metrics out.
 
 ### Negative Consequences
 
-* [Minor] We need to configure data sources in `sc-config.yaml`
-  * For example, if we forget to add the name of a Workload Cluster, the data source will be missing, but filtering based on `cluster` label is still possible.
-* [Minor] Label enforcer uses a bit of resources.
-  * However, we already saved a lot by migrating from InfluxDB to Thanos, so we can afford go back a bit.
+- [Minor] We need to configure data sources in `sc-config.yaml`
+  - For example, if we forget to add the name of a Workload Cluster, the data source will be missing, but filtering based on `cluster` label is still possible.
+- [Minor] Label enforcer uses a bit of resources.
+  - However, we already saved a lot by migrating from InfluxDB to Thanos, so we can afford go back a bit.

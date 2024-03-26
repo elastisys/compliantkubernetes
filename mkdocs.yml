@@ -30,14 +30,14 @@ copyright: >-
 repo_url: https://github.com/elastisys/compliantkubernetes/
 edit_uri: edit/main/docs/
 
-  #strict: true
+# strict: true
 
 theme:
   name: material
   font: false
-  logo: 'img/logo.png'
+  logo: "img/logo.png"
   # "The Internet" recommends using absolute URLs for favicons.
-  favicon: 'https://elastisys.io/compliantkubernetes/img/favicon.ico'
+  favicon: "https://elastisys.io/compliantkubernetes/img/favicon.ico"
   custom_dir: overrides
   palette:
     scheme: elastisys
@@ -65,26 +65,26 @@ plugins:
   - search
   - mike:
       # these fields are all optional; the defaults are as below...
-      version_selector: true   # set to false to leave out the version selector
-      css_dir: css             # the directory to put the version selector's CSS
-      javascript_dir: js       # the directory to put the version selector's JS
+      version_selector: true # set to false to leave out the version selector
+      css_dir: css # the directory to put the version selector's CSS
+      javascript_dir: js # the directory to put the version selector's JS
       canonical_version: compliantkubernetes
   # See ./mkdocs-ciso-controls/README.md
   - ciso-controls:
       root_url: ciso-guide/controls/
   - redirects:
       redirect_maps:
-        'operator-manual/aws.md': 'operator-manual/on-prem-standard.md'
-        'operator-manual/azure.md': 'operator-manual/on-prem-standard.md'
-        'operator-manual/eksd.md': 'operator-manual/on-prem-standard.md'
-        'operator-manual/exoscale.md': 'operator-manual/on-prem-standard.md'
-        'operator-manual/gcp.md': 'operator-manual/on-prem-standard.md'
-        'operator-manual/openstack.md': 'operator-manual/on-prem-standard.md'
-        'operator-manual/ovh-managed-kubernetes.md': 'operator-manual/on-prem-standard.md'
-        'operator-manual/safespring.md': 'operator-manual/on-prem-standard.md'
-        'release-notes.md': 'release-notes/ck8s.md'
-        'operator-manual/qa.md': 'quality-criteria.md'
-        'operator-manual/air-gapped-environment.md': 'operator-manual/air-gapped.md'
+        "operator-manual/aws.md": "operator-manual/on-prem-standard.md"
+        "operator-manual/azure.md": "operator-manual/on-prem-standard.md"
+        "operator-manual/eksd.md": "operator-manual/on-prem-standard.md"
+        "operator-manual/exoscale.md": "operator-manual/on-prem-standard.md"
+        "operator-manual/gcp.md": "operator-manual/on-prem-standard.md"
+        "operator-manual/openstack.md": "operator-manual/on-prem-standard.md"
+        "operator-manual/ovh-managed-kubernetes.md": "operator-manual/on-prem-standard.md"
+        "operator-manual/safespring.md": "operator-manual/on-prem-standard.md"
+        "release-notes.md": "release-notes/ck8s.md"
+        "operator-manual/qa.md": "quality-criteria.md"
+        "operator-manual/air-gapped-environment.md": "operator-manual/air-gapped.md"
 
 markdown_extensions:
   - attr_list
@@ -128,138 +128,138 @@ extra:
             <a href="https://github.com/elastisys/compliantkubernetes/issues/new/choose" target="_blank">filing an issue</a>.
 
 nav:
-  - Overview: 'index.md'
-  - 'Mission and Vision': 'mission-and-vision.md'
-  - 'For Application Developers':
-    - 'Getting Started':
-      - 'Step 1: Prepare': 'user-guide/prepare.md'
-      - 'Step 2: Deploy': 'user-guide/deploy.md'
-      - 'Step 3: Operate': 'user-guide/operate.md'
-    - 'Go Deeper':
-      - 'Prepare Your Application': 'user-guide/prepare-application.md'
-      - 'Prepare Your Identity Provider (IdP)': 'user-guide/prepare-idp.md'
-      - 'Container registry': 'user-guide/registry.md'
-      - 'Continous Development': 'user-guide/continous-development.md'
-      - 'Network Model': 'user-guide/network-model.md'
-      - 'Kubernetes API': 'user-guide/kubernetes-api.md'
-      - 'Kubernetes UI (Lens)': 'user-guide/kubernetes-ui.md'
-      - 'Namespaces': 'user-guide/namespaces.md'
-      - 'Logs': 'user-guide/logs.md'
-      - 'Log-based Alerts': 'user-guide/log-based-alerts.md'
-      - 'Long-term Log Retention': 'user-guide/long-term-log-retention.md'
-      - 'Metrics': 'user-guide/metrics.md'
-      - 'Metric Alerts': 'user-guide/alerts.md'
-      - 'Maintenance': 'user-guide/maintenance.md'
-      - 'Backups': 'user-guide/backup.md'
-      - 'CI/CD': 'user-guide/ci-cd.md'
-      - 'Demarcation': 'user-guide/demarcation.md'
-      - 'How to Delegate': 'user-guide/delegation.md'
-      - 'How many environments?': 'user-guide/how-many-environments.md'
-      - 'Cluster API': 'user-guide/cluster-api.md'
-    - 'Safeguards':
-      - 'Overview': 'user-guide/safeguards/index.md'
-      - 'Enforce No Root': 'user-guide/safeguards/enforce-no-root.md'
-      - 'Enforce Restricted Privileges': 'user-guide/safeguards/enforce-podsecuritypolicies.md'
-      - 'Enforce NetworkPolicies': 'user-guide/safeguards/enforce-networkpolicies.md'
-      - 'Enforce Resources': 'user-guide/safeguards/enforce-resources.md'
-      - 'Enforce Trusted Registries': 'user-guide/safeguards/enforce-trusted-registries.md'
-      - 'Enforce No Latest Tag': 'user-guide/safeguards/enforce-no-latest-tag.md'
-      - 'Enforce Job TTL': 'user-guide/safeguards/enforce-job-ttl.md'
-      - 'Enforce No LoadBalancer Service': 'user-guide/safeguards/enforce-no-load-balancer-service.md'
-    - 'Additional Services':
-      - 'Overview': 'user-guide/additional-services/index.md'
-      - 'PostgreSQL': 'user-guide/additional-services/postgresql.md'
-      - 'TimescaleDB': 'user-guide/additional-services/timescaledb.md'
-      - 'Redis': 'user-guide/additional-services/redis.md'
-      - 'RabbitMQ': 'user-guide/additional-services/rabbitmq.md'
-      - 'Jaeger (preview)': 'user-guide/additional-services/jaeger.md'
-      - 'Argo CD (preview)': 'user-guide/additional-services/argocd.md'
-    - 'Self-Managed Services':
-      - 'FerretDB (self-managed)': 'user-guide/self-managed-services/ferretdb.md'
-      - 'Keycloak (self-managed)': 'user-guide/self-managed-services/keycloak.md'
-      - 'JupyterHub (self-managed)': 'user-guide/self-managed-services/jupyterhub.md'
-      - 'SealedSecrets (self-managed)': 'user-guide/self-managed-services/sealedsecrets.md'
-      - 'MongoDB (self-managed)': 'user-guide/self-managed-services/mongodb.md'
-      - 'Sjunet (self-managed)': 'user-guide/self-managed-services/sjunet.md'
-      - 'Flux (self-managed)': 'user-guide/self-managed-services/flux.md'
-      - 'Kafka (self-managed)': 'user-guide/self-managed-services/kafka.md'
-    - 'Go-live Checklist': 'user-guide/go-live.md'
-    - 'Troubleshooting': 'user-guide/troubleshooting.md'
-    - 'FAQ': 'user-guide/faq.md'
-  - 'For Platform Administrators':
-    - 'Overview': 'operator-manual/index.md'
-    - 'Getting Started': 'operator-manual/getting-started.md'
-    - 'Provider Audit': 'operator-manual/provider-audit.md'
-    - 'Standard Template for on-prem Environment': 'operator-manual/on-prem-standard.md'
-    - 'Air-gapped Network': 'operator-manual/air-gapped.md'
-    - 'Advanced Configuration':
-      - 'Overview' : 'operator-manual/configure.md'
-      - 'Sizing' : 'operator-manual/cluster-sizing.md'
-      - 'Ingress': 'operator-manual/ingress.md'
-      - 'Access Control': 'operator-manual/access-control.md'
-      - 'OpenSearch Mappings': 'operator-manual/opensearch-mappings.md'
-      - 'User Alerts': 'operator-manual/user-alerts.md'
-      - 'User Managed CRDs (preview)': 'operator-manual/user-managed-crds.md'
-    - 'Disaster Recovery': 'operator-manual/disaster-recovery.md'
-    - 'Breaking the Glass': 'operator-manual/break-glass.md'
-    - 'Use of Cryptography': 'operator-manual/cryptography.md'
-    - 'Use of Credentials': 'operator-manual/credentials.md'
-    - 'Capacity Management': 'operator-manual/capacity-management.md'
-    - 'Clock Synchronization': 'operator-manual/clock-synchronization.md'
-    - 'Maintenance': 'operator-manual/maintenance.md'
-    - 'Clean Up': 'operator-manual/clean-up.md'
-    - 'Troubleshooting': 'operator-manual/troubleshooting.md'
-    - 'FAQ': 'operator-manual/faq.md'
-    - 'Additional Services': 'operator-manual/additional-services.md'
-  - 'For CISOs and DPOs':
-    - 'Overview': 'ciso-guide/index.md'
-    - 'GDPR (EU)': 'ciso-guide/controls/gdpr.md'
-    - 'ISO 27001 (EU)': 'ciso-guide/controls/iso-27001.md'
-    - 'Healthcare':
-      - 'HSLF-FS 2016:40 (SE)': 'ciso-guide/controls/hslf-fs-201640.md'
-      - 'HIPAA (US)': 'ciso-guide/controls/hipaa.md'
-      - 'MDR (EU)': 'ciso-guide/controls/mdr.md'
-    - 'Public sector':
-      - 'MSBFS 2020:7 (SE)': 'ciso-guide/controls/msbfs-20207.md'
-    - 'NIS2':
-      - 'Overview': 'ciso-guide/nis2.md'
-      - 'KRITIS (DE)': 'ciso-guide/controls/kritis.md'
-      - 'BSI IT-Grundschutz (DE)': 'ciso-guide/controls/bsi-it-grundschutz.md'
-      - 'MSBFS 2018:8 (SE)': 'ciso-guide/controls/msbfs-20188.md'
-    - 'NIST SP 800-171': 'ciso-guide/controls/nist-sp-800-171.md'
-    - 'ISA/IEC 62443': 'ciso-guide/isa-iec-62443.md'
-    - 'CISO Dashboards':
-      - 'ciso-guide/audit-logs.md'
-      - 'ciso-guide/backup.md'
-      - 'ciso-guide/cryptography.md'
-      - 'ciso-guide/intrusion-detection.md'
-      - 'ciso-guide/policy-as-code.md'
-      - 'ciso-guide/network-security.md'
-      - 'ciso-guide/capacity-management.md'
-      - 'ciso-guide/vulnerability.md'
-      - 'ciso-guide/log-review.md'
-    - 'FAQ': 'ciso-guide/faq.md'
-    - 'How do I comply with GDPR Art. 17 Right to erasure ("right to be forgotten")?': 'ciso-guide/gdpr-art-17.md'
-    - "How do I comply with HSLF-FS 2016:40 4 kap. 9 § Kontroll av åtkomst till uppgifter?": "ciso-guide/pdl-audit-logs.md"
-  - 'For Contributors':
-    - 'Overview': 'contributor-guide/index.md'
-    - 'Architecture': 'architecture.md'
-    - 'Architectural Decision Log': 'adr/index.md'
-    - 'Tech Radar': 'tech-radar/index.html'
-    - 'Quality Criteria': 'quality-criteria.md'
-  - 'Release Notes':
-    - 'Compliant Kubernetes': 'release-notes/ck8s.md'
-    - 'CK8S Kubespray': 'release-notes/kubespray.md'
-    - 'CK8S Cluster API': 'release-notes/capi.md'
-    - 'CK8S PostgreSQL': 'release-notes/postgres.md'
-    - 'CK8S RabbitMQ': 'release-notes/rabbitmq.md'
-    - 'CK8S Redis': 'release-notes/redis.md'
-    - 'CK8S Jaeger': 'release-notes/jaeger.md'
-    - 'CK8S Argo CD': 'release-notes/argocd.md'
-  - 'Glossary': 'glossary.md'
-  - 'Fully Managed Compliant Kubernetes': 'https://elastisys.com/managed-services/'
-  - 'Support for Self-Managed Compliant Kubernetes': 'https://elastisys.com/self-managed/'
-  - 'Consulting': 'https://elastisys.com/consulting/'
-  - 'Official Training': 'https://elastisys.com/training/'
-  - 'Blog': 'https://elastisys.com/blog/'
-  - 'Privacy Policy': 'https://elastisys.com/legal/privacy-policy/'
+  - Overview: "index.md"
+  - "Mission and Vision": "mission-and-vision.md"
+  - "For Application Developers":
+      - "Getting Started":
+          - "Step 1: Prepare": "user-guide/prepare.md"
+          - "Step 2: Deploy": "user-guide/deploy.md"
+          - "Step 3: Operate": "user-guide/operate.md"
+      - "Go Deeper":
+          - "Prepare Your Application": "user-guide/prepare-application.md"
+          - "Prepare Your Identity Provider (IdP)": "user-guide/prepare-idp.md"
+          - "Container registry": "user-guide/registry.md"
+          - "Continuous Development": "user-guide/continous-development.md"
+          - "Network Model": "user-guide/network-model.md"
+          - "Kubernetes API": "user-guide/kubernetes-api.md"
+          - "Kubernetes UI (Lens)": "user-guide/kubernetes-ui.md"
+          - "Namespaces": "user-guide/namespaces.md"
+          - "Logs": "user-guide/logs.md"
+          - "Log-based Alerts": "user-guide/log-based-alerts.md"
+          - "Long-term Log Retention": "user-guide/long-term-log-retention.md"
+          - "Metrics": "user-guide/metrics.md"
+          - "Metric Alerts": "user-guide/alerts.md"
+          - "Maintenance": "user-guide/maintenance.md"
+          - "Backups": "user-guide/backup.md"
+          - "CI/CD": "user-guide/ci-cd.md"
+          - "Demarcation": "user-guide/demarcation.md"
+          - "How to Delegate": "user-guide/delegation.md"
+          - "How many environments?": "user-guide/how-many-environments.md"
+          - "Cluster API": "user-guide/cluster-api.md"
+      - "Safeguards":
+          - "Overview": "user-guide/safeguards/index.md"
+          - "Enforce No Root": "user-guide/safeguards/enforce-no-root.md"
+          - "Enforce Restricted Privileges": "user-guide/safeguards/enforce-podsecuritypolicies.md"
+          - "Enforce NetworkPolicies": "user-guide/safeguards/enforce-networkpolicies.md"
+          - "Enforce Resources": "user-guide/safeguards/enforce-resources.md"
+          - "Enforce Trusted Registries": "user-guide/safeguards/enforce-trusted-registries.md"
+          - "Enforce No Latest Tag": "user-guide/safeguards/enforce-no-latest-tag.md"
+          - "Enforce Job TTL": "user-guide/safeguards/enforce-job-ttl.md"
+          - "Enforce No LoadBalancer Service": "user-guide/safeguards/enforce-no-load-balancer-service.md"
+      - "Additional Services":
+          - "Overview": "user-guide/additional-services/index.md"
+          - "PostgreSQL": "user-guide/additional-services/postgresql.md"
+          - "TimescaleDB": "user-guide/additional-services/timescaledb.md"
+          - "Redis": "user-guide/additional-services/redis.md"
+          - "RabbitMQ": "user-guide/additional-services/rabbitmq.md"
+          - "Jaeger (preview)": "user-guide/additional-services/jaeger.md"
+          - "Argo CD (preview)": "user-guide/additional-services/argocd.md"
+      - "Self-Managed Services":
+          - "FerretDB (self-managed)": "user-guide/self-managed-services/ferretdb.md"
+          - "Keycloak (self-managed)": "user-guide/self-managed-services/keycloak.md"
+          - "JupyterHub (self-managed)": "user-guide/self-managed-services/jupyterhub.md"
+          - "SealedSecrets (self-managed)": "user-guide/self-managed-services/sealedsecrets.md"
+          - "MongoDB (self-managed)": "user-guide/self-managed-services/mongodb.md"
+          - "Sjunet (self-managed)": "user-guide/self-managed-services/sjunet.md"
+          - "Flux (self-managed)": "user-guide/self-managed-services/flux.md"
+          - "Kafka (self-managed)": "user-guide/self-managed-services/kafka.md"
+      - "Go-live Checklist": "user-guide/go-live.md"
+      - "Troubleshooting": "user-guide/troubleshooting.md"
+      - "FAQ": "user-guide/faq.md"
+  - "For Platform Administrators":
+      - "Overview": "operator-manual/index.md"
+      - "Getting Started": "operator-manual/getting-started.md"
+      - "Provider Audit": "operator-manual/provider-audit.md"
+      - "Standard Template for on-prem Environment": "operator-manual/on-prem-standard.md"
+      - "Air-gapped Network": "operator-manual/air-gapped.md"
+      - "Advanced Configuration":
+          - "Overview": "operator-manual/configure.md"
+          - "Sizing": "operator-manual/cluster-sizing.md"
+          - "Ingress": "operator-manual/ingress.md"
+          - "Access Control": "operator-manual/access-control.md"
+          - "OpenSearch Mappings": "operator-manual/opensearch-mappings.md"
+          - "User Alerts": "operator-manual/user-alerts.md"
+          - "User Managed CRDs (preview)": "operator-manual/user-managed-crds.md"
+      - "Disaster Recovery": "operator-manual/disaster-recovery.md"
+      - "Breaking the Glass": "operator-manual/break-glass.md"
+      - "Use of Cryptography": "operator-manual/cryptography.md"
+      - "Use of Credentials": "operator-manual/credentials.md"
+      - "Capacity Management": "operator-manual/capacity-management.md"
+      - "Clock Synchronization": "operator-manual/clock-synchronization.md"
+      - "Maintenance": "operator-manual/maintenance.md"
+      - "Clean Up": "operator-manual/clean-up.md"
+      - "Troubleshooting": "operator-manual/troubleshooting.md"
+      - "FAQ": "operator-manual/faq.md"
+      - "Additional Services": "operator-manual/additional-services.md"
+  - "For CISOs and DPOs":
+      - "Overview": "ciso-guide/index.md"
+      - "GDPR (EU)": "ciso-guide/controls/gdpr.md"
+      - "ISO 27001 (EU)": "ciso-guide/controls/iso-27001.md"
+      - "Healthcare":
+          - "HSLF-FS 2016:40 (SE)": "ciso-guide/controls/hslf-fs-201640.md"
+          - "HIPAA (US)": "ciso-guide/controls/hipaa.md"
+          - "MDR (EU)": "ciso-guide/controls/mdr.md"
+      - "Public sector":
+          - "MSBFS 2020:7 (SE)": "ciso-guide/controls/msbfs-20207.md"
+      - "NIS2":
+          - "Overview": "ciso-guide/nis2.md"
+          - "KRITIS (DE)": "ciso-guide/controls/kritis.md"
+          - "BSI IT-Grundschutz (DE)": "ciso-guide/controls/bsi-it-grundschutz.md"
+          - "MSBFS 2018:8 (SE)": "ciso-guide/controls/msbfs-20188.md"
+      - "NIST SP 800-171": "ciso-guide/controls/nist-sp-800-171.md"
+      - "ISA/IEC 62443": "ciso-guide/isa-iec-62443.md"
+      - "CISO Dashboards":
+          - "ciso-guide/audit-logs.md"
+          - "ciso-guide/backup.md"
+          - "ciso-guide/cryptography.md"
+          - "ciso-guide/intrusion-detection.md"
+          - "ciso-guide/policy-as-code.md"
+          - "ciso-guide/network-security.md"
+          - "ciso-guide/capacity-management.md"
+          - "ciso-guide/vulnerability.md"
+          - "ciso-guide/log-review.md"
+      - "FAQ": "ciso-guide/faq.md"
+      - 'How do I comply with GDPR Art. 17 Right to erasure ("right to be forgotten")?': "ciso-guide/gdpr-art-17.md"
+      - "How do I comply with HSLF-FS 2016:40 4 kap. 9 § Kontroll av åtkomst till uppgifter?": "ciso-guide/pdl-audit-logs.md"
+  - "For Contributors":
+      - "Overview": "contributor-guide/index.md"
+      - "Architecture": "architecture.md"
+      - "Architectural Decision Log": "adr/index.md"
+      - "Tech Radar": "tech-radar/index.html"
+      - "Quality Criteria": "quality-criteria.md"
+  - "Release Notes":
+      - "Compliant Kubernetes": "release-notes/ck8s.md"
+      - "CK8S Kubespray": "release-notes/kubespray.md"
+      - "CK8S Cluster API": "release-notes/capi.md"
+      - "CK8S PostgreSQL": "release-notes/postgres.md"
+      - "CK8S RabbitMQ": "release-notes/rabbitmq.md"
+      - "CK8S Redis": "release-notes/redis.md"
+      - "CK8S Jaeger": "release-notes/jaeger.md"
+      - "CK8S Argo CD": "release-notes/argocd.md"
+  - "Glossary": "glossary.md"
+  - "Fully Managed Compliant Kubernetes": "https://elastisys.com/managed-services/"
+  - "Support for Self-Managed Compliant Kubernetes": "https://elastisys.com/self-managed/"
+  - "Consulting": "https://elastisys.com/consulting/"
+  - "Official Training": "https://elastisys.com/training/"
+  - "Blog": "https://elastisys.com/blog/"
+  - "Privacy Policy": "https://elastisys.com/legal/privacy-policy/"

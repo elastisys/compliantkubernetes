@@ -1,0 +1,43 @@
+default: true
+
+MD003: # heading-style
+  style: atx
+MD004: # ul-style
+  style: dash
+MD013: false # line-length - does not support editorconfig
+MD024: # no-duplicate-heading
+  siblings_only: true
+MD026: # no-trailing-punctuation
+  punctuation: .,:;
+MD029: # ol-prefix
+  style: one
+MD030: # list-marker-space
+  ol_multi: 2
+  ol_single: 2
+MD033: # no-inline-html
+  allowed_elements:
+    - a
+    - br
+    - dd
+    - details
+    - div
+    - dl
+    - dt
+    - embed
+    - figure
+    - figcaption
+    - img
+    - li
+    - nav
+    - section
+    - strong
+    - summary
+    - sup
+    - ul
+MD034: false # no-bare-urls
+MD046: false # code-block-style - does not support admonitions
+MD048: false # code-fence-style - does not support admonitions
+MD049: # emphasis-style
+  style: underscore
+MD050: # strong-style
+  style: asterisk

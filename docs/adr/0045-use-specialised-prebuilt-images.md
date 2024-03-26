@@ -1,8 +1,8 @@
 # Use specialised prebuilt images
 
-* Status: Accepted
-* Deciders: Architecture meeting
-* Date: 2024-01-18
+- Status: Accepted
+- Deciders: Architecture meeting
+- Date: 2024-01-18
 
 ## Context and Problem Statement
 
@@ -19,9 +19,9 @@ To improve both the security and reliability of the platform we should therefore
 
 ## Considered Options
 
-1. Build specialised images one for all required configurations
-2. Build specialised images one for each required configuration
-3. Build no specialised images
+1.  Build specialised images one for all required configurations
+1.  Build specialised images one for each required configuration
+1.  Build no specialised images
 
 ## Decision Outcome
 
@@ -29,7 +29,7 @@ Chosen option 2, since it will improve upon the two issues above and provide eac
 
 The tagging should follow the following scheme:
 
-```
+```text
 <registry>/<repository>/<application>:<application-version>-<variant-identifier><variant-version>
 ```
 
@@ -37,7 +37,7 @@ With variant matching the configuration variant to support, example different ob
 
 Example for Velero with AWS/S3 support:
 
-```
+```text
 ghcr.io/elastisys/compliantkubernetes-apps/velero:1.12.3-aws1.8.2
 ```
 

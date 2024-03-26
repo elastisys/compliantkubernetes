@@ -1,8 +1,8 @@
 ---
 description: How to work with namespaces in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 tags:
-- ISO 27001 A.12.1.4 Separation of Development, Testing & Operational Environments
-- ISO 27001 A.14.2.5 Secure System Engineering Principles
+  - ISO 27001 A.12.1.4 Separation of Development, Testing & Operational Environments
+  - ISO 27001 A.14.2.5 Secure System Engineering Principles
 ---
 
 # Namespaces
@@ -14,6 +14,7 @@ tags:
 ## Namespace Management
 
 Creating a subnamespace:
+
 ```bash
 kubectl apply -f - <<EOF
 apiVersion: hnc.x-k8s.io/v1alpha2
@@ -25,17 +26,19 @@ EOF
 ```
 
 Verify that it gets created:
+
 ```bash
 kubectl get ns <descendant-namespace>
 ```
 
 Verify that it gets configured:
+
 ```console
 $ kubectl get subns -n <parent-namespace> <descendant-namespace> -o yaml
 apiVersion: hnc.x-k8s.io/v1alpha2
 kind: SubnamespaceAnchor
 metadata:
-	...
+  ...
   name: <descendant-namespace>
   namespace: <parent-namespace>
 ...
@@ -46,6 +49,7 @@ status:
 If the status is `Ok` then the subnamespace is ready to go.
 
 !!!tip
+
     HNC also comes with the [HNS `kubectl` plugin](https://github.com/kubernetes-sigs/hierarchical-namespaces/blob/master/docs/user-guide/how-to.md#prepare-to-use-hierarchical-namespaces-as-a-user).
 
     Using this plugin creating subnamespaces is as easy as:
@@ -73,5 +77,5 @@ HNC has the option to enable opt-in propagation for additional resources such as
 
 ## Further Reading
 
-* [HNC User Documentation](https://github.com/kubernetes-sigs/hierarchical-namespaces/tree/master/docs/user-guide)
-* [Introducing HNC](https://kubernetes.io/blog/2020/08/14/introducing-hierarchical-namespaces/)
+- [HNC User Documentation](https://github.com/kubernetes-sigs/hierarchical-namespaces/tree/master/docs/user-guide)
+- [Introducing HNC](https://kubernetes.io/blog/2020/08/14/introducing-hierarchical-namespaces/)

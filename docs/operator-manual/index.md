@@ -1,7 +1,8 @@
 ---
 hide:
-- toc
+  - toc
 ---
+
 # Platform Administrator Manual Overview
 
 <div class="landing-page" markdown="1">
