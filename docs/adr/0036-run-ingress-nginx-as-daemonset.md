@@ -23,11 +23,11 @@ What do we do for Infra Providers that do not have service type loadbalancer?
 
 ## Considered Options
 
-1. Keep running the ingress-nginx as a daemonSet.
-1. Run ingress-nginx as a deployment with 2 or more replicas depending on the environment size and requirements.
-1. Do not run ingress-nginx on the AMS nodes.
-1. For Infra Providers without service type loadbalancer continue using host network as decided in adr0008
-1. For Infra Providers without service type loadbalancer start using service type NodePort for nginx and also use the external load balancer to route traffic from ports 80/443 to node ports 30080/30443.
+1.  Keep running the ingress-nginx as a daemonSet.
+2.  Run ingress-nginx as a deployment with 2 or more replicas depending on the environment size and requirements.
+3.  Do not run ingress-nginx on the AMS nodes.
+4.  For Infra Providers without service type loadbalancer continue using host network as decided in adr0008
+5.  For Infra Providers without service type loadbalancer start using service type NodePort for nginx and also use the external load balancer to route traffic from ports 80/443 to node ports 30080/30443.
 
 ## Decision Outcome
 

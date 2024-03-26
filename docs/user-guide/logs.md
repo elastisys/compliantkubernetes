@@ -108,26 +108,26 @@ The **Visualize** component in OpenSearch Dashboards is to create different visu
 
 To create visualizations:
 
-1. Open the sidebar and click **Visualize** under OpenSearch Dashboards.
-2. Click **Create visualization** button located on the top right side of the page.
-3. Select a visualization type, we will use **Pie** here.
-4. Choose an index pattern or saved search name under **New Pie / Choose a source**. You can utilize the search function. We will use the **kubernetes\*** index here.
+1.  Open the sidebar and click **Visualize** under OpenSearch Dashboards.
+2.  Click **Create visualization** button located on the top right side of the page.
+3.  Select a visualization type, we will use **Pie** here.
+4.  Choose an index pattern or saved search name under **New Pie / Choose a source**. You can utilize the search function. We will use the **kubernetes\*** index here.
 
 By default a pie chart with the total number of logs will be provided by OpenSearch Dashboards. Let us divide the pie chart based on the number of logs contributed by each **namespace**. To do that perform the following steps:
 
-1. Under **Buckets** click **Add** then **Split slices**. See the figure below.
+1.  Under **Buckets** click **Add** then **Split slices**. See the figure below.
 
-   ![Visualize Bucket](../img/add_bucket.png)
+    ![Visualize Bucket](../img/add_bucket.png)
 
-2. Under **Aggregation** select **Significant Terms** terms. See the figure below.
+2.  Under **Aggregation** select **Significant Terms** terms. See the figure below.
 
-   ![Visualize Aggregation](../img/aggregation.png)
+    ![Visualize Aggregation](../img/aggregation.png)
 
-3. Under **Field** select **kubernetes.namespace_name.keyword** and under **Size** input **10**. See the figure below.
+3.  Under **Field** select **kubernetes.namespace_name.keyword** and under **Size** input **10**. See the figure below.
 
-   ![Visualize Fields](../img/namespace.png)
+    ![Visualize Fields](../img/namespace.png)
 
-4. Click **Update** button located in the bottom right corner.
+4.  Click **Update** button located in the bottom right corner.
 
 The final result will look like the following figure.
 
@@ -147,10 +147,10 @@ Let us bring the two visualizations that we created above together in a single d
 
 To do that:
 
-1. Open the sidebar and click **Dashboard** under OpenSearch Dashboards.
-2. Click **Create dashboard** button located on the top right side of the page.
-3. Click **Add an existing** link located on the left side.
-4. Select the name of the two charts/visualizations that you created above.
+1.  Open the sidebar and click **Dashboard** under OpenSearch Dashboards.
+2.  Click **Create dashboard** button located on the top right side of the page.
+3.  Click **Add an existing** link located on the left side.
+4.  Select the name of the two charts/visualizations that you created above.
 
 The figure below shows the dashboard generated from the above steps showing the two pie charts in a single page.
 
@@ -172,9 +172,9 @@ An index mapping specifies the data structure of the data within that index, lis
 
 Mappings can be created:
 
-1. Dynamically by OpenSearch
-2. Explicitly on index creation
-3. Using [Templates](https://opensearch.org/docs/latest/im-plugin/index-templates/)
+1.  Dynamically by OpenSearch
+2.  Explicitly on index creation
+3.  Using [Templates](https://opensearch.org/docs/latest/im-plugin/index-templates/)
 
 For example, if you index an integer field without pre-defining the mapping, OpenSearch sets the mapping of that field as long.
 

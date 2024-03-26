@@ -54,12 +54,12 @@ for: "unsafe-image.yaml": admission webhook "validation.gatekeeper.sh" denied th
 
 First, retrieve your Harbor CLI secret and configure your local Docker client.
 
-1. In your browser, type `harbor.$DOMAIN` where `$DOMAIN` is the information you retrieved from your administrator.
-2. Log into Harbor using Single Sign-On (SSO) via OpenID.
-3. In the right-top corner, click on your username, then "User Profile".
-4. Copy your CLI secret.
-5. Now log into the container registry: `docker login harbor.$DOMAIN`.
-6. You should see `Login Succeeded`.
+1.  In your browser, type `harbor.$DOMAIN` where `$DOMAIN` is the information you retrieved from your administrator.
+2.  Log into Harbor using Single Sign-On (SSO) via OpenID.
+3.  In the right-top corner, click on your username, then "User Profile".
+4.  Copy your CLI secret.
+5.  Now log into the container registry: `docker login harbor.$DOMAIN`.
+6.  You should see `Login Succeeded`.
 
 ### Create a registry project
 
@@ -92,10 +92,10 @@ You should see no error message. Note down the `sha256` of the image.
 
 ### Verification
 
-1. Go to `harbor.$DOMAIN`.
-2. Choose the `demo` project.
-3. Check if the image was uploaded successfully, by comparing the tag's `sha256` with the one returned by the `docker push` command above.
-4. (Optional) While you're at it, why not run the vulnerability scanner on the image you just pushed.
+1.  Go to `harbor.$DOMAIN`.
+2.  Choose the `demo` project.
+3.  Check if the image was uploaded successfully, by comparing the tag's `sha256` with the one returned by the `docker push` command above.
+4.  (Optional) While you're at it, why not run the vulnerability scanner on the image you just pushed.
 
 <!--user-demo-registry-end-->
 

@@ -19,9 +19,9 @@ To improve both the security and reliability of the platform we should therefore
 
 ## Considered Options
 
-1. Build specialised images one for all required configurations
-2. Build specialised images one for each required configuration
-3. Build no specialised images
+1.  Build specialised images one for all required configurations
+2.  Build specialised images one for each required configuration
+3.  Build no specialised images
 
 ## Decision Outcome
 

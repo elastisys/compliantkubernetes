@@ -278,68 +278,68 @@ metadata:
 
 To configure Email service for example:
 
-1. Add Email username and password token to `argocd-notifications-secret` secret
+1.  Add Email username and password token to `argocd-notifications-secret` secret
 
-   ```bash
-   echo -n "sender@example.com" | base64 -w0 # c2VuZGVyQGV4YW1wbGUuY29t
-   echo -n "secretPassword" | base64 -w0 #  c2VjcmV0UGFzc3dvcmQ=
-   kubectl edit -n argocd-system argocd-notifications-secret
-   ```
+    ```bash
+    echo -n "sender@example.com" | base64 -w0 # c2VuZGVyQGV4YW1wbGUuY29t
+    echo -n "secretPassword" | base64 -w0 #  c2VjcmV0UGFzc3dvcmQ=
+    kubectl edit -n argocd-system argocd-notifications-secret
+    ```
 
-   ```yaml
-   apiVersion: v1
-   kind: Secret
-   metadata:
-     name: argocd-notifications-secret
-     namespace: argocd-system
-   data:
-     email-username: c2VuZGVyQGV4YW1wbGUuY29t
-     email-password: c2VjcmV0UGFzc3dvcmQ=
-   ```
+    ```yaml
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: argocd-notifications-secret
+      namespace: argocd-system
+    data:
+      email-username: c2VuZGVyQGV4YW1wbGUuY29t
+      email-password: c2VjcmV0UGFzc3dvcmQ=
+    ```
 
-2. Register Email notification service
+2.  Register Email notification service
 
-   ```bash
-   kubectl edit -n argocd-system argocd-notifications-cm
-   ```
+    ```bash
+    kubectl edit -n argocd-system argocd-notifications-cm
+    ```
 
-   Add the service under the ConfigMap data
+    Add the service under the ConfigMap data
 
-   ```yaml
-   apiVersion: v1
-   kind: ConfigMap
-   metadata:
-     name: argocd-notifications-cm
-   data:
-     service.email.gmail: |
-       username: $email-username
-       password: $email-password
-       host: smtp.gmail.com
-       port: 465
-       from: $email-username
-   ```
+    ```yaml
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: argocd-notifications-cm
+    data:
+      service.email.gmail: |
+        username: $email-username
+        password: $email-password
+        host: smtp.gmail.com
+        port: 465
+        from: $email-username
+    ```
 
-   In case you want to use a separate SMTP server instead of gmail
+    In case you want to use a separate SMTP server instead of gmail
 
-   ```yaml
-   apiVersion: v1
-   kind: ConfigMap
-   metadata:
-     name: argocd-notifications-cm
-   data:
-     service.email.custom: |
-       username: $email-username
-       password: $email-password
-       host: smtp.custom.com
-       port: 587
-       from: $email-username
-   ```
+    ```yaml
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: argocd-notifications-cm
+    data:
+      service.email.custom: |
+        username: $email-username
+        password: $email-password
+        host: smtp.custom.com
+        port: 587
+        from: $email-username
+    ```
 
-3. Subscribe to notifications by adding the notifications.argoproj.io/subscribe.on-sync-succeeded.gmail annotation to the Argo CD application:
+3.  Subscribe to notifications by adding the notifications.argoproj.io/subscribe.on-sync-succeeded.gmail annotation to the Argo CD application:
 
-```bash
-kubectl patch app my-argo-application -p '{"metadata": {"annotations": {"notifications.argoproj.io/subscribe.on-sync-succeeded.gmail":"receiver@example.com"}}}' --type merge
-```
+    ```bash
+    kubectl patch app my-argo-application -p '{"metadata": {"annotations": {"notifications.argoproj.io/subscribe.on-sync-succeeded.gmail":"receiver@example.com"}}}' --type merge
+    ```
 
 Now, if we try syncing an application, we will get the notification once sync is completed.
 

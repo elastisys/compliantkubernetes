@@ -86,10 +86,10 @@ production: true # (4)
 proxy: edge
 ```
 
-1. The example provided serves as a starting point for configuring resource requests and limits for your Keycloak deployment. Be sure to tailor these values to your specific requirements, and monitor your deployment to optimize resource allocation for your unique use case.
-2. Insert the variables that you got from initial preparation.
-3. Configure the ingress hostname and which issuer you will be using.
-4. Enabling production mode and TLS for HTTPS. Disclaimer: Enabling production mode does not mean that the configuration here is ready for production. Please see further reading on Production configuration.
+1.  The example provided serves as a starting point for configuring resource requests and limits for your Keycloak deployment. Be sure to tailor these values to your specific requirements, and monitor your deployment to optimize resource allocation for your unique use case.
+2.  Insert the variables that you got from initial preparation.
+3.  Configure the ingress hostname and which issuer you will be using.
+4.  Enabling production mode and TLS for HTTPS. Disclaimer: Enabling production mode does not mean that the configuration here is ready for production. Please see further reading on Production configuration.
 
 !!!failure
 

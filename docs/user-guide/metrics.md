@@ -59,8 +59,8 @@ Compliant Kubernetes installs the prometheus-operator by default. The Prometheus
 
 If you want to access the web interface of Prometheus, proceed as follows:
 
-1. Type: `kubectl proxy`
-2. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/monitoring/services/kube-prometheus-stack-prometheus:9090/proxy/) in your browser
+1.  Type: `kubectl proxy`
+2.  Open [this link](http://127.0.0.1:8001/api/v1/namespaces/monitoring/services/kube-prometheus-stack-prometheus:9090/proxy/) in your browser
 
 The Prometheus UI is only available by default starting in Compliant Kubernetes version 0.26.
 
@@ -195,10 +195,10 @@ You can manage your Grafana Dashboards in a GitOps-fashion using the [Terraform 
 
 Proceed as follows:
 
-1. Log in to Grafana.
-2. Create an API key, setting it to Editor or Admin.
-3. Provide the API key to Terraform either via the `GRAFANA_AUTH` environment variable or the [auth](https://registry.terraform.io/providers/grafana/grafana/latest/docs#auth) provider variable.
-4. Provide the URL of Grafana (`https://grafana.$DOMAIN`) to Terraform either via the `GRAFANA_URL` environment variable or the [url](https://registry.terraform.io/providers/grafana/grafana/latest/docs#url) provider variable.
+1.  Log in to Grafana.
+2.  Create an API key, setting it to Editor or Admin.
+3.  Provide the API key to Terraform either via the `GRAFANA_AUTH` environment variable or the [auth](https://registry.terraform.io/providers/grafana/grafana/latest/docs#auth) provider variable.
+4.  Provide the URL of Grafana (`https://grafana.$DOMAIN`) to Terraform either via the `GRAFANA_URL` environment variable or the [url](https://registry.terraform.io/providers/grafana/grafana/latest/docs#url) provider variable.
 
 ## Further reading
 

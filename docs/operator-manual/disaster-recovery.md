@@ -72,9 +72,9 @@ To take a snapshot on-demand, execute
 
 Set the following variables
 
-1. OpenSearch user with permissions to manage snapshots, usually `admin`
-1. The password for the above user
-1. The URL to OpenSearch
+1.  OpenSearch user with permissions to manage snapshots, usually `admin`
+2.  The password for the above user
+3.  The URL to OpenSearch
 
 ```bash
 user=admin

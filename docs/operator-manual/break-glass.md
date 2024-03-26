@@ -11,15 +11,15 @@ In this section we describe a workaround when access to the environment is broke
 
 When Dex or the OpenID provider is malfunctioning, the Platform Administrator might be unable to access the cluster. The following steps will give you temporary access sufficient for troubleshooting and recovery:
 
-1. `SSH` to one of the control-plane nodes.
+1.  `SSH` to one of the control-plane nodes.
 
-2. Use `/etc/kubernetes/admin.conf` and run `kubectl` commands to check the problem
+2.  Use `/etc/kubernetes/admin.conf` and run `kubectl` commands to check the problem
 
-   ```bash
-   export KUBECONFIG=/etc/kubernetes/admin.conf
-   #run kubctl command
-   sudo kubectl get po -A
-   ```
+    ```bash
+    export KUBECONFIG=/etc/kubernetes/admin.conf
+    #run kubctl command
+    sudo kubectl get po -A
+    ```
 
 ## Kubernetes User Access
 

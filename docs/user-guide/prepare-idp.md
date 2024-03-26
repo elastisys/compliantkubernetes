@@ -31,19 +31,24 @@ This page show what information you need to send to Platform Administrators and 
 
     As of August 2023, Azure Active Directory is Becoming Microsoft Entra ID.
 
-1. Sign in to the [Azure portal](https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app).
-2. Search for and select **Azure Active Directory**.
-3. Under Manage, select App registrations > New registration.
-4. Under Supported account types pick **Accounts in any organizational directory (Any Azure AD directory – Multitenant)**.
-5. Under **Redirect URI** select **web** and insert the Dex URL that Platform Administrators provided. This is generally `https://dex.$DOMAIN/callback`.
-   If unsure, ask your Platform Administrators.
-6. Go to **Overview** and note down the **application ID**.
-7. Create a secret by going to **Certificates & secrets**.
-8. Select the tab **Client secret** and click **New client secret**.
-9. Set **expiry date** to **24 months**.
+1.  Sign in to the [Azure portal](https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app).
+2.  Search for and select **Azure Active Directory**.
+3.  Under Manage, select App registrations > New registration.
+4.  Under Supported account types pick **Accounts in any organizational directory (Any Azure AD directory – Multitenant)**.
+5.  Under **Redirect URI** select **web** and insert the Dex URL that Platform Administrators provided. This is generally `https://dex.$DOMAIN/callback`.
+    If unsure, ask your Platform Administrators.
+6.  Go to **Overview** and note down the **application ID**.
+7.  Create a secret by going to **Certificates & secrets**.
+8.  Select the tab **Client secret** and click **New client secret**.
+9.  Set **expiry date** to **24 months**.
+    <!-- markdownlint-disable ol-prefix -->
+    <!-- markdownlint-disable list-marker-space -->
 10. For improved security, navigate to **Properties** and note down **the tenant ID**. This limits who can authenticate to your Compliant Kubernetes environment.
 11. Decide the **name of the Azure AD group** that should have admin privileges in the environment.
 12. Securely send, e.g., via [YoPass](https://yopass.elastisys.com), the following information to your Platform Administrators:
+    <!-- markdownlint-enable ol-prefix -->
+    <!-- markdownlint-enable list-marker-space -->
+
     - tenant ID;
     - application ID;
     - client secret;
@@ -60,18 +65,21 @@ This page show what information you need to send to Platform Administrators and 
 
     Some steps can only be done by an administrator account for a managed Google service,such as Google Workspace or Cloud Identity. (See [this Google support page](https://support.google.com/a/answer/6375836?hl=en-GB).)
 
-1. Go to [Google Cloud -- Credentials](https://console.cloud.google.com/apis/credentials).
-2. Create a new project through the top menu.
-3. In the new project, go to **OAuth consent screen** on the left side menu and create an internal consent screen.
-4. Go to **Enabled APIs & services** on the left side menu and then click **+ ENABLE APIS AND SERVICES**.
-5. Search for **Admin SDK API** and enable the API.
-6. Go back to **Credentials** on the left side menu.
-7. Click **+ CREATE CREDENTIALS** and select **OAuth client ID**.
-8. Select **Web Application** for **Application type**, give it a suitable name.
-9. Set the **Authorized redirect URIs** to the Dex URL provided by your Administrators.
-   This is generally `https://dex.$DOMAIN/callback`.
-   If unsure, ask your Platform Administrators.
+1.  Go to [Google Cloud -- Credentials](https://console.cloud.google.com/apis/credentials).
+2.  Create a new project through the top menu.
+3.  In the new project, go to **OAuth consent screen** on the left side menu and create an internal consent screen.
+4.  Go to **Enabled APIs & services** on the left side menu and then click **+ ENABLE APIS AND SERVICES**.
+5.  Search for **Admin SDK API** and enable the API.
+6.  Go back to **Credentials** on the left side menu.
+7.  Click **+ CREATE CREDENTIALS** and select **OAuth client ID**.
+8.  Select **Web Application** for **Application type**, give it a suitable name.
+9.  Set the **Authorized redirect URIs** to the Dex URL provided by your Administrators.
+    This is generally `https://dex.$DOMAIN/callback`.
+    If unsure, ask your Platform Administrators.
+    <!-- markdownlint-disable ol-prefix -->
+    <!-- markdownlint-disable list-marker-space -->
 10. Finally, securely send, e.g., via [YoPass](https://yopass.elastisys.com), the following information to your Platform Administrators:
+
     - client ID;
     - client secret.
 
@@ -89,6 +97,9 @@ To set up groups follow these steps, note that steps 16-18 below can only be don
 18. In the **Client ID** field put the **Unique ID** of the service account from step 4. and in the **Oauth Scopes** field enter this scope: `https://www.googleapis.com/auth/admin.directory.group.readonly`.
 19. Decide on the name of the Google group that should have admin privileges in the Compliant Kubernetes environment.
 20. Finally, securely send, e.g., via [YoPass](https://yopass.elastisys.com), the following information to your Platform Administrators:
+    <!-- markdownlint-enable ol-prefix -->
+    <!-- markdownlint-enable list-marker-space -->
+
     - the JSON file you downloaded;
     - admin group you decided on.
 
@@ -103,14 +114,15 @@ Compliant Kubernetes should be compatible with any OpenID provider, although ful
 
 The general instructions are as follows:
 
-1. Check that your IdP is OpenID compatible. You can check this by pointing your browser to: `https://$YOUR_IDP_DOMAIN/.well-known/openid-configuration`. If you get a well-formed JSON page, then your provider is OpenID compatible.
-2. Register an application with your OpenID provider. The callback or redirect URL is provided by your Administrators.
-   This is generally `https://dex.$DOMAIN/callback`.
-3. Allow at least the following scopes: `openid`, `email`, `groups`, `profile`.
-4. Securely send, e.g., via [YoPass](https://yopass.elastisys.com), the following information to your Platform Administrators:
-   - the IdP domain, i.e., `$YOUR_IDP_DOMAIN` which you used in step 1;
-   - client ID;
-   - client secret.
+1.  Check that your IdP is OpenID compatible. You can check this by pointing your browser to: `https://$YOUR_IDP_DOMAIN/.well-known/openid-configuration`. If you get a well-formed JSON page, then your provider is OpenID compatible.
+2.  Register an application with your OpenID provider. The callback or redirect URL is provided by your Administrators.
+    This is generally `https://dex.$DOMAIN/callback`.
+3.  Allow at least the following scopes: `openid`, `email`, `groups`, `profile`.
+4.  Securely send, e.g., via [YoPass](https://yopass.elastisys.com), the following information to your Platform Administrators:
+
+- the IdP domain, i.e., `$YOUR_IDP_DOMAIN` which you used in step 1;
+- client ID;
+- client secret.
 
 ### Further Reading
 

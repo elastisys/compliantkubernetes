@@ -24,8 +24,8 @@ Should we with the introduction of Pod Security admission follow the new standar
 
 ## Considered Options
 
-1. Allow group id 0 by default - default behavior of PSA.
-1. Keep current behavior and only allow group id 0 upon request.
+1.  Allow group id 0 by default - default behavior of PSA.
+2.  Keep current behavior and only allow group id 0 upon request.
 
 ## Decision Outcome
 

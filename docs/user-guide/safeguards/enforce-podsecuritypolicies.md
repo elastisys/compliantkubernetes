@@ -212,9 +212,9 @@ mutations:
   fsGroup: <GID> # Default 1
 ```
 
-1. Sysctls may still be denied by the kubelet.
-2. Allows both host network and host ports.
-3. Must be configured in the container image or security context.
+1.  Sysctls may still be denied by the kubelet.
+2.  Allows both host network and host ports.
+3.  Must be configured in the container image or security context.
 
 !!! danger
 

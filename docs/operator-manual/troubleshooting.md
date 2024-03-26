@@ -252,43 +252,43 @@ First, check for infrastructure drift, as shown [here](#how-do-i-check-if-infras
 Depending on your provider:
 If the infrastructure is not managed by terraform you can skip to step 3:
 
-1. Add a new Node by editing the `*.tfvars`.
-2. Re-apply Terraform.
-3. Add the new node to the `inventory.ini` (skip this step if the cluster is using a dynamic inventory).
-4. Re-apply Kubespray only for the new node.
+1.  Add a new Node by editing the `*.tfvars`.
+2.  Re-apply Terraform.
+3.  Add the new node to the `inventory.ini` (skip this step if the cluster is using a dynamic inventory).
+4.  Re-apply Kubespray only for the new node.
 
-```bash
-cd [compliantkubernetes-kubespray-root-dir]
+    ```bash
+    cd [compliantkubernetes-kubespray-root-dir]
 
-CLUSTER=[sc | wc]
+    CLUSTER=[sc | wc]
 
-./bin/ck8s-kubespray run-playbook $CLUSTER facts.yml
-./bin/ck8s-kubespray run-playbook $CLUSTER scale.yml -b --limit=[new_node_name]
-```
+    ./bin/ck8s-kubespray run-playbook $CLUSTER facts.yml
+    ./bin/ck8s-kubespray run-playbook $CLUSTER scale.yml -b --limit=[new_node_name]
+    ```
 
-5. Add ssh keys to the new node if necessary
+5.  Add ssh keys to the new node if necessary
 
-```bash
-./bin/ck8s-kubespray apply-ssh $CLUSTER --limit=[new_node_name]
-```
+    ```bash
+    ./bin/ck8s-kubespray apply-ssh $CLUSTER --limit=[new_node_name]
+    ```
 
-6. Update network policies
+6.  Update network policies
 
-```bash
-cd [compliatkubernetes-apps-root-dir]
+    ```bash
+    cd [compliatkubernetes-apps-root-dir]
 
-./bin/ck8s update-ips sc update
-./bin/ck8s update-ips wc update
+    ./bin/ck8s update-ips sc update
+    ./bin/ck8s update-ips wc update
 
-./bin/ck8s ops helmfile sc -l app=common-np -i apply
-./bin/ck8s ops helmfile wc -l app=common-np -i apply
+    ./bin/ck8s ops helmfile sc -l app=common-np -i apply
+    ./bin/ck8s ops helmfile wc -l app=common-np -i apply
 
-./bin/ck8s ops helmfile sc -l app=service-cluster-np -i apply
-# or
-./bin/ck8s ops helmfile wc -l app=workload-cluster-np -i apply
-```
+    ./bin/ck8s ops helmfile sc -l app=service-cluster-np -i apply
+    # or
+    ./bin/ck8s ops helmfile wc -l app=workload-cluster-np -i apply
+    ```
 
-Check that the new Node joined the cluster, as shown [here](#are-the-kubernetes-clusters-doing-fine).
+    Check that the new Node joined the cluster, as shown [here](#are-the-kubernetes-clusters-doing-fine).
 
 ## A systemd unit failed
 

@@ -45,13 +45,13 @@ After you have generated an SSH Key, you want to add it as a deploy key in your 
 
 In Kubernetes you will need to:
 
-1. Install CRDs
+1.  Install CRDs
 
-2. Create a Namespace for Flux
+2.  Create a Namespace for Flux
 
-3. Create a Git Secret in the Namespace
+3.  Create a Git Secret in the Namespace
 
-4. Create Roles/RoleBindings for Flux.
+4.  Create Roles/RoleBindings for Flux.
 
 ##### CRDs
 

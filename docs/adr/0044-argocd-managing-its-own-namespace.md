@@ -24,9 +24,9 @@ Do we want to make `argocd-system` a managed namespace in our ArgoCD offering?
 
 ## Considered Options
 
-1. Yes, we make ArgoCD manage its own namespace.
+1.  Yes, we make ArgoCD manage its own namespace.
 
-2. No, we do not make ArgoCD manage its own namespace.
+2.  No, we do not make ArgoCD manage its own namespace.
 
 ## Decision Outcome
 

@@ -14,8 +14,8 @@ Alerting features have been enabled by default in Elastisys Compliant Kubernetes
 
 To use OpenSearch alerting feature, it involves two steps described below.
 
-1. **Create Notifications Channel** - A reusable location for the information that you want the monitor to send out after being triggered. Supported locations are Amazon Chime, Email, Slack, or custom webhook.
-1. **Create Monitor** - A job that runs on a defined schedule and queries OpenSearch indices. The results of these queries are then used as input for one or more triggers (Conditions that, if met, generate alerts).
+1.  **Create Notifications Channel** - A reusable location for the information that you want the monitor to send out after being triggered. Supported locations are Amazon Chime, Email, Slack, or custom webhook.
+2.  **Create Monitor** - A job that runs on a defined schedule and queries OpenSearch indices. The results of these queries are then used as input for one or more triggers (Conditions that, if met, generate alerts).
 
 When you log into **OpenSearch Dashboards**, you will start at the home page as shown below.
 

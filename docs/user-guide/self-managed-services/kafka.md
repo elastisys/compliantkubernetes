@@ -32,13 +32,13 @@ Strimzi Kafka Operator also requires the image repository `quay.io/strimzi` to b
 
 In Kubernetes you will need to:
 
-1. Install the required CRDs
+1.  Install the required CRDs
 
-2. Create a Namespace for Strimzi Kafka Operator.
+2.  Create a Namespace for Strimzi Kafka Operator.
 
-3. Create Roles/RoleBindings for Strimzi Kafka Operator.
+3.  Create Roles/RoleBindings for Strimzi Kafka Operator.
 
-4. Create ServiceAccount and ConfigMap for Strimzi Kafka Operator.
+4.  Create ServiceAccount and ConfigMap for Strimzi Kafka Operator.
 
 #### CRDs
 

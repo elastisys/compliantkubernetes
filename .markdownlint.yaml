@@ -7,9 +7,21 @@ MD004: # ul-style
 MD013: false # line-length - does not support editorconfig
 MD024: # no-duplicate-heading
   siblings_only: true
+MD026: # no-trailing-punctuation
+  punctuation: .,:;
 MD029: # ol-prefix
   style: ordered
-MD030: false # list-marker-space - conflict with prettier
+  # Note: This rule will interfere with prettier when there are over ten ordered list items.
+  # Wrap your list items with this to circumvent:
+  # <!-- markdownlint-disable ol-prefix -->
+  # <!-- markdownlint-enable ol-prefix -->
+MD030: # list-marker-space - conflict with prettier
+  ol_multi: 2
+  ol_single: 2
+  # Note: This rule will interfere with prettier when there are over ten ordered list items.
+  # Wrap your list items with this to circumvent:
+  # <!-- markdownlint-disable list-marker-space -->
+  # <!-- markdownlint-enable list-marker-space -->
 MD033: # no-inline-html
   allowed_elements:
     - a
