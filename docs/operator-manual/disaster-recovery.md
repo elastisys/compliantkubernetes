@@ -320,9 +320,7 @@ Check which arguments you can use by running `velero backup create --help`.
 
 ### Restore
 
-
 !!!note
-
     If you are restoring an environment under a new domain name then there is a possibility to reconfigure image references with [Velero](https://velero.io/docs/main/restore-reference/#changing-poddeploymentstatefulsetdaemonsetreplicasetreplicationcontrollerjobcronjob-image-repositories), but ingresses must be updated manually.
 
 Restoring from a backup with Velero is meant to be a type of disaster recovery.
@@ -335,9 +333,13 @@ To restore the state from the latest daily backup, run:
 velero restore create --from-schedule velero-daily-backup --wait
 ```
 
-This command will wait until the restore has finished.
-You can also do partial restorations, e.g. just restoring one namespace, by using different arguments.
-You can also restore from manual backups by using the flag `--from-backup <backup-name>`
+!!!tip
+Use `velero restore create --help` for velero commands.
+If the last backup is in a phase of PartiallyFailed the argument `--allow-partially-failed` can be used for the existing backup.
+If a backup or restoration gets stuck or has other issues, look at the [troubleshooting guide](https://velero.io/docs/v1.13/troubleshooting).
+
+This command will wait until the restore has finished. You can also do partial restorations, e.g. just restoring one namespace, by using different arguments.
+You can also restore from manual backups by using the flag --from-backup <backup-name>
 
 Persistent Volumes are only restored if a Pod with the backup annotation is restored.
 Multiple Pods can have an annotation for the same Persistent Volume.
@@ -345,6 +347,21 @@ When restoring the Persistent Volume it will overwrite any existing files with t
 Any other files will be left as they were before the restoration started.
 So a restore will not wipe the volume clean and then restore.
 If a clean wipe is the desired behavior, then the volume must be wiped manually before restoring.
+
+### Example scenario
+
+> A Velero backup has failed. A pod has not been backed due to the fact it was not ready.
+> The backup is in the Phase of "PartiallyFailed".
+> This backup can be used by:
+> ```bash
+> velero restore create <restore-name> --allow-partially-failed true --from-schedule velero-daily-backup --wait
+> ```
+> The `--allow-partially-failed` flag is used to recover everything except the failing pod in this particular backup but how do we find and recover the failing pod?
+> One way is to find the last backup that was "Completed" - in that backup, a deployable version of the missing pod should exist.
+> The pod we want to restore can be selected by the `--include-resources`,`--from-backup`, `--include-namespaces`, and `--selector` flags e.g:
+> ```bash
+> velero restore create <restore-name>  --include-resources pod,volume --from-backup <backup-name> --include-namespaces <namespace-name> --selector <resource-selector> --wait
+> ```
 
 ### Restore from off-site backup
 
@@ -424,6 +441,10 @@ If a clean wipe is the desired behavior, then the volume must be wiped manually 
     ./bin/ck8s ops kubectl wc -n velero delete backups.velero.io --all
     ./bin/ck8s ops kubectl wc -n velero delete backupstoragelocations.velero.io backup
     ```
+
+### Troubleshooting
+
+[Documentation](https://velero.io/docs/v1.13/troubleshooting)
 
 ## Grafana
 
