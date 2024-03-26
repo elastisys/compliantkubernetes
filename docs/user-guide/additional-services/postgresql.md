@@ -1,5 +1,4 @@
-PostgreSQL®
-===========
+# PostgreSQL®
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
@@ -68,6 +67,7 @@ stringData:
 ```
 
 !!!important
+
     The Secret is very precious! Prefer not to persist any information extracted from it, as shown below.
 
 To extract this information, proceed as follows:
@@ -84,9 +84,11 @@ export USER_ACCESS=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.dat
 ```
 
 !!!important
+
     Do not configure your application with the PostgreSQL admin username and password. Since the application will get too much permission, this will likely violate your access control policy.
 
 !!!important
+
     If you change the password for $PGUSER, you are responsible for keeping track of the new password.
 
 ## Create an Application User
@@ -98,6 +100,7 @@ kubectl -n $NAMESPACE port-forward svc/$USER_ACCESS 5432
 ```
 
 !!!important
+
     Since humans are bad at generating random passwords, we recommend using [pwgen](https://linux.die.net/man/1/pwgen).
 
 Second, in another console, fetch the information from the access Secret again and run the PostgreSQL client to create the application database and user:
@@ -148,6 +151,7 @@ EOF
 ```
 
 !!!warning
+
     Although most client libraries follow the `libpq` definition of these environment variables, some do not, and this will require changes to the application Secret.
 
     Notably [`node-postgres`](https://github.com/brianc/node-postgres) does not currently do so for `PGSSLMODE`.

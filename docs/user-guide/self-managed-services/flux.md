@@ -1,5 +1,4 @@
-Flux™ (self-managed)
-===========
+# Flux™ (self-managed)
 
 {%
  include-markdown './_common.include'
@@ -20,7 +19,7 @@ Flux is a [CNCF Graduated project](https://www.cncf.io/projects/flux/).
 This page will help you install Flux in a Compliant Kubernetes environment.
 
 !!! Note "Supported versions"
-    This installation guide has been tested with Flux version [2.1.2](https://github.com/fluxcd/flux2/tree/v2.1.2).
+This installation guide has been tested with Flux version [2.1.2](https://github.com/fluxcd/flux2/tree/v2.1.2).
 
 ## Initial Prep
 
@@ -32,7 +31,7 @@ Flux also requires the image repository `ghcr.io/fluxcd` to be allowlisted. Ask 
 
 ### Git
 
-You need to setup a Git repository that will contain the manifest files. This can be a personal or organization repository. *It is strongly recommended that it is a private (as in: not public) repository.*
+You need to setup a Git repository that will contain the manifest files. This can be a personal or organization repository. _It is strongly recommended that it is a private (as in: not public) repository._
 
 Next you need to generate an SSH key that will be used to communicate with the Git repository. The private key will be used as a Kubernetes Secret in a later step.
 

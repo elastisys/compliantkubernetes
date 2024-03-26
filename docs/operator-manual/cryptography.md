@@ -1,11 +1,12 @@
 ---
 tags:
-- MSBFS 2020:7 4 kap. 9 §
-- ISO 27001 A.10 Cryptography
-- HIPAA S47 - Access Control - Encryption and Decryption - § 164.312(a)(2)(iv)
-- NIST SP 800-171 3.13.10
-- NIST SP 800-171 3.13.11
+  - MSBFS 2020:7 4 kap. 9 §
+  - ISO 27001 A.10 Cryptography
+  - HIPAA S47 - Access Control - Encryption and Decryption - § 164.312(a)(2)(iv)
+  - NIST SP 800-171 3.13.10
+  - NIST SP 800-171 3.13.11
 ---
+
 # Use of Cryptography
 
 Compliant Kubernetes recommends the ECRYPT-CSA "near term use".
@@ -13,21 +14,21 @@ The key cryptographic parameters are listed below.
 
 ## Recommended Strengths
 
-| Cryptographic Structure  | Size |
-|--------------------------|------|
-| Symmetric                |  128 |
-| Factoring Modulus        | 3072 |
-| Discrete Logarithm       |  256/3072 |
-| Elliptic Group           |  256 |
-| Hash                     |  256 |
+| Cryptographic Structure | Size     |
+| ----------------------- | -------- |
+| Symmetric               | 128      |
+| Factoring Modulus       | 3072     |
+| Discrete Logarithm      | 256/3072 |
+| Elliptic Group          | 256      |
+| Hash                    | 256      |
 
 ## Recommended Algorithms
 
-| Function             | Algorithm              |
-|----------------------|------------------------|
-| Block Ciphers        | AES<br/>Camellia<br/>Serpent |
+| Function             | Algorithm                                                                                                                     |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Block Ciphers        | AES<br/>Camellia<br/>Serpent                                                                                                  |
 | Hash Functions       | SHA-2 (256, 384, 512, 512/256)<br />SHA-3 (256, 384, 512, SHAKE128, SHAKE256)<br />Whirlpool (512)<br />BLAKE (256, 584, 512) |
-| Public Key Primitive | RSA (>3072) <br/> DSA (>256/3072) <br/> ECDSA (>256) |
+| Public Key Primitive | RSA (>3072) <br/> DSA (>256/3072) <br/> ECDSA (>256)                                                                          |
 
 ## Recommended Implementation
 

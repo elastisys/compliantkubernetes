@@ -8,9 +8,10 @@
 
 Kubernetes has removed PodSecurityPolicy admission in version v1.25.
 The replacement, Pod Security admission, does not even in its most restricted profile limit what primary group id (uninx `gid`) or supplementary group id's (unix `groups`) containers are allowed to run with. In terms of `securityContext` the following fields are not restricted:
-    - `fsGroup`
-    - `runAsGroup`
-    - `supplementaryGroups`
+
+- `fsGroup`
+- `runAsGroup`
+- `supplementaryGroups`
 
 With our current Kubernetes installer, Kubespray, the default `restricted` PodSecurityPolicy does not allow using id 0 for any of the `securityContext` fields listed above.
 

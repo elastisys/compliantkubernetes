@@ -1,10 +1,10 @@
 ---
 tags:
-- BSI IT-Grundschutz APP.4.4.A2
-- BSI IT-Grundschutz APP.4.4.A10
+  - BSI IT-Grundschutz APP.4.4.A2
+  - BSI IT-Grundschutz APP.4.4.A10
 ---
-Argo™ CD (preview)
-==================
+
+# Argo™ CD (preview)
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
@@ -88,6 +88,7 @@ The following steps will show how to get started with encrypting files using `so
     ```
 
     !!! note
+
         Once your Platform Administrator has enabled Helm-secrets with Argo CD, the Argo CD repo server pod will not be able to initialize if this secret does not exist. Check pods in the `argocd-system` namespace after creating the secret to confirm that the secret got mounted properly by the repo server:
 
         ```console
@@ -107,7 +108,7 @@ The following steps will show how to get started with encrypting files using `so
     ```yaml
     ---
     creation_rules:
-    - pgp: <public-gpg-key>
+      - pgp: <public-gpg-key>
     ```
 
 4. Create a values file in your Helm chart repository and put values that should be encrypted into this file:
@@ -133,6 +134,7 @@ The following steps will show how to get started with encrypting files using `so
 6. The file `secrets.yaml` can now safely be stored in a code repository as long as it is encrypted.
 
     !!! tip
+
         To edit values in the encrypted values file, you can use `sops` which will open the file in clear text in a configured editor:
 
         ```bash
@@ -142,6 +144,7 @@ The following steps will show how to get started with encrypting files using `so
         There is also a [VSCode plugin](https://marketplace.visualstudio.com/items?itemName=signageos.signageos-vscode-sops) which can simplify editing `sops` encrypted files directly in the VSCode editor.
 
     !!! tip
+
         Add a [pre-commit hook](https://github.com/yuvipanda/pre-commit-hook-ensure-sops) to ensure to not push files containing sensitive data that are not encrypted with `sops`.
 
 7. In Argo CD, when you create your Application, add the secret values file (`secrets.yaml`) as follow:
@@ -166,6 +169,7 @@ The following steps assumes SealedSecrets is installed in the cluster. For insta
     ```
 
     !!! note
+
         With SealedSecrets it is possible to set a _scope_ of a secret. By default this scope is set to `strict` in which the SealedSecret controller uses the name and namespace of the secret as attributes during encryption, hence, the SealedSecret needs to be created with the same values for these attributes if the controller is to be able to decrypt the SealedSecret. It is possible to change the scope with the `--scope` flag for `kubeseal`, refer to the [official documentation for SealedSecrets](https://github.com/bitnami-labs/sealed-secrets#scopes) for possible scopes.
 
 2. The generated SealedSecret manifest file `mysealedsecret.yaml` will contain the encrypted `$SECRET_VALUE` and is safe to store on, for example, GitHub. Push this manifest file to the repository containing the rest of your application manifests.
@@ -206,6 +210,7 @@ Both triggers & notification templates can be configured in `argocd-notification
 Argo CD Notifications includes the [catalog](https://argocd-notifications.readthedocs.io/en/stable/catalog/) of useful triggers and templates. So you can just use them instead of reinventing new ones.
 
 !!! note
+
     The catalog triggers and templates can be found in the **argocd-notifications-cm** ConfigMap.
 
     ```console
@@ -275,60 +280,60 @@ To configure Email service for example:
 
 1. Add Email username and password token to `argocd-notifications-secret` secret
 
-    ```bash
-    echo -n "sender@example.com" | base64 -w0 # c2VuZGVyQGV4YW1wbGUuY29t
-    echo -n "secretPassword" | base64 -w0 #  c2VjcmV0UGFzc3dvcmQ=
-    kubectl edit -n argocd-system argocd-notifications-secret
-    ```
+   ```bash
+   echo -n "sender@example.com" | base64 -w0 # c2VuZGVyQGV4YW1wbGUuY29t
+   echo -n "secretPassword" | base64 -w0 #  c2VjcmV0UGFzc3dvcmQ=
+   kubectl edit -n argocd-system argocd-notifications-secret
+   ```
 
-    ```yaml
-    apiVersion: v1
-    kind: Secret
-    metadata:
-        name: argocd-notifications-secret
-        namespace: argocd-system
-    data:
-        email-username: c2VuZGVyQGV4YW1wbGUuY29t
-        email-password: c2VjcmV0UGFzc3dvcmQ=
-    ```
+   ```yaml
+   apiVersion: v1
+   kind: Secret
+   metadata:
+     name: argocd-notifications-secret
+     namespace: argocd-system
+   data:
+     email-username: c2VuZGVyQGV4YW1wbGUuY29t
+     email-password: c2VjcmV0UGFzc3dvcmQ=
+   ```
 
 2. Register Email notification service
 
-    ```bash
-    kubectl edit -n argocd-system argocd-notifications-cm
-    ```
+   ```bash
+   kubectl edit -n argocd-system argocd-notifications-cm
+   ```
 
-    Add the service under the ConfigMap data
+   Add the service under the ConfigMap data
 
-    ```yaml
-    apiVersion: v1
-    kind: ConfigMap
-    metadata:
-        name: argocd-notifications-cm
-    data:
-        service.email.gmail: |
-            username: $email-username
-            password: $email-password
-            host: smtp.gmail.com
-            port: 465
-            from: $email-username
-    ```
+   ```yaml
+   apiVersion: v1
+   kind: ConfigMap
+   metadata:
+     name: argocd-notifications-cm
+   data:
+     service.email.gmail: |
+       username: $email-username
+       password: $email-password
+       host: smtp.gmail.com
+       port: 465
+       from: $email-username
+   ```
 
-    In case you want to use a separate SMTP server instead of gmail
+   In case you want to use a separate SMTP server instead of gmail
 
-    ```yaml
-    apiVersion: v1
-    kind: ConfigMap
-    metadata:
-        name: argocd-notifications-cm
-    data:
-        service.email.custom: |
-            username: $email-username
-            password: $email-password
-            host: smtp.custom.com
-            port: 587
-            from: $email-username
-    ```
+   ```yaml
+   apiVersion: v1
+   kind: ConfigMap
+   metadata:
+     name: argocd-notifications-cm
+   data:
+     service.email.custom: |
+       username: $email-username
+       password: $email-password
+       host: smtp.custom.com
+       port: 587
+       from: $email-username
+   ```
 
 3. Subscribe to notifications by adding the notifications.argoproj.io/subscribe.on-sync-succeeded.gmail annotation to the Argo CD application:
 
@@ -339,6 +344,7 @@ kubectl patch app my-argo-application -p '{"metadata": {"annotations": {"notific
 Now, if we try syncing an application, we will get the notification once sync is completed.
 
 !!! note
+
     Email notification will not work if the sender has 2FA enabled.
 
 ## Further Reading

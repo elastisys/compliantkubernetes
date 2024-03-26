@@ -21,7 +21,7 @@ Where should we run the csi-cinder-controllerplugin?
 
 ## Decision Outcome
 
-Chosen option: "Run the csi-cinder-controllerplugin on Elastisys Nodes",  because it improves the stability and security of the platform and makes the application nodes "light"
+Chosen option: "Run the csi-cinder-controllerplugin on Elastisys Nodes", because it improves the stability and security of the platform and makes the application nodes "light"
 
 ### Positive Consequences
 

@@ -1,9 +1,9 @@
 ---
 description: How to work with monitoring metrics on Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 tags:
-- ISO 27001 A.12.1.3 Capacity Management
-- ISO 27001 A.16 Information Security Incident Management
-- NIST SP 800-171 3.1.13
+  - ISO 27001 A.12.1.3 Capacity Management
+  - ISO 27001 A.16 Information Security Incident Management
+  - NIST SP 800-171 3.1.13
 ---
 
 # Metrics
@@ -46,14 +46,14 @@ Prometheus and Grafana can help with this by making it easier to:
 
 Compliant Kubernetes installs the prometheus-operator by default. The Prometheus Operator for Kubernetes provides easy monitoring definitions for Kubernetes services and deployment and management of Prometheus instances as it can create/configure/manage Prometheus clusters atop Kubernetes. The following CRDs are installed by default.
 
-| crd | apigroup | kind | can be used by users |
-| :-- | :-- | :-- | :-- |
-| alertmanagers | monitoring.coreos.com | Alertmanager | NO |
-| podmonitors | monitoring.coreos.com | PodMonitor | YES |
-| prometheuses | monitoring.coreos.com | Prometheus | NO |
-| prometheusrules | monitoring.coreos.com | PrometheusRule | YES |
-| servicemonitors | monitoring.coreos.com | ServiceMonitor | YES |
-| thanosrulers | monitoring.coreos.com | ThanosRuler | NO |
+| crd             | apigroup              | kind           | can be used by users |
+| :-------------- | :-------------------- | :------------- | :------------------- |
+| alertmanagers   | monitoring.coreos.com | Alertmanager   | NO                   |
+| podmonitors     | monitoring.coreos.com | PodMonitor     | YES                  |
+| prometheuses    | monitoring.coreos.com | Prometheus     | NO                   |
+| prometheusrules | monitoring.coreos.com | PrometheusRule | YES                  |
+| servicemonitors | monitoring.coreos.com | ServiceMonitor | YES                  |
+| thanosrulers    | monitoring.coreos.com | ThanosRuler    | NO                   |
 
 #### Accessing Prometheus
 
@@ -74,13 +74,13 @@ Compliant Kubernetes deploys Grafana with a selection of dashboards by default. 
 
 The Nodes dashboard (Node Exporter / Nodes) gives a quick overview of the status (health) of a node in the cluster. By selecting an instance in the "instance" dropdown metrics for CPU, Load, Memory, Disk and Network I/O is showed for that node. The time frame can be changed either by using the time dropdown or selecting directly in the graphs.
 
-![Node Health](../img/node_health.png  "Nodes dashboard")
+![Node Health](../img/node_health.png "Nodes dashboard")
 
 #### Pod health
 
 The Pods dashboard (Kubernetes/Compute resources/Pods) gives a quick overview of the status (health) of a pod in the cluster. By selecting a pod in the "pod" dropdown metrics for CPU, Memory, and Network I/O is showed for that node. The time frame can be changed either by using the time dropdown or selecting directly in the graphs.
 
-![Pod health](../img/pod_health.png  "Pod health")
+![Pod health](../img/pod_health.png "Pod health")
 
 ## Collecting metrics
 
@@ -105,7 +105,7 @@ The screenshot below shows Grafana in "Explore" mode (the compass icon to the le
 The "Explore" mode is great for developing queries and exploring the data set. If you want to save a query so you can refer back to it, you can create a Dashboard instead. Dashboards consist of multiple Panels, each of which, can display the results of running queries. Learn more [about Grafana panels](https://grafana.com/docs/grafana/latest/panels-visualizations/).
 
 !!!note
-    You may want to save frequently used Dashboards. Compliant Kubernetes saves and backs these up for you.
+You may want to save frequently used Dashboards. Compliant Kubernetes saves and backs these up for you.
 
 <!--user-demo-metrics-end-->
 
@@ -119,71 +119,71 @@ If the "Target Labels" is "Dropped" for a target then it means that it has been 
 
 1. Make sure either that the monitor is in the same namespace as the target, or that the monitor has the correct namespace selector for the target:
 
-  ```diff
-   apiVersion: monitoring.coreos.com/v1
-   kind: ServiceMonitor
-   metadata:
-     ...
-   spec:
-     ...
-  +  namespaceSelector:
-  +    matchNames:
-  +      - <namespace>
-     ...
-  ```
+    ```diff
+    apiVersion: monitoring.coreos.com/v1
+    kind: ServiceMonitor
+    metadata:
+      ...
+    spec:
+      ...
+    +  namespaceSelector:
+    +    matchNames:
+    +      - <namespace>
+      ...
+    ```
 
 2. Make sure that the selector of the monitor matches the target:
 
-  ```diff
-   apiVersion: v1
-   kind: Service
-   metadata:
-     ...
-  +  labels:
-  +    app: target
-     ...
-   spec:
-     ...
-   ---
-   apiVersion: monitoring.coreos.com/v1
-   kind: ServiceMonitor
-   metadata:
-     ...
-   spec:
-     ...
-  +  selector:
-  +    matchLabels:
-  +      app: target
-     ...
-  ```
+    ```diff
+    apiVersion: v1
+    kind: Service
+    metadata:
+      ...
+    +  labels:
+    +    app: target
+      ...
+    spec:
+      ...
+    ---
+    apiVersion: monitoring.coreos.com/v1
+    kind: ServiceMonitor
+    metadata:
+      ...
+    spec:
+      ...
+    +  selector:
+    +    matchLabels:
+    +      app: target
+      ...
+    ```
 
 3. Make sure that the port of the monitor matches the target:
 
-  ```diff
-   apiVersion: v1
-   kind: Service
-   metadata:
-     ...
-   spec:
-     ...
-  +  ports:
-  +    - name: target
-  +      port: 9000
-     ...
-   ---
-   apiVersion: monitoring.coreos.com/v1
-   kind: ServiceMonitor
-   metadata:
-     ...
-   spec:
-     ...
-  +  endpoints:
-       # either
-  +    - port: target
-       # or
-  +    - port: 9000
-     ...
-  ```
+    ```diff
+    apiVersion: v1
+    kind: Service
+    metadata:
+      ...
+    spec:
+      ...
+    +  ports:
+    +    - name: target
+    +      port: 9000
+      ...
+    ---
+    apiVersion: monitoring.coreos.com/v1
+    kind: ServiceMonitor
+    metadata:
+      ...
+    spec:
+      ...
+    +  endpoints:
+        # either
+    +    - port: target
+        # or
+    +    - port: 9000
+      ...
+    ```
 
 The same concept applies to PodMonitors and Pods.
 

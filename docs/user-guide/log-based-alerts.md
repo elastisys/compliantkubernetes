@@ -1,7 +1,7 @@
 ---
 description: How to work with log-based alerting in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 tags:
-- ISO 27001 A.16 Information Security Incident Management
+  - ISO 27001 A.16 Information Security Incident Management
 ---
 
 # OpenSearch Alert
@@ -31,13 +31,13 @@ We start with creating a notification channel, which enables sending messages di
 
 - Go to **Notifications** page, then **Channels** tab as shown below.
 
-     ![OpenSearch Notification Channels](../img/osd-notifications-channels-tab.png)
+  ![OpenSearch Notification Channels](../img/osd-notifications-channels-tab.png)
 
 - Click on **Create channel**
 
 - Fill in **Channel details**
 
-     ![OpenSearch Notification](../img/add-notifications-channel.png)
+  ![OpenSearch Notification](../img/add-notifications-channel.png)
 
   - **Name** - Name of the destination - for example **user-demo-404-slack-notify**
   - **Channel type** - choose **Slack**
@@ -45,11 +45,11 @@ We start with creating a notification channel, which enables sending messages di
 
 - Test that the Slack integration works by clicking **Send test message** button and check if you receive a test message in your Slack Channel.
 
-     ![OpenSearch Notification Test](../img/notifications-channel-slack-test.png)
+  ![OpenSearch Notification Test](../img/notifications-channel-slack-test.png)
 
 - Finally, save the Notification channel by clicking **Create** button.
 
-     ![OpenSearch Monitor Create](../img/create-channel-button.png)
+  ![OpenSearch Monitor Create](../img/create-channel-button.png)
 
 Next, we can proceed with creating a monitor that will use our newly created channel.
 
@@ -57,13 +57,13 @@ Next, we can proceed with creating a monitor that will use our newly created cha
 
 - Go to **Alerting** page, then **Monitors** tab as shown below.
 
-     ![OpenSearch Notification Channels](../img/osd-alerting-monitors-tab.png)
+  ![OpenSearch Notification Channels](../img/osd-alerting-monitors-tab.png)
 
 - Click on **Create monitor** button
 
 - Fill in **Monitor details**
 
-     ![OpenSearch Monitor 1](../img/monitor-creation-1.png)
+  ![OpenSearch Monitor 1](../img/monitor-creation-1.png)
 
   - **Monitor name** - Name of the monitor, for example **user-demo-404-error**
   - **Monitor type** - Select **Per query monitor** - For more information check OpenSearch documentation on [Monitor types](https://opensearch.org/docs/latest/observing-your-data/alerting/monitors/#monitor-types)
@@ -71,6 +71,7 @@ Next, we can proceed with creating a monitor that will use our newly created cha
     - **Frequency** - **By interval**
     - **Run every** - **1 Minutes**
   - **Data source**
+
     - **Index** where your logs are stored, for instance, **kubernetes\*** (per default, Compliant Kubernetes will store all application logs indices that match the **kubernetes\*** index pattern)
 
     - **Time field** should be set to **@timestamp**

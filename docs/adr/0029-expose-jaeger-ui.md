@@ -41,7 +41,7 @@ Make sure that you use domain listing, groups and IP allowlisting.
 
 ## Pros and Cons of the Options
 
-### [option 1] - Expose  Jaeger UI via ingress in wc cluster and use Oauth2-proxy for request authentication
+### [option 1] - Expose Jaeger UI via ingress in wc cluster and use Oauth2-proxy for request authentication
 
 ![Architecture Diagram](../img/adr/adr-0029-option1.png)
 

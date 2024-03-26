@@ -1,7 +1,8 @@
 ---
 tags:
-- ISO 27001 A.12.1.3 Capacity Management
+  - ISO 27001 A.12.1.3 Capacity Management
 ---
+
 # Capacity Management
 
 Our users trust us -- the Compliant Kubernetes administrators -- to keep applications up and secure.
@@ -64,9 +65,11 @@ Compliant Kubernetes triggers a P2 alert when:
       - Rook/Ceph OSD used to size;
 
 !!!note
+
     Compliant Kubernetes can be configured to [require resource requests](../user-guide/safeguards/enforce-resources.md) for all Pods.
 
 !!!important
+
     Nodes dedicated for data services, such as PostgreSQL, are excluded from Kubernetes requests to allocatable calculation.
 
 ### How?
@@ -88,6 +91,7 @@ Nevertheless, Application Developer trust us to keep infrastructure costs down, 
 The capacity of the environment should be regularly reviewed, for example, after a maintenance window.
 
 !!!important
+
     Downscaling may put application uptime at risk. Therefore, be conservative when downscaling.
 
     Before downscaling you should:
@@ -101,7 +105,7 @@ The capacity of the environment should be regularly reviewed, for example, after
 If a decision has been made to downscale, make sure to drain and cordon the Node before decommissioning it.
 
 If you are about to go below 3 Nodes, consider replacing the Nodes with 6 Nodes of half-the-size before downscaling.
-Before doing this, get in touch with Application Developers to ensure they don't have Kubernetes scheduling constraints that would  cause issues on the consolidated environment.
+Before doing this, get in touch with Application Developers to ensure they don't have Kubernetes scheduling constraints that would cause issues on the consolidated environment.
 
 If you are about to half the number of Nodes, get in touch with Application Developers to ensure their application is not misbehaving, before downscaling.
 

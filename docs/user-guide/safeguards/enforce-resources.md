@@ -1,7 +1,8 @@
 ---
 tags:
-- ISO 27001 A.12.1.3 Capacity Management
+  - ISO 27001 A.12.1.3 Capacity Management
 ---
+
 <!--
 Note to contributors: Aim for the following format.
 
@@ -16,11 +17,13 @@ Note to contributors: Aim for the following format.
 # Avoid downtime with Resource Requests and Limits
 
 !!!note
+
     This section helps you implement ISO 27001, specifically:
 
-    * A.12.1.3 Capacity Management
+    - A.12.1.3 Capacity Management
 
 !!!important
+
     This safeguard is enabled by default with the enforcement action `deny` since [Compliant Kubernetes apps v0.19.0](../../release-notes/ck8s.md#v0190). As a result, resources that violate this policy will not be created.
 
 ## Problem

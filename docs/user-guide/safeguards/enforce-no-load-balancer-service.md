@@ -12,7 +12,7 @@ When attempting to apply a `Service` with `type: LoadBalancer` anyway, the follo
 > Creation of LoadBalancer Service is not supported.
 > Contact your platform administrator for questions about Load Balancers.
 
-``` yaml
+```yaml
 apiVersion: v1
 kind: Service
 metadata:

@@ -1,5 +1,4 @@
-Kafka® (self-managed)
-===========
+# Kafka® (self-managed)
 
 {%
  include-markdown './_common.include'
@@ -20,6 +19,7 @@ Strimzi is a [CNCF Sandbox project](https://www.cncf.io/projects/strimzi/)
 This page will show you how to install Strimzi Kafka Operator on Elastisys Compliant Kubernetes. You can configure the operator to watch a single or multiple Namespaces.
 
 !!! Note "Supported versions"
+
     This installation guide has been tested with Strimzi Kafka Operator version [0.38.0](https://github.com/strimzi/strimzi-kafka-operator/tree/0.38.0).
 
 ## Enable Self-Managed Kafka
@@ -106,7 +106,7 @@ securityContext:
   allowPrivilegeEscalation: false
   capabilities:
     drop:
-    - ALL
+      - ALL
   readOnlyRootFilesystem: true
   runAsNonRoot: true
   seccompProfile:

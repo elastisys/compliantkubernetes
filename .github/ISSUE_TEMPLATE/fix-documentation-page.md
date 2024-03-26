@@ -1,10 +1,9 @@
 ---
 name: Fix documentation page
 about: A page is factually incorrect and needs fixing ASAP
-title: ''
+title: ""
 labels: bug, documentation
-assignees: ''
-
+assignees: ""
 ---
 
 **Describe the bug**

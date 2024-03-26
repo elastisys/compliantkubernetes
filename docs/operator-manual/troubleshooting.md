@@ -1,6 +1,7 @@
 # Troubleshooting Tools
 
 !!! elastisys-self-managed "For Elastisys Self-Managed Customers"
+
     Please start by running [these commands](#i-have-no-clue-where-to-start).
 
     If you are struggling, don't hesitate to [file a ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
@@ -17,10 +18,12 @@ This guide assumes that:
 - `compliantkubernetes-apps` and `compliantkubernetes-kubespray` is available.
 
 !!!important
+
     `./bin/ck8s` references the `compliantkubernetes-apps` CLI
     `./bin/ck8s-kubespray` references the `compliantkubernetes-kubespray` CLI
 
 !!!important
+
     For some of the ansible commands below, you might require root privileges. To run commands as a privileged user with ansible, use the `--become, -b` flag.
 
     Example:
@@ -173,9 +176,11 @@ ansible-inventory -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini --list 
 ## Node cannot be accessed via SSH
 
 !!!important
+
     Make sure it is "not you". Are you well connected to the VPN? Is this the only Node which lost SSH access?
 
 !!!important
+
     If you are using Rook, it is usually set up with replication 2, which means it can tolerate **one** restarting Node. Make sure that, either Rook is healthy or that you are really sure you are restarting the right Node.
 
 Try connecting to the unhealthy Node via a different Node and internal IP:
@@ -221,6 +226,7 @@ For reminder, NTP works over UDP port 123.
 ## Node seems not fine
 
 !!!important
+
     If you are using Rook, it is usually set up with replication 2, which means it can tolerate **one** restarting Node. Make sure that, either Rook is healthy or that you are really sure you are restarting the right Node.
 
 Try rebooting the Node:
@@ -334,7 +340,7 @@ Gather some "evidence" for later diagnostics, when the heat is over:
 ./bin/ck8s ops kubectl $CLUSTER logs -n $UNHEALTHY_POD_NAMESPACE $UNHEALTHY_POD
 ```
 
-Try to kill  and check if the underlying Deployment, StatefulSet or DaemonSet will restart it:
+Try to kill and check if the underlying Deployment, StatefulSet or DaemonSet will restart it:
 
 ```bash
 ./bin/ck8s ops kubectl $CLUSTER delete pod -n $UNHEALTHY_POD_NAMESPACE $UNHEALTHY_POD

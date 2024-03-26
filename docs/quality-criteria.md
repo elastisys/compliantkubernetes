@@ -1,7 +1,8 @@
 ---
 tags:
-- ISO 27001 A.14.2.9 System Acceptance Testing
+  - ISO 27001 A.14.2.9 System Acceptance Testing
 ---
+
 # Quality Criteria
 
 Compliant Kubernetes provides a stable and secure platform for containerized applications.
@@ -11,6 +12,7 @@ When we say "quality", we really refer to the following quality criteria.
 Feature can be delivered ...
 
 - ... at scale
+
   - Feature has good developer-facing documentation. The documentation includes:
     - the [happy path](https://en.wikipedia.org/wiki/Happy_path);
     - a running example based on the [user demo](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo), if applicable;
@@ -28,6 +30,7 @@ Feature can be delivered ...
   - Feature integrates well with application developer authentication
 
 - ... without ruining admin's life
+
   - At least 2 admins have required training
   - Feature has good admin-facing documentation (2nd day ops, all processes in place and documented, etc.)
   - Feature triggers a manageable number of P1 alerts
@@ -40,6 +43,7 @@ Feature can be delivered ...
   - Feature integrates well with Ops observability (alerting, logging, metrics)
 
 - ... without compromising our security posture
+
   - Feature has good and well-understood access control towards Application Developer
   - Feature does not expose platform to additional risk (needs escalated privilegies that were not analyzed, etc.)
   - Feature has good and well-understood security patching

@@ -1,8 +1,8 @@
 ---
 description: How to work with namespaces in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 tags:
-- ISO 27001 A.12.1.4 Separation of Development, Testing & Operational Environments
-- ISO 27001 A.14.2.5 Secure System Engineering Principles
+  - ISO 27001 A.12.1.4 Separation of Development, Testing & Operational Environments
+  - ISO 27001 A.14.2.5 Secure System Engineering Principles
 ---
 
 # Namespaces
@@ -49,6 +49,7 @@ status:
 If the status is `Ok` then the subnamespace is ready to go.
 
 !!!tip
+
     HNC also comes with the [HNS `kubectl` plugin](https://github.com/kubernetes-sigs/hierarchical-namespaces/blob/master/docs/user-guide/how-to.md#prepare-to-use-hierarchical-namespaces-as-a-user).
 
     Using this plugin creating subnamespaces is as easy as:

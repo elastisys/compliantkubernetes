@@ -73,5 +73,6 @@ Offer this only on request.
 - Bad, because it involves extra work and some snowflakiness.
 
 ## Links <!-- optional -->
+
 - [PostgreSQL replication](https://www.postgresql.org/docs/current/runtime-config-replication.html)
 - [Streaming ReplicationHNC](https://www.postgresql.org/docs/current/warm-standby.html#STREAMING-REPLICATION)

@@ -1,9 +1,10 @@
 ---
 tags:
-- ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
-- NIST SP 800-171 3.4.8
-- NIST SP 800-171 3.4.9
+  - ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
+  - NIST SP 800-171 3.4.8
+  - NIST SP 800-171 3.4.9
 ---
+
 <!--
 Note to contributors: Aim for the following format.
 
@@ -18,13 +19,15 @@ Note to contributors: Aim for the following format.
 # Avoid vulnerable container images
 
 !!!note
+
     This section helps you implement ISO 27001, specifically:
 
-    * A.12.6.1 Management of Technical Vulnerabilities
+    - A.12.6.1 Management of Technical Vulnerabilities
 
 !!!important
-    * This safeguard is enabled by default with the enforcement action `deny` since [Compliant Kubernetes apps v0.19.0](../../release-notes/ck8s.md#v0190). As a result, resources that violate this policy will not be created.
-    * The default enforcement action for this safeguard has been changed to `warn` instead of `deny` since [Compliant Kubernetes apps v0.29.0](../../release-notes/ck8s.md#v0290). As a result, resources that violate this policy will generate warning messages, but will still be created.
+
+    - This safeguard is enabled by default with the enforcement action `deny` since [Compliant Kubernetes apps v0.19.0](../../release-notes/ck8s.md#v0190). As a result, resources that violate this policy will not be created.
+    - The default enforcement action for this safeguard has been changed to `warn` instead of `deny` since [Compliant Kubernetes apps v0.29.0](../../release-notes/ck8s.md#v0290). As a result, resources that violate this policy will generate warning messages, but will still be created.
 
 ## Problem
 
@@ -50,6 +53,7 @@ The resolution is rather simple. You have two options:
 2. Get in touch with your administrator and discuss augmenting the set of trusted registries.
 
 !!!important
+
     Instead of adding a not-really-trusted registry to the set of trusted registries, prefer mirroring some public images in your Compliant Kubernetes registry.
 
 If your administrator has not enforced this policy yet, you can view current violations of the policy by running:

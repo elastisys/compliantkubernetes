@@ -1,7 +1,9 @@
 # Release Notes
 
 ## Compliant Kubernetes Jaeger
+
 <!-- BEGIN TOC -->
+
 - [v1.39.0-ck8s3](#v1390-ck8s3) - 2023-08-24
 - [v1.39.0-ck8s2](#v1390-ck8s2) - 2023-06-12
 - [v1.39.0-ck8s1](#v1390-ck8s1) - 2023-03-07

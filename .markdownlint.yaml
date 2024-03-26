@@ -8,7 +8,7 @@ MD013: false # line-length - does not support editorconfig
 MD024: # no-duplicate-heading
   siblings_only: true
 MD029: # ol-prefix
-  style: one
+  style: ordered
 MD033: # no-inline-html
   allowed_elements:
     - a
@@ -22,8 +22,8 @@ MD033: # no-inline-html
     - nav
     - section
     - ul
-MD046: # code-block-style
-  style: fenced
+MD034: false # no-bare-urls
+MD046: false # code-block-style - does not support admonitions
 MD048: false # code-fence-style - does not support admonitions
 MD049: # emphasis-style
   style: underscore

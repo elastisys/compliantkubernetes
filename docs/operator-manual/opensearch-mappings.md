@@ -1,4 +1,3 @@
-
 # OpenSearch Mappings
 
 OpenSearch organizes data into indices. Each index is a collection of JSON documents. If you have a set of log lines that you want to add to OpenSearch, you must first convert them to JSON. A simple JSON document for a movie might look like this:
@@ -68,8 +67,8 @@ Checking the dynamic mapping again, we can see that Opensearch was able to detec
 
 Although OpenSearch was able to detect the numeric type, **long** in our case is not the best data type, as it is an inefficient use of memory space. A better data type here could be **short**.
 
-| Field data type | Description                                                      |
-|-----------------|------------------------------------------------------------------|
+| Field data type | Description                                                                            |
+| --------------- | -------------------------------------------------------------------------------------- |
 | short           | A signed 16-bit integer. Minimum is −2 <sup>15</sup> . Maximum is 2 <sup>15 − 1</sup>. |
 | long            | A signed 64-bit integer. Minimum is −2 <sup>63</sup> . Maximum is 2 <sup>63 − 1</sup>  |
 
@@ -116,7 +115,7 @@ Now we won't get an error when we index with the same document, and the field is
 
 ![Get Mapping](../img/explicit_mapping_6.png)
 
-One thing worth mentioning is that while the _producer_ field was not indexed, and can't be used for queries, it is still there if we get the document, and the __source_:
+One thing worth mentioning is that while the _producer_ field was not indexed, and can't be used for queries, it is still there if we get the document, and the _source_:
 
 ![Source](../img/explicit_mapping_7.png)
 

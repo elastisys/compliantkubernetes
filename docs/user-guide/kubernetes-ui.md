@@ -5,6 +5,7 @@ description: How to work with Lens and Elastisys Compliant Kubernetes, the secur
 # Kubernetes UI (Lens)
 
 !!!important
+
     As of September 2022, the Lens binary includes proprietary code on top of the open-source Lens source code.
     Unfortunately, some of that code includes **non-features**, like requiring a Lens ID for "activating" Lens and tracking your activity.
 
@@ -37,15 +38,17 @@ You have two options for making the `oidc-login` plugin findable by Lens:
 
 1. Edit `~/.profile` and add:
 
-        if [ -d "$HOME/.krew/bin" ] ; then
-            PATH="$HOME/.krew/bin:$PATH"
-        fi
+    ```bash
+    if [ -d "$HOME/.krew/bin" ] ; then
+        PATH="$HOME/.krew/bin:$PATH"
+    fi
+    ```
 
 2. Run the following command:
 
-```bash
-sudo ln -s ~/.krew/bin/kubectl-oidc_login /usr/local/bin
-```
+    ```bash
+    sudo ln -s ~/.krew/bin/kubectl-oidc_login /usr/local/bin
+    ```
 
 ## Getting started with Lens
 

@@ -1,10 +1,11 @@
 ---
 tags:
-- HIPAA S45 - Access Control - Emergency Access Procedure - § 164.312(a)(2)(ii)
+  - HIPAA S45 - Access Control - Emergency Access Procedure - § 164.312(a)(2)(ii)
 ---
+
 # Break-glass
 
-In this section we  describe a workaround when access  to the environment is broken for  the Platform Administrators/operators and/or users.
+In this section we describe a workaround when access to the environment is broken for the Platform Administrators/operators and/or users.
 
 ## Platform Administrator Access
 
@@ -14,11 +15,11 @@ When Dex or the OpenID provider is malfunctioning, the Platform Administrator mi
 
 1. Use `/etc/kubernetes/admin.conf` and run `kubectl` commands to check the problem
 
-    ```bash
-    export KUBECONFIG=/etc/kubernetes/admin.conf
-    #run kubctl command
-    sudo kubectl get po -A
-    ```
+   ```bash
+   export KUBECONFIG=/etc/kubernetes/admin.conf
+   #run kubctl command
+   sudo kubectl get po -A
+   ```
 
 ## Kubernetes User Access
 
@@ -77,7 +78,7 @@ If dex is broken, you can manually create a `kubeconfig` file for a user. While 
     kubectl get csr/user1 -o yaml
     ```
 
-    The certificate value is in Base64-encoded format under `status.certificate`. Put the content under `client-certificate-data:`.  And also get the base64 encoded content for the private key and put it under `client-key-data:`. To get the base64 encoded content `cat user1.key | base64 | tr -d '\n'`.
+    The certificate value is in Base64-encoded format under `status.certificate`. Put the content under `client-certificate-data:`. And also get the base64 encoded content for the private key and put it under `client-key-data:`. To get the base64 encoded content `cat user1.key | base64 | tr -d '\n'`.
 
     The kubeconfig file for `user1` user looks like:
 
@@ -101,14 +102,15 @@ If dex is broken, you can manually create a `kubeconfig` file for a user. While 
             client-certificate-data: <CLIENT-CRT-DATA>
             client-key-data: <CLIENT-KEY-DATA>
         ```
-7. Add the user and  namespaces that s/he has access to in wc-config.yaml file.
+
+7. Add the user and namespaces that s/he has access to in wc-config.yaml file.
 
     ```yaml
     user:
-        # This only controls if the namespaces should be created, user RBAC is always created.
-        createNamespaces: true
-        namespaces:
+      # This only controls if the namespaces should be created, user RBAC is always created.
+      createNamespaces: true
+      namespaces:
         - namespace1 # namespaces that the user is allowed to access
-        adminUsers:
+      adminUsers:
         - user1 # the user
     ```

@@ -7,6 +7,7 @@
 %}
 
 !!!note
+
     CE certification of a medical device according to the EU MDR can lead a huge commercial benefit, but it is a significant project.
     To start the certification process thorough knowledge of the regulation is required.
 

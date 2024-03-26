@@ -49,7 +49,7 @@ spec:
   targets:
     staticConfig:
       static:
-      - https://www.google.com
+        - https://www.google.com
 ```
 
 This will generate a metric as follows: `probe_success{cluster="ckdemo-wc", instance="https://www.google.com", job="probe/demo1/google-is-up", namespace="demo1"}`.

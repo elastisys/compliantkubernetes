@@ -32,6 +32,7 @@ What do we do for Infra Providers that do not have service type loadbalancer?
 ## Decision Outcome
 
 Chosen options: 1 & 3 & 5
+
 - "Keep running ingress-nginx as a daemonSet."
 - "Do not run ingress-nginx on the AMS nodes."
 - "For Infra Providers without service type loadbalancer start using service type NodePort for nginx and also use the external load balancer to route traffic from ports 80/443 to node ports 30080/30443" -> This superseeds adr0008.

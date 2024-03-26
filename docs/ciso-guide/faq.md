@@ -1,12 +1,14 @@
 ---
 tags:
-- ISO 27001 A.18.1.2 Intellectual Property Rights
+  - ISO 27001 A.18.1.2 Intellectual Property Rights
 ---
+
 # CISO FAQ
 
 ## Do we need to make our application source code public when using Compliant Kubernetes?
 
 !!!note "TL;DR"
+
     **Definitely NOT**, you own your application source code and you decide what to do with it.
 
 Elastisys hereby confirms that Compliant Kubernetes and its Additional Managed Services (AMS) are NOT putting Application Developers (users) in a situation which obliges them to make their software or source code running on Compliant Kubernetes available to the public.
@@ -25,6 +27,7 @@ You can read more about our commitment to community-driven open-source [by openi
 ## Will GrafanaLabs change to AGPL licenses affect Compliant Kubernetes?
 
 !!!note "TL;DR"
+
     Users and administrators of Compliant Kubernetes are unaffected.
 
 Part of Compliant Kubernetes -- specifically the CISO dashboards -- are built on top of Grafana, which recently [changed its license to AGPLv3](https://grafana.com/blog/2021/04/20/grafana-loki-tempo-relicensing-to-agplv3/). In brief, if Grafana is exposed via a network connection -- as is the case with Compliant Kubernetes -- then AGPLv3 requires all source code including modifications to be made available.
@@ -36,6 +39,7 @@ As a result, Compliant Kubernetes continues to be distributed under [Apache 2.0]
 ## Will Min.io change to AGPL licenses affect Compliant Kubernetes?
 
 !!!note "TL;DR"
+
     Users and administrators of Compliant Kubernetes are unaffected.
 
 Min.io recently changed its license to [AGPLv3](https://blog.min.io/from-open-source-to-free-and-open-source-minio-is-now-fully-licensed-under-gnu-agplv3/).
@@ -49,6 +53,7 @@ As a result, Compliant Kubernetes continues to be distributed under [Apache 2.0]
 ## Can I use Datadog/Logz.io/Elastic Cloud with Compliant Kubernetes?
 
 !!!note "TL;DR"
+
     Technically, yes, but legally speaking and from a GDPR perspective, **NO**. Why is that?
 
     * Logs contain personal data.

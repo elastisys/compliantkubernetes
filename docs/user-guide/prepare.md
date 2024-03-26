@@ -45,6 +45,7 @@ Optional, but very useful, tools for developers and DevOps engineers:
 - [helm](https://helm.sh/docs/intro/install/), if you want to manage your application with the Helm package manager
 
 ??? tip "You can verify that configuration is correct by issuing the following simple commands"
+
     Make sure you have configured your tools properly:
 
     ```

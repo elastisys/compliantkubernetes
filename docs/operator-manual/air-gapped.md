@@ -85,7 +85,7 @@ Configure the container registry mirror for the container runtime. If you are us
 ```yaml
 registry_addr: "registry.air-gapped.internal"
 registry_host: "https://registry.air-gapped.internal" # change to http:// if not available over HTTPS
-registry_insecure: false  # set to true if HTTP
+registry_insecure: false # set to true if HTTP
 
 containerd_registries_mirrors:
   - prefix: "{{ registry_addr }}"
@@ -210,7 +210,7 @@ opensearch:
   plugins:
     installExternalObjectStoragePlugin: false
     additionalPlugins:
-    - fileserver.air-gapped.internal:8080/repository-s3-${OPENSEARCH_VERSION}.zip
+      - fileserver.air-gapped.internal:8080/repository-s3-${OPENSEARCH_VERSION}.zip
 ```
 
 ### Trivy
@@ -260,7 +260,7 @@ networkPolicies:
       ips:
         - 10.65.131.137/32 # set this to the IP of fileserver.air-gapped.internal
       ports:
-        - 8080  # the file-server is hosted on port 8080
+        - 8080 # the file-server is hosted on port 8080
 ```
 
 ### Custom alerting receiver
@@ -271,12 +271,12 @@ It is possible to configure your own alerting receivers for Alertmanager, which 
 alerts:
   alertsTo: email
   customReceivers:
-  - name: 'email'
-    email_configs:
-    - to: 'admin@example.com'
-      from: 'prometheus@example.com'
-      require_tls: false
-      send_resolved: true
+    - name: "email"
+      email_configs:
+        - to: "admin@example.com"
+          from: "prometheus@example.com"
+          require_tls: false
+          send_resolved: true
 ```
 
 ## Demo

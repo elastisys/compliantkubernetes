@@ -1,13 +1,14 @@
 ---
 tags:
-- HIPAA S13 - Information Access Management - Access Authorization - § 164.308(a)(4)(ii)(B)
-- HIPAA S14 - Information Access Management - Access Establishment and Modification - § 164.308(a)(4)(ii)(C)
-- HIPAA S43 - Access Control - § 164.312(a)(1)
-- HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
-- MSBFS 2020:7 4 kap. 3 §
-- MSBFS 2020:7 4 kap. 4 §
-- HSLF-FS 2016:40 4 kap. 3 § Styrning av behörigheter
+  - HIPAA S13 - Information Access Management - Access Authorization - § 164.308(a)(4)(ii)(B)
+  - HIPAA S14 - Information Access Management - Access Establishment and Modification - § 164.308(a)(4)(ii)(C)
+  - HIPAA S43 - Access Control - § 164.312(a)(1)
+  - HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
+  - MSBFS 2020:7 4 kap. 3 §
+  - MSBFS 2020:7 4 kap. 4 §
+  - HSLF-FS 2016:40 4 kap. 3 § Styrning av behörigheter
 ---
+
 # Access control
 
 ## Group claims
@@ -15,6 +16,7 @@ tags:
 This guide describes how to set up and make use of group claims for applications.
 
 !!!note
+
     This guide assumes your group claim name is `groups`
 
 ### Kubernetes
@@ -38,6 +40,7 @@ users:
 ```
 
 !!!tips
+
     Your token can be found in `~/.kube/cache/oidc-login/`.
     This is useful if you're trying to debug your claims since you can just paste the token to [jwt.io](https://jwt.io) and check it.
 
@@ -89,6 +92,7 @@ harbor:
 ```
 
 !!!note
+
     When OIDC (e.g. DeX) is enabled we cannot create static users using the Harbor web interface. But when anyone logs in via DeX they automatically get a user and we can promote that user to admin.
     Once there is one admin, they can set specific permissions for other users (there should be at least a few users promoted to admins).
 
@@ -172,10 +176,12 @@ opensearch:
 1. Application Developer logs in to Grafana via OpenID
 
 2. Administrator logs in to Grafana via static admin user.
-!!!note
-    To get the static admin username and password you need to have access to the SC cluster and then run
 
-    `kubectl get secret user-grafana -n monitoring -o json | jq '.data | map_values(@base64d)'`
+    !!!note
+
+        To get the static admin username and password you need to have access to the SC cluster and then run
+
+        `kubectl get secret user-grafana -n monitoring -o json | jq '.data | map_values(@base64d)'`
 
 3. Administrator promotes the OpenID user to Grafana admin at `grafana.domain.tld/admin/users`
 
@@ -184,11 +190,13 @@ opensearch:
 1. Application Developer logs in to Harbor via OpenID
 
 2. Administrator logs in to Harbor via static admin user.
-!!!note
-    To get the static admin username and password you need to have access to the SC cluster and then run
 
-    `kubectl get secret harbor-init-secret -n harbor -o json | jq '.data."harbor-password"'`
+    !!!note
 
-    Username is: admin
+        To get the static admin username and password you need to have access to the SC cluster and then run
+
+        `kubectl get secret harbor-init-secret -n harbor -o json | jq '.data."harbor-password"'`
+
+        Username is: admin
 
 3. Administrator promotes the OpenID user to Harbor admin at `grafana.domain.tld/harbor/users`

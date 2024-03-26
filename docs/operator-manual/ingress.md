@@ -9,8 +9,8 @@ controller can be exposed with a Service of type LoadBalancer. This will create 
 provider with an external ip-address. Any dns records should be pointed to the ip-address of the load balancer.
 
 !!!note
-    This is only currently supported in CK8s for AWS. It is however possible to configure this for Azure and Google cloud as well
-    but it's not done by default
+
+    This is only currently supported in CK8s for AWS. It is however possible to configure this for Azure and Google cloud as well but it's not done by default
 
 ## Using the host network
 

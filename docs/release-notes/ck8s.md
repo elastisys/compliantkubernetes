@@ -1,8 +1,11 @@
 <!--apps-release-notes-start-->
+
 # Release Notes
 
 ## Compliant Kubernetes
+
 <!-- BEGIN TOC -->
+
 - [v0.36.0](#v0360) - 2024-02-12
 - [v0.34.2](#v0342) - 2024-01-16
 - [v0.35.1](#v0351) - 2024-01-16
@@ -40,6 +43,7 @@
 <!-- END TOC -->
 
 !!!note
+
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
 
 ## v0.36.0
@@ -140,7 +144,7 @@ Released 2023-10-20
 #### Updated
 
 - **Ingress-nginx controller to 1.8.4 and chart to 4.7.3 (HTTP/2 fix for CVE-2023-44487)**
-  - a limit of no more than 2 * max_concurrent_streams new streams per one event loop iteration was introduced
+  - a limit of no more than 2 \* max_concurrent_streams new streams per one event loop iteration was introduced
   - refused streams are now limited to maximum of max_concurrent_streams and 100
 
 ### v0.32.2
@@ -150,7 +154,7 @@ Released 2023-10-20
 #### Updated
 
 - **Ingress-nginx controller to 1.8.4 and chart to 4.7.3 (HTTP/2 fix for CVE-2023-44487)**
-  - a limit of no more than 2 * max_concurrent_streams new streams per one event loop iteration was introduced
+  - a limit of no more than 2 \* max_concurrent_streams new streams per one event loop iteration was introduced
   - refused streams are now limited to maximum of max_concurrent_streams and 100
 
 ### v0.33.0
@@ -550,14 +554,14 @@ Released 2022-02-01
   Synchronizes S3 buckets across regions or clouds to keep an off-site backup.
 
 - **Added a new feature to create and log into separate indices per namespace.**<br/>
-  *Currently considered to be an alpha feature.*
+  _Currently considered to be an alpha feature._
 
 #### Changed
 
 - **Replacing Open Distro for Elasticsearch with OpenSearch.**<br/>
   In this release, since [the Open Distro project has reached end of life](https://opendistro.github.io/for-elasticsearch/), Elasticsearch is replaced with OpenSearch and Kibana with OpenSearch Dashboards.
   OpenSearch is a fully open source fork of Elasticsearch with a compatible API and familiar User Experience.<br/>
-  *Note that recent versions of official Elasticsearch clients and tools will not work with OpenSearch as they employ a product check, compatible versions can be found [here](https://opensearch.org/docs/latest/clients/index/).*
+  _Note that recent versions of official Elasticsearch clients and tools will not work with OpenSearch as they employ a product check, compatible versions can be found [here](https://opensearch.org/docs/latest/clients/index/)._
 
 - **Enforcing OPA policies by default.**<br/>
   Provides [strict safeguards](../user-guide/safeguards/index.md) by default.

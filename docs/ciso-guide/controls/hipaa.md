@@ -46,8 +46,9 @@ The following controls are outside the scope of Compliant Kubernetes and **need 
 - S42 - Device and Media Controls - Data Backup and Storage Procedures - § 164.310(d)(2)(iv)
 - S46 - Access Control - Automatic Logoff - § 164.312(a)(2)(iii)
 
-    !!!important
-        Compliant Kubernetes API access is configured so as to require a new OpenID flow every 12 hours.
+  !!!important
+
+      Compliant Kubernetes API access is configured so as to require a new OpenID flow every 12 hours.
 
 - S49 - Integrity - § 164.312(c)(1)
 - S50 - Integrity - Mechanism to Authenticate ePHI - § 164.312(c)(2)

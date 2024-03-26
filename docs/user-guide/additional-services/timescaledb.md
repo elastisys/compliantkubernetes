@@ -1,5 +1,4 @@
-TimescaleDB®
-============
+# TimescaleDB®
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
@@ -45,10 +44,12 @@ TimescaleDB is an extension on top of our managed PostgreSQL.
 This means that your administrator will be setting up a complete PostgreSQL cluster for you and you just use it for TimescaleDB via the TimescaleDB extension.
 
 !!!Note
+
     TimescaleDB is not a viable option for collecting all metrics from the Kubernetes cluster. The data is uncompressed and would take a lot of space to store and use a lot of resources to analyze, unless you want to use it with a very short retention period.
     This is not usually a problem for collecting application specific metrics, since they are not as many as the metrics that are generated from the Kubernetes cluster.
 
 !!!important
+
     Due to very different performance-tuning characteristics, Timescale and PostgreSQL databases should never run on the same PostgreSQL cluster.
     To comply with this, it is essential that every PostgreSQL database that gets created on the PostgreSQL cluster also has the Timescale extension created for it.
 
@@ -67,6 +68,7 @@ If you want to use TimescaleDB on your Compliant Kubernetes cluster, ask your ad
 ```bash
 \c $APP_DATABASE
 ```
+
 - Add the TimescaleDB extension:
 
 ```bash

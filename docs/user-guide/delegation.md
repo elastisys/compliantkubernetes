@@ -1,26 +1,27 @@
 ---
 description: How to delegate and work with permissions in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 tags:
-- ISO 27001 A.9.4.1 Information Access Restriction
-- BSI IT-Grundschutz APP.4.4.A3
-- HIPAA S13 - Information Access Management - Access Authorization - § 164.308(a)(4)(ii)(B)
-- HIPAA S14 - Information Access Management - Access Establishment and Modification - § 164.308(a)(4)(ii)(C)
-- HIPAA S43 - Access Control - § 164.312(a)(1)
-- HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
-- MSBFS 2020:7 4 kap. 3 §
-- MSBFS 2020:7 4 kap. 4 §
-- NIST SP 800-171 3.1.2
-- NIST SP 800-171 3.1.4
-- NIST SP 800-171 3.1.5
-- NIST SP 800-171 3.1.6
+  - ISO 27001 A.9.4.1 Information Access Restriction
+  - BSI IT-Grundschutz APP.4.4.A3
+  - HIPAA S13 - Information Access Management - Access Authorization - § 164.308(a)(4)(ii)(B)
+  - HIPAA S14 - Information Access Management - Access Establishment and Modification - § 164.308(a)(4)(ii)(C)
+  - HIPAA S43 - Access Control - § 164.312(a)(1)
+  - HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
+  - MSBFS 2020:7 4 kap. 3 §
+  - MSBFS 2020:7 4 kap. 4 §
+  - NIST SP 800-171 3.1.2
+  - NIST SP 800-171 3.1.4
+  - NIST SP 800-171 3.1.5
+  - NIST SP 800-171 3.1.6
 ---
 
 # How to Delegate?
 
 !!!note
+
     This section helps you implement ISO 27001, specifically:
 
-    * A.9.4.1 Information Access Restriction
+    - A.9.4.1 Information Access Restriction
 
 Now that you are almost ready to go live, you will certainly want to delegate some permissions to other team members or IT systems in your organization.
 This page shows you how to do that.
@@ -47,6 +48,7 @@ Please read the upstream documentation linked below to learn how a Harbor admin 
 - create [robot accounts](https://goharbor.io/docs/2.4.0/administration/robot-accounts/).
 
 !!!note
+
     You can either add users or groups to a project with various roles. To simplify access control, consider only using groups and assigning users to groups from your IdP.
 
 ## Kubernetes API

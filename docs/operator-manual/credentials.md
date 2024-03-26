@@ -1,23 +1,22 @@
 ---
 tags:
-- HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
-- HSLF-FS 2016:40 4 kap. 2 § Styrning av behörigheter
+  - HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
+  - HSLF-FS 2016:40 4 kap. 2 § Styrning av behörigheter
 ---
-Use of Credentials
-==================
+
+# Use of Credentials
 
 Compliant Kubernetes interacts with a lot of credentials. This document captures all of them in an orderly fashion, layer-by-layer.
 
-Terminology
------------
+## Terminology
+
 - Purpose: Why are these credentials necessary, what can be done with them.
 - Owner: The person (e.g., John Smith) or computing system (e.g., control plane Node, Pod) who controls the credentials, and is responsible for their safe storage and usage.
 - Type: Individual credentials identify a person, while service accounts identify a computing system.
 - Use for: What should these credentials be used for.
 - Do not use for: When should these credentials NOT be used, although they technically could.
 
-Single Sign-On (SSO) Credentials
---------------------------------
+## Single Sign-On (SSO) Credentials
 
 - Example: Company Google Accounts
 - Purpose: authenticate a person with various system, in particular
@@ -33,8 +32,7 @@ Single Sign-On (SSO) Credentials
 - Misc:
   - Protect using [2FA](https://en.wikipedia.org/wiki/Multi-factor_authentication)
 
-Infrastructure Provider Credentials
--------------------------------------------
+## Infrastructure Provider Credentials
 
 - Purpose: create infrastructure, e.g., VMs, load balancers, networks, buckets.
 - Owner: administrator
@@ -46,8 +44,7 @@ Infrastructure Provider Credentials
   - Kubernetes [cloud-controller integration](https://github.com/kubernetes-sigs/kubespray/blob/master/inventory/sample/group_vars/all/openstack.yml#L38), use [Cloud Controller Credentials](#cloud-controller-integration-credentials) instead.
   - Access to object storage / S3 bucket, use [backup credentials](#backup-and-long-term-logging-credentials) instead.
 
-SSH Keys
---------
+## SSH Keys
 
 - Purpose: access Nodes for setup, break glass or disaster recovery
 - Owner: administrator
@@ -59,8 +56,7 @@ SSH Keys
 - Important considerations:
   - When generating an SSH key, see [Cryptography](cryptography.md).
 
-PGP Keys
---------
+## PGP Keys
 
 - Purpose: encrypt/decrypt sensitive information, e.g., service account credentials, Application Developer names, incident reports, financial information, etc.
 - Owner: administrator
@@ -74,8 +70,7 @@ PGP Keys
 - Important considerations:
   - When generating a GPG key, see [Cryptography](cryptography.md).
 
-Cloud Controller (Integration) Credentials
-------------------------------------------
+## Cloud Controller (Integration) Credentials
 
 - Purpose: allow Kubernetes control Nodes, specifically the [cloud-controller-manager](https://kubernetes.io/docs/concepts/architecture/cloud-controller/), to create LoadBalancers and PersistentVolumes
 - Owner: each Kubernetes cluster should have their own
@@ -87,8 +82,7 @@ Cloud Controller (Integration) Credentials
   - Exoscale. We currently don't integrate with Exoscale for LoadBalancer or PersistentVolumes.
   - Terraform layer in Kubespray
 
-Backup and Long-Term Logging Credentials
-----------------------------------------
+## Backup and Long-Term Logging Credentials
 
 - Purpose:
   - Allow backup of various components, e.g., PVCs via Velero, Thanos metrics, OpenSearch Indexes, PostgreSQL databases.
@@ -104,8 +98,7 @@ Backup and Long-Term Logging Credentials
 - Misc:
   - Ensure these credentials are **write-only**, if supported by the underlying Infrastructure Provider, to comply with [ISO 27001 A.12.3.1 Information Backup](https://www.isms.online/iso-27001/annex-a-12-operations-security/) and [ISO 27001 A.12.4.2 Protection of Log Information](https://www.isms.online/iso-27001/annex-a-12-operations-security/). As of 2021-05-20, this is supported by AWS S3, Exoscale S3, GCP and SafeSpring S3.
 
-OpsGenie Credentials
---------------------
+## OpsGenie Credentials
 
 - Purpose:
   - Allow the Cluster to issue alerts to OpsGenie.
@@ -115,8 +108,7 @@ OpsGenie Credentials
 - Do not use for:
   - Operator access to OpsGenie. Prefer [Single Sign-On (SSO)](https://support.atlassian.com/opsgenie/docs/configure-google-sso/).
 
-Dex OpenID Client Secret
-------------------------
+## Dex OpenID Client Secret
 
 - Purpose:
   - Complete the "OAuth dance" between Grafana, OpenSearch Dashboard, Harbor and kubectl, on one side, and Dex, on the other side.
@@ -126,8 +118,7 @@ Dex OpenID Client Secret
 - Misc:
   - We have determined that the OpenID client secret should not be treated as a secret. See risk analysis [here](https://github.com/dexidp/dex/issues/469) and [here](https://security.stackexchange.com/questions/225809/what-is-the-worst-i-can-do-if-i-know-openid-connect-client-secret).
 
-Kubeconfig with OpenID Authentication
--------------------------------------
+## Kubeconfig with OpenID Authentication
 
 - Purpose: access the Kubernetes API in normal situations
 - Owner: shared between administrators and users
@@ -140,8 +131,7 @@ Kubeconfig with OpenID Authentication
 - Misc:
   - If these credentials become unusable, you are in a "break glass" situation. Use Infrastructure Provider credentials or SSH keys to initiate disaster recovery.
 
-Kubeconfig with Client Certificate Key
---------------------------------------
+## Kubeconfig with Client Certificate Key
 
 - Purpose: access the Kubernetes API for disaster recovery, break glass or initial setup
 - Owner: shared between administrators

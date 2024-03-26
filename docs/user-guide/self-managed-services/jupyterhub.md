@@ -1,5 +1,4 @@
-JupyterHub (self-managed)
-===========
+# JupyterHub (self-managed)
 
 {%
    include-markdown './_common.include'
@@ -25,6 +24,7 @@ helm repo update
 Below is a sample `values.yaml` file that can be used to deploy JupyterHub, please read the notes and change what is necessary. This sample uses [Google OAuth](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google) for authentication and authorization.
 
 !!!note
+
     Requested resources should be evaluated and reconsidered for production. Information about resource allocation and also the enabling of GPU usage can be found [here](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-resources.html#customizing-user-resources)
 
 ```yaml
@@ -35,13 +35,13 @@ hub:
   revisionHistoryLimit:
   config:
     GoogleOAuthenticator: #(5)
-        client_id: $YOUR_CLIENT_ID # replace this
-        client_secret: $YOUR_CLIENT_SECRET # (6) replace this
-        oauth_callback_url: https://$PROJECT_DOMAIN/hub/oauth_callback # replace this
-        hosted_domain:
-          - example.com # replace this the email domain which are allowed to log in to JupyterHub
-        login_service: Google
-        allow_all: true
+      client_id: $YOUR_CLIENT_ID # replace this
+      client_secret: $YOUR_CLIENT_SECRET # (6) replace this
+      oauth_callback_url: https://$PROJECT_DOMAIN/hub/oauth_callback # replace this
+      hosted_domain:
+        - example.com # replace this the email domain which are allowed to log in to JupyterHub
+      login_service: Google
+      allow_all: true
     JupyterHub:
       admin_access: true
       authenticator_class: google
@@ -142,8 +142,8 @@ ingress:
       secretName: jupyter-secret
 ```
 
-1. The following resources are reused using *resourceDefaults later in this file
-2. The following containerSecurityContext is reused using *SCDefaults later in this file
+1. The following resources are reused using \*resourceDefaults later in this file
+2. The following containerSecurityContext is reused using \*SCDefaults later in this file
 3. Block set to true will append a privileged initContainer using the iptables to block the sensitive metadata server at the provided ip. Privileged containers are not allowed in ck8s.
 4. "type: none" disables persistent storage for the user labs. Consolidate with platform administrator before enabling this feature. [for reference](https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/1ebca266bed3e2f38332c5a9a3202f627cba3af0/jupyterhub/values.yaml#L383)
 5. Use [this guide](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google) to get your client_id and client_secret through the [Google API Console](https://console.developers.google.com/).
@@ -154,6 +154,7 @@ ingress:
 This sections shows how to pull the required images for JupyterHub and push them to another registry. If you are using the managed Harbor as your container registry, please follow [these instructions](../deploy.md) on how to authenticate, create a new project, and how to create a robot account and using it in a pull-secret to be able to pull an image from Harbor to your cluster safely.
 
 !!!note
+
     Run the following commands in the same directory as the location of your `values.yaml` file, since it will automatically update it with the correct images. If not, images will need to be manually set in the `values.yaml`.
 
 ```sh

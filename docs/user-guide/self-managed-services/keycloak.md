@@ -1,5 +1,4 @@
-Keycloak™ (self-managed)
-===========
+# Keycloak™ (self-managed)
 
 {%
    include-markdown './_common.include'
@@ -21,7 +20,7 @@ This will provide you with a robust and secure IAM solution to manage user acces
 
 ## Initial preparation
 
-*Note: This guide assumes that you have managed PostgreSQL as an additional service.*
+_Note: This guide assumes that you have managed PostgreSQL as an additional service._
 
 [Setup an application database and user in PostgreSQL](../additional-services/postgresql.md)
 
@@ -63,7 +62,7 @@ externalDatabase: # (2)
   host: "<PGHOST>"
   port: 5432
   user: <APP_USERNAME>
-  database:  <APP_DATABASE>
+  database: <APP_DATABASE>
   existingSecret: "<secret-name>"
   existingSecretPasswordKey: "PGPASSWORD"
 
@@ -93,6 +92,7 @@ proxy: edge
 4. Enabling production mode and TLS for HTTPS. Disclaimer: Enabling production mode does not mean that the configuration here is ready for production. Please see further reading on Production configuration.
 
 !!!failure
+
     The values file above was produced for Keycloak Chart version 16.1.5 (appVersion 22.0.3).
     The shape of the values files and the required configuration may have changed with newer versions of the Keycloak Chart.
     Prefer installing the latest version to make sure you get all security updates.

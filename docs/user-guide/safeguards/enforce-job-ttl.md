@@ -1,6 +1,7 @@
 ---
 tags: []
 ---
+
 # Improve platform stability: Job TTL
 
 In Kubernetes, Jobs that are not managed by a higher-level resource such as a Cronjob, will most likely not get cleaned up automatically as Jobs do not have a default time-to-live, TTL, configured.

@@ -1,12 +1,14 @@
 ---
 tags:
-- ISO 27001 A.12.4.4 Clock Synchronization
-- MSBFS 2020:7 4 kap. 13 §
-- NIST SP 800-171 3.3.7
+  - ISO 27001 A.12.4.4 Clock Synchronization
+  - MSBFS 2020:7 4 kap. 13 §
+  - NIST SP 800-171 3.3.7
 ---
+
 # Clock Synchronization
 
 !!!important
+
     Compliant Kubernetes is about to add clock synchronization with `ntp.se` by default.
     This will be done according to [best practices](https://www.netnod.se/blog/best-practices-connecting-ntp-servers).
     To check progress, see [this issue](https://github.com/elastisys/compliantkubernetes-kubespray/issues/250).

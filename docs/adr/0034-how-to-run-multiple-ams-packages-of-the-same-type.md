@@ -21,25 +21,31 @@ How can we overcome this issue? Should we add a `elastisys.io/ams-cluster-name` 
 ## Considered Options
 
 1. Always scale the nodes vertically and fit multiple postgres packages on the same pair of nodes.
+
     - but how many packages should we place on the same pair of nodes? max 3 packages? max 5 packages?
     - up to what node sizes?
     - what about resource waste? we will not find VM flavors that match exactly our sum of packages.
-On the other hand we reduce the resources allocated to our services(each node is eating ~ 1 CPU and 2GB ram, by placing 3 packages on the same node we reduce by 2CPU and 4GB RAM the resource waste)
+
+    On the other hand we reduce the resources allocated to our services(each node is eating ~ 1 CPU and 2GB ram, by placing 3 packages on the same node we reduce by 2CPU and 4GB RAM the resource waste)
+
 2. Always scale horizontally and place each package on its own set of dedicated nodes.
 
 3. Scale the AMS dedicated nodes vertically so that it fits all packages on the same set of nodes.
-    - but how many packages should we place on the same pair of nodes? max 3 packages? max 5 packages?
-    - up to what node sizes?
-    - what about resource waste? we will not find VM flavors that match exactly our sum of packages.
+
+   - but how many packages should we place on the same pair of nodes? max 3 packages? max 5 packages?
+   - up to what node sizes?
+   - what about resource waste? we will not find VM flavors that match exactly our sum of packages.
 
 ## Decision Outcome
 
 Chosen options: 2
 
 1. Always scale horizontally and place each package on its own set of dedicated nodes.
+
     - "Add additional label `elastisys.io/ams-cluster-name` to a set of nodes dedicated to a specific package"
     - "Do not taint the nodes."
-Respect [ADR-0022](0022-use-dedicated-nodes-for-additional-services.md) and add the `elastisys.io/node-type` taint and label.
+
+    Respect [ADR-0022](0022-use-dedicated-nodes-for-additional-services.md) and add the `elastisys.io/node-type` taint and label.
 
 ### Positive Consequences
 

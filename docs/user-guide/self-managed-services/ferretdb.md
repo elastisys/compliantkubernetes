@@ -7,7 +7,7 @@
 %}
 
 !!!danger
-    FerretDB® tries to be a drop-in replacement for MongoDB®. However:
+FerretDB® tries to be a drop-in replacement for MongoDB®. However:
 
     * There are [known differences](https://docs.ferretdb.io/diff/).
     * There might also be performance implications.
@@ -60,36 +60,36 @@ spec:
         run: ferretdb
     spec:
       containers:
-      - name: ferretdb
-        image: $REGISTRY/$REGISTRY_PROJECT/ferretdb:$TAG # replace this
-        args:
-         - --listen-addr=0.0.0.0:27017
-         - --telemetry=disable
-         - --postgresql-url=$(FERRETDB_URL)
-        env:
-        - name: FERRETDB_URL
-          valueFrom:
-            secretKeyRef:
-              name: ferretdb-postgres-credentials
-              key: ferretdb-url
-        resources:
-          requests:
-            cpu: "1000m"
-            memory: "15M"
-        securityContext:
-          capabilities:
-            drop:
-            - ALL
-          runAsNonRoot: true
-          runAsUser: 1001
-        volumeMounts:
-        - mountPath: /state
-          name: state
+        - name: ferretdb
+          image: $REGISTRY/$REGISTRY_PROJECT/ferretdb:$TAG # replace this
+          args:
+            - --listen-addr=0.0.0.0:27017
+            - --telemetry=disable
+            - --postgresql-url=$(FERRETDB_URL)
+          env:
+            - name: FERRETDB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: ferretdb-postgres-credentials
+                  key: ferretdb-url
+          resources:
+            requests:
+              cpu: "1000m"
+              memory: "15M"
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+            runAsNonRoot: true
+            runAsUser: 1001
+          volumeMounts:
+            - mountPath: /state
+              name: state
       securityContext:
         fsGroup: 1001
       volumes:
-      - name: state
-        emptyDir: {}
+        - name: state
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
@@ -100,7 +100,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-   run: ferretdb
+    run: ferretdb
   ports:
     - protocol: TCP
       port: 27017

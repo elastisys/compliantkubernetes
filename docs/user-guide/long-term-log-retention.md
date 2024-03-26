@@ -1,8 +1,9 @@
 ---
 tags:
-- HIPAA S48 - Audit Controls - § 164.312(b)
-- GDPR Art. 17 Right to erasure ("right to be forgotten")
+  - HIPAA S48 - Audit Controls - § 164.312(b)
+  - GDPR Art. 17 Right to erasure ("right to be forgotten")
 ---
+
 # Long-term log retention
 
 Compliant Kubernetes by default sets an retention of 30 days for logs.
@@ -35,23 +36,23 @@ This is the permissions required for the OpenSearch API snippets and the permiss
 
 ```yaml
 cluster_permissions:
-- cluster_monitor
-- indices:data/read/scroll
-- indices:data/read/scroll/clear
+  - cluster_monitor
+  - indices:data/read/scroll
+  - indices:data/read/scroll/clear
 index_permissions:
-- index_patterns:
-  - '*'
-  allowed_actions:
-  - indices:admin/aliases/get # Can be omitted when aliases is not used
-  - indices:monitor/*
-- index_patterns:
-  - kubernetes*
-  allowed_actions:
-  - indices:admin/get
-  - indices:admin/mappings/get
-  - indices_monitor
-  - read
-  - search
+  - index_patterns:
+      - "*"
+    allowed_actions:
+      - indices:admin/aliases/get # Can be omitted when aliases is not used
+      - indices:monitor/*
+  - index_patterns:
+      - kubernetes*
+    allowed_actions:
+      - indices:admin/get
+      - indices:admin/mappings/get
+      - indices_monitor
+      - read
+      - search
 ```
 
 With `${DOMAIN}` set to the domain of your environment, the variables then needed to connect becomes:

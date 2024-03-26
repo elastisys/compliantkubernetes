@@ -7,12 +7,13 @@
 %}
 
 !!!note
+
     Fully implementing GDPR entails a lot of work, like:
 
-    * Assigning a DPO;
-    * Documenting Records of Processing Activities;
-    * Writing Privacy Policies;
-    * Signing Data Protection Agreements with your suppliers.
+    - Assigning a DPO;
+    - Documenting Records of Processing Activities;
+    - Writing Privacy Policies;
+    - Signing Data Protection Agreements with your suppliers.
 
     This page only points you to the GDPR concerns relevant for Compliant Kubernetes.
 
