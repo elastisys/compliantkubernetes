@@ -31,7 +31,6 @@ User access to the Kubernetes API may need to be restricted from case to case to
 !!!note
     Regardless of your privilege, you will not be able to see components such as Harbor and OpenSearch via the Kubernetes API. This is in order to comply with common logging policies, which requires logging to be sent to a tamper-proof environment. The tamper-proof environment needs to be separated from the production cluster.
 
-
 ## Usage guide
 
 This section focuses on using the kubeconfig.
@@ -40,11 +39,11 @@ This section focuses on using the kubeconfig.
 
 The kubeconfig file can be used with `kubectl` by:
 
-* Setting and exporting the `KUBECONFIG` environment variable:
+- Setting and exporting the `KUBECONFIG` environment variable:
 
   ![Setting KUBECONFIG in terminal](img/kubeconfig-terminal.png)
 
-* Merging the configuration with your existing kubeconfig file, see [Kubernetes documentation on merging kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files).
+- Merging the configuration with your existing kubeconfig file, see [Kubernetes documentation on merging kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files).
 
 ### Authenticating to the Kubernetes API
 
@@ -174,10 +173,9 @@ curl --include https://demo.$DOMAIN
 
     In order for this to work, your administrator must configure the Nodes with zone labels. You can verify if this was performed correctly typing `kubectl get nodes --show-labels` and checking if Nodes feature the `topology.kubernetes.io/zone` label.
 
-
 ## Further reading
 
-* [dex on GitHub](https://github.com/dexidp/dex)
-* [oidc-login/kubelogin on GitHub](https://github.com/int128/kubelogin)
-* [Organizing Cluster Access Using kubeconfig Files
+- [dex on GitHub](https://github.com/dexidp/dex)
+- [oidc-login/kubelogin on GitHub](https://github.com/int128/kubelogin)
+- [Organizing Cluster Access Using kubeconfig Files
 ](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)

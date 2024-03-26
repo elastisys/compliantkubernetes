@@ -35,16 +35,16 @@ Next sections will explain how to handle access control in each user-facing Comp
 
 Compliant Kubernetes uses Harbor as container registry. For access control, Harbor defines the concepts of:
 
-* user and group -- for human access;
-* robot account -- for IT system access.
+- user and group -- for human access;
+- robot account -- for IT system access.
 
 You don't need to create Harbor users or groups. Compliant Kubernetes configures Harbor in "OIDC authentication mode", which means that Harbor will automatically onboard users logging in via your IdP and will automatically get the group from your IdP. In contrast, you need to create robot accounts, as these only exist within Harbor.
 
 Your administrator will have configured one of your IdP groups as the "Harbor system administrator" group.
 Please read the upstream documentation linked below to learn how a Harbor admin can:
 
-* [manage user permissions by role](https://goharbor.io/docs/2.4.0/administration/managing-users/user-permissions-by-role/) and
-* create [robot accounts](https://goharbor.io/docs/2.4.0/administration/robot-accounts/).
+- [manage user permissions by role](https://goharbor.io/docs/2.4.0/administration/managing-users/user-permissions-by-role/) and
+- create [robot accounts](https://goharbor.io/docs/2.4.0/administration/robot-accounts/).
 
 !!!note
     You can either add users or groups to a project with various roles. To simplify access control, consider only using groups and assigning users to groups from your IdP.
@@ -53,10 +53,10 @@ Please read the upstream documentation linked below to learn how a Harbor admin 
 
 Kubernetes uses the following concepts for [access control](https://kubernetes.io/docs/reference/access-authn-authz/authentication/):
 
-* users and groups -- these are provided by your IdP;
-* [ServiceAccounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/) -- these are configured within Kubernetes and are used by IT systems;
-* [Roles (and ClusterRoles)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) -- these define a set of permissions, i.e., allowed API operations;
-* [RoleBindings (and ClusterRoleBindings)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) -- these associate Roles, i.e., a set of permissions, with users, groups or ServiceAccounts.
+- users and groups -- these are provided by your IdP;
+- [ServiceAccounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/) -- these are configured within Kubernetes and are used by IT systems;
+- [Roles (and ClusterRoles)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) -- these define a set of permissions, i.e., allowed API operations;
+- [RoleBindings (and ClusterRoleBindings)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) -- these associate Roles, i.e., a set of permissions, with users, groups or ServiceAccounts.
 
 For delegating permissions to ServiceAccounts, follow the example on the [CI/CD page](ci-cd.md#external-cicd).
 
@@ -102,7 +102,7 @@ kubectl apply -f my-role-binding.yaml
 
 Since Compliant Kubernetes v0.21.0 User admins can now add more `User admins` themselves.
 
-#### Steps:
+#### Steps
 
 1. Edit the clusterrolebinding `extra-user-view` and add the desired users or groups under `subjects`. If unsure, look at an [example subject](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects) from the official Kubernetes documentation.
 

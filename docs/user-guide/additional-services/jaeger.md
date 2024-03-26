@@ -107,4 +107,4 @@ Check out the [release notes](../../release-notes/jaeger.md) for the Jaeger setu
 
 ## Further Reading
 
-* [Jaeger documentation](https://www.jaegertracing.io/docs/1.49/)
+- [Jaeger documentation](https://www.jaegertracing.io/docs/1.49/)

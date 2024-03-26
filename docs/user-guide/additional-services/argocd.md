@@ -166,7 +166,7 @@ The following steps assumes SealedSecrets is installed in the cluster. For insta
     ```
 
     !!! note
-        With SealedSecrets it is possible to set a *scope* of a secret. By default this scope is set to `strict` in which the SealedSecret controller uses the name and namespace of the secret as attributes during encryption, hence, the SealedSecret needs to be created with the same values for these attributes if the controller is to be able to decrypt the SealedSecret. It is possible to change the scope with the `--scope` flag for `kubeseal`, refer to the [official documentation for SealedSecrets](https://github.com/bitnami-labs/sealed-secrets#scopes) for possible scopes.
+        With SealedSecrets it is possible to set a _scope_ of a secret. By default this scope is set to `strict` in which the SealedSecret controller uses the name and namespace of the secret as attributes during encryption, hence, the SealedSecret needs to be created with the same values for these attributes if the controller is to be able to decrypt the SealedSecret. It is possible to change the scope with the `--scope` flag for `kubeseal`, refer to the [official documentation for SealedSecrets](https://github.com/bitnami-labs/sealed-secrets#scopes) for possible scopes.
 
 2. The generated SealedSecret manifest file `mysealedsecret.yaml` will contain the encrypted `$SECRET_VALUE` and is safe to store on, for example, GitHub. Push this manifest file to the repository containing the rest of your application manifests.
 
@@ -256,9 +256,10 @@ Argo CD Notifications support multiple [service types](https://argocd-notificati
 
 The subscription to Argo CD application events can be defined using `notifications.argoproj.io/subscribe.<trigger>.<service>: <recipient>` annotation. For example, the following annotation subscribes two Slack channels to notifications about every successful synchronization of the Argo CD application:
 
-```console
-$ kubectl edit Application my-argo-application
+```bash
+kubectl edit Application my-argo-application
 ```
+
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -274,11 +275,12 @@ To configure Email service for example:
 
 1. Add Email username and password token to `argocd-notifications-secret` secret
 
-    ```console
-    $ echo -n "sender@example.com" | base64 -w0 # c2VuZGVyQGV4YW1wbGUuY29t
-    $ echo -n "secretPassword" | base64 -w0 #  c2VjcmV0UGFzc3dvcmQ=
-    $ kubectl edit -n argocd-system argocd-notifications-secret
+    ```bash
+    echo -n "sender@example.com" | base64 -w0 # c2VuZGVyQGV4YW1wbGUuY29t
+    echo -n "secretPassword" | base64 -w0 #  c2VjcmV0UGFzc3dvcmQ=
+    kubectl edit -n argocd-system argocd-notifications-secret
     ```
+
     ```yaml
     apiVersion: v1
     kind: Secret
@@ -292,8 +294,8 @@ To configure Email service for example:
 
 2. Register Email notification service
 
-    ```console
-    $ kubectl edit -n argocd-system argocd-notifications-cm
+    ```bash
+    kubectl edit -n argocd-system argocd-notifications-cm
     ```
 
     Add the service under the ConfigMap data
@@ -311,7 +313,9 @@ To configure Email service for example:
             port: 465
             from: $email-username
     ```
+
     In case you want to use a separate SMTP server instead of gmail
+
     ```yaml
     apiVersion: v1
     kind: ConfigMap
@@ -328,8 +332,8 @@ To configure Email service for example:
 
 3. Subscribe to notifications by adding the notifications.argoproj.io/subscribe.on-sync-succeeded.gmail annotation to the Argo CD application:
 
-```console
-$ kubectl patch app my-argo-application -p '{"metadata": {"annotations": {"notifications.argoproj.io/subscribe.on-sync-succeeded.gmail":"receiver@example.com"}}}' --type merge
+```bash
+kubectl patch app my-argo-application -p '{"metadata": {"annotations": {"notifications.argoproj.io/subscribe.on-sync-succeeded.gmail":"receiver@example.com"}}}' --type merge
 ```
 
 Now, if we try syncing an application, we will get the notification once sync is completed.
@@ -337,9 +341,8 @@ Now, if we try syncing an application, we will get the notification once sync is
 !!! note
     Email notification will not work if the sender has 2FA enabled.
 
-
 ## Further Reading
 
-* [Argo CD documentation](https://argo-cd.readthedocs.io/en/stable/)
-* [Helm Secrets usage](https://github.com/jkroepke/helm-secrets/wiki/Usage)
-* [SOPS](https://github.com/getsops/sops#sops-secrets-operations)
+- [Argo CD documentation](https://argo-cd.readthedocs.io/en/stable/)
+- [Helm Secrets usage](https://github.com/jkroepke/helm-secrets/wiki/Usage)
+- [SOPS](https://github.com/getsops/sops#sops-secrets-operations)

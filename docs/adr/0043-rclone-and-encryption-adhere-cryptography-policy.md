@@ -1,8 +1,8 @@
 # Rclone and Encryption adheres Cryptography Policy
 
-* Status: Accepted
-* Deciders: Arch Meeting
-* Date: 2023-05-04
+- Status: Accepted
+- Deciders: Arch Meeting
+- Date: 2023-05-04
 
 ## Context and Problem Statement
 
@@ -15,11 +15,11 @@ Is `rclone`'s encryption sufficient for our purposes? Does it comply with the re
 
 ## Decision Drivers
 
-* We want to maintain Platform security and stability.
-* We want to find a solution which is scalable and minimizes Platform Administrator burden.
-* We want to best serve the Application Developers.
-* We want to make the Platform Administrator life easier.
-* We want to avoid Infrastructure Provider dependent implementation sprawl.
+- We want to maintain Platform security and stability.
+- We want to find a solution which is scalable and minimizes Platform Administrator burden.
+- We want to best serve the Application Developers.
+- We want to make the Platform Administrator life easier.
+- We want to avoid Infrastructure Provider dependent implementation sprawl.
 
 ## Considered Options
 
@@ -50,17 +50,17 @@ Chosen option:
 
 ### Positive Consequences
 
-* We have `Data Redundancy` and `Resilience` that provides a safeguard against data loss due to hardware failures, natural disasters, or other unforeseen events.
-* We don't increase the operational complexity.
-* We avoid security theatre.
+- We have `Data Redundancy` and `Resilience` that provides a safeguard against data loss due to hardware failures, natural disasters, or other unforeseen events.
+- We don't increase the operational complexity.
+- We avoid security theatre.
 
 ## Recommendations to Platform Administrators
 
-* Platform Administrator should encrypt the backups before sending to an off-site location outside of Sweden and use the encryption feature in `rclone` which adheres to our [cryptography policy](../operator-manual/cryptography.md).
+- Platform Administrator should encrypt the backups before sending to an off-site location outside of Sweden and use the encryption feature in `rclone` which adheres to our [cryptography policy](../operator-manual/cryptography.md).
 
 ## Links
 
-* [XSalsa20 with 192-bit nonce](https://en.wikipedia.org/wiki/Salsa20#XSalsa20_with_192-bit_nonce)
-* [ECRYPT-CSA report](https://ec.europa.eu/research/participants/documents/downloadPublic?documentIds=080166e5ba203b9b&appId=PPGMS)
-* [Configuration Encryption](https://rclone.org/docs/#configuration-encryption)
-* [secretbox](https://pkg.go.dev/golang.org/x/crypto/nacl/secretbox)
+- [XSalsa20 with 192-bit nonce](https://en.wikipedia.org/wiki/Salsa20#XSalsa20_with_192-bit_nonce)
+- [ECRYPT-CSA report](https://ec.europa.eu/research/participants/documents/downloadPublic?documentIds=080166e5ba203b9b&appId=PPGMS)
+- [Configuration Encryption](https://rclone.org/docs/#configuration-encryption)
+- [secretbox](https://pkg.go.dev/golang.org/x/crypto/nacl/secretbox)

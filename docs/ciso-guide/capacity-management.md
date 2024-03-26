@@ -23,7 +23,7 @@ tags:
 
 ## Mapping to ISO 27001 Controls
 
-* [A.12.1.3 Capacity Management](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
+- [A.12.1.3 Capacity Management](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
 
     > The use of resources must be monitored, tuned and projections made of future capacity requirements to ensure the required system performance to meet the business objectives.
 
@@ -34,9 +34,9 @@ tags:
 The Compliant Kubernetes Status Dashboard shows a quick overview of the status of your Kubernetes cluster.
 This includes:
 
-* Unhealthy pods
-* Unhealthy nodes
-* Resource requested of the total resources in the cluster
-* Pods with missing resource requests
+- Unhealthy pods
+- Unhealthy nodes
+- Resource requested of the total resources in the cluster
+- Pods with missing resource requests
 
 This makes it easy to identify when your cluster is not working correctly and helps you identify configuration that isn't following best practise.

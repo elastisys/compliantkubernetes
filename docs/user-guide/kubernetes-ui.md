@@ -17,7 +17,7 @@ description: How to work with Lens and Elastisys Compliant Kubernetes, the secur
 
 [Lens](https://k8slens.dev/) is a graphical user interface that you install locally on your machine. It provides an attractive and easy to use way of interacting with your Kubernetes cluster. Similar to `kubectl`, it can be used to manage multiple clusters. You can also install [extensions that help you manage your clusters or applications deployed on them](https://github.com/lensapp/lens-extensions/blob/main/README.md) from a growing list of community-provided extensions.
 
-Because Lens is installed locally, and has no cluster-side component, it uses the *exact same permissions* as your Compliant Kubernetes user has. This makes it a perfectly *safe and secure* user interface to use and does **not** compromise your cluster's stability or security posture.
+Because Lens is installed locally, and has no cluster-side component, it uses the _exact same permissions_ as your Compliant Kubernetes user has. This makes it a perfectly _safe and secure_ user interface to use and does **not** compromise your cluster's stability or security posture.
 
 ## Installing Lens
 
@@ -48,7 +48,6 @@ sudo ln -s ~/.krew/bin/kubectl-oidc_login /usr/local/bin
 ```
 
 ## Getting started with Lens
-
 
 ### Connecting to a cluster
 

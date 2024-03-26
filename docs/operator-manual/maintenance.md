@@ -7,7 +7,7 @@ tags:
 - NIST SP 800-171 3.4.5
 - NIST SP 800-171 3.7.1
 ---
-# Maintaining and Upgrading your Compliant Kubernetes environment.
+# Maintaining and Upgrading your Compliant Kubernetes environment
 
 In order to keep your Compliant Kubernetes environment running smoothly, and to assure that you are up to date with the latest patches you need to perform regular maintenance on it.
 

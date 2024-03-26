@@ -27,8 +27,8 @@ spec:
       targetPort: 9376
 ```
 
-## How to solve:
+## How to solve
 
 Consult your platform documentation for how to handle load balancing.
 
--   [Service type: LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)
+- [Service type: LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)

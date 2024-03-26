@@ -10,4 +10,4 @@ However, by default in Compliant Kubernetes, Jobs that do not explicitly set a T
 
 ## Further Reading
 
-* [Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically)
+- [Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically)

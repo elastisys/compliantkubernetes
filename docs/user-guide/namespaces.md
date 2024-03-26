@@ -14,6 +14,7 @@ tags:
 ## Namespace Management
 
 Creating a subnamespace:
+
 ```bash
 kubectl apply -f - <<EOF
 apiVersion: hnc.x-k8s.io/v1alpha2
@@ -25,17 +26,19 @@ EOF
 ```
 
 Verify that it gets created:
+
 ```bash
 kubectl get ns <descendant-namespace>
 ```
 
 Verify that it gets configured:
+
 ```console
 $ kubectl get subns -n <parent-namespace> <descendant-namespace> -o yaml
 apiVersion: hnc.x-k8s.io/v1alpha2
 kind: SubnamespaceAnchor
 metadata:
-	...
+  ...
   name: <descendant-namespace>
   namespace: <parent-namespace>
 ...
@@ -73,5 +76,5 @@ HNC has the option to enable opt-in propagation for additional resources such as
 
 ## Further Reading
 
-* [HNC User Documentation](https://github.com/kubernetes-sigs/hierarchical-namespaces/tree/master/docs/user-guide)
-* [Introducing HNC](https://kubernetes.io/blog/2020/08/14/introducing-hierarchical-namespaces/)
+- [HNC User Documentation](https://github.com/kubernetes-sigs/hierarchical-namespaces/tree/master/docs/user-guide)
+- [Introducing HNC](https://kubernetes.io/blog/2020/08/14/introducing-hierarchical-namespaces/)

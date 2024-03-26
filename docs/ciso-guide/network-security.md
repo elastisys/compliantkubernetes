@@ -27,7 +27,7 @@ tags:
 
 ## Mapping to ISO 27001 Controls
 
-* [A.13 Communications Security](https://www.isms.online/iso-27001/annex-a-13-communications-security/)
+- [A.13 Communications Security](https://www.isms.online/iso-27001/annex-a-13-communications-security/)
 
 ## Compliant Kubernetes Network Security Dashboard
 
@@ -47,4 +47,4 @@ In less severe cases, simply contact the developers to investigate their code, f
 
 ## Further Reading
 
-* [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+- [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)

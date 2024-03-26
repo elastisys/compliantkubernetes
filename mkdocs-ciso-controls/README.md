@@ -36,9 +36,9 @@ For inclusion in the tags index, the tags index filename without extension must 
 
 Create the following files:
 
-* `ciso-guide/controls/iso-27001.md`;
-* `ciso-guide/controls/bsi-it-grundschutz.md`;
-* `ciso-guide/controls/hipaa.md`.
+- `ciso-guide/controls/iso-27001.md`;
+- `ciso-guide/controls/bsi-it-grundschutz.md`;
+- `ciso-guide/controls/hipaa.md`.
 
 You can add any content you want, but make sure you have the string `[TAGS]` somewhere.
 

@@ -1,8 +1,8 @@
 # Plan for Usage without Wrapper Scripts
 
-* Status: accepted
-* Deciders: Architecture Meeting
-* Date: 2020-11-24
+- Status: accepted
+- Deciders: Architecture Meeting
+- Date: 2020-11-24
 
 ## Context and Problem Statement
 
@@ -21,14 +21,14 @@ Unfortunately, wrapper scripts can also bring disadvantages:
 
 ## Decision Drivers
 
-* We want to make operations simple, predictable, resilient to human error and scalable.
-* We want to have some predictability in how an environment is set up.
-* We want to make Compliant Kubernetes flexible and agile.
+- We want to make operations simple, predictable, resilient to human error and scalable.
+- We want to have some predictability in how an environment is set up.
+- We want to make Compliant Kubernetes flexible and agile.
 
 ## Considered Options
 
-* On one extreme, we can enforce wrapper scripts as the only way forward. This would require significant investment, as these scripts would need to be very powerful and well documented.
-* On the other extreme, we completely "ban" wrapper scripts.
+- On one extreme, we can enforce wrapper scripts as the only way forward. This would require significant investment, as these scripts would need to be very powerful and well documented.
+- On the other extreme, we completely "ban" wrapper scripts.
 
 ## Decision Outcome
 
@@ -38,10 +38,10 @@ This decision applies for new wrapper scripts. We will not rework old wrapper sc
 
 ### Positive Consequences
 
-* Platform Administrators can encode standard operating procedures and scale ways of working.
-* Our professional services team can easily reuse artefacts for new use-cases, without significant development effort.
-* Newcomers will (hopefully) find the right trade-off of barriers, depending on whether they are looking for flexibility or predictability.
+- Platform Administrators can encode standard operating procedures and scale ways of working.
+- Our professional services team can easily reuse artefacts for new use-cases, without significant development effort.
+- Newcomers will (hopefully) find the right trade-off of barriers, depending on whether they are looking for flexibility or predictability.
 
 ### Negative Consequences
 
-* There will be a constant temptation to do things outside wrapper scripts, which will complicated knowledge sharing, operations and support. When this becomes a significant issue, we will need to draft clear guidelines on what should belong in a wrapper scripts and what not.
+- There will be a constant temptation to do things outside wrapper scripts, which will complicated knowledge sharing, operations and support. When this becomes a significant issue, we will need to draft clear guidelines on what should belong in a wrapper scripts and what not.

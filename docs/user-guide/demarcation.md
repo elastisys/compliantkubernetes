@@ -27,7 +27,6 @@ tags:
     * Run containers as root (`uid=0`)
     * SSH into any Node
 
-
 Can I?
 ======
 
@@ -37,6 +36,7 @@ If you used Kubernetes before, especially if you acted as a Platform Administrat
 
 Why?
 ----
+
 As previously reported, [Kubernetes is not secure by default, nor by itself](https://www.techtarget.com/searchitoperations/news/252487963/Kubernetes-security-defaults-prompt-upstream-dilemma).
 This is due to the fact that Kubernetes prefers to keep its "wow, it just works" experience. This might be fine for a company that does not process personal data. However, if you are in a regulated industry, for example, because you process personal data or health information, your regulators will be extremely unhappy to learn that your platform does not conform to security best practices.
 
@@ -50,27 +50,29 @@ Compliant Kubernetes does not allow users to make any changes which may compromi
 
 Specifics
 ---------
+
 To stick to the general principles above, Compliant Kubernetes puts the following technical safeguards. This list may be updated in the future to take into account the fast evolving risk and technological landscape.
 
 More technically, Compliant Kubernetes does not allow users to:
 
 <!--safeguards-start-->
-* change the Kubernetes API through [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) or [Dynamic Webhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#what-are-admission-webhooks);
-* gain more container execution permissions by mutating [PodSecurityPolicies](https://kubernetes.io/docs/concepts/security/pod-security-policy/); this implies that you cannot run container images as root or mount [hostPaths](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath);
-* mutate ClusterRoles or Roles so as to [escalate privileges](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping);
-* mutate Kubernetes resources in administrator-owned namespaces, such as `monitoring` or `kube-system`;
-* re-configure system Pods, such as Prometheus or Fluentd;
-* access the hosts directly.
+- change the Kubernetes API through [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) or [Dynamic Webhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#what-are-admission-webhooks);
+- gain more container execution permissions by mutating [PodSecurityPolicies](https://kubernetes.io/docs/concepts/security/pod-security-policy/); this implies that you cannot run container images as root or mount [hostPaths](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath);
+- mutate ClusterRoles or Roles so as to [escalate privileges](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping);
+- mutate Kubernetes resources in administrator-owned namespaces, such as `monitoring` or `kube-system`;
+- re-configure system Pods, such as Prometheus or Fluentd;
+- access the hosts directly.
 <!--safeguards-end-->
 
 But what if I really need to?
 -----------------------------
+
 Unfortunately, many application asks for more permissions than Compliant Kubernetes allows by default. When looking at the Kubernetes resources, the following are problematic:
 
-* ClusterRoles, ClusterRoleBindings
-* Too permissive Roles and RoleBindings
-* PodSecurityPolicy and/or use of `privileged` PodSecurityPolicy
-* CustomResourceDefinitions
-* WebhookConfiguration
+- ClusterRoles, ClusterRoleBindings
+- Too permissive Roles and RoleBindings
+- PodSecurityPolicy and/or use of `privileged` PodSecurityPolicy
+- CustomResourceDefinitions
+- WebhookConfiguration
 
 In such a case, ask your administrator to make a risk-reward analysis. As long as they stick to the general principles, this should be fine. However, as much as they want to help, they might not be allowed to say "yes". Remember, administrators are there to help you focus on application development, but at the same time they are responsible to protect your application against security risks.

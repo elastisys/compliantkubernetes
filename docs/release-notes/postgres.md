@@ -1,6 +1,5 @@
 # Release Notes
 
-
 ## Compliant Kubernetes PostgreSQL
 <!-- BEGIN TOC -->
 - [v1.8.2-ck8s1](#v182-ck8s1) - 2022-08-24

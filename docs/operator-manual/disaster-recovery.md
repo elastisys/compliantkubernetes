@@ -320,7 +320,6 @@ Check which arguments you can use by running `velero backup create --help`.
 
 ### Restore
 
-
 !!!note
 
     If you are restoring an environment under a new domain name then there is a possibility to reconfigure image references with [Velero](https://velero.io/docs/main/restore-reference/#changing-poddeploymentstatefulsetdaemonsetreplicasetreplicationcontrollerjobcronjob-image-repositories), but ingresses must be updated manually.
@@ -397,6 +396,7 @@ If a clean wipe is the desired behavior, then the volume must be wiped manually 
     ```
 
     Check that the backup-location becomes available:
+
     ```console
     $ velero backup-location get
     NAME     PROVIDER   BUCKET/PREFIX       PHASE       LAST VALIDATED   ACCESS MODE   DEFAULT
@@ -408,6 +408,7 @@ If a clean wipe is the desired behavior, then the volume must be wiped manually 
 
     After the restore is complete Velero should be reconfigured to use the main S3 service again, with a new bucket if the previous one is unusable.
     Updating or syncing the Helm chart:
+
     ```bash
     ./bin/ck8s ops helmfile sc -f helmfile -l app=velero -i apply
 
@@ -415,6 +416,7 @@ If a clean wipe is the desired behavior, then the volume must be wiped manually 
     ```
 
     The secret and the backup metadata from the off-site backups can be deleted:
+
     ```bash
     ./bin/ck8s ops kubectl sc -n velero delete secret velero-backup
     ./bin/ck8s ops kubectl sc -n velero delete backups.velero.io --all

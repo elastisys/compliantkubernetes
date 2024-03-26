@@ -35,9 +35,11 @@ Flux also requires the image repository `ghcr.io/fluxcd` to be allowlisted. Ask 
 You need to setup a Git repository that will contain the manifest files. This can be a personal or organization repository. *It is strongly recommended that it is a private (as in: not public) repository.*
 
 Next you need to generate an SSH key that will be used to communicate with the Git repository. The private key will be used as a Kubernetes Secret in a later step.
+
 ```
 ssh-keygen -t rsa -C "flux-deploymentkey" -f <path-to-store-key>
 ```
+
 After you have generated an SSH Key, you want to add it as a deploy key in your Git repository. This can be done through `Settings` -> `Deploy keys`. Copy your public key that you just generated and paste here.
 
 ### Kubernetes
@@ -74,6 +76,7 @@ You need create a Namespace where Flux will work. This Namespace should be calle
 ##### Git Secret
 
 Next to allow Flux to interact with your Git Repository you need to create a Secret containing the ssh private key created earlier. This can be done with the Flux CLI:
+
 ```
 flux create secret git <repo-name>-auth \
     --url=ssh://git@github.com/<owner>/<repo-name>.git \
@@ -185,13 +188,13 @@ Read the Further Reading, keep in mind the (updated) list of Known Issues, both 
 
 ## Further reading
 
-* [Flux core concepts](https://fluxcd.io/flux/concepts/)
+- [Flux core concepts](https://fluxcd.io/flux/concepts/)
 
-* [Flux multi-tenancy](https://fluxcd.io/flux/installation/configuration/multitenancy/)
+- [Flux multi-tenancy](https://fluxcd.io/flux/installation/configuration/multitenancy/)
 
-* [Controller options](https://fluxcd.io/flux/installation/configuration/boostrap-customization/)
+- [Controller options](https://fluxcd.io/flux/installation/configuration/boostrap-customization/)
 
-* [Flux components](https://fluxcd.io/flux/components/)
+- [Flux components](https://fluxcd.io/flux/components/)
 
 ## Known Issues
 

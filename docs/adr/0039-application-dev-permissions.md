@@ -1,8 +1,8 @@
 # Application developer privilege elevation
 
-* Status: accepted
-* Deciders: Olle, Christian
-* Date: 2023-04-11
+- Status: accepted
+- Deciders: Olle, Christian
+- Date: 2023-04-11
 
 ## Context and Problem Statement
 

@@ -11,10 +11,10 @@ Help! Something is wrong with my Compliant Kubernetes cluster. Fear no more, thi
 
 This guide assumes that:
 
-* You have [pre-requisites](getting-started.md) installed.
-* Your environment variables, in particular `CK8S_CONFIG_PATH` is set, and `CLUSTER` set to either `sc` or `wc`.
-* Your config folder is available.
-* `compliantkubernetes-apps` and `compliantkubernetes-kubespray` is available.
+- You have [pre-requisites](getting-started.md) installed.
+- Your environment variables, in particular `CK8S_CONFIG_PATH` is set, and `CLUSTER` set to either `sc` or `wc`.
+- Your config folder is available.
+- `compliantkubernetes-apps` and `compliantkubernetes-kubespray` is available.
 
 !!!important
     `./bin/ck8s` references the `compliantkubernetes-apps` CLI
@@ -115,6 +115,7 @@ export CK8S_KUBESPRAY_PATH=/path/to/compliantkubernetes-kubespray
 ```
 
 Once the pod is Ready run:
+
 ```bash
 ./bin/ck8s ops kubectl $CLUSTER -n rook-ceph exec deploy/rook-ceph-tools -- ceph status
 ```
@@ -232,11 +233,11 @@ ssh ubuntu@$UNHEALTHY_NODE sudo reboot
 
 If using Rook make sure its health goes back to `HEALTH_OK`.
 
-## Node seems really not fine. I want a new one.
+## Node seems really not fine. I want a new one
 
 Is it 2AM? Do not replace Nodes, instead simply add a new one. You might run out of capacity, you might lose redundancy, you might replace the wrong Node. Prefer to add a Node and see if that solves the problem.
 
-## Okay, I want to add a new Node.
+## Okay, I want to add a new Node
 
 Prefer this option if you "quickly" need to add CPU, memory or storage (i.e., Rook) capacity.
 
@@ -244,10 +245,12 @@ First, check for infrastructure drift, as shown [here](#how-do-i-check-if-infras
 
 Depending on your provider:
 If the infrastructure is not managed by terraform you can skip to step 3:
+
 1. Add a new Node by editing the `*.tfvars`.
 2. Re-apply Terraform.
 3. Add the new node to the `inventory.ini` (skip this step if the cluster is using a dynamic inventory).
 4. Re-apply Kubespray only for the new node.
+
 ```bash
 cd [compliantkubernetes-kubespray-root-dir]
 
@@ -256,11 +259,15 @@ CLUSTER=[sc | wc]
 ./bin/ck8s-kubespray run-playbook $CLUSTER facts.yml
 ./bin/ck8s-kubespray run-playbook $CLUSTER scale.yml -b --limit=[new_node_name]
 ```
+
 5. Add ssh keys to the new node if necessary
+
 ```bash
 ./bin/ck8s-kubespray apply-ssh $CLUSTER --limit=[new_node_name]
 ```
+
 6. Update network policies
+
 ```bash
 cd [compliatkubernetes-apps-root-dir]
 
@@ -298,10 +305,11 @@ journalctl --unit $FAILED_UNIT
 
 Please check the following upstream documents:
 
-* [Rook Common Issues](https://github.com/rook/rook/blob/master/Documentation/Troubleshooting/common-issues.md)
-* [Ceph Common Issues](https://github.com/rook/rook/blob/master/Documentation/Troubleshooting/ceph-common-issues.md)
+- [Rook Common Issues](https://github.com/rook/rook/blob/master/Documentation/Troubleshooting/common-issues.md)
+- [Ceph Common Issues](https://github.com/rook/rook/blob/master/Documentation/Troubleshooting/ceph-common-issues.md)
 
 ## Pod seems not fine
+
 Make sure you are on the **right** cluster:
 
 ```bash
@@ -334,6 +342,7 @@ Try to kill  and check if the underlying Deployment, StatefulSet or DaemonSet wi
 ```
 
 ## Helm Release is `failed`
+
 Make sure you are on the **right** cluster:
 
 ```bash
@@ -342,6 +351,7 @@ echo $CLUSTER
 ```
 
 Find the failed Release:
+
 ```bash
 ./bin/ck8s ops helm $CLUSTER ls --all-namespaces --all
 
@@ -352,6 +362,7 @@ FAILED_RELEASE_NAMESPACE=kube-system
 Just to make sure, do a drift check, as shown [here](#how-do-i-check-if-apps-drifted-due-to-manual-intervention).
 
 Remove the failed Release:
+
 ```bash
 ./bin/ck8s ops helm $CLUSTER uninstall -n $FAILED_RELEASE_NAMESPACE $FAILED_RELEASE
 ```
@@ -362,8 +373,8 @@ Re-apply `apps` according to documentation.
 
 Follow cert-manager's troubleshooting, specifically:
 
-* [Troubleshooting](https://cert-manager.io/docs/troubleshooting/)
-* [Troubleshooting Issuing ACME Certificates](https://cert-manager.io/docs/troubleshooting/acme/)
+- [Troubleshooting](https://cert-manager.io/docs/troubleshooting/)
+- [Troubleshooting Issuing ACME Certificates](https://cert-manager.io/docs/troubleshooting/acme/)
 
 ### Failed to perform self check: no such host
 
@@ -437,11 +448,13 @@ First try to delete the backup
 ```
 
 Then kill all the pods under the velero namespace
+
 ```bash
 ./bin/ck8s ops kubectl wc delete pods -n velero --all
 ```
 
 Check that the backup is gone
+
 ```bash
 velero backup get
 
@@ -456,6 +469,7 @@ velero backup create --from-schedule velero-daily-backup
 ```
 
 ## How do I use `kubectl` and `helm` directly?
+
 This guide makes heavy use of the `compliantkubernetes-apps` CLI to access and control Compliant Kubernetes clusters. However, you can use `kubectl` and `helm` directly, by exporting a `KUBECONFIG` like so:
 
 ```bash

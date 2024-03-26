@@ -1,8 +1,8 @@
 # Use specialised prebuilt images
 
-* Status: Accepted
-* Deciders: Architecture meeting
-* Date: 2024-01-18
+- Status: Accepted
+- Deciders: Architecture meeting
+- Date: 2024-01-18
 
 ## Context and Problem Statement
 

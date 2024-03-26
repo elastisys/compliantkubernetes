@@ -15,6 +15,7 @@ Warning: would violate PodSecurity "restricted:latest":
 ```
 
 Additionally, why pods are not scheduled and events are emitted from workloads similar to:
+
 ```console
 $ kubectl -n <namespace> get events
 ...
@@ -34,9 +35,9 @@ Kubernetes by default allows any Pod to run with any privileges it requests, whi
 To minimise this risk Compliant Kubernetes employs two systems to restrict what privileges an application can request:
 
 - [Kubernetes - Pod Security Admission](https://kubernetes.io/docs/concepts/security/pod-security-admission/) (PSA)
-    - Coarse-grained enforcement built into Kubernetes
+  - Coarse-grained enforcement built into Kubernetes
 - [Open Policy Agent Gatekeeper - Pod Security Policies](https://github.com/open-policy-agent/gatekeeper-library/tree/master/library/pod-security-policy/) (PSP)
-    - Fine-grained enforcement built with OPA Gatekeeper
+  - Fine-grained enforcement built with OPA Gatekeeper
 
 In addition to enforcement Compliant Kubernetes also employ OPA Gatekeeper mutations to modify security contexts of applications to make it easier to comply with the enforced rules.
 This modification happens at the stage when Pods are created, which means that their security context may contain additional content compared to the resource they were created for.
@@ -78,14 +79,14 @@ This standard includes the following:
 
 - Running with the following volume types:
 
-    - configMap
-    - csi
-    - downwardAPI
-    - emptyDir
-    - ephemeral
-    - persistentVolumeClaim
-    - projected
-    - secret
+  - configMap
+  - csi
+  - downwardAPI
+  - emptyDir
+  - ephemeral
+  - persistentVolumeClaim
+  - projected
+  - secret
 
 !!! warning
     This standard only enforces that `runAsNonRoot` is set to `true`, one must still either configure a numerical user in the container image or with `runAsUser` that is non-zero for the Pod to be allowed as described in [Enforce No Root](enforce-no-root.md).
@@ -155,6 +156,7 @@ Certain applications may need more privileges than what is allowed from the rest
 
 To do so application developers should put together a Pod Security Policy to be evaluated and accepted by the platform administrator, which then can allow access to these privileges in a certain namespace for resources with a certain label.
 The format should be as follows:
+
 ```yaml
 podSelectorLabels: # Must be provided
   <key>: <value>

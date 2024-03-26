@@ -1,13 +1,13 @@
 # Use Individual SSH Keys
 
-* Status: accepted
-* Deciders: Cristian, Fredrik, Olle, Johan
-* Date: 2021-01-28
+- Status: accepted
+- Deciders: Cristian, Fredrik, Olle, Johan
+- Date: 2021-01-28
 
 Technical Story:
 
-* [Do not fiddle with the SSH key](https://github.com/elastisys/compliantkubernetes-kubespray/issues/21)
-* Create a process of how we should move to use personal SSH keys
+- [Do not fiddle with the SSH key](https://github.com/elastisys/compliantkubernetes-kubespray/issues/21)
+- Create a process of how we should move to use personal SSH keys
 
 ## Context and Problem Statement
 
@@ -22,12 +22,12 @@ Currently, we create per-cluster SSH key pairs, which are shared among administr
 
 ## Decision Drivers
 
-* We need to stick to information security best-practices.
+- We need to stick to information security best-practices.
 
 ## Considered Options
 
-* Inject SSH keys via cloud-init.
-* Manage SSH keys via an Ansible role.
+- Inject SSH keys via cloud-init.
+- Manage SSH keys via an Ansible role.
 
 ## Decision Outcome
 
@@ -39,10 +39,10 @@ The above decision raises a chicken-and-egg problem: Ansible needs SSH access to
 
 For cloud deployments, all Terraform providers support injecting at least one public SSH key via cloud-init:
 
-* [AWS](https://github.com/kubernetes-sigs/kubespray/blob/release-2.15/contrib/terraform/aws/variables.tf#L9)
-* [Exoscale](https://github.com/kubernetes-sigs/kubespray/blob/master/contrib/terraform/exoscale/variables.tf#L24)
-* [GCP](https://github.com/kubernetes-sigs/kubespray/blob/release-2.15/contrib/terraform/gcp/variables.tf#L57)
-* [OpenStack](https://github.com/kubernetes-sigs/kubespray/blob/release-2.15/contrib/terraform/openstack/variables.tf#L81)
+- [AWS](https://github.com/kubernetes-sigs/kubespray/blob/release-2.15/contrib/terraform/aws/variables.tf#L9)
+- [Exoscale](https://github.com/kubernetes-sigs/kubespray/blob/master/contrib/terraform/exoscale/variables.tf#L24)
+- [GCP](https://github.com/kubernetes-sigs/kubespray/blob/release-2.15/contrib/terraform/gcp/variables.tf#L57)
+- [OpenStack](https://github.com/kubernetes-sigs/kubespray/blob/release-2.15/contrib/terraform/openstack/variables.tf#L81)
 
 The administrator who creates the cluster bootstraps SSH access by providing their own public SSH key via cloud-init. Then, the Ansible role adds the public SSH keys of the other administrators.
 
@@ -50,13 +50,13 @@ BYO-VM and BYO-metal deployments are handled similarly, except that the initial 
 
 ## Recommendations to Platform Administrators
 
-* Platform Administrators should devise procedures for onboarding and offboarding member of the on-call team, as well as rotating SSH keys.
+- Platform Administrators should devise procedures for onboarding and offboarding member of the on-call team, as well as rotating SSH keys.
 
-* The public SSH keys of all on-call administrators could be stored in a repository in a single file with one key per line.
+- The public SSH keys of all on-call administrators could be stored in a repository in a single file with one key per line.
 The comment of the key should clearly identify the owner.
 
-* Platform Administrator logs (be it stand-alone documents, git or GitOps-like repositories) should clearly list the SSH keys and identities of the administrators configured for each environment.
+- Platform Administrator logs (be it stand-alone documents, git or GitOps-like repositories) should clearly list the SSH keys and identities of the administrators configured for each environment.
 
 ## Links
 
-* [ansible.posix.authorized_key Ansible Module](https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html)
+- [ansible.posix.authorized_key Ansible Module](https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html)

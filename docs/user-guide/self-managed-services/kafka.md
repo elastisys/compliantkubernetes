@@ -190,16 +190,16 @@ kubectl exec -it kafka-consumer -- bin/kafka-console-consumer.sh --bootstrap-ser
 
 ## Further reading
 
-* [Strimzi Overview](https://strimzi.io/docs/operators/0.38.0/overview)
+- [Strimzi Overview](https://strimzi.io/docs/operators/0.38.0/overview)
 
-* [Deploying and Upgrading](https://strimzi.io/docs/operators/0.38.0/deploying)
+- [Deploying and Upgrading](https://strimzi.io/docs/operators/0.38.0/deploying)
 
-* [API Reference](https://strimzi.io/docs/operators/0.38.0/configuring)
+- [API Reference](https://strimzi.io/docs/operators/0.38.0/configuring)
 
-* [Configure Operator to watch multiple namespaces](https://strimzi.io/docs/operators/0.38.0/deploying#deploying-cluster-operator-to-watch-multiple-namespaces-str)
+- [Configure Operator to watch multiple namespaces](https://strimzi.io/docs/operators/0.38.0/deploying#deploying-cluster-operator-to-watch-multiple-namespaces-str)
 
-* [About resources for Strimzi containers](https://strimzi.io/docs/operators/0.38.0/configuring#con-common-configuration-resources-reference)
+- [About resources for Strimzi containers](https://strimzi.io/docs/operators/0.38.0/configuring#con-common-configuration-resources-reference)
 
-* [Configuring Kafka](https://strimzi.io/docs/operators/0.38.0/deploying#con-config-kafka-str)
+- [Configuring Kafka](https://strimzi.io/docs/operators/0.38.0/deploying#con-config-kafka-str)
 
-* [Configuring Kafka and ZooKeeper storage](https://strimzi.io/docs/operators/0.38.0/deploying#assembly-storage-str)
+- [Configuring Kafka and ZooKeeper storage](https://strimzi.io/docs/operators/0.38.0/deploying#assembly-storage-str)

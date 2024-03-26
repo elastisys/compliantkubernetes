@@ -26,10 +26,11 @@ The application developer is responsible to install a supported VPN client on th
     Or if additional security group ports, UDP/TCP, are required to be opened to allow traffic to flow in or out from the machine.
 
 ## Further Reading
+
 - [Sjunet](https://www.inera.se/tjanster/alla-tjanster-a-o/sjunet/)
 - [Order](https://www.inera.se/tjanster/alla-tjanster-a-o/sjunet/#section-5699)
 - [Regulatory Framework](https://inera.atlassian.net/wiki/spaces/OISJU/pages/403736889/Regelverk)
 - [Technical Information](https://inera.atlassian.net/wiki/spaces/OISJU/pages/403736906/Teknisk+information)
 - [VPN](https://en.wikipedia.org/wiki/Virtual_private_network)
-    - [WireGuard](https://www.wireguard.com/)
-    - [OpenVPN](https://openvpn.net/)
+  - [WireGuard](https://www.wireguard.com/)
+  - [OpenVPN](https://openvpn.net/)

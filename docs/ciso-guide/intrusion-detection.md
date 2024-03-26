@@ -33,9 +33,9 @@ tags:
 
 ## Mapping to ISO 27001 Controls
 
-* [A.12.2.1 Controls Against Malware](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
-* [A.12.6.1 Management of Technical Vulnerabilities](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
-* [A.16.1.7 Collection of Evidence](https://www.isms.online/iso-27001/annex-a-16-information-security-incident-management/)
+- [A.12.2.1 Controls Against Malware](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
+- [A.12.6.1 Management of Technical Vulnerabilities](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
+- [A.16.1.7 Collection of Evidence](https://www.isms.online/iso-27001/annex-a-16-information-security-incident-management/)
 
 ## Compliant Kubernetes Intrusion Detection Dashboard
 

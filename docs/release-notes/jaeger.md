@@ -1,6 +1,5 @@
 # Release Notes
 
-
 ## Compliant Kubernetes Jaeger
 <!-- BEGIN TOC -->
 - [v1.39.0-ck8s3](#v1390-ck8s3) - 2023-08-24
@@ -30,7 +29,7 @@ Released 2023-06-12
 
 #### Updated
 
--  Updated prometheus-elasticsearch-exporter helm chart to 5.1.1
+- Updated prometheus-elasticsearch-exporter helm chart to 5.1.1
 
 #### Fixed
 

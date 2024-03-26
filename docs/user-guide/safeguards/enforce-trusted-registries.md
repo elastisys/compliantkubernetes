@@ -53,11 +53,12 @@ The resolution is rather simple. You have two options:
     Instead of adding a not-really-trusted registry to the set of trusted registries, prefer mirroring some public images in your Compliant Kubernetes registry.
 
 If your administrator has not enforced this policy yet, you can view current violations of the policy by running:
+
 ```bash
 kubectl get k8sallowedrepos.constraints.gatekeeper.sh require-harbor-repo -ojson | jq .status.violations
 ```
 
 ## Further Reading
 
-* [Container Images](https://kubernetes.io/docs/concepts/containers/images/)
-* [Harbor Vulnerability Scanning](https://goharbor.io/docs/2.4.0/administration/vulnerability-scanning/)
+- [Container Images](https://kubernetes.io/docs/concepts/containers/images/)
+- [Harbor Vulnerability Scanning](https://goharbor.io/docs/2.4.0/administration/vulnerability-scanning/)

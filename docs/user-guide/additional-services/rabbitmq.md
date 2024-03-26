@@ -117,8 +117,8 @@ EOF
 
 To expose the AMQP URL to your application, follow one of the following upstream documentation:
 
-* [Create a Pod that has access to the secret data through a Volume](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume)
-* [Define container environment variables using Secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data)
+- [Create a Pod that has access to the secret data through a Volume](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume)
+- [Define container environment variables using Secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data)
 
 ## Using a RabbitMQ Cluster
 
@@ -199,7 +199,7 @@ Check out the [release notes](../../release-notes/rabbitmq.md) for the RabbitMQ 
 
 ## Further Reading
 
-* [RabbitMQ Management UI](https://www.rabbitmq.com/management.html)
-* [AMQP URL spec](https://www.rabbitmq.com/uri-spec.html)
-* [AMQP Clients](https://www.rabbitmq.com/clients.html)
-* [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
+- [RabbitMQ Management UI](https://www.rabbitmq.com/management.html)
+- [AMQP URL spec](https://www.rabbitmq.com/uri-spec.html)
+- [AMQP Clients](https://www.rabbitmq.com/clients.html)
+- [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)

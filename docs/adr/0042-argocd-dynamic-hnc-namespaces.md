@@ -1,8 +1,8 @@
 # ArgoCD with dynamic HNC namespaces
 
-* Status: accepted
-* Deciders: product owner, DX, GoTo
-* Date: 2023-05-23
+- Status: accepted
+- Deciders: product owner, DX, GoTo
+- Date: 2023-05-23
 
 ## Context and Problem Statement
 

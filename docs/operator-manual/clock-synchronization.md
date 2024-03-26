@@ -11,8 +11,6 @@ tags:
     This will be done according to [best practices](https://www.netnod.se/blog/best-practices-connecting-ntp-servers).
     To check progress, see [this issue](https://github.com/elastisys/compliantkubernetes-kubespray/issues/250).
 
-
-
 Clock synchronization is important for the following reasons:
 
 - Several Kubernetes components, in particular etcd, Rook/Ceph, do not work correctly if Nodes' clock drifts by more than 100ms;

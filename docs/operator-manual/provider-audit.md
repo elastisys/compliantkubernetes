@@ -34,10 +34,10 @@ Failing to due your due diligence will end up in [security theatre](https://en.w
 
 The remainder of this page contains open questions that you should ask your Infrastructure Provider. Notice the following:
 
-* Make sure you ask open questions and note down the answers. Burden of proof lies with the provider that they do an excellent job with protecting data.
-* Ask all questions, then evaluate the provider's suitability. It is unlikely that you'll find the perfect provider, but you'll likely find one that is sufficient for your present and future needs.
-* The least expected the answer, the more "digging" is needed.
-* "You" represents the Infrastructure Provider and "I" represents the Compliant Kubernetes administrator.
+- Make sure you ask open questions and note down the answers. Burden of proof lies with the provider that they do an excellent job with protecting data.
+- Ask all questions, then evaluate the provider's suitability. It is unlikely that you'll find the perfect provider, but you'll likely find one that is sufficient for your present and future needs.
+- The least expected the answer, the more "digging" is needed.
+- "You" represents the Infrastructure Provider and "I" represents the Compliant Kubernetes administrator.
 
 ## Technical Capability Questionnaire
 

@@ -17,7 +17,6 @@ Compliant Kubernetes (CK8S) includes alerts via [Alertmanager](https://prometheu
 
 Many regulations require you to have an incident management process. Alerts help you discover abnormal application behavior that need attention. This maps to [ISO 27001 – Annex A.16: Information Security Incident Management](https://www.isms.online/iso-27001/annex-a-16-information-security-incident-management/).
 
-
 ## Configuring user alerts
 
 User alerts are configured via the Secret `alertmanager-alertmanager` located in the `alertmanager` namespace. This configuration file is specified [here](https://prometheus.io/docs/alerting/latest/configuration/#file-layout-and-global-settings).
@@ -90,7 +89,7 @@ The screenshot below gives an example of the application alert, as seen in Alert
 
 ### Detailed example
 
-PrometheusRules have two features, either the rules *alerts* based on expression, or the rules `records` based on a expression.
+PrometheusRules have two features, either the rules _alerts_ based on expression, or the rules `records` based on a expression.
 The former is the way to create alerting rules and the latter is a way to precompute complex queries that will be stored as separate metrics:
 
 ```yaml

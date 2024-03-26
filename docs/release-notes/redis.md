@@ -1,6 +1,5 @@
 # Release Notes
 
-
 ## Compliant Kubernetes Redis
 <!-- BEGIN TOC -->
 - [v6.2.6-ck8s1](#v626-ck8s1) - 2023-05-10
@@ -19,7 +18,8 @@
 Released 2023-05-10
 
 !!!note
-	From this release the version tracks the Redis version rather than the Redis operator version.
+
+    From this release the version tracks the Redis version rather than the Redis operator version.
 
 Changes:
 

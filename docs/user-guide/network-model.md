@@ -166,9 +166,9 @@ spec:
   secretName: custom-cert # (3)
 ```
 
-1.  For which domains the certificate will be valid for.
-2.  Reference to the issuer to use.
-3.  The created certificate is stored in this secret.
+1. For which domains the certificate will be valid for.
+2. Reference to the issuer to use.
+3. The created certificate is stored in this secret.
 
 And you can directly link a certificate to an Ingress object:
 
@@ -198,10 +198,10 @@ spec:
     secretName: webapp-certificate # (4)
 ```
 
-1.  Annotation indicating the issuer to use.
-2.  Target namespace where the object will be created.
-3.  Placing a host in the TLS config will determine what ends up in the cert’s subjectAltNames.
-4.  The created certificate is stored in this secret.
+1. Annotation indicating the issuer to use.
+2. Target namespace where the object will be created.
+3. Placing a host in the TLS config will determine what ends up in the cert’s subjectAltNames.
+4. The created certificate is stored in this secret.
 
 ### Let's Encrypt Environments
 
@@ -246,6 +246,6 @@ The Compliant Kubernetes administrator is responsible for:
 
 ## Further Reading
 
-* [DNS for Services and Pods](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
-* [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
-* [NetworkPolicies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+- [DNS for Services and Pods](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
+- [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+- [NetworkPolicies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)

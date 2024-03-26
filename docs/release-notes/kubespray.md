@@ -1,6 +1,5 @@
 # Release Notes
 
-
 ## Compliant Kubernetes Kubespray
 <!-- BEGIN TOC -->
 - [v2.23.0-ck8s3](#v2230-ck8s3) - 2024-02-27
@@ -62,13 +61,13 @@ Released 2023-10-16
 
 Released 2023-07-27
 
-#### Updated:
+#### Updated
 
 - **Updated kubespray to `v2.22.1`** <br/>
     Kubernetes version upgraded to [v1.26.7](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.26.md#changelog-since-v1250). <br/>
     This version requires at least terraform version `1.3.0` in order to provision infrastructure using the kubespray provided terraform modules.
 
-#### Changed:
+#### Changed
 
 - **Updated the Kubernetes audit log policy file**
 
@@ -76,7 +75,7 @@ Released 2023-07-27
 
 Released 2023-02-06
 
-#### Updated:
+#### Updated
 
 - **Updated kubespray to `v2.21.0`** <br/>
     Kubernetes version upgraded to [v1.25.6](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.25.md#v1256) in which Pod Security Policies (PSPs) are removed. You should not upgrade to this version if you are using PSPs. To deploy [Compliant Kubernetes Apps](https://github.com/elastisys/compliantkubernetes-apps) on this version it needs to be on a compatible version which depends on [this issue](https://github.com/elastisys/compliantkubernetes-apps/issues/1218). <br/>
@@ -84,13 +83,13 @@ Released 2023-02-06
 - **Upgraded rook-ceph operator to `v1.10.5` and ceph to `v17.2.5`** <br/>
     If you are using the rook-ceph operator you can read the [migration docs](https://github.com/elastisys/compliantkubernetes-kubespray/blob/v2.21.0-ck8s1/rook/migration/rook-1.5.x-rook-1.10.5/upgrade.md) on how to upgrade these components.
 
-#### Changed:
+#### Changed
 
 - **Improved setup for OpenStack with additional server groups** <br/>
     This allows anti-affinity to be set between arbitrary nodes, improving scheduling and stability.
 - **Switched from using upstream kubespray repository as submodule to the elastisys fork**
 
-#### Added:
+#### Added
 
 - **Added a get-requirements file to standardize which terraform version to use, `1.2.9`**
 - **Added ntp.se as standard ntp server**
@@ -99,7 +98,7 @@ Released 2023-02-06
 
 Released 2022-10-24
 
-#### Changed:
+#### Changed
 
 - **Changed a Kubespray variable which is required for upgrading clusters on cloud providers that don't have external IPs on their control plane nodes**
 
@@ -107,16 +106,16 @@ Released 2022-10-24
 
 Released 2022-10-10
 
-#### Updated:
+#### Updated
 
 - **Kubespray updated to `v2.20.0`** <br/>
     Kubernetes version upgraded to [v1.24.6](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.24.md#v1246).
 
-#### Changed:
+#### Changed
 
 - **Scripts are now using yq version 4, this requires `yq4` as an alias to yq v4**
 
-#### Fixed:
+#### Fixed
 
 - **Fixed multiple kube-bench fails (01.03.07, 01.04.01, 01.04.02)**
 
@@ -124,7 +123,7 @@ Released 2022-10-10
 
 Released 2022-09-23
 
-#### Updated:
+#### Updated
 
 - **Bumped upcloud csi driver to `v0.3.3`**
 
@@ -132,7 +131,7 @@ Released 2022-09-23
 
 Released 2022-07-22
 
-#### Added:
+#### Added
 
 - **Added option to clusteradmin kubeconfigs to use OIDC for authentication**
 - **Added New ansible playbooks to manage kubeconfigs and some RBAC**
@@ -141,7 +140,7 @@ Released 2022-07-22
 
 Released 2022-06-27.
 
-#### Updated:
+#### Updated
 
 - **Kubespray updated to `v2.19.0`** <br/>
     Kubernetes version upgraded to [1.23.7](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.23.md#v1237).
@@ -150,7 +149,7 @@ Released 2022-06-27.
 
 Released 2022-04-26.
 
-#### Updated:
+#### Updated
 
 - **Kubespray updated to `v2.18.1`** <br/>
     This introduces some fixes for cluster using containerd as container manager.
@@ -161,7 +160,7 @@ Released 2022-04-26.
 
 Released 2022-02-18.
 
-#### Updated:
+#### Updated
 
 - **Kubespray updated to `v2.18.0`** <br/>
     Kubernetes upgraded to version [1.22.5](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#v1225).
@@ -172,7 +171,7 @@ Released 2022-02-18.
 
 Released 2021-11-11.
 
-#### Updated:
+#### Updated
 
 - **Kubespray updated to `v2.17.1`** <br/>
     Kubernetes version upgraded to [1.21.6](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.21.md#v1216), this patch is mostly minor fixes.
@@ -181,17 +180,16 @@ Released 2021-11-11.
 
 Released 2021-10-21.
 
-#### Updated:
+#### Updated
 
 - **Kubespray updated to `v2.17.0`** <br/>
     Kubernetes version upgraded to [1.21.5](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.21.md#v1215), this introduces new features and fixes, including security updates and storage capacity tracking.
-
 
 ### v2.16.0-ck8s1
 
 Released 2021-07-02.
 
-#### Updated:
+#### Updated
 
 - Kubespray updated to `v2.16.0`
     Kubernetes version upgraded to [1.20.7](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.20.md#v1207), this introduces new features and fixes, including API and component updates.

@@ -1,8 +1,8 @@
 # Allow running containers with primary and supplementary group id 0
 
-* Status: accepted
-* Deciders: arch meeting
-* Date: 2023-04-19
+- Status: accepted
+- Deciders: arch meeting
+- Date: 2023-04-19
 
 ## Context and Problem Statement
 
@@ -18,8 +18,8 @@ Should we with the introduction of Pod Security admission follow the new standar
 
 ## Decision Drivers
 
-* We want to maintain platform security.
-* For user expectations, we want to make it easy to start with Compliant Kubernetes.
+- We want to maintain platform security.
+- For user expectations, we want to make it easy to start with Compliant Kubernetes.
 
 ## Considered Options
 
@@ -30,14 +30,12 @@ Should we with the introduction of Pod Security admission follow the new standar
 
 Chosen option: 1 - "Allow group id 0 by default - default behavior of PSA".
 
-
 ### Positive Consequences
 
-* We follow upstream Kubernetes restricted pod security standards.
+- We follow upstream Kubernetes restricted pod security standards.
   With PodSecurityPolicy we use the one provided by Kubespray which has changed over time from first allowing group id 0 to now in its latest iteration not allowing it.
-* Application Developers can run their containers inspired by the OpenShift pattern for supporting arbitrary user IDs etc.
-
+- Application Developers can run their containers inspired by the OpenShift pattern for supporting arbitrary user IDs etc.
 
 ### Negative Consequences
 
-* It can be argued that in the event of an container escape vulnerability, our security is slightly weakened. However, a non-root user with group 0 is still not a privileged user.
+- It can be argued that in the event of an container escape vulnerability, our security is slightly weakened. However, a non-root user with group 0 is still not a privileged user.

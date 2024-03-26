@@ -34,6 +34,7 @@ The Nginx ingress is currently configured and installed by the
 The configuration is set in
 [sc-config.yaml](https://github.com/elastisys/compliantkubernetes-apps/blob/main/config/config/sc-config.yaml#L526-L530)
 and [wc-config.yaml](https://github.com/elastisys/compliantkubernetes-apps/blob/main/config/config/wc-config.yaml#L322-L334) under:
+
 ```yaml
 ingressNginx:
   useHostPort: ""
@@ -41,6 +42,7 @@ ingressNginx:
     enabled: ""
     type: ""
 ```
+
 If the apps repository is initiated with the correct Infrastructure Provider these config options will get the
 correct defaults.
 

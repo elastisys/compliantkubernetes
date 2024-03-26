@@ -1,8 +1,8 @@
 # Rely on Infrastructure Provider for encryption-at-rest
 
-* Status: accepted
-* Deciders: arch meeting
-* Date: 2023-05-11
+- Status: accepted
+- Deciders: arch meeting
+- Date: 2023-05-11
 
 ## Context and Problem Statement
 
@@ -17,10 +17,10 @@ How should we in Compliant Kubernetes handle encryption-at-rest both for VMs and
 
 ## Decision Drivers
 
-* We want to avoid security theatre.
-* We want to avoid operational complexity.
-* We want to avoid cloud-provider dependent implementation sprawl.
-* We want to make Application Developers that require encryption-at-rest happy.
+- We want to avoid security theatre.
+- We want to avoid operational complexity.
+- We want to avoid cloud-provider dependent implementation sprawl.
+- We want to make Application Developers that require encryption-at-rest happy.
 
 ## Considered Options
 
@@ -51,15 +51,15 @@ Object storage encryption:
 
 Chosen options:
 
-* VM disk encryption: "Rely on Infrastructure Provider to provide encryption-at-rest".
-* Object storage encryption: "Rely on Infrastructure Provider to provide encryption-at-rest".
+- VM disk encryption: "Rely on Infrastructure Provider to provide encryption-at-rest".
+- Object storage encryption: "Rely on Infrastructure Provider to provide encryption-at-rest".
 
 ### Positive Consequences
 
-* We can offer encryption-at-rest for Application Developers that require it.
-* We don't increase the operational complexity.
-* We avoid security theatre.
+- We can offer encryption-at-rest for Application Developers that require it.
+- We don't increase the operational complexity.
+- We avoid security theatre.
 
 ### Negative Consequences
 
-* We limit what Infrastructure Providers Application Developers can choose if they require encryption-at-rest.
+- We limit what Infrastructure Providers Application Developers can choose if they require encryption-at-rest.

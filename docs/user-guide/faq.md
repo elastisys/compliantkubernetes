@@ -62,7 +62,6 @@ If your image runs as root by defaults, but can handle running as another user, 
 [harbor-oidc-docker]: https://goharbor.io/docs/1.10/administration/configure-authentication/oidc-auth/#using-oidc-from-the-docker-or-helm-cli
 [docker-user]: https://docs.docker.com/develop/develop-images/instructions/#user
 
-
 ## How do I give access to a new Application Developer to a Compliant Kubernetes environment?
 
 Add the new user to the correct **group via your Identity Provider (IdP)**, and Compliant Kubernetes will automatically pick it up.
@@ -87,6 +86,7 @@ Port 8000 is the only allowed port for OpenID callback URL and is needed by the 
 ## "Connection reset by peer" when port-forwarding to postgres?
 
 You may have seen this error when port-forwarding to postgres:
+
 ```console
 Forwarding from 127.0.0.1:5432 -> 5432
 Forwarding from [::1]:5432 -> 5432
@@ -108,6 +108,7 @@ You have two options to resolve this issue:
     To avoid always using an old `kubectl` version, you can give the binary another name when downloading the `v1.21.14` version, e.g. `kubectl-1.21`. This way your normal `kubectl` binary can be kept up to date.
 
     Then use that specific binary when making the port-forward request:
+
     ```bash
     kubectl-1.21 -n $NAMESPACE port-forward svc/$USER_ACCESS 5432
     ```
@@ -153,9 +154,9 @@ Get in touch with your administrator to check the status. They are responsible f
 Preview features are assessed to have a higher residual risk than commonly accepted by Customers.
 Residual risks include, but are not limited to:
 
-* risk of downtime;
-* risk of the feature becoming unavailable in the future;
-* risk of data loss.
+- risk of downtime;
+- risk of the feature becoming unavailable in the future;
+- risk of data loss.
 
 The risks are usually due to novelty of the feature or uncertainties in the open-source ecosystem.
 By using Preview Features, the Customer accepts these additional risks.

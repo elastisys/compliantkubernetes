@@ -62,11 +62,13 @@ If you want to use TimescaleDB on your Compliant Kubernetes cluster, ask your ad
 
 ## Set up the TimescaleDB extension on PostgreSQL
 
-* Connect to the created database:
+- Connect to the created database:
+
 ```bash
 \c $APP_DATABASE
 ```
-* Add the TimescaleDB extension:
+- Add the TimescaleDB extension:
+
 ```bash
 CREATE EXTENSION IF NOT EXISTS timescaledb;
 ```
@@ -82,8 +84,8 @@ Check out the [release notes](../../release-notes/postgres.md) for the Timescale
 
 ## Further Reading
 
-* [Getting started with Timescale](https://docs.timescale.com/getting-started/latest/)
-* [Creating users](https://www.postgresql.org/docs/13/sql-createuser.html)
-* [Creating databases](https://www.postgresql.org/docs/13/sql-createdatabase.html) - Remember to [create Timescale extension](timescaledb.md#set-up-the-timescaledb-extension-on-postgresql) on the new databases.
-* [Granting permissions](https://www.postgresql.org/docs/13/sql-grant.html)
-* [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
+- [Getting started with Timescale](https://docs.timescale.com/getting-started/latest/)
+- [Creating users](https://www.postgresql.org/docs/13/sql-createuser.html)
+- [Creating databases](https://www.postgresql.org/docs/13/sql-createdatabase.html) - Remember to [create Timescale extension](timescaledb.md#set-up-the-timescaledb-extension-on-postgresql) on the new databases.
+- [Granting permissions](https://www.postgresql.org/docs/13/sql-grant.html)
+- [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)

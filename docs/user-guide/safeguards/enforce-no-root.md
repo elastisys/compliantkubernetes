@@ -51,6 +51,7 @@ To ensure your application does not run as root, you have two options:
 
 1. Change the Dockerfile to `USER 1000` or whatever numeric ID corresponds to your user. This is what the [user demo does](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/Dockerfile#L10-L11).
 2. Add the following snippet to the `spec` of your Pod manifest:
+
     ```yaml
     securityContext:
         runAsUser: 1000
@@ -60,5 +61,5 @@ If possible, prefer changing the Dockerfile, to ensure your application runs as 
 
 ## Further Reading
 
-* [Dockerfile USER](https://docs.docker.com/engine/reference/builder/#user)
-* [SecurityContext](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
+- [Dockerfile USER](https://docs.docker.com/engine/reference/builder/#user)
+- [SecurityContext](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)

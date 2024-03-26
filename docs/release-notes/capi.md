@@ -1,6 +1,5 @@
 # Release Notes
 
-
 ## Compliant Kubernetes Cluster API
 <!-- BEGIN TOC -->
 - [v0.1.0](#v010) - 2024-01-24

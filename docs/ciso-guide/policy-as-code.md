@@ -11,8 +11,8 @@ Although "policy-as-code" is not explicit in any regulation, enforcing policies 
 
 ## Mapping to ISO 27001 Controls
 
-* [A.18.2.2 Compliance with Security Policies & Standards](https://www.isms.online/iso-27001/annex-a-18-compliance/)
-* [A.18.2.3 Technical Compliance Review](https://www.isms.online/iso-27001/annex-a-18-compliance/)
+- [A.18.2.2 Compliance with Security Policies & Standards](https://www.isms.online/iso-27001/annex-a-18-compliance/)
+- [A.18.2.3 Technical Compliance Review](https://www.isms.online/iso-27001/annex-a-18-compliance/)
 
 ## Compliant Kubernetes Policy-as-Code Dashboard
 

@@ -118,7 +118,6 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
     </li>
 </ul>
 
-
 ## Commercial offering
 
 <nav markdown="1">

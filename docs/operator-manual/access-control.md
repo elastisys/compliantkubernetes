@@ -61,6 +61,7 @@ users:
 ### OpenSearch
 
 To enable OpenSearch to use the groups for OpenSearch Dashboards access.
+
 ```yaml
 opensearch:
   sso:

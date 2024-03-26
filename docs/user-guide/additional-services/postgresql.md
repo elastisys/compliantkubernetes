@@ -158,8 +158,8 @@ EOF
 
 To expose the PostgreSQL cluster credentials to your application, follow one of the following upstream documentation:
 
-* [Create a Pod that has access to the secret data through a Volume](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume)
-* [Define container environment variables using Secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data)
+- [Create a Pod that has access to the secret data through a Volume](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume)
+- [Define container environment variables using Secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data)
 
 <!--postgresql-setup-end-->
 
@@ -174,7 +174,7 @@ Check out the [release notes](../../release-notes/postgres.md) for the PostgreSQ
 
 ## Further Reading
 
-* [Creating users](https://www.postgresql.org/docs/13/sql-createuser.html)
-* [Creating databases](https://www.postgresql.org/docs/13/sql-createdatabase.html)
-* [Granting permissions](https://www.postgresql.org/docs/13/sql-grant.html)
-* [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
+- [Creating users](https://www.postgresql.org/docs/13/sql-createuser.html)
+- [Creating databases](https://www.postgresql.org/docs/13/sql-createdatabase.html)
+- [Granting permissions](https://www.postgresql.org/docs/13/sql-grant.html)
+- [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)

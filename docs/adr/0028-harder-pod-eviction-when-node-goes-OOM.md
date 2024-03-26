@@ -1,8 +1,8 @@
 # Harder pod eviction when nodes are going OOM
 
-* Status: accepted
-* Deciders: arch meeting
-* Date: 2022-12-08
+- Status: accepted
+- Deciders: arch meeting
+- Date: 2022-12-08
 
 ## Context and Problem Statement
 
@@ -11,16 +11,16 @@ Should we enable kubelet hard eviction so as to behold the vital components?
 
 ## Decision Drivers
 
-* We want to ensure platform security and stability.
-* We want to make it hard for Application Developers to break the platform via trivial mistakes.
-* We want to make sure that the critical components are not evicted when nodes are overcommitted.
+- We want to ensure platform security and stability.
+- We want to make it hard for Application Developers to break the platform via trivial mistakes.
+- We want to make sure that the critical components are not evicted when nodes are overcommitted.
 
 ## Considered Options
 
-* Enable kubelet hard eviction.
-* Adjust OOM score so that kernel does not OOM critical Pods
-* Setup priority class for all our apps
-* Do not make any changes and reinforce the responsibility to the custmer for not overloading the nodes.
+- Enable kubelet hard eviction.
+- Adjust OOM score so that kernel does not OOM critical Pods
+- Setup priority class for all our apps
+- Do not make any changes and reinforce the responsibility to the custmer for not overloading the nodes.
 
 ## Decision Outcome
 
@@ -30,12 +30,12 @@ The option `Adjust OOM score so that kernel does not OOM critical Pods` is  not 
 
 ### Positive Consequences
 
-* Security and stability of the platform is somewhat improved.
+- Security and stability of the platform is somewhat improved.
 
 ### Negative Consequences
 
-* Application Developer pods will be stuck in pending until resources are available and this might make the Application Developer feel that their pods are less important.
-* [kubectl may not observe pressure right away](https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#kubelet-may-not-observe-memory-pressure-right-away)
+- Application Developer pods will be stuck in pending until resources are available and this might make the Application Developer feel that their pods are less important.
+- [kubectl may not observe pressure right away](https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#kubelet-may-not-observe-memory-pressure-right-away)
 
 ## Recommendation to Platform Administrators
 
