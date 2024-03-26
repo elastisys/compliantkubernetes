@@ -154,6 +154,7 @@ Check out the [release notes](../../release-notes/redis.md) for the Redis cluste
   !!!Note
 
       Since this is a server setting, it cannot be set by the user itself, but needs to be set by the administrators. Please send a support ticket with the values you would like to set.
+
 - **Set TTL**: If possible, take the advantage of expiring keys, such as temporary OAuth authentication keys. When you set the key, set it with some expiration and Redis will clean up for you. Refer to [TTL](https://redis.io/commands/ttl/)
 - **Avoid expensive or blocking operations**: Since Redis command processing is single-threaded, operations like the [KEYS](https://redis.io/commands/keys/) command are expensive and should be avoided. You can avoid `KEYS` by using [SCAN](https://redis.io/commands/scan/) to reduce CPU spikes.
 - **Monitor memory usage**: Monitor the usage in Grafana dashboard to ensure that you don't run out of memory and have the chance to scale your cache before seeing issues.
@@ -162,6 +163,7 @@ Check out the [release notes](../../release-notes/redis.md) for the Redis cluste
   !!!Note
 
       Since this is a server setting, it cannot be set by the user itself, but needs to be set by the administrators. Please send a support ticket with the values you would like to set.
+
 - **Cache-hit ratio**: You should regularly monitor your `cache-hit` ratio so that you know what percentage of key lookups are successfully returned by keys in your Redis instance.
   `info stats` command provides `keyspace_hits` & `keyspace_misses` metric data to further calculate cache hit ratio for a running Redis instance.
 

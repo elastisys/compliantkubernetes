@@ -42,7 +42,7 @@ repos:
     rev: v3.1.0
     hooks:
       - id: prettier
-        exclude: "[/]templates[/]|extra_sass/|overrides/|user-demo/|docs/customer-quotes/|docs/javascripts/|docs/techradar|docs/stylesheets"
+        exclude: "[/]templates[/]|extra_sass/|overrides/|user-demo/|docs/customer-quotes/|docs/javascripts/|docs/tech-radar|docs/stylesheets|docs/img/|user-demo-dotnet/"
 
   - repo: local
     hooks:

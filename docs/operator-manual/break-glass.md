@@ -13,7 +13,7 @@ When Dex or the OpenID provider is malfunctioning, the Platform Administrator mi
 
 1. `SSH` to one of the control-plane nodes.
 
-1. Use `/etc/kubernetes/admin.conf` and run `kubectl` commands to check the problem
+2. Use `/etc/kubernetes/admin.conf` and run `kubectl` commands to check the problem
 
    ```bash
    export KUBECONFIG=/etc/kubernetes/admin.conf
@@ -27,13 +27,13 @@ When Dex or the OpenID provider is malfunctioning, the Platform Administrator mi
 
 If dex is broken, you can manually create a `kubeconfig` file for a user. While there are different ways to create `kubeconfig` files, we will will use the X.509 client certificates with OpenSSL. Follow the steps below to create a user `kubeconfig` file.
 
-1. Create a private key:
+1.  Create a private key:
 
     ```
     openssl genrsa -out user1.key 2048
     ```
 
-2. Create a certificate signing request (CSR). `CN` is the username and `O` the group.
+2.  Create a certificate signing request (CSR). `CN` is the username and `O` the group.
 
     ```
     openssl req -new -key user1.key \
@@ -41,13 +41,13 @@ If dex is broken, you can manually create a `kubeconfig` file for a user. While 
     -subj "/CN=user1/O=companyname"
     ```
 
-3. Get the Base64 encoding for the generated CSR file.
+3.  Get the Base64 encoding for the generated CSR file.
 
     ```
     cat user1.csr | base64 | tr -d '\n'
     ```
 
-4. Create a Certificate Signing Request with Kubernetes
+4.  Create a Certificate Signing Request with Kubernetes
 
     ```
     cat <<EOF | kubectl  apply -f -
@@ -65,13 +65,13 @@ If dex is broken, you can manually create a `kubeconfig` file for a user. While 
     EOF
     ```
 
-5. Approve the CSR
+5.  Approve the CSR
 
     ```
     kubectl certificate approve user1
     ```
 
-6. Get the certificate.
+6.  Get the certificate.
     Retrieve the certificate from the CSR:
 
     ```
@@ -103,7 +103,7 @@ If dex is broken, you can manually create a `kubeconfig` file for a user. While 
             client-key-data: <CLIENT-KEY-DATA>
         ```
 
-7. Add the user and namespaces that s/he has access to in wc-config.yaml file.
+7.  Add the user and namespaces that s/he has access to in wc-config.yaml file.
 
     ```yaml
     user:

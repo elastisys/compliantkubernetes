@@ -87,14 +87,14 @@ To appreciate the searching and filtering capability, let us get data for the fo
 
 We can use different ways to find the answer for the question. Below is one possible solution.
 
-1. Write **sourceIPs: 172.16.0.3** in the **search textbox**.
+1.  Write **sourceIPs: 172.16.0.3** in the **search textbox**.
 
-2. Click **Add Filter** and select **responseStatus.reason** and **is** under **field** and **Operator** dropdown menus respectively. Finally, enter
+2.  Click **Add Filter** and select **responseStatus.reason** and **is** under **field** and **Operator** dropdown menus respectively. Finally, enter
     **notfound** under **Value** input box and click **Save**. The following figure shows the details.
 
           ![Discover Filter](../img/discover_filter.png)
 
-3. To enter the 20 hours, click part that is labelled **Time** in the **Discover** figure above, then enter **20** under the input box and select **hours** in the dropdown menu. Make sure that you are under **Relative** tab. Finally, click **update**. The following figure shows how to set the hours. Note that the data will be automatically updated as time passes to reflect the past 20 hours data from the current time.
+3.  To enter the 20 hours, click part that is labelled **Time** in the **Discover** figure above, then enter **20** under the input box and select **hours** in the dropdown menu. Make sure that you are under **Relative** tab. Finally, click **update**. The following figure shows how to set the hours. Note that the data will be automatically updated as time passes to reflect the past 20 hours data from the current time.
 
     ![Discover Time](../img/discover_hours.png)
 

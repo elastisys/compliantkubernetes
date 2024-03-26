@@ -69,7 +69,7 @@ There are court rulings clarifying that:
 - [IP addresses are personal data](https://curia.europa.eu/juris/document/document.jsf?docid=184668&doclang=EN&cid=1095511);
 - [browser-generated information](https://www.judiciary.uk/wp-content/uploads/2018/10/lloyd-v-google-judgment.pdf) (e.g., cookies, URLs, fingerprints, user agents) can be personal data.
 
-According to the [so-called "Schrems II" ruling](https://www.europarl.europa.eu/RegData/etudes/ATAG/2020/652073/EPRS_ATA(2020)652073_EN.pdf), US law -- in particular [US CLOUD Act](https://en.wikipedia.org/wiki/CLOUD_Act) and [US FISA](https://en.wikipedia.org/wiki/Foreign_Intelligence_Surveillance_Act) are incompatible -- with EU GDPR and personal data processing.
+According to the [so-called "Schrems II" ruling](<https://www.europarl.europa.eu/RegData/etudes/ATAG/2020/652073/EPRS_ATA(2020)652073_EN.pdf>), US law -- in particular [US CLOUD Act](https://en.wikipedia.org/wiki/CLOUD_Act) and [US FISA](https://en.wikipedia.org/wiki/Foreign_Intelligence_Surveillance_Act) are incompatible -- with EU GDPR and personal data processing.
 
 Furthermore, according to a [French court ruling](https://iapp.org/news/a/why-this-french-court-decision-has-far-reaching-consequences-for-many-businesses/) it doesn't matter if the data-center is located in the EU/EEA. A US company is still under US jurisdiction and considered at risk of US CLOUD Act and US FISA.
 

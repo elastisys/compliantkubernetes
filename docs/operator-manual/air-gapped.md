@@ -82,6 +82,8 @@ sudo ${RUNTIME} push ${PRIVATE_REGISTRY}/${IMAGE_NAME}
 
 Configure the container registry mirror for the container runtime. If you are using Kubespray and `containerd` you can configure mirrors as follows:
 
+<!-- prettier-ignore-start -->
+
 ```yaml
 registry_addr: "registry.air-gapped.internal"
 registry_host: "https://registry.air-gapped.internal" # change to http:// if not available over HTTPS
@@ -119,6 +121,7 @@ containerd_registries_mirrors:
         capabilities: ["pull", "resolve"]
         skip_verify: {{ registry_verify }}
 ```
+<!-- prettier-ignore-end -->
 
 !!!warning
 
@@ -303,5 +306,5 @@ Seeing logs from the user demo pods in OpenSearch Dashboards:
 
 ## References
 
-- [Air gap (networking) on Wikipedia](https://en.wikipedia.org/wiki/Air_gap_(networking))
+- [Air gap (networking) on Wikipedia](<https://en.wikipedia.org/wiki/Air_gap_(networking)>)
 - [Kubespray offline environment documentation](https://kubespray.io/#/docs/offline-environment)

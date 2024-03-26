@@ -36,7 +36,7 @@ If you followed the [Install Prerequisites](prepare.md) steps of this documentat
 
 You have two options for making the `oidc-login` plugin findable by Lens:
 
-1. Edit `~/.profile` and add:
+1.  Edit `~/.profile` and add:
 
     ```bash
     if [ -d "$HOME/.krew/bin" ] ; then
@@ -44,7 +44,7 @@ You have two options for making the `oidc-login` plugin findable by Lens:
     fi
     ```
 
-2. Run the following command:
+2.  Run the following command:
 
     ```bash
     sudo ln -s ~/.krew/bin/kubectl-oidc_login /usr/local/bin

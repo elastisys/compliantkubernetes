@@ -64,7 +64,7 @@ Argo CD can be configured to decrypt files encrypted with `sops` using [Helm Sec
 
 The following steps will show how to get started with encrypting files using `sops` and `gpg`, storing the encrypted files in a Helm chart, and lastly deploying the Helm chart with Argo CD.
 
-1. Generate a new GPG key-pair (make sure not to add a passphrase as otherwise Argo CD will not be able to use the key) and then export the private key. The following example will create a GPG key and export the private key to a file named `private.asc`:
+1.  Generate a new GPG key-pair (make sure not to add a passphrase as otherwise Argo CD will not be able to use the key) and then export the private key. The following example will create a GPG key and export the private key to a file named `private.asc`:
 
     ```bash
     gpg --batch --rfc4880 --passphrase '' --quick-generate-key "set-me@example.com" default default
@@ -72,7 +72,7 @@ The following steps will show how to get started with encrypting files using `so
     gpg --output "private.asc" --armor --export-secret-key $fpr
     ```
 
-2. For Argo CD to be able to use this key for decrypting `sops` encrypted values files in your Helm charts, you will need to create a Kubernetes Secret in the `argocd-system` namespace named `helm-secrets-private-keys`. This secret will then be mounted and read by the Argo CD repo server. Create the Secret using the private key file created in the previous step:
+2.  For Argo CD to be able to use this key for decrypting `sops` encrypted values files in your Helm charts, you will need to create a Kubernetes Secret in the `argocd-system` namespace named `helm-secrets-private-keys`. This secret will then be mounted and read by the Argo CD repo server. Create the Secret using the private key file created in the previous step:
 
     ```bash
     PRIVATE_KEY_FILE="private.asc"
@@ -97,7 +97,7 @@ The following steps will show how to get started with encrypting files using `so
         argocd-repo-server-77fd58b498-kjm95   1/1     Running   0          3m45s
         ```
 
-3. Create a `.sops.yaml` file in the Helm chart in which you want to use Helm Secrets. Add your GPG **public** key to this file. You can get the public key with:
+3.  Create a `.sops.yaml` file in the Helm chart in which you want to use Helm Secrets. Add your GPG **public** key to this file. You can get the public key with:
 
     ```bash
     gpg --list-key "set-me@example.com"
@@ -111,7 +111,7 @@ The following steps will show how to get started with encrypting files using `so
       - pgp: <public-gpg-key>
     ```
 
-4. Create a values file in your Helm chart repository and put values that should be encrypted into this file:
+4.  Create a values file in your Helm chart repository and put values that should be encrypted into this file:
 
     ```bash
     touch secrets.yaml
@@ -119,7 +119,7 @@ The following steps will show how to get started with encrypting files using `so
 
     These values can then be referenced in templates as any other Helm values.
 
-5. Encrypt the values file using `sops` (as long as there is a `.sops.yaml` file in the same folder containing your public GPG key you do not have to specify the GPG key when running the following command):
+5.  Encrypt the values file using `sops` (as long as there is a `.sops.yaml` file in the same folder containing your public GPG key you do not have to specify the GPG key when running the following command):
 
     ```bash
     sops --encrypt --in-place secrets.yaml
@@ -131,7 +131,7 @@ The following steps will show how to get started with encrypting files using `so
     helm template . --values secrets://secrets.yaml
     ```
 
-6. The file `secrets.yaml` can now safely be stored in a code repository as long as it is encrypted.
+6.  The file `secrets.yaml` can now safely be stored in a code repository as long as it is encrypted.
 
     !!! tip
 
@@ -147,7 +147,7 @@ The following steps will show how to get started with encrypting files using `so
 
         Add a [pre-commit hook](https://github.com/yuvipanda/pre-commit-hook-ensure-sops) to ensure to not push files containing sensitive data that are not encrypted with `sops`.
 
-7. In Argo CD, when you create your Application, add the secret values file (`secrets.yaml`) as follow:
+7.  In Argo CD, when you create your Application, add the secret values file (`secrets.yaml`) as follow:
 
     ![argocd-helm-secrets](./img/argocd-helm-secrets.png)
 
@@ -157,7 +157,7 @@ The following steps will show how to get started with encrypting files using `so
 
 The following steps assumes SealedSecrets is installed in the cluster. For installing SealedSecrets in a Compliant Kubernetes cluster, refer to [the self-managed guide](../self-managed-services/sealedsecrets.md). You will need to contact your Platform Administrator requesting that you want to use SealedSecrets together with Argo CD.
 
-1. Create a SealedSecret, the following steps will create a SealedSecret for the namespace in the current Kubernetes context:
+1.  Create a SealedSecret, the following steps will create a SealedSecret for the namespace in the current Kubernetes context:
 
     ```bash
     export SEALED_SECRETS_CONTROLLER_NAMESPACE=sealed-secrets # set this to the namespace in which the controller is running in
@@ -172,9 +172,9 @@ The following steps assumes SealedSecrets is installed in the cluster. For insta
 
         With SealedSecrets it is possible to set a _scope_ of a secret. By default this scope is set to `strict` in which the SealedSecret controller uses the name and namespace of the secret as attributes during encryption, hence, the SealedSecret needs to be created with the same values for these attributes if the controller is to be able to decrypt the SealedSecret. It is possible to change the scope with the `--scope` flag for `kubeseal`, refer to the [official documentation for SealedSecrets](https://github.com/bitnami-labs/sealed-secrets#scopes) for possible scopes.
 
-2. The generated SealedSecret manifest file `mysealedsecret.yaml` will contain the encrypted `$SECRET_VALUE` and is safe to store on, for example, GitHub. Push this manifest file to the repository containing the rest of your application manifests.
+2.  The generated SealedSecret manifest file `mysealedsecret.yaml` will contain the encrypted `$SECRET_VALUE` and is safe to store on, for example, GitHub. Push this manifest file to the repository containing the rest of your application manifests.
 
-3. Deploy the application containing the SealedSecret with Argo CD as any other application.
+3.  Deploy the application containing the SealedSecret with Argo CD as any other application.
 
 ### Can I use HashiCorp Vault for secret management?
 

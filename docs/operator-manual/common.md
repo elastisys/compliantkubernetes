@@ -193,6 +193,7 @@ done
 Check the output of the command above.
 All resources need to have the Ready column True.
 n
+
 <!--settling-stop-->
 
 <!--testing-start-->
@@ -203,7 +204,7 @@ After completing the installation step you can test if the apps are properly ins
 
 ```bash
 for CLUSTER in sc wc; do
-    compliantkubernetes-apps/bin/ck8s test ${CLUSTER}
+  compliantkubernetes-apps/bin/ck8s test ${CLUSTER}
 done
 ```
 

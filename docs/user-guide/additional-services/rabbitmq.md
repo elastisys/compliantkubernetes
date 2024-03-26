@@ -58,38 +58,38 @@ stringData:
 
 To access the management UI, proceed as follows:
 
-1. Retrieve the admin default username and password
+1.  Retrieve the admin default username and password
 
-   ```bash
-   export RABBITMQ_CLUSTER=     # Get this from your administrator
-   export RABBITMQ_NAMESPACE=   # Get this from your administrator
+    ```bash
+    export RABBITMQ_CLUSTER=     # Get this from your administrator
+    export RABBITMQ_NAMESPACE=   # Get this from your administrator
 
-   echo -n "RabbitMQ admin username: "
-   kubectl -n "${RABBITMQ_NAMESPACE}" get secret "${RABBITMQ_CLUSTER}-default-user" -o jsonpath="{.data.username}" | base64 --decode && echo
+    echo -n "RabbitMQ admin username: "
+    kubectl -n "${RABBITMQ_NAMESPACE}" get secret "${RABBITMQ_CLUSTER}-default-user" -o jsonpath="{.data.username}" | base64 --decode && echo
 
-   echo -n "RabbitMQ admin password: "
-   kubectl -n "${RABBITMQ_NAMESPACE}" get secret "${RABBITMQ_CLUSTER}-default-user" -o jsonpath="{.data.password}" | base64 --decode && echo
-   ```
+    echo -n "RabbitMQ admin password: "
+    kubectl -n "${RABBITMQ_NAMESPACE}" get secret "${RABBITMQ_CLUSTER}-default-user" -o jsonpath="{.data.password}" | base64 --decode && echo
+    ```
 
-   !!!danger
+    !!!danger
 
-      Do not configure your application with the RabbitMQ default admin username and password. Since the application will get too much permission, this will likely violate your access control policy.
+        Do not configure your application with the RabbitMQ default admin username and password. Since the application will get too much permission, this will likely violate your access control policy.
 
-2. Start the port-forwarding:
+2.  Start the port-forwarding:
 
-   ```bash
-   kubectl port-forward -n "${RABBITMQ_NAMESPACE}" "svc/${RABBITMQ_CLUSTER}" 15672
-   ```
+    ```bash
+    kubectl port-forward -n "${RABBITMQ_NAMESPACE}" "svc/${RABBITMQ_CLUSTER}" 15672
+    ```
 
-3. Open the [admin dashboard](http://localhost:15672) (at http://localhost:15672) and log in using the credentials retrieved in step 1.
+3.  Open the [admin dashboard](http://localhost:15672) (at http://localhost:15672) and log in using the credentials retrieved in step 1.
 
-4. Create an application username, password and vhost, and store these in variables as named below:
+4.  Create an application username, password and vhost, and store these in variables as named below:
 
-   ```bash
-   APP_USER=
-   APP_PASS=
-   APP_VHOST=
-   ```
+    ```bash
+    APP_USER=
+    APP_PASS=
+    APP_VHOST=
+    ```
 
 ### Create an Application Secret
 

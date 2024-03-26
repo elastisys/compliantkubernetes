@@ -117,7 +117,7 @@ Monitors can be expanded further down to list and inspect its targets, within ea
 
 If the "Target Labels" is "Dropped" for a target then it means that it has been excluded from scraping since it doesn't match the monitor. There are three key things to check to make sure a target is properly picked up by a monitor:
 
-1. Make sure either that the monitor is in the same namespace as the target, or that the monitor has the correct namespace selector for the target:
+1.  Make sure either that the monitor is in the same namespace as the target, or that the monitor has the correct namespace selector for the target:
 
     ```diff
     apiVersion: monitoring.coreos.com/v1
@@ -132,7 +132,7 @@ If the "Target Labels" is "Dropped" for a target then it means that it has been 
       ...
     ```
 
-2. Make sure that the selector of the monitor matches the target:
+2.  Make sure that the selector of the monitor matches the target:
 
     ```diff
     apiVersion: v1
@@ -157,7 +157,7 @@ If the "Target Labels" is "Dropped" for a target then it means that it has been 
       ...
     ```
 
-3. Make sure that the port of the monitor matches the target:
+3.  Make sure that the port of the monitor matches the target:
 
     ```diff
     apiVersion: v1

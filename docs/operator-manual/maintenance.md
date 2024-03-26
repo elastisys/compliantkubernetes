@@ -83,14 +83,14 @@ Note what version of compliantkubernetes-apps that is currently used and the ver
 Then check the release notes for each version in between to see if there are anything that might cause any problems, if so then consult the rest of the operations team before proceeding.
 **You should never upgrade more than one minor version of compliantkubernetes-apps at a time.**
 
-1. Pull the latest changes and switch to the correct branch:
+1.  Pull the latest changes and switch to the correct branch:
 
     ```bash
     git pull
     git switch -d <next-version>
     ```
 
-2. Update apps configuration:
+2.  Update apps configuration:
 
     This will take a backup into `backups/` before modifying any files.
 
@@ -98,24 +98,24 @@ Then check the release notes for each version in between to see if there are any
     ./bin/ck8s init both
     ```
 
-3. Check if there is a [migration document](https://github.com/elastisys/compliantkubernetes-apps/tree/main/migration) for the release you want to upgrade to, (e.g. [for upgrade to 0.11.0](https://github.com/elastisys/compliantkubernetes-apps/blob/5d8f4f1b3cc053b3b515711549ab80df9617f2f4/migration/v0.10.x-v0.11.x/upgrade-apps.md) ) and follow the instructions there.
+3.  Check if there is a [migration document](https://github.com/elastisys/compliantkubernetes-apps/tree/main/migration) for the release you want to upgrade to, (e.g. [for upgrade to 0.11.0](https://github.com/elastisys/compliantkubernetes-apps/blob/5d8f4f1b3cc053b3b515711549ab80df9617f2f4/migration/v0.10.x-v0.11.x/upgrade-apps.md) ) and follow the instructions there.
     Note that you should check the documentation at the release tag instead of `main` to be sure that it's correct.
 
-4. If there is no relevant migration document, first do a dry-run.
+4.  If there is no relevant migration document, first do a dry-run.
 
     ```bash
     ./bin/ck8s dry-run sc
     ./bin/ck8s dry-run wc
     ```
 
-5. If dry-run reports no errors, proceed with the upgrade.
+5.  If dry-run reports no errors, proceed with the upgrade.
 
     ```bash
     ./bin/ck8s apply sc
     ./bin/ck8s apply wc
     ```
 
-6. Verify that everything is running after the upgrade.
+6.  Verify that everything is running after the upgrade.
     At the minimum, at least run the tests in compliantkubernetes-apps.
 
         ```bash
@@ -123,44 +123,44 @@ Then check the release notes for each version in between to see if there are any
         ./bin/ck8s test wc
         ```
 
-7. Go back to step 1 and repeat one new release of compliantkubernetes-apps at a time until you are at the latest release.
+7.  Go back to step 1 and repeat one new release of compliantkubernetes-apps at a time until you are at the latest release.
 
 ### Upgrading Kubespray/Kubernetes
 
 All clusters should stay up to date with the latest Kubespray version used in [compliantkubernetes-kubespray](https://github.com/elastisys/compliantkubernetes-kubespray).
 
-1. Note what version of Kubespray that is currently used in the cluster and the Kubespray version we want to upgrade to.
-   Then check the release notes for each version in between to see if there are anything that might cause any problems, if so then consult the rest of the operations team before proceeding.
-   Also check if the newer Kubespray version would upgrade Kubernetes to a new minor version, if so then the Application Developer should get a notice of x weeks before proceeding to let them check for any deprecated APIs that they might be using.
-   You should never upgrade more than one patch version of Kubespray at a time.
-   E.g. if you are at Kubespray version 2.13.3 and are going to 2.15.0 then the upgrade path would be 2.13.3 -> 2.13.4 -> 2.14.0 -> 2.14.1 -> 2.14.2 -> 2.15.0.
-   Patches that are released to an older minor version can be skipped, e.g. new patches to 2.14 after 2.15 has been released.
-   Read more about Kubespray upgrades in their [documentation](https://kubespray.io/#/docs/upgrades).
+1.  Note what version of Kubespray that is currently used in the cluster and the Kubespray version we want to upgrade to.
+    Then check the release notes for each version in between to see if there are anything that might cause any problems, if so then consult the rest of the operations team before proceeding.
+    Also check if the newer Kubespray version would upgrade Kubernetes to a new minor version, if so then the Application Developer should get a notice of x weeks before proceeding to let them check for any deprecated APIs that they might be using.
+    You should never upgrade more than one patch version of Kubespray at a time.
+    E.g. if you are at Kubespray version 2.13.3 and are going to 2.15.0 then the upgrade path would be 2.13.3 -> 2.13.4 -> 2.14.0 -> 2.14.1 -> 2.14.2 -> 2.15.0.
+    Patches that are released to an older minor version can be skipped, e.g. new patches to 2.14 after 2.15 has been released.
+    Read more about Kubespray upgrades in their [documentation](https://kubespray.io/#/docs/upgrades).
 
-2. Checkout the next Kubespray version by checking out the last compliantkubernetes-kubespray commit (the commit is `next-version` in the snippet below) that used that version and updating the submodule.
+2.  Checkout the next Kubespray version by checking out the last compliantkubernetes-kubespray commit (the commit is `next-version` in the snippet below) that used that version and updating the submodule.
 
-   ```bash
-   # you should be in the root folder of compliantkubernetes-kubespray
-   git switch -d <next-version>
-   git submodule sync
-   git submodule update --init --recursive
-   ```
+    ```bash
+    # you should be in the root folder of compliantkubernetes-kubespray
+    git switch -d <next-version>
+    git submodule sync
+    git submodule update --init --recursive
+    ```
 
-3. Upgrade compliantkubernetes-kubespray by following the relevant [documentation](https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/migration) (e.g. [for upgrade to v2.17.x-ck8s1](https://github.com/elastisys/compliantkubernetes-kubespray/blob/v2.17.1-ck8s1/migration/v2.16.0-ck8s1-v2.17.x-ck8s1/upgrade-cluster.md)).
+3.  Upgrade compliantkubernetes-kubespray by following the relevant [documentation](https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/migration) (e.g. [for upgrade to v2.17.x-ck8s1](https://github.com/elastisys/compliantkubernetes-kubespray/blob/v2.17.1-ck8s1/migration/v2.16.0-ck8s1-v2.17.x-ck8s1/upgrade-cluster.md)).
 
-4. Download the required files on the nodes
+4.  Download the required files on the nodes
 
-   ```bash
-   ./bin/ck8s-kubespray run-playbook sc upgrade-cluster.yml -b --tags=download
-   ./bin/ck8s-kubespray run-playbook wc upgrade-cluster.yml -b --tags=download
-   ```
+    ```bash
+    ./bin/ck8s-kubespray run-playbook sc upgrade-cluster.yml -b --tags=download
+    ./bin/ck8s-kubespray run-playbook wc upgrade-cluster.yml -b --tags=download
+    ```
 
-5. Upgrade the cluster to a new Kubernetes version:
+5.  Upgrade the cluster to a new Kubernetes version:
 
-   ```bash
-   ./bin/ck8s-kubespray run-playbook sc upgrade-cluster.yml -b --skip-tags=download
-   ./bin/ck8s-kubespray run-playbook wc upgrade-cluster.yml -b --skip-tags=download
-   ```
+    ```bash
+    ./bin/ck8s-kubespray run-playbook sc upgrade-cluster.yml -b --skip-tags=download
+    ./bin/ck8s-kubespray run-playbook wc upgrade-cluster.yml -b --skip-tags=download
+    ```
 
 ### After doing any upgrades or maintenance
 
