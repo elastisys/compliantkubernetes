@@ -65,7 +65,7 @@ Network Policy will be enabled by default. You will need to actively label your 
 
 The implementation will be an opt-in process.
 
-Application developers need to add the labels to their existing application pods with `elastisys.io/redis-<redis-cluster-name>-access: allow` to ensure continuity. 
+Application developers need to add the labels to their existing application pods with `elastisys.io/redis-<redis-cluster-name>-access: allow` to ensure continuity.
 
 Application developers need to get back to Elastisys when they are done so that we can enforce the changes on our end.
 
