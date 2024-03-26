@@ -200,7 +200,7 @@ If you want to use [vals](https://github.com/helmfile/vals) with [Vault](https:/
 
 2. Contact your Platform Administrator to restart the `argocd-repo-server`. It is needed to load your secret environment variables so that Argo CD can connect to your Vault.
 
-3. Argo CD should now be able to connect to your vault, to replace a value with a secret from your Vault, use the following syntax:
+3. Argo CD should now be able to connect to your Vault, to replace a value with a secret from your Vault, use the following syntax:
 
     ```
     secrets+literal://vals!ref+vault://path/to/#/secret
