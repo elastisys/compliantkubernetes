@@ -36,13 +36,13 @@ Chosen option: "Run the csi-cinder-controllerplugin on Elastisys Nodes", because
 
 Specifically, use the following Node labels
 
-```
+```text
 elastisys.io/node-type=elastisys
 ```
 
 and taint:
 
-```
+```text
 elastisys.io/node-type=elastisys:NoSchedule
 ```
 

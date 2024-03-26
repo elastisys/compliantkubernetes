@@ -286,23 +286,23 @@ alerts:
 
 Following are some screenshots of an air-gapped Compliant Kubernetes Environment, accessing Service Endpoints on the local air-gapped domain by using a [SOCKS proxy](https://en.wikipedia.org/wiki/SOCKS) in Firefox over an SSH tunnel. Accessing Grafana Dashboards:
 
-![](../img/air-gapped-grafana.png)
+![Air-gapped Grafana](../img/air-gapped-grafana.png)
 
 Signing in with Dex will redirect to the Dex Service Endpoint for authentication (in this case a static user is used):
 
-![](../img/air-gapped-dex.png)
+![Air-gapped Dex](../img/air-gapped-dex.png)
 
 Checking the endpoint of the [user demo](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo) application:
 
-![](../img/air-gapped-demo.png)
+![Air-gapped User Demo](../img/air-gapped-demo.png)
 
 Seeing HTTP metrics for the `/users` endpoint of the user demo in Grafana Dashboards:
 
-![](../img/air-gapped-grafana-demo.png)
+![Air-gapped User Demo metrics in Grafana](../img/air-gapped-grafana-demo.png)
 
 Seeing logs from the user demo pods in OpenSearch Dashboards:
 
-![](../img/air-gapped-opensearch-demo.png)
+![Air-gapped User Demo logs in OpenSearch Dashboards](../img/air-gapped-opensearch-demo.png)
 
 ## References
 

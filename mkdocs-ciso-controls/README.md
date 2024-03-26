@@ -14,7 +14,7 @@ This plugin will:
 
 Start by adding the following in `mkdocs.yaml`:
 
-```
+```yaml
 plugins:
   - ciso-controls:
       root_url: $ROOT_URL
@@ -44,11 +44,11 @@ You can add any content you want, but make sure you have the string `[TAGS]` som
 
 Next, add something as follows in the frontmatter:
 
-```
+```yaml
 tags:
-- ISO 27001 A13.1
-- HIPAA S13
-- BSI IT-Grundschutz APP.X
+  - ISO 27001 A13.1
+  - HIPAA S13
+  - BSI IT-Grundschutz APP.X
 ```
 
 This will add `ISO 27001 A13.1` to `ciso-guide/controls/iso-27001`, etc.

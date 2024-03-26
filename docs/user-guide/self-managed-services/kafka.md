@@ -40,7 +40,7 @@ In Kubernetes you will need to:
 
 4.  Create ServiceAccount and ConfigMap for Strimzi Kafka Operator.
 
-#### CRDs
+### CRDs
 
 You need to apply the Custom Resource Definitions (CRDs) required by Strimzi Kafka Operator. This is typically not allowed in a Compliant Kubernetes Environment, but with Kafka enabled with the self-managed cluster resources feature, this allows you to apply these yourself.
 
@@ -53,13 +53,13 @@ curl -L https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.38
 kubectl apply -f crds/kafka-crds.yaml
 ```
 
-#### Namespace
+### Namespace
 
 You need to create a Namespace where Strimzi Kafka Operator will work. This Namespace should be called `kafka`. Create this [sub-namespace](../namespaces.md) under eg. `production`.
 
 `kubectl hns create -n production kafka`
 
-#### Roles and RoleBindings
+### Roles and RoleBindings
 
 You need to create the necessary Roles for Strimzi Kafka Operator to function. This needs to be done in every Namespace that you want Strimzi Kafka Operator to work in.
 
@@ -80,7 +80,7 @@ curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/u
 kubectl apply -k roles
 ```
 
-#### ServiceAccount and ConfigMap
+### ServiceAccount and ConfigMap
 
 You need to create the ServiceAccount and ConfigMap that Strimzi Kafka Operator will use.
 

@@ -2,6 +2,8 @@
 description: Learn how to prepare for Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
 ---
 
+<!-- markdownlint-disable-file first-line-h1 -->
+
 !!! elastisys "For Elastisys Managed Services Customers"
 
     You can order Managed Compliant Kubernetes by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/). Here are the highlights:

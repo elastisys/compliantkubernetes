@@ -42,13 +42,13 @@ Scale up the Elastisys Nodes to 4C8GB before installing managed ArgoCD.
 
 Specifically, use the following Node labels
 
-```
+```text
 elastisys.io/node-type=elastisys
 ```
 
 and taint:
 
-```
+```text
 elastisys.io/node-type=elastisys:NoSchedule
 ```
 

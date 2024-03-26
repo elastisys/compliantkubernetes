@@ -9,19 +9,19 @@ This is the main repository for documentation about the Compliant Kubernetes pro
 
 ## Prerequisites
 
-```
+```sh
 pip3 install -r requirements.txt
 ```
 
 For generating figures, please install:
 
-```
+```sh
 sudo apt-get install graphviz make
 ```
 
 For generating `docs/stylesheets/style.css`, please install:
 
-```
+```sh
 npm install -g sass
 ```
 

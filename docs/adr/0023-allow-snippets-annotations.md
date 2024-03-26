@@ -41,7 +41,7 @@ Chosen option: Allow `the use of "config-snippets annotations" with Ingress`, bu
 
 If you enable this feature, then make sure Application Developers understand and accept the added stability and security risks. A message as follows could be used:
 
-```
+```text
 Hello!
 
 After talking with the team, we have decided that it is okay to enable the `nginx.ingress.kubernetes.io/configuration-snippet` annotation provided that:

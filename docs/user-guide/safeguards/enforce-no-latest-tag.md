@@ -25,7 +25,7 @@ Using the `:latest` tag can lead to inconsistent deployments, where it is diffic
 
 You may encounter the following issue:
 
-```
+```console
 Error from server ([container-image-must-not-have-disallowed-tags] container <example-container> uses a disallowed tag <harbor.$DOMAIN/$REGISTRY_PROJECT/example-container:latest>; disallowed tags are ["latest"])
 ```
 

@@ -1,5 +1,7 @@
 <!--deploy-rook-start-->
 
+<!-- markdownlint-disable-file first-line-h1 -->
+
 ### Deploy Rook
 
 To deploy Rook, go to the `compliantkubernetes-kubespray` repo, change directory to `rook` and follow the instructions [here](https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/rook#rook-ceph) for each cluster.

@@ -27,13 +27,20 @@ MD033: # no-inline-html
     - a
     - br
     - dd
+    - details
     - div
     - dl
     - dt
+    - embed
+    - figure
+    - figcaption
     - img
     - li
     - nav
     - section
+    - strong
+    - summary
+    - sup
     - ul
 MD034: false # no-bare-urls
 MD046: false # code-block-style - does not support admonitions

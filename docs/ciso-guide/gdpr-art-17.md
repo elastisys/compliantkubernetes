@@ -3,6 +3,8 @@ tags:
   - GDPR Art. 17 Right to erasure ("right to be forgotten")
 ---
 
+<!-- markdownlint-disable-file first-line-h1 -->
+
 {%
    include-markdown './controls/_common.include'
    start='<!--legal-disclaimer-start-->'

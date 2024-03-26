@@ -1,3 +1,5 @@
+<!-- markdownlint-disable-file first-line-h1 -->
+
 !!! elastisys "For Elastisys Managed Services Customers"
 
     You can ask for this feature to be enabled by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).

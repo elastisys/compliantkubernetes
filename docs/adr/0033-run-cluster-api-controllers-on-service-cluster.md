@@ -21,8 +21,8 @@ Where should we run the Cluster API controller?
 
 - Independent clusters
   - All clusters run the Cluster API controllers and all clusters manage themselves independently.
-- Management Cluster
-  - A new separate Management Cluster runs the Cluster API controllers and manages all clusters in the environment.
+- Controller Cluster
+  - A new separate Controller Cluster runs the Cluster API controllers and manages all clusters in the environment.
 - Management Cluster
   - The Management Cluster runs the Cluster API controllers and manages all clusters in the environment.
 
@@ -58,12 +58,12 @@ Chosen option: "Management Cluster", because it strikes the balance between secu
 - Bad, all clusters have to be bootstrapped
 - Bad, will contain Kubernetes admin credentials in Workload Cluster
 
-### Management Cluster
+### Controller Cluster
 
 - Bad, requires additional resources
 - Bad, requires additional supporting services
-- Bad, service and Workload Cluster lose management (auto healing and auto scaling) on Management Cluster failure, although...
-- Good, service and Workload Cluster state can be backed up and restored
+- Bad, Management and Workload Cluster lose management (auto healing and auto scaling) on Controller Cluster failure, although...
+- Good, Management and Workload Cluster state can be backed up and restored
 - Good, environment can be managed as a group or individually if needed, although...
 - Bad, all cluster can be impacted by configuration mistakes, although...
 - Good, it is harder for configuration mistakes

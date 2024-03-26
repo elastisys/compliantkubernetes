@@ -73,7 +73,7 @@ Let us assume you want to host your application behind the nicely branded domain
 
 For step 1, create a DNS CNAME as follows:
 
-```
+```text
 demo.example.com. 900 CNAME app.$DOMAIN.
 ```
 

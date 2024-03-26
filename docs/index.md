@@ -2,6 +2,8 @@
 description: Documentation for Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 ---
 
+<!-- markdownlint-disable-file first-line-h1 -->
+
 <div class="landing-page" markdown="1">
 
 # Innovate at speed in regulated industries

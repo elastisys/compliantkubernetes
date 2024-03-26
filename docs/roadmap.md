@@ -22,9 +22,9 @@ By default, pull-based CD solutions such as ArgoCD (and Flux, for that matter) r
 User experience for Compliant Kubernetes operators, Application Developers, and CISOs will be continuously improved,
 including addition of single pane of glass dashboards that give overviews of all relevant services.
 
-# Non-Goals
+## Non-Goals
 
-## Opinionated CI/CD
+### Opinionated CI/CD
 
 Compliant Kubernetes can be used with a wide range of CI/CD pipelines, including traditional push-style tools and pull-style solutions such as GitOps operators.
 Compliant Kubernetes will not dictate the use of one specific CI/CD technology.

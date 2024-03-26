@@ -25,7 +25,7 @@ From here click **Visualize & analyze** to continue and you will be greeted with
 
 ![OpenSearch Alert Sidebar](../img/osd-alerting-sidebar.png)
 
-**Step 1 - Create Notification Channel**
+**Step 1 - Create Notification Channel**:
 
 We start with creating a notification channel, which enables sending messages directly to a designated Slack channel.
 
@@ -53,7 +53,7 @@ We start with creating a notification channel, which enables sending messages di
 
 Next, we can proceed with creating a monitor that will use our newly created channel.
 
-**Step 2 - Create Monitors**
+**Step 2 - Create Monitors**:
 
 - Go to **Alerting** page, then **Monitors** tab as shown below.
 
@@ -109,7 +109,7 @@ Next, we can proceed with creating a monitor that will use our newly created cha
 
   ![OpenSearch Monitor View](../img/monitor-view.png)
 
-**Test alert notification to Slack**
+**Test alert notification to Slack**:
 
 - Demo application deployed and users get 404 errors many times (5 is the condition set before) as shown below.
 

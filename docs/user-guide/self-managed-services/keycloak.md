@@ -30,7 +30,7 @@ Take note of the following variables for the next section.
 
 - The following environment variables:
 
-```
+```sh
 echo $PGHOST
 echo $APP_USERNAME
 echo $APP_DATABASE
@@ -100,14 +100,14 @@ proxy: edge
 
 With the above values you can deploy Keycloak with:
 
-```
+```sh
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm upgrade --install keycloak bitnami/keycloak --values values.yaml
 ```
 
 It might take up to 2 minutes for Keycloak to start. You can check progress as follows:
 
-```console
+```sh
 kubectl get pods --watch
 ```
 
@@ -123,7 +123,7 @@ The default admin user is `user`.
 
 The initial admin password can be fetched using the command below (assuming default namespace):
 
-```console
+```sh
 kubectl get secret keycloak -o jsonpath="{.data.admin-password}" | base64 -d
 ```
 

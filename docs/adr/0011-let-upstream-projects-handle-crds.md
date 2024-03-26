@@ -30,7 +30,7 @@ At installation, rely on upstream's approach to install CRDs (see below). At upg
 
 Since we "vendor in" all Charts, CRDs can be discovered using:
 
-```
+```sh
 grep -R 'kind: CustomResourceDefinition'
 ```
 

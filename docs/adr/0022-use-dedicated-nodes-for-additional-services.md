@@ -32,7 +32,7 @@ Chosen option: "run additional service on dedicated Nodes", because it improves 
 
 Specifically, use the following Node labels
 
-```
+```text
 elastisys.io/node-type=postgresql
 elastisys.io/node-type=redis
 elastisys.io/node-type=rabbitmq
@@ -41,7 +41,7 @@ elastisys.io/node-type=jaegertracing
 
 and taints:
 
-```
+```text
 elastisys.io/node-type=postgresql:NoSchedule
 elastisys.io/node-type=redis:NoSchedule
 elastisys.io/node-type=rabbitmq:NoSchedule
@@ -69,13 +69,13 @@ For better application performance and security, run system Deployments and Stat
 
 Specifically, use the following Node label:
 
-```
+```text
 elastisys.io/node-type=elastisys
 ```
 
 and taint:
 
-```
+```text
 elastisys.io/node-type=elastisys:NoSchedule
 ```
 

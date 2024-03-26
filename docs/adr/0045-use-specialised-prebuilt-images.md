@@ -29,7 +29,7 @@ Chosen option 2, since it will improve upon the two issues above and provide eac
 
 The tagging should follow the following scheme:
 
-```
+```text
 <registry>/<repository>/<application>:<application-version>-<variant-identifier><variant-version>
 ```
 
@@ -37,7 +37,7 @@ With variant matching the configuration variant to support, example different ob
 
 Example for Velero with AWS/S3 support:
 
-```
+```text
 ghcr.io/elastisys/compliantkubernetes-apps/velero:1.12.3-aws1.8.2
 ```
 

@@ -44,7 +44,7 @@ Be sure to read through the documentation fully.
 
 If default configuration choices are to your liking, you should be able to install the MongoDB Community Operator as follows:
 
-```
+```sh
 helm repo add mongodb https://mongodb.github.io/helm-charts
 helm upgrade --install community-operator mongodb/community-operator --namespace mongodb --version 0.8.3
 ```

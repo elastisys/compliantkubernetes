@@ -56,7 +56,7 @@ kubectl run blah --rm -ti --image=$MY_HARBOR_IMAGE
 
 If your image runs as root by defaults, but can handle running as another user, you may override the user by adding a flag like this to the above command:
 
-```
+```bash
 --overrides='{ "spec": { "securityContext": "runAsUser": 1000, "runAsGroup": 1000 } }'
 ```
 

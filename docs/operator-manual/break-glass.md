@@ -29,13 +29,13 @@ If dex is broken, you can manually create a `kubeconfig` file for a user. While 
 
 1.  Create a private key:
 
-    ```
+    ```sh
     openssl genrsa -out user1.key 2048
     ```
 
 2.  Create a certificate signing request (CSR). `CN` is the username and `O` the group.
 
-    ```
+    ```sh
     openssl req -new -key user1.key \
     -out user1.csr \
     -subj "/CN=user1/O=companyname"
@@ -43,13 +43,13 @@ If dex is broken, you can manually create a `kubeconfig` file for a user. While 
 
 3.  Get the Base64 encoding for the generated CSR file.
 
-    ```
+    ```sh
     cat user1.csr | base64 | tr -d '\n'
     ```
 
 4.  Create a Certificate Signing Request with Kubernetes
 
-    ```
+    ```sh
     cat <<EOF | kubectl  apply -f -
     apiVersion: certificates.k8s.io/v1
     kind: CertificateSigningRequest
@@ -67,14 +67,14 @@ If dex is broken, you can manually create a `kubeconfig` file for a user. While 
 
 5.  Approve the CSR
 
-    ```
+    ```sh
     kubectl certificate approve user1
     ```
 
 6.  Get the certificate.
     Retrieve the certificate from the CSR:
 
-    ```
+    ```sh
     kubectl get csr/user1 -o yaml
     ```
 

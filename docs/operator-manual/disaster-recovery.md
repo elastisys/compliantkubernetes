@@ -64,7 +64,7 @@ OpenSearch is set up to store backups in an S3 bucket. There is a CronJob called
 
 To take a snapshot on-demand, execute
 
-```
+```sh
 ./bin/ck8s ops kubectl sc -n opensearch-system create job --from=cronjob/opensearch-backup <name-of-job>
 ```
 

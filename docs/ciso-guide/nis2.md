@@ -3,6 +3,8 @@ title: NIS2 Overview
 description: Overview of what the Network and Information Security Directive 2 (NIS2) is and how it relates to Compliant Kubernetes
 ---
 
+<!-- markdownlint-disable-file single-h1 -->
+
 # Network and Information Security Directive 2 (NIS2)
 
 {%
