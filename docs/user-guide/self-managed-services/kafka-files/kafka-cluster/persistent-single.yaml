@@ -40,10 +40,10 @@ spec:
     storage:
       type: jbod
       volumes:
-      - id: 0
-        type: persistent-claim
-        size: 100Gi
-        deleteClaim: true
+        - id: 0
+          type: persistent-claim
+          size: 100Gi
+          deleteClaim: true
   zookeeper:
     replicas: 1
     readinessProbe:

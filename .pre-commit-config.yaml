@@ -40,11 +40,12 @@ repos:
       - id: markdownlint-cli2
         name: lint markdown files
         exclude: ^.github/
+
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: v3.1.0
     hooks:
       - id: prettier
-        exclude: "[/]templates[/]|extra_sass/|overrides/|user-demo/|docs/customer-quotes/|docs/javascripts/|docs/tech-radar|docs/stylesheets|docs/img/|user-demo-dotnet/"
+        exclude: /templates/|\.min\.|\.css$|\.html$|\.js$|\.scss$|docs/img/|user-demo/|user-demo-dotnet/
 
   - repo: local
     hooks:

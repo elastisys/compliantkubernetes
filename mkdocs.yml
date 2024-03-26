@@ -139,7 +139,7 @@ nav:
           - "Prepare Your Application": "user-guide/prepare-application.md"
           - "Prepare Your Identity Provider (IdP)": "user-guide/prepare-idp.md"
           - "Container registry": "user-guide/registry.md"
-          - "Continous Development": "user-guide/continous-development.md"
+          - "Continuous Development": "user-guide/continous-development.md"
           - "Network Model": "user-guide/network-model.md"
           - "Kubernetes API": "user-guide/kubernetes-api.md"
           - "Kubernetes UI (Lens)": "user-guide/kubernetes-ui.md"
