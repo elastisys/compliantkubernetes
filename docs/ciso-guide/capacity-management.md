@@ -1,7 +1,8 @@
 ---
 tags:
-- ISO 27001 A.12.1.3 Capacity Management
+  - ISO 27001 A.12.1.3 Capacity Management
 ---
+
 # Capacity Management (Kubernetes Status) Dashboard
 
 ## Relevant Regulations
@@ -15,6 +16,7 @@ tags:
 ### Swedish Patient Data Law
 
 !!!note
+
     This regulation is only available in Swedish. To avoid confusion, we decided not to produce an unofficial translation.
 
 [HSLF-FS 2016:40](https://www.socialstyrelsen.se/globalassets/sharepoint-dokument/artikelkatalog/foreskrifter-och-allmanna-rad/2016-4-44.pdf):
@@ -23,9 +25,9 @@ tags:
 
 ## Mapping to ISO 27001 Controls
 
-* [A.12.1.3 Capacity Management](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
+- [A.12.1.3 Capacity Management](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
 
-    > The use of resources must be monitored, tuned and projections made of future capacity requirements to ensure the required system performance to meet the business objectives.
+  > The use of resources must be monitored, tuned and projections made of future capacity requirements to ensure the required system performance to meet the business objectives.
 
 ## Compliant Kubernetes Status Dashboard
 
@@ -34,9 +36,9 @@ tags:
 The Compliant Kubernetes Status Dashboard shows a quick overview of the status of your Kubernetes cluster.
 This includes:
 
-* Unhealthy pods
-* Unhealthy nodes
-* Resource requested of the total resources in the cluster
-* Pods with missing resource requests
+- Unhealthy pods
+- Unhealthy nodes
+- Resource requested of the total resources in the cluster
+- Pods with missing resource requests
 
 This makes it easy to identify when your cluster is not working correctly and helps you identify configuration that isn't following best practise.

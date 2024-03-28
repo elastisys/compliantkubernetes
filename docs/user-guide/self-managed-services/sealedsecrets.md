@@ -1,5 +1,4 @@
-SealedSecrets (self-managed)
-===========
+# SealedSecrets (self-managed)
 
 {%
    include-markdown './_common.include'
@@ -17,7 +16,7 @@ This page will help you to install [Sealed Secrets](https://github.com/bitnami-l
 
 This guide is a complement to [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets/tree/v0.24.2) own documentation.
 
-# Preparation
+## Preparation
 
 The self-managed cluster-wide resources feature adds specific Roles, ServiceAccounts, etc. for you.
 This enables you to install and manage the resources that Sealed Secrets needs.
@@ -37,6 +36,7 @@ metadata:
 ## Install Sealed Secrets
 
 !!! Note "Supported versions"
+
     This installation guide has been tested with Sealed Secrets version [0.24.2](https://github.com/bitnami-labs/sealed-secrets/tree/release/v0.24.2) and Helm Chart version [2.13.1](https://github.com/bitnami-labs/sealed-secrets/tree/helm-v2.13.1/helm/sealed-secrets).
 
 Sealed Secrets have a section in their documentation about installing Sealed Secrets into a [restricted environment](https://github.com/bitnami-labs/sealed-secrets/tree/v0.24.2#helm-chart-on-a-restricted-environment), where they give a `config.yaml` that defines what should be installed.
@@ -62,6 +62,7 @@ resources:
 ```
 
 !!! important
+
     Add the namespaces that should support creation of SealedSecrets to the `additionalNamespaces` list. If this list is empty the SealedSecrets controller will output an error when attempting to create a SealedSecret as it attempts to get secrets at cluster level.
 
 You are now ready to install Sealed Secrets
@@ -72,6 +73,7 @@ helm upgrade --install sealed-secrets -n sealed-secrets --version 2.13.1 sealed-
 ```
 
 !!! Note "Note about `kubeseal`"
+
     The Sealed Secrets cli tool `kubeseal` expects the controller to be installed in the namespace `kube-system`.
     However the controller is installed in the namespace `sealed-secrets`.
     As such you need to follow this [guide](https://github.com/bitnami-labs/sealed-secrets/tree/release/v0.24.2#how-to-use-kubeseal-if-the-controller-is-not-running-within-the-kube-system-namespace) to use `kubeseal`

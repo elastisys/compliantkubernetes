@@ -4,5 +4,5 @@ kind: Kustomization
 namespace: production
 
 resources:
-- all-controllers-role.yaml
-- source-controller-role.yaml
+  - all-controllers-role.yaml
+  - source-controller-role.yaml

@@ -1,8 +1,8 @@
 # [Superseded by [ADR-0040](0040-allow-group-id-0.md)] gid=0 is okay, but not by default
 
-* Status: superseded by [ADR-0040](0040-allow-group-id-0.md)
-* Deciders: Cristian, Lars, Olle
-* Date: 2021-08-23
+- Status: superseded by [ADR-0040](0040-allow-group-id-0.md)
+- Deciders: Cristian, Lars, Olle
+- Date: 2021-08-23
 
 ## Context and Problem Statement
 
@@ -25,15 +25,15 @@ What should Compliant Kubernetes do with the `gid=0` practice?
 
 ## Decision Drivers
 
-* For user expectations, we want to make it easy to start with Compliant Kubernetes.
-* For better security and easier audits, we do not want to add unnecessary permissions.
-* [ID mapping in mounts][idmapping] has landed in Linux 5.12. Once this feature is used in container runtimes and Kubernetes, the `gid=0` problem will go away.
+- For user expectations, we want to make it easy to start with Compliant Kubernetes.
+- For better security and easier audits, we do not want to add unnecessary permissions.
+- [ID mapping in mounts][idmapping] has landed in Linux 5.12. Once this feature is used in container runtimes and Kubernetes, the `gid=0` problem will go away.
 
 ## Considered Options
 
-* Allow `gid=0` by default.
-* Disallow `gid=0` by default -- this is what Kubespray does.
-* Never allow `gid=0`.
+- Allow `gid=0` by default.
+- Disallow `gid=0` by default -- this is what Kubespray does.
+- Never allow `gid=0`.
 
 ## Decision Outcome
 
@@ -41,11 +41,11 @@ Chosen option: "disallow `gid=0` by default". Enabling it on a case-by-case basi
 
 ### Positive Consequences
 
-* We do not unnecessarily add a permission to containers.
+- We do not unnecessarily add a permission to containers.
 
 ### Negative Consequences
 
-* Some users will complain about their container images not starting, and we will need to add a less restricted PodSecurityPolicy in their cluster.
+- Some users will complain about their container images not starting, and we will need to add a less restricted PodSecurityPolicy in their cluster.
 
 ## Other Considerations
 

@@ -1,8 +1,9 @@
 # Release Notes
 
-
 ## Compliant Kubernetes Argo CD
+
 <!-- BEGIN TOC -->
+
 - [v2.9.9-ck8s1](#v299-ck8s1) - 2024-03-20
 - [v2.9.5-ck8s1](#v295-ck8s1) - 2024-01-30
 - [v2.7.14-ck8s1](#v2714-ck8s1) - 2023-10-31
@@ -38,10 +39,9 @@ Released 2024-01-30
 
 - Updated ArgoCD to `v2.9.5`.
 
-
 #### Changed
 
-- Secret  `helm-secrets-private-keys` in the `argocd-system` namespace (used for storing encryption keys) now uses a different label-value than before. The label has to be: `argocd.argoproj.io/secret-type=helm-secrets`
+- Secret `helm-secrets-private-keys` in the `argocd-system` namespace (used for storing encryption keys) now uses a different label-value than before. The label has to be: `argocd.argoproj.io/secret-type=helm-secrets`
 
 #### Added
 
@@ -53,7 +53,7 @@ Released 2024-01-30
 
 Released 2023-10-31
 
-#### Updated:
+#### Updated
 
 - Updated ArgoCD to `v2.7.14`.
 

@@ -1,19 +1,19 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
-  - repo: 'https://github.com/pre-commit/pre-commit-hooks'
+  - repo: "https://github.com/pre-commit/pre-commit-hooks"
     rev: v4.1.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
-        exclude: '[.](svg|drawio.xml)$'
+        exclude: "[.](svg|drawio.xml)$"
       - id: check-yaml
         # Helm templates are not reaaaally YAML.
-        exclude: '[/]templates[/]'
+        exclude: "[/]templates[/]"
         args:
           # Needed by mkdocs.yaml
           # Implies --allow-multiple-documents
-          - '--unsafe'
+          - "--unsafe"
       - id: check-added-large-files
       - id: check-merge-conflict
       - id: no-commit-to-branch
@@ -34,6 +34,18 @@ repos:
       - id: eslint
         exclude: ^(user-demo/|docs/customer-quotes/|docs/tech-radar/)
 
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.12.1
+    hooks:
+      - id: markdownlint-cli2
+        name: lint markdown files
+        exclude: ^.github/
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.1.0
+    hooks:
+      - id: prettier
+        exclude: /templates/|\.min\.|\.css$|\.html$|\.js$|\.scss$|docs/img/|user-demo/|user-demo-dotnet/
 
   - repo: local
     hooks:
@@ -41,12 +53,12 @@ repos:
         name: SVGs must embed all images
         entry: 'image[^>]* xlink:href="https'
         language: pygrep
-        files: '.*[.]svg$'
+        files: ".*[.]svg$"
       - id: svg-must-not-embed-PNG
         name: SVGs must NOT embed PNGs
         entry: 'image[^>]* xlink:href="data:image/png'
         language: pygrep
-        files: '.*[.]svg$'
+        files: ".*[.]svg$"
         # We'll deal with these later.
         exclude: '(\.drawio|ideal-dx|ideal-promotion)\.svg$'
       - id: use-relative-urls
@@ -54,7 +66,7 @@ repos:
         # Why? Mkdocs wants you to: https://www.mkdocs.org/user-guide/writing-your-docs/#linking-to-pages
         entry: '\[[^\]]*\][(][/].*[)]'
         language: pygrep
-        files: '.*[.]md$'
+        files: ".*[.]md$"
       - id: use-relative-urls-to-files
         # Why? This ensures the docs are readable from GitHub and allows mkdocs
         # to do some internal link checking.
@@ -67,24 +79,24 @@ repos:
         #   somewhere in the link.
         entry: '\[[^\]]*\][(][^#][.\/]*[^.:]*[)]'
         language: pygrep
-        files: '.*[.]md$'
+        files: ".*[.]md$"
       - id: capitalize-common-names
         name: Please capitalize common names
-        entry: '^[^`]{0,100} (git[Hh]ub|kubernetes|trivy|starboard|compliantkubernetes|compliant [Kk]ubernetes|ck8s)( |, |[.] )'
+        entry: "^[^`]{0,100} (git[Hh]ub|kubernetes|trivy|starboard|compliantkubernetes|compliant [Kk]ubernetes|ck8s)( |, |[.] )"
         language: pygrep
-        files: '.*[.]md$'
+        files: ".*[.]md$"
       - id: avoid-absolute-urls-for-internal-links
         name: Avoid absolute URLs (https://elastisys.io) for internal links
         entry: '\/\/(elastisys.io)\/'
         language: pygrep
-        files: '.*[.]md$'
+        files: ".*[.]md$"
       - id: avoid-old-urls
         name: Avoid old URLs (https://compliantkubernetes.io)
         entry: 'compliantkubernetes.io(?!\/nobackup)'
         language: pygrep
-        files: '.*[.]md$'
+        files: ".*[.]md$"
       - id: avoid-non-descriptive-link-text
         name: Avoid non-descriptive link text (see https://developers.google.com/search/docs/crawling-indexing/links-crawlable#write-good-anchor-text)
-        entry: '(?i)<a[^>]*>(read more|click here|learn more)</a>'
+        entry: "(?i)<a[^>]*>(read more|click here|learn more)</a>"
         language: pygrep
-        files: '.*[.]md$'
+        files: ".*[.]md$"

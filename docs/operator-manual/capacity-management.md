@@ -1,7 +1,8 @@
 ---
 tags:
-- ISO 27001 A.12.1.3 Capacity Management
+  - ISO 27001 A.12.1.3 Capacity Management
 ---
+
 # Capacity Management
 
 Our users trust us -- the Compliant Kubernetes administrators -- to keep applications up and secure.
@@ -40,34 +41,35 @@ Compliant Kubernetes triggers a P1 alert when:
 - The average CPU usage for a Node or Node Group, over one hour, is above 95%.
 - The average memory usage for a Node or Node Group, over one hour, is above 85%.
 
-
-* **Why a P1 alert?** P1 alerts are events that need immediate attention, which makes them suitable for scenarios with a higher usage threshold over a shorter timespan. If the alert is triggered for a single Node, the administrator can attempt to redistribute the workload more evenly across the Node Group. If the alert is triggered for a Node Group, that Node Group needs to be scaled up.
+- **Why a P1 alert?** P1 alerts are events that need immediate attention, which makes them suitable for scenarios with a higher usage threshold over a shorter timespan. If the alert is triggered for a single Node, the administrator can attempt to redistribute the workload more evenly across the Node Group. If the alert is triggered for a Node Group, that Node Group needs to be scaled up.
 
 Compliant Kubernetes triggers a P2 alert when:
 
 - The average CPU or memory usage for a Node Group, over 24 hours, is above 75%.
 
-* **Why a P2 alert?** P2 alerts are events that need to be dealt with within a business day. This makes them suitable for scenarios with a lower usage threshold over a longer timespan, giving administrators enough time to take action. Excess capacity is cheaper than frustrated administrators. There is no need to disturb anyone's sleep.
+- **Why a P2 alert?** P2 alerts are events that need to be dealt with within a business day. This makes them suitable for scenarios with a lower usage threshold over a longer timespan, giving administrators enough time to take action. Excess capacity is cheaper than frustrated administrators. There is no need to disturb anyone's sleep.
 
 ### Metrics
 
-* **Why memory and CPU usage?**
-  * These are the resource metrics that are directly tied to the Nodes, and represent how much of the resource is actually used and how much is available. If usage gets close to 100% of capacity, it will start impacting applications.
-  * That isn't to say that these are the only capacity metrics to take into account. Other metrics are useful too, but are often not cause for an immediate scale-up and instead require further investigation. These other metrics include:
-    * CPU:
-        * sum of (Kubernetes) CPU requests to CPU allocatable;
-        * load average;
-    * Memory:
-        * sum of (Kubernetes) memory request to memory allocatable;
-    * Storage:
-        * host disk used to size;
-        * PersistentVolumeClaim used to size;
-        * Rook/Ceph OSD used to size;
+- **Why memory and CPU usage?**
+  - These are the resource metrics that are directly tied to the Nodes, and represent how much of the resource is actually used and how much is available. If usage gets close to 100% of capacity, it will start impacting applications.
+  - That isn't to say that these are the only capacity metrics to take into account. Other metrics are useful too, but are often not cause for an immediate scale-up and instead require further investigation. These other metrics include:
+    - CPU:
+      - sum of (Kubernetes) CPU requests to CPU allocatable;
+      - load average;
+    - Memory:
+      - sum of (Kubernetes) memory request to memory allocatable;
+    - Storage:
+      - host disk used to size;
+      - PersistentVolumeClaim used to size;
+      - Rook/Ceph OSD used to size;
 
 !!!note
+
     Compliant Kubernetes can be configured to [require resource requests](../user-guide/safeguards/enforce-resources.md) for all Pods.
 
 !!!important
+
     Nodes dedicated for data services, such as PostgreSQL, are excluded from Kubernetes requests to allocatable calculation.
 
 ### How?
@@ -88,8 +90,8 @@ Nevertheless, Application Developer trust us to keep infrastructure costs down, 
 
 The capacity of the environment should be regularly reviewed, for example, after a maintenance window.
 
-
 !!!important
+
     Downscaling may put application uptime at risk. Therefore, be conservative when downscaling.
 
     Before downscaling you should:
@@ -103,7 +105,7 @@ The capacity of the environment should be regularly reviewed, for example, after
 If a decision has been made to downscale, make sure to drain and cordon the Node before decommissioning it.
 
 If you are about to go below 3 Nodes, consider replacing the Nodes with 6 Nodes of half-the-size before downscaling.
-Before doing this, get in touch with Application Developers to ensure they don't have Kubernetes scheduling constraints that would  cause issues on the consolidated environment.
+Before doing this, get in touch with Application Developers to ensure they don't have Kubernetes scheduling constraints that would cause issues on the consolidated environment.
 
 If you are about to half the number of Nodes, get in touch with Application Developers to ensure their application is not misbehaving, before downscaling.
 

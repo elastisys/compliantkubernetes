@@ -1,4 +1,7 @@
+<!-- markdownlint-disable-file first-line-h1 -->
+
 !!! elastisys "For Elastisys Managed Services Customers"
+
     You can ask for this feature to be enabled by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
 
 The Swedish [Sjunet](https://www.inera.se/tjanster/alla-tjanster-a-o/sjunet/) is a private network, managed by Inera, designed for healthcare systems with strict requirements. It is used by regioner, komuner and private actors with in the healthcare system. As the healthcare system has high requirements when it comes to distributing sensitive information. Sjunet as a private network, means they can validate that the strict requirements, such as high availability, stability and bandwidth, are meet. Also, that only authorized and audited users are allowed to use it.
@@ -19,17 +22,19 @@ The application developer is responsible to install a supported VPN client on th
 
 ![Architectural diagram](img/sjunet.svg)
 
-*![Compliant Kubernetes](img/bac8d3.png) `Platform administrators` area of responsibility ![Application Developer](img/b1ddf0.png) `Application developers` area of responsibility ![Inera](img/76608a.png) `Ineras` area of responsibility*
+_![Compliant Kubernetes](img/bac8d3.png) `Platform administrators` area of responsibility ![Application Developer](img/b1ddf0.png) `Application developers` area of responsibility ![Inera](img/76608a.png) `Ineras` area of responsibility_
 
 !!! elastisys "For Elastisys Managed Services Customers"
+
     Inform your platform administrator by filling a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals) if additional IPs are required to be routed via the gateway machine.
     Or if additional security group ports, UDP/TCP, are required to be opened to allow traffic to flow in or out from the machine.
 
 ## Further Reading
+
 - [Sjunet](https://www.inera.se/tjanster/alla-tjanster-a-o/sjunet/)
 - [Order](https://www.inera.se/tjanster/alla-tjanster-a-o/sjunet/#section-5699)
 - [Regulatory Framework](https://inera.atlassian.net/wiki/spaces/OISJU/pages/403736889/Regelverk)
 - [Technical Information](https://inera.atlassian.net/wiki/spaces/OISJU/pages/403736906/Teknisk+information)
 - [VPN](https://en.wikipedia.org/wiki/Virtual_private_network)
-    - [WireGuard](https://www.wireguard.com/)
-    - [OpenVPN](https://openvpn.net/)
+  - [WireGuard](https://www.wireguard.com/)
+  - [OpenVPN](https://openvpn.net/)

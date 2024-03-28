@@ -3,6 +3,8 @@ title: NIS2 Overview
 description: Overview of what the Network and Information Security Directive 2 (NIS2) is and how it relates to Compliant Kubernetes
 ---
 
+<!-- markdownlint-disable-file single-h1 -->
+
 # Network and Information Security Directive 2 (NIS2)
 
 {%
@@ -11,7 +13,7 @@ description: Overview of what the Network and Information Security Directive 2 (
    end='<!--legal-disclaimer-end-->'
 %}
 
-The [NIS2 Directive](https://digital-strategy.ec.europa.eu/en/policies/nis2-directive){:target="_blank"} stands as a comprehensive EU-wide cybersecurity legislation, aimed at elevating the overall state of cybersecurity across the European Union.
+The [NIS2 Directive](https://digital-strategy.ec.europa.eu/en/policies/nis2-directive){:target="\_blank"} stands as a comprehensive EU-wide cybersecurity legislation, aimed at elevating the overall state of cybersecurity across the European Union.
 Imposing legal measures, it serves to fortify the digital landscape in the region.
 
 Initiated in 2016, the EU's cybersecurity regulations underwent a substantial transformation with the enactment of the NIS2 Directive in 2023.
@@ -34,9 +36,9 @@ A lot more sectors than in the previous iteration.
 Society has become more digital, and as a result, more vulnerable to cyberattacks.
 It is clear that many use-cases where Compliant Kubernetes has been successfully used in the past are in scope for NIS2, including sectors of high criticality, healthcare, banking and the financial market, and general public administration.
 
-The [official FAQ](https://digital-strategy.ec.europa.eu/en/faqs/directive-measures-high-common-level-cybersecurity-across-union-nis2-directive-faqs){:target="_blank"} lists the sectors in scope as follows:
+The [official FAQ](https://digital-strategy.ec.europa.eu/en/faqs/directive-measures-high-common-level-cybersecurity-across-union-nis2-directive-faqs){:target="\_blank"} lists the sectors in scope as follows:
 
-> Sectors of high criticality: energy (electricity, district heating and cooling, oil, gas and hydrogen); transport (air, rail, water and road); banking; financial market infrastructures; health including  manufacture of pharmaceutical products including vaccines; drinking water; waste water; digital infrastructure (internet exchange points; DNS service providers; TLD name registries; cloud computing service providers; data centre service providers; content delivery networks; trust service providers; providers of  public electronic communications networks and publicly available electronic communications services); ICT service management (managed service providers and managed security service providers), public administration and space.
+> Sectors of high criticality: energy (electricity, district heating and cooling, oil, gas and hydrogen); transport (air, rail, water and road); banking; financial market infrastructures; health including manufacture of pharmaceutical products including vaccines; drinking water; waste water; digital infrastructure (internet exchange points; DNS service providers; TLD name registries; cloud computing service providers; data centre service providers; content delivery networks; trust service providers; providers of public electronic communications networks and publicly available electronic communications services); ICT service management (managed service providers and managed security service providers), public administration and space.
 >
 > Other critical sectors: postal and courier services; waste management; chemicals; food; manufacturing of medical devices, computers and electronics, machinery and equipment, motor vehicles, trailers and semi-trailers and other transport equipment; digital providers (online market places, online search engines, and social networking service platforms) and research organisations.
 

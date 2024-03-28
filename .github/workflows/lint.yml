@@ -3,19 +3,23 @@ name: lint
 on:
   pull_request:
     branches:
-      - 'main'
+      - main
 
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-      - uses: pre-commit/action@v2.0.0
-      - name: Test docs
-        run: |
-          python3 -m pip install -r ./requirements.txt
-          mkdocs build
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - uses: pre-commit/action@v3.0.1
+      - name: Install requirements
+        run: python3 -m pip install -r ./requirements.txt
+      - name: Build docs
+        run: mkdocs build
       - name: Check for stranded HTML tags in the rendered HTML which indicate broken Markdown code
         run: |
           FILES=$(find site -name '*.html' -print)

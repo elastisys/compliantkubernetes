@@ -1,7 +1,8 @@
 ---
 tags:
-- ISO 27001 A.13 Network Security
+  - ISO 27001 A.13 Network Security
 ---
+
 # Network Security Dashboard
 
 ## Relevant Regulations
@@ -17,6 +18,7 @@ tags:
 ### Swedish Patient Data Law
 
 !!!note
+
     This regulation is only available in Swedish. To avoid confusion, we decided not to produce an unofficial translation.
 
 [HSLF-FS 2016:40](https://www.socialstyrelsen.se/globalassets/sharepoint-dokument/artikelkatalog/foreskrifter-och-allmanna-rad/2016-4-44.pdf):
@@ -27,7 +29,7 @@ tags:
 
 ## Mapping to ISO 27001 Controls
 
-* [A.13 Communications Security](https://www.isms.online/iso-27001/annex-a-13-communications-security/)
+- [A.13 Communications Security](https://www.isms.online/iso-27001/annex-a-13-communications-security/)
 
 ## Compliant Kubernetes Network Security Dashboard
 
@@ -47,4 +49,4 @@ In less severe cases, simply contact the developers to investigate their code, f
 
 ## Further Reading
 
-* [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+- [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)

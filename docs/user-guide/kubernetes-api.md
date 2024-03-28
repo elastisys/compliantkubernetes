@@ -1,12 +1,12 @@
 ---
 description: How access to the Kubernetes API works in Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
 tags:
-- HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
-- HSLF-FS 2016:40 4 kap. 2 § Styrning av behörigheter
-- NIST SP 800-171 3.1.13
-- NIST SP 800-171 3.5.4
-- NIST SP 800-171 3.5.5
-- NIST SP 800-171 3.5.6
+  - HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
+  - HSLF-FS 2016:40 4 kap. 2 § Styrning av behörigheter
+  - NIST SP 800-171 3.1.13
+  - NIST SP 800-171 3.5.4
+  - NIST SP 800-171 3.5.5
+  - NIST SP 800-171 3.5.6
 ---
 
 # Kubernetes API
@@ -29,8 +29,8 @@ In order to follow [the principle of least privilege](https://en.wikipedia.org/w
 User access to the Kubernetes API may need to be restricted from case to case to follow the principle of least privilege.
 
 !!!note
-    Regardless of your privilege, you will not be able to see components such as Harbor and OpenSearch via the Kubernetes API. This is in order to comply with common logging policies, which requires logging to be sent to a tamper-proof environment. The tamper-proof environment needs to be separated from the production cluster.
 
+    Regardless of your privilege, you will not be able to see components such as Harbor and OpenSearch via the Kubernetes API. This is in order to comply with common logging policies, which requires logging to be sent to a tamper-proof environment. The tamper-proof environment needs to be separated from the production cluster.
 
 ## Usage guide
 
@@ -40,11 +40,11 @@ This section focuses on using the kubeconfig.
 
 The kubeconfig file can be used with `kubectl` by:
 
-* Setting and exporting the `KUBECONFIG` environment variable:
+- Setting and exporting the `KUBECONFIG` environment variable:
 
   ![Setting KUBECONFIG in terminal](img/kubeconfig-terminal.png)
 
-* Merging the configuration with your existing kubeconfig file, see [Kubernetes documentation on merging kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files).
+- Merging the configuration with your existing kubeconfig file, see [Kubernetes documentation on merging kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files).
 
 ### Authenticating to the Kubernetes API
 
@@ -83,6 +83,7 @@ kubectl config view --minify --output 'jsonpath={..namespace}'; echo
 To start, make sure you configure the Kubernetes cluster with an image pull secret. Ideally, you should create a container registry [Robot Account](https://goharbor.io/docs/2.2.0/working-with-projects/project-configuration/create-robot-accounts/), which only has pull permissions and use its token.
 
 !!!important
+
     Using your own registry credentials as an image pull secret, instead of creating a robot account, is against best practices and may violate data privacy regulations.
 
     Your registry credentials identify **you** and allow you to both push and pull images. A robot account should identify the Kubernetes cluster and only be allowed to pull images.
@@ -106,11 +107,13 @@ kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "pull-se
 ```
 
 !!!note
+
     For each Kubernetes namespace, you will have to create an image pull secret and configure it to be default. Aim to have a one-to-one-to-one mapping between Kubernetes namespaces, container registry projects and robot accounts.
 
 ### Deploy user demo
 
 !!!example
+
     Here is an [example Helm Chart](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/deploy/ck8s-user-demo) to get you started.
 
 If you haven't done so already, clone the user demo and ensure you are in the right folder:
@@ -174,10 +177,8 @@ curl --include https://demo.$DOMAIN
 
     In order for this to work, your administrator must configure the Nodes with zone labels. You can verify if this was performed correctly typing `kubectl get nodes --show-labels` and checking if Nodes feature the `topology.kubernetes.io/zone` label.
 
-
 ## Further reading
 
-* [dex on GitHub](https://github.com/dexidp/dex)
-* [oidc-login/kubelogin on GitHub](https://github.com/int128/kubelogin)
-* [Organizing Cluster Access Using kubeconfig Files
-](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
+- [dex on GitHub](https://github.com/dexidp/dex)
+- [oidc-login/kubelogin on GitHub](https://github.com/int128/kubelogin)
+- [Organizing Cluster Access Using kubeconfig Files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)

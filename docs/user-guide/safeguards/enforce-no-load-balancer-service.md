@@ -12,7 +12,7 @@ When attempting to apply a `Service` with `type: LoadBalancer` anyway, the follo
 > Creation of LoadBalancer Service is not supported.
 > Contact your platform administrator for questions about Load Balancers.
 
-``` yaml
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -27,8 +27,8 @@ spec:
       targetPort: 9376
 ```
 
-## How to solve:
+## How to solve
 
 Consult your platform documentation for how to handle load balancing.
 
--   [Service type: LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)
+- [Service type: LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)

@@ -1,6 +1,7 @@
 ---
 description: Learn what to expect from our different kinds of Compliant Kubernetes maintenance windows.
 ---
+
 # What to expect from maintenance
 
 ## Different kinds of maintenance

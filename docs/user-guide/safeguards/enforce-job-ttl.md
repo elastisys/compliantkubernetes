@@ -1,6 +1,7 @@
 ---
 tags: []
 ---
+
 # Improve platform stability: Job TTL
 
 In Kubernetes, Jobs that are not managed by a higher-level resource such as a Cronjob, will most likely not get cleaned up automatically as Jobs do not have a default time-to-live, TTL, configured.
@@ -10,4 +11,4 @@ However, by default in Compliant Kubernetes, Jobs that do not explicitly set a T
 
 ## Further Reading
 
-* [Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically)
+- [Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically)

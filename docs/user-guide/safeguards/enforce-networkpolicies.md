@@ -1,12 +1,14 @@
 ---
 tags:
-- ISO 27001 A.13.1 Network Security
-- BSI IT-Grundschutz APP.4.4.A7
-- BSI IT-Grundschutz APP.4.4.A18
+  - ISO 27001 A.13.1 Network Security
+  - BSI IT-Grundschutz APP.4.4.A7
+  - BSI IT-Grundschutz APP.4.4.A18
 ---
+
 # Reduce blast radius: NetworkPolicies
 
 !!!note
+
     This section helps you implement ISO 27001, specifically:
 
     * A.13.1.1 Network Controls
@@ -14,8 +16,9 @@ tags:
     * A.13.1.3 Segregation in Networks
 
 !!!important
-    * This safeguard is enabled by default with the enforcement action `deny` since [Compliant Kubernetes apps v0.19.0](../../release-notes/ck8s.md#v0190). As a result, resources that violate this policy will not be created.
-    * The default enforcement action for this safeguard has been changed to `warn` instead of `deny` since [Compliant Kubernetes apps v0.29.0](../../release-notes/ck8s.md#v0290). As a result, resources that violate this policy will generate warning messages, but will still be created.
+
+    - This safeguard is enabled by default with the enforcement action `deny` since [Compliant Kubernetes apps v0.19.0](../../release-notes/ck8s.md#v0190). As a result, resources that violate this policy will not be created.
+    - The default enforcement action for this safeguard has been changed to `warn` instead of `deny` since [Compliant Kubernetes apps v0.29.0](../../release-notes/ck8s.md#v0290). As a result, resources that violate this policy will generate warning messages, but will still be created.
 
 NetworkPolicies are useful in two cases: segregating tenants hosted in the same environment and further segregating application components. Both help you achieve better data protection.
 
@@ -45,10 +48,11 @@ Error: admission webhook "validation.gatekeeper.sh" denied the request: [denied 
 Then you are missing NetworkPolicies which select your Pods. The [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/networkpolicy.yaml) gives a good example to get you started.
 
 If your administrator has not enforced this policy yet, you can view current violations of the policy by running:
+
 ```bash
 kubectl get k8srequirenetworkpolicy.constraints.gatekeeper.sh require-networkpolicy -ojson | jq .status.violations
 ```
 
 ## Further Reading
 
-* [NetworkPolicies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+- [NetworkPolicies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)

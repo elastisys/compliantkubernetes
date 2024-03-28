@@ -1,13 +1,14 @@
 ---
 tags:
-- ISO 27001 A.12.2.1 Controls Against Malware
-- ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
-- ISO 27001 A.16 Information Security Incident Management
-- HIPAA S20 - Security Incident Procedures - § 164.308(a)(6)
-- MSBFS 2020:7 4 kap. 18 §
-- NIST SP 800-171 3.14.6
-- NIST SP 800-171 3.14.7
+  - ISO 27001 A.12.2.1 Controls Against Malware
+  - ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
+  - ISO 27001 A.16 Information Security Incident Management
+  - HIPAA S20 - Security Incident Procedures - § 164.308(a)(6)
+  - MSBFS 2020:7 4 kap. 18 §
+  - NIST SP 800-171 3.14.6
+  - NIST SP 800-171 3.14.7
 ---
+
 # Intrusion Detection Dashboard
 
 ## Relevant Regulations
@@ -23,6 +24,7 @@ tags:
 ### Swedish Patient Data Law
 
 !!!note
+
     This regulation is only available in Swedish. To avoid confusion, we decided not to produce an unofficial translation.
 
 [HSLF-FS 2016:40](https://www.socialstyrelsen.se/globalassets/sharepoint-dokument/artikelkatalog/foreskrifter-och-allmanna-rad/2016-4-44.pdf):
@@ -33,9 +35,9 @@ tags:
 
 ## Mapping to ISO 27001 Controls
 
-* [A.12.2.1 Controls Against Malware](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
-* [A.12.6.1 Management of Technical Vulnerabilities](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
-* [A.16.1.7 Collection of Evidence](https://www.isms.online/iso-27001/annex-a-16-information-security-incident-management/)
+- [A.12.2.1 Controls Against Malware](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
+- [A.12.6.1 Management of Technical Vulnerabilities](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
+- [A.16.1.7 Collection of Evidence](https://www.isms.online/iso-27001/annex-a-16-information-security-incident-management/)
 
 ## Compliant Kubernetes Intrusion Detection Dashboard
 

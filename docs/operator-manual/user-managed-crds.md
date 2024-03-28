@@ -51,5 +51,4 @@ gatekeeper:
     extraServiceAccounts: []
     #  - namespace: "gatekeeper-system"
     #    name: "gatekeeper-admin-upgrade-crds"
-
 ```

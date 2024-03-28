@@ -1,9 +1,10 @@
 ---
 tags:
-- MSBFS 2020:7 2 kap. 4 §
-- NIST SP 800-171 3.1.11
-- NIST SP 800-171 3.12.4
+  - MSBFS 2020:7 2 kap. 4 §
+  - NIST SP 800-171 3.1.11
+  - NIST SP 800-171 3.12.4
 ---
+
 # Architecture
 
 Below we present the architecture of Compliant Kubernetes, using the [C4 model](https://c4model.com/).
@@ -24,8 +25,8 @@ Most regulations require logging to a tamper-proof environment. This is usually 
 
 To achieve this, Compliant Kubernetes is implemented as two Kubernetes clusters
 
-* A **Workload Cluster**, which hosts your application, and
-* A **Management Cluster**, which hosts services for monitoring, logging and vulnerability management.
+- A **Workload Cluster**, which hosts your application, and
+- A **Management Cluster**, which hosts services for monitoring, logging and vulnerability management.
 
 ![C4 Model, Level 2 Diagram](img/ck8s-c4model-level2.png)
 
@@ -36,12 +37,13 @@ Click on the diagram below to see the nuts-and-bolts of Compliant Kubernetes.
 [![C4 Model, Level 3 Diagram](img/ck8s-c4model-level3.drawio.svg)](img/ck8s-c4model-level3.drawio.svg)
 
 !!!note
+
     Due to technical limitations, some compliance-related components still need to run in the Workload Cluster. These are visible when inspecting the Workload Cluster, for example, via the [Kubernetes API](user-guide/kubernetes-api.md). Currently, these components are:
 
-    * Falco, for intrusion detection;
-    * Prometheus, for collecting metrics;
-    * Fluentd, for collecting logs;
-    * OpenPolicyAgent, for enforcing Kubernetes API policies.
+    - Falco, for intrusion detection;
+    - Prometheus, for collecting metrics;
+    - Fluentd, for collecting logs;
+    - OpenPolicyAgent, for enforcing Kubernetes API policies.
 
     Note that, the logs, metrics and alerts produced by these components are immediately pushed into the tamper-proof logging environment, hence this technical limitation does not weaken compliance.
 

@@ -7,6 +7,7 @@
 %}
 
 !!!note
+
     CE certification of a medical device according to the EU MDR can lead a huge commercial benefit, but it is a significant project.
     To start the certification process thorough knowledge of the regulation is required.
 
@@ -36,5 +37,5 @@ While rather unlikely, you really want to make sure that your software medical d
 
 ## Further reading
 
-* [Regulation (EU) 2017/745 on Medical Devices](https://eur-lex.europa.eu/eli/reg/2017/745/2023-03-20)
-* [Medicintekniska produkter on IVO](https://www.ivo.se/vard-omsorgsgivare/anmal-handelse-lamna-underrattelse/medicintekniska-produkter/)
+- [Regulation (EU) 2017/745 on Medical Devices](https://eur-lex.europa.eu/eli/reg/2017/745/2023-03-20)
+- [Medicintekniska produkter on IVO](https://www.ivo.se/vard-omsorgsgivare/anmal-handelse-lamna-underrattelse/medicintekniska-produkter/)

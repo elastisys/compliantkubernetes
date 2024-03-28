@@ -1,8 +1,8 @@
 # Handle all CRDs with the standard Helm CRD management
 
-* Status: Accepted
-* Deciders: Arch Meeting
-* Date: 2024-02-22
+- Status: Accepted
+- Deciders: Arch Meeting
+- Date: 2024-02-22
 
 ## Context and Problem Statement
 
@@ -16,14 +16,14 @@ One example of an issue that this can cause is that both our Apps and Cluster AP
 
 ## Decision Drivers <!-- optional -->
 
-* We need to manage CRDs in a way that is consistent and that allows us to perform necessary actions in Apps without unintended effects on the environment.
-* We want to maintain separation of concerns between the Kubespray / Cluster API layer and our Apps layer.
+- We need to manage CRDs in a way that is consistent and that allows us to perform necessary actions in Apps without unintended effects on the environment.
+- We want to maintain separation of concerns between the Kubespray / Cluster API layer and our Apps layer.
 
 ## Considered Options
 
-* Option 1: Make cert-manager opt-in in Apps so that we can disable it for CAPI clusters, and let CAPI handle it.
-* Option 2: Improve Apps handling of CRDs, avoiding removing CRDs when uninstalling / cleaning apps, using the way Helm 3 recommends.
-* Option 3: Make use of CAPI Operator to handle missing certs.
+- Option 1: Make cert-manager opt-in in Apps so that we can disable it for CAPI clusters, and let CAPI handle it.
+- Option 2: Improve Apps handling of CRDs, avoiding removing CRDs when uninstalling / cleaning apps, using the way Helm 3 recommends.
+- Option 3: Make use of CAPI Operator to handle missing certs.
 
 ## Decision Outcome
 
@@ -31,8 +31,9 @@ Chosen option: "Option 2". We decided to supersede [ADR-0011](0011-let-upstream-
 
 ### Positive Consequences <!-- optional -->
 
-* CRDs will be handled in the same way independent of which project / app it is created by.
-* Decreases the risk of accidentally deleting Custom Resources and leaving environments in undefined states.
+- CRDs will be handled in the same way independent of which project / app it is created by.
+- Decreases the risk of accidentally deleting Custom Resources and leaving environments in undefined states.
+
 ### Negative Consequences <!-- optional -->
 
-* Will require increased maintenance and development efforts from us to properly handle CRDs for all apps.
+- Will require increased maintenance and development efforts from us to properly handle CRDs for all apps.

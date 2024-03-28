@@ -82,10 +82,12 @@ sudo ${RUNTIME} push ${PRIVATE_REGISTRY}/${IMAGE_NAME}
 
 Configure the container registry mirror for the container runtime. If you are using Kubespray and `containerd` you can configure mirrors as follows:
 
+<!-- prettier-ignore-start -->
+
 ```yaml
 registry_addr: "registry.air-gapped.internal"
 registry_host: "https://registry.air-gapped.internal" # change to http:// if not available over HTTPS
-registry_insecure: false  # set to true if HTTP
+registry_insecure: false # set to true if HTTP
 
 containerd_registries_mirrors:
   - prefix: "{{ registry_addr }}"
@@ -119,6 +121,7 @@ containerd_registries_mirrors:
         capabilities: ["pull", "resolve"]
         skip_verify: {{ registry_verify }}
 ```
+<!-- prettier-ignore-end -->
 
 !!!warning
 
@@ -210,7 +213,7 @@ opensearch:
   plugins:
     installExternalObjectStoragePlugin: false
     additionalPlugins:
-    - fileserver.air-gapped.internal:8080/repository-s3-${OPENSEARCH_VERSION}.zip
+      - fileserver.air-gapped.internal:8080/repository-s3-${OPENSEARCH_VERSION}.zip
 ```
 
 ### Trivy
@@ -260,7 +263,7 @@ networkPolicies:
       ips:
         - 10.65.131.137/32 # set this to the IP of fileserver.air-gapped.internal
       ports:
-        - 8080  # the file-server is hosted on port 8080
+        - 8080 # the file-server is hosted on port 8080
 ```
 
 ### Custom alerting receiver
@@ -271,37 +274,37 @@ It is possible to configure your own alerting receivers for Alertmanager, which 
 alerts:
   alertsTo: email
   customReceivers:
-  - name: 'email'
-    email_configs:
-    - to: 'admin@example.com'
-      from: 'prometheus@example.com'
-      require_tls: false
-      send_resolved: true
+    - name: "email"
+      email_configs:
+        - to: "admin@example.com"
+          from: "prometheus@example.com"
+          require_tls: false
+          send_resolved: true
 ```
 
 ## Demo
 
 Following are some screenshots of an air-gapped Compliant Kubernetes Environment, accessing Service Endpoints on the local air-gapped domain by using a [SOCKS proxy](https://en.wikipedia.org/wiki/SOCKS) in Firefox over an SSH tunnel. Accessing Grafana Dashboards:
 
-![](../img/air-gapped-grafana.png)
+![Air-gapped Grafana](../img/air-gapped-grafana.png)
 
 Signing in with Dex will redirect to the Dex Service Endpoint for authentication (in this case a static user is used):
 
-![](../img/air-gapped-dex.png)
+![Air-gapped Dex](../img/air-gapped-dex.png)
 
 Checking the endpoint of the [user demo](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo) application:
 
-![](../img/air-gapped-demo.png)
+![Air-gapped User Demo](../img/air-gapped-demo.png)
 
 Seeing HTTP metrics for the `/users` endpoint of the user demo in Grafana Dashboards:
 
-![](../img/air-gapped-grafana-demo.png)
+![Air-gapped User Demo metrics in Grafana](../img/air-gapped-grafana-demo.png)
 
 Seeing logs from the user demo pods in OpenSearch Dashboards:
 
-![](../img/air-gapped-opensearch-demo.png)
+![Air-gapped User Demo logs in OpenSearch Dashboards](../img/air-gapped-opensearch-demo.png)
 
 ## References
 
-- [Air gap (networking) on Wikipedia](https://en.wikipedia.org/wiki/Air_gap_(networking))
+- [Air gap (networking) on Wikipedia](<https://en.wikipedia.org/wiki/Air_gap_(networking)>)
 - [Kubespray offline environment documentation](https://kubespray.io/#/docs/offline-environment)

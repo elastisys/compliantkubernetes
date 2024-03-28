@@ -1,12 +1,12 @@
 ---
 tags:
-- ISO 27001 A.12.3.1 Information Backup
-- ISO 27001 A.17.1.1 Planning Information Security Continuity
-- BSI IT-Grundschutz APP.4.4.A5
-- HIPAA S23 - Contingency Plan - Data Backup Plan - § 164.308(a)(7)(ii)(A)
-- MSBFS 2020:7 4 kap. 14 §
-- MSBFS 2020:7 4 kap. 15 §
-- HSLF-FS 2016:40 3 kap. 12 § Säkerhetskopiering
+  - ISO 27001 A.12.3.1 Information Backup
+  - ISO 27001 A.17.1.1 Planning Information Security Continuity
+  - BSI IT-Grundschutz APP.4.4.A5
+  - HIPAA S23 - Contingency Plan - Data Backup Plan - § 164.308(a)(7)(ii)(A)
+  - MSBFS 2020:7 4 kap. 14 §
+  - MSBFS 2020:7 4 kap. 15 §
+  - HSLF-FS 2016:40 3 kap. 12 § Säkerhetskopiering
 ---
 
 # Backup Dashboard
@@ -22,6 +22,7 @@ tags:
 ### Swedish Patient Data Law
 
 !!!note
+
     This regulation is only available in Swedish. To avoid confusion, we decided not to produce an unofficial translation.
 
 [HSLF-FS 2016:40](https://www.socialstyrelsen.se/globalassets/sharepoint-dokument/artikelkatalog/foreskrifter-och-allmanna-rad/2016-4-44.pdf):
@@ -37,8 +38,8 @@ tags:
 
 ## Mapping to ISO 27001 Controls
 
-* [A.12.3.1 Information Backup](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
-* [A.17.1.1 Planning Information Security Continuity](https://www.isms.online/iso-27001/annex-a-17-information-security-aspects-of-business-continuity-management/)
+- [A.12.3.1 Information Backup](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
+- [A.17.1.1 Planning Information Security Continuity](https://www.isms.online/iso-27001/annex-a-17-information-security-aspects-of-business-continuity-management/)
 
 ## Compliant Kubernetes Backup Dashboard
 
@@ -50,5 +51,5 @@ The Compliant Kubernetes Backup Dashboard allows to quickly audit the status of 
 
 In case there is a violation of backup policies:
 
-* Ask the administrator to check the status of the [backup jobs](../operator-manual/disaster-recovery.md).
-* Ask the developers to check if they correctly marked Kubernetes resources with the necessary [backup annotations](../user-guide/backup.md).
+- Ask the administrator to check the status of the [backup jobs](../operator-manual/disaster-recovery.md).
+- Ask the developers to check if they correctly marked Kubernetes resources with the necessary [backup annotations](../user-guide/backup.md).
