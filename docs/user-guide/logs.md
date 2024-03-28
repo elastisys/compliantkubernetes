@@ -301,7 +301,4 @@ This dashboard can be viewed to get a quick overview of the cluster's state.
 
 * [OpenSearch](https://opensearch.org/)
 * [OpenSearch Dashboards](https://opensearch.org/docs/latest/dashboards/index/)
-* [Open Distro for Elasticsearch](https://opendistro.github.io/for-elasticsearch/)
-* [Kibana](https://opendistro.github.io/for-elasticsearch-docs/docs/kibana/)
-* [Open Distro for Elasticsearch – How Different Is It?](https://logz.io/blog/open-distro-for-elasticsearch/)
 * [Fluentd](https://www.fluentd.org/)
