@@ -9,9 +9,8 @@ This is the main repository for documentation about the Compliant Kubernetes pro
 
 ## Prerequisites
 
-```
-pip3 install -r requirements.txt
-```
+Python 3. Should already be present on any decent Linux/macOS.
+
 
 For generating figures, please install:
 
@@ -27,7 +26,16 @@ npm install -g sass
 
 ## Usage
 
-* To view locally: `mike deploy compliantkubernetes ck8s -t 'main'` and then `mike serve`.
+To view locally:
+
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install -r requirements.txt
+
+mike serve
+```
+
 * To re-generate figures: `make -C docs/img`. **For simplicity, please commit generated figures. Prefer PNG (width == 1200px), to facilitate embedded logos.**
 * For continuous preview of figures: `make -C docs/img preview`.
 * To generate `docs/stylesheets/style.css`, please use `sass extra_sass/style.css.scss > docs/stylesheets/style.css`.
