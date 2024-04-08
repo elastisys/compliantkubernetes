@@ -1,2 +1,11 @@
-linkchecker
-pdfminer
+beautifulsoup4==4.12.3
+certifi==2024.2.2
+charset-normalizer==3.3.2
+dnspython==2.6.1
+idna==3.6
+LinkChecker==10.4.0
+pdfminer==20191125
+pycryptodome==3.20.0
+requests==2.31.0
+soupsieve==2.5
+urllib3==2.2.1
