@@ -2,6 +2,7 @@
 tags:
 - HIPAA S48 - Audit Controls - § 164.312(b)
 - GDPR Art. 17 Right to erasure ("right to be forgotten")
+- HSLF-FS 2016:40 4 kap. 9 § Kontroll av åtkomst till uppgifter
 ---
 # Long-term log retention
 
