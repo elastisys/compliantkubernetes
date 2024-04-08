@@ -9,8 +9,11 @@ This is the main repository for documentation about the Compliant Kubernetes pro
 
 ## Prerequisites
 
-Python 3. Should already be present on any decent Linux/macOS.
+[Python 3](https://www.python.org/). You can check that it is already present on your Linux/macOS as follows:
 
+```
+python3 --version
+```
 
 For generating figures, please install:
 
