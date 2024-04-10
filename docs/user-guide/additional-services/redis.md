@@ -37,7 +37,7 @@ This page will help you succeed in connecting your application to a low-latency 
     * Session state: If this is lost, the user experience might be impacted -- e.g., the user needs to re-login -- but no data should be lost.
 
 !!!important "Important: Sentinel support"
-    We recommend a highly available setup with at minimum three instances. The Redis client library that you use in your application needs to support [Redis Sentinel](https://redis.io/topics/sentinel/). Notice that clients with Sentinel support need [extra steps to discover the Redis primary](https://redis.io/topics/sentinel-clients/).
+    We recommend a highly available setup with at minimum three instances. The Redis client library that you use in your application needs to support [Redis Sentinel](https://redis.io/topics/sentinel/). Notice that clients with Sentinel support need [extra steps to discover the Redis primary](https://redis.io/docs/latest/develop/reference/sentinel-clients/).
 
 ## Install Prerequisites
 
