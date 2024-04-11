@@ -163,6 +163,6 @@ The default `timeout` for our Managed Redis is set to `0`, which means the idle 
 ## Further Reading
 
 * [Redis Sentinel](https://redis.io/topics/sentinel/)
-* [Guidelines for Redis clients with support for Redis Sentinel](https://redis.io/topics/sentinel-clients/)
+* [Sentinel client spec](https://redis.io/docs/latest/develop/reference/sentinel-clients/)
 * [Redis Commands](https://redis.io/commands/)
 * [Kubernetes ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/)
