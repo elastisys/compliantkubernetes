@@ -4,6 +4,7 @@
 
 ## Compliant Kubernetes
 <!-- BEGIN TOC -->
+- [v0.37.0](#v0370) - 2024-04-12
 - [v0.36.0](#v0360) - 2024-02-12
 - [v0.34.2](#v0342) - 2024-01-16
 - [v0.35.1](#v0351) - 2024-01-16
@@ -42,6 +43,18 @@
 
 !!!note
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
+
+## v0.37.0
+
+Released 2024-04-12
+
+### Improvement(s)
+
+- Opensearch and Opensearch Dashboards were upgraded to v2.12
+- Grafana was upgraded to v10.4
+- Falco was upgraded to v0.37.1
+- A new capacity management Grafana dashboard is now available. This will give better visibility over resource usage per node groups
+- We recommend using the [ingressClassName](https://cert-manager.io/docs/configuration/acme/http01/#ingressclassname) field over the `class` field for cert-manager issuers
 
 ## v0.36.0
 
