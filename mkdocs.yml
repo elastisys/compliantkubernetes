@@ -256,7 +256,6 @@ nav:
     - 'CK8S Jaeger': 'release-notes/jaeger.md'
     - 'CK8S Argo CD': 'release-notes/argocd.md'
   - 'Glossary': 'glossary.md'
-  - 'Roadmap': 'roadmap.md'
   - 'Fully Managed Compliant Kubernetes': 'https://elastisys.com/managed-services/'
   - 'Support for Self-Managed Compliant Kubernetes': 'https://elastisys.com/self-managed/'
   - 'Consulting': 'https://elastisys.com/consulting/'
