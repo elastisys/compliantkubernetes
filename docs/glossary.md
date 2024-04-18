@@ -153,7 +153,7 @@ In particular, they need to take certain measures related to information securit
 There is no clear definition for Essential Entities.
 Instead, EU Member States must implement a process for identifying essential entities based on a list of sectors of high criticality published in NIS2.
 
-This process is currently under development in most EU Member State.
+This process is currently under development in most EU Member States.
 As an example on how this process could look like, please refer to the NIS-era [MSBFS 2024:4 rule](https://www.msb.se/contentassets/b15833b9aaa0425ca0c898cc0a120c81/myndigheten-for-samhallsskydd-och-beredskaps-foreskrifter-om-anmalan-och-identifiering-av-leverantorer-av-samhallsviktiga-tjanster-2024-4-pdf.pdf).
 
 Usage notes:
