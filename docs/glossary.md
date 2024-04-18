@@ -150,7 +150,7 @@ Usage notes:
 Essential Entities are organizations which are considered to provide essential services to society and have obligations according to the [EU NIS2 Directive](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/).
 In particular, they need to take certain measures related to information security and cybersecurity.
 
-There is not clear definition for Essential Entities.
+There is no clear definition for Essential Entities.
 Instead, EU Member States must implement a process for identifying essential entities based on a list of sectors of high criticality published in NIS2.
 
 This process is currently under development in most EU Member State.
