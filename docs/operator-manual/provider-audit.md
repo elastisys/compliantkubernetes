@@ -84,6 +84,7 @@ The remainder of this page contains open questions that you should ask your Infr
         1. [For NFS] How did you configure [User ID Mapping](https://linux.die.net/man/5/exports#:~:text=User%20ID%20Mapping), specifically `root_squash`, `no_root_squash`, `all_squash`, `anonuid` and `anongid`? Mapping the root UID to values typically used by containers, e.g., 1000, will lead to permission denied errors. For example, OpenSearch's init containers do `chown 1000` which fails with `squash_root` and `anonuid=1000`.
         1. Is BSaaS stretched across zones?
         1. Is block storage replicated across zones?
+        1. Does the CSI driver support the Snapshot feature? This is needed for more consistent Velero backups.
     1. Do you offer encryption-at-rest?
         1. Encrypted object storage: Do you offer this by default?
         1. Encrypted block storage: Do you offer this by default?
