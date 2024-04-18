@@ -97,13 +97,16 @@ See also:
 
 ## Critical Entity
 
-To paraphrase the [EU Critical Entities Resilience (CER) Directive](https://eur-lex.europa.eu/eli/dir/2022/2557/oj#d1e32-193-1): critical entities are providers of essential services, and they play an indispensable role in the maintenance of vital societal functions or economic activities in the internal market in an increasingly interdependent Union economy.
-In particular, they all need to take various measures related to physical and staff security.
+To quote the [EU Critical Entities Resilience (CER) Directive](https://eur-lex.europa.eu/eli/dir/2022/2557/oj#d1e32-193-1):
 
-The EU CER Directive refers to the related [EU NIS2 Directive](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2555) in which it is stated that critical entities within the digital infrastructure setting must take appropriate and proportionate technical, operational and organisational measures to manage the risks posed to the security of network and information systems and to notify significant incidents and cyber threats.
+> Critical entities, as providers of essential services, play an indispensable role in the maintenance of vital societal functions or economic activities in the internal market in an increasingly interdependent Union economy.
+
+In particular, they all need to take various measures related to physical and staff security.
 
 However, there is no single clear definition for Critical Entities.
 Instead, EU Member States must implement a process for identifying critical entities based on categories of entities published in EU CER Directive.
+
+All entities identified as critical under CER are considered [essential entities](#essential-entity) under the [EU NIS2 Directive](https://eur-lex.europa.eu/eli/dir/2022/2555).
 
 See also:
 
