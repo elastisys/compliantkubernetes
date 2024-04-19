@@ -95,6 +95,23 @@ See also:
 
 * [Contributor Guide](contributor-guide/index.md)
 
+## Critical Entity
+
+To quote the [EU Critical Entities Resilience (CER) Directive](https://eur-lex.europa.eu/eli/dir/2022/2557/oj#d1e32-193-1):
+
+> Critical entities, as providers of essential services, play an indispensable role in the maintenance of vital societal functions or economic activities in the internal market in an increasingly interdependent Union economy.
+
+In particular, they all need to take various measures related to physical and staff security.
+
+However, there is no single clear definition for Critical Entities.
+Instead, EU Member States must implement a process for identifying critical entities based on categories of entities published in EU CER Directive.
+
+All entities identified as critical under CER are considered [essential entities](#essential-entity) under the [EU NIS2 Directive](https://eur-lex.europa.eu/eli/dir/2022/2555).
+
+See also:
+
+* [EU Critical Entities Resilience (CER) Directive: Categories of Entities](https://eur-lex.europa.eu/eli/dir/2022/2557/oj#d1e32-193-1)
+
 ## Customer
 
 Someone who benefits from Compliant Kubernetes via a commercial agreement.
@@ -132,6 +149,26 @@ One instance of a Compliant Kubernetes deployment. One Environment is composed o
 Usage notes:
 
 * Make sure to distinguish between Environment and Cluster.
+
+## Essential Entity
+
+Essential Entities are organizations which are considered to provide essential services to society and have obligations according to the [EU NIS2 Directive](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/).
+In particular, they need to take certain measures related to information security and cybersecurity.
+
+There is no clear definition for Essential Entities.
+Instead, EU Member States must implement a process for identifying essential entities based on a list of sectors of high criticality published in NIS2.
+
+This process is currently under development in most EU Member States.
+As an example on how this process could look like, please refer to the NIS-era [MSBFS 2024:4 rule](https://www.msb.se/contentassets/b15833b9aaa0425ca0c898cc0a120c81/myndigheten-for-samhallsskydd-och-beredskaps-foreskrifter-om-anmalan-och-identifiering-av-leverantorer-av-samhallsviktiga-tjanster-2024-4-pdf.pdf).
+
+Usage notes:
+
+* The EU NIS2 Directive also introduces "important entities". These organizations have somewhat lower obligations under NIS2 and are subject to lower maximum fines.
+
+See also:
+
+* [EU NIS2 Directive: Sectors of High Criticality](https://eur-lex.europa.eu/eli/dir/2022/2555/oj#d1e32-143-1)
+* [Swedish MSBFS 2024:4 Rules on identification of providers of essential services](https://www.msb.se/contentassets/b15833b9aaa0425ca0c898cc0a120c81/myndigheten-for-samhallsskydd-och-beredskaps-foreskrifter-om-anmalan-och-identifiering-av-leverantorer-av-samhallsviktiga-tjanster-2024-4-pdf.pdf)
 
 ## Kubernetes Cluster
 
@@ -203,6 +240,38 @@ Usage notes:
 See also:
 
 * [Open source Maintainers on Linux Foundation](https://www.linuxfoundation.org/blog/open-source-Maintainers-what-they-need-and-how-to-support-them)
+
+## Personal Data Controller
+
+Defined in [Art. 4 GDPR](https://gdpr.fan/a4) as:
+
+> the natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data; where the purposes and means of such processing are determined by Union or Member State law, the controller or the specific criteria for its nomination may be provided for by Union or Member State law;
+
+In brief, this is the organization which decides or influences what goes in the privacy policy.
+
+Usage notes:
+
+* "Controller" can also refer to the [Controller pattern](https://kubernetes.io/docs/concepts/architecture/controller/) in Kubernetes. Only use "controller" (without "personal data" or "Kubernetes") if the reader can understand from the context which one you refer to.
+
+See also:
+
+* [Art. 4 GDPR](https://gdpr.fan/a4)
+
+## Personal Data Processor
+
+Defined in [Art. 4 GDPR](https://gdpr.fan/a4) as:
+
+> a natural or legal person, public authority, agency or other body which processes personal data on behalf of the controller;
+
+In brief, this is the organization that receives instructions from the data controller and -- with few exceptions -- can only process personal data as instructed.
+
+Usage notes:
+
+* The GDPR **does not** define the concept of "sub-processor". In practice, the term "sub-processor" is employed to denote a processor acting under the authority of another processor. For example, it is typical to hear something along the lines of: "The healthcare provider is the data controller, their healthcare booking software provider a data processor and the cloud provider their data sub-processor". However, legally speaking and according to GDPR definitions (where there is no such thing as a sub-processor), the cloud provider would also be a data processor.
+
+See also:
+
+* [Art. 4 GDPR](https://gdpr.fan/a4)
 
 ## Platform Administrator
 
