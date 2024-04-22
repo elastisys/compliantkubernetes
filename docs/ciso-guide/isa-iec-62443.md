@@ -37,7 +37,7 @@ The fine-grained access control described above is carefully configure to ensure
 For example, Compliant Kubernetes technically prevents Application Developers to make any changes which may compromise the security of the platform.
 This includes compromising or working around access control, logging, monitoring, backups, alerting, etc.
 
-Furthermore, Compliant Kubernetes comes with various [safeguards](../user-guide/safeguards.md) to make it hard to Application Developers to do the wrong thing, like running containers as root.
+Furthermore, Compliant Kubernetes comes with various [safeguards](../user-guide/safeguards/index.md) to make it hard to Application Developers to do the wrong thing, like running containers as root.
 This ensures both system integrity and data confidentiality, e.g., Application Developers cannot take over the operating system on a Node.
 
 ## FR 5: Restricted Data Flow (Microsegmentation)
