@@ -123,4 +123,5 @@ Please read the [upstream documentation](https://grafana.com/docs/grafana/latest
 
 ## Application Logs (OpenSearch Dashboards)
 
-TBD
+For improved security and due to technical limitations, OpenSearch permissions can only be configured by the Platform Administrator.
+Contact them to change access control to application logs.
