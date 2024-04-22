@@ -267,11 +267,13 @@ In brief, this is the organization that receives instructions from the data cont
 
 Usage notes:
 
-* The GDPR **does not** define the concept of "sub-processor". In practice, the term "sub-processor" is employed to denote a processor acting under the authority of another processor. For example, it is typical to hear something along the lines of: "The healthcare provider is the data controller, their healthcare booking software provider a data processor and the cloud provider their data sub-processor". However, legally speaking and according to GDPR definitions (where there is no such thing as a sub-processor), the cloud provider would also be a data processor.
+* The GDPR **does not** define the concept of "sub-processor".
+However, the European Data Protection Board (EDPB) encourages using the term "sub-processor" to denote an organization which acts under the instructions of the processor.
 
 See also:
 
 * [Art. 4 GDPR](https://gdpr.fan/a4)
+* [What is a sub-processor? Data Protection Guide for Small Business by the EDPB](https://www.edpb.europa.eu/sme-data-protection-guide/data-controller-data-processor_en#toc-5)
 
 ## Platform Administrator
 
