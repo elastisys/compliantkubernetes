@@ -239,6 +239,7 @@ nav:
       - 'ciso-guide/vulnerability.md'
       - 'ciso-guide/log-review.md'
     - 'FAQ': 'ciso-guide/faq.md'
+    - 'Software Bill of Materials (SBOM)': 'ciso-guide/sbom.md'
     - 'How do I comply with GDPR Art. 17 Right to erasure ("right to be forgotten")?': 'ciso-guide/gdpr-art-17.md'
     - "How do I comply with HSLF-FS 2016:40 4 kap. 9 § Kontroll av åtkomst till uppgifter?": "ciso-guide/pdl-audit-logs.md"
   - 'For Contributors':
