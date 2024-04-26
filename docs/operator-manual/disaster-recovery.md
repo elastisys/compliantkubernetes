@@ -374,7 +374,8 @@ If a clean wipe is the desired behavior, then the volume must be wiped manually 
   To recover directly from off-site backup the backup-location must be reconfigured:
 
   ```bash
-  export S3_BUCKET="<off-site-s3-bucket>"
+  export CLUSTER="<sc|wc>"
+  export S3_BUCKET="<off-site-s3-bucket>" # Do not include s3:// prefix
   export S3_PREFIX="<service-cluster|workload-cluster>"
   export S3_ACCESS_KEY=$(sops -d --extract '["objectStorage"]["sync"]["s3"]["accessKey"]' "$CK8S_CONFIG_PATH/secrets.yaml")
   export S3_SECRET_KEY=$(sops -d --extract '["objectStorage"]["sync"]["s3"]["secretKey"]' "$CK8S_CONFIG_PATH/secrets.yaml")
@@ -382,13 +383,11 @@ If a clean wipe is the desired behavior, then the volume must be wiped manually 
   export S3_ENDPOINT=$(yq r "$CK8S_CONFIG_PATH/sc-config.yaml" "objectStorage.sync.s3.regionEndpoint")
   export S3_PATH_STYLE=$(yq r "$CK8S_CONFIG_PATH/sc-config.yaml" "objectStorage.sync.s3.forcePathStyle")
 
+  # Delete backups from default backup location, note that this is only the backup metadata
+  ./bin/ck8s ops kubectl "${CLUSTER}" -n velero delete backups.velero.io --all
+
   # Delete default backup location
   velero backup-location delete default
-
-  # Delete backups from default backup location, note that this is only the backup metadata
-  ./bin/ck8s ops kubectl sc -n velero delete backups.velero.io --all
-
-  ./bin/ck8s ops kubectl wc -n velero delete backups.velero.io --all
 
   # Create off-site credentials
   kubectl -n velero create secret generic velero-backup \
@@ -419,21 +418,15 @@ If a clean wipe is the desired behavior, then the volume must be wiped manually 
   Updating or syncing the Helm chart:
 
   ```bash
-  ./bin/ck8s ops helmfile sc -f helmfile -l app=velero -i apply
-
-  ./bin/ck8s ops helmfile wc -f helmfile -l app=velero -i apply
+  ./bin/ck8s ops helmfile "${CLUSTER}" -f helmfile -l app=velero -i apply
   ```
 
   The secret and the backup metadata from the off-site backups can be deleted:
 
   ```bash
-  ./bin/ck8s ops kubectl sc -n velero delete secret velero-backup
-  ./bin/ck8s ops kubectl sc -n velero delete backups.velero.io --all
-  ./bin/ck8s ops kubectl sc -n velero delete backupstoragelocations.velero.io backup
-
-  ./bin/ck8s ops kubectl wc -n velero delete secret velero-backup
-  ./bin/ck8s ops kubectl wc -n velero delete backups.velero.io --all
-  ./bin/ck8s ops kubectl wc -n velero delete backupstoragelocations.velero.io backup
+  ./bin/ck8s ops kubectl "${CLUSTER}" -n velero delete secret velero-backup
+  ./bin/ck8s ops kubectl "${CLUSTER}" -n velero delete backups.velero.io --all
+  ./bin/ck8s ops kubectl "${CLUSTER}" -n velero delete backupstoragelocations.velero.io backup
   ```
 
 ## Grafana
