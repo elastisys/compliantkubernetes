@@ -28,7 +28,7 @@ An SBOM is probably the first step to comply with the proposed [EU Cyber Resilie
 ## Our SBOM Philosophy
 
 There is an [ocean of tools](https://spdx.dev/use/tools/open-source-tools/) capable to generate a SBOM in a machine-readable format like [SPDX](https://spdx.dev/).
-Unfortunately, these tools create a lot of data, but not so much insight.
+Unfortunately, these tools create a lot of data, but not so much insight that is easy to grasp.
 In fact, the value of an SBOM doesn't come from **generating** it.
 Instead, the value of an SBOM comes from **assessing** the suitability of each component in the inventory to the [product's mission and vision](../mission-and-vision.md).
 
