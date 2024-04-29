@@ -48,6 +48,6 @@ Our attention is directed at assessing each top-level component and ensuring tha
 
 ## SBOM
 
-Given the above, we publish our SBOM for each version of Compliant Kubernetes at <https://github.com/elastisys/compliantkubernetes-apps/blob/main/docs/sbom.md>.
+Given the above, we publish our SBOM within the scope of the [Compliant Kubernetes layer](../architecture.md#level-3-individual-components) for each version of Compliant Kubernetes at <https://github.com/elastisys/compliantkubernetes-apps/blob/main/docs/sbom.md>.
 
 If desired, we can share internal documents on how we assessed the suitability of each component.
