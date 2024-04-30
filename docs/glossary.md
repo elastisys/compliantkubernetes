@@ -266,13 +266,13 @@ In brief, this is the organization that receives instructions from the data cont
 
 Usage notes:
 
-* The GDPR **does not** define the concept of "sub-processor".
-However, the European Data Protection Board (EDPB) encourages using the term "sub-processor" to denote an organization which acts under the instructions of the processor.
+- The GDPR **does not** define the concept of "sub-processor".
+  However, the European Data Protection Board (EDPB) encourages using the term "sub-processor" to denote an organization which acts under the instructions of the processor.
 
 See also:
 
-* [Art. 4 GDPR](https://gdpr.fan/a4)
-* [What is a sub-processor? Data Protection Guide for Small Business by the EDPB](https://www.edpb.europa.eu/sme-data-protection-guide/data-controller-data-processor_en#toc-5)
+- [Art. 4 GDPR](https://gdpr.fan/a4)
+- [What is a sub-processor? Data Protection Guide for Small Business by the EDPB](https://www.edpb.europa.eu/sme-data-protection-guide/data-controller-data-processor_en#toc-5)
 
 ## Platform Administrator
 
