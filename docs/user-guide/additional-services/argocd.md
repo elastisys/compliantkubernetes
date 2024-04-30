@@ -418,13 +418,14 @@ The reason for this choice is that, according to the [Compliant Kubernetes missi
 
 ArgoCD is not allowed to manage its own namespace. This means that features such as [Apps of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern) does not work by default. Read more about the decision [here](../../adr/0044-argocd-managing-its-own-namespace.md).
 
-!!! elastisys "Apps of Apps Alpha"
+!!! elastisys "Apps of Apps (preview)"
 
-    Using Apps of Apps with our offering is currently an alpha feature, and customers can request it, provided they accept risks such as:
+    This is a preview feature. For more information, please read [ToS 9.1 Preview Features](https://elastisys.com/legal/terms-of-service/#91-preview-features).
+    Using Apps of Apps with our offering is currently a preview feature, and customers can request it, provided they accept risks such as:
 
     -  When Apps-of-Apps is enabled, we will not be able to provide Uptime SLAs for you on the Argo Endpoint (This will be a best effort support even in future premium environments, unless the Argo project develops the feature upstream in a more secure and isolated way)
 
-    - Apps-of-Apps will currently be regarded as an alpha feature and, as such, we reserve the right to disable it if it interferes with our OPS policies/practices – should that unfortunate event happen, it will be in dialogue with the customer.
+    - Apps-of-Apps will currently be regarded as a preview feature and, as such, we reserve the right to disable it if it interferes with our OPS policies/practices – should that unfortunate event happen, it will be in dialogue with the customer.
 
 ArgoCD cannot create [HNC](https://github.com/kubernetes-sigs/hierarchical-namespaces) namespaces and deploy services into them. This means that as an Application Developer you cannot template the namespace as a value in a manifest. As an Application Developer you need to create subnamespaces manually and deploy applications into it. Read more about the decision [here](../../adr/0042-argocd-dynamic-hnc-namespaces.md).
 
