@@ -1,5 +1,4 @@
-Kafka® (self-managed)
-===========
+# Kafka® (self-managed)
 
 {%
  include-markdown './_common.include'
@@ -20,6 +19,7 @@ Strimzi is a [CNCF Sandbox project](https://www.cncf.io/projects/strimzi/)
 This page will show you how to install Strimzi Kafka Operator on Elastisys Compliant Kubernetes. You can configure the operator to watch a single or multiple Namespaces.
 
 !!! Note "Supported versions"
+
     This installation guide has been tested with Strimzi Kafka Operator version [0.38.0](https://github.com/strimzi/strimzi-kafka-operator/tree/0.38.0).
 
 ## Enable Self-Managed Kafka
@@ -32,15 +32,15 @@ Strimzi Kafka Operator also requires the image repository `quay.io/strimzi` to b
 
 In Kubernetes you will need to:
 
-1. Install the required CRDs
+1.  Install the required CRDs
 
-2. Create a Namespace for Strimzi Kafka Operator.
+1.  Create a Namespace for Strimzi Kafka Operator.
 
-3. Create Roles/RoleBindings for Strimzi Kafka Operator.
+1.  Create Roles/RoleBindings for Strimzi Kafka Operator.
 
-4. Create ServiceAccount and ConfigMap for Strimzi Kafka Operator.
+1.  Create ServiceAccount and ConfigMap for Strimzi Kafka Operator.
 
-#### CRDs
+### CRDs
 
 You need to apply the Custom Resource Definitions (CRDs) required by Strimzi Kafka Operator. This is typically not allowed in a Compliant Kubernetes Environment, but with Kafka enabled with the self-managed cluster resources feature, this allows you to apply these yourself.
 
@@ -53,13 +53,13 @@ curl -L https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.38
 kubectl apply -f crds/kafka-crds.yaml
 ```
 
-#### Namespace
+### Namespace
 
 You need to create a Namespace where Strimzi Kafka Operator will work. This Namespace should be called `kafka`. Create this [sub-namespace](../namespaces.md) under eg. `production`.
 
 `kubectl hns create -n production kafka`
 
-#### Roles and RoleBindings
+### Roles and RoleBindings
 
 You need to create the necessary Roles for Strimzi Kafka Operator to function. This needs to be done in every Namespace that you want Strimzi Kafka Operator to work in.
 
@@ -80,7 +80,7 @@ curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/u
 kubectl apply -k roles
 ```
 
-#### ServiceAccount and ConfigMap
+### ServiceAccount and ConfigMap
 
 You need to create the ServiceAccount and ConfigMap that Strimzi Kafka Operator will use.
 
@@ -106,7 +106,7 @@ securityContext:
   allowPrivilegeEscalation: false
   capabilities:
     drop:
-    - ALL
+      - ALL
   readOnlyRootFilesystem: true
   runAsNonRoot: true
   seccompProfile:
@@ -190,16 +190,16 @@ kubectl exec -it kafka-consumer -- bin/kafka-console-consumer.sh --bootstrap-ser
 
 ## Further reading
 
-* [Strimzi Overview](https://strimzi.io/docs/operators/0.38.0/overview)
+- [Strimzi Overview](https://strimzi.io/docs/operators/0.38.0/overview)
 
-* [Deploying and Upgrading](https://strimzi.io/docs/operators/0.38.0/deploying)
+- [Deploying and Upgrading](https://strimzi.io/docs/operators/0.38.0/deploying)
 
-* [API Reference](https://strimzi.io/docs/operators/0.38.0/configuring)
+- [API Reference](https://strimzi.io/docs/operators/0.38.0/configuring)
 
-* [Configure Operator to watch multiple namespaces](https://strimzi.io/docs/operators/0.38.0/deploying#deploying-cluster-operator-to-watch-multiple-namespaces-str)
+- [Configure Operator to watch multiple namespaces](https://strimzi.io/docs/operators/0.38.0/deploying#deploying-cluster-operator-to-watch-multiple-namespaces-str)
 
-* [About resources for Strimzi containers](https://strimzi.io/docs/operators/0.38.0/configuring#con-common-configuration-resources-reference)
+- [About resources for Strimzi containers](https://strimzi.io/docs/operators/0.38.0/configuring#con-common-configuration-resources-reference)
 
-* [Configuring Kafka](https://strimzi.io/docs/operators/0.38.0/deploying#con-config-kafka-str)
+- [Configuring Kafka](https://strimzi.io/docs/operators/0.38.0/deploying#con-config-kafka-str)
 
-* [Configuring Kafka and ZooKeeper storage](https://strimzi.io/docs/operators/0.38.0/deploying#assembly-storage-str)
+- [Configuring Kafka and ZooKeeper storage](https://strimzi.io/docs/operators/0.38.0/deploying#assembly-storage-str)

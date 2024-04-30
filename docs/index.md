@@ -2,6 +2,8 @@
 description: Documentation for Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 ---
 
+<!-- markdownlint-disable-file first-line-h1 -->
+
 <div class="landing-page" markdown="1">
 
 # Innovate at speed in regulated industries
@@ -117,7 +119,6 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
         Our platform is a CNCF Certified Kubernetes® Distribution
     </li>
 </ul>
-
 
 ## Commercial offering
 

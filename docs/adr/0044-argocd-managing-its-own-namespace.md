@@ -1,8 +1,8 @@
-# ArgoCD is not allowed to manage its own namespace.
+# ArgoCD is not allowed to manage its own namespace
 
-* Status: Accepted
-* Deciders: Arch Meeting
-* Date: 2023-10-12
+- Status: Accepted
+- Deciders: Arch Meeting
+- Date: 2023-10-12
 
 ## Context and Problem Statement
 
@@ -16,24 +16,24 @@ Do we want to make `argocd-system` a managed namespace in our ArgoCD offering?
 
 ## Decision Drivers
 
-* We want to maintain Platform security and stability.
-* We want to find a solution which is scalable and minimizes Platform Administrator burden.
-* We want to best serve the Application Developers.
-* We want to make the Platform Administrator life easier.
-* We want to avoid Infrastructure Provider dependent implementation sprawl.
+- We want to maintain Platform security and stability.
+- We want to find a solution which is scalable and minimizes Platform Administrator burden.
+- We want to best serve the Application Developers.
+- We want to make the Platform Administrator life easier.
+- We want to avoid Infrastructure Provider dependent implementation sprawl.
 
 ## Considered Options
 
-1. Yes, we make ArgoCD manage its own namespace.
+1.  Yes, we make ArgoCD manage its own namespace.
 
-2. No, we do not make ArgoCD manage its own namespace.
+1.  No, we do not make ArgoCD manage its own namespace.
 
 ## Decision Outcome
 
 Chosen option:
 
 - No, we do not allow argocd to manage its own namespace.
-    - ArgoCD, through an Application Developer's configuration, should not deploy standard Kubernetes resources (such as pods or secrets) directly into its own namespace. If there is a requirement for such deployments, it should be initiated through a service ticket, ensuring that it undergoes thorough security and stability assessments to prevent any compromises to the platform.
+  - ArgoCD, through an Application Developer's configuration, should not deploy standard Kubernetes resources (such as pods or secrets) directly into its own namespace. If there is a requirement for such deployments, it should be initiated through a service ticket, ensuring that it undergoes thorough security and stability assessments to prevent any compromises to the platform.
 
 ### Positive Consequences
 
@@ -44,5 +44,5 @@ Chosen option:
 ### Negative Consequences
 
 - An Application Developer may also not be able to deploy standard Kubernetes resources via ArgoCD into `argocd-system` namespaces.
-    - This should not count as a negative consequence, because our current security stance is that Application Developers should not be supposed to deploy into the `argocd-system` Namespace at all.
+  - This should not count as a negative consequence, because our current security stance is that Application Developers should not be supposed to deploy into the `argocd-system` Namespace at all.
 - Features such as Apps of Apps will not be available in our offering.

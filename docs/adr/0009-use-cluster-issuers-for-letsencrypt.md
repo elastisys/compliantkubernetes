@@ -1,8 +1,8 @@
 # Use ClusterIssuers for Let's Encrypt
 
-* Status: accepted
-* Deciders: Cristian, Lennart
-* Date: 2021-02-26
+- Status: accepted
+- Deciders: Cristian, Lennart
+- Date: 2021-02-26
 
 Technical Story: [Make apps less fragile](https://github.com/elastisys/compliantkubernetes-apps/issues/300)
 
@@ -14,16 +14,16 @@ There are two ways to configure Let's Encrypt as an issuers for cert-manager: [I
 
 ## Decision Drivers
 
-* We want to make compliantkubernetes-apps less fragile, and Let's Encrypt ratelimiting is a cause of fragility.
-* We want to make it easy for users to get started with Compliant Kubernetes in a "secure by default" manner.
-* We want to have a clear separation between user and administrator resources, responsibilities and privileges.
-* We want to keep the option open for "light" renderings, i.e., a single Kubernetes clusters that hosts both Management Cluster and Workload Cluster components.
+- We want to make compliantkubernetes-apps less fragile, and Let's Encrypt ratelimiting is a cause of fragility.
+- We want to make it easy for users to get started with Compliant Kubernetes in a "secure by default" manner.
+- We want to have a clear separation between user and administrator resources, responsibilities and privileges.
+- We want to keep the option open for "light" renderings, i.e., a single Kubernetes clusters that hosts both Management Cluster and Workload Cluster components.
 
 ## Considered Options
 
-* Use one Issuer per namespace; users need to install their own Issuers in the Workload Clusters.
-* Use ClusterIssuer in Management Cluster; let users install Issuers in the Workload Clusters as required.
-* Use ClusterIssuer in both Management Cluster and Workload Cluster(s).
+- Use one Issuer per namespace; users need to install their own Issuers in the Workload Clusters.
+- Use ClusterIssuer in Management Cluster; let users install Issuers in the Workload Clusters as required.
+- Use ClusterIssuer in both Management Cluster and Workload Cluster(s).
 
 ## Decision Outcome
 
@@ -43,7 +43,7 @@ Let's Encrypt production has a rate limit of [50 certificates per week per regis
 
 It is therefore advisable to:
 
-* Use separate registered domains for development and production environments.
-* Use separate registered domains for Workload Cluster(s) and the Management Cluster, or restrict which Ingress resources can be created by the user.
+- Use separate registered domains for development and production environments.
+- Use separate registered domains for Workload Cluster(s) and the Management Cluster, or restrict which Ingress resources can be created by the user.
 
 Note that, the rate limiting risk exists with both Issuers and ClusterIssuers and was not introduced by this ADR.

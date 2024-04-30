@@ -1,8 +1,8 @@
 # Persist Dex
 
-* Status: accepted
-* Deciders: Compliant Kubernetes Architecture Meeting
-* Date: 2021-11-16
+- Status: accepted
+- Deciders: Compliant Kubernetes Architecture Meeting
+- Date: 2021-11-16
 
 Technical Story: [Enable Dex persistence](https://github.com/elastisys/compliantkubernetes-apps/issues/680)
 
@@ -14,15 +14,15 @@ What persistence option should we use?
 
 ## Decision Drivers
 
-* CRDs add complexity
-* Storage adds complexity
-* We want to frequently reboot Nodes for security patching
-* We want to deliver excellent user experience
+- CRDs add complexity
+- Storage adds complexity
+- We want to frequently reboot Nodes for security patching
+- We want to deliver excellent user experience
 
 ## Considered Options
 
-* Use ["memory" storage](https://github.com/dexidp/helm-charts/tree/master/charts/dex#minimal-configuration)
-* Use [CRD-based storage](https://dexidp.io/docs/storage/#kubernetes-custom-resource-definitions-crds)
+- Use ["memory" storage](https://github.com/dexidp/helm-charts/tree/master/charts/dex#minimal-configuration)
+- Use [CRD-based storage](https://dexidp.io/docs/storage/#kubernetes-custom-resource-definitions-crds)
 
 ## Decision Outcome
 
@@ -50,10 +50,10 @@ $ diff -y before-keys.json after-keys.json
 
 ### Positive Consequences
 
-* Nodes which host Dex can be rebooted for security patching
-* User experience is optimized
+- Nodes which host Dex can be rebooted for security patching
+- User experience is optimized
 
 ### Negative Consequences
 
-* Dex will have a more permissions in the Management Cluster (see [`rbac.yaml`](https://github.com/dexidp/helm-charts/blob/dex-0.6.3/charts/dex/templates/rbac.yaml))
-* We will need to closely monitor migration steps for Dex
+- Dex will have a more permissions in the Management Cluster (see [`rbac.yaml`](https://github.com/dexidp/helm-charts/blob/dex-0.6.3/charts/dex/templates/rbac.yaml))
+- We will need to closely monitor migration steps for Dex

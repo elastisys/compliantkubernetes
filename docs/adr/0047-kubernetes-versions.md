@@ -24,8 +24,8 @@ But what should be our strategy be to upgrade Kubernetes with Cluster API?
 
 ## Considered Options
 
-1. Upgrade as soon as there is a new minor version
-1. Upgrade when Kubespray upgrades
+1.  Upgrade as soon as there is a new minor version
+1.  Upgrade when Kubespray upgrades
 
 ## Decision Outcome
 

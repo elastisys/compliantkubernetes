@@ -1,6 +1,7 @@
 # Cluster API
 
 !!!note
+
     Our packaging of Cluster API is being rolled out and is not available in all environments.
     Most Elastisys Managed Service customers are using a version of this platform that is based on Kubespray.
     Elastisys will eventually migrate everyone to Cluster API.
@@ -43,6 +44,7 @@ Depending on the underlying cloud infrastructure provider and their features, we
 Also depending on underlying cloud infrastructure, the IP might also not be exclusive for your Compliant Kubernetes environment, so traffic from that IP could originate from other servers that is not related to your environment.
 
 !!!note
+
     Elastisys will look into the possibility of getting a stable egress IP for Application Developers that really need it.
 
 All ingress traffic will go through load balancers and there will not be any major differences for the ingress traffic.

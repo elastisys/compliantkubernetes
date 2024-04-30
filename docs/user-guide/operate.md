@@ -8,7 +8,6 @@ Welcome to the third and final step, Application Developer!
 
 In this step, you will learn how to operate your application on Elastisys Compliant Kubernetes.
 
-
 ## Configure Dashboards and Alerts
 
 ### Monitor your Application
@@ -33,8 +32,8 @@ Go deeper into [metrics](metrics.md).
 
 Visualizing monitoring metrics is one thing. Sometimes, you may need to act on what they show, immediately. For that reason, the Prometheus monitoring system includes Alertmanager.
 
-* Prometheus is responsible for maintaining a set of Rules, which express trigger conditions via expressions. Once a rule has triggered, it has entered an alerting state.
-* Alertmanager is responsible for forwarding information about any rules in the alerting state to your chosen destination, which could be your company's Slack or similar. [A number of integrations are available](https://prometheus.io/docs/alerting/latest/configuration/).
+- Prometheus is responsible for maintaining a set of Rules, which express trigger conditions via expressions. Once a rule has triggered, it has entered an alerting state.
+- Alertmanager is responsible for forwarding information about any rules in the alerting state to your chosen destination, which could be your company's Slack or similar. [A number of integrations are available](https://prometheus.io/docs/alerting/latest/configuration/).
 
 If you wish to create rules based on application-specific monitoring metrics, you must first create appropriate ServiceMonitors as described above.
 
@@ -80,7 +79,7 @@ Go deeper into [backups](backup.md).
 
 Capacity management is about having sufficient capacity for your needs, be they in terms of storage or computational power.
 
-Your Elastisys Compliant Kubernetes administrator should perform capacity management *of the platform*, to ensure that there is a sufficient amount of spare capacity on a cluster level.
+Your Elastisys Compliant Kubernetes administrator should perform capacity management _of the platform_, to ensure that there is a sufficient amount of spare capacity on a cluster level.
 
 As an Application Developer, you should perform capacity management on a Pod level. This primarily means setting [resource requests](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) correctly for containers inside Pods, making use of multiple instances in your Deployments and Stateful Sets (possibly via [horizontal Pod autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)). The use of resource requests and limits is enforced via an Elastisys Compliant Kubernetes [safeguard](safeguards/enforce-resources.md).
 

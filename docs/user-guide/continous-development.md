@@ -26,6 +26,7 @@ sudo install skaffold /usr/local/bin/
 ## Getting started with Skaffold
 
 !!!note
+
     Skaffold will use the active `KUBECONFIG` to authenticate to the Kubernetes cluster.
 
 If you haven't done so already, clone the user demo:
@@ -115,7 +116,7 @@ shows the logs of the application, and starts listening for changes in the sourc
 When visiting the URL to the application or the portforwarded URL the following output can be seen:
 
 ```json
-{"hostname":"ck8s-user-demo-dd9c58979-rm9rv","version":"0.0.1"}
+{ "hostname": "ck8s-user-demo-dd9c58979-rm9rv", "version": "0.0.1" }
 ```
 
 If you inside the `routes/index.js` file add the following:
@@ -134,7 +135,7 @@ And then save the file, Skaffold will automatically detect the change, build a n
 to the cluster. After the deployment has stabilized, when visiting the same URL, the output is now:
 
 ```json
-{"hostname":"ck8s-user-demo-54bbdcf6fc-gthsc","version":"0.0.1","hello":"world"}
+{ "hostname": "ck8s-user-demo-54bbdcf6fc-gthsc", "version": "0.0.1", "hello": "world" }
 ```
 
 ### Configuration updates
