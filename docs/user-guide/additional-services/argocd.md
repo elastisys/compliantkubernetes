@@ -420,7 +420,7 @@ ArgoCD is not allowed to manage its own namespace. This means that features such
 
 !!! elastisys "Apps of Apps Alpha"
 
-    Using Apps of Apps with our offering is currently an alpha feature, and customers of this offering can request it, provided they accept risks such as:
+    Using Apps of Apps with our offering is currently an alpha feature, and customers can request it, provided they accept risks such as:
 
     -  When Apps-of-Apps is enabled, we will not be able to provide Uptime SLAs for you on the Argo Endpoint (This will be a best effort support even in future premium environments, unless the Argo project develops the feature upstream in a more secure and isolated way)
 
