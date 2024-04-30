@@ -414,15 +414,17 @@ Example error:
 
 Our ArgoCD installation is using the [namespaced method](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#non-high-availability). This means that ArgoCD has access to Roles with permissions to CRUD on objects in the inclusion list. It has a [list of namespaces](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters) that it can look at and reconcile things every few seconds. Any feature that requires ArgoCD cluster-wide installation will not be supported with our offering.
 
-The reason for this choice is to prevent ArgoCD from having access to objects in the inclusions list across the entire cluster. This prevents objects from being deployed into unwanted namespaces.
+The reason for this choice is that, according to the [Compliant Kubernetes mission and vision](../../mission-and-vision.md), the platform should make it hard for application developers to do the wrong thing by employing safeguards and secure defaults. With this configuration, we prevent ArgoCD from having access to objects in the inclusions list across the entire cluster. This prevents objects from being deployed into namespaces owned by the platform administrator, which could compromise platform security and stability. For example, this choice adds another layer of protection, preventing the application developer from interfering with backups. Read more about it [here](../demarcation.md#general-principle).
 
 ArgoCD is not allowed to manage its own namespace. This means that features such as [Apps of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern) does not work by default. Read more about the decision [here](../../adr/0044-argocd-managing-its-own-namespace.md).
 
-Using Apps of Apps with our offering is currently an alpha feature, and customers of this offering can request it, provided they accept risks such as:
+!!! elastisys "Apps of Apps Alpha"
 
--  When Apps-of-Apps is enabled, we will not be able to provide Uptime SLAs for you on the Argo Endpoint (This will be a best effort support even in future premium environments, unless the Argo project develops the feature upstream in a more secure and isolated way)
+    Using Apps of Apps with our offering is currently an alpha feature, and customers of this offering can request it, provided they accept risks such as:
 
- - Apps-of-Apps will currently be regarded as an alpha feature and, as such, we reserve the right to disable it if it interferes with our OPS policies/practices – should that unfortunate event happen, it will be in dialogue with the customer.
+    -  When Apps-of-Apps is enabled, we will not be able to provide Uptime SLAs for you on the Argo Endpoint (This will be a best effort support even in future premium environments, unless the Argo project develops the feature upstream in a more secure and isolated way)
+
+    - Apps-of-Apps will currently be regarded as an alpha feature and, as such, we reserve the right to disable it if it interferes with our OPS policies/practices – should that unfortunate event happen, it will be in dialogue with the customer.
 
 ArgoCD cannot create [HNC](https://github.com/kubernetes-sigs/hierarchical-namespaces) namespaces and deploy services into them. This means that as an Application Developer you cannot template the namespace as a value in a manifest. As an Application Developer you need to create subnamespaces manually and deploy applications into it. Read more about the decision [here](../../adr/0042-argocd-dynamic-hnc-namespaces.md).
 
