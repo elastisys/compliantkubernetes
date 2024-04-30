@@ -406,6 +406,20 @@ Now, if we try syncing an application, we will get the notification once sync is
 
     Email notification will not work if the sender has 2FA enabled.
 
+## Restrictions
+
+Example error:
+
+```Failed to load live state: Cluster level Namespace "application" can not be managed when in namespaced mode```
+
+Our ArgoCD installation is using the [namespaced method](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#non-high-availability). This means that ArgoCD has access to Roles with permissions to CRUD on objects in the inclusion list. It has a [list of namespaces](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters) that it can look at and reconcile things every few seconds. Any feature that requires ArgoCD cluster-wide installation will not be supported with our offering.
+
+The reason for this choice is to prevent ArgoCD from having access to objects in the inclusions list across the entire cluster. This prevents objects from being deployed onto unwanted namespaces.
+
+ArgoCD is not allowed to manage its own namespace. This means that features such as [Apps of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern) is not available in our offering. Read more about the decision [here](../../adr/0044-argocd-managing-its-own-namespace.md).
+
+ArgoCD cannot create [HNC](https://github.com/kubernetes-sigs/hierarchical-namespaces) namespaces and deploy services into them. This means that as an Application Developer you cannot template the namespace as a value in a manifest. As an Application Developer you need to create subnamespaces manually and deploy applications into it. Read more about the decision [here](../../adr/0042-argocd-dynamic-hnc-namespaces.md).
+
 ## Further Reading
 
 - [Argo CD documentation](https://argo-cd.readthedocs.io/en/stable/)
