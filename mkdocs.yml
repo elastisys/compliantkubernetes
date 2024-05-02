@@ -166,6 +166,7 @@ nav:
           - "Enforce No Latest Tag": "user-guide/safeguards/enforce-no-latest-tag.md"
           - "Enforce Job TTL": "user-guide/safeguards/enforce-job-ttl.md"
           - "Enforce No LoadBalancer Service": "user-guide/safeguards/enforce-no-load-balancer-service.md"
+          - "Enforce Minimum Replicas": "user-guide/safeguards/enforce-minimum-replicas.md"
       - "Additional Services":
           - "Overview": "user-guide/additional-services/index.md"
           - "PostgreSQL": "user-guide/additional-services/postgresql.md"
