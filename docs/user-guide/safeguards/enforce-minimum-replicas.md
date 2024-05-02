@@ -1,0 +1,37 @@
+---
+tags: []
+---
+
+# Avoid Downtime with Replicas
+
+Compliant Kubernetes by default recommends a minimum of 2 replicas for Deployments (and StatefulSets).
+
+Therefore a warning will be issued when the number of replicas is less than 2.
+
+```console
+[elastisys-warn-minimum-replicas] The provided number of replicas is low for Deployment: demo-ck8s-user-demo. Elastisys Compliant Kubernetes recommends a minimum of 2 replicas.
+```
+
+You can either resolve this by setting the number of replicas to a minimum of 2.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-demo
+spec:
+  replicas: 2
+```
+
+Or in the case where the deployment is not of high priority you can suppress the warning by adding a label.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-demo
+  labels:
+    ignoreMinimumReplicas: "yes" # The value part can be anything.
+spec:
+  replicas: 1
+```
