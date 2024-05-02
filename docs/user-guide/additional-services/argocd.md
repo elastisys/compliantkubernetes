@@ -424,7 +424,7 @@ ArgoCD is not allowed to manage its own namespace. This means that features such
 
     Using Apps of Apps with our offering is currently a preview feature, and customers can request it, provided they accept risks such as:
 
-    -  When Apps-of-Apps is enabled, we will not be able to provide Uptime SLAs for you on the Argo Endpoint (This will be a best effort support even in future premium environments, unless the Argo project develops the feature upstream in a more secure and isolated way)
+    - When Apps-of-Apps is enabled, we will not be able to provide Uptime SLAs for you on the Argo Endpoint (This will be a best effort support even in future premium environments, unless the Argo project develops the feature upstream in a more secure and isolated way)
 
     - Apps-of-Apps will currently be regarded as a preview feature and, as such, we reserve the right to disable it if it interferes with our OPS policies/practices – should that unfortunate event happen, it will be in dialogue with the customer.
 
