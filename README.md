@@ -36,8 +36,12 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip3 install -r requirements.txt
 
-mike serve
+mkdocs serve
 ```
+
+> [!CAUTION]
+> `mike serve` also works to preview a page, but it does not seem to support live preview.
+> This means that you need to restart `mike serve` after every file change, which is not really productive
 
 - To view locally: `mike deploy compliantkubernetes ck8s -t 'main'` and then `mike serve`.
 - To re-generate figures: `make -C docs/img`. **For simplicity, please commit generated figures. Prefer PNG (width == 1200px), to facilitate embedded logos.**
