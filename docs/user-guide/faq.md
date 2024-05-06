@@ -1,8 +1,8 @@
 ---
 description: FAQ for Application Developers on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
 tags:
-- HIPAA S47 - Access Control - Encryption and Decryption - § 164.312(a)(2)(iv)
-- MSBFS 2020:7 4 kap. 7 §
+  - HIPAA S47 - Access Control - Encryption and Decryption - § 164.312(a)(2)(iv)
+  - MSBFS 2020:7 4 kap. 7 §
 ---
 
 # Application Developer FAQ
@@ -19,6 +19,7 @@ With that in place, you will need to create a NetworkPolicy for the Pod you want
 Here is an example of how to create a NetworkPolicy that allows all TCP traffic (in and out) for Pods with the label `run: blah`.
 
 !!!note
+
     This is just an example, not a good idea!
     You should limit the policy to whatever your application really needs.
 
@@ -55,13 +56,12 @@ kubectl run blah --rm -ti --image=$MY_HARBOR_IMAGE
 
 If your image runs as root by defaults, but can handle running as another user, you may override the user by adding a flag like this to the above command:
 
-```
+```bash
 --overrides='{ "spec": { "securityContext": "runAsUser": 1000, "runAsGroup": 1000 } }'
 ```
 
 [harbor-oidc-docker]: https://goharbor.io/docs/1.10/administration/configure-authentication/oidc-auth/#using-oidc-from-the-docker-or-helm-cli
 [docker-user]: https://docs.docker.com/develop/develop-images/instructions/#user
-
 
 ## How do I give access to a new Application Developer to a Compliant Kubernetes environment?
 
@@ -87,6 +87,7 @@ Port 8000 is the only allowed port for OpenID callback URL and is needed by the 
 ## "Connection reset by peer" when port-forwarding to postgres?
 
 You may have seen this error when port-forwarding to postgres:
+
 ```console
 Forwarding from 127.0.0.1:5432 -> 5432
 Forwarding from [::1]:5432 -> 5432
@@ -98,16 +99,17 @@ portforward.go:234] lost connection to pod
 
 You have two options to resolve this issue:
 
-1. Send a request to your administrator to disable TLS in the postgres cluster. Although it sounds "bad", it does not compromise security, since;
+1.  Send a request to your administrator to disable TLS in the postgres cluster. Although it sounds "bad", it does not compromise security, since;
 
     - Traffic between kubectl and the Kubernetes API is encrypted.
     - In-cluster network is trusted.
 
-2. A workaround for the issue is to use an older version of `kubectl` when making this request, specifically `v1.21.14` or lower.
+1.  A workaround for the issue is to use an older version of `kubectl` when making this request, specifically `v1.21.14` or lower.
 
     To avoid always using an old `kubectl` version, you can give the binary another name when downloading the `v1.21.14` version, e.g. `kubectl-1.21`. This way your normal `kubectl` binary can be kept up to date.
 
     Then use that specific binary when making the port-forward request:
+
     ```bash
     kubectl-1.21 -n $NAMESPACE port-forward svc/$USER_ACCESS 5432
     ```
@@ -153,9 +155,9 @@ Get in touch with your administrator to check the status. They are responsible f
 Preview features are assessed to have a higher residual risk than commonly accepted by Customers.
 Residual risks include, but are not limited to:
 
-* risk of downtime;
-* risk of the feature becoming unavailable in the future;
-* risk of data loss.
+- risk of downtime;
+- risk of the feature becoming unavailable in the future;
+- risk of data loss.
 
 The risks are usually due to novelty of the feature or uncertainties in the open-source ecosystem.
 By using Preview Features, the Customer accepts these additional risks.

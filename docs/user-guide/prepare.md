@@ -2,6 +2,8 @@
 description: Learn how to prepare for Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
 ---
 
+<!-- markdownlint-disable-file first-line-h1 -->
+
 !!! elastisys "For Elastisys Managed Services Customers"
 
     You can order Managed Compliant Kubernetes by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/). Here are the highlights:
@@ -24,28 +26,28 @@ In this part, you will learn about the things you should do to prepare to get st
 
 Your administrator has already set up the platform for you. You will therefore have received:
 
-* URLs for the Service Endpoints: OpenSearch Dashboards, Grafana, and Harbor;
-* a [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file for configuring `kubectl` or Lens access to the Workload Cluster; and
-* (optionally and rarely) a static username and password. Note that normally, you should log in via a username and a password of your organization's Identity Provider, such as LDAP, Azure Active Directory, or Google Identity.
+- URLs for the Service Endpoints: OpenSearch Dashboards, Grafana, and Harbor;
+- a [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file for configuring `kubectl` or Lens access to the Workload Cluster; and
+- (optionally and rarely) a static username and password. Note that normally, you should log in via a username and a password of your organization's Identity Provider, such as LDAP, Azure Active Directory, or Google Identity.
 
 ## Install Prerequisite Software
 
 Required software:
 
-* [oidc-login](https://github.com/int128/kubelogin), which helps you log into your Kubernetes cluster via OpenID Connect integration with your Identity Provider of choice
+- [oidc-login](https://github.com/int128/kubelogin), which helps you log into your Kubernetes cluster via OpenID Connect integration with your Identity Provider of choice
 
 Your cluster management software of choice, of which you can choose either or both:
 
-* [kubectl](https://kubernetes.io/docs/tasks/tools/), a command-line tool to help manage your Kubernetes resources
-* [OpenLens](https://github.com/MuhammedKalkan/OpenLens/releases), a graphical user interface to help manage your Kubernetes resources (see also our [dedicated page on Lens integration](kubernetes-ui.md))
+- [kubectl](https://kubernetes.io/docs/tasks/tools/), a command-line tool to help manage your Kubernetes resources
+- [OpenLens](https://github.com/MuhammedKalkan/OpenLens/releases), a graphical user interface to help manage your Kubernetes resources (see also our [dedicated page on Lens integration](kubernetes-ui.md))
 
 Optional, but very useful, tools for developers and DevOps engineers:
 
-* [docker](https://docs.docker.com/get-docker/), if you want to build (Docker) container images locally
-* [helm](https://helm.sh/docs/intro/install/), if you want to manage your application with the Helm package manager
-
+- [docker](https://docs.docker.com/get-docker/), if you want to build (Docker) container images locally
+- [helm](https://helm.sh/docs/intro/install/), if you want to manage your application with the Helm package manager
 
 ??? tip "You can verify that configuration is correct by issuing the following simple commands"
+
     Make sure you have configured your tools properly:
 
     ```
@@ -87,9 +89,9 @@ Those URLs that your Elastisys Compliant Kubernetes administrator gave you all h
 
 Your web portals are available at:
 
-* `harbor.$DOMAIN` -- the Harbor container image registry, which will be the home to all your container images
-* `opensearch.$DOMAIN` -- the OpenSearch Dashboards portal, where you will view your application and audit logs
-* `grafana.$DOMAIN` -- the Grafana portal, where you will view your monitoring metrics for both the platform, as such, and your application-specific metrics
+- `harbor.$DOMAIN` -- the Harbor container image registry, which will be the home to all your container images
+- `opensearch.$DOMAIN` -- the OpenSearch Dashboards portal, where you will view your application and audit logs
+- `grafana.$DOMAIN` -- the Grafana portal, where you will view your monitoring metrics for both the platform, as such, and your application-specific metrics
 
 ## Containerize Your Application
 

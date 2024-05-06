@@ -2,9 +2,9 @@
 
 Compliance will vary widely depending on:
 
-* Jurisdiction (e.g., US vs. EU);
-* Industry regulation (e.g., MedTech vs. FinTech);
-* Company policies (e.g., log retention based on cost-risk analysis).
+- Jurisdiction (e.g., US vs. EU);
+- Industry regulation (e.g., MedTech vs. FinTech);
+- Company policies (e.g., log retention based on cost-risk analysis).
 
 The following is meant to offer an overview of compliance focusing on information security, and how Compliant Kubernetes reduces compliance burden.
 
@@ -16,8 +16,8 @@ The following is meant to offer an overview of compliance focusing on informatio
 
 Organizations in certain sectors, such as BioTech, FinTech, MedTech, and those processing personal data, need **public trust** to operate. Such companies are allowed to handle sensitive data, create and destroy money, etc., in exchange for being compliant with certain regulations — in devtalk put, sticking to some rules set by regulators. For example:
 
-* Any organization dealing with personal data is scrutinized by the Swedish Data Protection Authority (Datainspektionen) and needs to comply with GDPR.
-* Any organization handling patient data needs to comply with Patientdatalagen (PDL) in Sweden.
+- Any organization dealing with personal data is scrutinized by the Swedish Data Protection Authority (Datainspektionen) and needs to comply with GDPR.
+- Any organization handling patient data needs to comply with Patientdatalagen (PDL) in Sweden.
 
 Such regulation is not only aspirational, but is actually checked as often as yearly by an external auditor. If an organization is found to be non-compliant it may pay heavy fines or even lose its license to operate.
 

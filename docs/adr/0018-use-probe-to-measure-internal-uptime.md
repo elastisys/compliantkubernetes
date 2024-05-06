@@ -1,29 +1,29 @@
 # Use Probe to Measure Uptime of Internal Compliant Kubernetes Services
 
-* Status: accepted
-* Deciders: Cristian, Lucian, Ravi
-* Date: 2021-11-25
+- Status: accepted
+- Deciders: Cristian, Lucian, Ravi
+- Date: 2021-11-25
 
 ## Context and Problem Statement
 
 We need to measure uptime for at least two reasons:
 
-1. To serve as feedback on what needs to be improved next.
-2. To demonstrate compliance with our SLAs.
+1.  To serve as feedback on what needs to be improved next.
+1.  To demonstrate compliance with our SLAs.
 
 How exactly should we measure uptime?
 
 ## Decision Drivers
 
-* We want to reduce tools sprawl.
-* We want to be mindful about capacity and infrastructure costs.
-* We want to measure uptime as observed by a consumer -- i.e., application or user -- taking into account business continuity measures, such as redundancy, fail-over time, etc.
+- We want to reduce tools sprawl.
+- We want to be mindful about capacity and infrastructure costs.
+- We want to measure uptime as observed by a consumer -- i.e., application or user -- taking into account business continuity measures, such as redundancy, fail-over time, etc.
 
 ## Considered Options
 
-* [Blackbox exporter](https://github.com/prometheus/blackbox_exporter)
-* [kubelet prober metrics](https://stackoverflow.com/questions/62736899/how-to-set-up-an-alert-when-liveness-readiness-probe-fails-in-kubernetes)
-* [Prometheus Operator Probe](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#probespec), which essentially wraps the Blackbox exporter in a `Probe` CustomResource.
+- [Blackbox exporter](https://github.com/prometheus/blackbox_exporter)
+- [kubelet prober metrics](https://stackoverflow.com/questions/62736899/how-to-set-up-an-alert-when-liveness-readiness-probe-fails-in-kubernetes)
+- [Prometheus Operator Probe](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#probespec), which essentially wraps the Blackbox exporter in a `Probe` CustomResource.
 
 ## Decision Outcome
 
@@ -49,19 +49,19 @@ spec:
   targets:
     staticConfig:
       static:
-      - https://www.google.com
+        - https://www.google.com
 ```
 
 This will generate a metric as follows: `probe_success{cluster="ckdemo-wc", instance="https://www.google.com", job="probe/demo1/google-is-up", namespace="demo1"}`.
 
 ### Positive Consequences
 
-* We measure uptime as observed by a consumer.
-* Increasing redundancy, reducing failure time, etc. will contribute positively to our uptime, as desired.
+- We measure uptime as observed by a consumer.
+- Increasing redundancy, reducing failure time, etc. will contribute positively to our uptime, as desired.
 
 ### Negative Consequences
 
-* We don't currently run Blackbox in the Workload Cluster, so we'll need a bit of extra capacity.
+- We don't currently run Blackbox in the Workload Cluster, so we'll need a bit of extra capacity.
 
 ## Recommendations to Platform Administrators
 

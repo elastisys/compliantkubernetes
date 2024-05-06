@@ -1,10 +1,10 @@
 ---
 tags:
-- BSI IT-Grundschutz APP.4.4.A2
-- BSI IT-Grundschutz APP.4.4.A10
+  - BSI IT-Grundschutz APP.4.4.A2
+  - BSI IT-Grundschutz APP.4.4.A10
 ---
-Argo™ CD (preview)
-==================
+
+# Argo™ CD (preview)
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
@@ -64,7 +64,7 @@ Argo CD can be configured to decrypt files encrypted with `sops` using [Helm Sec
 
 The following steps will show how to get started with encrypting files using `sops` and `gpg`, storing the encrypted files in a Helm chart, and lastly deploying the Helm chart with Argo CD.
 
-1. Generate a new GPG key-pair (make sure not to add a passphrase as otherwise Argo CD will not be able to use the key) and then export the private key. The following example will create a GPG key and export the private key to a file named `private.asc`:
+1.  Generate a new GPG key-pair (make sure not to add a passphrase as otherwise Argo CD will not be able to use the key) and then export the private key. The following example will create a GPG key and export the private key to a file named `private.asc`:
 
     ```bash
     gpg --batch --rfc4880 --passphrase '' --quick-generate-key "set-me@example.com" default default
@@ -72,7 +72,7 @@ The following steps will show how to get started with encrypting files using `so
     gpg --output "private.asc" --armor --export-secret-key $fpr
     ```
 
-2. For Argo CD to be able to use this key for decrypting `sops` encrypted values files in your Helm charts, you will need to create a Kubernetes Secret in the `argocd-system` namespace named `helm-secrets-private-keys`. This secret will then be mounted and read by the Argo CD repo server. Create the Secret using the private key file created in the previous step:
+1.  For Argo CD to be able to use this key for decrypting `sops` encrypted values files in your Helm charts, you will need to create a Kubernetes Secret in the `argocd-system` namespace named `helm-secrets-private-keys`. This secret will then be mounted and read by the Argo CD repo server. Create the Secret using the private key file created in the previous step:
 
     ```bash
     PRIVATE_KEY_FILE="private.asc"
@@ -88,6 +88,7 @@ The following steps will show how to get started with encrypting files using `so
     ```
 
     !!! note
+
         Once your Platform Administrator has enabled Helm-secrets with Argo CD, the Argo CD repo server pod will not be able to initialize if this secret does not exist. Check pods in the `argocd-system` namespace after creating the secret to confirm that the secret got mounted properly by the repo server:
 
         ```console
@@ -96,7 +97,7 @@ The following steps will show how to get started with encrypting files using `so
         argocd-repo-server-77fd58b498-kjm95   1/1     Running   0          3m45s
         ```
 
-3. Create a `.sops.yaml` file in the Helm chart in which you want to use Helm Secrets. Add your GPG **public** key to this file. You can get the public key with:
+1.  Create a `.sops.yaml` file in the Helm chart in which you want to use Helm Secrets. Add your GPG **public** key to this file. You can get the public key with:
 
     ```bash
     gpg --list-key "set-me@example.com"
@@ -107,10 +108,10 @@ The following steps will show how to get started with encrypting files using `so
     ```yaml
     ---
     creation_rules:
-    - pgp: <public-gpg-key>
+      - pgp: <public-gpg-key>
     ```
 
-4. Create a values file in your Helm chart repository and put values that should be encrypted into this file:
+1.  Create a values file in your Helm chart repository and put values that should be encrypted into this file:
 
     ```bash
     touch secrets.yaml
@@ -118,7 +119,7 @@ The following steps will show how to get started with encrypting files using `so
 
     These values can then be referenced in templates as any other Helm values.
 
-5. Encrypt the values file using `sops` (as long as there is a `.sops.yaml` file in the same folder containing your public GPG key you do not have to specify the GPG key when running the following command):
+1.  Encrypt the values file using `sops` (as long as there is a `.sops.yaml` file in the same folder containing your public GPG key you do not have to specify the GPG key when running the following command):
 
     ```bash
     sops --encrypt --in-place secrets.yaml
@@ -130,9 +131,10 @@ The following steps will show how to get started with encrypting files using `so
     helm template . --values secrets://secrets.yaml
     ```
 
-6. The file `secrets.yaml` can now safely be stored in a code repository as long as it is encrypted.
+1.  The file `secrets.yaml` can now safely be stored in a code repository as long as it is encrypted.
 
     !!! tip
+
         To edit values in the encrypted values file, you can use `sops` which will open the file in clear text in a configured editor:
 
         ```bash
@@ -142,9 +144,10 @@ The following steps will show how to get started with encrypting files using `so
         There is also a [VSCode plugin](https://marketplace.visualstudio.com/items?itemName=signageos.signageos-vscode-sops) which can simplify editing `sops` encrypted files directly in the VSCode editor.
 
     !!! tip
+
         Add a [pre-commit hook](https://github.com/yuvipanda/pre-commit-hook-ensure-sops) to ensure to not push files containing sensitive data that are not encrypted with `sops`.
 
-7. In Argo CD, when you create your Application, add the secret values file (`secrets.yaml`) as follow:
+1.  In Argo CD, when you create your Application, add the secret values file (`secrets.yaml`) as follow:
 
     ![argocd-helm-secrets](./img/argocd-helm-secrets.png)
 
@@ -154,7 +157,7 @@ The following steps will show how to get started with encrypting files using `so
 
 The following steps assumes SealedSecrets is installed in the cluster. For installing SealedSecrets in a Compliant Kubernetes cluster, refer to [the self-managed guide](../self-managed-services/sealedsecrets.md). You will need to contact your Platform Administrator requesting that you want to use SealedSecrets together with Argo CD.
 
-1. Create a SealedSecret, the following steps will create a SealedSecret for the namespace in the current Kubernetes context:
+1.  Create a SealedSecret, the following steps will create a SealedSecret for the namespace in the current Kubernetes context:
 
     ```bash
     export SEALED_SECRETS_CONTROLLER_NAMESPACE=sealed-secrets # set this to the namespace in which the controller is running in
@@ -166,17 +169,18 @@ The following steps assumes SealedSecrets is installed in the cluster. For insta
     ```
 
     !!! note
-        With SealedSecrets it is possible to set a *scope* of a secret. By default this scope is set to `strict` in which the SealedSecret controller uses the name and namespace of the secret as attributes during encryption, hence, the SealedSecret needs to be created with the same values for these attributes if the controller is to be able to decrypt the SealedSecret. It is possible to change the scope with the `--scope` flag for `kubeseal`, refer to the [official documentation for SealedSecrets](https://github.com/bitnami-labs/sealed-secrets#scopes) for possible scopes.
 
-2. The generated SealedSecret manifest file `mysealedsecret.yaml` will contain the encrypted `$SECRET_VALUE` and is safe to store on, for example, GitHub. Push this manifest file to the repository containing the rest of your application manifests.
+        With SealedSecrets it is possible to set a _scope_ of a secret. By default this scope is set to `strict` in which the SealedSecret controller uses the name and namespace of the secret as attributes during encryption, hence, the SealedSecret needs to be created with the same values for these attributes if the controller is to be able to decrypt the SealedSecret. It is possible to change the scope with the `--scope` flag for `kubeseal`, refer to the [official documentation for SealedSecrets](https://github.com/bitnami-labs/sealed-secrets#scopes) for possible scopes.
 
-3. Deploy the application containing the SealedSecret with Argo CD as any other application.
+1.  The generated SealedSecret manifest file `mysealedsecret.yaml` will contain the encrypted `$SECRET_VALUE` and is safe to store on, for example, GitHub. Push this manifest file to the repository containing the rest of your application manifests.
+
+1.  Deploy the application containing the SealedSecret with Argo CD as any other application.
 
 ### Using vals with HashiCorp's Vault
 
 If you want to use [vals](https://github.com/helmfile/vals) with [Vault](https://www.vaultproject.io/), you will need to contact your Platform Administrator requesting that you want to use vals with Vault together with Argo CD.
 
-1. Create a secret in the `argocd-system` Namespace called `vals-secret`:
+1.  Create a secret in the `argocd-system` Namespace called `vals-secret`:
 
     ```yaml
     apiVersion: v1
@@ -198,14 +202,15 @@ If you want to use [vals](https://github.com/helmfile/vals) with [Vault](https:/
 
     Fill out required data in secret to connect it to your Vault.
 
+    <!-- prettier-ignore -->
     !!! note
         When encoding your data, make sure to use `echo -n <data> | base64` to avoid adding a new line at the end of your encoded secret.
 
-2. Contact your Platform Administrator to restart the `argocd-repo-server`. It is needed to load your secret environment variables so that Argo CD can connect to your Vault.
+1.  Contact your Platform Administrator to restart the `argocd-repo-server`. It is needed to load your secret environment variables so that Argo CD can connect to your Vault.
 
-3. Argo CD should now be able to connect to your Vault, to replace a value with a secret from your Vault, use the following syntax:
+1.  Argo CD should now be able to connect to your Vault, to replace a value with a secret from your Vault, use the following syntax:
 
-    ```
+    ```text
     secrets+literal://vals!ref+vault://path/to/#/secret
     ```
 
@@ -218,16 +223,16 @@ If you want to use [vals](https://github.com/helmfile/vals) with [Vault](https:/
       name: argocd-application
       namespace: argocd-system
       finalizers:
-      - resources-finalizer.argocd.argoproj.io
+        - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
-          namespace: staging
-          server: https://kubernetes.default.svc
+        namespace: staging
+        server: https://kubernetes.default.svc
       project: default
       source:
         helm:
           valueFiles:
-          - values.yaml
+            - values.yaml
           fileParameters:
             - name: password
               path: secrets+literal://vals!ref+vault://secret/user/#/password
@@ -264,6 +269,7 @@ Both triggers & notification templates can be configured in `argocd-notification
 Argo CD Notifications includes the [catalog](https://argocd-notifications.readthedocs.io/en/stable/catalog/) of useful triggers and templates. So you can just use them instead of reinventing new ones.
 
 !!! note
+
     The catalog triggers and templates can be found in the **argocd-notifications-cm** ConfigMap.
 
     ```console
@@ -314,9 +320,10 @@ Argo CD Notifications support multiple [service types](https://argocd-notificati
 
 The subscription to Argo CD application events can be defined using `notifications.argoproj.io/subscribe.<trigger>.<service>: <recipient>` annotation. For example, the following annotation subscribes two Slack channels to notifications about every successful synchronization of the Argo CD application:
 
-```console
-$ kubectl edit Application my-argo-application
+```bash
+kubectl edit Application my-argo-application
 ```
+
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -330,28 +337,29 @@ metadata:
 
 To configure Email service for example:
 
-1. Add Email username and password token to `argocd-notifications-secret` secret
+1.  Add Email username and password token to `argocd-notifications-secret` secret
 
-    ```console
-    $ echo -n "sender@example.com" | base64 -w0 # c2VuZGVyQGV4YW1wbGUuY29t
-    $ echo -n "secretPassword" | base64 -w0 #  c2VjcmV0UGFzc3dvcmQ=
-    $ kubectl edit -n argocd-system argocd-notifications-secret
+    ```bash
+    echo -n "sender@example.com" | base64 -w0 # c2VuZGVyQGV4YW1wbGUuY29t
+    echo -n "secretPassword" | base64 -w0 #  c2VjcmV0UGFzc3dvcmQ=
+    kubectl edit -n argocd-system argocd-notifications-secret
     ```
+
     ```yaml
     apiVersion: v1
     kind: Secret
     metadata:
-        name: argocd-notifications-secret
-        namespace: argocd-system
+      name: argocd-notifications-secret
+      namespace: argocd-system
     data:
-        email-username: c2VuZGVyQGV4YW1wbGUuY29t
-        email-password: c2VjcmV0UGFzc3dvcmQ=
+      email-username: c2VuZGVyQGV4YW1wbGUuY29t
+      email-password: c2VjcmV0UGFzc3dvcmQ=
     ```
 
-2. Register Email notification service
+1.  Register Email notification service
 
-    ```console
-    $ kubectl edit -n argocd-system argocd-notifications-cm
+    ```bash
+    kubectl edit -n argocd-system argocd-notifications-cm
     ```
 
     Add the service under the ConfigMap data
@@ -360,44 +368,70 @@ To configure Email service for example:
     apiVersion: v1
     kind: ConfigMap
     metadata:
-        name: argocd-notifications-cm
+      name: argocd-notifications-cm
     data:
-        service.email.gmail: |
-            username: $email-username
-            password: $email-password
-            host: smtp.gmail.com
-            port: 465
-            from: $email-username
+      service.email.gmail: |
+        username: $email-username
+        password: $email-password
+        host: smtp.gmail.com
+        port: 465
+        from: $email-username
     ```
+
     In case you want to use a separate SMTP server instead of gmail
+
     ```yaml
     apiVersion: v1
     kind: ConfigMap
     metadata:
-        name: argocd-notifications-cm
+      name: argocd-notifications-cm
     data:
-        service.email.custom: |
-            username: $email-username
-            password: $email-password
-            host: smtp.custom.com
-            port: 587
-            from: $email-username
+      service.email.custom: |
+        username: $email-username
+        password: $email-password
+        host: smtp.custom.com
+        port: 587
+        from: $email-username
     ```
 
-3. Subscribe to notifications by adding the notifications.argoproj.io/subscribe.on-sync-succeeded.gmail annotation to the Argo CD application:
+1.  Subscribe to notifications by adding the notifications.argoproj.io/subscribe.on-sync-succeeded.gmail annotation to the Argo CD application:
 
-```console
-$ kubectl patch app my-argo-application -p '{"metadata": {"annotations": {"notifications.argoproj.io/subscribe.on-sync-succeeded.gmail":"receiver@example.com"}}}' --type merge
-```
+    ```bash
+    kubectl patch app my-argo-application -p '{"metadata": {"annotations": {"notifications.argoproj.io/subscribe.on-sync-succeeded.gmail":"receiver@example.com"}}}' --type merge
+    ```
 
 Now, if we try syncing an application, we will get the notification once sync is completed.
 
 !!! note
+
     Email notification will not work if the sender has 2FA enabled.
 
+## Restrictions
+
+Example error:
+
+`Failed to load live state: Cluster level Namespace "application" can not be managed when in namespaced mode`
+
+Our ArgoCD installation is using the [namespaced method](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#non-high-availability). This means that ArgoCD has access to Roles with permissions to CRUD on objects in the inclusion list. It has a [list of namespaces](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters) that it can look at and reconcile things every few seconds. Any feature that requires ArgoCD cluster-wide installation will not be supported with our offering.
+
+The reason for this choice is that, according to the [Compliant Kubernetes mission and vision](../../mission-and-vision.md), the platform should make it hard for application developers to do the wrong thing by employing safeguards and secure defaults. With this configuration, we prevent ArgoCD from having access to objects in the inclusions list across the entire cluster. This prevents objects from being deployed into namespaces owned by the platform administrator, which could compromise platform security and stability. For example, this choice adds another layer of protection, preventing the application developer from interfering with backups. Read more about it [here](../demarcation.md#general-principle).
+
+ArgoCD is not allowed to manage its own namespace. This means that features such as [Apps of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern) does not work by default. Read more about the decision [here](../../adr/0044-argocd-managing-its-own-namespace.md).
+
+!!! elastisys "Apps of Apps (preview)"
+
+    This is a preview feature. For more information, please read [ToS 9.1 Preview Features](https://elastisys.com/legal/terms-of-service/#91-preview-features).
+
+    Using Apps of Apps with our offering is currently a preview feature, and customers can request it, provided they accept risks such as:
+
+    - When Apps-of-Apps is enabled, we will not be able to provide Uptime SLAs for you on the Argo Endpoint (This will be a best effort support even in future premium environments, unless the Argo project develops the feature upstream in a more secure and isolated way)
+
+    - Apps-of-Apps will currently be regarded as a preview feature and, as such, we reserve the right to disable it if it interferes with our OPS policies/practices – should that unfortunate event happen, it will be in dialogue with the customer.
+
+ArgoCD cannot create [HNC](https://github.com/kubernetes-sigs/hierarchical-namespaces) namespaces and deploy services into them. This means that as an Application Developer you cannot template the namespace as a value in a manifest. As an Application Developer you need to create subnamespaces manually and deploy applications into it. Read more about the decision [here](../../adr/0042-argocd-dynamic-hnc-namespaces.md).
 
 ## Further Reading
 
-* [Argo CD documentation](https://argo-cd.readthedocs.io/en/stable/)
-* [Helm Secrets usage](https://github.com/jkroepke/helm-secrets/wiki/Usage)
-* [SOPS](https://github.com/getsops/sops#sops-secrets-operations)
+- [Argo CD documentation](https://argo-cd.readthedocs.io/en/stable/)
+- [Helm Secrets usage](https://github.com/jkroepke/helm-secrets/wiki/Usage)
+- [SOPS](https://github.com/getsops/sops#sops-secrets-operations)

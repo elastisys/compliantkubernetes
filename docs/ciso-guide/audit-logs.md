@@ -1,17 +1,17 @@
 ---
 tags:
-- ISO 27001 A.12.4.3 Administrator & Operator Logs
-- HIPAA S18 - Security Awareness, Training, and Tools - Log-in Monitoring - § 164.308(a)(5)(ii)(C)
-- HIPAA S48 - Audit Controls - § 164.312(b)
-- MSBFS 2020:7 4 kap. 16 §
-- HSLF-FS 2016:40 4 kap. 9 § Kontroll av åtkomst till uppgifter
-- NIST SP 800-171 3.1.7
-- NIST SP 800-171 3.3.1
+  - ISO 27001 A.12.4.3 Administrator & Operator Logs
+  - HIPAA S18 - Security Awareness, Training, and Tools - Log-in Monitoring - § 164.308(a)(5)(ii)(C)
+  - HIPAA S48 - Audit Controls - § 164.312(b)
+  - MSBFS 2020:7 4 kap. 16 §
+  - HSLF-FS 2016:40 4 kap. 9 § Kontroll av åtkomst till uppgifter
+  - NIST SP 800-171 3.1.7
+  - NIST SP 800-171 3.3.1
 ---
+
 # Audit Logs
 
 To help comply with various data protection regulations, Compliant Kubernetes comes built-in with audit logs, which can be accessed via [OpenSearch Dashboard](../user-guide/logs.md).
-
 
 ## What are audit logs?
 
@@ -21,8 +21,8 @@ In brief, audit logs are lines answering "**who** did **what** and **when**?".
 
 Audit logs help both with proactive and reactive security:
 
-* Regular audit [log reviews](log-review.md) give you a chance to catch an attacker before they succeed.
-* After-the-fact, audit logs allow you to gather evidence for forensics and assess the extend of the damage caused by an attacker.
+- Regular audit [log reviews](log-review.md) give you a chance to catch an attacker before they succeed.
+- After-the-fact, audit logs allow you to gather evidence for forensics and assess the extend of the damage caused by an attacker.
 
 ## What audit logs are included?
 
@@ -53,9 +53,10 @@ Both users (Application Developers) and administrators will show in the audit lo
 The exact configuration of the Kubernetes audit logs can be found [here](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/config/common/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml).
 
 To view the audit logs for a specific user:
-   1. Open the `Audit user` dashboard in Opensearch;
-   2. Under `User selector` add the name of the user you want to audit (e.g admin@example.com);
-   3. Apply changes;
+
+1.  Open the `Audit user` dashboard in Opensearch;
+1.  Under `User selector` add the name of the user you want to audit (e.g <admin@example.com>);
+1.  Apply changes;
 
 ![Example of Audit Logs](img/audit-logs.png)
 
@@ -66,9 +67,10 @@ Compliant Kubernetes also captures highly privileged SSH access to the worker No
 ![Example of SSH Access Logs](img/authlog.png)
 
 !!!note
+
     This section helps you implement ISO 27001, specifically:
 
-    * A.9.2.1 User Registration and Deregistration
+    - A.9.2.1 User Registration and Deregistration
 
     Many data protection regulation will require you to [individually identify administrators](../adr/0005-use-individual-ssh-keys.md), hence individual SSH keys. This allows you to individually identify administrators in the SSH access log.
 
@@ -86,5 +88,5 @@ Out of all additional services, audit logging for the [database](../user-guide/a
 
 ## Further Reading
 
-* [Kubernetes Auditing](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/)
-* [pgaudit](https://www.pgaudit.org/)
+- [Kubernetes Auditing](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/)
+- [pgaudit](https://www.pgaudit.org/)

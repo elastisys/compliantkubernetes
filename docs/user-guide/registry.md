@@ -1,10 +1,10 @@
 ---
 description: How to work with the container registry in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 tags:
-- ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
-- HIPAA S17 - Security Awareness, Training, and Tools - Protection from Malicious Software - § 164.308(a)(5)(ii)(B)
-- MSBFS 2020:7 4 kap. 20 §
-- NIST SP 800-171 3.1.13
+  - ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
+  - HIPAA S17 - Security Awareness, Training, and Tools - Protection from Malicious Software - § 164.308(a)(5)(ii)(B)
+  - MSBFS 2020:7 4 kap. 20 §
+  - NIST SP 800-171 3.1.13
 ---
 
 # Harbor - private container registry
@@ -54,16 +54,17 @@ for: "unsafe-image.yaml": admission webhook "validation.gatekeeper.sh" denied th
 
 First, retrieve your Harbor CLI secret and configure your local Docker client.
 
-1. In your browser, type `harbor.$DOMAIN` where `$DOMAIN` is the information you retrieved from your administrator.
-2. Log into Harbor using Single Sign-On (SSO) via OpenID.
-3. In the right-top corner, click on your username, then "User Profile".
-4. Copy your CLI secret.
-5. Now log into the container registry: `docker login harbor.$DOMAIN`.
-6. You should see `Login Succeeded`.
+1.  In your browser, type `harbor.$DOMAIN` where `$DOMAIN` is the information you retrieved from your administrator.
+1.  Log into Harbor using Single Sign-On (SSO) via OpenID.
+1.  In the right-top corner, click on your username, then "User Profile".
+1.  Copy your CLI secret.
+1.  Now log into the container registry: `docker login harbor.$DOMAIN`.
+1.  You should see `Login Succeeded`.
 
 ### Create a registry project
 
 !!!example
+
     Here is an [example Dockerfile](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/Dockerfile) and [.dockerignore](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/.dockerignore) to get you started. Don't forget to run as non-root.
 
 If you haven't already done so, create a project called `demo` via the Harbor UI, which you have accessed in the previous step.
@@ -91,10 +92,10 @@ You should see no error message. Note down the `sha256` of the image.
 
 ### Verification
 
-1. Go to `harbor.$DOMAIN`.
-2. Choose the `demo` project.
-3. Check if the image was uploaded successfully, by comparing the tag's `sha256` with the one returned by the `docker push` command above.
-4. (Optional) While you're at it, why not run the vulnerability scanner on the image you just pushed.
+1.  Go to `harbor.$DOMAIN`.
+1.  Choose the `demo` project.
+1.  Check if the image was uploaded successfully, by comparing the tag's `sha256` with the one returned by the `docker push` command above.
+1.  (Optional) While you're at it, why not run the vulnerability scanner on the image you just pushed.
 
 <!--user-demo-registry-end-->
 
@@ -105,6 +106,7 @@ If OIDC was enabled (e.g. DeX) your Harbor user will be created when you first l
 ## Create Tag Retention Rules
 
 !!! note
+
     Elastisys recommends that you use tag retention.
 
 Over time the number of artifacts in a repository can rapidly accumulate and can become difficult to manage them and remove the ones that might not be required after a given time, not to mention that they will use large quantities of storage.
@@ -112,13 +114,13 @@ To address this problem Harbor offers the possibility for the application develo
 
 The available options:
 
-| Option   |  Description  |
-|----------|:-------------:|
-| retain the most recently pushed # artifacts | Enter the maximum number of artifacts to retain, keeping the ones that have been pushed most recently. There is no maximum age for an artifact.  |
-| retain the most recently pulled # artifacts | Enter the maximum number of artifacts to retain, keeping only the ones that have been pulled recently. There is no maximum age for an artifact.  |
+| Option                                             |                                                                      Description                                                                       |
+| -------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------: |
+| retain the most recently pushed # artifacts        |    Enter the maximum number of artifacts to retain, keeping the ones that have been pushed most recently. There is no maximum age for an artifact.     |
+| retain the most recently pulled # artifacts        |    Enter the maximum number of artifacts to retain, keeping only the ones that have been pulled recently. There is no maximum age for an artifact.     |
 | retain the artifacts pushed within the last # days | Enter the number of days to retain artifacts, keeping only the ones that have been pushed during this period. There is no maximum number of artifacts. |
 | retain the artifacts pulled within the last # days | Enter the number of days to retain artifacts, keeping only the ones that have been pulled during this period. There is no maximum number of artifacts. |
-| retain always | Always retain the artifacts identified by this rule. |
+| retain always                                      |                                                  Always retain the artifacts identified by this rule.                                                  |
 
 For instruction and examples on how to set Tag Retention Rules, please visit the [Harbor documentation](https://goharbor.io/docs/2.8.0/working-with-projects/working-with-images/create-tag-retention-rules/).
 

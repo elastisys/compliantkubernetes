@@ -3,17 +3,18 @@
 This is administrator-facing documentation associated with [this user guide](../user-guide/alerts.md). Please read that one first.
 
 !!!important
+
     Alertmanager should no longer be access via an Ingress, since this circumvents access control and audit logs. Please find the updated access method in the user guide linked above.
 
 Perform the following configuration changes in `wc-config.yaml`:
 
-1. Set `user.alertmanager.enabled=true`.
-1. Ensure `user.alertmanager.ingress.enabled` is **false**.
+1.  Set `user.alertmanager.enabled=true`.
+1.  Ensure `user.alertmanager.ingress.enabled` is **false**.
 
 For v0.18 and below include the following changes:
 
-1. Update the `user.namespaces` list to include `alertmanager`.
-1. Set `user.alertmanager.namespace=alertmanager`.
+1.  Update the `user.namespaces` list to include `alertmanager`.
+1.  Set `user.alertmanager.namespace=alertmanager`.
 
 Then apply ck8s-apps.
 
@@ -47,4 +48,5 @@ user:
 ```
 
 !!!note
+
     For versions after v0.18 `alertmanager` may not be listed under `user.namespaces` and the option `user.alertmanager.namespace` is deprecated.

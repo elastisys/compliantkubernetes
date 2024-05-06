@@ -1,8 +1,8 @@
 # PostgreSQL - Enable external replication
 
-* Status: accepted
-* Deciders: arch meeting
-* Date: 2022-10-27
+- Status: accepted
+- Deciders: arch meeting
+- Date: 2022-10-27
 
 ## Context and Problem Statement
 
@@ -11,17 +11,17 @@ Should we allow and enable external replication for PostgreSQL, or should we off
 
 ## Decision Drivers
 
-* We want to best serve the Application Developer needs.
-* We want to make the Platform Administrators life easier.
-* We want to ensure platform security and stability.
-* We want to make it hard for Application Developers to break the platform via trivial mistakes.
+- We want to best serve the Application Developer needs.
+- We want to make the Platform Administrators life easier.
+- We want to ensure platform security and stability.
+- We want to make it hard for Application Developers to break the platform via trivial mistakes.
 
 ## Considered Options
 
-* Allow external replication on PostgreSQL.
-* Do not allow external replication on PostgreSQL.
-* Allow read access to the S3 bucket containing the files that can mimic the replication.
-* Clone the S3 bucket containing the files using rclone to another bucket in a new project preferably owned by the Application Developer and from there the Application Developer is free to use it.
+- Allow external replication on PostgreSQL.
+- Do not allow external replication on PostgreSQL.
+- Allow read access to the S3 bucket containing the files that can mimic the replication.
+- Clone the S3 bucket containing the files using rclone to another bucket in a new project preferably owned by the Application Developer and from there the Application Developer is free to use it.
 
 ## Decision Outcome
 
@@ -37,14 +37,14 @@ The diagram of the solution looks like this:
 
 ### Positive Consequences
 
-* We make the Platform Administrators life easier by offering them a possibility to clone/replicate their PostgreSQL cluster from the S3 bucket containing the basebackup and WAL files.
-* Platform Administrators can now use 3rd party tools that can pull the basebackup and WAL files and clone the PostgreSQL cluster in another location.
-* Increase Application Developer autonomy
+- We make the Platform Administrators life easier by offering them a possibility to clone/replicate their PostgreSQL cluster from the S3 bucket containing the basebackup and WAL files.
+- Platform Administrators can now use 3rd party tools that can pull the basebackup and WAL files and clone the PostgreSQL cluster in another location.
+- Increase Application Developer autonomy
 
 ### Negative Consequences
 
-* For providers that do not offer S3 with ACL, we need to create and maintain an rclone job that copies the files from the initial S3 backup bucket to a new S3 bucket (preferably owned by the Application Developer)
-* When rclone is involved, the time to recover will be up to 24 hours old as we will rclone once per day.
+- For providers that do not offer S3 with ACL, we need to create and maintain an rclone job that copies the files from the initial S3 backup bucket to a new S3 bucket (preferably owned by the Application Developer)
+- When rclone is involved, the time to recover will be up to 24 hours old as we will rclone once per day.
 
 ## Recommendation to Platform Administrators
 
@@ -55,23 +55,24 @@ Offer this only on request.
 
 ## Pros and Cons of the Options <!-- optional -->
 
-### [option 1] - Allow external replication on PostgreSQL.
+### [option 1] - Allow external replication on PostgreSQL
 
-* Good, because we satisfy the Application Developer need
-* Bad, because it comes with a big risk of breaking the PostgreSQL cluster and cause downtime.
+- Good, because we satisfy the Application Developer need
+- Bad, because it comes with a big risk of breaking the PostgreSQL cluster and cause downtime.
 
 ### [option 2] - Do not allow external replication on PostgreSQL
 
-* Good, because we do not have to do any changes/work.
-* Good, because the integrity and stability of the platform is kept intact.
-* Bad, because we are not flexible and do not try to satisfy the Application Developer need.
+- Good, because we do not have to do any changes/work.
+- Good, because the integrity and stability of the platform is kept intact.
+- Bad, because we are not flexible and do not try to satisfy the Application Developer need.
 
-### [option 3] - Allow read access to the S3 bucket containing the files that can mimic the replication.
+### [option 3] - Allow read access to the S3 bucket containing the files that can mimic the replication
 
-* Good, we can satisfy the custmer need and demonstrate we are flexible and Application Developer oriented.
-* Good, because we keep the platform stability and integrity intact.
-* Bad, because it involves extra work and some snowflakiness.
+- Good, we can satisfy the custmer need and demonstrate we are flexible and Application Developer oriented.
+- Good, because we keep the platform stability and integrity intact.
+- Bad, because it involves extra work and some snowflakiness.
 
 ## Links <!-- optional -->
-* [PostgreSQL replication](https://www.postgresql.org/docs/current/runtime-config-replication.html)
-* [Streaming ReplicationHNC](https://www.postgresql.org/docs/current/warm-standby.html#STREAMING-REPLICATION)
+
+- [PostgreSQL replication](https://www.postgresql.org/docs/current/runtime-config-replication.html)
+- [Streaming ReplicationHNC](https://www.postgresql.org/docs/current/warm-standby.html#STREAMING-REPLICATION)

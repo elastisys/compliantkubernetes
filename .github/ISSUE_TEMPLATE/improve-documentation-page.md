@@ -1,10 +1,9 @@
 ---
 name: Improve documentation page
 about: A page is unclear or does not contain required information
-title: ''
+title: ""
 labels: documentation
-assignees: ''
-
+assignees: ""
 ---
 
 **Describe the bug**

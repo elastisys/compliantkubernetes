@@ -2,10 +2,9 @@
 name: New page request
 about: Suggest a new page for clarifying a new angle to Compliant Kubernetes or a
   new feature
-title: ''
+title: ""
 labels: documentation, enhancement
-assignees: ''
-
+assignees: ""
 ---
 
 **Is your feature request related to a problem? Please describe.**

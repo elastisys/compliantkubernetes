@@ -45,12 +45,12 @@ This ensures both system integrity and data confidentiality, e.g., Application D
 Compliant Kubernetes restricts data flows at three levels:
 
 - Infrastructure: Provided the infrastructure supports this, the servers composing Compliant Kubernetes should always be put on a private network, fronted by a load-balancer.
-The load-balancer should restrict communication to port 80 (TCP ACME) and 443 (HTTPS).
+  The load-balancer should restrict communication to port 80 (TCP ACME) and 443 (HTTPS).
 - Platform: Within the platform, most Compliant Kubernetes components have NetworkPolicies in place.
-NetworkPolicies are roughly equivalent to firewall in a containerized environment.
-This ensures that components can only communicate to one-another on an "as-needed" basis, and severely restricts the ability to exploit certain vulnerabilities, such as the infamous Log4j vulnerability.
+  NetworkPolicies are roughly equivalent to firewall in a containerized environment.
+  This ensures that components can only communicate to one-another on an "as-needed" basis, and severely restricts the ability to exploit certain vulnerabilities, such as the infamous Log4j vulnerability.
 - Application: Application Developers should ship their application with NetworkPolicies to restrict data flows, as described on the [Network Model](../user-guide/network-model.md) page.
-By default, Compliant Kubernetes [warns Application Developer if NetworkPolicies are missing](../user-guide/safeguards/enforce-networkpolicies.md).
+  By default, Compliant Kubernetes [warns Application Developer if NetworkPolicies are missing](../user-guide/safeguards/enforce-networkpolicies.md).
 
 ## FR 6: Timely Response to Events (Incident Management)
 
@@ -64,7 +64,6 @@ The Application Developer is empowered to configure alerts for their application
 Compliant Kubernetes comes with a [go-live checklist](../user-guide/go-live.md) to ensure that the environment is provided with sufficient capacity even in case of Node (single server) or Zone (whole data-center) failure.
 
 Furthermore, Compliant Kubernetes comes with [capacity-related alerts](../operator-manual/capacity-management.md) to alert the Platform Administrator days in advance when capacity needs to be added to the environment.
-
 
 ## Further Reading
 

@@ -57,12 +57,15 @@ kubectl get certificates
 ```
 
 ## Is the API server healthy?
+
 The command below should return `HTTP/2 200`.
+
 ```sh
 curl --fail --verbose -k https://$loadbalancer_ip_address:6443/healthz
 ```
 
 ## Are Compliantkubernetes apps services healthy?
+
 All commands below should return `HTTP/2 200`.
 
 ```sh

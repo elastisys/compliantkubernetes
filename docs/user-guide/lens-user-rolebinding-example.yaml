@@ -8,10 +8,10 @@ roleRef:
   name: lens-user
   apiGroup: rbac.authorization.k8s.io
 subjects:
-# Note that you can specify more than one "subject"
-- kind: Group
-  name: example-group@elastisys.com
-  apiGroup: rbac.authorization.k8s.io
-- kind: User
-  name: some.person@elastisys.com
-  apiGroup: rbac.authorization.k8s.io
+  # Note that you can specify more than one "subject"
+  - kind: Group
+    name: example-group@elastisys.com
+    apiGroup: rbac.authorization.k8s.io
+  - kind: User
+    name: some.person@elastisys.com
+    apiGroup: rbac.authorization.k8s.io

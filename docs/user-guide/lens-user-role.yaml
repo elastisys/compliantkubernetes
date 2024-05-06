@@ -4,15 +4,15 @@ metadata:
   namespace: monitoring
   name: lens-user
 rules:
-- apiGroups:
-  - ""
-  resources:
-  - pods/portforward
-  - pods/proxy
-  - services/portforward
-  - services/proxy
-  verbs:
-  - get
-  - list
-  - create
-  - delete
+  - apiGroups:
+      - ""
+    resources:
+      - pods/portforward
+      - pods/proxy
+      - services/portforward
+      - services/proxy
+    verbs:
+      - get
+      - list
+      - create
+      - delete
