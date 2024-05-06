@@ -40,7 +40,7 @@ mkdocs serve
 ```
 
 > [!CAUTION]
-> `mike serve` also works to preview a page, but it does not seem to support live preview.
+> The command `mike serve` also works to preview a page, but it does not seem to support live preview.
 > This means that you need to restart `mike serve` after every file change, which is not really productive
 
 - To view locally: `mike deploy compliantkubernetes ck8s -t 'main'` and then `mike serve`.
