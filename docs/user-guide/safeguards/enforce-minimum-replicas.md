@@ -30,8 +30,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-demo
-  labels:
-    ignoreMinimumReplicas: "yes" # The value part can be anything.
+  annotations:
+    elastisys.io/ignore-minimum-replicas: "yes" # The value part can be anything.
 spec:
   replicas: 1
 ```
