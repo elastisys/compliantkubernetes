@@ -1,6 +1,7 @@
 # Software Bill of Materials (SBOM)
 
 !!!abstract "TL;DR"
+
     Our attention is directed at assessing each top-level component and ensuring that they fulfill our security and business continuity goals.
 
     If you are interested in how Elastisys does vulnerability management, please consult [ToS 3.6 Vulnerability Management](https://elastisys.com/legal/terms-of-service/#36-vulnerability-management).
