@@ -21,7 +21,7 @@ When you log into **OpenSearch Dashboards**, you will start at the home page as 
 
 ![OpenSearch Dashboards](../img/osd-home.png)
 
-From here click **Visualize & analyze** to continue and you will be greeted with the options to go forward to either **Dashboard** or **Discover**. Opening the sidebar in the top left will also provide navigation to **OpenSearch Dashboards Plugins**, and here **Alerting** and **Notifications** can be found in the page shown below.
+From here click **Visualize & analyze** to continue and you will be greeted with the options to go forward to either **Dashboard** or **Discover**. Opening the sidebar in the top left will also provide navigation to **Plugins** and **Management**, and here **Alerting** and **Notifications** can be found in the page shown below.
 
 ![OpenSearch Alert Sidebar](../img/osd-alerting-sidebar.png)
 
