@@ -8,8 +8,8 @@
 
 We need to measure uptime for at least two reasons:
 
-1.  To serve as feedback on what needs to be improved next.
-1.  To demonstrate compliance with our SLAs.
+1. To serve as feedback on what needs to be improved next.
+1. To demonstrate compliance with our SLAs.
 
 How exactly should we measure uptime?
 

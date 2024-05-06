@@ -98,12 +98,12 @@ portforward.go:234] lost connection to pod
 
 You have two options to resolve this issue:
 
-1.  Send a request to your administrator to disable TLS in the postgres cluster. Although it sounds "bad", it does not compromise security, since;
+1. Send a request to your administrator to disable TLS in the postgres cluster. Although it sounds "bad", it does not compromise security, since;
 
     - Traffic between kubectl and the Kubernetes API is encrypted.
     - In-cluster network is trusted.
 
-1.  A workaround for the issue is to use an older version of `kubectl` when making this request, specifically `v1.21.14` or lower.
+1. A workaround for the issue is to use an older version of `kubectl` when making this request, specifically `v1.21.14` or lower.
 
     To avoid always using an old `kubectl` version, you can give the binary another name when downloading the `v1.21.14` version, e.g. `kubectl-1.21`. This way your normal `kubectl` binary can be kept up to date.
 

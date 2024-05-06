@@ -44,6 +44,6 @@ In general, we will aim to fix dashboards missing the `cluster` variable upstrea
 ### Negative Consequences
 
 - [Minor] We need to configure data sources in `sc-config.yaml`
-  - For example, if we forget to add the name of a Workload Cluster, the data source will be missing, but filtering based on `cluster` label is still possible.
+    - For example, if we forget to add the name of a Workload Cluster, the data source will be missing, but filtering based on `cluster` label is still possible.
 - [Minor] Label enforcer uses a bit of resources.
-  - However, we already saved a lot by migrating from InfluxDB to Thanos, so we can afford go back a bit.
+    - However, we already saved a lot by migrating from InfluxDB to Thanos, so we can afford go back a bit.

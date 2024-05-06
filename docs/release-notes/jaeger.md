@@ -21,8 +21,8 @@ Released 2024-04-26
 ### Improvement(s)
 
 - Upgraded Jaeger Operator to v1.52.0.
-  - For a full list of changes, see the [changelog](https://github.com/jaegertracing/jaeger/blob/main/CHANGELOG.md#1520-2023-12-05).
-- Upgraded Jaeger Opensearch and Opensearch Dashboards to v2.8.0
+    - For a full list of changes, see the [changelog](https://github.com/jaegertracing/jaeger/blob/main/CHANGELOG.md#1520-2023-12-05).
+- Upgraded Jaeger OpenSearch and OpenSearch Dashboards to v2.8.0
 - Changed to new upstream Grafana dashboard
 
 ## v1.39.0-ck8s3
@@ -31,11 +31,11 @@ Released 2023-08-24
 
 ### Added
 
-- Add alert for jaeger opensearch
+- Add alert for Jaeger OpenSearch
 
 ### Changed
 
-- Changed location for opensearch-curator image.
+- Changed location for OpenSearch-curator image.
 
 ## v1.39.0-ck8s2
 
@@ -47,11 +47,11 @@ Released 2023-06-12
 
 ### Updated
 
-- Updated prometheus-elasticsearch-exporter helm chart to 5.1.1
+- Updated Prometheus-elasticsearch-exporter helm chart to 5.1.1
 
 ### Fixed
 
-- Increased the proxy buffer size for the oauth ingress
+- Increased the proxy buffer size for the oauth Ingress
 
 ### Removed
 

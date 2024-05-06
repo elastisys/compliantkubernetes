@@ -7,8 +7,8 @@ It aims to solve the following use-case.
 The Compliant Kubernetes documentation uses tags to capture various Information Security Management System (ISMS) controls.
 This plugin will:
 
-1.  Create tags indexes for each requirement source.
-1.  Create bi-directional links between tags indexes and pages.
+1. Create tags indexes for each requirement source.
+1. Create bi-directional links between tags indexes and pages.
 
 ## Usage
 
@@ -23,8 +23,8 @@ plugins:
 The plugin will scan the specified folder for Markdown documents which will serve as tags indexes.
 These files are expected to:
 
-1.  be named with the prefix of tags to be included in that tags index;
-1.  contain the string `[TAGS]`.
+1. be named with the prefix of tags to be included in that tags index;
+1. contain the string `[TAGS]`.
 
 The string `[TAGS]` will be replaced with an HTML index to all relevant pages.
 In the other direction, all relevant pages will link back to the tags index.

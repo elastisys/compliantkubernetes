@@ -64,8 +64,8 @@ Your End Users should never ever access the private network directly. Instead ex
 
 Assuming you configured a Service and a Deployment for you application, making End Users access your application involves two steps:
 
-1.  Create the right DNS CNAME record.
-1.  Create the right Ingress resource.
+1. Create the right DNS CNAME record.
+1. Create the right Ingress resource.
 
 ### Running Example
 
@@ -173,9 +173,9 @@ spec:
   secretName: custom-cert # (3)
 ```
 
-1.  For which domains the certificate will be valid for.
-1.  Reference to the issuer to use.
-1.  The created certificate is stored in this secret.
+1. For which domains the certificate will be valid for.
+1. Reference to the issuer to use.
+1. The created certificate is stored in this secret.
 
 And you can directly link a certificate to an Ingress object:
 
@@ -205,10 +205,10 @@ spec:
       secretName: webapp-certificate # (4)
 ```
 
-1.  Annotation indicating the issuer to use.
-1.  Target namespace where the object will be created.
-1.  Placing a host in the TLS config will determine what ends up in the cert’s subjectAltNames.
-1.  The created certificate is stored in this secret.
+1. Annotation indicating the issuer to use.
+1. Target namespace where the object will be created.
+1. Placing a host in the TLS config will determine what ends up in the cert’s subjectAltNames.
+1. The created certificate is stored in this secret.
 
 ### Let's Encrypt Environments
 

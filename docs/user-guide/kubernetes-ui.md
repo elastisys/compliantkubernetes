@@ -27,7 +27,7 @@ That makes it fail to authenticate via Dex, the OpenID Connect provider in Compl
 
 You have two options for making the `oidc-login` plugin findable by locally-installed Kubernetes UIs:
 
-1.  Edit `~/.profile` and add:
+1. Edit `~/.profile` and add:
 
     ```bash
     if [ -d "$HOME/.krew/bin" ] ; then
@@ -35,7 +35,7 @@ You have two options for making the `oidc-login` plugin findable by locally-inst
     fi
     ```
 
-1.  Run the following command:
+1. Run the following command:
 
     ```bash
     sudo ln -s ~/.krew/bin/kubectl-oidc_login /usr/local/bin
@@ -45,10 +45,10 @@ You have two options for making the `oidc-login` plugin findable by locally-inst
 
 To get started with Monokle:
 
-1.  Make sure you performing the [above changes](#note-for-macos-and-linux-users).
-1.  Install [Monokle](https://monokle.io/) as instructed in the upstream documentation.
-1.  Perform OpenID authentication via your browser.
-1.  Make sure to select a valid namespace, since Compliant Kubernetes does not allow access to the `default` namespace.
+1. Make sure you performing the [above changes](#note-for-macos-and-linux-users).
+1. Install [Monokle](https://monokle.io/) as instructed in the upstream documentation.
+1. Perform OpenID authentication via your browser.
+1. Make sure to select a valid namespace, since Compliant Kubernetes does not allow access to the `default` namespace.
 
 Monokle should work out-of-the-box with Compliant Kubernetes.
 
@@ -58,9 +58,9 @@ Monokle should work out-of-the-box with Compliant Kubernetes.
 
 To get started:
 
-1.  Make sure you performing the [above changes](#note-for-macos-and-linux-users).
-1.  Install the [Kubernetes extension](https://code.visualstudio.com/docs/azure/kubernetes) as instructed in the upstream documentation.
-1.  Perform OpenID authentication via your browser.
+1. Make sure you performing the [above changes](#note-for-macos-and-linux-users).
+1. Install the [Kubernetes extension](https://code.visualstudio.com/docs/azure/kubernetes) as instructed in the upstream documentation.
+1. Perform OpenID authentication via your browser.
 
 The Kubernetes extension should work out-of-the-box with Compliant Kubernetes.
 

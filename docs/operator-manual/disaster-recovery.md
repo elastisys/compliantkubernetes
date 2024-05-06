@@ -73,9 +73,9 @@ To take a snapshot on-demand, execute
 
 Set the following variables
 
-1.  OpenSearch user with permissions to manage snapshots, usually `admin`
-1.  The password for the above user
-1.  The URL to OpenSearch
+1. OpenSearch user with permissions to manage snapshots, usually `admin`
+1. The password for the above user
+1. The URL to OpenSearch
 
 ```bash
 user=admin
@@ -210,7 +210,7 @@ Data in OpenSearch Dashboards (saved searches, visualizations, dashboards, etc) 
 
 This will overwrite anything in the current `.opensearch_dashboards_x` index. If there is something new that should be saved, then [export](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_export) the saved objects and [import](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_import) them after the restore.
 
-There can be multiple `.opensearch_dashboards` indices in Opensearch, the current index should be the one you want to restore. To view your dashboard indices, follow these steps.
+There can be multiple `.opensearch_dashboards` indices in OpenSearch, the current index should be the one you want to restore. To view your dashboard indices, follow these steps.
 
 ```bash
 snapshot_name=<Snapshot name from previous step>
@@ -436,7 +436,7 @@ This refers to the user Grafana, not the ops Grafana.
 ### Backup
 
 Grafana is set up to be included in the daily Velero backup.
-We then include the Grafana deployment, pod, and PVC (including the data).
+We then include the Grafana deployment, Pod, and PVC (including the data).
 Manual backups can be taken using velero (include the same resources).
 
 ### Restore
@@ -444,7 +444,7 @@ Manual backups can be taken using velero (include the same resources).
 To restore the Grafana backup you must:
 
 - Have Grafana installed
-- Delete the grafana deployment, PVC and PV
+- Delete the Grafana deployment, PVC and PV
 
   ```bash
   ./bin/ck8s ops kubectl sc delete deploy -n monitoring user-grafana

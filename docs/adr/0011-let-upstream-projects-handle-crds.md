@@ -56,7 +56,7 @@ A detailed analysis is listed below:
 - Installation: The cert-manager Helm Chart includes the [`installCRDs`](https://github.com/cert-manager/cert-manager/blob/master/deploy/charts/cert-manager/values.yaml#L42) value -- by default it is set to `false`. If set to `true`, then CRDs are automatically installed when installing cert-manager, albeit not using the CRDs mechanism provided by Helm.
 - Upgrade: CRDs are supposed to be [upgraded manually](https://cert-manager.io/docs/installation/upgrade/#upgrading-with-helm).
 
-### dex
+### Dex
 
 Dex can be configured without CRDs. [ADR-0012](https://github.com/elastisys/compliantkubernetes/pull/134) argues for that approach.
 

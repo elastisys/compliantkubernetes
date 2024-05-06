@@ -21,13 +21,13 @@ Swedish Patient Data Laws mandate having audit logs (who did what and when) for 
 
 > 9 § Vårdgivaren ska ansvara för att
 >
-> 1.  det av dokumentationen av åtkomsten (loggar) framgår vilka åtgärder som har vidtagits med uppgifter om en patient,
-> 1.  det av loggarna framgår vid vilken vårdenhet eller vårdprocess åtgärderna vidtagits,
-> 1.  det av loggarna framgår vid vilken tidpunkt åtgärderna vidtagits,
-> 1.  användarens och patientens identitet framgår av loggarna,
-> 1.  systematiska och återkommande stickprovskontroller av loggarna görs,
-> 1.  kontroller av loggarna dokumenteras, och
-> 1.  loggarna sparas minst fem år för att möjliggöra kontroll av åtkomsten till uppgifter om en patient.
+> 1. det av dokumentationen av åtkomsten (loggar) framgår vilka åtgärder som har vidtagits med uppgifter om en patient,
+> 1. det av loggarna framgår vid vilken vårdenhet eller vårdprocess åtgärderna vidtagits,
+> 1. det av loggarna framgår vid vilken tidpunkt åtgärderna vidtagits,
+> 1. användarens och patientens identitet framgår av loggarna,
+> 1. systematiska och återkommande stickprovskontroller av loggarna görs,
+> 1. kontroller av loggarna dokumenteras, och
+> 1. loggarna sparas minst fem år för att möjliggöra kontroll av åtkomsten till uppgifter om en patient.
 
 ## Technical Context
 

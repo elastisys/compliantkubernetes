@@ -31,7 +31,7 @@ Each application instance could be installed as a separate Helm Release, perhaps
 ## Further segregation of application components
 
 If you run several applications -- e.g., frontend, backend, backoffice, database, message queue -- in a single Kubernetes cluster, it is a best practice to segregrate them.
-By segregating your applications and only allowing required ingress and egress network traffic, you further reduce blast radius in case of an attack.
+By segregating your applications and only allowing required Ingress and egress network traffic, you further reduce blast radius in case of an attack.
 
 ## Compliant Kubernetes helps enforce segregation
 

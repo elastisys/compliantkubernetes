@@ -84,13 +84,13 @@ kubectl delete all --all --all-namespaces
 
 Files ending in `*.drawio.svg` are produced using [diagrams.net](https://www.diagrams.net/). They are exported as follows:
 
-1.  File -> Export As -> SVG
-1.  Change "zoom" to 100%.
-1.  Enable "Embed Images".
-1.  Enable "Embed Fonts".
-1.  Enable "Include a copy of my diagram".
-1.  Select "Links: In new window".
-1.  Leave everything else as default.
+1. File -> Export As -> SVG
+1. Change "zoom" to 100%.
+1. Enable "Embed Images".
+1. Enable "Embed Fonts".
+1. Enable "Include a copy of my diagram".
+1. Select "Links: In new window".
+1. Leave everything else as default.
 
 To facilitate editing architecture diagrams, import the [Compliant Kubernetes DrawIO library](docs/img/ck8s-library.drawio.xml).
 

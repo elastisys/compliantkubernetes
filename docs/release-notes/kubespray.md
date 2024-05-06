@@ -39,7 +39,7 @@
 
 #### Updated
 
-- **Updated kubespray to `v2.24.0`** <br/>
+- **Updated Kubespray to `v2.24.0`** <br/>
   Kubernetes version upgraded to [v1.28.6](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.28.md#changelog-since-v1270). <br/>
 
 ### v2.23.0-ck8s2
@@ -48,7 +48,7 @@ Released 2024-01-11
 
 #### Updated
 
-- Fixed a bug that was making kubespray fail when running the `scale.yml` playbook.
+- Fixed a bug that was making Kubespray fail when running the `scale.yml` playbook.
 
 ### v2.23.0-ck8s1
 
@@ -57,7 +57,7 @@ Released 2023-10-16
 #### Updated
 
 - Rook version v1.11.9 and Ceph v17.2.6
-- **Updated kubespray to `v2.23.0`** <br/>
+- **Updated Kubespray to `v2.23.0`** <br/>
   Kubernetes version upgraded to [v1.27.5](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.27.md#changelog-since-v1260). <br/>
 
 ### v2.22.1-ck8s1
@@ -66,9 +66,9 @@ Released 2023-07-27
 
 #### Updated
 
-- **Updated kubespray to `v2.22.1`** <br/>
+- **Updated Kubespray to `v2.22.1`** <br/>
   Kubernetes version upgraded to [v1.26.7](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.26.md#changelog-since-v1250). <br/>
-  This version requires at least terraform version `1.3.0` in order to provision infrastructure using the kubespray provided terraform modules.
+  This version requires at least terraform version `1.3.0` in order to provision infrastructure using the Kubespray provided terraform modules.
 
 #### Changed
 
@@ -80,9 +80,9 @@ Released 2023-02-06
 
 #### Updated
 
-- **Updated kubespray to `v2.21.0`** <br/>
+- **Updated Kubespray to `v2.21.0`** <br/>
   Kubernetes version upgraded to [v1.25.6](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.25.md#v1256) in which Pod Security Policies (PSPs) are removed. You should not upgrade to this version if you are using PSPs. To deploy [Compliant Kubernetes Apps](https://github.com/elastisys/compliantkubernetes-apps) on this version it needs to be on a compatible version which depends on [this issue](https://github.com/elastisys/compliantkubernetes-apps/issues/1218). <br/>
-  This version requires at least terraform version `0.14.0` in order to provision infrastructure using the kubespray provided terraform modules.
+  This version requires at least terraform version `0.14.0` in order to provision infrastructure using the Kubespray provided terraform modules.
 - **Upgraded rook-ceph operator to `v1.10.5` and ceph to `v17.2.5`** <br/>
   If you are using the rook-ceph operator you can read the [migration docs](https://github.com/elastisys/compliantkubernetes-kubespray/blob/v2.21.0-ck8s1/rook/migration/rook-1.5.x-rook-1.10.5/upgrade.md) on how to upgrade these components.
 
@@ -90,7 +90,7 @@ Released 2023-02-06
 
 - **Improved setup for OpenStack with additional server groups** <br/>
   This allows anti-affinity to be set between arbitrary nodes, improving scheduling and stability.
-- **Switched from using upstream kubespray repository as submodule to the elastisys fork**
+- **Switched from using upstream Kubespray repository as submodule to the Elastisys fork**
 
 #### Added
 
@@ -137,7 +137,7 @@ Released 2022-07-22
 #### Added
 
 - **Added option to clusteradmin kubeconfigs to use OIDC for authentication**
-- **Added New ansible playbooks to manage kubeconfigs and some RBAC**
+- **Added New Ansible playbooks to manage kubeconfigs and some RBAC**
 
 ### v2.19.0-ck8s1
 

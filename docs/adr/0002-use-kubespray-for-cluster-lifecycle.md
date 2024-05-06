@@ -19,12 +19,12 @@ Compliant Kubernetes promises: "Multi-cloud. Open source. Compliant". So far, we
 
 - [Rancher](https://www.rancher.com/)
 - [kubeadm via in-house tools (ck8s-cluster)](https://github.com/elastisys/ck8s-cluster)
-- [kubespray](https://github.com/kubernetes-sigs/kubespray)
+- [Kubespray](https://github.com/kubernetes-sigs/kubespray)
 - [kops](https://github.com/kubernetes/kops)
 
 ## Decision Outcome
 
-We chose kubespray, because it is best aligned with our interests, both feature- and roadmap-wise. It has a large community and is expected to be well maintained in the future. It uses kubeadm for domain knowledge on how to set up Kubernetes clusters.
+We chose Kubespray, because it is best aligned with our interests, both feature- and roadmap-wise. It has a large community and is expected to be well maintained in the future. It uses kubeadm for domain knowledge on how to set up Kubernetes clusters.
 
 ### Positive Consequences
 
@@ -34,9 +34,9 @@ We chose kubespray, because it is best aligned with our interests, both feature-
 
 ### Negative Consequences
 
-- We need training on kubespray.
-- We need to port our tooling and practices to kubespray.
-- We need to port `compliantkubernetes-apps` to work on kubespray.
+- We need training on Kubespray.
+- We need to port our tooling and practices to Kubespray.
+- We need to port `compliantkubernetes-apps` to work on Kubespray.
 
 ## Pros and Cons of the Options
 
@@ -56,6 +56,6 @@ We chose kubespray, because it is best aligned with our interests, both feature-
 ### kops
 
 - Good, because it integrates well with the underlying Infrastructure Provider (e.g., AWS).
-- Bad, because it supports fewer Infrastructure Providers than kubespray.
+- Bad, because it supports fewer Infrastructure Providers than Kubespray.
 
-NOTE: In the future, we might want to support `compliantkubernetes-apps` on top of both kops and kubespray, but this does not seem to bring value just now.
+NOTE: In the future, we might want to support `compliantkubernetes-apps` on top of both kops and Kubespray, but this does not seem to bring value just now.

@@ -1,6 +1,6 @@
 # Ingress
 
-Compliant Kubernetes (CK8s) uses the Nginx Ingress controller to route external traffic to the correct Service inside the cluster. CK8s can configure the Ingress controller in two different ways depending on the underlying infrastructure.
+Compliant Kubernetes (CK8s) uses the Ingress NGINX Controller to route external traffic to the correct Service inside the cluster. CK8s can configure the Ingress Controller in two different ways depending on the underlying infrastructure.
 
 ## Using a Service of type LoadBalancer
 
@@ -14,10 +14,10 @@ provider with an external ip-address. Any dns records should be pointed to the i
 
 ## Using the host network
 
-For any Infrastructure Provider (or bare metal) not supporting these kind of public load balancers the Ingress controller
-uses the host network instead. This is done by configuring the Ingress controller as a DaemonSet so one Pod
+For any Infrastructure Provider (or bare metal) not supporting these kind of public load balancers the Ingress Controller
+uses the host network instead. This is done by configuring the Ingress Controller as a DaemonSet so one Pod
 is created on each node. The Pods are configured to use the host network, so all traffic received on the node
-on port 80 and 443 will be intercepted by the Ingress controller Pod and then routed to the desired Service.
+on port 80 and 443 will be intercepted by the Ingress Controller Pod and then routed to the desired Service.
 
 On some clouds providers there is load balancing available for the worker nodes. For example Exoscale uses an "elastic ip"
 which provides one external ip which load balances to the available worker nodes. For these Infrastructure Providers this external ip
@@ -29,7 +29,7 @@ is selected by the dns. Another option is to use any existing load balancer serv
 
 ## Installation
 
-The Nginx ingress is currently configured and installed by the
+The Ingress NGINX Controller is currently configured and installed by the
 [compliantkubernetes-apps](https://github.com/elastisys/compliantkubernetes-apps) repository.
 The configuration is set in
 [sc-config.yaml](https://github.com/elastisys/compliantkubernetes-apps/blob/main/config/config/sc-config.yaml#L526-L530)
@@ -46,7 +46,7 @@ ingressNginx:
 If the apps repository is initiated with the correct Infrastructure Provider these config options will get the
 correct defaults.
 
-For more ways to install the Nginx Ingress controller see [the upstream documentation](https://kubernetes.github.io/ingress-nginx/deploy/).
+For more ways to install the Ingress NGINX Controller see [the upstream documentation](https://kubernetes.github.io/ingress-nginx/deploy/).
 
 ## Ingress resource
 

@@ -6,10 +6,10 @@ To remove the applications added by Compliant Kubernetes you can use the two scr
 
 They perform the following actions:
 
-1.  Delete the added helm charts
-1.  Delete the added namespaces
-1.  Delete any remaining PersistentVolumes
-1.  Delete the added CustomResourceDefinitions
+1. Delete the added helm charts
+1. Delete the added namespaces
+1. Delete any remaining PersistentVolumes
+1. Delete the added CustomResourceDefinitions
 
 !!!note
 

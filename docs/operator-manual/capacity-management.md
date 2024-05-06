@@ -18,7 +18,7 @@ Compliant Kubernetes environments are set up to withstand either:
 
 Node resilient environments are set up with enough resources allocated to withstand a single Node failure on a per Node Group basis (e.g., control-plane, worker). In other words, the environment should be able to withstand a control-plane Node and worker Node failing simultaneously.
 
-Zone resilient environments are set up over three Zones. All components that have HA capabilities will be spread across all three Zones, such that the environment can withstand a complete Zone failure (e.g., Kubernetes Control Plane, Ceph Mon, Opensearch etc.).
+Zone resilient environments are set up over three Zones. All components that have HA capabilities will be spread across all three Zones, such that the environment can withstand a complete Zone failure (e.g., Kubernetes Control Plane, Ceph Mon, OpenSearch etc.).
 
 ## Defining Node Groups
 
@@ -52,17 +52,17 @@ Compliant Kubernetes triggers a P2 alert when:
 ### Metrics
 
 - **Why memory and CPU usage?**
-  - These are the resource metrics that are directly tied to the Nodes, and represent how much of the resource is actually used and how much is available. If usage gets close to 100% of capacity, it will start impacting applications.
-  - That isn't to say that these are the only capacity metrics to take into account. Other metrics are useful too, but are often not cause for an immediate scale-up and instead require further investigation. These other metrics include:
-    - CPU:
-      - sum of (Kubernetes) CPU requests to CPU allocatable;
-      - load average;
-    - Memory:
-      - sum of (Kubernetes) memory request to memory allocatable;
-    - Storage:
-      - host disk used to size;
-      - PersistentVolumeClaim used to size;
-      - Rook/Ceph OSD used to size;
+    - These are the resource metrics that are directly tied to the Nodes, and represent how much of the resource is actually used and how much is available. If usage gets close to 100% of capacity, it will start impacting applications.
+    - That isn't to say that these are the only capacity metrics to take into account. Other metrics are useful too, but are often not cause for an immediate scale-up and instead require further investigation. These other metrics include:
+        - CPU:
+            - sum of (Kubernetes) CPU requests to CPU allocatable;
+            - load average;
+        - Memory:
+            - sum of (Kubernetes) memory request to memory allocatable;
+        - Storage:
+            - host disk used to size;
+            - PersistentVolumeClaim used to size;
+            - Rook/Ceph OSD used to size;
 
 !!!note
 

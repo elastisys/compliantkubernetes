@@ -24,8 +24,8 @@ But what should be our strategy be to upgrade Kubernetes with Cluster API?
 
 ## Considered Options
 
-1.  Upgrade as soon as there is a new minor version
-1.  Upgrade when Kubespray upgrades
+1. Upgrade as soon as there is a new minor version
+1. Upgrade when Kubespray upgrades
 
 ## Decision Outcome
 
@@ -39,8 +39,8 @@ Chosen option: option 2, because we want to keep our Kubernetes installers in th
 ### Negative Consequences <!-- optional -->
 
 - Slower adoption of new versions in Cluster API
-  - Mitigator 1: rework patch process to accelerate the release of new patch versions
-  - Mitigator 2: keep main branch of Cluster API aligned with latest minor version
+    - Mitigator 1: rework patch process to accelerate the release of new patch versions
+    - Mitigator 2: keep main branch of Cluster API aligned with latest minor version
 
 ## Pros and Cons of the Options <!-- optional -->
 
@@ -53,7 +53,7 @@ Chosen option: option 2, because we want to keep our Kubernetes installers in th
 ### Option 2 - _Upgrade when Kubespray upgrades_
 
 - Bad, because Cluster API will not be fully up to date
-  - Mitigator 1: rework patch process to accelerate the release of new patch versions
-  - Mitigator 2: keep main branch of Cluster API aligned with latest minor version
+    - Mitigator 1: rework patch process to accelerate the release of new patch versions
+    - Mitigator 2: keep main branch of Cluster API aligned with latest minor version
 - Good, because new minor Kubernetes versions will be more tested by the community at large
 - Good, because we do not get a version skew between Cluster API and Kubespray

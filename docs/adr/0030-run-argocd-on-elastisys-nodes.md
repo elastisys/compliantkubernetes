@@ -30,7 +30,7 @@ Scale up the Elastisys Nodes to 4C8GB before installing managed ArgoCD.
 
 ### Positive Consequences
 
-- The ArgoCD service infrastructure footprint is lower than when using dedicated nodes, due to less per-Node overhead (fluentd, Falco)..
+- The ArgoCD service infrastructure footprint is lower than when using dedicated nodes, due to less per-Node overhead (Fluentd, Falco)..
 - Security and stability of additional services is somewhat improved, e.g., SystemOOM due to an application won't impact ArgoCD
 
 ### Negative Consequences

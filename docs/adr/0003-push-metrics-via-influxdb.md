@@ -21,9 +21,9 @@ Currently, the Management Cluster pulls metrics from the Workload Cluster. This 
 
 ## Considered Options
 
-1.  Management Cluster exposes InfluxDB; Workload Cluster pushes metrics into InfluxDB.
-1.  Migrate from InfluxDB to [Thanos](https://thanos.io/)
-1.  Migrate from InfluxDB to [Cortex](https://github.com/cortexproject/cortex)
+1. Management Cluster exposes InfluxDB; Workload Cluster pushes metrics into InfluxDB.
+1. Migrate from InfluxDB to [Thanos](https://thanos.io/)
+1. Migrate from InfluxDB to [Cortex](https://github.com/cortexproject/cortex)
 
 ## Decision Outcome
 

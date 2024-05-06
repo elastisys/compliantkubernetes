@@ -21,10 +21,10 @@ So, should we enforce the usage of TTL on Jobs?
 
 ## Considered Options
 
-1.  Do nothing
-1.  Enforce TTL via Gatekeeper, aka reject if not set in Job spec.
-1.  Enforce TTL via Gatekeeper mutation, aka update Job spec if not set.
-1.  Enforce TTL via Gatekeeper mutation, aka update Job spec if not set. and lower the value if set too high.
+1. Do nothing
+1. Enforce TTL via Gatekeeper, aka reject if not set in Job spec.
+1. Enforce TTL via Gatekeeper mutation, aka update Job spec if not set.
+1. Enforce TTL via Gatekeeper mutation, aka update Job spec if not set. and lower the value if set too high.
 
 ## Decision Outcome
 

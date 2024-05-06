@@ -8,16 +8,16 @@
 
 We frequently write wrapper scripts. They bring the following value:
 
-1.  They bind together several tools and make them work together as a whole, e.g., `sops` and `kubectl`.
-1.  They encode domain knowledge and standard operating procedures, e.g., how to add a node, how a cluster should look like, where to find configuration files.
-1.  They enforce best practices, e.g., encrypt secrets consumed or produced by tools.
+1. They bind together several tools and make them work together as a whole, e.g., `sops` and `kubectl`.
+1. They encode domain knowledge and standard operating procedures, e.g., how to add a node, how a cluster should look like, where to find configuration files.
+1. They enforce best practices, e.g., encrypt secrets consumed or produced by tools.
 
 Unfortunately, wrapper scripts can also bring disadvantages:
 
-1.  They make usages that are deviating from the "good way" difficult.
-1.  They risk adding opacity and raise the adoption barrier. People used to the underlying tools may find it difficult to follow how those tools are invoked.
-1.  They add overhead when adding new features or supporting new use-cases.
-1.  They raise the learning curve, i.e., newcomers need to learn the wrapper scripts in addition to the underlying tools. Completely abstracting away the underlying tools is unlikely, due to the [Law of Leaky Abstractions](https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/).
+1. They make usages that are deviating from the "good way" difficult.
+1. They risk adding opacity and raise the adoption barrier. People used to the underlying tools may find it difficult to follow how those tools are invoked.
+1. They add overhead when adding new features or supporting new use-cases.
+1. They raise the learning curve, i.e., newcomers need to learn the wrapper scripts in addition to the underlying tools. Completely abstracting away the underlying tools is unlikely, due to the [Law of Leaky Abstractions](https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/).
 
 ## Decision Drivers
 

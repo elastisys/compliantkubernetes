@@ -58,7 +58,7 @@ stringData:
 
 To access the management UI, proceed as follows:
 
-1.  Retrieve the admin default username and password
+1. Retrieve the admin default username and password
 
     ```bash
     export RABBITMQ_CLUSTER=     # Get this from your administrator
@@ -75,15 +75,15 @@ To access the management UI, proceed as follows:
 
         Do not configure your application with the RabbitMQ default admin username and password. Since the application will get too much permission, this will likely violate your access control policy.
 
-1.  Start the port-forwarding:
+1. Start the port-forwarding:
 
     ```bash
     kubectl port-forward -n "${RABBITMQ_NAMESPACE}" "svc/${RABBITMQ_CLUSTER}" 15672
     ```
 
-1.  Open the [admin dashboard](http://localhost:15672) (at http://localhost:15672) and log in using the credentials retrieved in step 1.
+1. Open the [admin dashboard](http://localhost:15672) (at http://localhost:15672) and log in using the credentials retrieved in step 1.
 
-1.  Create an application username, password and vhost, and store these in variables as named below:
+1. Create an application username, password and vhost, and store these in variables as named below:
 
     ```bash
     APP_USER=

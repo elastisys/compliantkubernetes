@@ -4,7 +4,7 @@ Setting up Compliant Kubernetes consists of two parts: setting up [at least two 
 
 ## Pre-requisites for Creating Vanilla Kubernetes clusters
 
-In theory, any vanilla Kubernetes cluster can be used for Compliant Kubernetes. We suggest the [kubespray](https://github.com/kubernetes-sigs/kubespray) way. To this end, you need:
+In theory, any vanilla Kubernetes cluster can be used for Compliant Kubernetes. We suggest the [Kubespray](https://github.com/kubernetes-sigs/kubespray) way. To this end, you need:
 
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Python3 pip](https://packaging.python.org/en/latest/guides/installing-using-linux-tools/)

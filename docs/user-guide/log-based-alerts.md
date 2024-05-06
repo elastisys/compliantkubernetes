@@ -14,8 +14,8 @@ Alerting features have been enabled by default in Elastisys Compliant Kubernetes
 
 To use OpenSearch alerting feature, it involves two steps described below.
 
-1.  **Create Notifications Channel** - A reusable location for the information that you want the monitor to send out after being triggered. Supported locations are Amazon Chime, Email, Slack, or custom webhook.
-1.  **Create Monitor** - A job that runs on a defined schedule and queries OpenSearch indices. The results of these queries are then used as input for one or more triggers (Conditions that, if met, generate alerts).
+1. **Create Notifications Channel** - A reusable location for the information that you want the monitor to send out after being triggered. Supported locations are Amazon Chime, Email, Slack, or custom webhook.
+1. **Create Monitor** - A job that runs on a defined schedule and queries OpenSearch indices. The results of these queries are then used as input for one or more triggers (Conditions that, if met, generate alerts).
 
 When you log into **OpenSearch Dashboards**, you will start at the home page as shown below.
 
@@ -39,9 +39,9 @@ We start with creating a notification channel, which enables sending messages di
 
   ![OpenSearch Notification](../img/add-notifications-channel.png)
 
-  - **Name** - Name of the destination - for example **user-demo-404-slack-notify**
-  - **Channel type** - choose **Slack**
-  - **Slack webhook URL** - Create a Slack Webhook following [Slack documentation](https://api.slack.com/messaging/webhooks). Paste the webhook URL
+    - **Name** - Name of the destination - for example `user-demo-404-slack-notify`
+    - **Channel type** - choose **Slack**
+    - **Slack webhook URL** - Create a Slack Webhook following [Slack documentation](https://api.slack.com/messaging/webhooks). Paste the webhook URL
 
 - Test that the Slack integration works by clicking **Send test message** button and check if you receive a test message in your Slack Channel.
 
@@ -65,39 +65,39 @@ Next, we can proceed with creating a monitor that will use our newly created cha
 
   ![OpenSearch Monitor 1](../img/monitor-creation-1.png)
 
-  - **Monitor name** - Name of the monitor, for example **user-demo-404-error**
-  - **Monitor type** - Select **Per query monitor** - For more information check OpenSearch documentation on [Monitor types](https://opensearch.org/docs/latest/observing-your-data/alerting/monitors/#monitor-types)
-  - **Schedule** - How often to monitor, for example, to check every 1 minute, set:
-    - **Frequency** - **By interval**
-    - **Run every** - **1 Minutes**
-  - **Data source**
+    - **Monitor name** - Name of the monitor, for example `user-demo-404-error`
+    - **Monitor type** - Select **Per query monitor** - For more information check OpenSearch documentation on [Monitor types](https://opensearch.org/docs/latest/observing-your-data/alerting/monitors/#monitor-types)
+    - **Schedule** - How often to monitor, for example, to check every 1 minute, set:
+        - **Frequency** - **By interval**
+        - **Run every** - **1 Minutes**
+    - **Data source**
 
-    - **Index** where your logs are stored, for instance, **kubernetes\*** (per default, Compliant Kubernetes will store all application logs indices that match the **kubernetes\*** index pattern)
+        - **Index** where your logs are stored, for instance, `kubernetes*` (per default, Compliant Kubernetes will store all application logs indices that match the `kubernetes*` index pattern)
 
-    - **Time field** should be set to **@timestamp**
+        - **Time field** should be set to `@timestamp`
 
 - Continue with **Query** details
 
   ![OpenSearch Monitor 2](../img/monitor-creation-2.png)
 
-  - **Metrics** - optional
-  - **Time range for the last** - Time frame of data the plugin should monitor - **1 minute(s)**
-  - **Data filter** - **status-code is 404**
+    - **Metrics** - optional
+    - **Time range for the last** - Time frame of data the plugin should monitor - **1 minute(s)**
+    - **Data filter** - `status-code is 404`
 
 - Continue with **Triggers** details
 
   ![OpenSearch Trigger](../img/trigger.png)
 
-  - **Trigger name** - Name of the trigger - **404-error occurred >5 times in last 1 minute**
-  - **Severity level** - Select the severity level **1(Highest)**
-  - **Trigger condition** - Select the condition according to your applications - **IS ABOVE 5**
+    - **Trigger name** - Name of the trigger - **404-error occurred >5 times in last 1 minute**
+    - **Severity level** - Select the severity level **1(Highest)**
+    - **Trigger condition** - Select the condition according to your applications - **IS ABOVE 5**
 
 - Continue with **Actions** details
 
   ![OpenSearch Action](../img/action.png)
 
-  - Create an action with name, destination and customized message notification accordingly.
-  - Test the action by clicking **Send test message** and check if you receive a test message in your Slack Channel.
+    - Create an action with name, destination and customized message notification accordingly.
+    - Test the action by clicking **Send test message** and check if you receive a test message in your Slack Channel.
 
     ![OpenSearch Test Trigger](../img/trigger-notification-slack-test.png)
 

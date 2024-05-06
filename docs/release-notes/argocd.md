@@ -28,7 +28,7 @@ Released 2024-03-20
 
 #### Other(s)
 
-- Correct network policies for applicationset controller and repo server to allow ApplicationSets to be created.
+- Correct Network Policies for applicationset controller and repo server to allow ApplicationSets to be created.
 - Correct Gatekeeper policies to allow ArgoCD secrets to be restored.
 
 ### v2.9.5-ck8s1
@@ -45,7 +45,7 @@ Released 2024-01-30
 
 #### Added
 
-- Added networkpolicies for Argo CD components
+- Added NetworkPolicies for Argo CD components
 - Added support for age encrypted helm secrets
 - Added vals as a secret backend
 

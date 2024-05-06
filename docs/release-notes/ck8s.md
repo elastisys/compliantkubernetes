@@ -53,7 +53,7 @@ Released 2024-04-12
 
 ### Improvement(s)
 
-- Opensearch and Opensearch Dashboards were upgraded to v2.12
+- OpenSearch and OpenSearch Dashboards were upgraded to v2.12
 - Grafana was upgraded to v10.4
 - Falco was upgraded to v0.37.1
 - A new capacity management Grafana dashboard is now available. This will give better visibility over resource usage per node groups
@@ -66,7 +66,7 @@ Released 2024-02-12
 ### Feature(s)
 
 - Added some initial disk performance alerts
-- Added probe ingress to monitor services
+- Added probe Ingress to monitor services
 
 ### Improvement(s)
 
@@ -74,7 +74,7 @@ Released 2024-02-12
 
 ### Other(s)
 
-- bug - Fixed issue where large harbor backups would fail
+- bug - Fixed issue where large Harbor backups would fail
 - clean-up - Removed the ciskubernetesbenchmark dashboard from Grafana
 
 ## v0.34.2
@@ -103,7 +103,7 @@ Released 2023-12-22
 
 ### Other(s)
 
-- bug - Fixed issue where large harbor backups would fail
+- bug - Fixed issue where large Harbor backups would fail
 
 ## v0.35.0
 
@@ -120,7 +120,7 @@ Released 2023-12-20
 
 ### Feature(s)
 
-- Added option to run nginx in chroot
+- Added option to run NGINX in chroot
 - Added support for self-managed Kafka
 
 ### Improvement(s)
@@ -156,9 +156,9 @@ Released 2023-10-20
 
 ### Updated
 
-- **Ingress-nginx controller to 1.8.4 and chart to 4.7.3 (HTTP/2 fix for CVE-2023-44487)**
-  - a limit of no more than 2 \* max_concurrent_streams new streams per one event loop iteration was introduced
-  - refused streams are now limited to maximum of max_concurrent_streams and 100
+- **Ingress-NGINX controller to 1.8.4 and chart to 4.7.3 (HTTP/2 fix for CVE-2023-44487)**
+    - a limit of no more than 2 \* max_concurrent_streams new streams per one event loop iteration was introduced
+    - refused streams are now limited to maximum of max_concurrent_streams and 100
 
 ## v0.32.2
 
@@ -166,9 +166,9 @@ Released 2023-10-20
 
 ### Updated
 
-- **Ingress-nginx controller to 1.8.4 and chart to 4.7.3 (HTTP/2 fix for CVE-2023-44487)**
-  - a limit of no more than 2 \* max_concurrent_streams new streams per one event loop iteration was introduced
-  - refused streams are now limited to maximum of max_concurrent_streams and 100
+- **Ingress-NGINX controller to 1.8.4 and chart to 4.7.3 (HTTP/2 fix for CVE-2023-44487)**
+    - a limit of no more than 2 \* max_concurrent_streams new streams per one event loop iteration was introduced
+    - refused streams are now limited to maximum of max_concurrent_streams and 100
 
 ## v0.33.0
 
@@ -176,7 +176,7 @@ Released 2023-09-28
 
 ### Changed
 
-- **Increased the default `proxy-buffer-size` setting in ingress-nginx to `8k`.**
+- **Increased the default `proxy-buffer-size` setting in Ingress-NGINX to `8k`.**
 
 ### Fixed
 
@@ -184,7 +184,7 @@ Released 2023-09-28
 
 ### Removed
 
-- **Removed the deprecated grafana dashboard Image vulnerabilities.**
+- **Removed the deprecated Grafana dashboard Image vulnerabilities.**
 
 ## v0.32.0
 
@@ -196,21 +196,21 @@ Released 2023-08-07
 
 ### Added
 
-- **Added support to turn off trailing dots for grafana.**
-  - This fixes an issue with the certificate for Grafana appearing not to be valid on some browsers.
+- **Added support to turn off trailing dots for Grafana.**
+    - This fixes an issue with the certificate for Grafana appearing not to be valid on some browsers.
 
 ### Changed
 
 - **Increased window for `FrequentPacketsDroppedFromWorkload` and `FrequentPacketsDroppedToWorkload` alerts.**
-  - To make it less sensitive to semi-consistent blocked network traffic.
+    - To make it less sensitive to semi-consistent blocked network traffic.
 - **Reduced CPU requests for some components in the service cluster.**
 
 ### Fixed
 
-- **Added some default annotations for harbor that will fix issues with not being able to upload larger images.**
+- **Added some default annotations for Harbor that will fix issues with not being able to upload larger images.**
 - **Fixed the Gatekeeper Grafana dashboard.**
-  - Updated queries to produce correct numbers
-  - Removed broken/duplicate panels
+    - Updated queries to produce correct numbers
+    - Removed broken/duplicate panels
 
 ## v0.31.0
 
@@ -219,12 +219,12 @@ Released 2023-07-17
 ### Updated
 
 - **Harbor is upgraded to `v2.8.2`.**
-  - This version drops the support for chartmuseum and replaces it with a OCI compatible chart storage. You can find the documentation for how to use OCI compatible chart storage [here](https://goharbor.io/docs/2.7.0/working-with-projects/working-with-images/managing-helm-charts/#manage-helm-charts-with-the-oci-compatible-registry-of-harbor).
-  - They are also replacing the Notary image signer with Cosign image signer. You can find the documentation for how to use Cosign to sign images [here](https://goharbor.io/docs/2.7.0/working-with-projects/working-with-images/sign-images/#use-cosign-to-sign-artifacts).
-  - Dex is now the default login page.
-- **Ingess-nginx is upgraded to `v1.8.0`.**
+    - This version drops the support for chartmuseum and replaces it with a OCI compatible chart storage. You can find the documentation for how to use OCI compatible chart storage [here](https://goharbor.io/docs/2.7.0/working-with-projects/working-with-images/managing-helm-charts/#manage-helm-charts-with-the-oci-compatible-registry-of-harbor).
+    - They are also replacing the Notary image signer with Cosign image signer. You can find the documentation for how to use Cosign to sign images [here](https://goharbor.io/docs/2.7.0/working-with-projects/working-with-images/sign-images/#use-cosign-to-sign-artifacts).
+    - Dex is now the default login page.
+- **Ingess-NGINX is upgraded to `v1.8.0`.**
 - **Grafana is upgraded to `v9.5.5`.**
-- **Opensearch and Opensearch Dashboard are upgraded to `v2.8.0`.**
+- **OpenSearch and OpenSearch Dashboard are upgraded to `v2.8.0`.**
 
 ### Added
 
@@ -239,9 +239,9 @@ Released 2023-06-05
 ### Updated
 
 - **Update Trivy Operator Dashboard to improve the user experience.**
-- **Another network policy fix for Harbor to allow garbage collection.**
-- **Fixed duplicate exception for falco alerts.**
-- **Update Falco rules and falco alert exceptions.**
+- **Another Network Policy fix for Harbor to allow garbage collection.**
+- **Fixed duplicate exception for Falco alerts.**
+- **Update Falco rules and Falco alert exceptions.**
 
 ### Changed
 
@@ -258,27 +258,27 @@ Released 2023-05-16
 ### Updated
 
 - **kube-prometheus-stack chart to `v45.2.0`.**
-  - the portName for alertmanager and prometheus have been renamed from web to http-web. If this port names are used by you application or to port-forward to prometheus/alertmanager, you will need to update them to http-web or use the port numbers instead (e.g 9090 for prometheus and 9093 for alertmanager);
-  - added default metric relabeling for cAdvisor and apiserver metrics to reduce cardinality;
-  - alertmanager, using regex field from the Matcher type is deprecated and it will be removed in a future version.
+    - the portName for Alertmanager and Prometheus have been renamed from web to http-web. If this port names are used by you application or to port-forward to Prometheus/Alertmanager, you will need to update them to http-web or use the port numbers instead (e.g 9090 for Prometheus and 9093 for Alertmanager);
+    - added default metric relabeling for cAdvisor and apiserver metrics to reduce cardinality;
+    - Alertmanager, using regex field from the Matcher type is deprecated and it will be removed in a future version.
 
 ### Changed
 
 - **Kubernetes PodSecurityPolcies have been replaced with Kubernetes Pod Security Standards and additional Gatekeeper Constraints and Mutations.**
-  - This should not affect user applications as the default behavior is kept, and the new default restricted Pod Security Standard is slightly less restricted than the previous restricted PodSecurityPolicy following the upstream changes;
-  - You might see `warnings` generated by PodSecurity while deploying manifests into your Kubernetes cluster, if fields are unset or do not follow the [Restricted policy for the Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted). If fields are unset, the new Gatekeeper mutations will set defaults, that follow the restricted Pod Security Standards, as the Pods get scheduled.
+    - This should not affect user applications as the default behavior is kept, and the new default restricted Pod Security Standard is slightly less restricted than the previous restricted PodSecurityPolicy following the upstream changes;
+    - You might see `warnings` generated by PodSecurity while deploying manifests into your Kubernetes cluster, if fields are unset or do not follow the [Restricted policy for the Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted). If fields are unset, the new Gatekeeper mutations will set defaults, that follow the restricted Pod Security Standards, as the Pods get scheduled.
 - **Trivy Operator has replaced Starboard Operator as the online security scanning tool.**
-  - This includes a new Trivy Operator dashboard and the deprecation of the old Image vulnerabilities dashboard.
+    - This includes a new Trivy Operator dashboard and the deprecation of the old Image vulnerabilities dashboard.
 - **Both `responseObject` and `requestObject` are no longer dropped in Fluentd from Kubernetes audit events.**
 - **Changed timekey to stageTimestamp for Kubernetes audit logs. Use auditID to correlate stages of the same request.**
 
 ### Removed
 
 - **Remove HNC admin-rbac from admin (attached to user admins).**
-  - User admins will now only have the HNC user-rbac instead.
+    - User admins will now only have the HNC user-rbac instead.
 - **Removed the ability to edit HierarchyConfiguration for users.**
-  - HierarchyConfiguration controls the Pod Security Standard level, and as such should not be allowed to be changed by a user.
-- **Disable Non sudo setuid falco rule.**
+    - HierarchyConfiguration controls the Pod Security Standard level, and as such should not be allowed to be changed by a user.
+- **Disable Non sudo setuid Falco rule.**
 
 ## v0.29.0
 
@@ -294,9 +294,9 @@ Released 2023-03-16
 
 ### Updated
 
-- **Cert-manager updated to `v1.11.0`.**
-  - The containers in pods created by cert-manager have been renamed to better reflect what they do. This can be breaking for automation that relies on these names being static.
-  - The cert-manager Gateway API integration now uses the v1beta1 API version. ExperimentalGatewayAPISupport alpha feature users must upgrade to v1beta of Gateway API.
+- **cert-manager updated to `v1.11.0`.**
+    - The containers in pods created by cert-manager have been renamed to better reflect what they do. This can be breaking for automation that relies on these names being static.
+    - The cert-manager Gateway API integration now uses the v1beta1 API version. ExperimentalGatewayAPISupport alpha feature users must upgrade to v1beta of Gateway API.
 
 ## v0.28.1
 
@@ -304,7 +304,7 @@ Released 2023-03-02
 
 ### Added
 
-- **Added falco rules to ignore redis operator related alerts.**
+- **Added Falco rules to ignore Redis operator related alerts.**
 
 ## v0.28.0
 
@@ -313,21 +313,21 @@ Released 2023-01-30
 ### Changed
 
 - **Updated Rook alerts to `v1.10.5`.**
-- **Nginx ingress controller service can now have multiple annotations instead of just one.**
-- **Synced all grafana dashboards to use the default organization timezone.**
+- **NGINX Ingress Controller service can now have multiple annotations instead of just one.**
+- **Synced all Grafana dashboards to use the default organization timezone.**
 - **Several default resource requests and limits have changed for the included services.**
 
 ### Fixed
 
 - **Use FQDN for services connecting from the Workload Cluster to the service cluster to prevent resolve timeouts.**
 - **Fixed `KubeletDown` alert rule not alerting if a kubelet was missing.**
-- **Added permissions to the `alerting_full_access` role in Opensearch to be able to view notification channels.**
-- **Added `fluent-plugin-record-modifier` to the fluentd image to prevent mapping errors.**
-- **Various fixes to network policies.**
+- **Added permissions to the `alerting_full_access` role in OpenSearch to be able to view notification channels.**
+- **Added `fluent-plugin-record-modifier` to the Fluentd image to prevent mapping errors.**
+- **Various fixes to Network Policies.**
 
 ### Added
 
-- **Improved security posture by adding network policies for some of the networking and storage components.**
+- **Improved security posture by adding Network Policies for some of the networking and storage components.**
 - **Added alert for less kubelets than nodes in the cluster.**
 - **Added alert for object limits in buckets.**
 
@@ -345,12 +345,12 @@ Released 2022-11-17
 
 ### Changed
 
-- **Improved Network security by adding Network policies to a lot of the included services.**
+- **Improved Network security by adding Network Policies to a lot of the included services.**
 - **NetworkPolicies are now automatically propagated from a parent namespace to its subnamespaces in HNC.**
 - **Several default resource requests and limits have changed for the included services.**
 - **Lowered the default retention age for Kubernetes logs in the prod flavor down to 30 days.**
-- **Made dex ID Token expiration time configurable.**
-- **User alertmanager is now enabled by default.**
+- **Made Dex ID Token expiration time configurable.**
+- **User Alertmanager is now enabled by default.**
 
 ### Fixed
 
@@ -362,7 +362,7 @@ Released 2022-11-17
 - **Added RBAC for admin users to view Gatekeeper constraints.**
 - **New section in the welcoming dashboards, displaying the most relevant features and changes for the user added in the last two releases.**
 - **Added an option to configure alerts for growing indices in OpenSearch.**
-  - **The settings for this might need to be tweaked to better suit the environment.**
+    - **The settings for this might need to be tweaked to better suit the environment.**
 - **Added an alert for failed evicted pods (KubeFailedEvictedPods).**
 
 ## v0.26.0
@@ -372,7 +372,7 @@ Released 2022-09-19
 ### Updated
 
 - **Harbor upgraded to `v2.6.0`**
-- **Upgraded Opensearch helm chart to `2.6.0`, this upgrades Opensearch to `2.3.0`. For more information about the upgrade, check out their [2.3 Launch Announcement](https://opensearch.org/blog/releases/2022/09/opensearch-2-3-is-ready-for-download/).**
+- **Upgraded OpenSearch helm chart to `2.6.0`, this upgrades OpenSearch to `2.3.0`. For more information about the upgrade, check out their [2.3 Launch Announcement](https://opensearch.org/blog/releases/2022/09/opensearch-2-3-is-ready-for-download/).**
 
 ### Fixed
 
@@ -385,7 +385,7 @@ Released 2022-09-19
   Automated CIS tests are performed on each node using kube-bench
   Added a CIS kube-bench Grafana dashboard
 - **Added option for kured to notify to slack when draning and rebooting nodes**
-- **Allow users to proxy and port-forward to prometheus running in the Workload Cluster**
+- **Allow users to proxy and port-forward to Prometheus running in the Workload Cluster**
 
 ## v0.25.0
 
@@ -405,7 +405,7 @@ Released 2022-08-25
 
 ### Changed
 
-- **New additions to the Kubernetes cluster status Grafana dashboard** <br/> It now shows information about resource requests and limits per node, and resource usage vs request per pod.
+- **New additions to the Kubernetes cluster status Grafana dashboard** <br/> It now shows information about resource requests and limits per node, and resource usage vs request per Pod.
 
 ## v0.24.1
 
@@ -415,7 +415,7 @@ Released 2022-08-01
 
 ### Fixed
 
-- Fixed a formatting issue with harbor s3 configuration.
+- Fixed a formatting issue with Harbor S3 configuration.
 
 ## v0.24.0
 
@@ -434,7 +434,7 @@ Released 2022-07-25
 
 ### Added
 
-- **Further configurability to ingress-nginx**<br/>
+- **Further configurability to Ingress-NGINX**<br/>
 
 ## v0.23.0
 
@@ -442,8 +442,8 @@ Released 2022-07-06
 
 ### Updated
 
-- **Updated the ingress controller `ingress-nginx` to image version v1.2.1**<br/>
-  - You can find the changelog [here](https://github.com/kubernetes/ingress-nginx/releases/tag/controller-v1.2.1).
+- **Updated the Ingress Controller `ingress-nginx` to image version v1.2.1**<br/>
+    - You can find the changelog [here](https://github.com/kubernetes/ingress-nginx/releases/tag/controller-v1.2.1).
 
 ### Changed
 
@@ -477,7 +477,7 @@ Released 2022-06-01
 
 ### Fixed
 
-- **Fixed a bug where users couldn't silence alerts when portforwarding to alertmanager.**<br/>
+- **Fixed a bug where users couldn't silence alerts when portforwarding to Alertmanager.**<br/>
 
 - **Improved logging stack and fixed a number of issues to ensure reliability.**<br/>
 
@@ -495,15 +495,15 @@ Released 2022-05-04
 - **User can now get ClusterIssuers.**<br/>
 
 - **Ensured all CISO dashboards are available to users.**<br/>
-  All the grafana dashboards in our [CISO docs](../ciso-guide/index.md) are now available.
+  All the Grafana dashboards in our [CISO docs](../ciso-guide/index.md) are now available.
 
-- **Better stability for dex**<br/>
+- **Better stability for Dex**<br/>
   Dex now runs with two replicas and has been updated.
 
 ### Updated
 
 - **Image upgrades to reduce number of vulnerabilities**<br/>
-  Upgrades for fluentd, grafana, and harbor chartmuseum.
+  Upgrades for Fluentd, Grafana, and Harbor chartmuseum.
 
 ## v0.20.0
 
@@ -514,12 +514,12 @@ Released 2022-03-21
 - **Added kured - Kubernetes Reboot Daemon.**<br/>
   This enables automatic node reboots and security patching of the underlying base Operating System image, container runtime and Kubernetes cluster components.
 
-- **Added fluentd grafana dashboard and alerts.**<br/>
+- **Added Fluentd Grafana dashboard and alerts.**<br/>
 
 - **Added RBAC for admin users.**<br/>
   Admin users can now list pods cluster wide and run the kubectl top command.
 
-- **Added containerd support for fluentd.**<br/>
+- **Added containerd support for Fluentd.**<br/>
 
 ### Changed
 
@@ -535,8 +535,8 @@ Released 2022-03-21
 
 ### Updated
 
-- **Upgraded nginx-ingress helm chart to v4.0.17**<br/>
-  This upgrades nginx-ingress to v1.1.1. When upgrading an ingressClass object called nginx will be installed, this class has been set as the default class in Kubernetes. Ingress-nginx has been configured to still handle existing ingress objects that do not specify any ingressClassName.
+- **Upgraded Ingress-NGINX helm chart to v4.0.17**<br/>
+  This upgrades Ingress-NGINX to v1.1.1. When upgrading an ingressClass object called NGINX will be installed, this class has been set as the default class in Kubernetes. Ingress-NGINX has been configured to still handle existing Ingress objects that do not specify any ingressClassName.
 
 - **Upgraded starboard-operator helm chart to v0.9.1**<br/>
   This is upgrading starboard-operator to v0.14.1
@@ -626,8 +626,8 @@ Released 2021-11-04.
 
 Changes:
 
-- Ingress-nginx-controller has been updated from v0.28.0 to v0.49.3, bringing various updates.
-  - Additionally, the configuration option `allow-snippet-annotations` has been set to `false` to mitigate known security issue [CVE-2021-25742](https://github.com/kubernetes/ingress-nginx/issues/7837)
+- Ingress-NGINX-controller has been updated from v0.28.0 to v0.49.3, bringing various updates.
+    - Additionally, the configuration option `allow-snippet-annotations` has been set to `false` to mitigate known security issue [CVE-2021-25742](https://github.com/kubernetes/ingress-nginx/issues/7837)
 - Fixes, minor version upgrades, improvements to resource requests and limits for applications, improvements to stability.
 
 ## v0.17.0

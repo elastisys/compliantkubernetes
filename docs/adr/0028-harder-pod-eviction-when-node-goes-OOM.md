@@ -1,4 +1,4 @@
-# Harder pod eviction when nodes are going OOM
+# Harder Pod eviction when nodes are going OOM
 
 - Status: accepted
 - Deciders: arch meeting

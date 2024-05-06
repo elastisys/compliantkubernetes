@@ -54,9 +54,9 @@ The exact configuration of the Kubernetes audit logs can be found [here](https:/
 
 To view the audit logs for a specific user:
 
-1.  Open the `Audit user` dashboard in Opensearch;
-1.  Under `User selector` add the name of the user you want to audit (e.g <admin@example.com>);
-1.  Apply changes;
+1. Open the `Audit user` dashboard in OpenSearch;
+1. Under `User selector` add the name of the user you want to audit (e.g <admin@example.com>);
+1. Apply changes;
 
 ![Example of Audit Logs](img/audit-logs.png)
 

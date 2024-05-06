@@ -55,11 +55,13 @@ This means that your administrator will be setting up a complete PostgreSQL clus
 
 If you want to use TimescaleDB on your Compliant Kubernetes cluster, ask your administrator to provision a new PostgreSQL cluster inside your Compliant Kubernetes environment. Then set up the TimescaleDB extension.
 
+<!-- markdownlint-disable MD044 -->
 {%
     include "./postgresql.md"
     start="<!--postgresql-setup-start-->"
     end="<!--postgresql-setup-end-->"
 %}
+<!-- markdownlint-enable MD044 -->
 
 ## Set up the TimescaleDB extension on PostgreSQL
 

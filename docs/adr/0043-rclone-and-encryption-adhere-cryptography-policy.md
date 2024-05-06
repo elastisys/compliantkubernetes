@@ -23,20 +23,20 @@ Is `rclone`'s encryption sufficient for our purposes? Does it comply with the re
 
 ## Considered Options
 
-1.  Use `rclone` to replicate the data from our `primary` Infrastructure Provider to `secondary` public Infrastructure Provider on a second object storage.
+1. Use `rclone` to replicate the data from our `primary` Infrastructure Provider to `secondary` public Infrastructure Provider on a second object storage.
 
     - `Good`, because it supports our goals of data redundancy, privacy, compliance, and cross-infrastructure-provider flexibility.
     - `Bad`, because in some jurisdictions and regulatory frameworks, Infrastructure Providers might be considered data sub-processors, which could impose additional requirements and compliance obligations.
 
-1.  Use `rclone` to replicate the data from our primary region to secondary region (outside Sweden) within the same public Infrastructure Provider on a second object storage.
+1. Use `rclone` to replicate the data from our primary region to secondary region (outside Sweden) within the same public Infrastructure Provider on a second object storage.
 
     - `Good`, because it supports our goals of data redundancy, resilience, disaster recovery preparedness, privacy, compliance, encrypted data transfer, and cross-region accessibility.
 
-1.  Use `rclone` to replicate the data from our `primary` Infrastructure Provider to `secondary` Compliant Infrastructure Provider on a second object storage.
+1. Use `rclone` to replicate the data from our `primary` Infrastructure Provider to `secondary` Compliant Infrastructure Provider on a second object storage.
 
     - We investigated this with Infrastructure Providers, but found that there is no good way to enable communication between public Infrastructure Provider object storage and compliant Infrastructure Provider object storage.
 
-1.  Do nothing and accept the risk of data loss.
+1. Do nothing and accept the risk of data loss.
 
     - `Bad`, because not implementing data replication leaves our services vulnerable to data loss in case of hardware failures, system errors, or accidental deletions, and recovery options become limited.
 

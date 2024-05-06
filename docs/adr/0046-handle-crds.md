@@ -12,7 +12,7 @@ We previously decided on letting upstream projects handle CRDs in any way they p
 
 Helm 3 has [support for installing CRDs](https://helm.sh/docs/topics/charts/#custom-resource-definitions-crds), but not upgrading them, but not all upstream projects use this way of installing CRDs. Instead they include the CRDs as regular resources in the chart, meaning that there is no way of deleting the installed chart release without also removing CRDs and any associated Custom Resource objects.
 
-One example of an issue that this can cause is that both our Apps and Cluster API uses Cert-manager to provision certificates. If one were to uninstall cert-manager using our Apps, they would lose required certificate resources that Cluster API needs for its cluster management. A reinstall of cert-manager with Apps would not reinstall these specific Cluster API certificates. This is an issue since we do not want Apps to mess with the underlying infrastructure layer, be it Kubespray or Cluster API.
+One example of an issue that this can cause is that both our Apps and Cluster API uses cert-manager to provision certificates. If one were to uninstall cert-manager using our Apps, they would lose required certificate resources that Cluster API needs for its cluster management. A reinstall of cert-manager with Apps would not reinstall these specific Cluster API certificates. This is an issue since we do not want Apps to mess with the underlying infrastructure layer, be it Kubespray or Cluster API.
 
 ## Decision Drivers <!-- optional -->
 

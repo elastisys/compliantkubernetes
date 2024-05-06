@@ -24,11 +24,13 @@ We have versions of it for [Node JS](https://github.com/elastisys/compliantkuber
 
 ## Deploy Your Application
 
+<!-- markdownlint-disable MD044 -->
 {%
     include "./kubernetes-api.md"
     start="<!--user-demo-kubernetes-api-start-->"
     end="<!--user-demo-kubernetes-api-end-->"
 %}
+<!-- markdownlint-enable MD044 -->
 
 ## View Application Logs
 

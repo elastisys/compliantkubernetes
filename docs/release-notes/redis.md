@@ -44,12 +44,12 @@ Released 2023-05-10
 
 Changes:
 
-- Changed to standard timezone in grafana dashboard
+- Changed to standard timezone in Grafana dashboard
 - Upgraded the redis-operator to `v1.2.4` and Chart version to `v3.2.8`
 
 Added:
 
-- Added RBAC for users to be able to port-forward to redis
+- Added RBAC for users to be able to port-forward to Redis
 - Added nodeAffinity for the label `elastisys.io/ams-cluster-name` which will be set for each cluster in `values.yaml`
 
 ## v1.1.1-ck8s4

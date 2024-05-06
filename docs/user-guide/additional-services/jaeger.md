@@ -76,7 +76,7 @@ spec:
 
     This method is deprecated and will be removed in the future.
 
-The Jaeger agent is exposed as a DaemonSet. Your application needs to be told where the agent is located by setting the environment variable JAEGER_AGENT_HOST to the value of the Kubernetes node’s IP:
+The Jaeger agent is exposed as a DaemonSet. Your application needs to be told where the agent is located by setting the environment variable `JAEGER_AGENT_HOST` to the value of the Kubernetes node’s IP:
 
 ```yaml
 apiVersion: apps/v1

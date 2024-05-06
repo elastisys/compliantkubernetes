@@ -64,11 +64,11 @@ To restore a backup on demand, contact your Compliant Kubernetes administrator.
 
 The Compliant Kubernetes administrator will take the following measure to ensure backups are protected:
 
-1.  Backups are encrypted at rest, if the underlying infrastructure provider supports it.
+1. Backups are encrypted at rest, if the underlying infrastructure provider supports it.
 
     **Why?** This ensures backups remain confidential, even if, e.g., hard drives are not safely disposed.
 
-1.  Backups are replicated to an off-site location, if requested. This process is performed from outside the cluster, hence the users -- or attackers gaining access to their application -- cannot access the off-site replicas.
+1. Backups are replicated to an off-site location, if requested. This process is performed from outside the cluster, hence the users -- or attackers gaining access to their application -- cannot access the off-site replicas.
 
     **Why?** This ensures backups are available even if the primary location is subject to a disaster, such as extreme weather. The backups also remain available -- though unlikely confidential -- in case an attacker manages to gain access to the cluster.
 

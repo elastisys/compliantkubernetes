@@ -61,7 +61,7 @@ We can instruct OpenSearch to detect numeric values, by configuring the Index at
 
 ![Detect Numeric](../img/dynamic_mapping_5.png)
 
-Checking the dynamic mapping again, we can see that Opensearch was able to detect the numeric, and set the value of field to **long**
+Checking the dynamic mapping again, we can see that OpenSearch was able to detect the numeric, and set the value of field to **long**
 
 ![Get Mapping](../img/dynamic_mapping_6.png)
 

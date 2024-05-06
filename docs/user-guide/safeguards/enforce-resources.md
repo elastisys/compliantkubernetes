@@ -34,8 +34,8 @@ A major source of application downtime is insufficient capacity. For example, if
 
 To avoid running into capacity issues, Kubernetes allows Pods to [specify resource requests and limits](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for each of its containers. This achieves two benefits:
 
-1.  It ensures that Pods are scheduled to Nodes that have the requested resources.
-1.  It ensures that a Pod does not exceed its resource limits, hence limiting its blast radius and protecting other application or platform Pods.
+1. It ensures that Pods are scheduled to Nodes that have the requested resources.
+1. It ensures that a Pod does not exceed its resource limits, hence limiting its blast radius and protecting other application or platform Pods.
 
 ## How Does Compliant Kubernetes Help?
 

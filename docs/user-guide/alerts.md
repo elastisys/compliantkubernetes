@@ -58,8 +58,8 @@ You can match any label in the alerts, read more about how the `matcher` configu
 
 If you want to access Alertmanager, for example to confirm that its configuration was picked up correctly, proceed as follows:
 
-1.  Type: `kubectl proxy`.
-1.  Open [this link](http://127.0.0.1:8001/api/v1/namespaces/alertmanager/services/alertmanager-operated:9093/proxy/) in your browser.
+1. Type: `kubectl proxy`.
+1. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/alertmanager/services/alertmanager-operated:9093/proxy/) in your browser.
 
 You can configure silences in the UI, but they will not be persisted if Alertmanager is restarted. Use the secret mentioned above instead to create silences that persist.
 

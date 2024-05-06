@@ -59,14 +59,14 @@ Compliant Kubernetes installs the prometheus-operator by default. The Prometheus
 
 If you want to access the web interface of Prometheus, proceed as follows:
 
-1.  Type: `kubectl proxy`
-1.  Open [this link](http://127.0.0.1:8001/api/v1/namespaces/monitoring/services/kube-prometheus-stack-prometheus:9090/proxy/) in your browser
+1. Type: `kubectl proxy`
+1. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/monitoring/services/kube-prometheus-stack-prometheus:9090/proxy/) in your browser
 
 The Prometheus UI is only available by default starting in Compliant Kubernetes version 0.26.
 
 ### Grafana
 
-Grafana can be accessed at the endpoint provided by the Compliant Kubernetes install scripts. If you have configured dex you can login with a connected account.
+Grafana can be accessed at the endpoint provided by the Compliant Kubernetes install scripts. If you have configured Dex you can login with a connected account.
 
 Compliant Kubernetes deploys Grafana with a selection of dashboards by default. Dashboards are accessed by clicking the Dashboard icon (four squares) at the lefthand side of the Grafana window and selecting Browse. Some examples of useful dashboards are listed below.
 
@@ -78,7 +78,7 @@ The Nodes dashboard (Node Exporter / Nodes) gives a quick overview of the status
 
 #### Pod health
 
-The Pods dashboard (Kubernetes/Compute resources/Pods) gives a quick overview of the status (health) of a pod in the cluster. By selecting a pod in the "pod" dropdown metrics for CPU, Memory, and Network I/O is showed for that node. The time frame can be changed either by using the time dropdown or selecting directly in the graphs.
+The Pods dashboard (Kubernetes/Compute resources/Pods) gives a quick overview of the status (health) of a Pod in the cluster. By selecting a Pod in the "Pod" dropdown metrics for CPU, Memory, and Network I/O is showed for that node. The time frame can be changed either by using the time dropdown or selecting directly in the graphs.
 
 ![Pod health](../img/pod_health.png "Pod health")
 
@@ -117,7 +117,7 @@ Monitors can be expanded further down to list and inspect its targets, within ea
 
 If the "Target Labels" is "Dropped" for a target then it means that it has been excluded from scraping since it doesn't match the monitor. There are three key things to check to make sure a target is properly picked up by a monitor:
 
-1.  Make sure either that the monitor is in the same namespace as the target, or that the monitor has the correct namespace selector for the target:
+1. Make sure either that the monitor is in the same namespace as the target, or that the monitor has the correct namespace selector for the target:
 
     ```diff
     apiVersion: monitoring.coreos.com/v1
@@ -132,7 +132,7 @@ If the "Target Labels" is "Dropped" for a target then it means that it has been 
       ...
     ```
 
-1.  Make sure that the selector of the monitor matches the target:
+1. Make sure that the selector of the monitor matches the target:
 
     ```diff
     apiVersion: v1
@@ -157,7 +157,7 @@ If the "Target Labels" is "Dropped" for a target then it means that it has been 
       ...
     ```
 
-1.  Make sure that the port of the monitor matches the target:
+1. Make sure that the port of the monitor matches the target:
 
     ```diff
     apiVersion: v1
@@ -195,10 +195,10 @@ You can manage your Grafana Dashboards in a GitOps-fashion using the [Terraform 
 
 Proceed as follows:
 
-1.  Log in to Grafana.
-1.  Create an API key, setting it to Editor or Admin.
-1.  Provide the API key to Terraform either via the `GRAFANA_AUTH` environment variable or the [auth](https://registry.terraform.io/providers/grafana/grafana/latest/docs#auth) provider variable.
-1.  Provide the URL of Grafana (`https://grafana.$DOMAIN`) to Terraform either via the `GRAFANA_URL` environment variable or the [url](https://registry.terraform.io/providers/grafana/grafana/latest/docs#url) provider variable.
+1. Log in to Grafana.
+1. Create an API key, setting it to Editor or Admin.
+1. Provide the API key to Terraform either via the `GRAFANA_AUTH` environment variable or the [auth](https://registry.terraform.io/providers/grafana/grafana/latest/docs#auth) provider variable.
+1. Provide the URL of Grafana (`https://grafana.$DOMAIN`) to Terraform either via the `GRAFANA_URL` environment variable or the [url](https://registry.terraform.io/providers/grafana/grafana/latest/docs#url) provider variable.
 
 ## Further reading
 

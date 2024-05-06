@@ -47,7 +47,7 @@ Also depending on underlying cloud infrastructure, the IP might also not be excl
 
     Elastisys will look into the possibility of getting a stable egress IP for Application Developers that really need it.
 
-All ingress traffic will go through load balancers and there will not be any major differences for the ingress traffic.
+All Ingress traffic will go through load balancers and there will not be any major differences for the Ingress traffic.
 
 ## Cluster autoscaling
 

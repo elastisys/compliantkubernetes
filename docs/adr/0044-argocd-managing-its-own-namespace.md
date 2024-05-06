@@ -24,25 +24,25 @@ Do we want to make `argocd-system` a managed namespace in our ArgoCD offering?
 
 ## Considered Options
 
-1.  Yes, we make ArgoCD manage its own namespace.
+1. Yes, we make ArgoCD manage its own namespace.
 
-1.  No, we do not make ArgoCD manage its own namespace.
+1. No, we do not make ArgoCD manage its own namespace.
 
 ## Decision Outcome
 
 Chosen option:
 
-- No, we do not allow argocd to manage its own namespace.
-  - ArgoCD, through an Application Developer's configuration, should not deploy standard Kubernetes resources (such as pods or secrets) directly into its own namespace. If there is a requirement for such deployments, it should be initiated through a service ticket, ensuring that it undergoes thorough security and stability assessments to prevent any compromises to the platform.
+- No, we do not allow ArgoCD to manage its own namespace.
+    - ArgoCD, through an Application Developer's configuration, should not deploy standard Kubernetes resources (such as pods or secrets) directly into its own namespace. If there is a requirement for such deployments, it should be initiated through a service ticket, ensuring that it undergoes thorough security and stability assessments to prevent any compromises to the platform.
 
 ### Positive Consequences
 
 - We get to keep ArgoCD secure.
 - A malicious user cannot exploit a potential bug in ArgoCD to deploy resources into `argocd-system` namespace.
-- An Application Developer will not be able to deploy a malicious pod and read secrets in `argocd-system` namespace.
+- An Application Developer will not be able to deploy a malicious Pod and read secrets in `argocd-system` namespace.
 
 ### Negative Consequences
 
 - An Application Developer may also not be able to deploy standard Kubernetes resources via ArgoCD into `argocd-system` namespaces.
-  - This should not count as a negative consequence, because our current security stance is that Application Developers should not be supposed to deploy into the `argocd-system` Namespace at all.
+    - This should not count as a negative consequence, because our current security stance is that Application Developers should not be supposed to deploy into the `argocd-system` Namespace at all.
 - Features such as Apps of Apps will not be available in our offering.

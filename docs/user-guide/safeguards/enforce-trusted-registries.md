@@ -49,8 +49,8 @@ Error: admission webhook "validation.gatekeeper.sh" denied the request: [denied 
 
 The resolution is rather simple. You have two options:
 
-1.  Change the container image to point to a trusted registry.
-1.  Get in touch with your administrator and discuss augmenting the set of trusted registries.
+1. Change the container image to point to a trusted registry.
+1. Get in touch with your administrator and discuss augmenting the set of trusted registries.
 
 !!!important
 

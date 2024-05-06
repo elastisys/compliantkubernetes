@@ -79,6 +79,6 @@ At the time of this writing, Compliant Kubernetes receives A+ overall rating.
 
 - [ECRYPT–CSA D5.4 Algorithms, Key Size and Protocols Report (2018)](https://ec.europa.eu/research/participants/documents/downloadPublic?documentIds=080166e5ba203b9b&appId=PPGMS)
 - [BlueCrypt Cryptographic Key Length Recommendation](https://www.keylength.com/en/3/)
-- [Ingress Nginx SSL Ciphers](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#ssl-ciphers)
+- [Ingress NGINX SSL Ciphers](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#ssl-ciphers)
 - [Mozilla SSL recommendations](https://wiki.mozilla.org/Security/Server_Side_TLS)
 - [Forward secrecy](https://en.wikipedia.org/wiki/Forward_secrecy)

@@ -34,7 +34,7 @@ Where should alerting be configured, so as to quickly converge to the optimal al
 
 ## Considered Options
 
-- Configure alerting in Compliant Kubernetes, specifically alertmanager.
+- Configure alerting in Compliant Kubernetes, specifically Alertmanager.
 - Configure alerting in an On-call Management Tool (OMT), e.g., Opsgenie, PagerDuty.
 
 ## Decision Outcome

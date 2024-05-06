@@ -173,9 +173,9 @@ opensearch:
 
 ### Grafana
 
-1.  Application Developer logs in to Grafana via OpenID
+1. Application Developer logs in to Grafana via OpenID
 
-1.  Administrator logs in to Grafana via static admin user.
+1. Administrator logs in to Grafana via static admin user.
 
     !!!note
 
@@ -183,13 +183,13 @@ opensearch:
 
         `kubectl get secret user-grafana -n monitoring -o json | jq '.data | map_values(@base64d)'`
 
-1.  Administrator promotes the OpenID user to Grafana admin at `grafana.domain.tld/admin/users`
+1. Administrator promotes the OpenID user to Grafana admin at `grafana.domain.tld/admin/users`
 
 ### Harbor
 
-1.  Application Developer logs in to Harbor via OpenID
+1. Application Developer logs in to Harbor via OpenID
 
-1.  Administrator logs in to Harbor via static admin user.
+1. Administrator logs in to Harbor via static admin user.
 
     !!!note
 
@@ -199,4 +199,4 @@ opensearch:
 
         Username is: admin
 
-1.  Administrator promotes the OpenID user to Harbor admin at `grafana.domain.tld/harbor/users`
+1. Administrator promotes the OpenID user to Harbor admin at `grafana.domain.tld/harbor/users`

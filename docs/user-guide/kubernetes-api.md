@@ -19,8 +19,8 @@ The following sections describe how to access the cluster in order to manage you
 ## Authentication and Access Control in Compliant Kubernetes
 
 In order to facilitate access control and audit logging, Compliant Kubernetes imposes a certain way to access the Kubernetes API.
-The kubeconfig file provides individual access to the Kubernetes API through [dex](https://github.com/dexidp/dex).
-Normally, you should authenticate using your organizations identity provider connected to dex, but it is also possible for your administrator to configure static usernames and passwords.
+The kubeconfig file provides individual access to the Kubernetes API through [Dex](https://github.com/dexidp/dex).
+Normally, you should authenticate using your organizations identity provider connected to Dex, but it is also possible for your administrator to configure static usernames and passwords.
 
 The authorization is done by the Kubernetes API based on [Kubernetes role-based access controls](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 Your cluster administrator will grant you permissions as part of onboarding.
@@ -179,6 +179,6 @@ curl --include https://demo.$DOMAIN
 
 ## Further reading
 
-- [dex on GitHub](https://github.com/dexidp/dex)
+- [Dex on GitHub](https://github.com/dexidp/dex)
 - [oidc-login/kubelogin on GitHub](https://github.com/int128/kubelogin)
 - [Organizing Cluster Access Using kubeconfig Files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)

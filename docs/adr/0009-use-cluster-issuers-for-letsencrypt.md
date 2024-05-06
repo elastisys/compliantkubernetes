@@ -39,7 +39,7 @@ Although Let's Encrypt does not require an email address, cert-managers seems to
 
 ### Separate registered domains
 
-Let's Encrypt production has a rate limit of [50 certificates per week per registered domain](https://letsencrypt.org/docs/rate-limits/). For example, if `awesome-website.workload-cluster.environment.elastisys.se` points to the Workload Cluster's Ingress controller, then an excessive creation and destruction of Ingress resources may trigger rate limiting for all of `elastisys.se`.
+Let's Encrypt production has a rate limit of [50 certificates per week per registered domain](https://letsencrypt.org/docs/rate-limits/). For example, if `awesome-website.workload-cluster.environment.elastisys.se` points to the Workload Cluster's Ingress Controller, then an excessive creation and destruction of Ingress resources may trigger rate limiting for all of `elastisys.se`.
 
 It is therefore advisable to:
 

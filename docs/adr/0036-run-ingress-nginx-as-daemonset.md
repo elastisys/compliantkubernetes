@@ -1,4 +1,4 @@
-# Run ingress-nginx as a daemonSet
+# Run Ingress-NGINX as a DaemonSet
 
 - Status: accepted
 - Deciders: arch meeting
@@ -6,12 +6,12 @@
 
 ## Context and Problem Statement
 
-Currently we run ingress-nginx as a daemonSet.
+Currently we run Ingress-NGINX as a DaemonSet.
 This can potentially feel like a waste of resources in large environments.
-Running the ingress controller as a deployment with at least two replicas is a possibility.
+Running the Ingress Controller as a Deployment with at least two replicas is a possibility.
 
-Should we run ingress-nginx as a deployment or as a daemonSet?
-What do we do for Infra Providers that do not have service type loadbalancer?
+Should we run Ingress-NGINX as a Deployment or as a DaemonSet?
+What do we do for Infra Providers that do not have Service type LoadBalancer?
 
 ## Decision Drivers
 
@@ -23,19 +23,19 @@ What do we do for Infra Providers that do not have service type loadbalancer?
 
 ## Considered Options
 
-1.  Keep running the ingress-nginx as a daemonSet.
-1.  Run ingress-nginx as a deployment with 2 or more replicas depending on the environment size and requirements.
-1.  Do not run ingress-nginx on the AMS nodes.
-1.  For Infra Providers without service type loadbalancer continue using host network as decided in adr0008
-1.  For Infra Providers without service type loadbalancer start using service type NodePort for nginx and also use the external load balancer to route traffic from ports 80/443 to node ports 30080/30443.
+1. Keep running the Ingress-NGINX as a DaemonSet.
+1. Run Ingress-NGINX as a deployment with 2 or more replicas depending on the environment size and requirements.
+1. Do not run Ingress-NGINX on the AMS nodes.
+1. For Infra Providers without Service type LoadBalancer continue using host network as decided in adr0008
+1. For Infra Providers without Service type LoadBalancer start using Service type NodePort for NGINX and also use the external load balancer to route traffic from ports 80/443 to node ports 30080/30443.
 
 ## Decision Outcome
 
 Chosen options: 1 & 3 & 5
 
-- "Keep running ingress-nginx as a daemonSet."
-- "Do not run ingress-nginx on the AMS nodes."
-- "For Infra Providers without service type loadbalancer start using service type NodePort for nginx and also use the external load balancer to route traffic from ports 80/443 to node ports 30080/30443" -> This superseeds adr0008.
+- "Keep running Ingress-NGINX as a DaemonSet."
+- "Do not run Ingress-NGINX on the AMS nodes."
+- "For Infra Providers without Service type LoadBalancer start using Service type NodePort for NGINX and also use the external load balancer to route traffic from ports 80/443 to node ports 30080/30443" -> This superseeds adr0008.
 
 ### Positive Consequences
 
@@ -51,8 +51,8 @@ Chosen options: 1 & 3 & 5
 
 ## Recommendation to Platform Administrators
 
-- Do not run the ingress-nginx on the AMS nodes.
-- For Infra Providers without service type loadbalancer start using service type NodePort for nginx and also use the external load balancer to route traffic from ports 80/443 to node ports 30080/30443
+- Do not run the Ingress-NGINX on the AMS nodes.
+- For Infra Providers without Service type LoadBalancer start using Service type NodePort for NGINX and also use the external load balancer to route traffic from ports 80/443 to node ports 30080/30443
 
 ## Links
 

@@ -27,7 +27,7 @@ How should we expose local storage to Managed Services?
 
 ## Decision Outcome
 
-Chosen option: Use local storage with local-volume-provisioner and move the code within the kubespray repo.
+Chosen option: Use local storage with local-volume-provisioner and move the code within the Kubespray repo.
 
 ### Positive Consequences
 

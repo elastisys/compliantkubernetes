@@ -122,7 +122,7 @@ export CK8S_KUBESPRAY_PATH=/path/to/compliantkubernetes-kubespray
 ./bin/ck8s ops kubectl $CLUSTER -n rook-ceph apply -f $CK8S_KUBESPRAY_PATH/rook/toolbox-deploy.yaml
 ```
 
-Once the pod is Ready run:
+Once the Pod is Ready run:
 
 ```bash
 ./bin/ck8s ops kubectl $CLUSTER -n rook-ceph exec deploy/rook-ceph-tools -- ceph status
@@ -257,10 +257,10 @@ First, check for infrastructure drift, as shown [here](#how-do-i-check-if-infras
 Depending on your provider:
 If the infrastructure is not managed by terraform you can skip to step 3:
 
-1.  Add a new Node by editing the `*.tfvars`.
-1.  Re-apply Terraform.
-1.  Add the new node to the `inventory.ini` (skip this step if the cluster is using a dynamic inventory).
-1.  Re-apply Kubespray only for the new node.
+1. Add a new Node by editing the `*.tfvars`.
+1. Re-apply Terraform.
+1. Add the new node to the `inventory.ini` (skip this step if the cluster is using a dynamic inventory).
+1. Re-apply Kubespray only for the new node.
 
     ```bash
     cd [compliantkubernetes-kubespray-root-dir]
@@ -271,13 +271,13 @@ If the infrastructure is not managed by terraform you can skip to step 3:
     ./bin/ck8s-kubespray run-playbook $CLUSTER scale.yml -b --limit=[new_node_name]
     ```
 
-1.  Add ssh keys to the new node if necessary
+1. Add ssh keys to the new node if necessary
 
     ```bash
     ./bin/ck8s-kubespray apply-ssh $CLUSTER --limit=[new_node_name]
     ```
 
-1.  Update network policies
+1. Update Network Policies
 
     ```bash
     cd [compliatkubernetes-apps-root-dir]

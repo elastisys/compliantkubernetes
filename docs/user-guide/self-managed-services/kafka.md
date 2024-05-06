@@ -32,13 +32,13 @@ Strimzi Kafka Operator also requires the image repository `quay.io/strimzi` to b
 
 In Kubernetes you will need to:
 
-1.  Install the required CRDs
+1. Install the required CRDs
 
-1.  Create a Namespace for Strimzi Kafka Operator.
+1. Create a Namespace for Strimzi Kafka Operator.
 
-1.  Create Roles/RoleBindings for Strimzi Kafka Operator.
+1. Create Roles/RoleBindings for Strimzi Kafka Operator.
 
-1.  Create ServiceAccount and ConfigMap for Strimzi Kafka Operator.
+1. Create ServiceAccount and ConfigMap for Strimzi Kafka Operator.
 
 ### CRDs
 
@@ -161,9 +161,9 @@ After you have deployed your Kafka cluster, you can test sending and receiving m
 
 To do this, you can use a producer and consumer as seen [here](https://strimzi.io/quickstarts/), under the section "Send and receive messages". But since Compliant Kubernetes requires resource requests to be specified, just copy pasting those commands will not work.
 
-You need to create a pod manifest using the image `quay.io/strimzi/kafka:0.38.0-kafka-3.6.0`, and then you need to add your resource requests to this manifest. You also need to have an initial sleep command in the pod manifest, to sleep the container for a while, this is to avoid the pod going into the "Completed" stage instantly.
+You need to create a Pod manifest using the image `quay.io/strimzi/kafka:0.38.0-kafka-3.6.0`, and then you need to add your resource requests to this manifest. You also need to have an initial sleep command in the Pod manifest, to sleep the container for a while, this is to avoid the Pod going into the "Completed" stage instantly.
 
-Alternatively you can download a ready to use producer and consumer pod manifests:
+Alternatively you can download a ready to use producer and consumer Pod manifests:
 
 ```bash
 mkdir kafka-testing

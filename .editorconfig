@@ -17,6 +17,7 @@ indent_size = 4
 max_line_length = 1000
 [*.md]
 max_line_length = 1000
+indent_size = 4
 
 [*.py]
 # https://peps.python.org/pep-0008/#indentation

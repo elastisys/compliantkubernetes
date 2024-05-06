@@ -9,7 +9,7 @@
 In the context of this ADR, **forwarders** refers to any components that are necessary to forward monitoring information -- specifically traces, metrics and logs -- to some monitoring database. As of February 2021, Compliant Kubernetes employs two projects as forwarders:
 
 - [Prometheus](https://prometheus.io/) for metrics forwarding;
-- [fluentd](https://www.fluentd.org/) for log forwarding.
+- [Fluentd](https://www.fluentd.org/) for log forwarding.
 
 Similarly, two projects are employed as monitoring databases:
 
@@ -64,14 +64,14 @@ Fluentd as forwarder is deployed via DaemonSet. Both, emptyDir and hostPath can 
 - Good, because the buffer can be large.
 - Good, because no buffered monitoring information is lost if a node goes down.
 - Good, because buffered monitoring information is preserved if the forwarder is redeployed.
-- Bad, because non-node-local storage is generally slower. Note, however, that at least SafeSpring and CityCloud use a central Ceph storage cluster for the VM's boot disk, which wipes out node-local's storage advantage.)
+- Bad, because non-node-local storage is generally slower. Note, however, that at least Safespring and CityCloud use a central Ceph storage cluster for the VM's boot disk, which wipes out node-local's storage advantage.)
 - Bad, because the forwarder will fail if storage provider goes down. This is especially problematic for Exoscale, bare-metal and BYO-VMs.
 - Bad, because the forwarder cannot monitor the storage provider (circular dependency).
 - Bad, because setting right ownership requires init containers or [alpha features](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#configure-volume-permission-and-ownership-change-policy-for-pods).
 
 ### Use Local Persistent Volumes
 
-- Bad, because the forwarder cannot be restarted on any node without manual action: "if a node becomes unhealthy, then the local volume becomes inaccessible by the pod. The pod using this volume is unable to run.".
+- Bad, because the forwarder cannot be restarted on any node without manual action: "if a node becomes unhealthy, then the local volume becomes inaccessible by the Pod. The Pod using this volume is unable to run.".
 - Bad, because the amount of forwarding depends on the node's local disk size.
 - Bad, because buffered monitoring information is lost if the forwarder's node goes down.
 - Good, because buffered monitoring information is preserved if the forwarder is redeployed.

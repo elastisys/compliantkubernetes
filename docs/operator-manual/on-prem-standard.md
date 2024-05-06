@@ -17,15 +17,15 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     - Identity Provider (IdP) choice and configuration. See [this page](../user-guide/prepare-idp.md).
     - On-call Management Tool (OMT) choice and configuration
 
-1.  Make sure you [install all prerequisites](getting-started.md) on your laptop.
+1. Make sure you [install all prerequisites](getting-started.md) on your laptop.
 
-1.  Prepare Ubuntu-based VMs:
+1. Prepare Ubuntu-based VMs:
     If you are using public clouds, you can create VMs using the scripts included in Kubespray:
 
     - For Azure, use [AzureRM scripts](https://github.com/kubernetes-sigs/kubespray/tree/master/contrib/azurerm).
     - For other clouds, use their respective [Terraform scripts](https://github.com/kubernetes-sigs/kubespray/tree/master/contrib/terraform).
 
-1.  Create a git working folder to store Compliant Kubernetes configurations in a version-controlled manner. Run the following commands from the root of the config repo.
+1. Create a git working folder to store Compliant Kubernetes configurations in a version-controlled manner. Run the following commands from the root of the config repo.
 
     !!! note
     The following steps are done from the root of the git repository you created for the configurations.
@@ -40,7 +40,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     export CLUSTERS=( "sc" "wc" )
     ```
 
-1.  Add the Elastisys Compliant Kubernetes Kubespray repo as a `git submodule` to the configuration repo and install pre-requisites as follows:
+1. Add the Elastisys Compliant Kubernetes Kubespray repo as a `git submodule` to the configuration repo and install pre-requisites as follows:
 
     ```bash
     git submodule add https://github.com/elastisys/compliantkubernetes-kubespray.git
@@ -50,7 +50,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
     ```
 
-1.  Add the Compliant Kubernetes Apps repo as a `git submodule` to the configuration repo and install pre-requisites as follows:
+1. Add the Compliant Kubernetes Apps repo as a `git submodule` to the configuration repo and install pre-requisites as follows:
 
     ```bash
     git submodule add https://github.com/elastisys/compliantkubernetes-apps.git
@@ -58,12 +58,12 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     ./bin/ck8s install-requirements
     ```
 
-1.  Create the domain name.
+1. Create the domain name.
     You need to create a domain name to access the different services in your environment. You will need to set up the following DNS entries.
 
-    - Point these domains to the Workload Cluster ingress controller (this step is done during Compliant Kubernetes app installation):
+    - Point these domains to the Workload Cluster Ingress Controller (this step is done during Compliant Kubernetes Apps installation):
       - `*.$DOMAIN`
-    - Point these domains to the Management Cluster ingress controller (this step is done during Compliant Kubernetes app installation):
+    - Point these domains to the Management Cluster Ingress Controller (this step is done during Compliant Kubernetes Apps installation):
       - `*.ops.$DOMAIN`
       - `dex.$DOMAIN`
       - `grafana.$DOMAIN`
@@ -77,13 +77,13 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
         - `*.thanos.ops.$DOMAIN`
         - `*.opensearch.ops.$DOMAIN`
 
-1.  Create S3 credentials and add them to `.state/s3cfg.ini`.
+1. Create S3 credentials and add them to `.state/s3cfg.ini`.
 
-1.  Set up load balancer
+1. Set up load balancer
 
     You need to set up two load balancers, one for the Workload Cluster and one for the Management Cluster.
 
-1.  Make sure you have [all necessary tools](getting-started.md).
+1. Make sure you have [all necessary tools](getting-started.md).
 
 ## Deploying Compliant Kubernetes using Kubespray
 
@@ -140,7 +140,7 @@ create_oidc_kubeconfig: true
 kubeconfig_localhost: false
 ```
 
-For more information on managing OIDC kubeconfigs and RBAC, or on running without OIDC, [see the ck8s-kubespray documentation](https://github.com/elastisys/compliantkubernetes-kubespray#kubeconfig).
+For more information on managing OIDC kubeconfigs and RBAC, or on running without OIDC, [see the ck8s-Kubespray documentation](https://github.com/elastisys/compliantkubernetes-kubespray#kubeconfig).
 
 ### Copy the VMs information to the inventory files
 

@@ -15,7 +15,7 @@
 
 ## Considered Options
 
-- Expose Jaeger UI via ingress in wc cluster and use Oauth2-proxy for request authentication.
+- Expose Jaeger UI via Ingress in wc cluster and use Oauth2-proxy for request authentication.
 - Do not expose Jaeger UI in wc cluster.
 - Expose Jaeger UI, but completely behind oauth2-proxy. Use config domain, groups, IP allowlisting and request logging for protecting it.
 - Expose Jaeger UI and auditing access via request logging in Oath2Proxy.
@@ -41,7 +41,7 @@ Make sure that you use domain listing, groups and IP allowlisting.
 
 ## Pros and Cons of the Options
 
-### [option 1] - Expose Jaeger UI via ingress in wc cluster and use Oauth2-proxy for request authentication
+### [option 1] - Expose Jaeger UI via Ingress in wc cluster and use Oauth2-proxy for request authentication
 
 ![Architecture Diagram](../img/adr/adr-0029-option1.png)
 

@@ -15,7 +15,7 @@ To deploy Rook, go to the `compliantkubernetes-kubespray` repo, change directory
     export KUBECONFIG=$CLUSTER.yaml
     ```
 
-Please restart the operator pod, `rook-ceph-operator*`, if some pods stalls in initialization state as shown below:
+Please restart the operator Pod, `rook-ceph-operator*`, if some pods stalls in initialization state as shown below:
 
 ```console
 rook-ceph     rook-ceph-crashcollector-minion-0-b75b9fc64-tv2vg    0/1     Init:0/2   0          24m
@@ -70,7 +70,7 @@ done
 
 <!--clone-apps-start-->
 
-Now that the Kubernetes clusters are up and running, we are ready to install the Compliant Kubernetes apps.
+Now that the Kubernetes clusters are up and running, we are ready to install Compliant Kubernetes Apps.
 
 ### Clone `compliantkubernetes-apps` and Install Pre-requisites
 
@@ -127,8 +127,8 @@ vim ${CK8S_CONFIG_PATH}/common-config.yaml
 
 Edit the secrets.yaml file and add the credentials for:
 
-- s3 - used for backup storage
-- dex - connectors -- check [your identity provider](https://dexidp.io/docs/connectors/).
+- S3 - used for backup storage
+- Dex - connectors -- check [your identity provider](https://dexidp.io/docs/connectors/).
 - On-call management tool configurations-- Check [supported on-call management tools](https://prometheus.io/docs/alerting/latest/configuration/)
 
 ```bash
@@ -147,7 +147,7 @@ sops ${CK8S_CONFIG_PATH}/secrets.yaml
 
 <!--install-apps-start-->
 
-### Install Compliant Kubernetes apps
+### Install Compliant Kubernetes Apps
 
 Start with the Management Cluster:
 

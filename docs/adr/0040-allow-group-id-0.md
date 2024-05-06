@@ -24,8 +24,8 @@ Should we with the introduction of Pod Security admission follow the new standar
 
 ## Considered Options
 
-1.  Allow group id 0 by default - default behavior of PSA.
-1.  Keep current behavior and only allow group id 0 upon request.
+1. Allow group id 0 by default - default behavior of PSA.
+1. Keep current behavior and only allow group id 0 upon request.
 
 ## Decision Outcome
 
@@ -33,7 +33,7 @@ Chosen option: 1 - "Allow group id 0 by default - default behavior of PSA".
 
 ### Positive Consequences
 
-- We follow upstream Kubernetes restricted pod security standards.
+- We follow upstream Kubernetes restricted Pod Security Standards.
   With PodSecurityPolicy we use the one provided by Kubespray which has changed over time from first allowing group id 0 to now in its latest iteration not allowing it.
 - Application Developers can run their containers inspired by the OpenShift pattern for supporting arbitrary user IDs etc.
 

@@ -32,8 +32,8 @@ Shall we push or pull metrics using Thanos?
 
 ## Considered Options
 
-1.  Push metrics from Workload Cluster to Management Cluster.
-1.  Pull metrics from Workload Cluster to Management Cluster.
+1. Push metrics from Workload Cluster to Management Cluster.
+1. Pull metrics from Workload Cluster to Management Cluster.
 
 ## Decision Outcome
 

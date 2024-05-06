@@ -17,7 +17,7 @@ Where should these run?
 - We want to make it easy to run these services with regulatory compliance in mind, e.g., we should be able to reuse Compliant Kubernetes features around monitoring, logging, access control and network segregation.
 - We want to make it difficult for Compliant Kubernetes users to negatively affect managed services.
 - We want to keep support for multiple Workload Cluster, i.e., application multi-tenancy.
-- Many Infrastructure Providers do not support Service Type LoadBalancer, which complicates exposing non-HTTP services outside a Kubernetes cluster.
+- Many Infrastructure Providers do not support Service type LoadBalancer, which complicates exposing non-HTTP services outside a Kubernetes cluster.
 - Management Cluster might not exist in a future packaging of Compliant Kubernetes.
 
 ## Considered Options
@@ -32,11 +32,11 @@ Chosen option: "run managed services in Workload Cluster".
 
 ## Positive Consequences
 
-- Latency is minimized: The application consuming the managed service is close to the managed service, without needing to go through intermediate software components, such as a TCP Ingress controller.
+- Latency is minimized: The application consuming the managed service is close to the managed service, without needing to go through intermediate software components, such as a TCP Ingress Controller.
 - NetworkPolicies can be reused for communication segregation.
 - OpenID and RBAC in the Workload Cluster can be reused for user access control.
 - Kubernetes audit log can be re-used for auditing user access managed services. Such access is required, e.g., for manual database migrations and "rare" operations like GDPR data correction requests.
-- Ease of exposition: No need for Service Type LoadBalancer, which is not supported on all Infrastructure Providers.
+- Ease of exposition: No need for Service type LoadBalancer, which is not supported on all Infrastructure Providers.
 
 ## Negative Consequences
 
@@ -46,6 +46,6 @@ Chosen option: "run managed services in Workload Cluster".
 
 ## Links
 
-- [Service Type LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)
-- [Exposing TCP and UDP services with ingress-nginx](https://kubernetes.github.io/ingress-nginx/user-guide/exposing-tcp-udp-services/)
+- [Service type LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)
+- [Exposing TCP and UDP services with Ingress-NGINX](https://kubernetes.github.io/ingress-nginx/user-guide/exposing-tcp-udp-services/)
 - [Redis Security](https://redis.io/topics/security/)

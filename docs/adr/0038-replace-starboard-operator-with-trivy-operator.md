@@ -19,8 +19,8 @@ Can or should we follow the evolution and replace starboard-operator with trivy-
 
 ## Considered Options
 
-1.  Do nothing
-1.  Move ahead and replace starboard-operator with trivy-operator
+1. Do nothing
+1. Move ahead and replace starboard-operator with trivy-operator
 
 ## Decision Outcome
 

@@ -13,12 +13,12 @@ Technical Story:
 
 Currently, we create per-cluster SSH key pairs, which are shared among administrators. This is problematic from an information security perspective for a few reasons:
 
-1.  It reduces the auditability of various actions, e.g., who SSH-ed into the Kubernetes control plane Nodes.
-1.  It makes credential management challenging, e.g., when onboarding/offboarding administrators.
-1.  It makes credential rotation challenging, e.g., the new SSH key pair needs to be transmitted to all administrators.
-1.  It encourages storing the SSH key pair without password protection.
-1.  It makes it difficult to store SSH key pairs on an exfiltration-proof medium, such as a YubiKey.
-1.  It violates the Principle of Least Astonishment.
+1. It reduces the auditability of various actions, e.g., who SSH-ed into the Kubernetes control plane Nodes.
+1. It makes credential management challenging, e.g., when onboarding/offboarding administrators.
+1. It makes credential rotation challenging, e.g., the new SSH key pair needs to be transmitted to all administrators.
+1. It encourages storing the SSH key pair without password protection.
+1. It makes it difficult to store SSH key pairs on an exfiltration-proof medium, such as a YubiKey.
+1. It violates the Principle of Least Astonishment.
 
 ## Decision Drivers
 
@@ -59,4 +59,4 @@ BYO-VM and BYO-metal deployments are handled similarly, except that the initial 
 
 ## Links
 
-- [ansible.posix.authorized_key Ansible Module](https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html)
+- [`ansible.posix.authorized_key` Ansible Module](https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html)

@@ -105,7 +105,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 - [ADR-0025](0025-local-storage.md) - Use local-volume-provisioner for Managed Services that requires high-speed disks.
 - [ADR-0026](0026-hnc.md) - Use `environment-name` as the default root of Hierarchical Namespace Controller (HNC)
 - [ADR-0027](0027-postgresql-external-replication.md) - PostgreSQL - Enable external replication
-- [ADR-0028](0028-harder-pod-eviction-when-node-goes-OOM.md) - Harder pod eviction when nodes are going OOM
+- [ADR-0028](0028-harder-pod-eviction-when-node-goes-OOM.md) - Harder Pod eviction when nodes are going OOM
 - [ADR-0029](0029-expose-jaeger-ui.md) - Expose Jaeger UI in WC
 - [ADR-0030](0030-run-argocd-on-elastisys-nodes.md) - Run ArgoCD on the Elastisys nodes
 - [ADR-0031](0031-run-csi-cinder-controllerplugin-on-elastisys-nodes.md) - Run csi-cinder-controllerplugin on the Elastisys nodes
@@ -113,7 +113,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 - [ADR-0033](0033-run-cluster-api-controllers-on-service-cluster.md) - Run Cluster API controllers on Management Cluster
 - [ADR-0034](0034-how-to-run-multiple-ams-packages-of-the-same-type.md) - How to run multiple AMS packages of the same type in the same environment
 - [ADR-0035](0035-run-tekton-on-service-cluster.md) - Run Tekton on Management Cluster
-- [ADR-0036](0036-run-ingress-nginx-as-daemonset.md) - Run ingress-nginx as a daemonSet
+- [ADR-0036](0036-run-ingress-nginx-as-daemonset.md) - Run Ingress-NGINX as a DaemonSet
 - [ADR-0037](0037-enforce-ttl-on-jobs.md) - Enforce TTL on Jobs
 - [ADR-0038](0038-replace-starboard-operator-with-trivy-operator.md) - Replace the starboard-operator with the trivy-operator
 - [ADR-0039](0039-application-dev-permissions.md) - Application developer privilege elevation

@@ -34,7 +34,7 @@ Chosen option "Tekton on Management Cluster", because it will follow nicely toge
 ### Negative Consequences <!-- optional -->
 
 - Possibility that Tekton itself goes into a bad state by applying a bad change
-  - This should however only impact the Management Cluster
+    - This should however only impact the Management Cluster
 
 ## Pros and Cons of the Options <!-- optional -->
 

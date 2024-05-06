@@ -87,14 +87,14 @@ To appreciate the searching and filtering capability, let us get data for the fo
 
 We can use different ways to find the answer for the question. Below is one possible solution.
 
-1.  Write **sourceIPs: 172.16.0.3** in the **search textbox**.
+1. Write **sourceIPs: 172.16.0.3** in the **search textbox**.
 
-1.  Click **Add Filter** and select **responseStatus.reason** and **is** under **field** and **Operator** dropdown menus respectively. Finally, enter
+1. Click **Add Filter** and select **responseStatus.reason** and **is** under **field** and **Operator** dropdown menus respectively. Finally, enter
     **notfound** under **Value** input box and click **Save**. The following figure shows the details.
 
           ![Discover Filter](../img/discover_filter.png)
 
-1.  To enter the 20 hours, click part that is labelled **Time** in the **Discover** figure above, then enter **20** under the input box and select **hours** in the dropdown menu. Make sure that you are under **Relative** tab. Finally, click **update**. The following figure shows how to set the hours. Note that the data will be automatically updated as time passes to reflect the past 20 hours data from the current time.
+1. To enter the 20 hours, click part that is labelled **Time** in the **Discover** figure above, then enter **20** under the input box and select **hours** in the dropdown menu. Make sure that you are under **Relative** tab. Finally, click **update**. The following figure shows how to set the hours. Note that the data will be automatically updated as time passes to reflect the past 20 hours data from the current time.
 
     ![Discover Time](../img/discover_hours.png)
 
@@ -108,26 +108,26 @@ The **Visualize** component in OpenSearch Dashboards is to create different visu
 
 To create visualizations:
 
-1.  Open the sidebar and click **Visualize** under OpenSearch Dashboards.
-1.  Click **Create visualization** button located on the top right side of the page.
-1.  Select a visualization type, we will use **Pie** here.
-1.  Choose an index pattern or saved search name under **New Pie / Choose a source**. You can utilize the search function. We will use the **kubernetes\*** index here.
+1. Open the sidebar and click **Visualize** under OpenSearch Dashboards.
+1. Click **Create visualization** button located on the top right side of the page.
+1. Select a visualization type, we will use **Pie** here.
+1. Choose an index pattern or saved search name under **New Pie / Choose a source**. You can utilize the search function. We will use the `kubernetes*` index here.
 
-By default a pie chart with the total number of logs will be provided by OpenSearch Dashboards. Let us divide the pie chart based on the number of logs contributed by each **namespace**. To do that perform the following steps:
+By default a pie chart with the total number of logs will be provided by OpenSearch Dashboards. Let us divide the pie chart based on the number of logs contributed by each `namespace`. To do that perform the following steps:
 
-1.  Under **Buckets** click **Add** then **Split slices**. See the figure below.
+1. Under **Buckets** click **Add** then **Split slices**. See the figure below.
 
     ![Visualize Bucket](../img/add_bucket.png)
 
-1.  Under **Aggregation** select **Significant Terms** terms. See the figure below.
+1. Under **Aggregation** select **Significant Terms** terms. See the figure below.
 
     ![Visualize Aggregation](../img/aggregation.png)
 
-1.  Under **Field** select **kubernetes.namespace_name.keyword** and under **Size** input **10**. See the figure below.
+1. Under **Field** select `kubernetes.namespace_name.keyword` and under **Size** input `10`. See the figure below.
 
     ![Visualize Fields](../img/namespace.png)
 
-1.  Click **Update** button located in the bottom right corner.
+1. Click **Update** button located in the bottom right corner.
 
 The final result will look like the following figure.
 
@@ -135,7 +135,7 @@ The final result will look like the following figure.
 
 Please save the pie chart as we will use it later.
 
-Let us create a similar pie chart using **host** instead of **namespace**. The chart will look like the following figure.
+Let us create a similar pie chart using `host` instead of `namespace`. The chart will look like the following figure.
 
 ![Visualize Host Pie](../img/host_pie.png)
 
@@ -147,10 +147,10 @@ Let us bring the two visualizations that we created above together in a single d
 
 To do that:
 
-1.  Open the sidebar and click **Dashboard** under OpenSearch Dashboards.
-1.  Click **Create dashboard** button located on the top right side of the page.
-1.  Click **Add an existing** link located on the left side.
-1.  Select the name of the two charts/visualizations that you created above.
+1. Open the sidebar and click **Dashboard** under OpenSearch Dashboards.
+1. Click **Create dashboard** button located on the top right side of the page.
+1. Click **Add an existing** link located on the left side.
+1. Select the name of the two charts/visualizations that you created above.
 
 The figure below shows the dashboard generated from the above steps showing the two pie charts in a single page.
 
@@ -158,7 +158,7 @@ The figure below shows the dashboard generated from the above steps showing the 
 
 ## Accessing Falco and OPA Logs
 
-To access Falco or OPA logs, go to the **Discover** panel and write **Falco** or **OPA** on the **search textbox**. Make sure that the **Kubernetes** log index category is selected.
+To access Falco or OPA logs, go to the **Discover** panel and write **Falco** or **OPA** in the **search textbox**. Make sure that the **Kubernetes** log index category is selected.
 
 The figure below shows the search result for **Falco** logs.
 ![Falco logs](../img/falco_log.png)
@@ -172,9 +172,9 @@ An index mapping specifies the data structure of the data within that index, lis
 
 Mappings can be created:
 
-1.  Dynamically by OpenSearch
-1.  Explicitly on index creation
-1.  Using [Templates](https://opensearch.org/docs/latest/im-plugin/index-templates/)
+1. Dynamically by OpenSearch
+1. Explicitly on index creation
+1. Using [Templates](https://opensearch.org/docs/latest/im-plugin/index-templates/)
 
 For example, if you index an integer field without pre-defining the mapping, OpenSearch sets the mapping of that field as long.
 
@@ -188,22 +188,22 @@ A very short example of index mapping is displayed and commented below:
 
 ```json
 {
-  "movies": {                           # Index name we're looking at
+  "movies": {                         # Index name we're looking at
     "mappings": {
-        "properties": {
-          "release_date": {             # The release_date field is of
-            "type": "date"              # date format allowing for time based
-          },                            # searching, eg between 1970 and 2000
-          "title": {                    # The title field stores the title,
-            "type": "text",             # and is of type text,
-            "fields": {                 # and also a keyword
-              "keyword": {              # less than 256 bytes in length
-                "type": "keyword",      # the default limit is to avoid
-                "ignore_above": 256     # the excessive disk/memory usage
-              }
+      "properties": {
+        "release_date": {             # The release_date field is of
+          "type": "date"              # date format allowing for time based
+        },                            # searching, eg between 1970 and 2000
+        "title": {                    # The title field stores the title,
+          "type": "text",             # and is of type text,
+          "fields": {                 # and also a keyword
+            "keyword": {              # less than 256 bytes in length
+              "type": "keyword",      # the default limit is to avoid
+              "ignore_above": 256     # the excessive disk/memory usage
             }
-          },
+          }
         }
+      }
     }
   }
 }
@@ -287,24 +287,24 @@ This dashboard can be viewed to get a quick overview of the cluster's state.
 
 ![Log review dashboard](../img/log-review-dashboard.png)
 
-- ### kubeaudit
+- ### Kubeaudit
 
-  - All api-requests = Successful API requests
-  - Forbid error = Forbidden API requests
-  - Client Error = Client error logs
-  - Server error = Server error logs
+    - All API-Requests = Successful API requests
+    - Forbid Error = Forbidden API requests
+    - Client Error = Client error logs
+    - Server Error = Server error logs
 
-- ### kubernetes
+- ### Kubernetes
 
-  - error OR denied = Error & denied logs
+    - error OR denied = Error & denied logs
 
-- ### other
+- ### Other
 
-  - error OR critical OR alert OR warning = System logs of priority 1-4
+    - error OR critical OR alert OR warning = System logs of priority 1-4
 
-- ### authlog
+- ### Authlog
 
-  - number of authlog sessions = Authlog sessions
+    - number of authlog sessions = Authlog sessions
 
 ## Further Reading
 

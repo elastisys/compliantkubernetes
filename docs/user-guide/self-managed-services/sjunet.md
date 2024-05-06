@@ -36,5 +36,5 @@ _![Compliant Kubernetes](img/bac8d3.png) `Platform administrators` area of respo
 - [Regulatory Framework](https://inera.atlassian.net/wiki/spaces/OISJU/pages/403736889/Regelverk)
 - [Technical Information](https://inera.atlassian.net/wiki/spaces/OISJU/pages/403736906/Teknisk+information)
 - [VPN](https://en.wikipedia.org/wiki/Virtual_private_network)
-  - [WireGuard](https://www.wireguard.com/)
-  - [OpenVPN](https://openvpn.net/)
+    - [WireGuard](https://www.wireguard.com/)
+    - [OpenVPN](https://openvpn.net/)

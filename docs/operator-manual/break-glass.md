@@ -11,9 +11,9 @@ In this section we describe a workaround when access to the environment is broke
 
 When Dex or the OpenID provider is malfunctioning, the Platform Administrator might be unable to access the cluster. The following steps will give you temporary access sufficient for troubleshooting and recovery:
 
-1.  `SSH` to one of the control-plane nodes.
+1. `SSH` to one of the control-plane nodes.
 
-1.  Use `/etc/kubernetes/admin.conf` and run `kubectl` commands to check the problem
+1. Use `/etc/kubernetes/admin.conf` and run `kubectl` commands to check the problem
 
     ```bash
     export KUBECONFIG=/etc/kubernetes/admin.conf
@@ -23,17 +23,17 @@ When Dex or the OpenID provider is malfunctioning, the Platform Administrator mi
 
 ## Kubernetes User Access
 
-> **_NOTE:_** This is a temporary solution and access should be disabled once the issue with dex is resolved.
+> **_NOTE:_** This is a temporary solution and access should be disabled once the issue with Dex is resolved.
 
-If dex is broken, you can manually create a `kubeconfig` file for a user. While there are different ways to create `kubeconfig` files, we will will use the X.509 client certificates with OpenSSL. Follow the steps below to create a user `kubeconfig` file.
+If Dex is broken, you can manually create a `kubeconfig` file for a user. While there are different ways to create `kubeconfig` files, we will will use the X.509 client certificates with OpenSSL. Follow the steps below to create a user `kubeconfig` file.
 
-1.  Create a private key:
+1. Create a private key:
 
     ```sh
     openssl genrsa -out user1.key 2048
     ```
 
-1.  Create a certificate signing request (CSR). `CN` is the username and `O` the group.
+1. Create a certificate signing request (CSR). `CN` is the username and `O` the group.
 
     ```sh
     openssl req -new -key user1.key \
@@ -41,13 +41,13 @@ If dex is broken, you can manually create a `kubeconfig` file for a user. While 
     -subj "/CN=user1/O=companyname"
     ```
 
-1.  Get the Base64 encoding for the generated CSR file.
+1. Get the Base64 encoding for the generated CSR file.
 
     ```sh
     cat user1.csr | base64 | tr -d '\n'
     ```
 
-1.  Create a Certificate Signing Request with Kubernetes
+1. Create a Certificate Signing Request with Kubernetes
 
     ```sh
     cat <<EOF | kubectl  apply -f -
@@ -65,13 +65,13 @@ If dex is broken, you can manually create a `kubeconfig` file for a user. While 
     EOF
     ```
 
-1.  Approve the CSR
+1. Approve the CSR
 
     ```sh
     kubectl certificate approve user1
     ```
 
-1.  Get the certificate.
+1. Get the certificate.
     Retrieve the certificate from the CSR:
 
     ```sh
@@ -103,7 +103,7 @@ If dex is broken, you can manually create a `kubeconfig` file for a user. While 
             client-key-data: <CLIENT-KEY-DATA>
         ```
 
-1.  Add the user and namespaces that s/he has access to in wc-config.yaml file.
+1. Add the user and namespaces that s/he has access to in wc-config.yaml file.
 
     ```yaml
     user:

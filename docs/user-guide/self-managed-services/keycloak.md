@@ -86,10 +86,10 @@ production: true # (4)
 proxy: edge
 ```
 
-1.  The example provided serves as a starting point for configuring resource requests and limits for your Keycloak deployment. Be sure to tailor these values to your specific requirements, and monitor your deployment to optimize resource allocation for your unique use case.
-1.  Insert the variables that you got from initial preparation.
-1.  Configure the ingress hostname and which issuer you will be using.
-1.  Enabling production mode and TLS for HTTPS. Disclaimer: Enabling production mode does not mean that the configuration here is ready for production. Please see further reading on Production configuration.
+1. The example provided serves as a starting point for configuring resource requests and limits for your Keycloak deployment. Be sure to tailor these values to your specific requirements, and monitor your deployment to optimize resource allocation for your unique use case.
+1. Insert the variables that you got from initial preparation.
+1. Configure the Ingress hostname and which issuer you will be using.
+1. Enabling production mode and TLS for HTTPS. Disclaimer: Enabling production mode does not mean that the configuration here is ready for production. Please see further reading on Production configuration.
 
 !!!failure
 
@@ -137,8 +137,8 @@ For more information about using Keycloak to secure/protect your applications, s
 - [Guides](https://www.keycloak.org/guides)
 - [Production Configuration](https://www.keycloak.org/server/configuration-production)
 - [Reverse Proxy](https://www.keycloak.org/server/reverseproxy)
-  - [Ingress Nginx](https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/)
-  - [Oauth2-Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak)
-    - Note: the “oidc-issuer-url” may be outdated in the guide. See [this issue.](https://stackoverflow.com/questions/70577004/keycloak-could-not-find-resource-for-full-path)
-    - Note: Keycloak realm steps may be different if you are using the new admin console. Instructions for that can be found on their [github](https://github.com/oauth2-proxy/oauth2-proxy/blob/master/docs/docs/configuration/providers/keycloak_oidc.md).
+    - [Ingress NGINX](https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/)
+    - [Oauth2-Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak)
+        - Note: the “oidc-issuer-url” may be outdated in the guide. See [this issue.](https://stackoverflow.com/questions/70577004/keycloak-could-not-find-resource-for-full-path)
+        - Note: Keycloak realm steps may be different if you are using the new admin console. Instructions for that can be found on their [GitHub](https://github.com/oauth2-proxy/oauth2-proxy/blob/master/docs/docs/configuration/providers/keycloak_oidc.md).
 - [Securing your applications](https://www.keycloak.org/docs/latest/securing_apps/index.html)

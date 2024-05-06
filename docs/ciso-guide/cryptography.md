@@ -28,8 +28,8 @@ tags:
 >
 > 15 § Om vårdgivaren använder öppna nät vid behandling av personuppgifter, ska denne ansvara för att
 >
-> 1.  överföring av uppgifterna görs på ett sådant sätt att inte obehöriga kan ta del av dem, och
-> 1.  elektronisk åtkomst eller direktåtkomst till uppgifterna föregås av stark autentisering.
+> 1. överföring av uppgifterna görs på ett sådant sätt att inte obehöriga kan ta del av dem, och
+> 1. elektronisk åtkomst eller direktåtkomst till uppgifterna föregås av stark autentisering.
 
 ## Mapping to ISO 27001 Controls
 
