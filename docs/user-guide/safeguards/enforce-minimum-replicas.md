@@ -23,7 +23,7 @@ spec:
   replicas: 2
 ```
 
-Or, in the case where the Deployment or StatefulSet is not of high priority or there are technical limitations preventing you from using more than one replica, you can suppress the warning by adding a label.
+Or, in the case where the Deployment or StatefulSet is not of high priority or there are technical limitations preventing you from using more than one replica, you can suppress the warning by adding an annotation.
 
 ```yaml
 apiVersion: apps/v1
