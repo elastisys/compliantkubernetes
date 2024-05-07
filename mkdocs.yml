@@ -142,7 +142,7 @@ nav:
           - "Continuous Development": "user-guide/continous-development.md"
           - "Network Model": "user-guide/network-model.md"
           - "Kubernetes API": "user-guide/kubernetes-api.md"
-          - "Kubernetes UI (Lens)": "user-guide/kubernetes-ui.md"
+          - "Kubernetes UI": "user-guide/kubernetes-ui.md"
           - "Namespaces": "user-guide/namespaces.md"
           - "Logs": "user-guide/logs.md"
           - "Log-based Alerts": "user-guide/log-based-alerts.md"
