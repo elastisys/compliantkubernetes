@@ -100,9 +100,9 @@ The remainder of this page contains open questions that you should ask your Infr
         1.  Is your private network stretched across zones?
         1.  Do you trust the network between your data centers?
         1.  Does the private network overlap:
-        1.  The default Docker network (`172.17.0.0/16`)?
-        1.  The [default Kubernetes Service network](https://github.com/kubernetes-sigs/kubespray/blob/v2.18.0/inventory/sample/group_vars/k8s_cluster/k8s-cluster.yml#L73) (`10.233.0.0/18`)?
-        1.  The [default Kubernetes Pod network](https://github.com/kubernetes-sigs/kubespray/blob/v2.18.0/inventory/sample/group_vars/k8s_cluster/k8s-cluster.yml#L78) (`10.233.64.0/18`)?
+            1.  The default Docker network (`172.17.0.0/16`)?
+            1.  The [default Kubernetes Service network](https://github.com/kubernetes-sigs/kubespray/blob/v2.18.0/inventory/sample/group_vars/k8s_cluster/k8s-cluster.yml#L73) (`10.233.0.0/18`)?
+            1.  The [default Kubernetes Pod network](https://github.com/kubernetes-sigs/kubespray/blob/v2.18.0/inventory/sample/group_vars/k8s_cluster/k8s-cluster.yml#L78) (`10.233.64.0/18`)?
     1.  Firewall-aaS
         1.  Are Firewall-aaS available?
         1.  What API? (e.g., OpenStack, VMware)
