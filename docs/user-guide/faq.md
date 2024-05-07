@@ -18,10 +18,9 @@ See [this document][harbor-oidc-docker] for how to use OIDC with docker.
 With that in place, you will need to create a NetworkPolicy for the Pod you want to run.
 Here is an example of how to create a NetworkPolicy that allows all TCP traffic (in and out) for Pods with the label `run: blah`.
 
-!!!note
-
-    This is just an example, not a good idea!
-    You should limit the policy to whatever your application really needs.
+> [!NOTE]
+> This is just an example, not a good idea!
+> You should limit the policy to whatever your application really needs.
 
 ```bash
 kubectl apply -f - <<EOF
