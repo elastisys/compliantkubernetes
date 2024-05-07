@@ -55,7 +55,7 @@ Compliant Kubernetes installs the prometheus-operator by default. The Prometheus
 | servicemonitors | monitoring.coreos.com | ServiceMonitor | YES                  |
 | thanosrulers    | monitoring.coreos.com | ThanosRuler    | NO                   |
 
-#### Accessing Prometheus
+#### Accessing the Prometheus UI
 
 If you want to access the web interface of Prometheus, proceed as follows:
 
@@ -63,6 +63,16 @@ If you want to access the web interface of Prometheus, proceed as follows:
 1. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/monitoring/services/kube-prometheus-stack-prometheus:9090/proxy/) in your browser
 
 The Prometheus UI is only available by default starting in Compliant Kubernetes version 0.26.
+
+#### Accessing the Prometheus API
+
+!!!note
+
+    This is an optional feature that is disabled by default to reduce the attack surface and improve security. You can contact your Platform Administrator to enable it.
+
+There is a feature to grant certain Pods access to the Prometheus API, e.g. for the purpose of setting up your own Prometheus instance with [remote read](https://prometheus.io/docs/prometheus/latest/querying/remote_read_api/) or [federation](https://prometheus.io/docs/prometheus/latest/federation/) against the Prometheus instance that is part of Compliant Kubernetes. This feature is disabled by default, but can be enabled by your Platform Administrator.
+
+In order to use this feature, you will need you to provide a list of allowed namespaces, in addition to you labeling any Pod within those namespaces that should have access with `elastisys.io/prometheus-access: allow`.
 
 ### Grafana
 
@@ -105,13 +115,14 @@ The screenshot below shows Grafana in "Explore" mode (the compass icon to the le
 The "Explore" mode is great for developing queries and exploring the data set. If you want to save a query so you can refer back to it, you can create a Dashboard instead. Dashboards consist of multiple Panels, each of which, can display the results of running queries. Learn more [about Grafana panels](https://grafana.com/docs/grafana/latest/panels-visualizations/).
 
 !!!note
-You may want to save frequently used Dashboards. Compliant Kubernetes saves and backs these up for you.
+
+    You may want to save frequently used Dashboards. Compliant Kubernetes saves and backs these up for you.
 
 <!--user-demo-metrics-end-->
 
 ### Troubleshooting metrics collection
 
-It is possible to see if monitors are picked up by [accessing Prometheus web interface](#accessing-prometheus). Navigating to "Status" > "Service Discovery" will show all monitors picked by Prometheus, and the "(x/y active targets)" will show how many targets of those monitors are active. Active targets are actively scraped by Prometheus and inactive targets are those that fail to match the selectors of the monitor.
+It is possible to see if monitors are picked up by [accessing Prometheus web interface](#accessing-the-prometheus-ui). Navigating to "Status" > "Service Discovery" will show all monitors picked by Prometheus, and the "(x/y active targets)" will show how many targets of those monitors are active. Active targets are actively scraped by Prometheus and inactive targets are those that fail to match the selectors of the monitor.
 
 Monitors can be expanded further down to list and inspect its targets, within each one the "Discovered Labels" column will list information about the object in Kubernetes and in the "Target Labels" it will show the labels recorded from the target.
 
