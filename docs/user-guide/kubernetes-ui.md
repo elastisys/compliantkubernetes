@@ -6,7 +6,7 @@ description: How to work with Monokle or VSCode and Elastisys Compliant Kubernet
 
 Compliant Kubernetes recommends operations to be done via script -- if possible the GitOps way -- to improve repeatability and application developer productivity, as well as reduce human errors.
 That being said, User Interfaces (UIs) have their advantages.
-In particular, they have a reduces learning curve and make features more discoverable.
+In particular, they have a reduced learning curve and make features more discoverable.
 
 Compliant Kubernetes does not come with a UI for the sake of resource efficiency.
 However, you can run a locally-installed Kubernetes UI yourself.
