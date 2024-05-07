@@ -43,7 +43,7 @@ This page will help you succeed in connecting to Argo CD application which meets
 
 ## Getting Access
 
-Your administrator will set up the authentication inside Compliant Kubernetes, which will give you access to ArgoCD UI.
+Your administrator will set up the authentication inside Compliant Kubernetes, which will give you access to Argo CD UI.
 
 ## Follow the Go-Live Checklist
 
@@ -412,11 +412,11 @@ Example error:
 
 `Failed to load live state: Cluster level Namespace "application" can not be managed when in namespaced mode`
 
-Our ArgoCD installation is using the [namespaced method](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#non-high-availability). This means that ArgoCD has access to Roles with permissions to CRUD on objects in the inclusion list. It has a [list of namespaces](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters) that it can look at and reconcile things every few seconds. Any feature that requires ArgoCD cluster-wide installation will not be supported with our offering.
+Our Argo CD installation is using the [namespaced method](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#non-high-availability). This means that Argo CD has access to Roles with permissions to CRUD on objects in the inclusion list. It has a [list of namespaces](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters) that it can look at and reconcile things every few seconds. Any feature that requires Argo CD cluster-wide installation will not be supported with our offering.
 
-The reason for this choice is that, according to the [Compliant Kubernetes mission and vision](../../mission-and-vision.md), the platform should make it hard for application developers to do the wrong thing by employing safeguards and secure defaults. With this configuration, we prevent ArgoCD from having access to objects in the inclusions list across the entire cluster. This prevents objects from being deployed into namespaces owned by the platform administrator, which could compromise platform security and stability. For example, this choice adds another layer of protection, preventing the application developer from interfering with backups. Read more about it [here](../demarcation.md#general-principle).
+The reason for this choice is that, according to the [Compliant Kubernetes mission and vision](../../mission-and-vision.md), the platform should make it hard for application developers to do the wrong thing by employing safeguards and secure defaults. With this configuration, we prevent Argo CD from having access to objects in the inclusions list across the entire cluster. This prevents objects from being deployed into namespaces owned by the platform administrator, which could compromise platform security and stability. For example, this choice adds another layer of protection, preventing the application developer from interfering with backups. Read more about it [here](../demarcation.md#general-principle).
 
-ArgoCD is not allowed to manage its own namespace. This means that features such as [Apps of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern) does not work by default. Read more about the decision [here](../../adr/0044-argocd-managing-its-own-namespace.md).
+Argo CD is not allowed to manage its own namespace. This means that features such as [Apps of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern) does not work by default. Read more about the decision [here](../../adr/0044-argocd-managing-its-own-namespace.md).
 
 !!! elastisys "Apps of Apps (preview)"
 
@@ -428,7 +428,15 @@ ArgoCD is not allowed to manage its own namespace. This means that features such
 
     - Apps-of-Apps will currently be regarded as a preview feature and, as such, we reserve the right to disable it if it interferes with our OPS policies/practices – should that unfortunate event happen, it will be in dialogue with the customer.
 
-ArgoCD cannot create [HNC](https://github.com/kubernetes-sigs/hierarchical-namespaces) namespaces and deploy services into them. This means that as an Application Developer you cannot template the namespace as a value in a manifest. As an Application Developer you need to create subnamespaces manually and deploy applications into it. Read more about the decision [here](../../adr/0042-argocd-dynamic-hnc-namespaces.md).
+Argo CD cannot create [HNC](https://github.com/kubernetes-sigs/hierarchical-namespaces) namespaces and deploy services into them. This means that as an Application Developer you cannot template the namespace as a value in a manifest. As an Application Developer you need to create subnamespaces manually and deploy applications into it. Read more about the decision [here](../../adr/0042-argocd-dynamic-hnc-namespaces.md).
+
+## Known Issues
+
+- With Argo CD CLI access granted, an issue authenticating via Dex can occur and you will see an error message of
+
+  > failed to get token: oauth2: "invalid_client” “Invalid client credentials."
+
+  This is a known issue in Argo CD and the progress for it can be tracked [here](https://github.com/argoproj/argo-cd/issues/17088). Sometimes, when encountering this login issue, opening a new tab and re-trying the login process after entering the Argo CD homepage URL can resolve the problem.
 
 ## Further Reading
 
