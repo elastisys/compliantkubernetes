@@ -51,9 +51,11 @@ metadata:
   name: $SECRET
   namespace: $NAMESPACE
 stringData:
-  # PGHOST represents a cluster-scoped DNS name or IP, which only makes sense inside the Kubernetes cluster.
+  # PGHOST represents a cluster-scoped DNS name, which only makes sense inside the Kubernetes cluster.
   # E.g., postgresql1.postgres-system.svc.cluster.local
   PGHOST: $PGHOST
+  # PGHOST_REPLICA represents a cluster-scoped DNS name that references the replica, can be used for read-only queries.
+  PGHOST_REPLICA: $PGHOST_REPLICA
 
   # These fields map to the environment variables consumed by psql.
   # Ref https://www.postgresql.org/docs/13/libpq-envars.html
