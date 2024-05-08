@@ -330,8 +330,7 @@ Check which arguments you can use by running `velero backup create --help`.
 ### Restore
 
 !!!note
-
-    If you are restoring an environment under a new domain name then there is a possibility to reconfigure image references with [Velero](https://velero.io/docs/main/restore-reference/#changing-poddeploymentstatefulsetdaemonsetreplicasetreplicationcontrollerjobcronjob-image-repositories), but ingresses must be updated manually.
+If you are restoring an environment under a new domain name then there is a possibility to reconfigure image references with [Velero](https://velero.io/docs/main/restore-reference/#changing-poddeploymentstatefulsetdaemonsetreplicasetreplicationcontrollerjobcronjob-image-repositories), but ingresses must be updated manually.
 
 Restoring from a backup with Velero is meant to be a type of disaster recovery.
 **Velero will not overwrite existing Resources when restoring.**
@@ -343,6 +342,11 @@ To restore the state from the latest daily backup, run:
 velero restore create --from-schedule velero-daily-backup --wait
 ```
 
+!!!tip
+Use `velero restore create --help` to see available flags and some examples.
+If a backup has a status of PartiallyFailed, the argument `--allow-partially-failed` can be used to restore from such a backup.
+If a backup or restore gets stuck or has other issues, refer to this [guide](troubleshooting.md#velero-backup-stuck-in-progress).
+
 This command will wait until the restore has finished.
 You can also do partial restorations, e.g. just restoring one namespace, by using different arguments.
 You can also restore from manual backups by using the flag `--from-backup <backup-name>`
@@ -353,6 +357,28 @@ When restoring the Persistent Volume it will overwrite any existing files with t
 Any other files will be left as they were before the restoration started.
 So a restore will not wipe the volume clean and then restore.
 If a clean wipe is the desired behavior, then the volume must be wiped manually before restoring.
+
+### Example restoring a partially failed backup
+
+A backup that has status `PartiallyFailed` can be restored by using `--allow-partially-failed` flag
+
+```bash
+velero restore create <restore-name> --allow-partially-failed --from-schedule velero-daily-backup --wait
+```
+
+### Example restoring a single resource
+
+You can explore a `Completed` backup as follows
+
+```bash
+velero backup describe --details <name-of-backup>
+```
+
+and you can then use the following to handpick resources from the backup you want restored
+
+```bash
+velero restore create <restore-name>  --include-resources pod,volume --from-backup <backup-name> --include-namespaces <namespace-name> --selector <resource-selector> --wait
+```
 
 ### Restore from off-site backup
 
