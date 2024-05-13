@@ -271,3 +271,20 @@ To ensure that you have configured S3 correctly, run the following snippet:
     Nevertheless, parts of it are useful. Use at your own risk and don't expect things to work smoothly.
 
 <!--out-of-date-end-->
+
+<!--for-sme-customers-start-->
+
+!!! elastisys-self-managed "For Elastisys Self-Managed Customers"
+
+    Please start by running [these commands](./troubleshooting.md#i-have-no-clue-where-to-start).
+
+    If you are struggling, don't hesitate to [file a ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
+
+    You can run the following command  from the [compliantkubernetes-apps](https://github.com/elastisys/compliantkubernetes-apps) repository to collect diagnostic information that will help us support you.
+
+    `CK8S_PGP_FP=<fingerprint provided during onboarding> ./bin/ck8s diagnostics [sc|wc]`
+
+    Please also provide us with your terminal in a text format.
+    We need to look both at the commands you typed and their output.
+
+<!--for-sme-customers-end-->
