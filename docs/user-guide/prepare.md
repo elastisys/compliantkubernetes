@@ -87,7 +87,6 @@ Optional, but very useful, tools for developers and DevOps engineers:
 
  <!--prerequisites-end-->
 
-
 ## Access Your Web Portals
 
 <!--endpoint-access-start-->
