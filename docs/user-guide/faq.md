@@ -160,3 +160,13 @@ Residual risks include, but are not limited to:
 
 The risks are usually due to novelty of the feature or uncertainties in the open-source ecosystem.
 By using Preview Features, the Customer accepts these additional risks.
+
+## Why are my Grafana dashboards not working?
+
+Sometimes when increasing the amount of metrics emitted to Prometheus, or selecting a larger time frame for your dashboards, they might stop working and show errors similar to `"Status: 504. Timeout exceeded while awaiting headers"`. This is likely due to the Grafana pods running OOM (Out Of Memory). Fetching a larger volume of data requires more memory for the Grafana pods to temporarily store that data for processing and visualization.
+
+If you are facing this issue, you can:
+
+- See if you can optimize your dashboard queries, making sure you aren't fetching big volumes of data that doesn't necessarily need to be monitored.
+- Lower the time frame for the dashboard, visualizing smaller intervals of the metrics.
+- Contact your Platform Administrators and get them to increase the memory limits of Grafana or if your a Managed services customer, send us a ticket to increase the limit. As Grafana doesn't live in the workload cluster, it won’t use any resources associated with you applications.
