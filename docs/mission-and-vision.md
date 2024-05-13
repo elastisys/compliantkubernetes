@@ -18,45 +18,45 @@ Below we explain what we mean with each word in the mission and vision.
 ### Best application developer experience
 
 - **Closes the DevOps loop**:
-  - It should be easy for application developer to deploy their code.
-  - It should be easy for application developers to observe their code via the three pillars of observability: logs, metrics and traces.
+    - It should be easy for application developer to deploy their code.
+    - It should be easy for application developers to observe their code via the three pillars of observability: logs, metrics and traces.
 - **As self-service as possible**:
-  - Application developers should be able to reach their goals with as little platform administrator involvement as possible.
-  - This should not be interpreted as “click to deploy”, rather "as a platform administrator, I can point application developers to documentation to quickly achieve their goals".
-  - "Click to deploy" **can** be part of the solution, but it doesn't **have to** be.
+    - Application developers should be able to reach their goals with as little platform administrator involvement as possible.
+    - This should not be interpreted as “click to deploy”, rather "as a platform administrator, I can point application developers to documentation to quickly achieve their goals".
+    - "Click to deploy" **can** be part of the solution, but it doesn't **have to** be.
 - **Good documentation**:
-  - Documentation should help application developers throughout their journey of getting started and making the best use of the platform.
-  - Documentation should be searchable, for example, application developers should be able to copy-paste an error message to quickly recover from it.
+    - Documentation should help application developers throughout their journey of getting started and making the best use of the platform.
+    - Documentation should be searchable, for example, application developers should be able to copy-paste an error message to quickly recover from it.
 - **Makes security and compliance easy**:
-  - The platform should make it hard for application developers to do the wrong thing by employing safeguards and secure defaults.
+    - The platform should make it hard for application developers to do the wrong thing by employing safeguards and secure defaults.
 
 ### Best administrator experience
 
 - **Good documentation**:
-  - It should be easy for the platform administrator to get an overview of the platform, its components and the interaction between its components.
-  - The platform administrator should be provided with:
-    - checklists, for rare and hard-to-automate tasks;
-    - runbooks;
-    - scripts.
+    - It should be easy for the platform administrator to get an overview of the platform, its components and the interaction between its components.
+    - The platform administrator should be provided with:
+        - checklists, for rare and hard-to-automate tasks;
+        - runbooks;
+        - scripts.
 - **Good scalability**:
-  - A team of platform administrators should be able to administer many environments.
-  - Cognitive load on platform administrators should be limited, for example, by:
-    - limiting the scope (tech stack) of the platform;
-    - limiting divergence between environments.
+    - A team of platform administrators should be able to administer many environments.
+    - Cognitive load on platform administrators should be limited, for example, by:
+        - limiting the scope (tech stack) of the platform;
+        - limiting divergence between environments.
 - **Minimise number of tickets from application developers**:
-  - Ideally, the platform administrator should be able to point application developers to documentation which enables the latter to reach their goals by themselves.
+    - Ideally, the platform administrator should be able to point application developers to documentation which enables the latter to reach their goals by themselves.
 - **Minimise amount of manual actions, "thinking" and troubleshooting**
-  - The platform should perform frequent actions by itself, such as related to patching, updates and capacity management.
-  - The platform should obey configuration-by-code. Note that, 100% GitOps -- i.e., performing all operations via `git commit` -- is a non-goal.
+    - The platform should perform frequent actions by itself, such as related to patching, updates and capacity management.
+    - The platform should obey configuration-by-code. Note that, 100% GitOps -- i.e., performing all operations via `git commit` -- is a non-goal.
 - **Minimise likelihood and impact of incidents**:
-  - The platform should alert when an environment needs human attention.
+    - The platform should alert when an environment needs human attention.
 - **Minimise number of alerts, especially off-hours ones**:
-  - All alerts should be actionable.
-  - The platform should reduce the priority of alerts via resilience and automation.
+    - All alerts should be actionable.
+    - The platform should reduce the priority of alerts via resilience and automation.
 - **Minimize time spent on billing**:
-  - It should be easy to understand how to bill for the services provided by the platform.
+    - It should be easy to understand how to bill for the services provided by the platform.
 - **Minimize time spent on verifying environment specification**:
-  - It should be easy for platform administrators to retrieve and verify the configuration of a large number of environments to ensure that important details, such as backup retention, log retention, are configured as expected by application developers.
+    - It should be easy for platform administrators to retrieve and verify the configuration of a large number of environments to ensure that important details, such as backup retention, log retention, are configured as expected by application developers.
 
 ### Security
 
