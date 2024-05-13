@@ -8,6 +8,19 @@
 
 In an air-gapped network, machines are isolated from insecure networks such as the public Internet. Air-gapping is used for networks that handle highly confidential data such as military or governmental systems, or in life-critical systems, for example, in nuclear power plants or for medical equipment. This document provides guidelines on how to configure Compliant Kubernetes Apps to work inside an air-gapped network.
 
+!!! elastisys-self-managed "For Elastisys Self-Managed Customers"
+
+    Please start by running [these commands](#i-have-no-clue-where-to-start).
+
+    If you are struggling, don't hesitate to [file a ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
+
+    You can run the following command  from the [compliantkubernetes-apps](https://github.com/elastisys/compliantkubernetes-apps) repository to collect diagnostic information that will help us support you.
+
+    `CK8S_PGP_FP=<fingerprint provided during onboarding> ./bin/ck8s diagnostics [sc|wc]`
+
+    Please also provide us with your terminal in a text format.
+    We need to look both at the commands you typed and their output.
+
 ## System Context Diagram
 
 The following is a generic system context diagram over an air-gapped network consisting of a Compliant Kubernetes Environment. The diagram shows the Platform Administrator Machine that has access to both the Internet and the air-gapped network. Inside the air-gapped network, Compliant Kubernetes Clusters can access other services residing on the same private network such as an object storage for long-term storage, a container registry mirror, DNS and NTP servers, etc.
