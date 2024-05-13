@@ -1,17 +1,10 @@
 # Troubleshooting Tools
 
-!!! elastisys-self-managed "For Elastisys Self-Managed Customers"
-
-    Please start by running [these commands](#i-have-no-clue-where-to-start).
-
-    If you are struggling, don't hesitate to [file a ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
-
-    You can run the following command  from the [compliantkubernetes-apps](https://github.com/elastisys/compliantkubernetes-apps) repository to collect diagnostic information that will help us support you.
-
-    `CK8S_PGP_FP=<fingerprint provided during onboarding> ./bin/ck8s diagnostics [sc|wc]`
-
-    Please also provide us with your terminal in a text format.
-    We need to look both at the commands you typed and their output.
+{%
+    include "./common.md"
+    start="<!--for-sme-customers-start-->"
+    end="<!--for-sme-customers-end-->"
+%}
 
 Help! Something is wrong with my Compliant Kubernetes cluster. Fear no more, this guide will help you make sense.
 
