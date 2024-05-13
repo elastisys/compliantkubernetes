@@ -4,10 +4,6 @@
 
     Each air-gapped network is different. Therefore, this page should only be taken as a guideline, not as "works out-of-the-box instructions". Contact [Elastisys Support](https://elastisys.com/self-managed/) if you need help.
 
-## Background
-
-In an air-gapped network, machines are isolated from insecure networks such as the public Internet. Air-gapping is used for networks that handle highly confidential data such as military or governmental systems, or in life-critical systems, for example, in nuclear power plants or for medical equipment. This document provides guidelines on how to configure Compliant Kubernetes Apps to work inside an air-gapped network.
-
 !!! elastisys-self-managed "For Elastisys Self-Managed Customers"
 
     Please start by running [these commands](#i-have-no-clue-where-to-start).
@@ -20,6 +16,10 @@ In an air-gapped network, machines are isolated from insecure networks such as t
 
     Please also provide us with your terminal in a text format.
     We need to look both at the commands you typed and their output.
+
+## Background
+
+In an air-gapped network, machines are isolated from insecure networks such as the public Internet. Air-gapping is used for networks that handle highly confidential data such as military or governmental systems, or in life-critical systems, for example, in nuclear power plants or for medical equipment. This document provides guidelines on how to configure Compliant Kubernetes Apps to work inside an air-gapped network.
 
 ## System Context Diagram
 
