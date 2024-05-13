@@ -276,7 +276,7 @@ To ensure that you have configured S3 correctly, run the following snippet:
 
 !!! elastisys-self-managed "For Elastisys Self-Managed Customers"
 
-    Please start by running [these commands](#i-have-no-clue-where-to-start).
+    Please start by running [these commands](./troubleshooting.md#i-have-no-clue-where-to-start).
 
     If you are struggling, don't hesitate to [file a ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
 
