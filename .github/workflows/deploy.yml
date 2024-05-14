@@ -2,14 +2,26 @@ name: deploy-main
 
 on:
   push:
-    branches: [main, release-*]
+    branches:
+      - main
+      - release-*
+  schedule:
+    # At 03:45 each day
+    - cron: "45 3 * * *"
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install node.js dependencies
+        run: npm ci
 
       - name: Install Python dependencies
         run: python3 -m pip install -r ./requirements.txt
@@ -35,10 +47,16 @@ jobs:
           cat /etc/lsb-release
           dpkg -l
 
+          npm version
+          npm ls
+
           python3 --version
           pip3 list
 
           set +x
+
+      - name: Auto-generate documentation
+        run: ./scripts/jsonschema2md.sh
 
       - name: Deploy with mike
         run: |

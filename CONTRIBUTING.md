@@ -109,3 +109,26 @@ make -C docs/img preview
 ```
 
 The viewer's output should be updated live as you save the source `dot` file.
+
+## Auto-generated documentation
+
+Compliant Kubernetes Apps config and secrets have auto-generated documentation from [the JSON schemas defined in it repository](https://github.com/elastisys/compliantkubernetes-apps/tree/main/config/schemas).
+
+This is driven via a script using [adobe/jsonschema2md](https://github.com/adobe/jsonschema2md).
+
+This documentation is only generated in the GitHub Actions deploy workflow, as it generates considerable amount of files.
+
+To auto-generate and preview locally run from the root of this repository:
+
+> [!tip]
+>
+> To auto-generate and preview for a different branch set the `GITHUB_REF_NAME` variable to the branch in Apps you want to target.
+
+```bash
+npm install
+./script/jsonschema2md.sh
+```
+
+> [!important]
+>
+> Do not commit the generated files into the repository!
