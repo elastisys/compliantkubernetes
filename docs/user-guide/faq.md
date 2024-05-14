@@ -169,4 +169,4 @@ If you are facing this issue, you can:
 
 - See if you can optimize your dashboard queries, making sure you aren't fetching big volumes of data that doesn't necessarily need to be monitored.
 - Lower the time frame for the dashboard, visualizing smaller intervals of the metrics.
-- Contact your Platform Administrators and get them to increase the memory limits of Grafana or if your a Managed services customer, send us a ticket to increase the limit. As Grafana doesn't live in the workload cluster, it won’t use any resources associated with you applications.
+- Contact your Platform Administrators and get them to increase the memory limits of Grafana or if your a Managed services customer, send us a ticket to increase the limit. As Grafana doesn't live in the workload cluster, it won’t use any resources associated with your applications.
