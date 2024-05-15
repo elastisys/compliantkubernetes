@@ -64,6 +64,18 @@ If the status is `Ok` then the subnamespace is ready to go.
     kubectl hns tree <namespace>
     ```
 
+If you decide a subnamespace is no longer needed, then you can't delete it using `kubectl delete namespace <descendant-namespace>`. As you will get the following error:
+
+> Error from server (Forbidden): namespaces `<descendant-namespace>` is forbidden: User `<your user>` cannot delete resource "namespaces" in API group "" in the namespace `<descendant-namespace>`: RBAC: [clusterrole.rbac.authorization.k8s.io "user-crds" not found, clusterrole.rbac.authorization.k8s.io "user-crds-resourcename-limit" not found]
+
+Instead you will have to delete it using either of these commands:
+
+```bash
+kubectl delete subns -n <parent-namespace> <descendant-namespace>
+# or
+kubectl hns delete -n <parent-namespace> <descendant-namespace> # with the plugin installed
+```
+
 ## Resource Propagation
 
 When a subnamespace is created all `Roles`, `RoleBindings` and `NetworkPolicies` will propagate from the parent namespace to the descendant namespace to ensure that correct access is set. This is what lets you apply namespace-scoped RBAC resources to multiple namespaces at once.
