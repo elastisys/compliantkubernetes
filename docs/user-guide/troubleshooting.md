@@ -2,7 +2,7 @@
 description: Troubleshooting help for Application Developers on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
 ---
 
-# Troubleshooting
+# Troubleshooting For Application Developers
 
 Going through these basic troubleshooting steps should help you as an Application Developer identify where a problem may lie. If any of these steps do not give the expected "fine" output, use `kubectl describe` to investigate.
 
