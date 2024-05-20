@@ -132,6 +132,7 @@ nav:
   - Overview: "index.md"
   - "Mission and Vision": "mission-and-vision.md"
   - "For Application Developers":
+      - "Overview": "user-guide/index.md"
       - "Getting Started":
           - "Step 1: Prepare": "user-guide/prepare.md"
           - "Step 2: Deploy": "user-guide/deploy.md"
@@ -272,6 +273,7 @@ nav:
 
 not_in_nav: |
   adr/*.md
+  operator-manual/common.md
   operator-manual/schema/config-additionalproperties.md
   operator-manual/schema/config-defs*
   operator-manual/schema/config-properties-*
