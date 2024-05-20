@@ -30,7 +30,7 @@ copyright: >-
 repo_url: https://github.com/elastisys/compliantkubernetes/
 edit_uri: edit/main/docs/
 
-# strict: true
+strict: true
 
 theme:
   name: material
