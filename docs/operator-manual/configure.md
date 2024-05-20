@@ -10,7 +10,7 @@ Compliant Kubernetes is composed of two layers, the Kubernetes layer and the app
 
 ## Kubernetes Layer
 
-To find all configuration option of the Kubernetes layer, please read the [upstream Kubespray](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/vars.md) documentation.
+To find all configuration option of the Kubernetes layer, please read the [upstream Kubespray](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/ansible/vars.md) documentation.
 Compliant Kubernetes overrides some of Kubespray's defaults, as shown [here](https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/config).
 
 ## Apps Layer
