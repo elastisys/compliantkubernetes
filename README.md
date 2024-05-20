@@ -29,6 +29,9 @@ npm install -g sass
 
 ## Usage
 
+> [!NOTE]
+> For Mac users, you might have to install cairo: `brew install cairo`
+
 To view locally:
 
 ```sh
@@ -38,9 +41,6 @@ pip3 install -r requirements.txt
 
 mkdocs serve
 ```
-
-> [!NOTE]
-> For Mac users, you might have to install cairo: `brew install cairo`
 
 > [!CAUTION]
 > The command `mike serve` also works to preview a page, but it does not seem to support live preview.
