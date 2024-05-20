@@ -39,6 +39,10 @@ pip3 install -r requirements.txt
 mkdocs serve
 ```
 
+> [!NOTE]
+> For Mac users, you might have to install cairo:
+> `brew install cairo`
+
 > [!CAUTION]
 > The command `mike serve` also works to preview a page, but it does not seem to support live preview.
 > This means that you need to restart `mike serve` after every file change, which is not really productive
