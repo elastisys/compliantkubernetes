@@ -10,7 +10,7 @@ tags:
 Compliant Kubernetes by default sets an retention of 30 days for logs.
 Many regulators, including Swedish Healthcare, require a minimum of 5 year log retention.
 
-This is not provided at the platform level by Compliant Kubernetes as it runs the risk of GDPR non-complicance.
+This is not provided at the platform level by Compliant Kubernetes as it runs the risk of GDPR non-compliance.
 Logs may include sensitive information like personal data, which requires that the the retention scheme is designed together with application-specific knowledge to ensure compliance.
 Specifically, this includes that the retention scheme ensures that erased personal data can not be accidentally restored, as per [Art. 17 GDPR Right to erasure (‘right to be forgotten’)](https://gdpr.fan/a17).
 
@@ -78,10 +78,10 @@ In OpenSearch logs are stored into _indices_.
 These indices are managed in a way that will limit them both in time and size, to make them more manageable.
 Each index typically represents a days worth of logs, but if the size of the index exceeds a set threshold a new one will be created to limit their maximum size.
 
-The indices are all grouped within index _aliases_, a sort of virtual index that behind the scenes link to other indices.
+The indices are all grouped within index _aliases_, a sort of virtual index that behind the scenes links to other indices.
 This allows one to read from all indices and write to one designated write index, all using the same name.
 
-Since only the write index can change one method to select indices for exporting into log-term storage is to only export the read indices.
+Since only the write index can change, one method to select indices for exporting into log-term storage is to only export the read indices.
 This way there is no need to check and update indices in case they've changed since the previous export run, simplifying the export logic.
 
 !!!example "Example: List all indices using a pattern"
@@ -105,7 +105,7 @@ This way there is no need to check and update indices in case they've changed si
 
     This will generate a list of all indices within OpenSearch for the specified pattern.
 
-    The pattern accept regex used by `sed` and should in most instances be `kubernetes*` to only include the application logs indices.
+    The pattern accepts regex used by `sed` and should in most instances be `kubernetes*` to only include the application logs indices.
 
 !!!example "Example: List all write indices using a pattern"
 
@@ -128,9 +128,9 @@ This way there is no need to check and update indices in case they've changed si
 
     This will generate a list of all write indices within OpenSearch for the specified pattern.
 
-    The pattern accept regex used by `sed` and should in most instances be `kubernetes*` to only include the application logs alias.
+    The pattern accepts regex used by `sed` and should in most instances be `kubernetes*` to only include the application logs alias.
 
-    Since the pattern only should only match a single alias, and since each alias can only have a single write index, the output should be validated that it at most only contains one index.
+    Since the pattern should only match a single alias, and since each alias can only have a single write index, the output should be validated that it at most only contains one index.
 
 Using these two example functions we can now fetch the indices for a pattern and find the write index for any matching alias, meaning we can iterate over them, filter out the write index, and perform our backup:
 
@@ -214,7 +214,7 @@ fi
           abortmp "s3://${S3_BUCKET}/<multipart-upload-path>" "<multipart-upload-id>"
         ```
 
-In the example above only certain logs can be exported by adding a query using [OpenSearch Query DSL](https://opensearch.org/docs/latest/opensearch/query-dsl/index/) with the `--searchBody '<query>'` flag.
+The example above can be modified to only export certain logs, by adding a query using [OpenSearch Query DSL](https://opensearch.org/docs/latest/opensearch/query-dsl/index/) with the `--searchBody '<query>'` flag.
 This way it is possible to filter on certain labels to only export logs for a particular namespace, deployment, or even using identifier within structured logs.
 An example for a specific namespace would be:
 
