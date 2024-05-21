@@ -1,4 +1,4 @@
-# Troubleshooting Tools
+# Troubleshooting for Platform Administrators
 
 {%
     include "./common.md"
