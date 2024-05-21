@@ -20,29 +20,29 @@ tags:
 To help you comply with various data protection regulations, Compliant Kubernetes only allows access to service endpoints (i.e., Kubernetes API, Harbor, Grafana and OpenSearch) via an IdP.
 Your organization's IdP acts as the single point to decide who gets access to what.
 
-This page describes how to configure Google Identity and Azure Active Directory so that Platform Administrators can connect a Compliant Kubernetes environment to them.
+This page describes how to configure Google Identity and Microsoft Entra ID so that Platform Administrators can connect a Compliant Kubernetes environment to them.
 Note, however, that Compliant Kubernetes supports any OpenID-compatible IdP, including GitHub and GitLab.
 
 This page show what information you need to send to Platform Administrators and where to find it.
 
-## Azure Active Directory (AD)
+## Microsoft Entra ID
 
 !!! note
 
-    As of August 2023, Azure Active Directory is Becoming Microsoft Entra ID.
+    Azure Active Directory is now Microsoft Entra ID.
 
-1. Sign in to the [Azure portal](https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app).
-1. Search for and select **Azure Active Directory**.
+1. Sign in to the [Azure portal](https://portal.azure.com).
+1. Search for and select **Microsoft Entra ID**.
 1. Under Manage, select App registrations > New registration.
-1. Under Supported account types pick **Accounts in any organizational directory (Any Azure AD directory – Multitenant)**.
+1. Under Supported account types pick **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant)**.
 1. Under **Redirect URI** select **web** and insert the Dex URL that Platform Administrators provided. This is generally `https://dex.$DOMAIN/callback`.
     If unsure, ask your Platform Administrators.
 1. Go to **Overview** and note down the **application ID**.
 1. Create a secret by going to **Certificates & secrets**.
 1. Select the tab **Client secret** and click **New client secret**.
 1. Set **expiry date** to **24 months**.
-1. For improved security, navigate to **Properties** and note down **the tenant ID**. This limits who can authenticate to your Compliant Kubernetes environment.
-1. Decide the **name of the Azure AD group** that should have admin privileges in the environment.
+1. For improved security, navigate to **Overview** and note down **the tenant ID**. This limits who can authenticate to your Compliant Kubernetes environment.
+1. Decide the **name of the Microsoft Entra ID group** that should have admin privileges in the environment.
 1. Securely send, e.g., via [YoPass](https://yopass.elastisys.com), the following information to your Platform Administrators:
     <!-- markdownlint-enable ol-prefix -->
     <!-- markdownlint-enable list-marker-space -->
@@ -54,7 +54,7 @@ This page show what information you need to send to Platform Administrators and 
 
 ### Further Reading
 
-- [Quickstart: Register an application with the Microsoft identity platform](https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
+- [Quickstart: Register an application with the Microsoft identity platform](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app)
 - [Dex: Authentication through Microsoft](https://dexidp.io/docs/connectors/microsoft/)
 
 ## Google
