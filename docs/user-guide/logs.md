@@ -10,9 +10,9 @@ tags:
 
 # Logging
 
-Compliant Kubernetes (CK8s) provides the mechanism to manage your cluster as well as the lifecycle of thousands of containerized applications deployed in the cluster. The resources managed by CK8s are expected to be highly distributed with dynamic behaviors. An instance of CK8s cluster environment involves several components with nodes that host hundreds of containers that are constantly being spun up and destroyed based on workloads.
+Compliant Kubernetes (CK8S) provides the mechanism to manage your cluster as well as the lifecycle of thousands of containerized applications deployed in the cluster. The resources managed by CK8S are expected to be highly distributed with dynamic behaviors. A CK8S environment involves several components with nodes that host hundreds of containers that are constantly being spun up and destroyed based on workloads.
 
-When dealing with a large pool of containerized applications and workloads in CK8s, it is imperative to be proactive with continuous monitoring and debugging information in order to observe what is going on the cluster. These information can be seen at the container, node, or cluster level. Logging as one of the [three pillars of observability](https://www.oreilly.com/library/view/distributed-systems-observability/9781492033431/ch04.html#:~:text=Logs%2C%20metrics%2C%20and%20traces%20are,ability%20to%20build%20better%20systems.) is a crucial element to manage and monitor services and infrastructure. It allows you to track debugging information at different levels of granularity.
+When dealing with a large pool of containerized applications and workloads in CK8S, it is imperative to be proactive with continuous monitoring and debugging information in order to observe what is going on in the cluster. This information can be seen at the container, node, or cluster level. Logging as one of the [three pillars of observability](https://www.oreilly.com/library/view/distributed-systems-observability/9781492033431/ch04.html#:~:text=Logs%2C%20metrics%2C%20and%20traces%20are,ability%20to%20build%20better%20systems.) is a crucial element to manage and monitor services and infrastructure. It allows you to track debugging information at different levels of granularity.
 
 ## Compliance needs
 
@@ -27,7 +27,7 @@ In Compliant Kubernetes, OpenSearch is separate from the production workload, he
 
 Raw logs in CK8s are normalized, filtered, and processed by [Fluentd](https://www.fluentd.org/) and shipped to [OpenSearch](https://opensearch.org/) for storage and analysis. OpenSearch is derived from the fully open source version of Elasticsearch called [Open Distro for Elasticsearch](https://logz.io/blog/open-distro-for-elasticsearch/).
 
-OpenSearch provides a powerful, easy-to-use event monitoring and alerting system, enabling you to monitor, search, visualize your data among other things. OpenSearch Dashboards is used as visualization and analysis interface for OpenSearch for all your logs.
+OpenSearch provides a powerful, easy-to-use event monitoring and alerting system, enabling you to monitor, search and visualize your data among other things. OpenSearch Dashboards is used as a visualization and analysis interface for OpenSearch for all your logs.
 
 ## Visualization using OpenSearch Dashboards
 
@@ -37,19 +37,19 @@ When you log into OpenSearch Dashboards, you will start at the home page as show
 
 ![OpenSearch Dashboards](../img/osd-home.png)
 
-From here click "Visualize & analyze" to continue and you will be greeted with the options to go forward to either **Dashboard** or **Discover**. Opening the sidebar in the top left will also provide navigation to OpenSearch Dashboards features, and here **Visualize** can be found in addition to the two former two outlined in the page shown below.
+From here click "Visualize & analyze" to continue and you will be greeted with the options to go forward to either **Dashboard** or **Discover**. Opening the sidebar in the top left will also provide navigation to OpenSearch Dashboards features, and here **Visualize** can be found in addition to the former two, as outlined in the page shown below.
 
 ![OpenSearch Dashboards Sidebar](../img/osd-sidebar.png)
 
 Since we are concerned with searching logs and their visualization, we will focus on these three features indicated by the red rectangle in the figure above. If you are interested to know more about the rest please visit the [official OpenSearch Dashboards documentation](https://opensearch.org/docs/latest/dashboards/index/).
 
-Before we dive in further, let us discuss the type of logs ingested into OpenSearch. Logs in CK8s cluster are filtered and indexed by Fluentd into four categories.
+Before we dive in further, let us discuss the type of logs ingested into OpenSearch. Logs in CK8S cluster are filtered and indexed by Fluentd into four categories.
 
 **Application level logs**:
 
-- **Kubeaudit logs** related to [Kubernetes audits](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/) to provide security-relevant chronological set of records documenting the sequence of activities that have affected system by individual users, administrators or other components of the system. This is mostly related to the ISO 27001 requirement A.12.4.3 "Administrator and Operator Logs".
+- **Kubeaudit logs** related to [Kubernetes audits](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/) to provide a security-relevant chronological set of records documenting the sequence of activities that have affected the system by individual users, administrators or other components of the system. This is mostly related to the ISO 27001 requirement A.12.4.3 "Administrator and Operator Logs".
 
-- **Kubernetes logs** that provide insight into CK8s resources such as Nodes, Pods, Containers, Deployments and ReplicaSets. This allows you to observe the interactions between those resources and see the effects that one action has on another. Generally, logs in the CK8s ecosystem can be divided into the cluster level (logs outputted by components such as the kubelet, the API server, the scheduler) and the application level (logs generated by pods and containers). This is mostly related to the ISO 27001 requirement A.12.4.3 "Administrator and Operator Logs".
+- **Kubernetes logs** that provide insight into CK8S resources such as Nodes, Pods, Containers, Deployments and ReplicaSets. This allows you to observe the interactions between those resources and see the effects that one action has on another. Generally, logs in the CK8S ecosystem can be divided into the cluster level (logs outputted by components such as the kubelet, the API server, the scheduler) and the application level (logs generated by pods and containers). This is mostly related to the ISO 27001 requirement A.12.4.3 "Administrator and Operator Logs".
 
 **Platform level logs**:
 
@@ -75,11 +75,11 @@ As you can see in the figure above, data visualization and exploration in OpenSe
 
 The **Discover** component in OpenSearch Dashboards is used for exploring, searching and filtering logs.
 
-Navigate to **Discover** as shown previously to access the features provided by it. The figure below shows partial view of the page that you will get under **Discover**.
+Navigate to **Discover** as shown previously to access the features provided by it. The figure below shows a partial view of the page that you will get under **Discover**.
 
 ![Discover](../img/discover.png)
 
-As you can see in the above figure, the **kubeaudit** index logs are loaded by default. If you want to explore logs from either of the other two log indices please select the right index under the dropdown menu marked _log index category_.
+As you can see in the above figure, the **kubeaudit** index logs are loaded by default. If you want to explore logs from another index, please select the right index under the dropdown menu marked _log index category_.
 
 To appreciate the searching and filtering capability, let us get data for the following question:
 
@@ -92,9 +92,9 @@ We can use different ways to find the answer for the question. Below is one poss
 1. Click **Add Filter** and select **responseStatus.reason** and **is** under **field** and **Operator** dropdown menus respectively. Finally, enter
     **notfound** under **Value** input box and click **Save**. The following figure shows the details.
 
-          ![Discover Filter](../img/discover_filter.png)
+    ![Discover Filter](../img/discover_filter.png)
 
-1. To enter the 20 hours, click part that is labelled **Time** in the **Discover** figure above, then enter **20** under the input box and select **hours** in the dropdown menu. Make sure that you are under **Relative** tab. Finally, click **update**. The following figure shows how to set the hours. Note that the data will be automatically updated as time passes to reflect the past 20 hours data from the current time.
+1. Click the part that is labelled **Time** in the **Discover** figure from the beginning of this section, then enter **20** under the input box and select **hours** in the dropdown menu. Make sure that you are under the **Relative** tab. Finally, click **update**. The following figure shows how to set the hours. Note that the data will be automatically updated as time passes to reflect the past 20 hours from the current time.
 
     ![Discover Time](../img/discover_hours.png)
 
@@ -104,12 +104,12 @@ Once you are done, you will see a result similar to the following figure.
 
 #### Visualize
 
-The **Visualize** component in OpenSearch Dashboards is to create different visualizations. Let us create a couple of visualizations.
+The **Visualize** component in OpenSearch Dashboards can be used to create different visualizations. Let us create a couple of visualizations.
 
 To create visualizations:
 
 1. Open the sidebar and click **Visualize** under OpenSearch Dashboards.
-1. Click **Create visualization** button located on the top right side of the page.
+1. Click the **Create visualization** button located on the top right side of the page.
 1. Select a visualization type, we will use **Pie** here.
 1. Choose an index pattern or saved search name under **New Pie / Choose a source**. You can utilize the search function. We will use the `kubernetes*` index here.
 
@@ -127,7 +127,7 @@ By default a pie chart with the total number of logs will be provided by OpenSea
 
     ![Visualize Fields](../img/namespace.png)
 
-1. Click **Update** button located in the bottom right corner.
+1. Click the **Update** button located in the bottom right corner.
 
 The final result will look like the following figure.
 
@@ -168,7 +168,7 @@ The figure below shows the search result for **OPA** logs.
 
 ## OpenSearch Mappings
 
-An index mapping specifies the data structure of the data within that index, listing all the fields and their data types.
+An index mapping specifies the structure of the data within that index, listing all the fields and their data types.
 
 Mappings can be created:
 
@@ -199,7 +199,7 @@ A very short example of index mapping is displayed and commented below:
           "fields": {                 # and also a keyword
             "keyword": {              # less than 256 bytes in length
               "type": "keyword",      # the default limit is to avoid
-              "ignore_above": 256     # the excessive disk/memory usage
+              "ignore_above": 256     # excessive disk/memory usage
             }
           }
         }
