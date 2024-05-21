@@ -103,7 +103,6 @@ metadata:
   annotations:
     # To list your current ClusterIssuers, simply use 'kubectl get ClusterIssuers'.
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    kubernetes.io/ingress.class: nginx
     ## Uncomment the line below to implement source IP allowlisting.
     ## Blocklisted IPs will get HTTP 403.
     # nginx.ingress.kubernetes.io/whitelist-source-range: 98.128.193.2/32
@@ -114,6 +113,7 @@ metadata:
     # nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
     # nginx.ingress.kubernetes.io/auth-response-headers: "authorization"
 spec:
+  ingressClassName: nginx
   rules:
     - host: "demo.example.com"
       http:
@@ -228,7 +228,7 @@ We highly recommend testing against the Let’s Encrypt staging environment and 
 
 ### Rate Limits
 
-Let's Encrypt provides rate-limits on generated certificates to ensure fair usage across all clients. The production environment limits can be exceeded more frequently in environments certificates are installed or reinstalled frequently. This can result in failed installations due to rate limit exceptions on certificate generation.
+Let's Encrypt provides rate-limits on generated certificates to ensure fair usage across all clients. The production environment limits can be exceeded more frequently in environments where certificates are installed or reinstalled frequently. This can result in failed installations due to rate limit exceptions on certificate generation.
 
 In such environments, it is better to use the Let's Encrypt staging environment, which has much higher limits than the production environment.
 
@@ -250,7 +250,7 @@ The Compliant Kubernetes administrator is responsible for:
 
 - ensuring cert-manager works and is configured correctly;
 - ensuring ClusterIssuers exist and are configured correctly;
-- ensure the private network is secure or trusted.
+- ensuring the private network is secure or trusted.
 
 ## Further Reading
 
