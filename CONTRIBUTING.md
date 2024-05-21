@@ -16,6 +16,10 @@
 - Prefer absolute URLs in SVGs (including protocol and domain) to facilitate re-usage outside this website.
 - Respect trademarks. If in doubt, prefer [nominative use](https://en.wikipedia.org/wiki/Nominative_use) and no logo.
 - Use [GitHub-style Alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) when possible. Note that, GitHub-style Alerts do not support custom title nor "Elastisys admonitions".
+- Use [vale](https://vale.sh/) in your editor. For example in vim this can be enabled via [this plugin](https://github.com/dense-analysis/ale).
+
+> [!NOTE]
+> The quality of the documentation is steadily increasing, but it's not yet at the point where we can enforce vale in pre-commit.
 
 ## Stable URL Policy
 
