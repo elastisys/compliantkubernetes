@@ -62,8 +62,6 @@ If you want to access the web interface of Prometheus, proceed as follows:
 1. Type: `kubectl proxy`
 1. Open [this link](http://127.0.0.1:8001/api/v1/namespaces/monitoring/services/kube-prometheus-stack-prometheus:9090/proxy/) in your browser
 
-The Prometheus UI is only available by default starting in Compliant Kubernetes version 0.26.
-
 #### Accessing the Prometheus API
 
 !!!note
@@ -122,9 +120,9 @@ The "Explore" mode is great for developing queries and exploring the data set. I
 
 ### Troubleshooting metrics collection
 
-It is possible to see if monitors are picked up by [accessing Prometheus web interface](#accessing-the-prometheus-ui). Navigating to "Status" > "Service Discovery" will show all monitors picked by Prometheus, and the "(x/y active targets)" will show how many targets of those monitors are active. Active targets are actively scraped by Prometheus and inactive targets are those that fail to match the selectors of the monitor.
+It is possible to see if monitors are picked up by [accessing the Prometheus web interface](#accessing-the-prometheus-ui). Navigating to "Status" > "Service Discovery" will show all monitors picked by Prometheus, and the "(x/y active targets)" will show how many targets of those monitors are active. Active targets are actively scraped by Prometheus and inactive targets are those that fail to match the selectors of the monitor.
 
-Monitors can be expanded further down to list and inspect its targets, within each one the "Discovered Labels" column will list information about the object in Kubernetes and in the "Target Labels" it will show the labels recorded from the target.
+Monitors can be expanded further down to list and inspect its targets, within each one the "Discovered Labels" column will list information about the object in Kubernetes, and in the "Target Labels" it will show the labels recorded from the target.
 
 If the "Target Labels" is "Dropped" for a target then it means that it has been excluded from scraping since it doesn't match the monitor. There are three key things to check to make sure a target is properly picked up by a monitor:
 
