@@ -67,9 +67,9 @@ You can configure silences in the UI, but they will not be persisted if Alertman
 
 Before setting up an alert, you must first [collect metrics](metrics.md) from your application by setting up either ServiceMonitors or PodMonitors. In general ServiceMonitors are recommended over PodMonitors, and it is the most common way to configure metrics collection.
 
-Then create a `PrometheusRule` following the examples below or the upstream documentation with an expression that evaluates to the condition to alert on. Prometheus will pick them up, evaluate them, and then send notifications to Alertmanager.
+Then create a `PrometheusRule` following the examples below, or the upstream documentation, with an expression that evaluates to the condition to alert on. Prometheus will pick them up, evaluate them, and then send notifications to Alertmanager.
 
-The [API reference for Prometheus Operator](https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.PrometheusRule) describes how the Kubernetes resource is configured and the [configuration reference for Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) describes the rules themselves.
+The [API reference for the Prometheus Operator](https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.PrometheusRule) describes how the Kubernetes resource is configured, and the [configuration reference for Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) describes the rules themselves.
 
 In Compliant Kubernetes the Prometheus Operator in the Workload Cluster is configured to pick up all PrometheusRules, regardless in which namespace they are or which labels they have.
 
@@ -91,7 +91,7 @@ The screenshot below gives an example of the application alert, as seen in Alert
 
 ### Detailed example
 
-PrometheusRules have two features, either the rules _alerts_ based on expression, or the rules `records` based on a expression.
+PrometheusRules have two features, either the rules _alert_ based on an expression, or the rules `record` based on an expression.
 The former is the way to create alerting rules and the latter is a way to precompute complex queries that will be stored as separate metrics:
 
 ```yaml
@@ -121,6 +121,6 @@ spec:
             record: example
 ```
 
-For alert rules labels and annotations can be added or overridden that will become present in the resulting alert notifications, in addition the annotations support Go Templating allowing access to the evaluated value via the `$value` variable and all labels from the expression using the `$labels` variable.
+For alert rules, labels and annotations can be added or overridden, which will then be included in the resulting alert notifications. Furthermore, the annotations support Go Templating, allowing access to the evaluated value via the `$value` variable, and all labels from the expression using the `$labels` variable.
 
-For recording rules labels can be added or overridden that will become present in the resulting metric.
+For recording rules, labels can be added or overridden, which will then be included in the resulting metric.
