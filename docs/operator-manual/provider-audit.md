@@ -67,6 +67,7 @@ The remainder of this page contains open questions that you should ask your Infr
         1. Can I reserve VMs? How do you bill for reserved but unused VMs?
         1. What technical implementation do you recommend? E.g., pause/unpause VMs, stop/start VMs, terminate/recreate VMs.
     1. Do you support anti-affinity?
+        1. If yes, what is the maximum number of VMs which can be part of an anti-affinity group?
         1. If not, how can we ensure that VMs don't end up on the same physical servers?
 
 1. Storage capabilities:
@@ -103,6 +104,7 @@ The remainder of this page contains open questions that you should ask your Infr
             1. The default Docker network (`172.17.0.0/16`)?
             1. The [default Kubernetes Service network](https://github.com/kubernetes-sigs/kubespray/blob/v2.18.0/inventory/sample/group_vars/k8s_cluster/k8s-cluster.yml#L73) (`10.233.0.0/18`)?
             1. The [default Kubernetes Pod network](https://github.com/kubernetes-sigs/kubespray/blob/v2.18.0/inventory/sample/group_vars/k8s_cluster/k8s-cluster.yml#L78) (`10.233.64.0/18`)?
+        1. How can we peer private networks across projects?
     1. Firewall-aaS
         1. Are Firewall-aaS available?
         1. What API? (e.g., OpenStack, VMware)
@@ -112,8 +114,8 @@ The remainder of this page contains open questions that you should ask your Infr
         1. Do you have a Terraform provider for your API?
         1. Can I use a [cloud-controller](https://kubernetes.io/docs/concepts/architecture/cloud-controller/) for automatic creation of [external LoadBalancers](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)?
         1. Can I set up a LB across zones? Via API?
-        1. Can VMs see themselves via the LB's IP? (If not, then VMs need a minor [fix](https://github.com/kubernetes-sigs/kubespray/blob/release-2.18/contrib/terraform/exoscale/modules/kubernetes-cluster/templates/cloud-init.tmpl#L29).)
-        1. Do your LBs preserve source IPs? Usually, this involves clever [DNAT](https://en.wikipedia.org/wiki/Network_address_translation#DNAT) or [PROXY protocol support](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt).
+        1. Can VMs see themselves via the load-balancers's IP address? (If not, then VMs need a minor [fix](https://github.com/kubernetes-sigs/kubespray/blob/release-2.18/contrib/terraform/exoscale/modules/kubernetes-cluster/templates/cloud-init.tmpl#L29).)
+        1. Do your LBs preserve source IP addresses? Usually, this involves clever [DNAT](https://en.wikipedia.org/wiki/Network_address_translation#DNAT) or [PROXY protocol support](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt).
     1. Do you offer IPv6 support? By default?
     1. Do you offer DNS as a Service? Which API?
 
@@ -149,7 +151,7 @@ The remainder of this page contains open questions that you should ask your Infr
     1. What is your measured uptime?
     1. Do you have a public status page?
 1. How do you handle access control?
-1. Does your operation team have individual accounts? How do you handle team member onboarding / offboarding?
+1. Does your operation team have individual accounts? How do you handle team member on-boarding / off-boarding?
 1. How do you communicate credentials to your customers?
 1. Do you have audit logs?
     1. How long do you store audit logs? Who has access to them? How are they protected against disclosure and tampering?
@@ -196,7 +198,7 @@ The remainder of this page contains open questions that you should ask your Infr
 ## Environment Management
 
 1. What environmental policies and certifications do you have?
-1. What energy sources are your datacenters using?
+1. What energy sources are your data-centers using?
 1. How do you work to become more energy efficient?
 1. How do you recycle used/old equipment?
 1. Do you do any form of environmental compensation activities?
