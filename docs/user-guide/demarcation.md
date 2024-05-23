@@ -49,14 +49,14 @@ Compliant Kubernetes does not allow users to make any changes which may compromi
 
 ## Specifics
 
-To stick to the general principles above, Compliant Kubernetes puts the following technical safeguards. This list may be updated in the future to take into account the fast evolving risk and technological landscape.
+To stick to the general principles above, Compliant Kubernetes comes with some technical safeguards. These are implemented through [Pod Security Admission](https://kubernetes.io/docs/concepts/security/pod-security-admission/) enforcing that user namespaces adhere to the `restricted` [Pod Security Standard](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted), in combination with OPA Policies and RBAC. This list may be updated in the future to take into account the fast evolving risk and technological landscape.
 
 More technically, Compliant Kubernetes does not allow users to:
 
 <!--safeguards-start-->
 
 - change the Kubernetes API through [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) or [Dynamic Webhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#what-are-admission-webhooks);
-- gain more container execution permissions by mutating [PodSecurityPolicies](https://kubernetes.io/docs/concepts/security/pod-security-policy/); this implies that you cannot run container images as root or mount [hostPaths](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath);
+- run container images as root or mount [hostPaths](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath);
 - mutate ClusterRoles or Roles so as to [escalate privileges](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping);
 - mutate Kubernetes resources in administrator-owned namespaces, such as `monitoring` or `kube-system`;
 - re-configure system Pods, such as Prometheus or Fluentd;
@@ -69,8 +69,8 @@ Unfortunately, many application asks for more permissions than Compliant Kuberne
 
 - ClusterRoles, ClusterRoleBindings
 - Too permissive Roles and RoleBindings
-- PodSecurityPolicy and/or use of `privileged` PodSecurityPolicy
+- Namespaces that do not have the `restricted` Pod Security Standard enforced
 - CustomResourceDefinitions
 - WebhookConfiguration
 
-In such a case, ask your administrator to make a risk-reward analysis. As long as they stick to the general principles, this should be fine. However, as much as they want to help, they might not be allowed to say "yes". Remember, administrators are there to help you focus on application development, but at the same time they are responsible to protect your application against security risks.
+In such a case, ask your administrator to make a risk-reward analysis. As long as they stick to the general principles, this should be fine. However, as much as they want to help, they might not be allowed to say "yes". Remember, administrators are there to help you focus on application development, but at the same time they have a responsibility to protect your application against security risks.
