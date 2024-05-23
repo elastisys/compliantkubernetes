@@ -6,6 +6,7 @@ Elementor
 GMail
 IMY
 Telavox
+Velero
 Yopass
 
 # General technical terms
@@ -45,6 +46,7 @@ sublicense
 midsommarafton
 midsommardagen
 julafton
+skyddsklass
 
 # No clue why Vale doesn't recognize these words
 approver
