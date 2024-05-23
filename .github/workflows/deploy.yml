@@ -70,5 +70,5 @@ jobs:
               VERSION="compliantkubernetes-${VERSION_TITLE}"
           fi
           echo version: $VERSION version-title: $VERSION_TITLE
-          mike deploy $VERSION -t $VERSION_TITLE --template overrides/redirect.html --allow-empty
+          mike deploy $VERSION -t $VERSION_TITLE --template overrides/redirect.html
           mike set-default compliantkubernetes --push --template overrides/redirect.html
