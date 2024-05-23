@@ -28,7 +28,7 @@ This page shows you how to do that.
 
 ## Authentication vs. Access Control
 
-[Authentication](https://en.wikipedia.org/wiki/Authentication) is the act of proving your identity. Compliant Kubernetes is usually configured to use your organization's Identity Provider (IdP). Examples of supported IdPs includes Google, Active Directory, [Okta](https://www.okta.com/) or [Jump Cloud](https://jumpcloud.com/). The email and group provided by your IdP are used for access control in various components.
+[Authentication](https://en.wikipedia.org/wiki/Authentication) is the act of proving your identity. Compliant Kubernetes is usually configured to use your organization's Identity Provider (IdP). Examples of supported IdPs include Google, Microsoft Entra ID, and [Jump Cloud](https://jumpcloud.com/). The email and group provided by your IdP are used for access control in various components.
 
 Next sections will explain how to handle access control in each user-facing Compliant Kubernetes component.
 
@@ -62,7 +62,7 @@ Kubernetes uses the following concepts for [access control](https://kubernetes.i
 
 For delegating permissions to ServiceAccounts, follow the example on the [CI/CD page](ci-cd.md#external-cicd).
 
-The next section present delegation to users and groups.
+The next section covers delegation to users and groups.
 
 ### Pre-verification
 
@@ -100,19 +100,19 @@ kubectl create rolebinding $ROLE --role $ROLE --group=$GROUP --dry-run=client -o
 kubectl apply -f my-role-binding.yaml
 ```
 
-### Add a User admin
+### Add a Kubernetes admin
 
-Since Compliant Kubernetes v0.21.0 User admins can now add more `User admins` themselves.
+In Compliant Kubernetes, Application Developers who are Kubernetes admins have the ability to add more `Kubernetes admins` themselves.
 
 #### Steps
 
-1. Edit the clusterrolebinding `extra-user-view` and add the desired users or groups under `subjects`. If unsure, look at an [example subject](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects) from the official Kubernetes documentation.
+1. Edit the ClusterRoleBinding `extra-user-view` and add the desired users or groups under `subjects`. If unsure, look at an [example subject](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects) from the official Kubernetes documentation.
 
     ```bash
-    kubectl edit clusterrolebinding user-admin-cluster-wide-delegation
+    kubectl edit clusterrolebinding extra-user-view
     ```
 
-1. In each of your user namespaces that you want the users or groups to be admin in, edit the rolebinding `extra-workload-admins` and add the desired users or groups under `subjects`. If you have a root HNC namespace and you want the users or groups to be admin in all of **your** namespaces, you only need to edit the rolebinding in this root namespace and it will propagate.
+1. In each of your user namespaces that you want the users or groups to be admin in, edit the RoleBinding `extra-workload-admins` and add the desired users or groups under `subjects`. If you have a root HNC namespace and you want the users or groups to be admin in all of **your** namespaces, you only need to edit the RoleBinding in this root namespace and it will propagate.
 
     ```bash
     kubectl edit rolebinding extra-workload-admins -n user-namespace
