@@ -74,7 +74,8 @@ In order to use this feature, you will need you to provide a list of allowed nam
 
 ### Grafana
 
-Grafana can be accessed at the endpoint provided by the Compliant Kubernetes install scripts. If you have configured Dex you can login with a connected account.
+Grafana can be accessed at the endpoint provided by the Compliant Kubernetes install scripts.
+If you have configured Dex you can login with a connected account, which can be limited to specific email domains.
 
 Compliant Kubernetes deploys Grafana with a selection of dashboards by default. Dashboards are accessed by clicking the Dashboard icon (four squares) at the lefthand side of the Grafana window and selecting Browse. Some examples of useful dashboards are listed below.
 

@@ -121,6 +121,7 @@ In Compliant Kubernetes, Application Developers who are Kubernetes admins have t
 ## Application Metrics (Grafana)
 
 Your administrator will have mapped your IdP groups to the Grafana viewer, editor and admin roles.
+Access can be limited to specific email domains.
 Please read the [upstream documentation](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/) to learn more.
 
 ## Application Logs (OpenSearch Dashboards)
