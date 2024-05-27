@@ -126,6 +126,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 - [ADR-0046](0046-handle-crds.md) - Handle all CRDs with the standard Helm CRD management
 - [ADR-0047](0047-kubernetes-versions.md) - When to upgrade to new Kubernetes versions
 - [ADR-0048](0048-access-management-for-AMS-with-network-policies.md) - Access Management for Additional Managed Services (AMS-es).
+- [ADR-0049](0049-run-ingress-nginx-in-chroot.md) - Run Ingress-NGINX in chroot.
 
 <!-- adrlogstop -->
 
