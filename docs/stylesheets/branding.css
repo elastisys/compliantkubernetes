@@ -8,8 +8,13 @@
   src: url("../fonts/Poppins-Medium.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_slnt,wght.ttf") format("truetype");
+}
+
 .md-typeset {
-  font-family: "Roboto",sans-serif;
+  font-family: "Inter","Arial",sans-serif;
 }
 
 .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-typeset h5, .md-typeset h6 {
@@ -26,6 +31,18 @@
 }
 
 [data-md-color-scheme="elastisys"] {
+  --elastisys-sky-blue: #B8D2FF;
+  --elastisys-sky-blue-dark: #97BEFC;
+  --elastisys-snow: #F7F1ED;
+  --elastisys-snow-light: #FFFBF9;
+  --elastisys-midnight: #3D516E;
+  --elastisys-midnight-dark: #303B54;
+  --elastisys-northern-lights-1: #CBFF8B;
+  --elastisys-northern-lights-2: #22A472;
+  --elastisys-northern-lights-3: #FB8FFC;
+  --elastisys-midnight-sun: #FF9042;
+  --elastisys-night-blue: #192131;
+
   --esys-blue-01: #202836;
   --esys-blue-02: #334768;
   --esys-blue-03: #536582;
