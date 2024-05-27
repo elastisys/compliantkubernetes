@@ -41,13 +41,13 @@ Compliant Kubernetes triggers a P1 alert when:
 - The average CPU usage for a Node or Node Group, over one hour, is above 95%.
 - The average memory usage for a Node or Node Group, over one hour, is above 85%.
 
-- **Why a P1 alert?** P1 alerts are events that need immediate attention, which makes them suitable for scenarios with a higher usage threshold over a shorter timespan. If the alert is triggered for a single Node, the administrator can attempt to redistribute the workload more evenly across the Node Group. If the alert is triggered for a Node Group, that Node Group needs to be scaled up.
+- **Why a P1 alert?** P1 alerts are events that need immediate attention, which makes them suitable for scenarios with a higher usage threshold over a shorter time-span. If the alert is triggered for a single Node, the administrator can attempt to redistribute the workload more evenly across the Node Group. If the alert is triggered for a Node Group, that Node Group needs to be scaled up.
 
 Compliant Kubernetes triggers a P2 alert when:
 
 - The average CPU or memory usage for a Node Group, over 24 hours, is above 75%.
 
-- **Why a P2 alert?** P2 alerts are events that need to be dealt with within a business day. This makes them suitable for scenarios with a lower usage threshold over a longer timespan, giving administrators enough time to take action. Excess capacity is cheaper than frustrated administrators. There is no need to disturb anyone's sleep.
+- **Why a P2 alert?** P2 alerts are events that need to be dealt with within a business day. This makes them suitable for scenarios with a lower usage threshold over a longer time-span, giving administrators enough time to take action. Excess capacity is cheaper than frustrated administrators. There is no need to disturb anyone's sleep.
 
 ### Metrics
 
@@ -76,7 +76,12 @@ Compliant Kubernetes triggers a P2 alert when:
 
 [Add a new Node](../operator-manual/troubleshooting.md#node-seems-really-not-fine-i-want-a-new-one) of the same type as the other Nodes in the cluster.
 
-If the cluster has 6 Nodes, consider consolidating to 3 Nodes of twice-the-size -- in number of CPUs or memory or both -- if the infrastructure cost is reduced.
+If the cluster has 6 Nodes, consider consolidating to 3 Nodes of twice-the-size -- in number of CPUs or memory or both. This may have several benefits:
+
+- it may reduces infrastructure cost;
+- it reduces platform administrator burden;
+- it reduces the risk of hitting the maximum VMs per anti-affinity group limit; for some infrastructure providers, this may be as low as 5.
+
 Before doing this, get in touch with Application Developers to ensure they don't have Kubernetes scheduling constraints that would cause issues on the consolidated environment.
 
 If you are about to double the number of Nodes, get in touch with Application Developers to ensure their application is not misbehaving, before upscaling.

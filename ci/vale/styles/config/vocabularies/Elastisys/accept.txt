@@ -1,9 +1,11 @@
 # Brands, Organization and Project Names
 Atlassian
+Ceph
 Datatilsynet
 (?i)Elastisys
 Elementor
 GMail
+Grafana
 IMY
 Telavox
 Velero
@@ -14,9 +16,12 @@ API
 (?i)allowlisting
 (?i)autoscaling
 colocation
+CPU
 (?i)downsampled
+downscaling
 failover
 SLA
+upscaling
 VM
 
 # Kubernetes terms
