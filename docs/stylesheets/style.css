@@ -45,7 +45,7 @@
 .md-content .landing-page .columns div,
 .md-content .landing-page .columns-1 div,
 .md-content .landing-page .columns-2 div {
-  border: 5px solid var(--esys-blue-04);
+  border: 5px solid var(--elastisys-sky-blue-dark);
   text-align: center;
   padding: 12px 24px;
   margin: 0;
@@ -104,14 +104,16 @@
   width: initial;
 }
 .md-content .landing-page a[role=button] {
-  background-color: var(--esys-orange-01);
-  color: white;
+  background-color: var(--elastisys-northern-lights-2);
+  color: var(--elastisys-snow-light);
   padding: 12px 24px;
   border-radius: 20px;
   font-size: 14px;
   display: block;
   width: fit-content;
   margin: auto;
+  font-family: var(--elastisys-details-font);
+  font-weight: var(--elastisys-details-weight);
 }
 .md-content .landing-page .columns-always {
   margin: 0;
