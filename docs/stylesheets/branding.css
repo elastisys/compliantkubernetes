@@ -1,36 +1,66 @@
+/* Regular */
 @font-face {
-  font-family: "Roboto";
-  src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/poppins/Poppins-Regular.woff2') format('woff2'),
+       url('../fonts/poppins/Poppins-Regular.woff') format('woff');
+}
+
+/* Bold */
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/poppins/Poppins-Bold.woff2') format('woff2'),
+       url('../fonts/poppins/Poppins-Bold.woff') format('woff');
+}
+
+/* Italic */
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/poppins/Poppins-Italic.woff2') format('woff2'),
+       url('../fonts/poppins/Poppins-Italic.woff') format('woff');
+}
+
+/* Bold Italic */
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-style: italic;
+  src: url('../fonts/poppins/Poppins-BoldItalic.woff2') format('woff2'),
+       url('../fonts/poppins/Poppins-BoldItalic.woff') format('woff');
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url("../fonts/Poppins-Medium.otf") format("opentype");
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  src: url('../fonts/robotomono/RobotoMono-VariableFont_wght.ttf');
 }
 
 @font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-VariableFont_slnt,wght.ttf") format("truetype");
+  font-family: 'Roboto Mono';
+  font-style: italic;
+  src: url('../fonts/robotomono/RobotoMono-Italic-VariableFont_wght.ttf');
 }
 
-.md-typeset {
-  font-family: "Inter","Arial",sans-serif;
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter/Inter-VariableFont_slnt,wght.ttf');
 }
 
-.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-typeset h5, .md-typeset h6 {
-  font-family: "Poppins",sans-serif;
-  color: var(--esys-blue-01);
-}
+:root {
+  --elastisys-headings-font: Poppins, Arial, sans-serif;
+  --elastisys-headings-weight: 600; /* SemiBold */
 
-.md-nav__title, .md-header-nav__title, .md-footer-nav__title {
-  font-family: "Poppins",sans-serif;
-}
+  --elastisys-text-font: Inter, Arial, sans-serif;
+  --elastisys-text-weight: 300; /* Light */
 
-.md-header__topic:first-child {
-  font-weight: 300;
-}
+  --elastisys-details-font: "Roboto Mono", "Courier New", courier;
+  --elastisys-details-weight: 400; /* Regular */
 
-[data-md-color-scheme="elastisys"] {
   --elastisys-sky-blue: #B8D2FF;
   --elastisys-sky-blue-dark: #97BEFC;
   --elastisys-snow: #F7F1ED;
@@ -57,7 +87,29 @@
   --esys-gray-02: #716E81;
   --esys-gray-03: #9CA4C0;
   --esys-gray-04: #BEC3D6;
+}
 
+.md-typeset {
+  font-family: var(--elastisys-text-font);
+  font-weight: var(--elastisys-text-weight);
+}
+
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-typeset h5, .md-typeset h6 {
+  font-family: var(--elastisys-headings-font);
+  font-weight: var(--elastisys-headings-weight);
+  color: var(--esys-blue-01);
+}
+
+.md-nav__title, .md-header-nav__title, .md-footer-nav__title {
+  font-family: var(--elastisys-headings-font);
+  font-weight: var(--elastisys-headings-weight);
+}
+
+.md-header__topic:first-child {
+  font-weight: 300;
+}
+
+[data-md-color-scheme="elastisys"] {
   --md-default-bg-color: #f9f9f9;
 
   --md-primary-fg-color: var(--esys-blue-02);
