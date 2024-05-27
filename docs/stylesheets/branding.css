@@ -7,6 +7,15 @@
        url('../fonts/poppins/Poppins-Regular.woff') format('woff');
 }
 
+/* SemiBold */
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/poppins/Poppins-SemiBold.woff2') format('woff2'),
+       url('../fonts/poppins/Poppins-SemiBold.woff') format('woff');
+}
+
 /* Bold */
 @font-face {
   font-family: 'Poppins';
