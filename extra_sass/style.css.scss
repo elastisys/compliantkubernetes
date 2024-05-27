@@ -16,6 +16,14 @@
     }
   }
 
+  .columns-1 {
+    flex-flow: column;
+
+    div {
+      width: 100%;
+    }
+  }
+
   .columns-2 {
     flex-flow: row wrap;
 
@@ -30,6 +38,7 @@
   }
 
   .columns,
+  .columns-1,
   .columns-2 {
     display: flex;
     margin: 0;
