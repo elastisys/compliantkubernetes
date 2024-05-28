@@ -1,19 +1,21 @@
 .hero-text {
-    font-size: 1.3em;
-    font-family: 'Poppins', sans-serif;
+  font-size: 1.3em;
+  font-family: var(--elastisys-headings-font);
+  font-weight: var(--elastisys-headings-weight);
 }
 
 .menu-callout {
-  background-color: var(--elastisys-northern-lights-2);
+  background-color: var(--elastisys-northern-lights-3);
   border: none;
-  color: var(--elastisys-snow-light);
+  color: var(--elastisys-night-blue);
   padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
   transition-duration: 0.4s;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--elastisys-details-font);
+  font-weight: var(--elastisys-details-weight);
 }
 
 .menu-callout:hover {
