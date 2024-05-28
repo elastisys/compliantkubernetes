@@ -16,15 +16,6 @@
        url('../fonts/poppins/Poppins-SemiBold.woff') format('woff');
 }
 
-/* Bold */
-@font-face {
-  font-family: 'Poppins';
-  font-weight: 700;
-  font-style: normal;
-  src: url('../fonts/poppins/Poppins-Bold.woff2') format('woff2'),
-       url('../fonts/poppins/Poppins-Bold.woff') format('woff');
-}
-
 /* Italic */
 @font-face {
   font-family: 'Poppins';
