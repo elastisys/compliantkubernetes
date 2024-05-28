@@ -8,6 +8,12 @@
 .md-content .landing-page .columns div {
   width: 100%;
 }
+.md-content .landing-page .columns-1 {
+  flex-flow: column;
+}
+.md-content .landing-page .columns-1 div {
+  width: 100%;
+}
 .md-content .landing-page .columns-2 {
   flex-flow: row wrap;
 }
@@ -21,6 +27,7 @@
   }
 }
 .md-content .landing-page .columns,
+.md-content .landing-page .columns-1,
 .md-content .landing-page .columns-2 {
   display: flex;
   margin: 0;
@@ -30,13 +37,15 @@
 }
 @media (max-width: 960px) {
   .md-content .landing-page .columns,
+  .md-content .landing-page .columns-1,
   .md-content .landing-page .columns-2 {
     flex-flow: column;
   }
 }
 .md-content .landing-page .columns div,
+.md-content .landing-page .columns-1 div,
 .md-content .landing-page .columns-2 div {
-  border: 5px solid var(--esys-blue-04);
+  border: 5px solid var(--elastisys-sky-blue-dark);
   text-align: center;
   padding: 12px 24px;
   margin: 0;
@@ -45,6 +54,7 @@
   flex-flow: column;
 }
 .md-content .landing-page .columns li,
+.md-content .landing-page .columns-1 li,
 .md-content .landing-page .columns-2 li {
   width: 100%;
   text-align: center;
@@ -53,48 +63,57 @@
   list-style-type: none;
 }
 .md-content .landing-page .columns img,
+.md-content .landing-page .columns-1 img,
 .md-content .landing-page .columns-2 img {
   max-width: 256px;
   height: 128px;
 }
 .md-content .landing-page .columns dt,
+.md-content .landing-page .columns-1 dt,
 .md-content .landing-page .columns-2 dt {
   font-weight: bold;
 }
 .md-content .landing-page .columns dd,
+.md-content .landing-page .columns-1 dd,
 .md-content .landing-page .columns-2 dd {
   margin: 0;
   padding: 12px;
 }
 .md-content .landing-page .columns dt.grow-me,
+.md-content .landing-page .columns-1 dt.grow-me,
 .md-content .landing-page .columns-2 dt.grow-me {
   flex-grow: 4;
 }
 .md-content .landing-page .columns dd.grow-me,
+.md-content .landing-page .columns-1 dd.grow-me,
 .md-content .landing-page .columns-2 dd.grow-me {
   margin: 0;
   padding: 12px;
   flex-grow: 4;
 }
 .md-content .landing-page .columns .twemoji,
+.md-content .landing-page .columns-1 .twemoji,
 .md-content .landing-page .columns-2 .twemoji {
   display: block;
   height: 48px;
   margin-bottom: 12px;
 }
 .md-content .landing-page .columns .twemoji svg,
+.md-content .landing-page .columns-1 .twemoji svg,
 .md-content .landing-page .columns-2 .twemoji svg {
   width: initial;
 }
 .md-content .landing-page a[role=button] {
-  background-color: var(--esys-orange-01);
-  color: white;
+  background-color: var(--elastisys-northern-lights-2);
+  color: var(--elastisys-snow-light);
   padding: 12px 24px;
   border-radius: 20px;
   font-size: 14px;
   display: block;
   width: fit-content;
   margin: auto;
+  font-family: var(--elastisys-details-font);
+  font-weight: var(--elastisys-details-weight);
 }
 .md-content .landing-page .columns-always {
   margin: 0;

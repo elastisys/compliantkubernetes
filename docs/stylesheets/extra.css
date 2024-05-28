@@ -1,23 +1,25 @@
 .hero-text {
-    font-size: 1.3em;
-    font-family: 'Poppins', sans-serif;
+  font-size: 1.3em;
+  font-family: var(--elastisys-headings-font);
+  font-weight: var(--elastisys-headings-weight);
 }
 
 .menu-callout {
-  background-color: var(--esys-orange-01);
+  background-color: var(--elastisys-northern-lights-3);
   border: none;
-  color: white;
+  color: var(--elastisys-night-blue);
   padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
   transition-duration: 0.4s;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--elastisys-details-font);
+  font-weight: var(--elastisys-details-weight);
 }
 
 .menu-callout:hover {
-  background-color: var(--esys-orange-04);
+  background-color: var(--elastisys-hover);
 }
 
 .header-links {
@@ -60,11 +62,11 @@ a[href*="//"]:not([href*="elastisys."])::after {
  */
 .md-typeset .admonition.elastisys,
 .md-typeset details.elastisys {
-  border-color: var(--esys-blue-03);
+  border-color: var(--elastisys-sky-blue-dark);
 }
 .md-typeset .elastisys > .admonition-title,
 .md-typeset .elastisys > summary {
-  background-color: var(--esys-gray-04);
+  background-color: var(--elastisys-sky-blue);
 }
 .md-typeset .elastisys.elastisys > .admonition-title::before,
 .md-typeset .elastisys.elastisys > summary::before {
@@ -81,11 +83,11 @@ a[href*="//"]:not([href*="elastisys."])::after {
  */
 .md-typeset .admonition.elastisys-self-managed,
 .md-typeset details.elastisys-self-managed {
-  border-color: var(--esys-orange-03);
+  border-color: var(--elastisys-northern-lights-2);
 }
 .md-typeset .elastisys-self-managed.elastisys-self-managed > .admonition-title,
 .md-typeset .elastisys-self-managed.elastisys-self-managed > summary {
-  background-color: var(--esys-orange-04);
+  background-color: var(--elastisys-northern-lights-1);
 }
 .md-typeset .elastisys-self-managed.elastisys-self-managed > .admonition-title::before,
 .md-typeset .elastisys-self-managed.elastisys-self-managed > summary::before {
