@@ -37,7 +37,9 @@ yq() {
 
 # Special handling of release branches
 declare revision
-if [[ "${GITHUB_REF_NAME:-}" =~ release- ]]; then
+if [[ -n "${OVERRIDE_REF_NAME:-}" ]]; then
+  revision="${OVERRIDE_REF_NAME}"
+elif [[ "${GITHUB_REF_NAME:-}" =~ release- ]]; then
   revision="$(cut -d- -f2 <<< "${GITHUB_REF_NAME}")"
 
   declare tags
@@ -136,6 +138,11 @@ find "${staging}" -type f -regextype sed -regex '.*\.md' -exec sed -i -r \
 # Postfix: Unescape GFM alerts
 find "${staging}" -type f -regextype sed -regex '.*\.md' -exec sed -i -r \
   -e 's/^> \\\[/> \[/' \
+  '{}' '+'
+
+# Postfix: Fix numbering of anchors
+find "${staging}" -type f -regextype sed -regex '.*\.md' -exec sed -i -r \
+  -e 's/\(#([-0-9a-z]+)-([0-9]+)\)/(#\1_\2)/' \
   '{}' '+'
 
 log.trace "postfixed documentation"
