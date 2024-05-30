@@ -24,6 +24,8 @@ Hi there, Application Developer! Happy to have you on board with Elastisys Compl
 
 In this part, you will learn about the things you should do to prepare to get started with the platform.
 
+<!--prerequisites-start-->
+
 Your administrator has already set up the platform for you. You will therefore have received:
 
 - URLs for the Service Endpoints: OpenSearch Dashboards, Grafana, and Harbor;
@@ -83,7 +85,11 @@ Optional, but very useful, tools for developers and DevOps engineers:
     # All commands above should return 'HTTP/2 200'
     ```
 
+ <!--prerequisites-end-->
+
 ## Access Your Web Portals
+
+<!--endpoint-access-start-->
 
 Those URLs that your Elastisys Compliant Kubernetes administrator gave you all have a `$DOMAIN`, which will typically include your company name and perhaps the environment name.
 
@@ -92,6 +98,13 @@ Your web portals are available at:
 - `harbor.$DOMAIN` -- the Harbor container image registry, which will be the home to all your container images
 - `opensearch.$DOMAIN` -- the OpenSearch Dashboards portal, where you will view your application and audit logs
 - `grafana.$DOMAIN` -- the Grafana portal, where you will view your monitoring metrics for both the platform, as such, and your application-specific metrics
+
+Additional endpoints are also available, depending on if your platform has these additional managed services (AMS) or not:
+
+- `jaeger.$DOMAIN` -- the [Jaeger](./additional-services/jaeger.md) distributed tracing observability tool
+- `argocd.$DOMAIN` -- the [Argo CD](./additional-services/argocd.md) continuous deployment GitOps tool
+
+<!--endpoint-access-end-->
 
 ## Containerize Your Application
 
