@@ -27,11 +27,16 @@ It does not contain any proprietary technology, and no vendor-specific tooling.
     end="<!--endpoint-access-end-->"
 %}
 
+<!--
 ## Component overview
+
+TODO https://github.com/elastisys/compliantkubernetes/issues/836
+
+-->
 
 ## Finding more information
 
-Use the "Go Deeper" link in the site's navbar to find more information about specific topics, such as how to set up [log-based](log-based-alerts.md) or [metric-based](alerts.md) alerts, configure [long-term retention of logs](long-term-retention.md), or how to [use a user-friendly Kubernetes UI](kubernetes-ui.md) as an alternative or complement to the `kubectl` command line tool.
+Use the "Go Deeper" link in the site's navbar to find more information about specific topics, such as how to set up [log-based](log-based-alerts.md) or [metric-based](alerts.md) alerts, configure [long-term retention of logs](long-term-log-retention.md), or how to [use a user-friendly Kubernetes UI](kubernetes-ui.md) as an alternative or complement to the `kubectl` command line tool.
 
 A common next step for Application Developers that are already used to Kubernetes is to read up on the [safeguards that Compliant Kubernetes ships with](safeguards/index.md).
 
