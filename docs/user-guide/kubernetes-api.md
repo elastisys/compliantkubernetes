@@ -25,7 +25,7 @@ Normally, you should authenticate using your organizations identity provider con
 The authorization is done by the Kubernetes API based on [Kubernetes role-based access controls](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 Your cluster administrator will grant you permissions as part of onboarding.
 You have administrator access to the user workload Kubernetes Namespaces by default.
-In order to follow [the principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege), you as an user should only have sufficient access to manage resources required by your application.
+In order to follow [the principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege), you as a user should only have sufficient access to manage resources required by your application.
 User access to the Kubernetes API may need to be restricted from case to case to follow the principle of least privilege.
 
 !!!note
@@ -63,7 +63,7 @@ Once you have logged in through the browser, you are authenticated to the cluste
 ![Successful login](img/dex-authenticated.png)
 
 Your credentials will then be used by the Kubernetes API to make sure you are authorized.
-You are now logged in and can use kubectl to manage your Kubernetes resources!
+You are now logged in and can use `kubectl` to manage your Kubernetes resources!
 
 ## Running Example
 

@@ -1,7 +1,10 @@
 *.swp
 site/
 .venv
+.DS_Store
 
 # Used by the social plugin
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/
 .cache
+
+node_modules

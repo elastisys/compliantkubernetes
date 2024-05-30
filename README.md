@@ -29,6 +29,9 @@ npm install -g sass
 
 ## Usage
 
+> [!NOTE]
+> For Mac users, you might have to install cairo: `brew install cairo`
+
 To view locally:
 
 ```sh

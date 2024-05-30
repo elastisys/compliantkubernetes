@@ -26,7 +26,7 @@ repos:
         args:
           - -I
           - .codespellignore
-        exclude: ^(site/.*|.*\.dot|.*\.svg|.*\.xml|.*\.min\.js)$
+        exclude: ^(site/.*|.*\.dot|.*\.svg|.*\.xml|.*\.min\.js|package-lock.json)$
 
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v8.56.0

@@ -6,6 +6,7 @@
 
 <!-- BEGIN TOC -->
 
+- [v0.38.0](#v0380) - 2024-05-17
 - [v0.37.0](#v0370) - 2024-04-12
 - [v0.36.0](#v0360) - 2024-02-12
 - [v0.34.2](#v0342) - 2024-01-16
@@ -46,6 +47,19 @@
 !!!note
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
+
+## v0.38.0
+
+Released 2024-05-17
+
+### Feature(s)
+
+- A new Gatekeeper constraint was added. It will warn if the user tries to deploy a Deployment or StatefulSet with less than 2 replicas.
+
+### Improvement(s)
+
+- Thanos was upgraded to v0.34.1.
+- Gatekeeper was upgraded to v3.15.1.
 
 ## v0.37.0
 

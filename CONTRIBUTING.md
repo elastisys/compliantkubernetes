@@ -16,6 +16,10 @@
 - Prefer absolute URLs in SVGs (including protocol and domain) to facilitate re-usage outside this website.
 - Respect trademarks. If in doubt, prefer [nominative use](https://en.wikipedia.org/wiki/Nominative_use) and no logo.
 - Use [GitHub-style Alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) when possible. Note that, GitHub-style Alerts do not support custom title nor "Elastisys admonitions".
+- Use [vale](https://vale.sh/) in your editor. For example in vim this can be enabled via [this plugin](https://github.com/dense-analysis/ale).
+
+> [!NOTE]
+> The quality of the documentation is steadily increasing, but it's not yet at the point where we can enforce vale in pre-commit.
 
 ## Stable URL Policy
 
@@ -109,3 +113,26 @@ make -C docs/img preview
 ```
 
 The viewer's output should be updated live as you save the source `dot` file.
+
+## Auto-generated documentation
+
+Compliant Kubernetes Apps config and secrets have auto-generated documentation from [the JSON schemas defined in it repository](https://github.com/elastisys/compliantkubernetes-apps/tree/main/config/schemas).
+
+This is driven via a script using [adobe/jsonschema2md](https://github.com/adobe/jsonschema2md).
+
+This documentation is only generated in the GitHub Actions deploy workflow, as it generates considerable amount of files.
+
+To auto-generate and preview locally run from the root of this repository:
+
+> [!tip]
+>
+> To auto-generate and preview for a different branch set the `GITHUB_REF_NAME` variable to the branch in Apps you want to target.
+
+```bash
+npm install
+./script/jsonschema2md.sh
+```
+
+> [!important]
+>
+> Do not commit the generated files into the repository!

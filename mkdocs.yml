@@ -30,7 +30,7 @@ copyright: >-
 repo_url: https://github.com/elastisys/compliantkubernetes/
 edit_uri: edit/main/docs/
 
-# strict: true
+strict: true
 
 theme:
   name: material
@@ -214,6 +214,10 @@ nav:
       - "Troubleshooting": "operator-manual/troubleshooting.md"
       - "FAQ": "operator-manual/faq.md"
       - "Additional Services": "operator-manual/additional-services.md"
+      - "Configuration Reference":
+          - "Index": "operator-manual/schema/README.md"
+          - "Config": "operator-manual/schema/config.md"
+          - "Secrets": "operator-manual/schema/secrets.md"
   - "For CISOs and DPOs":
       - "Overview": "ciso-guide/index.md"
       - "GDPR (EU)": "ciso-guide/controls/gdpr.md"
@@ -266,3 +270,14 @@ nav:
   - "Official Training": "https://elastisys.com/training/"
   - "Blog": "https://elastisys.com/blog/"
   - "Privacy Policy": "https://elastisys.com/legal/privacy-policy/"
+
+not_in_nav: |
+  adr/*.md
+  operator-manual/common.md
+  operator-manual/schema/config-additionalproperties.md
+  operator-manual/schema/config-defs*
+  operator-manual/schema/config-properties-*
+  operator-manual/schema/secrets-additionalproperties.md
+  operator-manual/schema/secrets-defs*
+  operator-manual/schema/secrets-properties-*
+  operator-manual/schema/undefined.md

@@ -11,13 +11,16 @@ description: Documentation for Elastisys Compliant Kubernetes, the security-focu
 Elastisys Compliant Kubernetes enables organizations across Europe to accelerate innovation through open source cloud-native technology, while ensuring security and regulatory compliance.
 
 <nav markdown="1">
-<dl class="columns" markdown="1">
+<dl class="columns-1" markdown="1">
   <div markdown="span">
     <dt markdown="span" class="grow-me">
       :fontawesome-solid-code:
       For application developers
     </dt>
-    <dd><a role="button" href="./user-guide/">Get started with your Application</a></dd>
+    <dd class="grow-me">
+      Learn how Compliant Kubernetes helps you deploy and observe your application in production.
+    </dd>
+    <dd><a role="button" href="./user-guide/">Get started</a></dd>
   </div>
 
   <div markdown="span">
@@ -25,7 +28,10 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
       :fontawesome-solid-user-secret:
       For CISOs and DPOs
     </dt>
-    <dd><a role="button" href="./ciso-guide/">Help me comply with NIS2 and GDPR</a></dd>
+    <dd class="grow-me">
+      Learn how Compliant Kubernetes helps you comply with European regulations, such as NIS2 and GDPR.
+    </dd>
+    <dd><a role="button" href="./ciso-guide/">Help me comply</a></dd>
   </div>
 
   <div markdown="span">
@@ -33,7 +39,10 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
       :fontawesome-solid-users-gear:
       For platform administrators
     </dt>
-    <dd><a role="button" href="./operator-manual/">Set up Compliant Kubernetes on any cloud provider</a></dd>
+    <dd class="grow-me">
+      Learn how to set up Compliant Kubernetes on any cloud provider or on-prem.
+    </dd>
+    <dd><a role="button" href="./operator-manual/">Set up Compliant Kubernetes</a></dd>
   </div>
 </ul>
 </nav>
@@ -44,7 +53,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 
 ## Benefits of Elastisys Compliant Kubernetes
 
-<dl class="columns" markdown="1">
+<dl class="columns-1" markdown="1">
   <div markdown="span">
     <dt markdown="span">
       :fontawesome-solid-user-check:
