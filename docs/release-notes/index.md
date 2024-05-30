@@ -20,5 +20,6 @@ For the [Kubespray layer](https://github.com/elastisys/compliantkubernetes-kubes
 
 For the Cluster API layer, we aim to release as soon as there is a new upstream release for either:
 
+- [Cluster API](https://cluster-api.sigs.k8s.io/reference/versions);
 - [Cluster API Provider OpenStack](https://cluster-api-openstack.sigs.k8s.io/); and
 - [Cluster API Provider Azure](https://capz.sigs.k8s.io/).
