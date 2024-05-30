@@ -82,7 +82,6 @@ plugins:
         "operator-manual/openstack.md": "operator-manual/on-prem-standard.md"
         "operator-manual/ovh-managed-kubernetes.md": "operator-manual/on-prem-standard.md"
         "operator-manual/safespring.md": "operator-manual/on-prem-standard.md"
-        "release-notes.md": "release-notes/ck8s.md"
         "operator-manual/qa.md": "quality-criteria.md"
         "operator-manual/air-gapped-environment.md": "operator-manual/air-gapped.md"
 
@@ -255,6 +254,7 @@ nav:
       - "Tech Radar": "tech-radar/index.html"
       - "Quality Criteria": "quality-criteria.md"
   - "Release Notes":
+      - "Release Cycle": "release-notes/index.md"
       - "Compliant Kubernetes": "release-notes/ck8s.md"
       - "CK8S Kubespray": "release-notes/kubespray.md"
       - "CK8S Cluster API": "release-notes/capi.md"
