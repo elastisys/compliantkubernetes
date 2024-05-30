@@ -41,8 +41,8 @@ TODO https://github.com/elastisys/compliantkubernetes/issues/836
 If you are not familiar with Kubernetes since before, following our three-step process is a good idea, which includes a demo application for you to deploy and understand the entire process of containerizing an application and how to deploy it.
 
 1. The [first step](prepare.md) is about making necessary preparations such as installing prerequisite software on your laptop.
-2. The [second step](deploy.md) is about deploying your software.
-3. The [third step](operate.md) is about how you continuously operate the software.
+1. The [second step](deploy.md) is about deploying your software.
+1. The [third step](operate.md) is about how you continuously operate the software.
 
 It may be a good idea to **follow along** in all of these, even if you have worked with similar systems before.
 
