@@ -41,7 +41,7 @@ TODO https://github.com/elastisys/compliantkubernetes/issues/836
 If you are not familiar with Kubernetes since before, following our three-step process is a good idea, which includes a demo application for you to deploy and understand the entire process of containerizing an application and how to deploy it.
 
 1. The [first step](prepare.md) is about making necessary preparations such as installing prerequisite software on your laptop.
-2. The [second step](deploy.md) is about deploying your software. 
+2. The [second step](deploy.md) is about deploying your software.
 3. The [third step](operate.md) is about how you continuously operate the software.
 
 It may be a good idea to **follow along** in all of these, even if you have worked with similar systems before.
@@ -50,6 +50,6 @@ If you are familiar with similar systems, a common next step for Application Dev
 You may also wish to use the "Go Deeper" link in the site's navigational bar to find more information about specific topics, such as:
 
 - how to set up [log-based](log-based-alerts.md) or [metric-based](alerts.md) alerts,
-- configure [long-term retention of logs](long-term-log-retention.md), or 
+- configure [long-term retention of logs](long-term-log-retention.md), or
 - how to [use a user-friendly Kubernetes UI](kubernetes-ui.md) as an alternative or complement to the `kubectl` command line tool.
 
