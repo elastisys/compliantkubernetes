@@ -52,4 +52,3 @@ You may also wish to use the "Go Deeper" link in the site's navigational bar to 
 - how to set up [log-based](log-based-alerts.md) or [metric-based](alerts.md) alerts,
 - configure [long-term retention of logs](long-term-log-retention.md), or
 - how to [use a user-friendly Kubernetes UI](kubernetes-ui.md) as an alternative or complement to the `kubectl` command line tool.
-
