@@ -6,7 +6,7 @@ labels: documentation
 assignees: ""
 ---
 
-**Describe the bug**
+**Describe the improvement**
 
 [This page](https://elastisys.io) does not explain what `ServiceMonitor` resource to create. Please provide a copy-paste-able code snippet.
 
