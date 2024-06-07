@@ -236,7 +236,7 @@ nav:
           - "BSI IT-Grundschutz (DE)": "ciso-guide/controls/bsi-it-grundschutz.md"
           - "MSBFS 2018:8 (SE)": "ciso-guide/controls/msbfs-20188.md"
       - "Industrial control systems":
-        - "ISA/IEC 62443": "ciso-guide/isa-iec-62443.md"
+          - "ISA/IEC 62443": "ciso-guide/isa-iec-62443.md"
       - "CISO Dashboards":
           - "ciso-guide/audit-logs.md"
           - "ciso-guide/backup.md"
