@@ -222,6 +222,8 @@ nav:
       - "Overview": "ciso-guide/index.md"
       - "GDPR (EU)": "ciso-guide/controls/gdpr.md"
       - "ISO 27001 (EU)": "ciso-guide/controls/iso-27001.md"
+      - "NIST SP 800-171": "ciso-guide/controls/nist-sp-800-171.md"
+      - "DoD Enterprise DevSecOps Reference Design": "ciso-guide/information-security/dod-enterprise-devsecops-reference-design-kubernetes.md"
       - "Healthcare":
           - "HSLF-FS 2016:40 (SE)": "ciso-guide/controls/hslf-fs-201640.md"
           - "HIPAA (US)": "ciso-guide/controls/hipaa.md"
@@ -233,8 +235,8 @@ nav:
           - "KRITIS (DE)": "ciso-guide/controls/kritis.md"
           - "BSI IT-Grundschutz (DE)": "ciso-guide/controls/bsi-it-grundschutz.md"
           - "MSBFS 2018:8 (SE)": "ciso-guide/controls/msbfs-20188.md"
-      - "NIST SP 800-171": "ciso-guide/controls/nist-sp-800-171.md"
-      - "ISA/IEC 62443": "ciso-guide/isa-iec-62443.md"
+      - "Industrial control systems":
+        - "ISA/IEC 62443": "ciso-guide/isa-iec-62443.md"
       - "CISO Dashboards":
           - "ciso-guide/audit-logs.md"
           - "ciso-guide/backup.md"
@@ -245,9 +247,6 @@ nav:
           - "ciso-guide/capacity-management.md"
           - "ciso-guide/vulnerability.md"
           - "ciso-guide/log-review.md"
-      - "Information Security and DevSecOps Best Practices":
-          - "Overview": "ciso-guide/information-security/index.md"
-          - "DoD Enterprise DevSecOps Reference Design": "ciso-guide/information-security/dod-enterprise-devsecops-reference-design-kubernetes.md"
       - "FAQ": "ciso-guide/faq.md"
       - 'How do I comply with GDPR Art. 17 Right to erasure ("right to be forgotten")?': "ciso-guide/gdpr-art-17.md"
       - "How do I comply with HSLF-FS 2016:40 4 kap. 9 § Kontroll av åtkomst till uppgifter?": "ciso-guide/pdl-audit-logs.md"
