@@ -226,6 +226,10 @@ We highly recommend testing against the Let’s Encrypt staging environment and 
 
     Certificates issued by the Let's Encrypt staging environment are signed by untrusted authorities, similar to self-signed certificates. They are typically not used in production environments.
 
+!!!warning
+
+    Cert-manager's [DNS-01 issuers](https://cert-manager.io/docs/configuration/acme/dns01/) that talk to the internet will not work by default in Compliant Kubernetes due to restrictive Network Policies. If you need to make use of such issuers, e.g. for wildcard domains, please contact your Compliant Kubernetes Administrator.
+
 ### Rate Limits
 
 Let's Encrypt provides rate-limits on generated certificates to ensure fair usage across all clients. The production environment limits can be exceeded more frequently in environments where certificates are installed or reinstalled frequently. This can result in failed installations due to rate limit exceptions on certificate generation.
