@@ -210,6 +210,10 @@ spec:
 1. Placing a host in the TLS config will determine what ends up in the cert’s subjectAltNames.
 1. The created certificate is stored in this secret.
 
+!!!important
+
+    You can monitor your own certificates using the User Alertmanager instance. Read more in our documentation about [Alerts](alerts.md).
+
 ### Let's Encrypt Environments
 
 Let's Encrypt provides two environments as part of their ACME V2 standardization: Staging & Production.
@@ -225,6 +229,10 @@ We highly recommend testing against the Let’s Encrypt staging environment and 
 !!!important
 
     Certificates issued by the Let's Encrypt staging environment are signed by untrusted authorities, similar to self-signed certificates. They are typically not used in production environments.
+
+!!!warning
+
+    Cert-manager's [DNS-01 issuers](https://cert-manager.io/docs/configuration/acme/dns01/) that talk to the Internet will not work by default in Compliant Kubernetes due to restrictive Network Policies. If you need to make use of such issuers, e.g. for wildcard domains, please contact your Compliant Kubernetes Administrator.
 
 ### Rate Limits
 
