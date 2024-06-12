@@ -6,6 +6,7 @@
 
 <!-- BEGIN TOC -->
 
+- [v0.38.1](#v0381) - 2024-05-24
 - [v0.38.0](#v0380) - 2024-05-17
 - [v0.37.0](#v0370) - 2024-04-12
 - [v0.36.0](#v0360) - 2024-02-12
@@ -47,6 +48,14 @@
 !!!note
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
+
+## v0.38.1
+
+Release 2024-05-24
+
+### Other(s)
+
+- Fixed an error that would occur when applying with rclone enabled.
 
 ## v0.38.0
 
