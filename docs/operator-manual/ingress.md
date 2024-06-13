@@ -32,8 +32,8 @@ is selected by the dns. Another option is to use any existing load balancer serv
 The Ingress NGINX Controller is currently configured and installed by the
 [compliantkubernetes-apps](https://github.com/elastisys/compliantkubernetes-apps) repository.
 The configuration is set in
-[sc-config.yaml](https://github.com/elastisys/compliantkubernetes-apps/blob/main/config/config/sc-config.yaml#L526-L530)
-and [wc-config.yaml](https://github.com/elastisys/compliantkubernetes-apps/blob/main/config/config/wc-config.yaml#L322-L334) under:
+[sc-config.yaml](https://github.com/elastisys/compliantkubernetes-apps/blob/main/config/sc-config.yaml#L526-L530)
+and [wc-config.yaml](https://github.com/elastisys/compliantkubernetes-apps/blob/main/config/wc-config.yaml#L322-L334) under:
 
 ```yaml
 ingressNginx:
