@@ -84,7 +84,7 @@ opensearch.createIndices: false
 Install the OpenSearch suite:
 
 ```bash
-./bin/ck8s ops helmfile sc -l group=opensearch apply
+./bin/ck8s ops helmfile sc -l app=opensearch apply
 ```
 
 Wait for the installation to complete.
