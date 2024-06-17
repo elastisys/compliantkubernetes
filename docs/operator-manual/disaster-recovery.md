@@ -75,7 +75,7 @@ To take a snapshot on-demand, execute
     Only perform the steps in this section if you are starting a new cluster from a snapshot.
     Otherwise, skip ahead to the **Restore** section.
 
-Before you install OpenSearch you can preferably disable the initial index creation to make the restore process leaner by setting the following configuration option:
+Before you install OpenSearch you should disable the initial index creation to make the restore process leaner by setting the following configuration option:
 
 ```bash
 opensearch.createIndices: false
