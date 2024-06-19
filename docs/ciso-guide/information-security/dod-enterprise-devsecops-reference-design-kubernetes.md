@@ -55,7 +55,7 @@ Given its high level of privilege, it is going to be a highly valuable target.
 
 Instead, Compliant Kubernetes takes a more restrictive approach to containers that run within it.
 We add layers upon layers of security on top of it, and keep it running with low privileges.
-This means that allsafeguards put in place work for us, rather than against us.
+This means that all safeguards put in place work for us, rather than against us.
 And we do not circumvent them by putting all our faith in a privileged sidecar.
 
 Table 1 calls out the following named security features, and we describe what we do within that space as follows:
@@ -63,11 +63,15 @@ Table 1 calls out the following named security features, and we describe what we
 - **Logging Agent**, for which we use Fluentd to forward all logs into the logging system. Going beyond the requirements of the Reference Design, our setup with two clusters ensures that no application in the Workload Cluster can overwrite or modify the logs that are stored in the OpenSearch instance in the Management Cluster. Thereby, we offer tamper-proof logging, which the DoD Reference Design does not.
 - **Logging Storage and Retrieval**, which is what OpenSearch is for.
 - **Log Visualization and Analysis**, which is what OpenSearch Dashboards offer.
-- **Container Policy Enforcement**, which in the DoD Reference Design is about ensuring compliance with the US military's Security Content Automation Protocol (SCAP). In Compliant Kubernetes, the aforementioned safeguards (i.e., [forbidding containers to run as root](../../user-guide/safeguards/enforce-no-root.md) mandating [adherence to the Restricted Pod Security Standard](../../user-guide/safeguards/enforce-podsecuritypolicies.md); requiring [microsegmentation via Network Policies](../../user-guide/safeguards/enforce-networkpolicies.md) providing both [vulnerability scanning](../../user-guide/registry.md) and [intrusion detection](../intrusion-detection.md) for applications; and enforcing container images pulls from only [allowlisted container registries](../../user-guide/safeguards/enforce-trusted-registries.md) provide defense in depth, which is similar in scope.
+- **Container Policy Enforcement**, which in the DoD Reference Design is about ensuring compliance with the US military's Security Content Automation Protocol (SCAP). In Compliant Kubernetes, the following safeguards provide defence in depth, which is similar in scope:
+    - [forbidding containers to run as root](../../user-guide/safeguards/enforce-no-root.md);
+    - mandating [adherence to the Restricted Pod Security Standard](../../user-guide/safeguards/enforce-podsecuritypolicies.md);
+    - requiring [microsegmentation via Network Policies](../../user-guide/safeguards/enforce-networkpolicies.md) providing both [vulnerability scanning](../../user-guide/registry.md) and [intrusion detection](../intrusion-detection.md) for applications; and
+    - enforcing container images pulls from only [allowlisted container registries](../../user-guide/safeguards/enforce-trusted-registries.md).
 - **Runtime Defense**, which in Compliant Kubernetes is offered via the intrusion detection system Falco.
 - **Service Mesh Proxy** and **Service Mesh**, which the document later spells out as offering in-cluster workload identity and network traffic encryption features. In all Kubernetes-integrated service meshes, the workload identity ultimately comes from the Kubernetes API, which means that they are from a security perspective equivalent to the Pod selectors used in e.g. Network Policies: if an attacker can fool or impersonate the Kubernetes API server, no amount of additional use of cryptography will help because the Kubernetes API as source of truth is regarded as authoritative. Network traffic can be encrypted in Compliant Kubernetes by enabling node-to-node encryption in Calico, the CNI of choice. So while Compliant Kubernetes does not ship with a service mesh, it has equivalent workload identity and over-the-wire network security features as one.
 - **Vulnerability Management** and **CVE Service**, for which Compliant Kubernetes includes the Trivy vulnerability scanner for both the Harbor container registry and for scanning the running workloads using the Trivy Operator.
-- **Host Based Security**, which Compliant Kubernetes addresses by making it easy to apply upgrades and to reboot nodes with kured or to replace them, depending on if the cluster is installed via Kubespray or Cluster API.
+- **Host Based Security**, which Compliant Kubernetes addresses by making it easy to apply upgrades and to reboot nodes with Kured or to replace them, depending on if the cluster is installed via Kubespray or Cluster API.
 - **Artifact Repository**, which in Compliant Kubernetes is offered by the Harbor container registry.
 - **Zero Trust Model Down to the Container Level**, which is poorly defined in the Reference Design document, but the table contents suggests that it relates to the features of a Service Mesh, so see that bullet for the answer.
 
@@ -78,7 +82,7 @@ As for the final step, deploying to Compliant Kubernetes, it is recommended to e
 
 ## Section 5, Additional Tools and Activities
 
-Section 5 of the Reference Design summarizes requirements from other sections and concretizes what is written in a related document, the "DevSeOps Tools and Activities Guidebook" ([version 2.0 PDF from March 2021 download link](https://dodcio.defense.gov/Portals/0/Documents/Library/DevSecOpsTools-ActivitiesGuidebook.pdf)).
+Section 5 of the Reference Design summarizes requirements from other sections and concretizes what is written in a related document, the "DevSecOps Tools and Activities Guidebook" ([version 2.0 PDF from March 2021 download link](https://dodcio.defense.gov/Portals/0/Documents/Library/DevSecOpsTools-ActivitiesGuidebook.pdf)).
 
 ### Container Hardening
 
