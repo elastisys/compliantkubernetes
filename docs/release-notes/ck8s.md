@@ -6,6 +6,7 @@
 
 <!-- BEGIN TOC -->
 
+- [v0.39.0](#v0390) - 2024-06-19
 - [v0.38.1](#v0381) - 2024-05-24
 - [v0.38.0](#v0380) - 2024-05-17
 - [v0.37.0](#v0370) - 2024-04-12
@@ -48,6 +49,27 @@
 !!!note
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
+
+## v0.39.0
+
+Released 2024-06-19
+
+!!! warning "Application Developer Notice(s)"
+
+    - There is a new feature to allow certain Pods access to Prometheus, e.g. for [remote-read](https://prometheus.io/docs/prometheus/latest/querying/remote_read_api/) or [federation](https://prometheus.io/docs/prometheus/latest/federation/) from another Prometheus instance. This feature has to be enabled by a Platform Administrator, who will require a list of namespaces to allow access from. You must also label each Pod that should have access with `elastisys.io/prometheus-access: allow`.
+
+### Feature(s)
+
+- Add config option to allow internal traffic to Prometheus.
+
+### Improvement(s)
+
+- Trivy Operator was upgraded to v0.20.1.
+- Velero was upgraded to v1.13.0.
+
+### Other(s)
+
+- Fixed an error that would occur when applying with rclone enabled.
 
 ## v0.38.1
 
