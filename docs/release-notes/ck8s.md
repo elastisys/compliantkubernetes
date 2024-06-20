@@ -7,6 +7,7 @@
 <!-- BEGIN TOC -->
 
 - [v0.39.0](#v0390) - 2024-06-19
+- [v0.38.2](#v0382) - 2024-06-19
 - [v0.38.1](#v0381) - 2024-05-24
 - [v0.38.0](#v0380) - 2024-05-17
 - [v0.37.0](#v0370) - 2024-04-12
@@ -70,6 +71,14 @@ Released 2024-06-19
 ### Other(s)
 
 - Fixed an error that would occur when applying with rclone enabled.
+
+## v0.38.2
+
+Release 2024-06-19
+
+### Other(s)
+
+- Fixed various platform administrator bugs.
 
 ## v0.38.1
 
