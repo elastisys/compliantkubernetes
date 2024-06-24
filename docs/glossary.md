@@ -80,7 +80,7 @@ Usage notes:
 
 See also:
 
-- [Architecture Diagram Level 3: Individual Components](https://elastisys.io/compliantkubernetes/architecture/#level-3-individual-components)
+- [Architecture Diagram Level 3: Individual Components](architecture.md#level-3-individual-components)
 - [Apps layer source code](https://github.com/elastisys/compliantkubernetes-apps/)
 
 ## Cluster
