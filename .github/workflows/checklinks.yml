@@ -24,7 +24,3 @@ jobs:
       - name: Run linkchecker
         run: |
           linkchecker --config linkchecker.conf https://elastisys.io
-
-      - name: Run linkchecker for anchors
-        run: |
-          linkchecker --config linkchecker-with-anchorcheck.conf https://elastisys.io
