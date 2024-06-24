@@ -9,7 +9,7 @@ Compliant Kubernetes consists of several layers each with their own release cycl
 
 ## Compliant Kubernetes Apps
 
-For the [apps layer](https://github.com/elastisys/compliantkubernetes-apps/), we aim to release 10 times per year.
+For the [Apps layer](https://github.com/elastisys/compliantkubernetes-apps/), we aim to release 10 times per year.
 This corresponds to approximately once a month except for Swedish holiday months, i.e., July and December.
 
 ## Compliant Kubernetes Kubespray
