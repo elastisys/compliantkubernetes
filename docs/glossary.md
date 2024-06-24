@@ -70,6 +70,19 @@ See also:
 - [Application Developer on Kubernetes Glossary](https://kubernetes.io/docs/reference/glossary/?all=true#term-application-developer)
 - [Certified Kubernetes Application Developer (CKAD)](https://www.cncf.io/certification/ckad/)
 
+## Apps layer (or Compliant Kubernetes layer)
+
+Denotes the Compliant Kubernetes components installed on top of a Kubernetes cluster.
+
+Usage notes:
+
+- This term is likely to be known and understood only by [Platform Administrators](#platform-administrator) and [Contributors](#contributor). Use only when addressing these two audiences.
+
+See also:
+
+- [Architecture Diagram Level 3: Individual Components](architecture.md#level-3-individual-components)
+- [Apps layer source code](https://github.com/elastisys/compliantkubernetes-apps/)
+
 ## Cluster
 
 Can refer to a [Kubernetes Cluster](#kubernetes-cluster), a PostgreSQL cluster, a Redis cluster, a RabbitMQ cluster, an OpenSearch Cluster, etc.
