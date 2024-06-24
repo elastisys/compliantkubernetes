@@ -1,0 +1,16 @@
+# By default, this whole repo should be reviewed by the goto-public-docs.
+* @elastisys/goto-public-docs
+
+# Specific files fall under QA.
+/.github/                           @elastisys/goto-public-docs @elastisys/qa
+/ci/                                @elastisys/goto-public-docs @elastisys/qa
+/scripts/                           @elastisys/goto-public-docs @elastisys/qa
+/.codespellignore                   @elastisys/goto-public-docs @elastisys/qa
+/.editorconfig                      @elastisys/goto-public-docs @elastisys/qa
+/.eslintrc.yml                      @elastisys/goto-public-docs @elastisys/qa
+/.markdownlint.yaml                 @elastisys/goto-public-docs @elastisys/qa
+/.pre-commit-config.yaml            @elastisys/goto-public-docs @elastisys/qa
+/.vale.ini                          @elastisys/goto-public-docs @elastisys/qa
+/linkchecker.conf                   @elastisys/goto-public-docs @elastisys/qa
+/package.json                       @elastisys/goto-public-docs @elastisys/qa
+/requirements-linkchecker.txt       @elastisys/goto-public-docs @elastisys/qa
