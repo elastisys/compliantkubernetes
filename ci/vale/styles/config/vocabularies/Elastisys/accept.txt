@@ -4,24 +4,34 @@ Ceph
 Datatilsynet
 (?i)Elastisys
 Elementor
+Falco
+Fluentd
 GMail
 Grafana
 IMY
 Kubespray
+Kured
 Telavox
+Trivy
 Velero
 Yopass
 
 # General technical terms
 API
 (?i)allowlisting
+allowlisted
 (?i)autoscaling
 colocation
 CPU
+Dockerfile
 (?i)downsampled
 downscaling
 failover
+microsegmentation
 SLA
+setgid
+setuid
+stdout
 upscaling
 VM
 
@@ -56,3 +66,5 @@ skyddsklass
 
 # No clue why Vale doesn't recognize these words
 approver
+auditability
+learnings

@@ -69,6 +69,39 @@ To take a snapshot on-demand, execute
 ./bin/ck8s ops kubectl sc -n opensearch-system create job --from=cronjob/opensearch-backup <name-of-job>
 ```
 
+### Optional: Start new cluster from snapshot
+
+!!!note
+    Only perform the steps in this section if you are starting a new cluster from a snapshot.
+    Otherwise, skip ahead to the **Restore** section.
+
+Before you install OpenSearch you should disable the initial index creation to make the restore process leaner by setting the following configuration option:
+
+```bash
+opensearch.createIndices: false
+```
+
+Install the OpenSearch suite:
+
+```bash
+./bin/ck8s ops helmfile sc -l app=opensearch apply
+```
+
+Wait for the installation to complete.
+
+After the installation, continue to the **Restore** section to proceed with the restore.
+If you want to restore all indices, use the following `indices` variable
+
+```bash
+indices="kubernetes-*,kubeaudit-*,other-*,authlog-*"
+```
+
+!!!note
+    This process assumes that you are using the same S3 bucket as your previous cluster. If you aren't:
+
+    - Register a new S3 snapshot repository to the old bucket as [described here](https://opensearch.org/docs/latest/tuning-your-cluster/availability-and-recovery/snapshots/snapshot-restore/#register-repository)
+    - Use the newly registered snapshot repository in the restore process
+
 ### Restore
 
 Set the following variables
@@ -249,38 +282,6 @@ curl -kL -u "${user}:${password}" -X POST "${os_url}/_snapshot/${snapshot_repo}/
 }
 '
 ```
-
-### Start new cluster from snapshot
-
-This process is very similar to the one described above, but there are a few extra steps to carry out.
-
-Before you install OpenSearch you can preferably disable the initial index creation to make the restore process leaner by setting the following configuration option:
-
-```bash
-opensearch.createIndices: false
-```
-
-Install the OpenSearch suite:
-
-```bash
-./bin/ck8s ops helmfile sc -l group=opensearch apply
-```
-
-Wait for the installation to complete.
-
-After the installation, go back up to the **Restore** section to proceed with the restore.
-If you want to restore all indices, use the following `indices` variable
-
-```bash
-indices="kubernetes-*,kubeaudit-*,other-*,authlog-*"
-```
-
-!!!note
-
-    This process assumes that you are using the same S3 bucket as your previous cluster. If you aren't:
-
-    - Register a new S3 snapshot repository to the old bucket as [described here](https://opensearch.org/docs/latest/tuning-your-cluster/availability-and-recovery/snapshots/snapshot-restore/#register-repository)
-    - Use the newly registered snapshot repository in the restore process
 
 ## Harbor
 
