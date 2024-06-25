@@ -11,7 +11,7 @@ We've drawn inspiration from, and based architectural decision on information ga
 
 ## Platform architecture influenced by information security best practices
 
-<img src="../img/marchitecture.svg" alt="Platform components of Elastisys Compliant Kubernetes and their information security best practices influences" />
+![Platform components of Elastisys Compliant Kubernetes and their information security best practices influences](../img/compliance.svg)
 
 ## Additional resources
 
