@@ -48,10 +48,10 @@ for CLUSTER in sc wc; do
 done
 ```
 
-You should see PVCs in Bound state, and that the pods which mounts the volumes are running.
+You should see PVCs in Bound state, and that the Pods which mounts the volumes are running.
 
 > [!IMPORTANT]
-> If you have taints on certain nodes which should support running pods that mounts `rook-ceph` PVCs, you need to ensure these nodes are tolerated by the rook-ceph DaemonSet `csi-rbdplugin`, otherwise, pods on these nodes will not be able to attach or mount the volumes.
+> If you have taints on certain Nodes which should support running Pods that mounts `rook-ceph` PVCs, you need to ensure these Nodes are tolerated by the rook-ceph DaemonSet `csi-rbdplugin`, otherwise, Pods on these Nodes will not be able to attach or mount the volumes.
 
 If you want to clean the previously created PVCs:
 
@@ -128,9 +128,9 @@ vim ${CK8S_CONFIG_PATH}/common-config.yaml
 
 Edit the secrets.yaml file and add the credentials for:
 
-- S3 - used for backup storage
+- S3 - used for backup storage.
 - Dex - connectors -- check [your identity provider](https://dexidp.io/docs/connectors/).
-- On-call management tool configurations-- Check [supported on-call management tools](https://prometheus.io/docs/alerting/latest/configuration/)
+- On-call management tool configurations-- Check [supported on-call management tools](https://prometheus.io/docs/alerting/latest/configuration/).
 
 ```bash
 sops ${CK8S_CONFIG_PATH}/secrets.yaml
@@ -168,7 +168,7 @@ compliantkubernetes-apps/bin/ck8s apply wc
 > [!IMPORTANT]
 > Leave sufficient time for the system to settle, e.g., request TLS certificates from Let's Encrypt, perhaps as much as 20 minutes.
 
-Check if all helm charts succeeded.
+Check if all Helm charts succeeded.
 
 ```bash
 compliantkubernetes-apps/bin/ck8s ops helm wc list -A --all
@@ -192,7 +192,6 @@ done
 
 Check the output of the command above.
 All resources need to have the Ready column True.
-n
 
 <!--settling-stop-->
 

@@ -27,9 +27,9 @@ Optional: For debugging, you may want CLI tools to interact with your chosen Inf
 - [OpenStack Client](https://pypi.org/project/python-openstackclient/)
 - [VMware vSphere CLI (govmomi)](https://github.com/vmware/govmomi)
 
-## Pre-requisites for compliantkubernetes-apps
+## Pre-requisites for Compliant Kubernetes Apps
 
-Install pre-requisites for compliantkubernetes-apps:
+Install pre-requisites for Compliant Kubernetes Apps:
 
 ```shell
 git clone https://github.com/elastisys/compliantkubernetes-apps
@@ -39,7 +39,7 @@ cd compliantkubernetes-apps
 
 ## Misc
 
-Compliant Kubernetes relies on SSH for accessing nodes. If you haven't already done so, generate an SSH key as follows:
+Compliant Kubernetes relies on SSH for accessing Nodes. If you haven't already done so, generate an SSH key as follows:
 
 ```bash
 ssh-keygen

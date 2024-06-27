@@ -26,8 +26,8 @@ The self-managed cluster-wide resources feature adds specific Roles, ServiceAcco
 This enables you to install and manage the resources that Sealed Secrets needs.
 These pre-installed resources are propagated via HNC from your root Namespace ([recall the documentation of this feature](../namespaces.md)).
 
-First create a new Namespace using HNC, using the snippet below.
-If you do not know which root namespace you should use, ask your platform administrator.
+First create a new namespace using HNC, using the snippet below.
+If you do not know which root namespace you should use, ask your Platform Administrator.
 
 ```yaml
 apiVersion: hnc.x-k8s.io/v1alpha2
@@ -67,9 +67,9 @@ resources:
 
 !!! important
 
-    Add the namespaces that should support creation of SealedSecrets to the `additionalNamespaces` list. If this list is empty the SealedSecrets controller will output an error when attempting to create a SealedSecret as it attempts to get secrets at cluster level.
+    Add the namespaces that should support creation of SealedSecrets to the `additionalNamespaces` list. If this list is empty the SealedSecrets controller will output an error when attempting to create a SealedSecret as it attempts to get Secrets at cluster level.
 
-You are now ready to install Sealed Secrets
+You are now ready to install Sealed Secrets:
 
 ```console
 helm repo add sealed-secrets https://bitnami-labs.github.io/sealed-secrets

@@ -47,18 +47,9 @@ This page will help you succeed in connecting to Argo CD application which meets
 
 Your administrator will set up the authentication inside Compliant Kubernetes, which will give you access to Argo CD UI.
 
-## Follow the Go-Live Checklist
-
-You should be all set.
-Before going into production, don't forget to go through the [go-live checklist](../go-live.md).
-
-## CK8S Argo CD Release Notes
-
-Check out the [release notes](../../release-notes/argocd.md) for the Argo CD setup that runs in Compliant Kubernetes environments!
-
 ## Secret Management
 
-Secret values should never be stored in plain-text in code repositories. The following sections will describe two supported approaches on how Application Developers can do secret management with Elastisys Managed Argo CD.
+Secret values should never be stored in plain-text in code repositories. The following sections will describe three supported approaches on how Application Developers can do secret management with Elastisys Managed Argo CD.
 
 ### With Helm Secrets
 
@@ -74,7 +65,7 @@ The following steps will show how to get started with encrypting files using `so
     gpg --output "private.asc" --armor --export-secret-key $fpr
     ```
 
-1. For Argo CD to be able to use this key for decrypting `sops` encrypted values files in your Helm charts, you will need to create a Kubernetes Secret in the `argocd-system` namespace named `helm-secrets-private-keys`. This secret will then be mounted and read by the Argo CD repo server. Create the Secret using the private key file created in the previous step:
+1. For Argo CD to be able to use this key for decrypting `sops` encrypted values files in your Helm charts, you will need to create a Kubernetes Secret in the `argocd-system` namespace named `helm-secrets-private-keys`. This Secret will then be mounted and read by the Argo CD repo server. Create the Secret using the private key file created in the previous step:
 
     ```bash
     PRIVATE_KEY_FILE="private.asc"
@@ -91,7 +82,7 @@ The following steps will show how to get started with encrypting files using `so
 
     !!! note
 
-        Once your Platform Administrator has enabled Helm-secrets with Argo CD, the Argo CD repo server pod will not be able to initialize if this secret does not exist. Check pods in the `argocd-system` namespace after creating the secret to confirm that the secret got mounted properly by the repo server:
+        Once your Platform Administrator has enabled Helm-secrets with Argo CD, the Argo CD repo server Pod will not be able to initialize if this Secret does not exist. Check Pods in the `argocd-system` namespace after creating the Secret to confirm that the Secret got mounted properly by the repo server:
 
         ```console
         $ kubectl get pods -n argocd-system -l app.kubernetes.io/component=repo-server
@@ -172,7 +163,7 @@ The following steps assumes SealedSecrets is installed in the cluster. For insta
 
     !!! note
 
-        With SealedSecrets it is possible to set a _scope_ of a secret. By default this scope is set to `strict` in which the SealedSecret controller uses the name and namespace of the secret as attributes during encryption, hence, the SealedSecret needs to be created with the same values for these attributes if the controller is to be able to decrypt the SealedSecret. It is possible to change the scope with the `--scope` flag for `kubeseal`, refer to the [official documentation for SealedSecrets](https://github.com/bitnami-labs/sealed-secrets#scopes) for possible scopes.
+        With SealedSecrets it is possible to set a _scope_ of a Secret. By default this scope is set to `strict` in which the SealedSecret controller uses the name and namespace of the Secret as attributes during encryption, hence, the SealedSecret needs to be created with the same values for these attributes if the controller is to be able to decrypt the SealedSecret. It is possible to change the scope with the `--scope` flag for `kubeseal`, refer to the [official documentation for SealedSecrets](https://github.com/bitnami-labs/sealed-secrets#scopes) for possible scopes.
 
 1. The generated SealedSecret manifest file `mysealedsecret.yaml` will contain the encrypted `$SECRET_VALUE` and is safe to store on, for example, GitHub. Push this manifest file to the repository containing the rest of your application manifests.
 
@@ -182,7 +173,7 @@ The following steps assumes SealedSecrets is installed in the cluster. For insta
 
 If you want to use [vals](https://github.com/helmfile/vals) with [Vault](https://www.vaultproject.io/), you will need to contact your Platform Administrator requesting that you want to use vals with Vault together with Argo CD.
 
-1. Create a secret in the `argocd-system` Namespace called `vals-secret`:
+1. Create a Secret in the `argocd-system` namespace called `vals-secret`:
 
     ```yaml
     apiVersion: v1
@@ -239,7 +230,7 @@ If you want to use [vals](https://github.com/helmfile/vals) with [Vault](https:/
             - name: password
               path: secrets+literal://vals!ref+vault://secret/user/#/password
         path: deploy/helm/app
-        repoURL: https://github.com/username/repoistory.git
+        repoURL: https://github.com/username/repository.git
         targetRevision: HEAD
       syncPolicy:
         automated:
@@ -258,7 +249,7 @@ To configure Argo CD notifications, make sure you are allowed to update the curr
 
 For Elastisys Managed Argo CD, you should be able to modify those objects if you belong to any customer admin group, or if you are a customer admin user.
 
-In case you're not, ask your platform administrator to add you accordingly.
+In case you're not, ask your Platform Administrator to add you accordingly.
 
 ### Triggers & Templates
 
@@ -314,7 +305,7 @@ Argo CD Notifications includes the [catalog](https://argocd-notifications.readth
 
 ### Notification Services
 
-The notification services represent integration with services such as slack, email or custom webhook. Services are configured in `argocd-notifications-cm` ConfigMap using `service.<type>.(<custom-name>)` keys and might reference sensitive data from `argocd-notifications-secret` Secret.
+The notification services represent integration with services such as Slack, email or custom webhook. Services are configured in `argocd-notifications-cm` ConfigMap using `service.<type>.(<custom-name>)` keys and might reference sensitive data from `argocd-notifications-secret` Secret.
 
 Argo CD Notifications support multiple [service types](https://argocd-notifications.readthedocs.io/en/stable/services/overview/#service-types), and provide detailed steps on how to configure each service. To learn more, see [Notification services](https://argocd-notifications.readthedocs.io/en/stable/services/overview/).
 
@@ -339,7 +330,7 @@ metadata:
 
 To configure Email service for example:
 
-1. Add Email username and password token to `argocd-notifications-secret` secret
+1. Add email username and password token to `argocd-notifications-secret` Secret
 
     ```bash
     echo -n "sender@example.com" | base64 -w0 # c2VuZGVyQGV4YW1wbGUuY29t
@@ -416,7 +407,7 @@ Example error:
 
 Our Argo CD installation is using the [namespaced method](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#non-high-availability). This means that Argo CD has access to Roles with permissions to CRUD on objects in the inclusion list. It has a [list of namespaces](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters) that it can look at and reconcile things every few seconds. Any feature that requires Argo CD cluster-wide installation will not be supported with our offering.
 
-The reason for this choice is that, according to the [Compliant Kubernetes mission and vision](../../mission-and-vision.md), the platform should make it hard for application developers to do the wrong thing by employing safeguards and secure defaults. With this configuration, we prevent Argo CD from having access to objects in the inclusions list across the entire cluster. This prevents objects from being deployed into namespaces owned by the platform administrator, which could compromise platform security and stability. For example, this choice adds another layer of protection, preventing the application developer from interfering with backups. Read more about it [here](../demarcation.md#general-principle).
+The reason for this choice is that, according to the [Compliant Kubernetes mission and vision](../../mission-and-vision.md), the platform should make it hard for Application Developers to do the wrong thing by employing safeguards and secure defaults. With this configuration, we prevent Argo CD from having access to objects in the inclusions list across the entire cluster. This prevents objects from being deployed into namespaces owned by the Platform Administrator, which could compromise platform security and stability. For example, this choice adds another layer of protection, preventing the Application Developer from interfering with backups. Read more about it [here](../demarcation.md#general-principle).
 
 Argo CD is not allowed to manage its own namespace. This means that features such as [Apps of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern) does not work by default. Read more about the decision [here](../../adr/0044-argocd-managing-its-own-namespace.md).
 
@@ -439,6 +430,15 @@ Argo CD cannot create [HNC](https://github.com/kubernetes-sigs/hierarchical-name
   > failed to get token: oauth2: "invalid_client” “Invalid client credentials."
 
   This is a known issue in Argo CD and the progress for it can be tracked [here](https://github.com/argoproj/argo-cd/issues/17088). Sometimes, when encountering this login issue, opening a new tab and re-trying the login process after entering the Argo CD homepage URL can resolve the problem.
+
+## Follow the Go-Live Checklist
+
+You should be all set.
+Before going into production, don't forget to go through the [go-live checklist](../go-live.md).
+
+## CK8S Argo CD Release Notes
+
+Check out the [release notes](../../release-notes/argocd.md) for the Argo CD setup that runs in Compliant Kubernetes environments!
 
 ## Further Reading
 
