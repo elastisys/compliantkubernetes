@@ -1,5 +1,7 @@
 ---
 description: How to work with log-based alerting in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+search:
+  boost: 2
 tags:
   - ISO 27001 A.16 Information Security Incident Management
 ---

@@ -1,3 +1,7 @@
+---
+search:
+  boost: 2
+---
 # Jaeger™ (preview)
 
 !!! elastisys "For Elastisys Managed Services Customers"

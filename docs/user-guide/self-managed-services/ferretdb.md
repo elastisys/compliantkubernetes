@@ -1,3 +1,7 @@
+---
+search:
+  boost: 2
+---
 # FerretDB® (self-managed)
 
 {%

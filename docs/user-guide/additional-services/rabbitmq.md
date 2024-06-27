@@ -1,3 +1,7 @@
+---
+search:
+  boost: 2
+---
 # RabbitMQ®
 
 !!! elastisys "For Elastisys Managed Services Customers"

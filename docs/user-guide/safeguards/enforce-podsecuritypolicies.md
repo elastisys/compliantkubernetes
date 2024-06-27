@@ -1,4 +1,6 @@
 ---
+search:
+  boost: 2
 tags:
   - NIST SP 800-171 3.1.7
 ---

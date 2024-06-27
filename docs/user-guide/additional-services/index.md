@@ -1,4 +1,6 @@
 ---
+search:
+  boost: 2
 tags:
   - BSI IT-Grundschutz APP.4.4.A16
 ---

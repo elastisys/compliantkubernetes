@@ -1,5 +1,7 @@
 ---
 description: How to work with namespaces in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+search:
+  boost: 2
 tags:
   - ISO 27001 A.12.1.4 Separation of Development, Testing & Operational Environments
   - ISO 27001 A.14.2.5 Secure System Engineering Principles

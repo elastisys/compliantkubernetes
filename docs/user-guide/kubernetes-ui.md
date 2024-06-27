@@ -1,5 +1,7 @@
 ---
 description: How to work with Monokle or VSCode and Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+search:
+  boost: 2
 ---
 
 # Kubernetes UI

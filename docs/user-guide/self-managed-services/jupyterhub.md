@@ -1,3 +1,7 @@
+---
+search:
+  boost: 2
+---
 # JupyterHub (self-managed)
 
 {%

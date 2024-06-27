@@ -1,5 +1,7 @@
 ---
 description: Overview page for Application Developers in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+search:
+  boost: 2
 ---
 
 # Application Developer Overview

@@ -1,4 +1,6 @@
 ---
+search:
+  boost: 2
 tags:
   - ISO 27001 A.9.4.4 Use of Privileged Utility Programmes
   - ISO 27001 A.12.6.1 Management of Technical Vulnerabilities

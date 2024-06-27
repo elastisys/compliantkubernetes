@@ -1,5 +1,7 @@
 ---
 description: Learn how to operate your application on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+search:
+  boost: 2
 ---
 
 # Step 3: Operate

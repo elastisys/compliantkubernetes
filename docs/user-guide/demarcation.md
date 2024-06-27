@@ -1,5 +1,7 @@
 ---
 description: The demarcation between what users can and cannot do in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+search:
+  boost: 2
 tags:
   - BSI IT-Grundschutz APP.4.4.A3
   - HIPAA S13 - Information Access Management - Access Authorization - § 164.308(a)(4)(ii)(B)

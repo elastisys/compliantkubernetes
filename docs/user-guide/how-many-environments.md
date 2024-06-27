@@ -1,4 +1,6 @@
 ---
+search:
+  boost: 2
 tags:
   - ISO 27001 A.12.1.4 Separation of Development, Testing & Operational Environments
   - HIPAA S12 - Information Access Management - Isolating Healthcare Clearinghouse Functions - § 164.308(a)(4)(ii)(A)
