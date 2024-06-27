@@ -1,3 +1,7 @@
+---
+search:
+  boost: 2
+---
 <!-- markdownlint-disable-file first-line-h1 -->
 
 !!! elastisys "For Elastisys Managed Services Customers"

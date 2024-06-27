@@ -1,3 +1,7 @@
+---
+search:
+  boost: 2
+---
 # PostgreSQL®
 
 !!! elastisys "For Elastisys Managed Services Customers"

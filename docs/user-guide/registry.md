@@ -1,5 +1,7 @@
 ---
 description: How to work with the container registry in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+search:
+  boost: 2
 tags:
   - ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
   - HIPAA S17 - Security Awareness, Training, and Tools - Protection from Malicious Software - § 164.308(a)(5)(ii)(B)

@@ -1,4 +1,6 @@
 ---
+search:
+  boost: 2
 tags: []
 ---
 

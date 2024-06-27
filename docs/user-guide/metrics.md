@@ -1,5 +1,7 @@
 ---
 description: How to work with monitoring metrics on Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+search:
+  boost: 2
 tags:
   - ISO 27001 A.12.1.3 Capacity Management
   - ISO 27001 A.16 Information Security Incident Management

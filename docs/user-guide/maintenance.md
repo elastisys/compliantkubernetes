@@ -1,5 +1,7 @@
 ---
 description: Learn what to expect from our different kinds of Compliant Kubernetes maintenance windows.
+search:
+  boost: 2
 ---
 
 # What to expect from maintenance

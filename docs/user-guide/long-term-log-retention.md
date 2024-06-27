@@ -1,4 +1,6 @@
 ---
+search:
+  boost: 2
 tags:
   - HIPAA S48 - Audit Controls - § 164.312(b)
   - GDPR Art. 17 Right to erasure ("right to be forgotten")

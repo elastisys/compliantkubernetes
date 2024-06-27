@@ -1,4 +1,6 @@
 ---
+search:
+  boost: 2
 tags:
   - ISO 27001 A.13.1 Network Security
   - BSI IT-Grundschutz APP.4.4.A7

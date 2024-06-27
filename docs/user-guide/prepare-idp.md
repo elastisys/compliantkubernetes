@@ -1,5 +1,7 @@
 ---
 description: How to configure your Identity Provider (IdP) for Single Sign-on (SSO) use in Compliant Kubernetes
+search:
+  boost: 2
 tags:
   - HSLF-FS 2016:40 4 kap. 2 § Styrning av behörigheter
   - MSBFS 2020:7 4 kap. 5 §

@@ -1,5 +1,7 @@
 ---
 description: Troubleshooting help for Application Developers on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+search:
+  boost: 2
 ---
 
 # Troubleshooting for Application Developers

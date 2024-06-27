@@ -1,5 +1,7 @@
 ---
 description: Learn how to prepare for Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+search:
+  boost: 2
 ---
 
 <!-- markdownlint-disable-file first-line-h1 -->

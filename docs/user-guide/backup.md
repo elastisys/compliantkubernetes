@@ -1,5 +1,7 @@
 ---
 description: Backing up data in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+search:
+  boost: 2
 tags:
   - ISO 27001 A.12.3.1 Information Backup
   - BSI IT-Grundschutz APP.4.4.A5

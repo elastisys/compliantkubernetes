@@ -1,4 +1,5 @@
 # Brands, Organization and Project Names
+Alertmanager
 Atlassian
 Ceph
 Datatilsynet
