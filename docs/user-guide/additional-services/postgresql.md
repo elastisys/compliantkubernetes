@@ -65,7 +65,7 @@ stringData:
   PGPASSWORD: $PGPASSWORD
   PGSSLMODE: $PGSSLMODE
 
-  # This is the Kubernetes Service name to which you can port-foward to in order to get access to the PostgreSQL cluster from outside the Kubernetes cluster.
+  # This is the Kubernetes Service name to which you can port-forward to in order to get access to the PostgreSQL cluster from outside the Kubernetes cluster.
   # Ref https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
   USER_ACCESS: $USER_ACCESS
 ```

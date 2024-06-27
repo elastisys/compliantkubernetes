@@ -24,10 +24,10 @@ This guide is a complement to the [MongoDB Community Operator's](https://github.
 
 The self-managed cluster-wide resources feature adds specific Roles, ServiceAccounts, etc. for you.
 This enables you to install and manage the resources that the MongoDB Community Operator needs.
-These pre-installed resources are propagated via HNC from your root Namespace ([recall the documentation of this feature](../namespaces.md)).
+These pre-installed resources are propagated via HNC from your root namespace ([recall the documentation of this feature](../namespaces.md)).
 
-First create a new Namespace using HNC, using the snippet below.
-If you do not know which root namespace you should use, ask your platform administrator.
+First create a new namespace using HNC, using the snippet below.
+If you do not know which root namespace you should use, ask your Platform Administrator.
 
 ```yaml
 apiVersion: hnc.x-k8s.io/v1alpha2
