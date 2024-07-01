@@ -4,6 +4,8 @@
 
 <!-- BEGIN TOC -->
 
+- [v2.24.0-ck8s2](#v2241-ck8s2) - 2024-06-26
+- [v2.24.1-ck8s1](#v2241-ck8s1) - 2024-03-26
 - [v2.23.0-ck8s3](#v2230-ck8s3) - 2024-02-27
 - [v2.24.0-ck8s1](#v2240-ck8s1) - 2024-02-08
 - [v2.23.0-ck8s2](#v2230-ck8s2) - 2024-01-11
@@ -26,6 +28,33 @@
 !!!note
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/changelog/).
+
+### v2.24.1-ck8s2
+
+Released 2024-06-26
+
+#### Improvement(s)
+
+- Update Kubespray submodule with private cloud lb and anti affinity changes for Upcloud
+
+### v2.24.1-ck8s1
+
+Released 2024-03-26
+
+#### Feature(s)
+
+- rook: Add ability to set RBD image features
+
+#### Improvement(s)
+
+- bin: Playbooks for cis benchmark patching
+- Update Kubespray submodule to v2.24.1
+
+#### Other(s)
+
+- documentation: docs: Update issue templates and release resources
+- bug: playbook: switch to Ansible_host in authorized_key.yml
+- bug: config: add extra tolerations for coredns
 
 ### v2.23.0-ck8s3
 
