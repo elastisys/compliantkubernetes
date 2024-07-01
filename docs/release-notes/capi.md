@@ -4,8 +4,17 @@
 
 <!-- BEGIN TOC -->
 
+- [v0.2.0](#v020) - 2024-06-28
 - [v0.1.0](#v010) - 2024-01-24
 <!-- END TOC -->
+
+## v0.2.0
+
+Released 2024-06-28
+
+### Feature(s)
+
+- Add Azure Cloud as a infrastructure provider
 
 ## v0.1.0
 
