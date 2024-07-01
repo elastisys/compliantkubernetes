@@ -62,7 +62,7 @@ stringData:
 
 To access the management UI, proceed as follows:
 
-1. Retrieve the admin default username and password
+1. Retrieve the admin default username and password.
 
     ```bash
     export RABBITMQ_CLUSTER=     # Get this from your administrator
@@ -169,33 +169,33 @@ RabbitMQ supports three different types of queues which all have different pro's
 
 - **Classic Queues** - _Best for high performance with transient messages._
 
-  This is the standard choice for transient queues and messages since they consume little resources and offer high performance.
+This is the standard choice for transient queues and messages since they consume little resources and offer high performance.
 
-  !!!danger
+!!!danger
 
-      Classic queues are not replicated by default and should not be used with replication since mirrored classic queues are deprecated.
+    Classic queues are not replicated by default and should not be used with replication since mirrored classic queues are deprecated.
 
-      Durable classic queues are tied to the server they are created on and will become unavailable if that server is unavailable.
+    Durable classic queues are tied to the server they are created on and will become unavailable if that server is unavailable.
 
 - [**Quorum Queues**](https://www.rabbitmq.com/quorum-queues.html) - _Best for high availability with durable messages._
 
-  This is the standard choice for durable queues and messages since they are replicated by default and offer high availability.
+This is the standard choice for durable queues and messages since they are replicated by default and offer high availability.
 
-  !!!warning
+!!!warning
 
-      Similar to connections and channels quorum queues are intended to be long-lived, avoid scenarios where quorum queues are frequently removed and redeclared as it may lock internal resources within RabbitMQ.
+    Similar to connections and channels quorum queues are intended to be long-lived, avoid scenarios where quorum queues are frequently removed and redeclared as it may lock internal resources within RabbitMQ.
 
-      Keep the queues small and use multiple queues when possible for best performance.
+    Keep the queues small and use multiple queues when possible for best performance.
 
 - [**Stream Queues**](https://www.rabbitmq.com/streams.html) - _Best for high volume with durable messages._
 
-  This is the standard choice for high volume durable queues and messages since they store messages as a persistent replicated log. This allows for messages to persist after they are consumed to be recalled or replayed, or with the stream protocol efficiently processed in batches.
+This is the standard choice for high volume durable queues and messages since they store messages as a persistent replicated log. This allows for messages to persist after they are consumed to be recalled or replayed, or with the stream protocol efficiently processed in batches.
 
-  !!!warning
+!!!warning
 
-      When using stream queues you must set reasonable retention to keep them from filling up RabbitMQ as it will prevent it from accepting new messages.
+    When using stream queues you must set reasonable retention to keep them from filling up RabbitMQ as it will prevent it from accepting new messages.
 
-      Also note that messages in RabbitMQ are not backed up in the case of disaster.
+    Also note that messages in RabbitMQ are not backed up in the case of disaster.
 
 ## Follow the Go-Live Checklist
 

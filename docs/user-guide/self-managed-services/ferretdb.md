@@ -11,7 +11,7 @@ search:
 %}
 
 !!!danger
-FerretDB® tries to be a drop-in replacement for MongoDB®. However:
+    FerretDB® tries to be a drop-in replacement for MongoDB®. However:
 
     * There are [known differences](https://docs.ferretdb.io/diff/).
     * There might also be performance implications.

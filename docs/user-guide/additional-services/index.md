@@ -19,7 +19,7 @@ Compliant Kubernetes simplifies usage of a complex and diverse infrastructure. B
 
 However, your application needs more than just running stateless containers. At the very least, you will need a database -- such as PostgreSQL -- to persist data. More complex applications will require a distributed cache -- such as Redis -- to store session information or offload the database. Finally, background tasks are best handled by separate containers, connected to your user-facing backend code via a message queue -- such as RabbitMQ.
 
-These additional services need to be delivered as securely as the rest of the platform. Access control, business continuity, disaster recovery, security patching and maintenance need to be a core feature, not an afterthought.
+These additional services need to be delivered as securely as the rest of the platform. Access control, business continuity, disaster recovery, security patching and maintenance need to be core features, not afterthoughts.
 
 It turns out, the same simple and uniform concepts that benefit your application can also be used to simplify hosting additional services. And thanks to security-hardening included in Compliant Kubernetes, the burden of delivering additional services with the security you need is also reduced.
 

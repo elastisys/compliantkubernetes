@@ -15,9 +15,9 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
     - Overall architecture, i.e., VM sizes, load-balancer configuration, storage configuration, etc.
     - Identity Provider (IdP) choice and configuration. See [this page](../user-guide/prepare-idp.md).
-    - On-call Management Tool (OMT) choice and configuration
+    - On-call Management Tool (OMT) choice and configuration.
 
-1. Make sure you [install all prerequisites](getting-started.md) on your laptop.
+1. Make sure you [install all prerequisites](getting-started.md) on your computer.
 
 1. Prepare Ubuntu-based VMs:
     If you are using public clouds, you can create VMs using the scripts included in Kubespray:
@@ -28,12 +28,12 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 1. Create a git working folder to store Compliant Kubernetes configurations in a version-controlled manner. Run the following commands from the root of the config repo.
 
     !!! note
-    The following steps are done from the root of the git repository you created for the configurations.
+        The following steps are done from the root of the git repository you created for the configurations.
 
     ```bash
     export CK8S_CONFIG_PATH=./
     export CK8S_ENVIRONMENT_NAME=<my-ck8s-cluster>
-    export CK8S_CLOUD_PROVIDER=[exoscale|safespring|citycloud|elastx|aws|baremetal]
+    export CK8S_CLOUD_PROVIDER=[exoscale|safespring|citycloud|elastx|upcloud|aws|baremetal]
     export CK8S_FLAVOR=[dev|prod|air-gapped] # defaults to dev
     export CK8S_PGP_FP=<PGP-fingerprint> # retrieve with gpg --list-secret-keys
     export DOMAIN=example.com # your domain
@@ -46,7 +46,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     git submodule add https://github.com/elastisys/compliantkubernetes-kubespray.git
     git submodule update --init --recursive
     cd compliantkubernetes-kubespray
-    pip3 install -r kubespray/requirements.txt  # this will install ansible
+    pip3 install -r kubespray/requirements.txt  # this will install Ansible
     ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
     ```
 
@@ -144,7 +144,7 @@ For more information on managing OIDC kubeconfigs and RBAC, or on running withou
 
 ### Copy the VMs information to the inventory files
 
-Add the host name, user and IP address of each VM that you prepared above in `${CK8S_CONFIG_PATH}/sc-config/inventory.ini`for Management Cluster and `${CK8S_CONFIG_PATH}/sc-config/inventory.ini` for Workload Cluster. Moreover, you also need to add the host names of the master nodes under `[kube_control_plane]`, etcd nodes under `[etcd]` and worker nodes under `[kube_node]`.
+Add the host name, user and IP address of each VM that you prepared above in `${CK8S_CONFIG_PATH}/sc-config/inventory.ini` for Management Cluster and `${CK8S_CONFIG_PATH}/wc-config/inventory.ini` for Workload Cluster. Moreover, you also need to add the host names of the master nodes under `[kube_control_plane]`, etcd nodes under `[etcd]` and worker nodes under `[kube_node]`.
 
 !!! note
 
@@ -164,7 +164,7 @@ done
 
 ## Rook Block Storage
 
-Normally, we want to use block storage solutions provided by the infra provider. However, this is not always available, especially for on-prem environments. In such cases we can partition separate volumes on nodes in the cluster for Rook-Ceph and use that as a block storage solution.
+Normally, we want to use block storage solutions provided by the infra provider. However, this is not always available, especially for on-prem environments. In such cases we can partition separate volumes on Nodes in the cluster for Rook-Ceph and use that as a block storage solution.
 
 {%
     include "./common.md"
@@ -191,7 +191,7 @@ Normally, we want to use block storage solutions provided by the infra provider.
 
 ???+note "Configure the load balancer IP on the loopback interface for each worker node"
 
-    The Kubernetes data plane nodes (i.e., worker nodes) cannot connect to themselves with the IP address of the load balancer that fronts them. The easiest is to configure the load balancer's IP address on the loopback interface of each nodes. Create `/etc/netplan/20-eip-fix.yaml` file and add the following to it. `${loadblancer_ip_address}` should be replaced with the IP address of the load balancer for each cluster.
+    The Kubernetes data plane Nodes (i.e., worker Nodes) cannot connect to themselves with the IP address of the load balancer that fronts them. The easiest is to configure the load balancer's IP address on the loopback interface of each Nodes. Create `/etc/netplan/20-eip-fix.yaml` file and add the following to it. `${loadblancer_ip_address}` should be replaced with the IP address of the load balancer for each cluster.
 
     ```yaml
     network:
@@ -204,7 +204,7 @@ Normally, we want to use block storage solutions provided by the infra provider.
           addresses:
           - ${loadblancer_ip_address}/32
     ```
-    After adding the above content, run the following command in each worker node:
+    After adding the above content, run the following command in each worker Node:
 
     ```bash
     sudo netplan apply
@@ -260,7 +260,6 @@ curl --head app.ops.$DOMAIN/healthz  # Pokes the SC Ingress Controller
 # All commands above should return 'HTTP/2 200'
 
 curl --head -k https://kube-apiserver.$DOMAIN
-curl --head https://notary.harbor.$DOMAIN
 curl --head https://thanos-receiver.ops.$DOMAIN
 curl --head https://opensearch.ops.$DOMAIN
 curl --head https://opensearch.$DOMAIN/api/status
@@ -269,4 +268,4 @@ curl --head https://opensearch.$DOMAIN/api/status
 
 !!! note
 
-    Some of these subdomains can be overwritten in config (see example [here](https://github.com/elastisys/compliantkubernetes-apps/blob/v0.33.0/config/config/common-config.yaml#L260))
+    Some of these subdomains can be overwritten in config (see example [here](https://github.com/elastisys/compliantkubernetes-apps/blob/v0.39.0/config/config/common-config.yaml#L516))
