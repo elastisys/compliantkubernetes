@@ -65,7 +65,7 @@ kubectl apply -k crds
 
 #### Namespace
 
-You need create a namespace where Flux will work. This namespace should be called `flux-system`. Create this [sub-namespace](../namespaces.md) under e.g. `production`.
+You need to create a namespace where Flux will work. This namespace should be called `flux-system`. Create this [sub-namespace](../namespaces.md) under e.g. `production`.
 
 `kubectl hns create -n production flux-system`
 
@@ -83,7 +83,7 @@ flux create secret git <repo-name>-auth \
 
 You need to create the necessary Roles for Flux to function. This needs to be done in every namespace that you want Flux to work in.
 
-Since Compliant Kubernetes uses the Hierarchical Namespace Controller, the easiest way to achieve this is to place the Roles and RoleBindings in the parent namespace where `flux-system` was created from. By doing so, all namespaces created under the same parent namespace will inherit the Roles and RoleBindings.
+Since Compliant Kubernetes uses the Hierarchical Namespace Controller, the easiest way to achieve this is to place the Roles and RoleBindings in the parent namespace that `flux-system` was created from. By doing so, all namespaces created under the same parent namespace will inherit the Roles and RoleBindings.
 
 If you have multiple namespaces that ought to be targets for Flux, you can add the Roles and RoleBindings to more than one "parent" namespace. For instance, to `staging`, to get Flux to work with the `staging` namespace and any namespace anchored to it.
 
