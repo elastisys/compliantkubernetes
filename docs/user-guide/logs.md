@@ -61,7 +61,7 @@ Before we dive in further, let us discuss the type of logs ingested into OpenSea
 
 !!!note
 
-    **Users** can only view the logs of **kubernetes** and **kubeaudit**. **authlog** and **others** are for Compliant Kubernetes administrators.
+    **Users** can only view the logs of **kubernetes** and **kubeaudit**. **authlog** and **others** are for Platform Administrators.
 
 Let us dive into it then.
 
@@ -158,6 +158,20 @@ The figure below shows the dashboard generated from the above steps showing the 
 
 ![Dashboard](../img/dashboard.png)
 
+### Refresh field list for index pattern
+
+When new fields are indexed in OpenSearch they are not immediately available for query in OpenSearch Dashboards. This unavailability can also happen to once queryable older fields, but with the reason being different e.g. some kind of issue occurred.
+
+If you find fields missing from a selected index pattern, you can try to refresh the field list for the particular index pattern by:
+
+1. Open the sidebar and click **Dashboards Management** under Management.
+1. Click **Index patterns** in the top left side.
+1. Click the index pattern you want to refresh e.g. **kubernetes***.<!-- markdownlint-disable-line MD044 -->
+1. Click **Refresh field list.** which is the refresh icon located at the top right side of the page.
+1. Finally click **Refresh** and the fields would hopefully be queryable again.
+
+If this didn't help with the missing fields, you can contact your Platform Administrator for additional assistance.
+
 ## Accessing Falco and OPA Logs
 
 To access Falco or OPA logs, go to the **Discover** panel and write **Falco** or **OPA** in the **search textbox**. Make sure that the **Kubernetes** log index category is selected.
@@ -183,7 +197,7 @@ For example, if you index an integer field without pre-defining the mapping, Ope
 Importantly, a field can only be of _one_ type, sending data of another type can result in a _mapping conflict_ and data being rejected.
 
 In Compliant Kubernetes, index mappings are dynamically created from the data you send in.
-To set explicit mappings, reach out to your platform administrator.
+To set explicit mappings, reach out to your Platform Administrator.
 A mapping conflict occurs when you try to send data into a field that already has a mapping created but the data doesn't meet the same type (date, integer, string, etc.)
 
 A very short example of index mapping is displayed and commented below:
@@ -233,7 +247,7 @@ Second, ask your administrator to re-index the affected indices.
 
 !!!note
 
-    Re-indexing requires a lot of permissions, including creating and deleting indices, and changing Index templates. This may interfere with audit logs and [compromise platform security](demarcation.md). Therefore, to ensure platform security, re-indexing can only be performed by Compliant Kubernetes administrators.
+    Re-indexing requires a lot of permissions, including creating and deleting indices, and changing Index templates. This may interfere with audit logs and [compromise platform security](demarcation.md). Therefore, to ensure platform security, re-indexing can only be performed by Platform Administrators.
 
 ## Running Example
 
