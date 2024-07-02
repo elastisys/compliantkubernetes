@@ -160,11 +160,11 @@ The figure below shows the dashboard generated from the above steps showing the 
 
 ### Handling Unindexed Fields
 
-OpenSearch fields not purposely unindexed can sometimes show up as unindexed, meaning you won't be able to filter or search for those field in OpenSearch. This can be solved by refreshing the index pattern field list associated with the unindexed fields.
+OpenSearch fields not purposely unindexed can sometimes show up as unindexed, meaning you won't be able to filter or search for those fields in OpenSearch. This can be solved by refreshing the index pattern field list associated with the unindexed fields.
 
 To refresh the field list do this:
 
-1. Open the sidebar and click **Dashboard Management** under Management.
+1. Open the sidebar and click **Dashboards Management** under Management.
 1. Click **Index patterns** in the top left side.
 1. Click the index pattern you want to refresh e.g. **kubernetes***.<!-- markdownlint-disable-line MD044 -->
 1. Click **Refresh field list.** which is the refresh icon located at the top right side of the page.
