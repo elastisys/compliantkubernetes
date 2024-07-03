@@ -6,14 +6,13 @@
 
 To deploy Rook, go to the `compliantkubernetes-kubespray` repo, change directory to `rook` and follow the instructions [here](https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/rook#rook-ceph) for each cluster.
 
-!!! note
-
-    If the kubeconfig files for the clusters are encrypted with SOPS, you need to decrypt them before using them:
-
-    ```bash
-    sops --decrypt ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $CLUSTER.yaml
-    export KUBECONFIG=$CLUSTER.yaml
-    ```
+> [!NOTE]
+> If the kubeconfig files for the clusters are encrypted with SOPS, you need to decrypt them before using them:
+>
+> ```bash
+> sops --decrypt ${CK8S_CONFIG_PATH}/.state/kube_config_$CLUSTER.yaml > $CLUSTER.yaml
+> export KUBECONFIG=$CLUSTER.yaml
+> ```
 
 Please restart the operator Pod, `rook-ceph-operator*`, if some pods stalls in initialization state as shown below:
 
@@ -23,9 +22,8 @@ rook-ceph     rook-ceph-crashcollector-minion-1-5cfb88b66f-mggrh   0/1     Init:
 rook-ceph     rook-ceph-crashcollector-minion-2-5c74ffffb6-jwk55   0/1     Init:0/2   0          14m
 ```
 
-!!! warning
-
-    Pods in pending state usually indicate resource shortage. In such cases you need to use bigger instances.
+> [!WARNING]
+> Pods in pending state usually indicate resource shortage. In such cases you need to use bigger instances.
 
 <!--deploy-rook-stop-->
 
@@ -33,9 +31,8 @@ rook-ceph     rook-ceph-crashcollector-minion-2-5c74ffffb6-jwk55   0/1     Init:
 
 ### Test Rook
 
-!!! note
-
-    If the Workload Cluster kubeconfig is configured with authentication to Dex running in the Management Cluster, part of apps needs to be deployed before it is possible to run the commands below for `wc`.
+> [!NOTE]
+> If the Workload Cluster kubeconfig is configured with authentication to Dex running in the Management Cluster, part of apps needs to be deployed before it is possible to run the commands below for `wc`.
 
 To test Rook, proceed as follows:
 
@@ -53,9 +50,8 @@ done
 
 You should see PVCs in Bound state, and that the pods which mounts the volumes are running.
 
-!!! important
-
-    If you have taints on certain nodes which should support running pods that mounts `rook-ceph` PVCs, you need to ensure these nodes are tolerated by the rook-ceph DaemonSet `csi-rbdplugin`, otherwise, pods on these nodes will not be able to attach or mount the volumes.
+> [!IMPORTANT]
+> If you have taints on certain nodes which should support running pods that mounts `rook-ceph` PVCs, you need to ensure these nodes are tolerated by the rook-ceph DaemonSet `csi-rbdplugin`, otherwise, pods on these nodes will not be able to attach or mount the volumes.
 
 If you want to clean the previously created PVCs:
 
@@ -78,20 +74,25 @@ If you haven't done so already, clone the `compliantkubernetes-apps` repo and in
 
 ```bash
 git clone https://github.com/elastisys/compliantkubernetes-apps.git
-cd compliantkubernetes-apps
 compliantkubernetes-apps/bin/ck8s install-requirements
 ```
 
-Export the following variables before initializing apps config:
+Export the following variables:
+<!--export-variables-start-->
 
 ```bash
-export CK8S_ENVIRONMENT_NAME=my-environment-name
-export CK8S_FLAVOR=# [dev|prod|air-gapped] # defaults to dev
 export CK8S_CONFIG_PATH=~/.ck8s/my-cluster-path
-export CK8S_CLOUD_PROVIDER=# [exoscale|safespring|citycloud|aws|baremetal]
+export CK8S_CLOUD_PROVIDER=# run 'compliantkubernetes-apps/bin/ck8s providers' to list available providers
+export CK8S_ENVIRONMENT_NAME=my-environment-name
+export CK8S_FLAVOR=# run 'compliantkubernetes-apps/bin/ck8s flavors' to list available flavors
+export CK8S_K8S_INSTALLER=# run 'compliantkubernetes-apps/bin/ck8s k8s-installers' to list available k8s-installers
 export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
+
+export CLUSTERS=( "sc" "wc" )
+export DOMAIN=example.com # your domain
 ```
 
+<!--export-variables-stop-->
 <!--clone-apps-stop-->
 
 <!--init-apps-start-->
@@ -135,13 +136,10 @@ Edit the secrets.yaml file and add the credentials for:
 sops ${CK8S_CONFIG_PATH}/secrets.yaml
 ```
 
-!!!tip
+The default configuration for the Management Cluster and Workload Cluster are available in the directory `${CK8S_CONFIG_PATH}/defaults/` and can be used as a reference for available options.
 
-    The default configuration for the Management Cluster and Workload Cluster are available in the directory `${CK8S_CONFIG_PATH}/defaults/` and can be used as a reference for available options.
-
-!!!warning
-
-    Do not modify the read-only default configurations files found in the directory `${CK8S_CONFIG_PATH}/defaults/`. Instead configure the cluster by modifying the regular files `${CK8S_CONFIG_PATH}/sc-config.yaml` and `${CK8S_CONFIG_PATH}/wc-config.yaml` as they will override the default options.
+> [!WARNING]
+> Do not modify the read-only default configurations files found in the directory `${CK8S_CONFIG_PATH}/defaults/`. Instead configure the cluster by modifying the regular files `${CK8S_CONFIG_PATH}/sc-config.yaml` and `${CK8S_CONFIG_PATH}/wc-config.yaml` as they will override the default options.
 
 <!--configure-apps-stop-->
 
@@ -167,8 +165,8 @@ compliantkubernetes-apps/bin/ck8s apply wc
 
 ### Settling
 
-!!!important
-Leave sufficient time for the system to settle, e.g., request TLS certificates from Let's Encrypt, perhaps as much as 20 minutes.
+> [!IMPORTANT]
+> Leave sufficient time for the system to settle, e.g., request TLS certificates from Let's Encrypt, perhaps as much as 20 minutes.
 
 Check if all helm charts succeeded.
 
@@ -227,10 +225,8 @@ The script uses `s3cmd` in the background and gets configuration and credentials
 scripts/S3/entry.sh create
 ```
 
-!!! warning
-
-    You should not use your own credentials for S3.
-    Rather create a new set of credentials with write-only access, when supported by the object storage provider.
+> [!WARNING]
+> You should not use your own credentials for S3. Rather create a new set of credentials with write-only access, when supported by the object storage provider.
 
 <!--create-s3-buckets-stop-->
 

@@ -43,10 +43,11 @@ Examples:
 
 ```bash
 ## Config snippet, almost always requires human input
-export CK8S_ENVIRONMENT_NAME=my-environment-name
-#export CK8S_FLAVOR=[dev|prod|air-gapped] # defaults to dev
 export CK8S_CONFIG_PATH=~/.ck8s/my-cluster-path
-export CK8S_CLOUD_PROVIDER=# [exoscale|safespring|citycloud|aws|baremetal]
+export CK8S_CLOUD_PROVIDER=# run 'compliantkubernetes-apps/bin/ck8s providers' to list available providers
+export CK8S_ENVIRONMENT_NAME=my-environment-name
+export CK8S_FLAVOR=# run 'compliantkubernetes-apps/bin/ck8s flavors' to list available flavors
+export CK8S_K8S_INSTALLER=# run 'compliantkubernetes-apps/bin/ck8s k8s-installers' to list available k8s-installers
 export CK8S_PGP_FP=<your GPG key fingerprint>  # retrieve with gpg --list-secret-keys
 export CLUSTERS=( "sc" "wc" )
 ./bin/ck8s init both
