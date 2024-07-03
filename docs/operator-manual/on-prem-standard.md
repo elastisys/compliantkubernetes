@@ -9,13 +9,12 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
 ## Prerequisites
 
-!!!important "Decision to be taken"
-
-    Decisions regarding the following items should be made before venturing on deploying Compliant Kubernetes.
-
-    - Overall architecture, i.e., VM sizes, load-balancer configuration, storage configuration, etc.
-    - Identity Provider (IdP) choice and configuration. See [this page](../user-guide/prepare-idp.md).
-    - On-call Management Tool (OMT) choice and configuration
+> [!IMPORTANT]
+> Decisions regarding the following items should be made before venturing on deploying Compliant Kubernetes.
+>
+> - Overall architecture, i.e., VM sizes, load-balancer configuration, storage configuration, etc.
+> - Identity Provider (IdP) choice and configuration. See [this page](../user-guide/prepare-idp.md).
+> - On-call Management Tool (OMT) choice and configuration
 
 1. Make sure you [install all prerequisites](getting-started.md) on your laptop.
 
@@ -27,34 +26,35 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
 1. Create a git working folder to store Compliant Kubernetes configurations in a version-controlled manner. Run the following commands from the root of the config repo.
 
-    !!! note
-    The following steps are done from the root of the git repository you created for the configurations.
-
-    ```bash
-    export CK8S_CONFIG_PATH=./
-    export CK8S_ENVIRONMENT_NAME=<my-ck8s-cluster>
-    export CK8S_CLOUD_PROVIDER=[exoscale|safespring|citycloud|elastx|aws|baremetal]
-    export CK8S_FLAVOR=[dev|prod|air-gapped] # defaults to dev
-    export CK8S_PGP_FP=<PGP-fingerprint> # retrieve with gpg --list-secret-keys
-    export DOMAIN=example.com # your domain
-    export CLUSTERS=( "sc" "wc" )
-    ```
+    {%
+        include "./common.md"
+        start="<!--export-variables-start-->"
+        end="<!--export-variables-stop-->"
+    %}
 
 1. Add the Elastisys Compliant Kubernetes Kubespray repo as a `git submodule` to the configuration repo and install pre-requisites as follows:
+
+    > [!NOTE]
+    > Remember to switch to the desired version of `compliantkubernetes-kubespray`.
 
     ```bash
     git submodule add https://github.com/elastisys/compliantkubernetes-kubespray.git
     git submodule update --init --recursive
     cd compliantkubernetes-kubespray
+    git switch -d $(git tag --sort=committerdate | tail -1) # this will switch to the latest release tag
     pip3 install -r kubespray/requirements.txt  # this will install ansible
     ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
     ```
 
 1. Add the Compliant Kubernetes Apps repo as a `git submodule` to the configuration repo and install pre-requisites as follows:
 
+    > [!NOTE]
+    > Remember to switch to the desired version of `compliantkubernetes-apps`.
+
     ```bash
     git submodule add https://github.com/elastisys/compliantkubernetes-apps.git
     cd compliantkubernetes-apps
+    git switch -d $(git tag --sort=committerdate | tail -1) # this will switch to the latest release tag
     ./bin/ck8s install-requirements
     ```
 
@@ -146,9 +146,8 @@ For more information on managing OIDC kubeconfigs and RBAC, or on running withou
 
 Add the host name, user and IP address of each VM that you prepared above in `${CK8S_CONFIG_PATH}/sc-config/inventory.ini`for Management Cluster and `${CK8S_CONFIG_PATH}/sc-config/inventory.ini` for Workload Cluster. Moreover, you also need to add the host names of the master nodes under `[kube_control_plane]`, etcd nodes under `[etcd]` and worker nodes under `[kube_node]`.
 
-!!! note
-
-    Make sure that the user has SSH access to the VMs.
+> [!NOTE]
+> Make sure that the user has SSH access to the VMs.
 
 ### Run Kubespray to deploy the Kubernetes clusters
 
@@ -158,9 +157,8 @@ for CLUSTER in "${CLUSTERS[@]}"; do
 done
 ```
 
-!!! info
-
-    The kubeconfig for wc `.state/kube_config_wc.yaml` will not be usable until you have installed dex in the Management Cluster (by [deploying apps](#deploying-compliant-kubernetes-apps)).
+> [!NOTE]
+> The kubeconfig for wc `.state/kube_config_wc.yaml` will not be usable until you have installed Dex in the Management Cluster (by [deploying apps](#deploying-compliant-kubernetes-apps)).
 
 ## Rook Block Storage
 
@@ -267,6 +265,5 @@ curl --head https://opensearch.$DOMAIN/api/status
 # The commands above should return 'HTTP/2 401'
 ```
 
-!!! note
-
-    Some of these subdomains can be overwritten in config (see example [here](https://github.com/elastisys/compliantkubernetes-apps/blob/v0.33.0/config/config/common-config.yaml#L260))
+> [!NOTE]
+> Some of these subdomains can be overwritten in config (see example [here](https://github.com/elastisys/compliantkubernetes-apps/blob/v0.33.0/config/config/common-config.yaml#L260))
