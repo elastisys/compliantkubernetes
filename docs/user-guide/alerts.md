@@ -71,7 +71,7 @@ Before setting up an alert, you must first [collect metrics](metrics.md) from yo
 
 Then create a `PrometheusRule` following the examples below, or the upstream documentation, with an expression that evaluates to the condition to alert on. Prometheus will pick them up, evaluate them, and then send notifications to Alertmanager.
 
-The [API reference for the Prometheus Operator](https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.PrometheusRule) describes how the Kubernetes resource is configured, and the [configuration reference for Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) describes the rules themselves.
+The [API reference for the Prometheus Operator](https://prometheus-operator.dev/docs/api-reference/api/#monitoring.coreos.com/v1.PrometheusRule) describes how the Kubernetes resource is configured, and the [configuration reference for Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) describes the rules themselves.
 
 In Compliant Kubernetes the Prometheus Operator in the Workload Cluster is configured to pick up all PrometheusRules, regardless in which namespace they are or which labels they have.
 
