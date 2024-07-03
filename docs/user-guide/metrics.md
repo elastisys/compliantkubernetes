@@ -95,7 +95,7 @@ The Pods dashboard (Kubernetes/Compute resources/Pods) gives a quick overview of
 
 ## Collecting metrics
 
-Configuring Prometheus to collect metrics from an application requires either a ServiceMonitor or a PodMonitor, targeting a Kubernetes Service or Pod respectively. They are both described upstream in the [API reference for Prometheus Operator](https://prometheus-operator.dev/docs/operator/api/). In general ServiceMonitors are recommended over PodMonitors, and it is the most common way to configure metrics collection.
+Configuring Prometheus to collect metrics from an application requires either a ServiceMonitor or a PodMonitor, targeting a Kubernetes Service or Pod respectively. They are both described upstream in the [API reference for Prometheus Operator](https://prometheus-operator.dev/docs/api-reference/api/). In general ServiceMonitors are recommended over PodMonitors, and it is the most common way to configure metrics collection.
 
 In Compliant Kubernetes the Prometheus Operator in the Workload Cluster is configured to pick up all ServiceMonitors and PodMonitors, regardless in which namespace they are or which labels they have.
 
