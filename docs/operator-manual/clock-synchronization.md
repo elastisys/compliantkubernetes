@@ -7,11 +7,7 @@ tags:
 
 # Clock Synchronization
 
-!!!important
-
-    Compliant Kubernetes is about to add clock synchronization with `ntp.se` by default.
-    This will be done according to [best practices](https://www.netnod.se/blog/best-practices-connecting-ntp-servers).
-    To check progress, see [this issue](https://github.com/elastisys/compliantkubernetes-kubespray/issues/250).
+Compliant Kubernetes follows [best practices from ntp.se](https://www.netnod.se/blog/best-practices-connecting-ntp-servers) regarding clock synchronization by default. This ensures reliable synchronization with at least two clock sources using NTP servers.
 
 Clock synchronization is important for the following reasons:
 
