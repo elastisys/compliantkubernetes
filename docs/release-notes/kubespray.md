@@ -4,6 +4,7 @@
 
 <!-- BEGIN TOC -->
 
+- [v2.25.0-ck8s1](#v2250-ck8s1) - 2024-07-09
 - [v2.24.1-ck8s2](#v2241-ck8s2) - 2024-06-26
 - [v2.24.1-ck8s1](#v2241-ck8s1) - 2024-03-26
 - [v2.23.0-ck8s3](#v2230-ck8s3) - 2024-02-27
@@ -28,6 +29,14 @@
 !!!note
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/changelog/).
+
+### v2.25.0-ck8s1
+
+#### Updated
+
+- **Updated Kubespray to `v2.25.0`** <br/>
+  Kubernetes version upgraded to [v1.29.5](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.29.md#changelog-since-v1280). <br/>
+- [The default `topologySpreadConstraints` for kube-scheduler is changed](https://github.com/elastisys/compliantkubernetes-kubespray/blob/v2.25.0-ck8s1/config/common/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml#L74-L80). When upgrading to this version, you may want to review existing Pod scheduling constraints as they could now be redundant.
 
 ### v2.24.1-ck8s2
 
