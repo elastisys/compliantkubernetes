@@ -6,6 +6,7 @@
 
 <!-- BEGIN TOC -->
 
+- [v0.39.1](#v0391) - 2024-07-15
 - [v0.39.0](#v0390) - 2024-06-19
 - [v0.38.2](#v0382) - 2024-06-19
 - [v0.38.1](#v0381) - 2024-05-24
@@ -50,6 +51,14 @@
 !!!note
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
+
+## v0.39.1
+
+Released 2024-07-15
+
+### Improvement(s)
+
+- Increased rclone default job deadline to 14400 seconds allowing for rclone to complete its operations.
 
 ## v0.39.0
 
