@@ -4,6 +4,10 @@
 
 <!-- BEGIN TOC -->
 
+- [v2.25.0-ck8s3](#v2250-ck8s3) - 2024-07-26
+- [v2.24.1-ck8s4](#v2241-ck8s4) - 2024-07-25
+- [v2.25.0-ck8s2](#v2250-ck8s2) - 2024-07-23
+- [v2.24.1-ck8s3](#v2241-ck8s3) - 2024-07-22
 - [v2.25.0-ck8s1](#v2250-ck8s1) - 2024-07-09
 - [v2.24.1-ck8s2](#v2241-ck8s2) - 2024-06-26
 - [v2.24.1-ck8s1](#v2241-ck8s1) - 2024-03-26
@@ -29,6 +33,30 @@
 !!!note
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/changelog/).
+
+### v2.25.0-ck8s3
+
+#### Improvement(s)
+
+- Fixed UpCloud LoadBalancer to work with legacy network setup
+
+### v2.24.1-ck8s4
+
+#### Improvement(s)
+
+- Fixed UpCloud LoadBalancer to work with legacy network setup
+
+### v2.25.0-ck8s2
+
+#### Feature(s)
+
+- Added support for UpCloud Router and Gateway
+
+### v2.24.1-ck8s3
+
+#### Feature(s)
+
+- Added support for UpCloud Router and Gateway
 
 ### v2.25.0-ck8s1
 
