@@ -275,9 +275,29 @@ To ensure that you have configured S3 correctly, run the following snippet:
 
     If you are struggling, don't hesitate to [file a ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
 
-    You can run the following command  from the [compliantkubernetes-apps](https://github.com/elastisys/compliantkubernetes-apps) repository to collect diagnostic information that will help us support you.
+    You can run the following command from the [compliantkubernetes-apps](https://github.com/elastisys/compliantkubernetes-apps) repository to collect diagnostic information that will help us support you.
 
-    `CK8S_PGP_FP=<fingerprint provided during onboarding> ./bin/ck8s diagnostics [sc|wc]`
+    `CK8S_PGP_FP=<fingerprint provided during onboarding> ./bin/ck8s diagnostics <wc|sc>`
+
+    <details><summary>Show more examples on using the diagnostics command</summary>
+    The command `ck8s diagnostics` can be provided with different flags to gather additional information from your environment, to see all available options run:
+
+    `./bin/ck8s diagnostics <wc|sc> --help`
+
+    Some example use cases:
+
+    - To include config files found in `CK8S_CONFIG_PATH`:
+
+        ```bash
+        CK8S_PGP_FP=<fingerprints> ./bin/ck8s diagnostics <wc|sc> --include-config
+        ```
+
+    - To retrieve more information such as YAML manifests for resources in a specific namespace, in this example `ingress-nginx`:
+
+        ```bash
+        CK8S_PGP_FP=<fingerprints> ./bin/ck8s diagnostics <wc|sc> --namespace ingress-nginx
+        ```
+    </details>
 
     Please also provide us with your terminal in a text format.
     We need to look both at the commands you typed and their output.
