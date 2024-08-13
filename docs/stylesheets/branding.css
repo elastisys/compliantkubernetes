@@ -113,5 +113,7 @@
   --md-accent-fg-color: var(--elastisys-hover);
   --md-footer-bg-color: var(--md-primary-fg-color);
   --md-typeset-a-color: var(--elastisys-northern-lights-2);
-  --md-code-bg-color: var(--elastisys-sky-blue);
+
+  --md-code-fg-color: black;
+  --md-code-bg-color: var(--elastisys-snow);
 }
