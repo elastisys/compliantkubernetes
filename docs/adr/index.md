@@ -91,14 +91,14 @@ This log lists the architectural decisions for Compliant Kubernetes.
 - [ADR-0012](0012-do-not-persist-dex.md) - [Superseded by [ADR-0017](0017-persist-dex.md)] Do not persist Dex
 - [ADR-0013](0013-configure-alerts-in-omt.md) - Configure Alerts in On-call Management Tool (e.g., Opsgenie)
 - [ADR-0014](0014-use-bats-for-testing-bash-wrappers.md) - Use bats for testing bash wrappers
-- [ADR-0015](0015-we-believe-in-community-driven-open-source.md) -
+- [ADR-0015](0015-we-believe-in-community-driven-open-source.md) - We believe in community-driven open source
 - [ADR-0016](0016-gid-0-is-okey-but-not-by-default.md) - [Superseded by [ADR-0040](0040-allow-group-id-0.md)] gid=0 is okay, but not by default
 - [ADR-0017](0017-persist-dex.md) - Persist Dex
 - [ADR-0018](0018-use-probe-to-measure-internal-uptime.md) - Use Probe to Measure Uptime of Internal Compliant Kubernetes Services
 - [ADR-0019](0019-push-metrics-via-thanos.md) - Push Metrics via Thanos
 - [ADR-0020](0020-filter-by-cluster-label-then-data-source.md) - Filter by cluster label then data source
 - [ADR-0021](0021-tls-for-additional-services.md) - Default to TLS for performance-insensitive additional services
-- [ADR-0022](0022-use-dedicated-nodes-for-additional-services.md) -
+- [ADR-0022](0022-use-dedicated-nodes-for-additional-services.md) - Use Dedicated Nodes for Additional Services
 - [ADR-0023](0023-allow-snippets-annotations.md) - Only allow Ingress Configuration Snippet Annotations after Proper Risk Acceptance
 - [ADR-0024](0024-allow-Harbor-robot-account.md) - Allow a Harbor robot account that can create other robot accounts with full privileges
 - [ADR-0025](0025-local-storage.md) - Use local-volume-provisioner for Managed Services that requires high-speed disks
