@@ -36,7 +36,7 @@ As an additional measures, applications and protocols are designed to ensure tha
 For example, updates from the Internet need to pass through a manual review and validation process on a non-active production environment before being applied to the active production environment.
 - Confidential information is not leaked from a Security Zone with higher protection class into one with lower protection class.
 For example, application logs required for diagnostics may traverse from a higher to lower class. This, of course, entails that adequate requirements are set on the application development process, such as, logs should contain not confidential information.
-However, application traces, given that the may contain function call parameters and hence pose a higher risk of leaking confidential information, should remain in the Security Zone with the higher protection class.
+However, application traces, given that they may contain function call parameters and hence pose a higher risk of leaking confidential information, should remain in the Security Zone with the higher protection class.
 
 Besides network isolation, Security Zones with higher protection class may be accessed only by staff with a given security clearance.
 For example, the Security Zone in the highest protection class may be accessed only by staff who cleared the [Swedish SAPÖ Security Clearance](https://sakerhetspolisen.se/ovriga-sidor/other-languages/english-engelska/what-we-do/protective-security.html) or the [German SÜG](https://de.wikipedia.org/wiki/Sicherheits%C3%BCberpr%C3%BCfungsgesetz).
