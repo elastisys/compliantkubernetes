@@ -7,7 +7,6 @@ tags:
   - NIST SP 800-171 3.13.2
   - NIST SP 800-171 3.13.3
 ---
-
 # Architectural Decision Log
 
 ## Mapping to ISO 27001 Controls
@@ -92,17 +91,17 @@ This log lists the architectural decisions for Compliant Kubernetes.
 - [ADR-0012](0012-do-not-persist-dex.md) - [Superseded by [ADR-0017](0017-persist-dex.md)] Do not persist Dex
 - [ADR-0013](0013-configure-alerts-in-omt.md) - Configure Alerts in On-call Management Tool (e.g., Opsgenie)
 - [ADR-0014](0014-use-bats-for-testing-bash-wrappers.md) - Use bats for testing bash wrappers
-- [ADR-0015](0015-we-believe-in-community-driven-open-source.md) - We believe in community-driven open source
+- [ADR-0015](0015-we-believe-in-community-driven-open-source.md) -
 - [ADR-0016](0016-gid-0-is-okey-but-not-by-default.md) - [Superseded by [ADR-0040](0040-allow-group-id-0.md)] gid=0 is okay, but not by default
 - [ADR-0017](0017-persist-dex.md) - Persist Dex
 - [ADR-0018](0018-use-probe-to-measure-internal-uptime.md) - Use Probe to Measure Uptime of Internal Compliant Kubernetes Services
 - [ADR-0019](0019-push-metrics-via-thanos.md) - Push Metrics via Thanos
 - [ADR-0020](0020-filter-by-cluster-label-then-data-source.md) - Filter by cluster label then data source
 - [ADR-0021](0021-tls-for-additional-services.md) - Default to TLS for performance-insensitive additional services
-- [ADR-0022](0022-use-dedicated-nodes-for-additional-services.md) - Use Dedicated Nodes for Additional Services
+- [ADR-0022](0022-use-dedicated-nodes-for-additional-services.md) -
 - [ADR-0023](0023-allow-snippets-annotations.md) - Only allow Ingress Configuration Snippet Annotations after Proper Risk Acceptance
 - [ADR-0024](0024-allow-Harbor-robot-account.md) - Allow a Harbor robot account that can create other robot accounts with full privileges
-- [ADR-0025](0025-local-storage.md) - Use local-volume-provisioner for Managed Services that requires high-speed disks.
+- [ADR-0025](0025-local-storage.md) - Use local-volume-provisioner for Managed Services that requires high-speed disks
 - [ADR-0026](0026-hnc.md) - Use `environment-name` as the default root of Hierarchical Namespace Controller (HNC)
 - [ADR-0027](0027-postgresql-external-replication.md) - PostgreSQL - Enable external replication
 - [ADR-0028](0028-harder-pod-eviction-when-node-goes-OOM.md) - Harder Pod eviction when nodes are going OOM
@@ -121,12 +120,13 @@ This log lists the architectural decisions for Compliant Kubernetes.
 - [ADR-0041](0041-encryption-at-rest.md) - Rely on Infrastructure Provider for encryption-at-rest
 - [ADR-0042](0042-argocd-dynamic-hnc-namespaces.md) - ArgoCD with dynamic HNC namespaces
 - [ADR-0043](0043-rclone-and-encryption-adhere-cryptography-policy.md) - Rclone and Encryption adheres Cryptography Policy
-- [ADR-0044](0044-argocd-managing-its-own-namespace.md) - ArgoCD is not allowed to manage its own namespace.
+- [ADR-0044](0044-argocd-managing-its-own-namespace.md) - ArgoCD is not allowed to manage its own namespace
 - [ADR-0045](0045-use-specialised-prebuilt-images.md) - Use specialised prebuilt images
 - [ADR-0046](0046-handle-crds.md) - Handle all CRDs with the standard Helm CRD management
 - [ADR-0047](0047-kubernetes-versions.md) - When to upgrade to new Kubernetes versions
-- [ADR-0048](0048-access-management-for-AMS-with-network-policies.md) - Access Management for Additional Managed Services (AMS-es).
-- [ADR-0049](0049-run-ingress-nginx-in-chroot.md) - Run Ingress-NGINX in chroot.
+- [ADR-0048](0048-access-management-for-AMS-with-network-policies.md) - Access Management for Additional Managed Services (AMS-es)
+- [ADR-0049](0049-run-ingress-nginx-in-chroot.md) - Running NGINX with Chroot Option
+- [ADR-0050](0050-use-cluster-isolation.md) - Use Cluster Isolation to separate the application and its traces from its logs and metrics
 
 <!-- adrlogstop -->
 
@@ -142,4 +142,4 @@ Pre-requisites:
 - Install [adr-log](https://github.com/adr/adr-log#install)
 - Install [make](https://packages.ubuntu.com/search?keywords=make)
 
-Run `make -C docs/adr`
+Run `make -C docs/adr`, then run `pre-commit run --all-files`.
