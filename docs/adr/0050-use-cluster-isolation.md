@@ -110,6 +110,20 @@ See [ADR-0035 Run Tekton on Management Cluster](0035-run-tekton-on-service-clust
 If the Workload Cluster is in a Security Zone with a higher protection class than the Management Cluster, then the Workload Cluster should run its own Cluster API controller.
 This goes against [ADR-0033 Run Cluster API controllers on Management Cluster](0033-run-cluster-api-controllers-on-service-cluster.md).
 
+### Tamper-Proof Logging
+
+Some regulations and information security standards require tamper-proof logging.
+In other words, a compromise of the application deployment should not enable an attacker to remove their trails and hinder forensics.
+Compliant Kubernetes already observes this principle for its observability stack, e.g., the access that the Workload Cluster has to the Service Cluster cannot be used to remove old log entries.
+(Of course, garbage new log entries may be created, but that only makes an attack more obvious during [log review](../ciso-guide/log-review.md).
+
+Cluster isolation between the application and its logs adds another layer of protection:
+The attacker would need to:
+
+- compromise the application;
+- compromise the underlying Workload Cluster to reach log collection components (Fluentd);
+- compromise the OpenSearch endpoint on the Service Cluster.
+
 ## Links
 
 - [NIS2 Directive](https://digital-strategy.ec.europa.eu/en/policies/nis2-directive)
