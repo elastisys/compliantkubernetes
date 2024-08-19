@@ -23,8 +23,7 @@ This ADR focuses on the following two measures, reproduced below verbatim from t
 
 The most common way to implement these measures is using a concept called **Security Zone**.
 A Security Zone is a logical grouping of IT systems with similar needs of protection.
-For example, one Security Zone hosts [mission-critical applications](https://en.wikipedia.org/wiki/Mission_critical), whereas another Security Zone hosts business-critical applications.
-(For those unfamiliar with these terms, mission-critical is more critical than business-critical.)
+For example, one Security Zone hosts [mission-critical applications](https://en.wikipedia.org/wiki/Mission_critical), whereas another Security Zone hosts non-mission-critical applications.
 
 Each Security Zone has a separate network, either isolated physically (OSI layer 1) or logically (OSI layer 2, e.g., [VLAN](https://en.wikipedia.org/wiki/VLAN)).
 The Internet itself can be conceptualized as a Security Zone with the lowest protection class.
