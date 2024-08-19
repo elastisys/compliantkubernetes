@@ -18,8 +18,8 @@ Article 21 lists 10 cybersecurity risk-management measures which all essential a
 
 This ADR focuses on the following two measures, reproduced below verbatim from the NIS2 Directive:
 
-- (e) security in network and information systems acquisition, development and maintenance, including vulnerability handling and disclosure;
-- (i) human resources security, access control policies and asset management.
+> - (e) security in network and information systems acquisition, development and maintenance, including vulnerability handling and disclosure;
+> - (i) human resources security, access control policies and asset management.
 
 The most common way to implement these measures is using a concept called **Security Zone**.
 A Security Zone is a logical grouping of IT systems with similar needs of protection.
