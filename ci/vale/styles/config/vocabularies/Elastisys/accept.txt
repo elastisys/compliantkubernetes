@@ -12,6 +12,7 @@ Grafana
 IMY
 Kubespray
 Kured
+Tekton
 Telavox
 Trivy
 Velero
@@ -24,6 +25,7 @@ allowlisted
 (?i)autoscaling
 colocation
 CPU
+cybersecurity
 Dockerfile
 (?i)downsampled
 downscaling

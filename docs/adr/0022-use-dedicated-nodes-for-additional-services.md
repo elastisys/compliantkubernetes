@@ -3,7 +3,6 @@ tags:
   - BSI IT-Grundschutz APP.4.4.A14
   - NIST SP 800-171 3.13.3
 ---
-
 # Use Dedicated Nodes for Additional Services
 
 - Status: accepted

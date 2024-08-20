@@ -14,3 +14,7 @@
 /linkchecker.conf                   @elastisys/goto-public-docs @elastisys/qa
 /package.json                       @elastisys/goto-public-docs @elastisys/qa
 /requirements-linkchecker.txt       @elastisys/goto-public-docs @elastisys/qa
+
+# Architectural decisions MUST be reviewed by the product team
+/docs/architecture.md               @elastisys/product-team
+/docs/adr/                          @elastisys/product-team
