@@ -63,11 +63,11 @@ Released 2024-08-21
 
 ### Improvement(s)
 
-- Opensearch and Opensearch dashboards has been upgraded to v2.15.0.
+- OpenSearch and OpenSearch Dashboards has been upgraded to v2.15.0.
 - Harbor has been upgraded to v2.11.0.
 - Dex has been upgraded to v2.40.0.
-- Added node filter to more graphs in the kubernetes status dashboard.
-- Increased default grafana timeout.
+- Added node filter to more graphs in the Kubernetes status dashboard.
+- Increased default Grafana timeout.
 - Improved diagnostics script.
 
 ### Other(s)
