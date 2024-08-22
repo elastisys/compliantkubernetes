@@ -6,6 +6,7 @@
 
 <!-- BEGIN TOC -->
 
+- [v0.40.0](#v0400) - 2024-08-21
 - [v0.39.1](#v0391) - 2024-07-15
 - [v0.39.0](#v0390) - 2024-06-19
 - [v0.38.2](#v0382) - 2024-06-19
@@ -51,6 +52,28 @@
 !!!note
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
+
+## v0.40.0
+
+Released 2024-08-21
+
+!!! warning "Application Developer Notice(s)"
+
+    - Alerts for kured in workload clusters have been removed.
+
+### Improvement(s)
+
+- OpenSearch and OpenSearch Dashboards has been upgraded to v2.15.0.
+- Harbor has been upgraded to v2.11.0.
+- Dex has been upgraded to v2.40.0.
+- Added node filter to more graphs in the Kubernetes status dashboard.
+- Increased default Grafana timeout.
+- Improved diagnostics script.
+
+### Other(s)
+
+- Various fixes for install-requirements script.
+- Replaced deprecated Angular panels in Daily and Backup Dashboards.
 
 ## v0.39.1
 
