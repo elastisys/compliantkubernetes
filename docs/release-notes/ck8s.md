@@ -73,7 +73,6 @@ Released 2024-08-21
 ### Other(s)
 
 - Various fixes for install-requirements script.
-- Bug fixes for rclone sync.
 - Replaced deprecated Angular panels in Daily and Backup Dashboards.
 
 ## v0.39.1
