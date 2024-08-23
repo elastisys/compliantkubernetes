@@ -15,7 +15,7 @@ Released 2024-08-23
 
 ### Features(s)
 
-- Azure now has support for `ReadWriteMany` volumes.
+- Azure now has support for `ReadWriteMany` volumes. Use the StorageClass `azurefile-nfs-premium-lrs`.
 - Enabled unattended upgrades for security patching.
 
 ## v0.2.0
