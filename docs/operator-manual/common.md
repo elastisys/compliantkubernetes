@@ -276,26 +276,38 @@ To ensure that you have configured S3 correctly, run the following snippet:
     If you are struggling, don't hesitate to [file a ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
 
     You can run the following command from the [compliantkubernetes-apps](https://github.com/elastisys/compliantkubernetes-apps) repository to collect diagnostic information that will help us support you.
+    Ensure that you have put fingerprints received from Elastisys in a file named `${CK8S_CONFIG_PATH}/diagnostics_receiver.gpg`.
 
-    `CK8S_PGP_FP=<fingerprint provided during onboarding> ./bin/ck8s diagnostics <wc|sc>`
+    ```bash
+    ./bin/ck8s diagnostics <wc|sc>
+    ```
 
     <details><summary>Show more examples on using the diagnostics command</summary>
     The command `ck8s diagnostics` can be provided with different flags to gather additional information from your environment, to see all available options run:
 
-    `./bin/ck8s diagnostics <wc|sc> --help`
+    ```bash
+    ./bin/ck8s diagnostics <wc|sc> --help
+    ```
 
     Some example use cases:
 
     - To include config files found in `CK8S_CONFIG_PATH`:
 
         ```bash
-        CK8S_PGP_FP=<fingerprints> ./bin/ck8s diagnostics <wc|sc> --include-config
+        ./bin/ck8s diagnostics <wc|sc> --include-config
         ```
 
     - To retrieve more information such as YAML manifests for resources in a specific namespace, in this example `ingress-nginx`:
 
         ```bash
-        CK8S_PGP_FP=<fingerprints> ./bin/ck8s diagnostics <wc|sc> --namespace ingress-nginx
+        ./bin/ck8s diagnostics <wc|sc> namespace ingress-nginx
+        ```
+
+    - It is also possible to set which GPG keys should be used by setting `CK8S_PGP_FP`:
+
+        ```bash
+        export CK8S_PGP_FP=<gpg-fingerprint1>,<gpg-fingerprint2>
+        ./bin/ck8s diagnostics <wc|sc> namespace ingress-nginx
         ```
     </details>
 
