@@ -71,4 +71,4 @@ The [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-
 
 ## Further Reading
 
-* [Cluster-level default constraints](https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/#cluster-level-default-constraints)
+- [Cluster-level default constraints](https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/#cluster-level-default-constraints)
