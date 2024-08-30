@@ -1,12 +1,14 @@
 ---
 tags:
-- ISO 27001 A.18.1.2 Intellectual Property Rights
+  - ISO 27001 A.18.1.2 Intellectual Property Rights
 ---
+
 # CISO FAQ
 
 ## Do we need to make our application source code public when using Compliant Kubernetes?
 
 !!!note "TL;DR"
+
     **Definitely NOT**, you own your application source code and you decide what to do with it.
 
 Elastisys hereby confirms that Compliant Kubernetes and its Additional Managed Services (AMS) are NOT putting Application Developers (users) in a situation which obliges them to make their software or source code running on Compliant Kubernetes available to the public.
@@ -15,16 +17,17 @@ Should we at Elastisys become aware of such an issue existing, we will immediate
 
 As evidence, that the architectural decision process works – in particular when it comes to licensing issues – here are some decisions we took:
 
-* We decided only to offer TimescaleDB Apache 2 Edition (licensed under Apache 2.0) and NOT TimescaleDB “Community Edition” (licensed under the Timescale license). The Timescale license contains some problematic clauses and is, to our knowledge, not tested in court. You can read more about the subtle differences between the TimescaleDB versions [by opening this link](https://docs.timescale.com/about/latest/timescaledb-editions/).
-* We replaced Elasticsearch with OpenSearch (licensed under Apache 2.0), when Elasticsearch changed to the Elastic license. You can read more about the context [by opening this link](https://opensearch.org/faq/).
-* We replaced InfluxDB with Thanos. This was due to the fact that the open-source version was too limiting. You can read more about this decision [by opening this link](../adr/0019-push-metrics-via-thanos.md).
-* We made a risk assessment regarding Grafana, and determined that its AGPL license does not pose a problem. You can read more about our assessment below.
+- We decided only to offer TimescaleDB Apache 2 Edition (licensed under Apache 2.0) and NOT TimescaleDB “Community Edition” (licensed under the Timescale license). The Timescale license contains some problematic clauses and is, to our knowledge, not tested in court. You can read more about the subtle differences between the TimescaleDB versions [by opening this link](https://docs.timescale.com/about/latest/timescaledb-editions/).
+- We replaced Elasticsearch with OpenSearch (licensed under Apache 2.0), when Elasticsearch changed to the Elastic license. You can read more about the context [by opening this link](https://opensearch.org/faq/).
+- We replaced InfluxDB with Thanos. This was due to the fact that the open-source version was too limiting. You can read more about this decision [by opening this link](../adr/0019-push-metrics-via-thanos.md).
+- We made a risk assessment regarding Grafana, and determined that its AGPL license does not pose a problem. You can read more about our assessment below.
 
 You can read more about our commitment to community-driven open-source [by opening this link](../adr/0015-we-believe-in-community-driven-open-source.md).
 
 ## Will GrafanaLabs change to AGPL licenses affect Compliant Kubernetes?
 
 !!!note "TL;DR"
+
     Users and administrators of Compliant Kubernetes are unaffected.
 
 Part of Compliant Kubernetes -- specifically the CISO dashboards -- are built on top of Grafana, which recently [changed its license to AGPLv3](https://grafana.com/blog/2021/04/20/grafana-loki-tempo-relicensing-to-agplv3/). In brief, if Grafana is exposed via a network connection -- as is the case with Compliant Kubernetes -- then AGPLv3 requires all source code including modifications to be made available.
@@ -36,6 +39,7 @@ As a result, Compliant Kubernetes continues to be distributed under [Apache 2.0]
 ## Will Min.io change to AGPL licenses affect Compliant Kubernetes?
 
 !!!note "TL;DR"
+
     Users and administrators of Compliant Kubernetes are unaffected.
 
 Min.io recently changed its license to [AGPLv3](https://blog.min.io/from-open-source-to-free-and-open-source-minio-is-now-fully-licensed-under-gnu-agplv3/).
@@ -49,6 +53,7 @@ As a result, Compliant Kubernetes continues to be distributed under [Apache 2.0]
 ## Can I use Datadog/Logz.io/Elastic Cloud with Compliant Kubernetes?
 
 !!!note "TL;DR"
+
     Technically, yes, but legally speaking and from a GDPR perspective, **NO**. Why is that?
 
     * Logs contain personal data.
@@ -64,7 +69,7 @@ There are court rulings clarifying that:
 - [IP addresses are personal data](https://curia.europa.eu/juris/document/document.jsf?docid=184668&doclang=EN&cid=1095511);
 - [browser-generated information](https://www.judiciary.uk/wp-content/uploads/2018/10/lloyd-v-google-judgment.pdf) (e.g., cookies, URLs, fingerprints, user agents) can be personal data.
 
-According to the [so-called "Schrems II" ruling](https://www.europarl.europa.eu/RegData/etudes/ATAG/2020/652073/EPRS_ATA(2020)652073_EN.pdf), US law -- in particular [US CLOUD Act](https://en.wikipedia.org/wiki/CLOUD_Act) and [US FISA](https://en.wikipedia.org/wiki/Foreign_Intelligence_Surveillance_Act) are incompatible -- with EU GDPR and personal data processing.
+According to the [so-called "Schrems II" ruling](<https://www.europarl.europa.eu/RegData/etudes/ATAG/2020/652073/EPRS_ATA(2020)652073_EN.pdf>), US law -- in particular [US CLOUD Act](https://en.wikipedia.org/wiki/CLOUD_Act) and [US FISA](https://en.wikipedia.org/wiki/Foreign_Intelligence_Surveillance_Act) are incompatible -- with EU GDPR and personal data processing.
 
 Furthermore, according to a [French court ruling](https://iapp.org/news/a/why-this-french-court-decision-has-far-reaching-consequences-for-many-businesses/) it doesn't matter if the data-center is located in the EU/EEA. A US company is still under US jurisdiction and considered at risk of US CLOUD Act and US FISA.
 

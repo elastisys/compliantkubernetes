@@ -1,3 +1,7 @@
+---
+search:
+  boost: 2
+---
 # FerretDB® (self-managed)
 
 {%
@@ -35,11 +39,13 @@ docker push $REGISTRY/$REGISTRY_PROJECT/ferretdb:$TAG
 In a managed CK8s environment, follow [these instructions](../additional-services/postgresql.md#getting-access) on how to access the Managed PostgreSQL service and how to create an application user and database.
 
 Create secret containing a PostgreSQL URL to authenticate to the Managed PostgreSQL service and newly created database with the application user credentials:
+
 ```sh
 kubectl create secret generic --from-literal=ferretdb-url="postgresql://$APP_USERNAME:$APP_PASSWORD@$PGHOST:$PGPORT/$APP_DATABASE" ferretdb-postgres-credentials
 ```
 
 Deploy:
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -58,36 +64,36 @@ spec:
         run: ferretdb
     spec:
       containers:
-      - name: ferretdb
-        image: $REGISTRY/$REGISTRY_PROJECT/ferretdb:$TAG # replace this
-        args:
-         - --listen-addr=0.0.0.0:27017
-         - --telemetry=disable
-         - --postgresql-url=$(FERRETDB_URL)
-        env:
-        - name: FERRETDB_URL
-          valueFrom:
-            secretKeyRef:
-              name: ferretdb-postgres-credentials
-              key: ferretdb-url
-        resources:
-          requests:
-            cpu: "1000m"
-            memory: "15M"
-        securityContext:
-          capabilities:
-            drop:
-            - ALL
-          runAsNonRoot: true
-          runAsUser: 1001
-        volumeMounts:
-        - mountPath: /state
-          name: state
+        - name: ferretdb
+          image: $REGISTRY/$REGISTRY_PROJECT/ferretdb:$TAG # replace this
+          args:
+            - --listen-addr=0.0.0.0:27017
+            - --telemetry=disable
+            - --postgresql-url=$(FERRETDB_URL)
+          env:
+            - name: FERRETDB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: ferretdb-postgres-credentials
+                  key: ferretdb-url
+          resources:
+            requests:
+              cpu: "1000m"
+              memory: "15M"
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+            runAsNonRoot: true
+            runAsUser: 1001
+          volumeMounts:
+            - mountPath: /state
+              name: state
       securityContext:
         fsGroup: 1001
       volumes:
-      - name: state
-        emptyDir: {}
+        - name: state
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
@@ -98,7 +104,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-   run: ferretdb
+    run: ferretdb
   ports:
     - protocol: TCP
       port: 27017
@@ -122,6 +128,7 @@ pod/ferretdb-5887cc848c-brwjf   1/1     Running   0          75s
 The Deployment should show `STATUS` is `Running`. The Pod(s) should have `STATUS` is `Running`.
 
 To try out access to FerretDB, you can port-forward the Service to localhost and connect using mongosh:
+
 ```sh
 kubectl port-forward svc/ferretdb-service 27017
 
@@ -129,6 +136,7 @@ mongosh mongodb://localhost:27017
 ```
 
 ## Python client example
+
 The following is an example of how to connect to FerretDB using the [PyMongo](https://pymongo.readthedocs.io/en/stable/) Python library (using the localhost port-forwarding described above).
 
 ```python
@@ -247,11 +255,12 @@ CREATE UNIQUE INDEX customers__id__e06693c2_idx ON test_db.customers_c09344de US
 -- PostgreSQL database dump complete
 --
 ```
+
 </details>
 
 ## Security
-FerretDB supports securing connections between FerretDB and client with TLS. All you need is to specify additional run-time arguments or environment variables, as described in the [FerretDB documentation](https://docs.ferretdb.io/security/).
 
+FerretDB supports securing connections between FerretDB and client with TLS. All you need is to specify additional run-time arguments or environment variables, as described in the [FerretDB documentation](https://docs.ferretdb.io/security/).
 
 ## Known Issues / Limitations
 
@@ -263,6 +272,7 @@ FerretDB supports securing connections between FerretDB and client with TLS. All
 > As of May 2023, the project was recently released to its first major version (v1.0.0) and is constantly being developed and improved, hence, these issues may have already been solved depending on when you are reading this. Check [supported commands](https://docs.ferretdb.io/reference/supported-commands/) for FerretDB to see what is currently available.
 
 ## Further Reading
+
 - [FerretDB GitHub](https://github.com/FerretDB/FerretDB)
 - [FerretDB documentation](https://docs.ferretdb.io/)
 - [FerretDB supported commands](https://docs.ferretdb.io/reference/supported-commands/)

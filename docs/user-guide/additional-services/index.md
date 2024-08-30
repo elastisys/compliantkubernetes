@@ -1,15 +1,17 @@
 ---
+search:
+  boost: 2
 tags:
-- BSI IT-Grundschutz APP.4.4.A16
+  - BSI IT-Grundschutz APP.4.4.A16
 ---
-Additional Services
-===================
+
+# Additional Services
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
     You can order Managed Additional Services by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/).
 
-    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
+    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification-managed-services-only).
 
 ![Illustration of Compliant Kubernetes as the hourglass waist](img/additional-services.drawio.svg)
 
@@ -17,7 +19,7 @@ Compliant Kubernetes simplifies usage of a complex and diverse infrastructure. B
 
 However, your application needs more than just running stateless containers. At the very least, you will need a database -- such as PostgreSQL -- to persist data. More complex applications will require a distributed cache -- such as Redis -- to store session information or offload the database. Finally, background tasks are best handled by separate containers, connected to your user-facing backend code via a message queue -- such as RabbitMQ.
 
-These additional services need to be delivered as securely as the rest of the platform. Access control, business continuity, disaster recovery, security patching and maintenance need to be a core feature, not an afterthought.
+These additional services need to be delivered as securely as the rest of the platform. Access control, business continuity, disaster recovery, security patching and maintenance need to be core features, not afterthoughts.
 
 It turns out, the same simple and uniform concepts that benefit your application can also be used to simplify hosting additional services. And thanks to security-hardening included in Compliant Kubernetes, the burden of delivering additional services with the security you need is also reduced.
 

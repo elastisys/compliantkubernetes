@@ -1,0 +1,73 @@
+# Brands, Organization and Project Names
+Alertmanager
+Atlassian
+Ceph
+Datatilsynet
+(?i)Elastisys
+Elementor
+Falco
+Fluentd
+GMail
+Grafana
+IMY
+Kubespray
+Kured
+Tekton
+Telavox
+Trivy
+Velero
+Yopass
+
+# General technical terms
+API
+(?i)allowlisting
+allowlisted
+(?i)autoscaling
+colocation
+CPU
+cybersecurity
+Dockerfile
+(?i)downsampled
+downscaling
+failover
+microsegmentation
+SLA
+setgid
+setuid
+stdout
+upscaling
+VM
+
+# Kubernetes terms
+Autoscaler
+kubeconfig
+Namespace
+RBAC
+
+# RabbitMQ terms
+vhost
+
+# Legal terms
+alia
+(?i)arbitrations
+decompile
+DPA
+facto
+jure
+(?i)majeure
+kap
+(?i)severability
+subclause
+sublicense
+(?i)subprocessor
+
+# Swedish terms
+midsommarafton
+midsommardagen
+julafton
+skyddsklass
+
+# No clue why Vale doesn't recognize these words
+approver
+auditability
+learnings

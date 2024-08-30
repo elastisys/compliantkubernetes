@@ -2,17 +2,25 @@ name: Regularly check links
 
 on:
   schedule:
-    # Runs "At 08:30 on every day-of-week from Monday through Friday." (see https://crontab.guru)
-    - cron: '40 8 * * 1-5'
+    # Runs "Daily on every day-of-week from Monday through Friday." (see https://crontab.guru)
+    - cron: "40 9 * * 1-5"
 
 jobs:
   build:
     name: Check links
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install requirements
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-linkchecker.txt
+
+      - name: Install Python requirements
         run: pip3 install -r requirements-linkchecker.txt
+
       - name: Run linkchecker
         run: |
           linkchecker --config linkchecker.conf https://elastisys.io

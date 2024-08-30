@@ -1,28 +1,25 @@
 ---
 tags:
-- ISO 27001 A.15 Supplier Relationships
-- HIPAA S29 - Business Associate Contracts and Other Arrangements - § 164.308(b)(1)
-- HIPAA S31 - Facility Access Controls - § 164.310(a)(1)
-- HIPAA S32 - Facility Access Controls - Contingency Operations - § 164.310(a)(2)(i)
-- HIPAA S33 - Facility Access Controls - Facility Security Plan - § 164.310(a)(2)(ii)
-- HIPAA S34 - Facility Access Controls - Access Control and Validation Procedures - § 164.310(a)(2)(iii)
-- HIPAA S35 - Facility Access Controls - Maintain Maintenance Records - § 164.310(a)(2)(iv)
-- HIPAA S39 - Device and Media Controls - Disposal - § 164.310(d)(2)(i)
-- HIPAA S47 - Access Control - Encryption and Decryption - § 164.312(a)(2)(iv)
-- MSBFS 2020:7 3 kap. 1 §
-- MSBFS 2020:7 3 kap. 2 §
-- MSBFS 2020:7 4 kap. 12 §
-- MSBFS 2020:7 4 kap. 21 §
-- HSLF-FS 2016:40 3 kap. 9 § Upphandling och utveckling
-- HSLF-FS 2016:40 3 kap. 14 § Fysiskt skydd av informationssystem
-- GDPR Art. 28 Processor
+  - ISO 27001 A.15 Supplier Relationships
+  - HIPAA S29 - Business Associate Contracts and Other Arrangements - § 164.308(b)(1)
+  - HIPAA S31 - Facility Access Controls - § 164.310(a)(1)
+  - HIPAA S32 - Facility Access Controls - Contingency Operations - § 164.310(a)(2)(i)
+  - HIPAA S33 - Facility Access Controls - Facility Security Plan - § 164.310(a)(2)(ii)
+  - HIPAA S34 - Facility Access Controls - Access Control and Validation Procedures - § 164.310(a)(2)(iii)
+  - HIPAA S35 - Facility Access Controls - Maintain Maintenance Records - § 164.310(a)(2)(iv)
+  - HIPAA S39 - Device and Media Controls - Disposal - § 164.310(d)(2)(i)
+  - HIPAA S47 - Access Control - Encryption and Decryption - § 164.312(a)(2)(iv)
+  - MSBFS 2020:7 3 kap. 1 §
+  - MSBFS 2020:7 3 kap. 2 §
+  - MSBFS 2020:7 4 kap. 12 §
+  - MSBFS 2020:7 4 kap. 21 §
+  - HSLF-FS 2016:40 3 kap. 9 § Upphandling och utveckling
+  - HSLF-FS 2016:40 3 kap. 14 § Fysiskt skydd av informationssystem
+  - GDPR Art. 28 Processor
+  - NIST SP 800-171 3.13.16
 ---
+
 # Infrastructure Provider Audit
-
-!!!note
-    This section helps you implement ISO 27001, specifically:
-
-    * A.15 Supplier Relationships
 
 This page will help you do your due diligence and ensure you choose a Infrastructure Provider that provides a solid foundation for Compliant Kubernetes and your application.
 [Elastisys](https://elastisys.com) regularly uses this template to validate cloud partners, as required for ISO 27001 certification.
@@ -38,10 +35,10 @@ Failing to due your due diligence will end up in [security theatre](https://en.w
 
 The remainder of this page contains open questions that you should ask your Infrastructure Provider. Notice the following:
 
-* Make sure you ask open questions and note down the answers. Burden of proof lies with the provider that they do an excellent job with protecting data.
-* Ask all questions, then evaluate the provider's suitability. It is unlikely that you'll find the perfect provider, but you'll likely find one that is sufficient for your present and future needs.
-* The least expected the answer, the more "digging" is needed.
-* "You" represents the Infrastructure Provider and "I" represents the Compliant Kubernetes administrator.
+- Make sure you ask open questions and note down the answers. Burden of proof lies with the provider that they do an excellent job with protecting data.
+- Ask all questions, then evaluate the provider's suitability. It is unlikely that you'll find the perfect provider, but you'll likely find one that is sufficient for your present and future needs.
+- The least expected the answer, the more "digging" is needed.
+- "You" represents the Infrastructure Provider and "I" represents the Compliant Kubernetes administrator.
 
 ## Technical Capability Questionnaire
 
@@ -58,6 +55,7 @@ The remainder of this page contains open questions that you should ask your Infr
     1. Can IAM be configured via API? Can IAM be configured via Terraform?
     1. Can one single user be given access to multiple projects?
 1. Infrastructure-aaS:
+
     1. Which IaaS engine do you use? (e.g., OpenStack, VMware, proprietary)
     1. Do you have a Terraform provider for your API?
     1. Do you have pre-uploaded Ubuntu images? Which?
@@ -69,9 +67,11 @@ The remainder of this page contains open questions that you should ask your Infr
         1. Can I reserve VMs? How do you bill for reserved but unused VMs?
         1. What technical implementation do you recommend? E.g., pause/unpause VMs, stop/start VMs, terminate/recreate VMs.
     1. Do you support anti-affinity?
+        1. If yes, what is the maximum number of VMs which can be part of an anti-affinity group?
         1. If not, how can we ensure that VMs don't end up on the same physical servers?
 
 1. Storage capabilities:
+
     1. Do you offer Object Storage as a Service (OSaaS)?
         1. Can I use the object storage via an S3-compatible API?
         1. Can I create buckets via API?
@@ -88,6 +88,7 @@ The remainder of this page contains open questions that you should ask your Infr
         1. [For NFS] How did you configure [User ID Mapping](https://linux.die.net/man/5/exports#:~:text=User%20ID%20Mapping), specifically `root_squash`, `no_root_squash`, `all_squash`, `anonuid` and `anongid`? Mapping the root UID to values typically used by containers, e.g., 1000, will lead to permission denied errors. For example, OpenSearch's init containers do `chown 1000` which fails with `squash_root` and `anonuid=1000`.
         1. Is BSaaS stretched across zones?
         1. Is block storage replicated across zones?
+        1. Does the CSI driver support the Snapshot feature? This is needed for more consistent Velero backups.
     1. Do you offer encryption-at-rest?
         1. Encrypted object storage: Do you offer this by default?
         1. Encrypted block storage: Do you offer this by default?
@@ -95,6 +96,7 @@ The remainder of this page contains open questions that you should ask your Infr
         1. If not, how do you dispose of media potentially containing personal data (e.g., hard drivers, backup tapes)?
 
 1. Networking capabilities:
+
     1. Can the VMs be set up on a private network? Do you have a Terraform provider for your API?
         1. Is your private network stretched across zones?
         1. Do you trust the network between your data centers?
@@ -102,6 +104,7 @@ The remainder of this page contains open questions that you should ask your Infr
             1. The default Docker network (`172.17.0.0/16`)?
             1. The [default Kubernetes Service network](https://github.com/kubernetes-sigs/kubespray/blob/v2.18.0/inventory/sample/group_vars/k8s_cluster/k8s-cluster.yml#L73) (`10.233.0.0/18`)?
             1. The [default Kubernetes Pod network](https://github.com/kubernetes-sigs/kubespray/blob/v2.18.0/inventory/sample/group_vars/k8s_cluster/k8s-cluster.yml#L78) (`10.233.64.0/18`)?
+        1. How can we peer private networks across projects?
     1. Firewall-aaS
         1. Are Firewall-aaS available?
         1. What API? (e.g., OpenStack, VMware)
@@ -111,15 +114,15 @@ The remainder of this page contains open questions that you should ask your Infr
         1. Do you have a Terraform provider for your API?
         1. Can I use a [cloud-controller](https://kubernetes.io/docs/concepts/architecture/cloud-controller/) for automatic creation of [external LoadBalancers](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)?
         1. Can I set up a LB across zones? Via API?
-        1. Can VMs see themselves via the LB's IP? (If not, then VMs need a minor [fix](https://github.com/kubernetes-sigs/kubespray/blob/release-2.18/contrib/terraform/exoscale/modules/kubernetes-cluster/templates/cloud-init.tmpl#L29).)
-        1. Do your LBs preserve source IPs? Usually, this involves clever [DNAT](https://en.wikipedia.org/wiki/Network_address_translation#DNAT) or [PROXY protocol support](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt).
+        1. Can VMs see themselves via the load-balancers's IP address? (If not, then VMs need a minor [fix](https://github.com/kubernetes-sigs/kubespray/blob/release-2.18/contrib/terraform/exoscale/modules/kubernetes-cluster/templates/cloud-init.tmpl#L29).)
+        1. Do your LBs preserve source IP addresses? Usually, this involves clever [DNAT](https://en.wikipedia.org/wiki/Network_address_translation#DNAT) or [PROXY protocol support](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt).
     1. Do you offer IPv6 support? By default?
     1. Do you offer DNS as a Service? Which API?
 
 1. Network security:
     1. Do you allow NTP (UDP port 123) for clock synchronization to the Internet?
         1. If not, do you have a private NTP server?
-    1. Do you allow ACME (TCP port 80) for automated certificate provisioning via [LetsEncrypt](https://letsencrypt.org/)?
+    1. Do you allow ACME (TCP port 80) for automated certificate provisioning via [Let's Encrypt](https://letsencrypt.org/)?
         1. If not, how will you provision certificates?
 
 ## Organizational capabilities
@@ -148,7 +151,7 @@ The remainder of this page contains open questions that you should ask your Infr
     1. What is your measured uptime?
     1. Do you have a public status page?
 1. How do you handle access control?
-1. Does your operation team have individual accounts? How do you handle team member onboarding / offboarding?
+1. Does your operation team have individual accounts? How do you handle team member on-boarding / off-boarding?
 1. How do you communicate credentials to your customers?
 1. Do you have audit logs?
     1. How long do you store audit logs? Who has access to them? How are they protected against disclosure and tampering?
@@ -163,8 +166,13 @@ The remainder of this page contains open questions that you should ask your Infr
     1. Can your colocation provider replace hard drives, memory, etc.?
     1. Can your colocation provider move, restart or otherwise handle the servers?
     1. Does your colocation provider provide additional services beyond physical facilities as well as electricity and Internet?
-1. When did you perform the last penetration test?
-    1. Can you share anything about the major findings and how you resolved them?
+1. When did you perform the last penetration test? 1. Can you share anything about the major findings and how you resolved them?
+
+!!! elastisys-self-managed "For Elastisys Self-Managed Customers"
+
+    Feel free to skip the questions below.
+    They are designed for our [Managed Service](https://elastisys.com/managed-services/) and might not be relevant for you.
+    We share them here for the sake of full transparency.
 
 ## Legal issues
 
@@ -190,7 +198,7 @@ The remainder of this page contains open questions that you should ask your Infr
 ## Environment Management
 
 1. What environmental policies and certifications do you have?
-1. What energy sources are your datacenters using?
+1. What energy sources are your data-centers using?
 1. How do you work to become more energy efficient?
 1. How do you recycle used/old equipment?
 1. Do you do any form of environmental compensation activities?

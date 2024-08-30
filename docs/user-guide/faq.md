@@ -1,8 +1,10 @@
 ---
 description: FAQ for Application Developers on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+search:
+  boost: 2
 tags:
-- HIPAA S47 - Access Control - Encryption and Decryption - § 164.312(a)(2)(iv)
-- MSBFS 2020:7 4 kap. 7 §
+  - HIPAA S47 - Access Control - Encryption and Decryption - § 164.312(a)(2)(iv)
+  - MSBFS 2020:7 4 kap. 7 §
 ---
 
 # Application Developer FAQ
@@ -18,9 +20,9 @@ See [this document][harbor-oidc-docker] for how to use OIDC with docker.
 With that in place, you will need to create a NetworkPolicy for the Pod you want to run.
 Here is an example of how to create a NetworkPolicy that allows all TCP traffic (in and out) for Pods with the label `run: blah`.
 
-!!!note
-    This is just an example, not a good idea!
-    You should limit the policy to whatever your application really needs.
+> [!NOTE]
+> This is just an example, not a good idea!
+> You should limit the policy to whatever your application really needs.
 
 ```bash
 kubectl apply -f - <<EOF
@@ -55,13 +57,12 @@ kubectl run blah --rm -ti --image=$MY_HARBOR_IMAGE
 
 If your image runs as root by defaults, but can handle running as another user, you may override the user by adding a flag like this to the above command:
 
-```
+```bash
 --overrides='{ "spec": { "securityContext": "runAsUser": 1000, "runAsGroup": 1000 } }'
 ```
 
 [harbor-oidc-docker]: https://goharbor.io/docs/1.10/administration/configure-authentication/oidc-auth/#using-oidc-from-the-docker-or-helm-cli
-[docker-user]: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
-
+[docker-user]: https://docs.docker.com/develop/develop-images/instructions/#user
 
 ## How do I give access to a new Application Developer to a Compliant Kubernetes environment?
 
@@ -87,6 +88,7 @@ Port 8000 is the only allowed port for OpenID callback URL and is needed by the 
 ## "Connection reset by peer" when port-forwarding to postgres?
 
 You may have seen this error when port-forwarding to postgres:
+
 ```console
 Forwarding from 127.0.0.1:5432 -> 5432
 Forwarding from [::1]:5432 -> 5432
@@ -103,11 +105,12 @@ You have two options to resolve this issue:
     - Traffic between kubectl and the Kubernetes API is encrypted.
     - In-cluster network is trusted.
 
-2. A workaround for the issue is to use an older version of `kubectl` when making this request, specifically `v1.21.14` or lower.
+1. A workaround for the issue is to use an older version of `kubectl` when making this request, specifically `v1.21.14` or lower.
 
     To avoid always using an old `kubectl` version, you can give the binary another name when downloading the `v1.21.14` version, e.g. `kubectl-1.21`. This way your normal `kubectl` binary can be kept up to date.
 
     Then use that specific binary when making the port-forward request:
+
     ```bash
     kubectl-1.21 -n $NAMESPACE port-forward svc/$USER_ACCESS 5432
     ```
@@ -153,9 +156,19 @@ Get in touch with your administrator to check the status. They are responsible f
 Preview features are assessed to have a higher residual risk than commonly accepted by Customers.
 Residual risks include, but are not limited to:
 
-* risk of downtime;
-* risk of the feature becoming unavailable in the future;
-* risk of data loss.
+- risk of downtime;
+- risk of the feature becoming unavailable in the future;
+- risk of data loss.
 
 The risks are usually due to novelty of the feature or uncertainties in the open-source ecosystem.
 By using Preview Features, the Customer accepts these additional risks.
+
+## Why are my Grafana dashboards not working?
+
+Sometimes when increasing the amount of metrics emitted to Prometheus, or selecting a larger time frame for your dashboards, they might stop working and show errors similar to `"Status: 504. Timeout exceeded while awaiting headers"`. This is likely due to the Grafana pods running OOM (Out Of Memory). Fetching a larger volume of data requires more memory for the Grafana pods to temporarily store that data for processing and visualization.
+
+If you are facing this issue, you can:
+
+- See if you can optimize your dashboard queries, making sure you aren't fetching big volumes of data that doesn't necessarily need to be monitored.
+- Lower the time frame for the dashboard, visualizing smaller intervals of the metrics.
+- Contact your Platform Administrators and get them to increase the memory limits of Grafana or if your a Managed services customer, send us a ticket to increase the limit. As Grafana doesn't live in the workload cluster, it won’t use any resources associated with your applications.

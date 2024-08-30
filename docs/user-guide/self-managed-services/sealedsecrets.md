@@ -1,5 +1,8 @@
-SealedSecrets (self-managed)
-===========
+---
+search:
+  boost: 2
+---
+# SealedSecrets (self-managed)
 
 {%
    include-markdown './_common.include'
@@ -17,14 +20,14 @@ This page will help you to install [Sealed Secrets](https://github.com/bitnami-l
 
 This guide is a complement to [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets/tree/v0.24.2) own documentation.
 
-# Preparation
+## Preparation
 
 The self-managed cluster-wide resources feature adds specific Roles, ServiceAccounts, etc. for you.
 This enables you to install and manage the resources that Sealed Secrets needs.
 These pre-installed resources are propagated via HNC from your root Namespace ([recall the documentation of this feature](../namespaces.md)).
 
-First create a new Namespace using HNC, using the snippet below.
-If you do not know which root namespace you should use, ask your platform administrator.
+First create a new namespace using HNC, using the snippet below.
+If you do not know which root namespace you should use, ask your Platform Administrator.
 
 ```yaml
 apiVersion: hnc.x-k8s.io/v1alpha2
@@ -37,6 +40,7 @@ metadata:
 ## Install Sealed Secrets
 
 !!! Note "Supported versions"
+
     This installation guide has been tested with Sealed Secrets version [0.24.2](https://github.com/bitnami-labs/sealed-secrets/tree/release/v0.24.2) and Helm Chart version [2.13.1](https://github.com/bitnami-labs/sealed-secrets/tree/helm-v2.13.1/helm/sealed-secrets).
 
 Sealed Secrets have a section in their documentation about installing Sealed Secrets into a [restricted environment](https://github.com/bitnami-labs/sealed-secrets/tree/v0.24.2#helm-chart-on-a-restricted-environment), where they give a `config.yaml` that defines what should be installed.
@@ -62,9 +66,10 @@ resources:
 ```
 
 !!! important
-    Add the namespaces that should support creation of SealedSecrets to the `additionalNamespaces` list. If this list is empty the SealedSecrets controller will output an error when attempting to create a SealedSecret as it attempts to get secrets at cluster level.
 
-You are now ready to install Sealed Secrets
+    Add the namespaces that should support creation of SealedSecrets to the `additionalNamespaces` list. If this list is empty the SealedSecrets controller will output an error when attempting to create a SealedSecret as it attempts to get Secrets at cluster level.
+
+You are now ready to install Sealed Secrets:
 
 ```console
 helm repo add sealed-secrets https://bitnami-labs.github.io/sealed-secrets
@@ -72,6 +77,7 @@ helm upgrade --install sealed-secrets -n sealed-secrets --version 2.13.1 sealed-
 ```
 
 !!! Note "Note about `kubeseal`"
+
     The Sealed Secrets cli tool `kubeseal` expects the controller to be installed in the namespace `kube-system`.
     However the controller is installed in the namespace `sealed-secrets`.
     As such you need to follow this [guide](https://github.com/bitnami-labs/sealed-secrets/tree/release/v0.24.2#how-to-use-kubeseal-if-the-controller-is-not-running-within-the-kube-system-namespace) to use `kubeseal`
@@ -81,6 +87,5 @@ helm upgrade --install sealed-secrets -n sealed-secrets --version 2.13.1 sealed-
 Please refer to the official documentation how to operate and use Sealed Secrets.
 
 - [Documentation](https://github.com/bitnami-labs/sealed-secrets/tree/release/v0.24.2#usage)
-- [Tutorials](https://docs.bitnami.com/tutorials/sealed-secrets)
 - [Crypto](https://github.com/bitnami-labs/sealed-secrets/blob/release/v0.24.2/docs/developer/crypto.md)
 - [SealedSecrets with Elastisys Managed Argo CD](../additional-services/argocd.md#with-sealedsecrets)

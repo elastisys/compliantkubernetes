@@ -1,26 +1,27 @@
-# Troubleshooting Tools
+# Troubleshooting for Platform Administrators
 
-!!! elastisys-self-managed "For Elastisys Self-Managed Customers"
-    Please start by running [these commands](#i-have-no-clue-where-to-start).
-
-    If you are struggling, don't hesitate to [file a ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
-    Please send us your terminal in a text format.
-    We need to look both at the commands you typed and their output.
+{%
+    include "./common.md"
+    start="<!--for-sme-customers-start-->"
+    end="<!--for-sme-customers-end-->"
+%}
 
 Help! Something is wrong with my Compliant Kubernetes cluster. Fear no more, this guide will help you make sense.
 
 This guide assumes that:
 
-* You have [pre-requisites](getting-started.md) installed.
-* Your environment variables, in particular `CK8S_CONFIG_PATH` is set, and `CLUSTER` set to either `sc` or `wc`.
-* Your config folder is available.
-* `compliantkubernetes-apps` and `compliantkubernetes-kubespray` is available.
+- You have [pre-requisites](getting-started.md) installed.
+- Your environment variables, in particular `CK8S_CONFIG_PATH` is set, and `CLUSTER` set to either `sc` or `wc`.
+- Your config folder is available.
+- `compliantkubernetes-apps` and `compliantkubernetes-kubespray` is available.
 
 !!!important
+
     `./bin/ck8s` references the `compliantkubernetes-apps` CLI
     `./bin/ck8s-kubespray` references the `compliantkubernetes-kubespray` CLI
 
 !!!important
+
     For some of the ansible commands below, you might require root privileges. To run commands as a privileged user with ansible, use the `--become, -b` flag.
 
     Example:
@@ -114,7 +115,8 @@ export CK8S_KUBESPRAY_PATH=/path/to/compliantkubernetes-kubespray
 ./bin/ck8s ops kubectl $CLUSTER -n rook-ceph apply -f $CK8S_KUBESPRAY_PATH/rook/toolbox-deploy.yaml
 ```
 
-Once the pod is Ready run:
+Once the Pod is Ready run:
+
 ```bash
 ./bin/ck8s ops kubectl $CLUSTER -n rook-ceph exec deploy/rook-ceph-tools -- ceph status
 ```
@@ -169,12 +171,14 @@ ansible-inventory -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini --list 
 
 `ansible_host` is usually the public IP, while `ip` is usually the private IP.
 
-## Node cannot be access via SSH
+## Node cannot be accessed via SSH
 
 !!!important
+
     Make sure it is "not you". Are you well connected to the VPN? Is this the only Node which lost SSH access?
 
 !!!important
+
     If you are using Rook, it is usually set up with replication 2, which means it can tolerate **one** restarting Node. Make sure that, either Rook is healthy or that you are really sure you are restarting the right Node.
 
 Try connecting to the unhealthy Node via a different Node and internal IP:
@@ -220,6 +224,7 @@ For reminder, NTP works over UDP port 123.
 ## Node seems not fine
 
 !!!important
+
     If you are using Rook, it is usually set up with replication 2, which means it can tolerate **one** restarting Node. Make sure that, either Rook is healthy or that you are really sure you are restarting the right Node.
 
 Try rebooting the Node:
@@ -232,11 +237,11 @@ ssh ubuntu@$UNHEALTHY_NODE sudo reboot
 
 If using Rook make sure its health goes back to `HEALTH_OK`.
 
-## Node seems really not fine. I want a new one.
+## Node seems really not fine. I want a new one
 
 Is it 2AM? Do not replace Nodes, instead simply add a new one. You might run out of capacity, you might lose redundancy, you might replace the wrong Node. Prefer to add a Node and see if that solves the problem.
 
-## Okay, I want to add a new Node.
+## Okay, I want to add a new Node
 
 Prefer this option if you "quickly" need to add CPU, memory or storage (i.e., Rook) capacity.
 
@@ -244,38 +249,44 @@ First, check for infrastructure drift, as shown [here](#how-do-i-check-if-infras
 
 Depending on your provider:
 If the infrastructure is not managed by terraform you can skip to step 3:
+
 1. Add a new Node by editing the `*.tfvars`.
-2. Re-apply Terraform.
-3. Add the new node to the `inventory.ini` (skip this step if the cluster is using a dynamic inventory).
-4. Re-apply Kubespray only for the new node.
-```bash
-cd [compliantkubernetes-kubespray-root-dir]
+1. Re-apply Terraform.
+1. Add the new node to the `inventory.ini` (skip this step if the cluster is using a dynamic inventory).
+1. Re-apply Kubespray only for the new node.
 
-CLUSTER=[sc | wc]
+    ```bash
+    cd [compliantkubernetes-kubespray-root-dir]
 
-./bin/ck8s-kubespray run-playbook $CLUSTER facts.yml
-./bin/ck8s-kubespray run-playbook $CLUSTER scale.yml -b --limit=[new_node_name]
-```
-5. Add ssh keys to the new node if necessary
-```bash
-./bin/ck8s-kubespray apply-ssh $CLUSTER --limit=[new_node_name]
-```
-6. Update network policies
-```bash
-cd [compliatkubernetes-apps-root-dir]
+    CLUSTER=[sc | wc]
 
-./bin/ck8s update-ips sc update
-./bin/ck8s update-ips wc update
+    ./bin/ck8s-kubespray run-playbook $CLUSTER facts.yml
+    ./bin/ck8s-kubespray run-playbook $CLUSTER scale.yml -b --limit=[new_node_name]
+    ```
 
-./bin/ck8s ops helmfile sc -l app=common-np -i apply
-./bin/ck8s ops helmfile wc -l app=common-np -i apply
+1. Add ssh keys to the new node if necessary
 
-./bin/ck8s ops helmfile sc -l app=service-cluster-np -i apply
-# or
-./bin/ck8s ops helmfile wc -l app=workload-cluster-np -i apply
-```
+    ```bash
+    ./bin/ck8s-kubespray apply-ssh $CLUSTER --limit=[new_node_name]
+    ```
 
-Check that the new Node joined the cluster, as shown [here](#are-the-kubernetes-clusters-doing-fine).
+1. Update Network Policies
+
+    ```bash
+    cd [compliatkubernetes-apps-root-dir]
+
+    ./bin/ck8s update-ips sc update
+    ./bin/ck8s update-ips wc update
+
+    ./bin/ck8s ops helmfile sc -l app=common-np -i apply
+    ./bin/ck8s ops helmfile wc -l app=common-np -i apply
+
+    ./bin/ck8s ops helmfile sc -l app=service-cluster-np -i apply
+    # or
+    ./bin/ck8s ops helmfile wc -l app=workload-cluster-np -i apply
+    ```
+
+    Check that the new Node joined the cluster, as shown [here](#are-the-kubernetes-clusters-doing-fine).
 
 ## A systemd unit failed
 
@@ -298,10 +309,11 @@ journalctl --unit $FAILED_UNIT
 
 Please check the following upstream documents:
 
-* [Rook Common Issues](https://github.com/rook/rook/blob/master/Documentation/Troubleshooting/common-issues.md)
-* [Ceph Common Issues](https://github.com/rook/rook/blob/master/Documentation/Troubleshooting/ceph-common-issues.md)
+- [Rook Common Issues](https://github.com/rook/rook/blob/master/Documentation/Troubleshooting/common-issues.md)
+- [Ceph Common Issues](https://github.com/rook/rook/blob/master/Documentation/Troubleshooting/ceph-common-issues.md)
 
 ## Pod seems not fine
+
 Make sure you are on the **right** cluster:
 
 ```bash
@@ -326,7 +338,7 @@ Gather some "evidence" for later diagnostics, when the heat is over:
 ./bin/ck8s ops kubectl $CLUSTER logs -n $UNHEALTHY_POD_NAMESPACE $UNHEALTHY_POD
 ```
 
-Try to kill  and check if the underlying Deployment, StatefulSet or DaemonSet will restart it:
+Try to kill and check if the underlying Deployment, StatefulSet or DaemonSet will restart it:
 
 ```bash
 ./bin/ck8s ops kubectl $CLUSTER delete pod -n $UNHEALTHY_POD_NAMESPACE $UNHEALTHY_POD
@@ -334,6 +346,7 @@ Try to kill  and check if the underlying Deployment, StatefulSet or DaemonSet wi
 ```
 
 ## Helm Release is `failed`
+
 Make sure you are on the **right** cluster:
 
 ```bash
@@ -342,6 +355,7 @@ echo $CLUSTER
 ```
 
 Find the failed Release:
+
 ```bash
 ./bin/ck8s ops helm $CLUSTER ls --all-namespaces --all
 
@@ -352,6 +366,7 @@ FAILED_RELEASE_NAMESPACE=kube-system
 Just to make sure, do a drift check, as shown [here](#how-do-i-check-if-apps-drifted-due-to-manual-intervention).
 
 Remove the failed Release:
+
 ```bash
 ./bin/ck8s ops helm $CLUSTER uninstall -n $FAILED_RELEASE_NAMESPACE $FAILED_RELEASE
 ```
@@ -362,8 +377,8 @@ Re-apply `apps` according to documentation.
 
 Follow cert-manager's troubleshooting, specifically:
 
-* [Troubleshooting](https://cert-manager.io/docs/troubleshooting/)
-* [Troubleshooting Issuing ACME Certificates](https://cert-manager.io/docs/troubleshooting/acme/)
+- [Troubleshooting](https://cert-manager.io/docs/troubleshooting/)
+- [Troubleshooting Issuing ACME Certificates](https://cert-manager.io/docs/troubleshooting/acme/)
 
 ### Failed to perform self check: no such host
 
@@ -437,11 +452,13 @@ First try to delete the backup
 ```
 
 Then kill all the pods under the velero namespace
+
 ```bash
 ./bin/ck8s ops kubectl wc delete pods -n velero --all
 ```
 
 Check that the backup is gone
+
 ```bash
 velero backup get
 
@@ -456,6 +473,7 @@ velero backup create --from-schedule velero-daily-backup
 ```
 
 ## How do I use `kubectl` and `helm` directly?
+
 This guide makes heavy use of the `compliantkubernetes-apps` CLI to access and control Compliant Kubernetes clusters. However, you can use `kubectl` and `helm` directly, by exporting a `KUBECONFIG` like so:
 
 ```bash

@@ -1,21 +1,25 @@
 ---
 tags:
-- HIPAA S13 - Information Access Management - Access Authorization - § 164.308(a)(4)(ii)(B)
-- HIPAA S14 - Information Access Management - Access Establishment and Modification - § 164.308(a)(4)(ii)(C)
-- HIPAA S43 - Access Control - § 164.312(a)(1)
-- HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
-- MSBFS 2020:7 4 kap. 3 §
-- MSBFS 2020:7 4 kap. 4 §
-- HSLF-FS 2016:40 4 kap. 3 § Styrning av behörigheter
+  - HIPAA S13 - Information Access Management - Access Authorization - § 164.308(a)(4)(ii)(B)
+  - HIPAA S14 - Information Access Management - Access Establishment and Modification - § 164.308(a)(4)(ii)(C)
+  - HIPAA S43 - Access Control - § 164.312(a)(1)
+  - HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
+  - MSBFS 2020:7 4 kap. 3 §
+  - MSBFS 2020:7 4 kap. 4 §
+  - HSLF-FS 2016:40 4 kap. 3 § Styrning av behörigheter
 ---
+
 # Access control
+
+## Group claims
 
 This guide describes how to set up and make use of group claims for applications.
 
 !!!note
+
     This guide assumes your group claim name is `groups`
 
-## Kubernetes
+### Kubernetes
 
 To set up [kubelogin](https://github.com/int128/kubelogin) to fetch and use groups make sure that your kubeconfig looks something like this.
 
@@ -36,6 +40,7 @@ users:
 ```
 
 !!!tips
+
     Your token can be found in `~/.kube/cache/oidc-login/`.
     This is useful if you're trying to debug your claims since you can just paste the token to [jwt.io](https://jwt.io) and check it.
 
@@ -56,9 +61,10 @@ users:
 
     Copy the token to [jwt.io](https://jwt.io) and ensure that the payload includes the expected groups claim.
 
-## OpenSearch
+### OpenSearch
 
 To enable OpenSearch to use the groups for OpenSearch Dashboards access.
+
 ```yaml
 opensearch:
   sso:
@@ -74,7 +80,7 @@ opensearch:
           - my-group-name
 ```
 
-## Harbor
+### Harbor
 
 Set correct group claim name since the default scopes includes groups already.
 This groups can be assigned to projects or as admin group.
@@ -86,15 +92,13 @@ harbor:
 ```
 
 !!!note
+
     When OIDC (e.g. DeX) is enabled we cannot create static users using the Harbor web interface. But when anyone logs in via DeX they automatically get a user and we can promote that user to admin.
     Once there is one admin, they can set specific permissions for other users (there should be at least a few users promoted to admins).
 
-## Grafana
+### Grafana
 
-!!!note
-    This section assumes that [elastisys/compliantkubernetes-apps/pull/450](https://github.com/elastisys/compliantkubernetes-apps/pull/450) is merged
-
-### OPS Grafana
+#### OPS Grafana
 
 ```yaml
 prometheus:
@@ -110,7 +114,7 @@ prometheus:
         - my-domain.com
 ```
 
-### User Grafana
+#### User Grafana
 
 ```yaml
 user:
@@ -124,3 +128,75 @@ user:
       grafanaEditor: my-editor-group
       grafanaViewer: my-viewer-group
 ```
+
+## Users onboarding
+
+This describes how to configure Compliant Kubernetes with the Application Developers who should be OpenSearch, Grafana or Harbor Administrators.
+
+### OpenSearch
+
+This is configured via `sc-config.yaml`
+
+```yaml
+opensearch:
+  extraRoleMappings:
+    # Application developer access
+    - mapping_name: kibana_user
+      definition:
+        users:
+          - user@domain.tld
+    # Extra permissions for Application developer
+    - mapping_name: kubernetes_log_reader
+      definition:
+        users:
+          - user@domain.tld
+    - mapping_name: alerting_ack_alerts
+      definition:
+        users:
+          - user@domain.tld
+    - mapping_name: alerting_read_access
+      definition:
+        users:
+          - user@domain.tld
+    - mapping_name: alerting_full_access
+      definition:
+        users:
+          - user@domain.tld
+    # Administrator access
+    - mapping_name: all_access
+      definition:
+        users:
+          - user@domain.tld
+        backend_roles:
+          - group@domain.tld
+```
+
+### Grafana
+
+1. Application Developer logs in to Grafana via OpenID
+
+1. Administrator logs in to Grafana via static admin user.
+
+    !!!note
+
+        To get the static admin username and password you need to have access to the SC cluster and then run
+
+        `kubectl get secret user-grafana -n monitoring -o json | jq '.data | map_values(@base64d)'`
+
+1. Administrator promotes the OpenID user to Grafana admin at `grafana.domain.tld/admin/users`
+
+### Harbor
+
+1. Application Developer logs in to Harbor via OpenID
+
+1. Administrator logs in to Harbor via static admin user.
+
+    !!!note
+
+        To get the static admin username and password you need to have access to the SC cluster and then run
+
+        `kubectl get secret harbor-init-secret -n harbor -o json | jq '.data."harbor-password"'`
+
+        Username is: admin
+
+1. Administrator promotes the OpenID user to Harbor admin at `grafana.domain.tld/harbor/users`

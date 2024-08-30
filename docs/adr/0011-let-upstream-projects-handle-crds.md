@@ -1,8 +1,8 @@
-# Let upstream projects handle CRDs
+# [Superseded by [ADR-0046](0046-handle-crds.md)] Let upstream projects handle CRDs
 
-* Status: accepted
-* Deciders: Compliant Kubernetes Arch Meeting
-* Date: 2021-04-29
+- Status: superseded by [ADR-0046](0046-handle-crds.md)
+- Deciders: Compliant Kubernetes Arch Meeting
+- Date: 2021-04-29
 
 Technical Story: [#446](https://github.com/elastisys/compliantkubernetes-apps/pull/446) [#369](https://github.com/elastisys/compliantkubernetes-apps/issues/369) [#391](https://github.com/elastisys/compliantkubernetes-apps/issues/391) [#402](https://github.com/elastisys/compliantkubernetes-apps/issues/402) [#436](https://github.com/elastisys/compliantkubernetes-apps/pull/436).
 
@@ -14,13 +14,13 @@ How should we handle CRDs?
 
 ## Decision Drivers
 
-* CRDs add complexity and need to be treated specially.
-* Generally need to “trim fat” and rely on upstream.
+- CRDs add complexity and need to be treated specially.
+- Generally need to “trim fat” and rely on upstream.
 
 ## Considered Options
 
-* Install and upgrade CRDs as part of the bootstrap step, which is a Helm 2 legacy.
-* Rely on whatever mechanism is proposed by upstream Helm Charts.
+- Install and upgrade CRDs as part of the bootstrap step, which is a Helm 2 legacy.
+- Rely on whatever mechanism is proposed by upstream Helm Charts.
 
 ## Decision Outcome
 
@@ -30,18 +30,18 @@ At installation, rely on upstream's approach to install CRDs (see below). At upg
 
 Since we "vendor in" all Charts, CRDs can be discovered using:
 
-```
+```sh
 grep -R 'kind: CustomResourceDefinition'
 ```
 
 ### Positive Consequences
 
-* Less astonishing, compared to installing Chart "by hand".
-* Less maintenance, i.e., there is only one source of truth for CRDs.
+- Less astonishing, compared to installing Chart "by hand".
+- Less maintenance, i.e., there is only one source of truth for CRDs.
 
 ### Negative Consequences
 
-* None really.
+- None really.
 
 ## Detailed Audit
 
@@ -53,24 +53,24 @@ A detailed analysis is listed below:
 
 ### cert-manager
 
-* Installation: The cert-manager Helm Chart includes the [`installCRDs`](https://github.com/cert-manager/cert-manager/blob/master/deploy/charts/cert-manager/values.yaml#L42) value -- by default it is set to `false`. If set to `true`, then CRDs are automatically installed when installing cert-manager, albeit not using the CRDs mechanism provided by Helm.
-* Upgrade: CRDs are supposed to be [upgraded manually](https://cert-manager.io/docs/installation/upgrade/#upgrading-with-helm).
+- Installation: The cert-manager Helm Chart includes the [`installCRDs`](https://github.com/cert-manager/cert-manager/blob/master/deploy/charts/cert-manager/values.yaml#L42) value -- by default it is set to `false`. If set to `true`, then CRDs are automatically installed when installing cert-manager, albeit not using the CRDs mechanism provided by Helm.
+- Upgrade: CRDs are supposed to be [upgraded manually](https://cert-manager.io/docs/installation/upgrade/#upgrading-with-helm).
 
-### dex
+### Dex
 
 Dex can be configured without CRDs. [ADR-0012](https://github.com/elastisys/compliantkubernetes/pull/134) argues for that approach.
 
 ### gatekeeper
 
-* Installation: Gatekeeper installs CRDs using the [mechanism provided by Helm](https://github.com/open-policy-agent/gatekeeper/tree/master/charts/gatekeeper/crds).
-* Upgrade: Gatekeeper wants you to either uninstall-install or run a [helm_migrate.sh](https://github.com/open-policy-agent/gatekeeper/tree/master/charts/gatekeeper#upgrade-chart).
+- Installation: Gatekeeper installs CRDs using the [mechanism provided by Helm](https://github.com/open-policy-agent/gatekeeper/tree/master/charts/gatekeeper/crds).
+- Upgrade: Gatekeeper wants you to either uninstall-install or run a [helm_migrate.sh](https://github.com/open-policy-agent/gatekeeper/tree/master/charts/gatekeeper#upgrade-chart).
 
 ### Prometheus (kube-prometheus-stack)
 
-* Installation: kube-prometheus-stack installs CRDs using [standard Helm mechanism](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack).
-* Upgrade: kube-prometheus-stack expects you to [run manual upgrade steps](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack#from-14x-to-15x).
+- Installation: kube-prometheus-stack installs CRDs using [standard Helm mechanism](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack).
+- Upgrade: kube-prometheus-stack expects you to [run manual upgrade steps](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack#from-14x-to-15x).
 
 ### Velero
 
-* Installation: Velero install CRDs using [standard Helm mechanism](https://github.com/vmware-tanzu/helm-charts/tree/main/charts/velero/crds).
-* Upgrade: Velero includes [magic to upgrade CRDs](https://github.com/vmware-tanzu/helm-charts/tree/main/charts/velero/templates/upgrade-crds).
+- Installation: Velero install CRDs using [standard Helm mechanism](https://github.com/vmware-tanzu/helm-charts/tree/main/charts/velero/crds).
+- Upgrade: Velero includes [magic to upgrade CRDs](https://github.com/vmware-tanzu/helm-charts/tree/main/charts/velero/templates/upgrade-crds).

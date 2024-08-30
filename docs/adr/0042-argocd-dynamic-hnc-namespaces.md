@@ -1,8 +1,8 @@
 # ArgoCD with dynamic HNC namespaces
 
-* Status: accepted
-* Deciders: product owner, DX, GoTo
-* Date: 2023-05-23
+- Status: accepted
+- Deciders: product owner, DX, GoTo
+- Date: 2023-05-23
 
 ## Context and Problem Statement
 
@@ -32,26 +32,26 @@ If yes, how?
     - Bad, because this will not give customers a smooth GitOps experience.
     - Bad, because it makes it hard to use ApplicationSets to dynamically create Applications on new namespaces.
 
-2. Use OPA to restrict operations on our namespaces and give customers the ability to create/delete namespaces?
+1. Use OPA to restrict operations on our namespaces and give customers the ability to create/delete namespaces?
 
     - Bad, because giving Application developers access to create/delete namespaces has been a no-go since the beginning of Compliant Kubernetes for various security reasons.
     - Bad, because building OPA policies to restrict operations on namespaces, would takes away from how community does things and makes it hard for us to pivot to new big changes in the future.
 
-3. To deploy all the Applications into one big namespace.
+1. To deploy all the Applications into one big namespace.
 
     - Bad, because proposing developers to deploy different versions of their components within the same namespace goes against the goal of achieving separation and isolation through namespaces.
 
-4. Sync Waves and Phases.
+1. Sync Waves and Phases.
 
     - We investigated this, but found that sync waves are not a solution in this case, as the reconciliation is failing at the comparison stage which happens before sync waves are executed.
 
-5. Test to see if ArgoCD accepts regex in cluster secret.
+1. Test to see if ArgoCD accepts regex in cluster secret.
 
     - We investigated this, but found that the secret does not accept wildcards or regex. See the open issue [here](https://github.com/argoproj/argo-cd/issues/10054#issue-1310861246).
 
-6. Setup Argo CD cluster-wide installation.
+1. Setup Argo CD cluster-wide installation.
 
-    - Bad, because cluster-wide installation would give Argo a lot of permissions and right now, there is no good solution to stop Argo from deploying applications into our system namespaces such as falco, gatekeeper-system, etc., assuming that one needs to use a wildcard as destinations in ArgoCD projects.
+    - Bad, because cluster-wide installation would give Argo a lot of permissions and right now, there is no good solution to stop Argo from deploying applications into our system namespaces such as Falco, gatekeeper-system, etc., assuming that one needs to use a wildcard as destinations in ArgoCD projects.
     - Bad, because even if Argo CD is installed cluster-wide, When ArgoCD syncs by kind, it does not prioritize subnamespaces first. See [here](https://github.com/argoproj/gitops-engine/blob/bc9ce5764fa306f58cf59199a94f6c968c775a2d/pkg/sync/sync_tasks.go#L27-L66).
     - Bad, because this would also require us to build a lot of OPA policies and later makes it hard to pivot to new ways.
 

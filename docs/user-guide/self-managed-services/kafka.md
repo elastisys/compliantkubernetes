@@ -1,5 +1,8 @@
-Kafka® (self-managed)
-===========
+---
+search:
+  boost: 2
+---
+# Kafka® (self-managed)
 
 {%
  include-markdown './_common.include'
@@ -15,32 +18,33 @@ Kafka® (self-managed)
 
 [Apache Kafka®](https://kafka.apache.org/) is an open-source distributed event streaming platform. To run an Apache Kafka® cluster on Kubernetes you can use an operator. This guide uses the [Strimzi Kafka Operator](https://github.com/strimzi/strimzi-kafka-operator).
 
-Strimzi is a [CNCF Sandbox project](https://www.cncf.io/projects/strimzi/)
+Strimzi is a [CNCF Sandbox project](https://www.cncf.io/projects/strimzi/).
 
-This page will show you how to install Strimzi Kafka Operator on Elastisys Compliant Kubernetes. You can configure the operator to watch a single or multiple Namespaces.
+This page will show you how to install Strimzi Kafka Operator on Elastisys Compliant Kubernetes. You can configure the operator to watch a single or multiple namespaces.
 
 !!! Note "Supported versions"
+
     This installation guide has been tested with Strimzi Kafka Operator version [0.38.0](https://github.com/strimzi/strimzi-kafka-operator/tree/0.38.0).
 
 ## Enable Self-Managed Kafka
 
 This guide depends on the [self-managed cluster resources](../../operator-manual/user-managed-crds.md) feature to be enabled. This is so Strimzi Kafka Operator gets the necessary CRDs and ClusterRoles installed.
 
-Strimzi Kafka Operator also requires the image repository `quay.io/strimzi` to be allowlisted. Ask your platform administrator to do this while enabling the self-managed cluster resources feature.
+Strimzi Kafka Operator also requires the image repository `quay.io/strimzi` to be allowlisted. Ask your Platform Administrator to do this while enabling the self-managed cluster resources feature.
 
 ## Setup CRDs and RBAC
 
 In Kubernetes you will need to:
 
-1. Install the required CRDs
+1. Install the required CRDs.
 
-2. Create a Namespace for Strimzi Kafka Operator.
+1. Create a namespace for Strimzi Kafka Operator.
 
-3. Create Roles/RoleBindings for Strimzi Kafka Operator.
+1. Create Roles/RoleBindings for Strimzi Kafka Operator.
 
-4. Create ServiceAccount and ConfigMap for Strimzi Kafka Operator.
+1. Create ServiceAccount and ConfigMap for Strimzi Kafka Operator.
 
-#### CRDs
+### CRDs
 
 You need to apply the Custom Resource Definitions (CRDs) required by Strimzi Kafka Operator. This is typically not allowed in a Compliant Kubernetes Environment, but with Kafka enabled with the self-managed cluster resources feature, this allows you to apply these yourself.
 
@@ -53,19 +57,19 @@ curl -L https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.38
 kubectl apply -f crds/kafka-crds.yaml
 ```
 
-#### Namespace
+### Namespace
 
-You need to create a Namespace where Strimzi Kafka Operator will work. This Namespace should be called `kafka`. Create this [sub-namespace](../namespaces.md) under eg. `production`.
+You need to create a namespace where Strimzi Kafka Operator will work. This namespace should be called `kafka`. Create this [sub-namespace](../namespaces.md) under e.g. `production`.
 
 `kubectl hns create -n production kafka`
 
-#### Roles and RoleBindings
+### Roles and RoleBindings
 
-You need to create the necessary Roles for Strimzi Kafka Operator to function. This needs to be done in every Namespace that you want Strimzi Kafka Operator to work in.
+You need to create the necessary Roles for Strimzi Kafka Operator to function. This needs to be done in every namespace that you want Strimzi Kafka Operator to work in.
 
-Since Compliant Kubernetes uses the Hierarchical Namespace Controller, the easiest way to achieve this is to place the Roles and RoleBindings in the parent Namespace where `kafka` was created from. By doing so, all Namespaces created under the same parent Namespace will inherit the Roles and RoleBindings.
+Since Compliant Kubernetes uses the Hierarchical Namespace Controller, the easiest way to achieve this is to place the Roles and RoleBindings in the parent namespace where `kafka` was created from. By doing so, all namespaces created under the same parent namespace will inherit the Roles and RoleBindings.
 
-If you have multiple Namespaces that ought to be targets for Strimzi Kafka Operator, you can add the Roles and RoleBindings to more than one "parent" Namespace. For instance, to `staging`, to get Strimzi Kafka Operator to work with the `staging` Namespace and any Namespace anchored to it.
+If you have multiple namespaces that ought to be targets for Strimzi Kafka Operator, you can add the Roles and RoleBindings to more than one "parent" namespace. For instance, to `staging`, to get Strimzi Kafka Operator to work with the `staging` namespace and any namespace anchored to it.
 
 ```bash
 mkdir roles
@@ -75,12 +79,12 @@ curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/u
 curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/user-guide/self-managed-services/kafka-files/roles/kafka-rolebinding.yaml > roles/kafka-rolebinding.yaml
 curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/user-guide/self-managed-services/kafka-files/roles/kustomization.yaml > roles/kustomization.yaml
 
-# If you created the Namespace kafka from another Namespace other than production, edit the Namespace in roles/kustomization.yaml
+# If you created the namespace kafka from another namespace other than production, edit the namespace in roles/kustomization.yaml
 
 kubectl apply -k roles
 ```
 
-#### ServiceAccount and ConfigMap
+### ServiceAccount and ConfigMap
 
 You need to create the ServiceAccount and ConfigMap that Strimzi Kafka Operator will use.
 
@@ -106,7 +110,7 @@ securityContext:
   allowPrivilegeEscalation: false
   capabilities:
     drop:
-    - ALL
+      - ALL
   readOnlyRootFilesystem: true
   runAsNonRoot: true
   seccompProfile:
@@ -120,13 +124,13 @@ Alternatively you can fetch an already edited file:
 ```bash
 mkdir deployment
 
-# Fetches the edited operator deployment and saves it in the deployment directory
+# Fetches the edited operator Deployment and saves it in the deployment directory
 curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/user-guide/self-managed-services/kafka-files/deployment/kafka-operator-deployment.yaml > deployment/kafka-operator-deployment.yaml
 
 kubectl apply -f deployment/kafka-operator-deployment.yaml
 ```
 
-To configure the Strimzi Kafka Operator to watch multiple Namespaces (e.g. running Kafka clusters in different Namespaces other than the kafka Namespace), refer to [Further reading](#further-reading).
+To configure the Strimzi Kafka Operator to watch multiple namespaces (e.g. running Kafka clusters in different namespaces other than the kafka namespace), refer to [Further reading](#further-reading).
 
 ## Deploy your Kafka cluster
 
@@ -161,14 +165,14 @@ After you have deployed your Kafka cluster, you can test sending and receiving m
 
 To do this, you can use a producer and consumer as seen [here](https://strimzi.io/quickstarts/), under the section "Send and receive messages". But since Compliant Kubernetes requires resource requests to be specified, just copy pasting those commands will not work.
 
-You need to create a pod manifest using the image `quay.io/strimzi/kafka:0.38.0-kafka-3.6.0`, and then you need to add your resource requests to this manifest. You also need to have an initial sleep command in the pod manifest, to sleep the container for a while, this is to avoid the pod going into the "Completed" stage instantly.
+You need to create a Pod manifest using the image `quay.io/strimzi/kafka:0.38.0-kafka-3.6.0`, and then you need to add your resource requests to this manifest. You also need to have an initial sleep command in the Pod manifest, to sleep the container for a while, this is to avoid the Pod going into the "Completed" stage instantly.
 
-Alternatively you can download a ready to use producer and consumer pod manifests:
+Alternatively you can download a ready to use producer and consumer Pod manifests:
 
 ```bash
 mkdir kafka-testing
 
-# Fetches pod manifests for a producer and consumer and saves it in the kafka-testing directory
+# Fetches Pod manifests for a producer and consumer and saves it in the kafka-testing directory
 curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/user-guide/self-managed-services/kafka-files/kafka-testing/kafka-producer.yaml > kafka-testing/kafka-producer.yaml
 curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/user-guide/self-managed-services/kafka-files/kafka-testing/kafka-consumer.yaml > kafka-testing/kafka-consumer.yaml
 
@@ -186,20 +190,20 @@ kubectl exec -it kafka-consumer -- bin/kafka-console-consumer.sh --bootstrap-ser
 
 !!! note "Note"
 
-    If you are running the producer and/or consumer in different Namespace than where your Kafka cluster is, make sure you specify the path to the bootstrap service. E.g. "my-cluster-kafka-bootstrap.kafka.svc:9092", if the Kafka cluster is in the "kafka" Namespace.
+    If you are running the producer and/or consumer in different namespace than where your Kafka cluster is, make sure you specify the path to the bootstrap service. E.g. "my-cluster-kafka-bootstrap.kafka.svc:9092", if the Kafka cluster is in the "kafka" namespace.
 
 ## Further reading
 
-* [Strimzi Overview](https://strimzi.io/docs/operators/0.38.0/overview)
+- [Strimzi Overview](https://strimzi.io/docs/operators/0.38.0/overview)
 
-* [Deploying and Upgrading](https://strimzi.io/docs/operators/0.38.0/deploying)
+- [Deploying and Upgrading](https://strimzi.io/docs/operators/0.38.0/deploying)
 
-* [API Reference](https://strimzi.io/docs/operators/0.38.0/configuring)
+- [API Reference](https://strimzi.io/docs/operators/0.38.0/configuring)
 
-* [Configure Operator to watch multiple namespaces](https://strimzi.io/docs/operators/0.38.0/deploying#deploying-cluster-operator-to-watch-multiple-namespaces-str)
+- [Configure Operator to watch multiple namespaces](https://strimzi.io/docs/operators/0.38.0/deploying#deploying-cluster-operator-to-watch-multiple-namespaces-str)
 
-* [About resources for Strimzi containers](https://strimzi.io/docs/operators/0.38.0/configuring#con-common-configuration-resources-reference)
+- [About resources for Strimzi containers](https://strimzi.io/docs/operators/0.38.0/configuring#con-common-configuration-resources-reference)
 
-* [Configuring Kafka](https://strimzi.io/docs/operators/0.38.0/deploying#con-config-kafka-str)
+- [Configuring Kafka](https://strimzi.io/docs/operators/0.38.0/deploying#con-config-kafka-str)
 
-* [Configuring Kafka and ZooKeeper storage](https://strimzi.io/docs/operators/0.38.0/deploying#assembly-storage-str)
+- [Configuring Kafka and ZooKeeper storage](https://strimzi.io/docs/operators/0.38.0/deploying#assembly-storage-str)

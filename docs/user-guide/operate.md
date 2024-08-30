@@ -1,5 +1,7 @@
 ---
 description: Learn how to operate your application on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+search:
+  boost: 2
 ---
 
 # Step 3: Operate
@@ -7,7 +9,6 @@ description: Learn how to operate your application on Elastisys Compliant Kubern
 Welcome to the third and final step, Application Developer!
 
 In this step, you will learn how to operate your application on Elastisys Compliant Kubernetes.
-
 
 ## Configure Dashboards and Alerts
 
@@ -19,7 +20,7 @@ Grafana visually displays the monitoring data that Prometheus has collected on y
 
 But Prometheus can also be instructed to collect specific metrics from your own application. Perhaps this is more useful to you than monitoring metrics that relate to cluster health (in particular if somebody else managed Elastisys Compliant Kubernetes for you).
 
-To instruct Promethus on how to do this, you create a [ServiceMonitor](https://blog.container-solutions.com/prometheus-operator-beginners-guide). This is a Kubernetes resource that configures Prometheus and specifies how to collect metrics from a particular application.
+To instruct Prometheus on how to do this, you create a [ServiceMonitor](https://blog.container-solutions.com/prometheus-operator-beginners-guide). This is a Kubernetes resource that configures Prometheus and specifies how to collect metrics from a particular application.
 
 {%
     include "./metrics.md"
@@ -31,10 +32,10 @@ Go deeper into [metrics](metrics.md).
 
 ### Alert on Application Metrics
 
-Visualizing monitoring metrics is one thing. Sometimes, you may need to act on what they show, immediately. For that reason, the Prometheus monitoring system includes AlertManager.
+Visualizing monitoring metrics is one thing. Sometimes, you may need to act on what they show, immediately. For that reason, the Prometheus monitoring system includes Alertmanager.
 
-* Prometheus is responsible for maintaining a set of Rules, which express trigger conditions via expressions. Once a rule has triggered, it has entered an alerting state.
-* AlertManager is responsible for forwarding information about any rules in the alerting state to your chosen destination, which could be your company's Slack or similar. [A number of integrations are available](https://prometheus.io/docs/alerting/latest/configuration/).
+- Prometheus is responsible for maintaining a set of Rules, which express trigger conditions via expressions. Once a rule has triggered, it has entered an alerting state.
+- Alertmanager is responsible for forwarding information about any rules in the alerting state to your chosen destination, which could be your company's Slack or similar. [A number of integrations are available](https://prometheus.io/docs/alerting/latest/configuration/).
 
 If you wish to create rules based on application-specific monitoring metrics, you must first create appropriate ServiceMonitors as described above.
 
@@ -80,7 +81,7 @@ Go deeper into [backups](backup.md).
 
 Capacity management is about having sufficient capacity for your needs, be they in terms of storage or computational power.
 
-Your Elastisys Compliant Kubernetes administrator should perform capacity management *of the platform*, to ensure that there is a sufficient amount of spare capacity on a cluster level.
+Your Elastisys Compliant Kubernetes administrator should perform capacity management _of the platform_, to ensure that there is a sufficient amount of spare capacity on a cluster level.
 
 As an Application Developer, you should perform capacity management on a Pod level. This primarily means setting [resource requests](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) correctly for containers inside Pods, making use of multiple instances in your Deployments and Stateful Sets (possibly via [horizontal Pod autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)). The use of resource requests and limits is enforced via an Elastisys Compliant Kubernetes [safeguard](safeguards/enforce-resources.md).
 
@@ -92,6 +93,6 @@ Compliant Kubernetes can also be integrated with an [external CI/CD](ci-cd.md), 
 
 ## Next step? Going deeper!
 
-By now, you're fully up and running! You have an application, updating it is a breeze, and you can monitor it and look at its logs. The next step is to open the "Go deeper" section of this documentation and read up on more topics that interest you.
+By now, you're fully up and running! You have an application, updating it is a breeze, and you can monitor it and look at its logs. The next step is to open the "Go Deeper" section of this documentation and read up on more topics that interest you.
 
 Thank you for starting your journey beyond the clouds with Elastisys Compliant Kubernetes!

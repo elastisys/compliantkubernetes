@@ -1,5 +1,8 @@
-Jaeger™ (preview)
-=================
+---
+search:
+  boost: 2
+---
+# Jaeger™ (preview)
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
@@ -8,7 +11,8 @@ Jaeger™ (preview)
     This is a preview feature. For more information, please read [ToS 9.1 Preview Features](https://elastisys.com/legal/terms-of-service/#91-preview-features).
 
 !!!Warning "Deprecation notice: Jaeger Agent"
-      `jaeger-agent` is deprecated in [upstream](https://www.jaegertracing.io/docs/1.52/architecture/#agent) and will get removed in the future. The new method is using `OTEL(OpenTelemetry) SDK` and send traces directly to Jaeger collector using `OTLP` protocol.
+
+    `jaeger-agent` is deprecated in [upstream](https://www.jaegertracing.io/docs/1.52/architecture/#agent) and will get removed in the future. The new method is using `OTEL(OpenTelemetry) SDK` and send traces directly to Jaeger collector using `OTLP` protocol.
 
 <figure>
     <img alt="Jaeger Deployment Model" src="../img/jaeger.drawio.svg" >
@@ -73,9 +77,10 @@ spec:
 ### Using Jaeger-agent (deprecated)
 
 !!!Warning
-      This method is deprecated and will be removed in the future.
 
-The Jaeger agent is exposed as a DaemonSet. Your application needs to be told where the agent is located by setting the environment variable JAEGER_AGENT_HOST to the value of the Kubernetes node’s IP:
+    This method is deprecated and will be removed in the future.
+
+The Jaeger agent is exposed as a DaemonSet. Your application needs to be told where the agent is located by setting the environment variable `JAEGER_AGENT_HOST` to the value of the Kubernetes node’s IP:
 
 ```yaml
 apiVersion: apps/v1
@@ -107,4 +112,4 @@ Check out the [release notes](../../release-notes/jaeger.md) for the Jaeger setu
 
 ## Further Reading
 
-* [Jaeger documentation](https://www.jaegertracing.io/docs/1.49/)
+- [Jaeger documentation](https://www.jaegertracing.io/docs/1.49/)

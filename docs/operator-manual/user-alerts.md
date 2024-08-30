@@ -3,6 +3,7 @@
 This is administrator-facing documentation associated with [this user guide](../user-guide/alerts.md). Please read that one first.
 
 !!!important
+
     Alertmanager should no longer be access via an Ingress, since this circumvents access control and audit logs. Please find the updated access method in the user guide linked above.
 
 Perform the following configuration changes in `wc-config.yaml`:
@@ -47,4 +48,5 @@ user:
 ```
 
 !!!note
+
     For versions after v0.18 `alertmanager` may not be listed under `user.namespaces` and the option `user.alertmanager.namespace` is deprecated.

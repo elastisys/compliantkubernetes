@@ -2,6 +2,8 @@
 description: Documentation for Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
 ---
 
+<!-- markdownlint-disable-file first-line-h1 -->
+
 <div class="landing-page" markdown="1">
 
 # Innovate at speed in regulated industries
@@ -9,13 +11,16 @@ description: Documentation for Elastisys Compliant Kubernetes, the security-focu
 Elastisys Compliant Kubernetes enables organizations across Europe to accelerate innovation through open source cloud-native technology, while ensuring security and regulatory compliance.
 
 <nav markdown="1">
-<dl class="columns" markdown="1">
+<dl class="columns-1" markdown="1">
   <div markdown="span">
     <dt markdown="span" class="grow-me">
       :fontawesome-solid-code:
       For application developers
     </dt>
-    <dd><a role="button" href="./user-guide/">Get started with your Application</a></dd>
+    <dd class="grow-me">
+      Learn how Compliant Kubernetes helps you deploy and observe your application in production.
+    </dd>
+    <dd><a role="button" href="./user-guide/">Get started</a></dd>
   </div>
 
   <div markdown="span">
@@ -23,7 +28,10 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
       :fontawesome-solid-user-secret:
       For CISOs and DPOs
     </dt>
-    <dd><a role="button" href="./ciso-guide/">Help me comply with NIS2 and GDPR</a></dd>
+    <dd class="grow-me">
+      Learn how Compliant Kubernetes helps you comply with European regulations, such as NIS2 and GDPR.
+    </dd>
+    <dd><a role="button" href="./ciso-guide/">Help me comply</a></dd>
   </div>
 
   <div markdown="span">
@@ -31,7 +39,10 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
       :fontawesome-solid-users-gear:
       For platform administrators
     </dt>
-    <dd><a role="button" href="./operator-manual/">Set up Compliant Kubernetes on any cloud provider</a></dd>
+    <dd class="grow-me">
+      Learn how to set up Compliant Kubernetes on any cloud provider or on-prem.
+    </dd>
+    <dd><a role="button" href="./operator-manual/">Set up Compliant Kubernetes</a></dd>
   </div>
 </ul>
 </nav>
@@ -42,7 +53,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 
 ## Benefits of Elastisys Compliant Kubernetes
 
-<dl class="columns" markdown="1">
+<dl class="columns-1" markdown="1">
   <div markdown="span">
     <dt markdown="span">
       :fontawesome-solid-user-check:
@@ -84,9 +95,9 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 <ul class="columns-always">
     <li><img src="img/logos/orgs/carasent.png" alt="Logo of Carasent" /></li>
     <li><img src="img/logos/orgs/elsa.svg" alt="Logo of Elsa Science" /></li>
-    <li><img src="img/logos/orgs/vivium.png" alt="Logo of Vivium" /></li>
+    <li><img src="img/logos/orgs/prorenata.svg" alt="Logo of Prorenata" /></li>
     <li><img src="img/logos/orgs/tempus.png" alt="Logo of Tempus" /></li>
-    <li><img src="img/logos/orgs/goozo.png" alt="Logo of Goozo" /></li>
+    <li><img src="img/logos/orgs/rise-logo-black.svg" alt="Logo of RISE" /></li>
 </ul>
 
 <section>
@@ -117,7 +128,6 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
         Our platform is a CNCF Certified Kubernetes® Distribution
     </li>
 </ul>
-
 
 ## Commercial offering
 
@@ -162,13 +172,13 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
   <div markdown="span">
     <dt markdown="span">
       :fontawesome-solid-handshake:
-      Support
+      Self-Managed
     </dt>
     <dd class="grow-me">
       Leverage Elastisys Compliant Kubernetes on-prem with implementation and continuous support.
     </dd>
     <dd>
-      <a role="button" href="https://elastisys.com/support/">Go to Support</a>
+      <a role="button" href="https://elastisys.com/self-managed/">Go to Self-Managed</a>
     </dd>
   </div>
 </dl>

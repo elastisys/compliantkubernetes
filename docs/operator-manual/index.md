@@ -1,14 +1,15 @@
 ---
 hide:
-- toc
+  - toc
 ---
+
 # Platform Administrator Manual Overview
 
 <div class="landing-page" markdown="1">
 
 Compliant Kubernetes abstracts away a lot of complexity from Application Developers.
 Unfortunately, someone somewhere needs to take care of that complexity.
-That person is you, the platform administrator.
+That person is you, the Platform Administrator.
 
 Setting up Compliant Kubernetes is not for the faint hearted.
 We recommend you to proceed in 4 steps as shown below:

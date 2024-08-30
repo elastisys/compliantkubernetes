@@ -1,12 +1,16 @@
 ---
+search:
+  boost: 2
 tags:
-- ISO 27001 A.13.1 Network Security
-- BSI IT-Grundschutz APP.4.4.A7
-- BSI IT-Grundschutz APP.4.4.A18
+  - ISO 27001 A.13.1 Network Security
+  - BSI IT-Grundschutz APP.4.4.A7
+  - BSI IT-Grundschutz APP.4.4.A18
 ---
+
 # Reduce blast radius: NetworkPolicies
 
 !!!note
+
     This section helps you implement ISO 27001, specifically:
 
     * A.13.1.1 Network Controls
@@ -14,8 +18,9 @@ tags:
     * A.13.1.3 Segregation in Networks
 
 !!!important
-    * This safeguard is enabled by default with the enforcement action `deny` since [Compliant Kubernetes apps v0.19.0](../../release-notes/ck8s.md#v0190). As a result, resources that violate this policy will not be created.
-    * The default enforcement action for this safeguard has been changed to `warn` instead of `deny` since [Compliant Kubernetes apps v0.29.0](../../release-notes/ck8s.md#v0290). As a result, resources that violate this policy will generate warning messages, but will still be created.
+
+    - This safeguard is enabled by default with the enforcement action `deny` since [Compliant Kubernetes apps v0.19.0](../../release-notes/ck8s.md#v0190). As a result, resources that violate this policy will not be created.
+    - The default enforcement action for this safeguard has been changed to `warn` instead of `deny` since [Compliant Kubernetes apps v0.29.0](../../release-notes/ck8s.md#v0290). As a result, resources that violate this policy will generate warning messages, but will still be created.
 
 NetworkPolicies are useful in two cases: segregating tenants hosted in the same environment and further segregating application components. Both help you achieve better data protection.
 
@@ -23,12 +28,12 @@ NetworkPolicies are useful in two cases: segregating tenants hosted in the same 
 
 Say you want to host a separate instance of your application for each tenant. For example, your end-users may belong to different -- potentially competing -- organizations, and you promised them to take extra care of not mixing their data. Say you want to reduce complexity by hosting all tenants inside the same environment, but without compromising data protection.
 
-Each application instance could be installed as a separate Helm Release, perhaps even in its own Namespace. These instances should be segregated from other application instances using NetworkPolicies. This insures that network traffic from one application instance cannot reach another application instance. Besides reducing attack surface, it also prevents embarrassing mistakes, like connecting one application to the database of another.
+Each application instance could be installed as a separate Helm Release, perhaps even in its own Namespace. These instances should be segregated from other application instances using NetworkPolicies. This ensures that network traffic from one application instance cannot reach another application instance. Besides reducing attack surface, it also prevents embarrassing mistakes, like connecting one application to the database of another.
 
 ## Further segregation of application components
 
 If you run several applications -- e.g., frontend, backend, backoffice, database, message queue -- in a single Kubernetes cluster, it is a best practice to segregrate them.
-By segregating your applications and only allowing required ingress and egress network traffic, you further reduce blast radius in case of an attack.
+By segregating your applications and only allowing required Ingress and egress network traffic, you further reduce blast radius in case of an attack.
 
 ## Compliant Kubernetes helps enforce segregation
 
@@ -44,11 +49,12 @@ Error: admission webhook "validation.gatekeeper.sh" denied the request: [denied 
 
 Then you are missing NetworkPolicies which select your Pods. The [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/networkpolicy.yaml) gives a good example to get you started.
 
-If your administrator has not enforced this policy yet, you can view current violations of the policy by running
+If your administrator has not enforced this policy yet, you can view current violations of the policy by running:
+
 ```bash
 kubectl get k8srequirenetworkpolicy.constraints.gatekeeper.sh require-networkpolicy -ojson | jq .status.violations
 ```
 
 ## Further Reading
 
-* [NetworkPolicies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+- [NetworkPolicies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)

@@ -1,5 +1,8 @@
-PostgreSQL®
-===========
+---
+search:
+  boost: 2
+---
+# PostgreSQL®
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
@@ -15,7 +18,7 @@ PostgreSQL®
         * Long-term backup schemes can be enabled after discussion with the customer.
     * **Monitoring, security patching and incident management**: included.
 
-    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
+    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification-managed-services-only).
 
 <figure>
     <img alt="PostgreSQL Deployment Model" src="../img/postgresql.drawio.svg" >
@@ -62,12 +65,13 @@ stringData:
   PGPASSWORD: $PGPASSWORD
   PGSSLMODE: $PGSSLMODE
 
-  # This is the Kubernetes Service name to which you can port-foward to in order to get access to the PostgreSQL cluster from outside the Kubernetes cluster.
+  # This is the Kubernetes Service name to which you can port-forward to in order to get access to the PostgreSQL cluster from outside the Kubernetes cluster.
   # Ref https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
   USER_ACCESS: $USER_ACCESS
 ```
 
 !!!important
+
     The Secret is very precious! Prefer not to persist any information extracted from it, as shown below.
 
 To extract this information, proceed as follows:
@@ -84,9 +88,11 @@ export USER_ACCESS=$(kubectl -n $NAMESPACE get secret $SECRET -o 'jsonpath={.dat
 ```
 
 !!!important
+
     Do not configure your application with the PostgreSQL admin username and password. Since the application will get too much permission, this will likely violate your access control policy.
 
 !!!important
+
     If you change the password for $PGUSER, you are responsible for keeping track of the new password.
 
 ## Create an Application User
@@ -98,6 +104,7 @@ kubectl -n $NAMESPACE port-forward svc/$USER_ACCESS 5432
 ```
 
 !!!important
+
     Since humans are bad at generating random passwords, we recommend using [pwgen](https://linux.die.net/man/1/pwgen).
 
 Second, in another console, fetch the information from the access Secret again and run the PostgreSQL client to create the application database and user:
@@ -148,6 +155,7 @@ EOF
 ```
 
 !!!warning
+
     Although most client libraries follow the `libpq` definition of these environment variables, some do not, and this will require changes to the application Secret.
 
     Notably [`node-postgres`](https://github.com/brianc/node-postgres) does not currently do so for `PGSSLMODE`.
@@ -158,8 +166,8 @@ EOF
 
 To expose the PostgreSQL cluster credentials to your application, follow one of the following upstream documentation:
 
-* [Create a Pod that has access to the secret data through a Volume](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume)
-* [Define container environment variables using Secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data)
+- [Create a Pod that has access to the secret data through a Volume](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume)
+- [Define container environment variables using Secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data)
 
 <!--postgresql-setup-end-->
 
@@ -174,7 +182,7 @@ Check out the [release notes](../../release-notes/postgres.md) for the PostgreSQ
 
 ## Further Reading
 
-* [Creating users](https://www.postgresql.org/docs/13/sql-createuser.html)
-* [Creating databases](https://www.postgresql.org/docs/13/sql-createdatabase.html)
-* [Granting permissions](https://www.postgresql.org/docs/13/sql-grant.html)
-* [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
+- [Creating users](https://www.postgresql.org/docs/13/sql-createuser.html)
+- [Creating databases](https://www.postgresql.org/docs/13/sql-createdatabase.html)
+- [Granting permissions](https://www.postgresql.org/docs/13/sql-grant.html)
+- [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)

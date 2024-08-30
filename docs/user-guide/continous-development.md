@@ -1,5 +1,7 @@
 ---
 description: How to use Continuous Development in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+search:
+  boost: 2
 ---
 
 # Continuous Development
@@ -26,6 +28,7 @@ sudo install skaffold /usr/local/bin/
 ## Getting started with Skaffold
 
 !!!note
+
     Skaffold will use the active `KUBECONFIG` to authenticate to the Kubernetes cluster.
 
 If you haven't done so already, clone the user demo:
@@ -44,7 +47,7 @@ skaffold init
 This command will scan the current project for images to build and Kubernetes manifests to deploy. For each image that
 Skaffold finds you will be prompted to specify how to build them, or if they are not built by the current project.
 
-The first image Skaffold finds is busybox, however this image is not built from this project, so choose
+The first image Skaffold finds is busybox, however this image is not built from this project, so choose:
 `None (image not built from these sources)`
 
 ![Skaffold init Output1](img/skaffold-busybox.png)
@@ -60,7 +63,7 @@ Skaffold will then create the `skaffold.yaml` file containing our configuration.
 Helm Chart that deploys the `user-demo` image.
 
 The `skaffold.yaml` must then be configured to use the correct domain and project for the image
-([More info](registry.md#configure-container-registry-credentials)). You need push access to this repository.
+([More info](registry.md#configure-container-registry-credentials)). You need push access to this repository
 (Optionally add a hostname to access the application).
 
 ```diff
@@ -79,7 +82,7 @@ build:
 +   ingress.hostname: demo.<DOMAIN>     # (Optional)
 ```
 
-If the repository is private, a pull secret must be created to use it in Kubernetes, see [Configure an Image Pull Secret](kubernetes-api.md#configure-an-image-pull-secret)
+If the repository is private, a pull secret must be created to use it in Kubernetes, see [Configure an Image Pull Secret](kubernetes-api.md#configure-an-image-pull-secret).
 
 ### Developing
 
@@ -115,7 +118,7 @@ shows the logs of the application, and starts listening for changes in the sourc
 When visiting the URL to the application or the portforwarded URL the following output can be seen:
 
 ```json
-{"hostname":"ck8s-user-demo-dd9c58979-rm9rv","version":"0.0.1"}
+{ "hostname": "ck8s-user-demo-dd9c58979-rm9rv", "version": "0.0.1" }
 ```
 
 If you inside the `routes/index.js` file add the following:
@@ -134,7 +137,7 @@ And then save the file, Skaffold will automatically detect the change, build a n
 to the cluster. After the deployment has stabilized, when visiting the same URL, the output is now:
 
 ```json
-{"hostname":"ck8s-user-demo-54bbdcf6fc-gthsc","version":"0.0.1","hello":"world"}
+{ "hostname": "ck8s-user-demo-54bbdcf6fc-gthsc", "version": "0.0.1", "hello": "world" }
 ```
 
 ### Configuration updates

@@ -8,13 +8,13 @@ The Compliant Kubernetes documentation uses tags to capture various Information 
 This plugin will:
 
 1. Create tags indexes for each requirement source.
-2. Create bi-directional links between tags indexes and pages.
+1. Create bi-directional links between tags indexes and pages.
 
 ## Usage
 
 Start by adding the following in `mkdocs.yaml`:
 
-```
+```yaml
 plugins:
   - ciso-controls:
       root_url: $ROOT_URL
@@ -36,19 +36,19 @@ For inclusion in the tags index, the tags index filename without extension must 
 
 Create the following files:
 
-* `ciso-guide/controls/iso-27001.md`;
-* `ciso-guide/controls/bsi-it-grundschutz.md`;
-* `ciso-guide/controls/hipaa.md`.
+- `ciso-guide/controls/iso-27001.md`;
+- `ciso-guide/controls/bsi-it-grundschutz.md`;
+- `ciso-guide/controls/hipaa.md`.
 
 You can add any content you want, but make sure you have the string `[TAGS]` somewhere.
 
 Next, add something as follows in the frontmatter:
 
-```
+```yaml
 tags:
-- ISO 27001 A13.1
-- HIPAA S13
-- BSI IT-Grundschutz APP.X
+  - ISO 27001 A13.1
+  - HIPAA S13
+  - BSI IT-Grundschutz APP.X
 ```
 
 This will add `ISO 27001 A13.1` to `ciso-guide/controls/iso-27001`, etc.

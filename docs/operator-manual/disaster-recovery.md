@@ -1,13 +1,15 @@
 ---
 tags:
-- ISO 27001 A.12.3.1 Information Backup
-- ISO 27001 A.17.1.1 Planning Information Security Continuity
-- HIPAA S24 - Contingency Plan - Disaster Recovery Plan - § 164.308(a)(7)(ii)(B)
-- MSBFS 2020:7 4 kap. 14 §
-- MSBFS 2020:7 4 kap. 15 §
-- MSBFS 2020:7 4 kap. 22 §
-- HSLF-FS 2016:40 3 kap. 13 § Säkerhetskopiering
+  - ISO 27001 A.12.3.1 Information Backup
+  - ISO 27001 A.17.1.1 Planning Information Security Continuity
+  - HIPAA S24 - Contingency Plan - Disaster Recovery Plan - § 164.308(a)(7)(ii)(B)
+  - MSBFS 2020:7 4 kap. 14 §
+  - MSBFS 2020:7 4 kap. 15 §
+  - MSBFS 2020:7 4 kap. 22 §
+  - HSLF-FS 2016:40 3 kap. 13 § Säkerhetskopiering
+  - NIST SP 800-171 3.6.3
 ---
+
 # Disaster Recovery
 
 This document details disaster recovery procedures for Compliant Kubernetes. These procedures must be executed by the administrator.
@@ -25,10 +27,11 @@ Disaster recovery is mandated by several regulations and information security st
 
 Backups can be set up to be replicated off-site using CronJobs.
 
-In version v0.23 these can be **encrypted** before they are sent off-site, which means they must first be restored to be usable. <br/>
-It is possible to restore services directly from **unencrypted** off-site backups with some additional steps.
+If these are **encrypted** then these off-site backups must first be restored themselves before they can be used to restore other services.
 
-See [the instructions in `compliantkubernetes-apps`](https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts/restore-sync) for how to restore off-site backups.
+If these are **unencrypted** then these off-site backups can be used directly to restore other services by reconfiguring which object storage service they are using.
+
+See [the instructions in `compliantkubernetes-apps` for how to restore off-site backups](https://github.com/elastisys/compliantkubernetes-apps/blob/main/docs/restore/rclone.md).
 
 ## When a new region/Infrastructure Provider is used
 
@@ -62,9 +65,42 @@ OpenSearch is set up to store backups in an S3 bucket. There is a CronJob called
 
 To take a snapshot on-demand, execute
 
-```
+```sh
 ./bin/ck8s ops kubectl sc -n opensearch-system create job --from=cronjob/opensearch-backup <name-of-job>
 ```
+
+### Optional: Start new cluster from snapshot
+
+!!!note
+    Only perform the steps in this section if you are starting a new cluster from a snapshot.
+    Otherwise, skip ahead to the **Restore** section.
+
+Before you install OpenSearch you should disable the initial index creation to make the restore process leaner by setting the following configuration option:
+
+```bash
+opensearch.createIndices: false
+```
+
+Install the OpenSearch suite:
+
+```bash
+./bin/ck8s ops helmfile sc -l app=opensearch apply
+```
+
+Wait for the installation to complete.
+
+After the installation, continue to the **Restore** section to proceed with the restore.
+If you want to restore all indices, use the following `indices` variable
+
+```bash
+indices="kubernetes-*,kubeaudit-*,other-*,authlog-*"
+```
+
+!!!note
+    This process assumes that you are using the same S3 bucket as your previous cluster. If you aren't:
+
+    - Register a new S3 snapshot repository to the old bucket as [described here](https://opensearch.org/docs/latest/tuning-your-cluster/availability-and-recovery/snapshots/snapshot-restore/#register-repository)
+    - Use the newly registered snapshot repository in the restore process
 
 ### Restore
 
@@ -81,7 +117,8 @@ os_url=https://opensearch.$(yq4 '.global.opsDomain' ${CK8S_CONFIG_PATH}/common-c
 ```
 
 !!!important "Restoring from off-site backup"
-    - To restore from an **encrypted** off-site backup:
+
+     - To restore from an **encrypted** off-site backup:
 
         First import the backup into the main S3 service and register the restored bucket as a new snapshot repository:
         ```bash
@@ -183,6 +220,7 @@ You usually select the latest snapshot containing the indices you want to restor
 Restore one or multiple indices from a snapshot
 
 !!!note
+
     You cannot restore a write index (the latest index) if you already have a write index connected to the same index alias (which will happen if you have started to receive logs).
 
 ```bash
@@ -205,7 +243,7 @@ Data in OpenSearch Dashboards (saved searches, visualizations, dashboards, etc) 
 
 This will overwrite anything in the current `.opensearch_dashboards_x` index. If there is something new that should be saved, then [export](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_export) the saved objects and [import](https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_import) them after the restore.
 
-There can be multiple `.opensearch_dashboards` indices in Opensearch, the current index should be the one you want to restore. To view your dashboard indices, follow these steps.
+There can be multiple `.opensearch_dashboards` indices in OpenSearch, the current index should be the one you want to restore. To view your dashboard indices, follow these steps.
 
 ```bash
 snapshot_name=<Snapshot name from previous step>
@@ -226,9 +264,11 @@ curl -kL -u "${user}:${password}" -X GET "${os_url}/_snapshot/${snapshot_repo}/$
 ```
 
 !!!note
+
     If you visit the `"<os_url>/app/dashboards"` page in the Opensearch GUI after deleting the index and before restoring the index, another empty index `.opensearch_dashboards` will be created. You need to delete this manually, which can be done with
+
     ```bash
-    `curl -kL -u "${user}:${password}" -X DELETE "${os_url}/.opensearch_dashboards?pretty"`
+    curl -kL -u "${user}:${password}" -X DELETE "${os_url}/.opensearch_dashboards?pretty"
     ```
 
 ```bash
@@ -242,37 +282,6 @@ curl -kL -u "${user}:${password}" -X POST "${os_url}/_snapshot/${snapshot_repo}/
 }
 '
 ```
-
-### Start new cluster from snapshot
-
-This process is very similar to the one described above, but there are a few extra steps to carry out.
-
-Before you install OpenSearch you can preferably disable the initial index creation to make the restore process leaner by setting the following configuration option:
-
-```bash
-opensearch.createIndices: false
-```
-
-Install the OpenSearch suite:
-
-```bash
-./bin/ck8s ops helmfile sc -l group=opensearch apply
-```
-
-Wait for the installation to complete.
-
-After the installation, go back up to the **Restore** section to proceed with the restore.
-If you want to restore all indices, use the following `indices` variable
-
-```bash
-indices="kubernetes-*,kubeaudit-*,other-*,authlog-*"
-```
-
-!!!note
-    This process assumes that you are using the same S3 bucket as your previous cluster. If you aren't:
-
-    - Register a new S3 snapshot repository to the old bucket as [described here](https://opensearch.org/docs/latest/opensearch/snapshot-restore/#register-repository)
-    - Use the newly registered snapshot repository in the restore process
 
 ## Harbor
 
@@ -290,6 +299,7 @@ To take a backup on-demand, execute
 ### Restore
 
 !!!important "Restoring from off-site backup"
+
     Since Harbor stores both database backups and images in the same bucket it is recommended to restore the off-site backup into the main S3 service first, reconfigure Harbor to use it, then restore the database from it.
 
 Instructions for how to restore Harbor can be found in `compliantkubernetes-apps`: <https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts/restore#restore-harbor>
@@ -301,6 +311,7 @@ The CLI needs the env variable `KUBECONFIG` set to the path of a decrypted kubec
 Read more about Velero [here](../user-guide/backup.md).
 
 !!!note
+
     This documentation uses the Velero CLI, as opposed to Velero CRDs, since that is what is encouraged by upstream documentation.
 
 ### Backup
@@ -319,10 +330,8 @@ Check which arguments you can use by running `velero backup create --help`.
 
 ### Restore
 
-
 !!!note
-
-    If you are restoring an environment under a new domain name then there is a possibility to reconfigure image references with [Velero](https://velero.io/docs/main/restore-reference/#changing-poddeploymentstatefulsetdaemonsetreplicasetreplicationcontrollerjobcronjob-image-repositories), but ingresses must be updated manually.
+If you are restoring an environment under a new domain name then there is a possibility to reconfigure image references with [Velero](https://velero.io/docs/main/restore-reference/#changing-poddeploymentstatefulsetdaemonsetreplicasetreplicationcontrollerjobcronjob-image-repositories), but ingresses must be updated manually.
 
 Restoring from a backup with Velero is meant to be a type of disaster recovery.
 **Velero will not overwrite existing Resources when restoring.**
@@ -333,6 +342,11 @@ To restore the state from the latest daily backup, run:
 ```bash
 velero restore create --from-schedule velero-daily-backup --wait
 ```
+
+!!!tip
+Use `velero restore create --help` to see available flags and some examples.
+If a backup has a status of PartiallyFailed, the argument `--allow-partially-failed` can be used to restore from such a backup.
+If a backup or restore gets stuck or has other issues, refer to this [guide](troubleshooting.md#velero-backup-stuck-in-progress).
 
 This command will wait until the restore has finished.
 You can also do partial restorations, e.g. just restoring one namespace, by using different arguments.
@@ -345,84 +359,102 @@ Any other files will be left as they were before the restoration started.
 So a restore will not wipe the volume clean and then restore.
 If a clean wipe is the desired behavior, then the volume must be wiped manually before restoring.
 
+### Example restoring a partially failed backup
+
+A backup that has status `PartiallyFailed` can be restored by using `--allow-partially-failed` flag
+
+```bash
+velero restore create <restore-name> --allow-partially-failed --from-schedule velero-daily-backup --wait
+```
+
+### Example restoring a single resource
+
+You can explore a `Completed` backup as follows
+
+```bash
+velero backup describe --details <name-of-backup>
+```
+
+and you can then use the following to handpick resources from the backup you want restored
+
+```bash
+velero restore create <restore-name>  --include-resources pod,volume --from-backup <backup-name> --include-namespaces <namespace-name> --selector <resource-selector> --wait
+```
+
 ### Restore from off-site backup
 
 - Restoring from **encrypted** off-site backup:
 
-    Recover the encrypted bucket into the main S3 service and reconfigure Velero to use this bucket, then follow the regular instructions.
+  Recover the encrypted bucket into the main S3 service and reconfigure Velero to use this bucket, then follow the regular instructions.
 
-    The references in Kubernetes might need to be deleted so Velero can resync from the bucket:
+  The references in Kubernetes might need to be deleted so Velero can resync from the bucket:
 
-    ```bash
-    # Note that this is only backup metadata
-    ./bin/ck8s ops kubectl sc -n velero delete backups.velero.io --all
+  ```bash
+  # Note that this is only backup metadata
+  ./bin/ck8s ops kubectl sc -n velero delete backups.velero.io --all
 
-    ./bin/ck8s ops kubectl wc -n velero delete backups.velero.io --all
-    ```
+  ./bin/ck8s ops kubectl wc -n velero delete backups.velero.io --all
+  ```
 
 - Restoring from **unencrypted** off-site backup:
 
-    To recover directly from off-site backup the backup-location must be reconfigured:
+  To recover directly from off-site backup the backup-location must be reconfigured:
 
-    ```bash
-    export S3_BUCKET="<off-site-s3-bucket>"
-    export S3_PREFIX="<service-cluster|workload-cluster>"
-    export S3_ACCESS_KEY=$(sops -d --extract '["objectStorage"]["sync"]["s3"]["accessKey"]' "$CK8S_CONFIG_PATH/secrets.yaml")
-    export S3_SECRET_KEY=$(sops -d --extract '["objectStorage"]["sync"]["s3"]["secretKey"]' "$CK8S_CONFIG_PATH/secrets.yaml")
-    export S3_REGION=$(yq r "$CK8S_CONFIG_PATH/sc-config.yaml" "objectStorage.sync.s3.region")
-    export S3_ENDPOINT=$(yq r "$CK8S_CONFIG_PATH/sc-config.yaml" "objectStorage.sync.s3.regionEndpoint")
-    export S3_PATH_STYLE=$(yq r "$CK8S_CONFIG_PATH/sc-config.yaml" "objectStorage.sync.s3.forcePathStyle")
+  ```bash
+  export CLUSTER="<sc|wc>"
+  export S3_BUCKET="<off-site-s3-bucket>" # Do not include s3:// prefix
+  export S3_PREFIX="<service-cluster|workload-cluster>"
+  export S3_ACCESS_KEY=$(sops -d --extract '["objectStorage"]["sync"]["s3"]["accessKey"]' "$CK8S_CONFIG_PATH/secrets.yaml")
+  export S3_SECRET_KEY=$(sops -d --extract '["objectStorage"]["sync"]["s3"]["secretKey"]' "$CK8S_CONFIG_PATH/secrets.yaml")
+  export S3_REGION=$(yq r "$CK8S_CONFIG_PATH/sc-config.yaml" "objectStorage.sync.s3.region")
+  export S3_ENDPOINT=$(yq r "$CK8S_CONFIG_PATH/sc-config.yaml" "objectStorage.sync.s3.regionEndpoint")
+  export S3_PATH_STYLE=$(yq r "$CK8S_CONFIG_PATH/sc-config.yaml" "objectStorage.sync.s3.forcePathStyle")
 
-    # Delete default backup location
-    velero backup-location delete default
+  # Delete backups from default backup location, note that this is only the backup metadata
+  ./bin/ck8s ops kubectl "${CLUSTER}" -n velero delete backups.velero.io --all
 
-    # Delete backups from default backup location, note that this is only the backup metadata
-    ./bin/ck8s ops kubectl sc -n velero delete backups.velero.io --all
+  # Delete default backup location
+  velero backup-location delete default
 
-    ./bin/ck8s ops kubectl wc -n velero delete backups.velero.io --all
+  # Create off-site credentials
+  kubectl -n velero create secret generic velero-backup \
+    --from-literal=cloud="$(echo -e "[default]\naws_access_key_id: ${S3_ACCESS_KEY}\naws_secret_access_key: ${S3_SECRET_KEY}\n")"
 
-    # Create off-site credentials
-    kubectl -n velero create secret generic velero-backup \
-      --from-literal=cloud="$(echo -e "[default]\naws_access_key_id: ${S3_ACCESS_KEY}\naws_secret_access_key: ${S3_SECRET_KEY}\n")"
+  # Create off-site backup location
+  velero backup-location create backup \
+      --access-mode ReadOnly \
+      --provider aws \
+      --bucket "${S3_BUCKET}" \
+      --prefix "${S3_PREFIX}" \
+      --config="region=${S3_REGION},s3Url=${S3_ENDPOINT},s3ForcePathStyle=${S3_PATH_STYLE}" \
+      --credential=velero-backup=cloud
+  ```
 
-    # Create off-site backup location
-    velero backup-location create backup \
-        --access-mode ReadOnly \
-        --provider aws \
-        --bucket "${S3_BUCKET}" \
-        --prefix "${S3_PREFIX}" \
-        --config="region=${S3_REGION},s3Url=${S3_ENDPOINT},s3ForcePathStyle=${S3_PATH_STYLE}" \
-        --credential=velero-backup=cloud
-    ```
+  Check that the backup-location becomes available:
 
-    Check that the backup-location becomes available:
-    ```console
-    $ velero backup-location get
-    NAME     PROVIDER   BUCKET/PREFIX       PHASE       LAST VALIDATED   ACCESS MODE   DEFAULT
-    backup   aws        <bucket>/<prefix>   Available   <timestamp>      ReadOnly
-    ```
+  ```console
+  $ velero backup-location get
+  NAME     PROVIDER   BUCKET/PREFIX       PHASE       LAST VALIDATED   ACCESS MODE   DEFAULT
+  backup   aws        <bucket>/<prefix>   Available   <timestamp>      ReadOnly
+  ```
 
-    Then check that the backups becomes available using `velero backup get`.
-    When they are available restore one of them using `velero restore create <name-of-restore> --from-backup <name-of-backup>`.
+  Then check that the backups becomes available using `velero backup get`.
+  When they are available restore one of them using `velero restore create <name-of-restore> --from-backup <name-of-backup>`.
 
-    After the restore is complete Velero should be reconfigured to use the main S3 service again, with a new bucket if the previous one is unusable.
-    Updating or syncing the Helm chart:
-    ```bash
-    ./bin/ck8s ops helmfile sc -f helmfile -l app=velero -i apply
+  After the restore is complete Velero should be reconfigured to use the main S3 service again, with a new bucket if the previous one is unusable.
+  Updating or syncing the Helm chart:
 
-    ./bin/ck8s ops helmfile wc -f helmfile -l app=velero -i apply
-    ```
+  ```bash
+  ./bin/ck8s ops helmfile "${CLUSTER}" -f helmfile -l app=velero -i apply
+  ```
 
-    The secret and the backup metadata from the off-site backups can be deleted:
-    ```bash
-    ./bin/ck8s ops kubectl sc -n velero delete secret velero-backup
-    ./bin/ck8s ops kubectl sc -n velero delete backups.velero.io --all
-    ./bin/ck8s ops kubectl sc -n velero delete backupstoragelocations.velero.io backup
+  The secret and the backup metadata from the off-site backups can be deleted:
 
-    ./bin/ck8s ops kubectl wc -n velero delete secret velero-backup
-    ./bin/ck8s ops kubectl wc -n velero delete backups.velero.io --all
-    ./bin/ck8s ops kubectl wc -n velero delete backupstoragelocations.velero.io backup
-    ```
+  ```bash
+  ./bin/ck8s ops kubectl "${CLUSTER}" -n velero delete secret velero-backup
+  ./bin/ck8s ops kubectl "${CLUSTER}" -n velero delete backups.velero.io --all
+  ./bin/ck8s ops kubectl "${CLUSTER}" -n velero delete backupstoragelocations.velero.io backup
+  ```
 
 ## Grafana
 
@@ -431,7 +463,7 @@ This refers to the user Grafana, not the ops Grafana.
 ### Backup
 
 Grafana is set up to be included in the daily Velero backup.
-We then include the Grafana deployment, pod, and PVC (including the data).
+We then include the Grafana deployment, Pod, and PVC (including the data).
 Manual backups can be taken using velero (include the same resources).
 
 ### Restore
@@ -439,15 +471,15 @@ Manual backups can be taken using velero (include the same resources).
 To restore the Grafana backup you must:
 
 - Have Grafana installed
-- Delete the grafana deployment, PVC and PV
+- Delete the Grafana deployment, PVC and PV
 
-    ```bash
-    ./bin/ck8s ops kubectl sc delete deploy -n monitoring user-grafana
-    ./bin/ck8s ops kubectl sc delete pvc -n monitoring user-grafana
-    ```
+  ```bash
+  ./bin/ck8s ops kubectl sc delete deploy -n monitoring user-grafana
+  ./bin/ck8s ops kubectl sc delete pvc -n monitoring user-grafana
+  ```
 
 - Restore the velero backup
 
-    ```bash
-    velero restore create --from-schedule velero-daily-backup --wait
-    ```
+  ```bash
+  velero restore create --from-schedule velero-daily-backup --wait
+  ```

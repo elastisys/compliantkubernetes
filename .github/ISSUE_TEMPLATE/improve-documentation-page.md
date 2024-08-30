@@ -1,13 +1,12 @@
 ---
 name: Improve documentation page
 about: A page is unclear or does not contain required information
-title: ''
+title: ""
 labels: documentation
-assignees: ''
-
+assignees: ""
 ---
 
-**Describe the bug**
+**Describe the improvement**
 
 [This page](https://elastisys.io) does not explain what `ServiceMonitor` resource to create. Please provide a copy-paste-able code snippet.
 

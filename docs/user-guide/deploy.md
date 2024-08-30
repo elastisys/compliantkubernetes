@@ -1,5 +1,7 @@
 ---
 description: Learn how to deploy your application on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+search:
+  boost: 2
 ---
 
 # Step 2: Deploy
@@ -8,7 +10,7 @@ Hello again, Application Developer! In this step, we will walk you through what 
 
 ## Demo Application Available
 
-In case you are just reading along, or do not already have a [containerized application prepared](prepare.md), we have developed a demo application which allows you to quickly explore the benfits of Elastisys Compliant Kubernetes.
+In case you are just reading along, or do not already have a [containerized application prepared](prepare.md), we have developed a demo application which allows you to quickly explore the benefits of Elastisys Compliant Kubernetes.
 
 The provided artifacts, including Dockerfile and Helm Chart, allow you to quickly get started on your journey to become an agile organization with zero compromise on compliance with data protection regulations.
 
@@ -24,11 +26,13 @@ We have versions of it for [Node JS](https://github.com/elastisys/compliantkuber
 
 ## Deploy Your Application
 
+<!-- markdownlint-disable MD044 -->
 {%
     include "./kubernetes-api.md"
     start="<!--user-demo-kubernetes-api-start-->"
     end="<!--user-demo-kubernetes-api-end-->"
 %}
+<!-- markdownlint-enable MD044 -->
 
 ## View Application Logs
 

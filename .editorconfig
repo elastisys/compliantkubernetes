@@ -1,0 +1,28 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+max_line_length = 120
+trim_trailing_whitespace = true
+
+[Makefile]
+indent_style = tab
+indent_size = 4
+
+[*.html]
+max_line_length = 1000
+[*.md]
+max_line_length = 1000
+indent_size = 4
+
+[*.py]
+# https://peps.python.org/pep-0008/#indentation
+indent_size = 4
+
+[*.js]
+# https://peps.python.org/pep-0008/#indentation
+indent_size = 4

@@ -1,5 +1,8 @@
-RabbitMQ®
-=========
+---
+search:
+  boost: 2
+---
+# RabbitMQ®
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
@@ -12,7 +15,7 @@ RabbitMQ®
         * A full backup is taken every day between 0:00 am and 6:00 am CET. The backup retention period is 30 days unless otherwise requested by the customer.
     * **Monitoring, security patching and incident management**: included.
 
-    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification).
+    For more information, please read [ToS Appendix 3 Managed Additional Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-3-managed-additional-service-specification-managed-services-only).
 
 <figure>
     <img alt="RabbitMQ Deployment Model" src="../img/rabbitmq.drawio.svg" >
@@ -54,35 +57,37 @@ stringData:
 ```
 
 !!!danger
+
     The Secret is very precious! Prefer not to persist any information extracted from it, as shown below.
 
 To access the management UI, proceed as follows:
 
-1. Retrieve the admin default username and password
+1. Retrieve the admin default username and password.
 
     ```bash
     export RABBITMQ_CLUSTER=     # Get this from your administrator
     export RABBITMQ_NAMESPACE=   # Get this from your administrator
 
     echo -n "RabbitMQ admin username: "
-    kubectl -n rabbitmq-system get secret rabbitmq-cluster-default-user -o jsonpath="{.data.username}" | base64 --decode && echo
+    kubectl -n "${RABBITMQ_NAMESPACE}" get secret "${RABBITMQ_CLUSTER}-default-user" -o jsonpath="{.data.username}" | base64 --decode && echo
 
     echo -n "RabbitMQ admin password: "
-    kubectl -n rabbitmq-system get secret rabbitmq-cluster-default-user -o jsonpath="{.data.password}" | base64 --decode && echo
+    kubectl -n "${RABBITMQ_NAMESPACE}" get secret "${RABBITMQ_CLUSTER}-default-user" -o jsonpath="{.data.password}" | base64 --decode && echo
     ```
 
     !!!danger
+
         Do not configure your application with the RabbitMQ default admin username and password. Since the application will get too much permission, this will likely violate your access control policy.
 
-2. Start the port-forwarding:
+1. Start the port-forwarding:
 
     ```bash
-    kubectl port-forward -n ${RABBITMQ_NAMESPACE} svc/${RABBITMQ_CLUSTER} 15672
+    kubectl port-forward -n "${RABBITMQ_NAMESPACE}" "svc/${RABBITMQ_CLUSTER}" 15672
     ```
 
-3. Open the [admin dashboard](http://localhost:15672) (at http://localhost:15672) and log in using the credentials retrieved in step 1.
+1. Open the [admin dashboard](http://localhost:15672) (at http://localhost:15672) and log in using the credentials retrieved in step 1.
 
-4. Create an application username, password and vhost, and store these in variables as named below:
+1. Create an application username, password and vhost, and store these in variables as named below:
 
     ```bash
     APP_USER=
@@ -117,14 +122,15 @@ EOF
 
 To expose the AMQP URL to your application, follow one of the following upstream documentation:
 
-* [Create a Pod that has access to the secret data through a Volume](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume)
-* [Define container environment variables using Secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data)
+- [Create a Pod that has access to the secret data through a Volume](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume)
+- [Define container environment variables using Secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data)
 
 ## Using a RabbitMQ Cluster
 
 Best practices for using RabbitMQ in Compliant Kubernetes.
 
 !!!note
+
     RabbitMQ is built as a plugin based system, by default only a limited set of plugins are enabled, contact your service-specific administrator about enabling the ones you require.
 
 ### Cluster Division
@@ -161,32 +167,35 @@ Additionally RabbitMQ has different queue types and modes that affect the reliab
 
 RabbitMQ supports three different types of queues which all have different pro's and con's:
 
-- **Classic Queues** - *Best for high performance with transient messages.*
+- **Classic Queues** - _Best for high performance with transient messages._
 
-    This is the standard choice for transient queues and messages since they consume little resources and offer high performance.
+This is the standard choice for transient queues and messages since they consume little resources and offer high performance.
 
-    !!!danger
-        Classic queues are not replicated by default and should not be used with replication since mirrored classic queues are deprecated.
+!!!danger
 
-        Durable classic queues are tied to the server they are created on and will become unavailable if that server is unavailable.
+    Classic queues are not replicated by default and should not be used with replication since mirrored classic queues are deprecated.
 
-- [**Quorum Queues**](https://www.rabbitmq.com/quorum-queues.html) - *Best for high availability with durable messages.*
+    Durable classic queues are tied to the server they are created on and will become unavailable if that server is unavailable.
 
-    This is the standard choice for durable queues and messages since they are replicated by default and offer high availability.
+- [**Quorum Queues**](https://www.rabbitmq.com/quorum-queues.html) - _Best for high availability with durable messages._
 
-    !!!warning
-        Similar to connections and channels quorum queues are intended to be long-lived, avoid scenarios where quorum queues are frequently removed and redeclared as it may lock internal resources within RabbitMQ.
+This is the standard choice for durable queues and messages since they are replicated by default and offer high availability.
 
-        Keep the queues small and use multiple queues when possible for best performance.
+!!!warning
 
-- [**Stream Queues**](https://www.rabbitmq.com/streams.html) - *Best for high volume with durable messages.*
+    Similar to connections and channels quorum queues are intended to be long-lived, avoid scenarios where quorum queues are frequently removed and redeclared as it may lock internal resources within RabbitMQ.
 
-    This is the standard choice for high volume durable queues and messages since they store messages as a persistent replicated log. This allows for messages to persist after they are consumed to be recalled or replayed, or with the stream protocol efficiently processed in batches.
+    Keep the queues small and use multiple queues when possible for best performance.
 
-    !!!warning
-        When using stream queues you must set reasonable retention to keep them from filling up RabbitMQ as it will prevent it from accepting new messages.
+- [**Stream Queues**](https://www.rabbitmq.com/streams.html) - _Best for high volume with durable messages._
 
-        Also note that messages in RabbitMQ are not backed up in the case of disaster.
+This is the standard choice for high volume durable queues and messages since they store messages as a persistent replicated log. This allows for messages to persist after they are consumed to be recalled or replayed, or with the stream protocol efficiently processed in batches.
+
+!!!warning
+
+    When using stream queues you must set reasonable retention to keep them from filling up RabbitMQ as it will prevent it from accepting new messages.
+
+    Also note that messages in RabbitMQ are not backed up in the case of disaster.
 
 ## Follow the Go-Live Checklist
 
@@ -199,7 +208,7 @@ Check out the [release notes](../../release-notes/rabbitmq.md) for the RabbitMQ 
 
 ## Further Reading
 
-* [RabbitMQ Management UI](https://www.rabbitmq.com/management.html)
-* [AMQP URL spec](https://www.rabbitmq.com/uri-spec.html)
-* [AMQP Clients](https://www.rabbitmq.com/clients.html)
-* [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
+- [RabbitMQ Management UI](https://www.rabbitmq.com/management.html)
+- [AMQP URL spec](https://www.rabbitmq.com/uri-spec.html)
+- [AMQP Clients](https://www.rabbitmq.com/clients.html)
+- [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)

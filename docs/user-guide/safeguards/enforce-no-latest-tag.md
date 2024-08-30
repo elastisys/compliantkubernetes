@@ -1,12 +1,16 @@
 ---
+search:
+  boost: 2
 tags:
-- ISO 27001 A.12.1.2 Change Management
-- ISO 27001 A.14.2.2 System Change Control Procedures
-- ISO 27001 A.14.2.4 Restrictions on Changes to Software Packages
+  - ISO 27001 A.12.1.2 Change Management
+  - ISO 27001 A.14.2.2 System Change Control Procedures
+  - ISO 27001 A.14.2.4 Restrictions on Changes to Software Packages
 ---
+
 # Avoid unexpected changes: disallowed tags
 
 !!!note
+
     This section helps you implement ISO 27001, specifically:
 
     * A.12.1.2 Change Management
@@ -14,6 +18,7 @@ tags:
     * A.14.2.4 Restrictions on Changes to Software Packages
 
 !!!important
+
     This safeguard is enabled by default with the enforcement action `deny` since [Compliant Kubernetes apps v0.29.0](../../release-notes/ck8s.md#v0290). As a result, resources that violate this policy will not be created.
 
 Using the `:latest` tag can lead to inconsistent deployments, where it is difficult to rollback. In Compliant Kubernetes we suggest using explicit tags for your container images. This way you know that image version `v1.0.0` will be deployed if you are using the `:v1.0.0` tag.
@@ -22,7 +27,7 @@ Using the `:latest` tag can lead to inconsistent deployments, where it is diffic
 
 You may encounter the following issue:
 
-```
+```console
 Error from server ([container-image-must-not-have-disallowed-tags] container <example-container> uses a disallowed tag <harbor.$DOMAIN/$REGISTRY_PROJECT/example-container:latest>; disallowed tags are ["latest"])
 ```
 
@@ -32,11 +37,12 @@ To fix this, you have the following options:
 
 - Use a meaningful tag for your images i.e. `v1.0.0`.
 
-If your administrator has not enforced this policy yet, you can view current violations of the policy by running
+If your administrator has not enforced this policy yet, you can view current violations of the policy by running:
+
 ```bash
 kubectl get k8sdisallowedtags.constraints.gatekeeper.sh container-image-must-not-have-disallowed-tags -ojson | jq .status.violations
 ```
 
 ## Further Reading
 
-* [Images](https://kubernetes.io/docs/concepts/containers/images/)
+- [Images](https://kubernetes.io/docs/concepts/containers/images/)

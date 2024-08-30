@@ -1,8 +1,10 @@
 ---
 description: Troubleshooting help for Application Developers on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+search:
+  boost: 2
 ---
 
-# Troubleshooting
+# Troubleshooting for Application Developers
 
 Going through these basic troubleshooting steps should help you as an Application Developer identify where a problem may lie. If any of these steps do not give the expected "fine" output, use `kubectl describe` to investigate.
 
@@ -57,12 +59,15 @@ kubectl get certificates
 ```
 
 ## Is the API server healthy?
+
 The command below should return `HTTP/2 200`.
+
 ```sh
 curl --fail --verbose -k https://$loadbalancer_ip_address:6443/healthz
 ```
 
 ## Are Compliantkubernetes apps services healthy?
+
 All commands below should return `HTTP/2 200`.
 
 ```sh

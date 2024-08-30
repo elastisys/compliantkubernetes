@@ -1,8 +1,8 @@
 # Use Standard Kubeconfig Mechanisms
 
-* Status: accepted
-* Deciders: Compliant Kubernetes Architecture Meeing
-* Date: 2021-02-02
+- Status: accepted
+- Deciders: Compliant Kubernetes Architecture Meeing
+- Date: 2021-02-02
 
 ## Context and Problem Statement
 
@@ -10,25 +10,25 @@ To increase adoption of Compliant Kubernetes, we were asked to observe the [Prin
 
 Tools that behave as such include:
 
-* `gcloud container clusters get-credentials`
-* `az aks get-credentials`
-* `kops`
-* `helmfile`
-* `helm`
-* `kubectl`
-* `fluxctl`
+- `gcloud container clusters get-credentials`
+- `az aks get-credentials`
+- `kops`
+- `helmfile`
+- `helm`
+- `kubectl`
+- `fluxctl`
 
 ## Decision Drivers
 
-* Compliant Kubernetes needs to observe the Principle of Least Astonishment.
-* Compliant Kubernetes needs to be compatible with various "underlying" vanilla Kubernetes tools.
-* Compliant Kubernetes needs to be usable with various tools "on top".
+- Compliant Kubernetes needs to observe the Principle of Least Astonishment.
+- Compliant Kubernetes needs to be compatible with various "underlying" vanilla Kubernetes tools.
+- Compliant Kubernetes needs to be usable with various tools "on top".
 
 ## Considered Options
 
-* Current solution, i.e., scripts wrapping kubeconfigs in sops which then execute "fixed" commands, like `helmfile`, `helm` and `kubectl`.
-* "Lighter" scripts wrapping and unwrapping kubeconfig, allowing administrators to run `helmfile`, `helm` and `kubectl` as the administrator sees fit.
-* Use standard kubeconfig mechanism.
+- Current solution, i.e., scripts wrapping kubeconfigs in sops which then execute "fixed" commands, like `helmfile`, `helm` and `kubectl`.
+- "Lighter" scripts wrapping and unwrapping kubeconfig, allowing administrators to run `helmfile`, `helm` and `kubectl` as the administrator sees fit.
+- Use standard kubeconfig mechanism.
 
 ## Decision Outcome
 
@@ -40,5 +40,5 @@ Tools that consume Kubernetes contexts are expected to use an approach similar t
 
 ## Links
 
-* [Organizing Cluster Access Using kubeconfig Files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
-* [kubectx / kubens](https://github.com/ahmetb/kubectx)
+- [Organizing Cluster Access Using kubeconfig Files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
+- [kubectx / kubens](https://github.com/ahmetb/kubectx)

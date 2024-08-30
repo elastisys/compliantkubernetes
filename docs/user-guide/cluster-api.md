@@ -1,6 +1,11 @@
+---
+search:
+  boost: 2
+---
 # Cluster API
 
 !!!note
+
     Our packaging of Cluster API is being rolled out and is not available in all environments.
     Most Elastisys Managed Service customers are using a version of this platform that is based on Kubespray.
     Elastisys will eventually migrate everyone to Cluster API.
@@ -12,7 +17,7 @@ This document aims to show what changes to expect as an Application Developer us
 ## What is Cluster API
 
 [Cluster API](https://Cluster-api.sigs.k8s.io/) is a project that provides declarative APIs and tools to provision, upgrade and operate Kubernetes Clusters.
-It works using Kubernetes objects that describe the state (Cluster) you want and operators that tries to reconcile the actual state to the desired state.
+It works using Kubernetes objects that describe the state (Cluster) you want and operators that try to reconcile the actual state to the desired state.
 This means it's very similar to how one normally works with `Pods` and other resources in Kubernetes, e.g. one can use a `MachineDeployment` to provision Kubernetes Nodes (`Machines`) in a similar way that one can use `Deployments` to provision `Pods`.
 
 Application Developers don't need a full understanding of Cluster API.
@@ -37,15 +42,16 @@ For Clusters that are spread out across zones you can also rely on the new Nodes
 ## Egress traffic source IP
 
 Kubernetes Nodes provisioned with Cluster API will by default only have a private IP address.
-This means that egress traffic will use Network Address Translation (NAT) via the cloud provider, similar to how home networks behind a router work.
+This means that egress traffic will use Network Address Translation (NAT) via the Infrastructure Provider, similar to how home networks behind a router work.
 In turn, this removes the possibility to allowlist traffic from specific Kubernetes Nodes in external services based on the source IP that the external service will see.
-Depending on the underlying cloud infrastructure provider and their features, we cannot guarantee that the IP the external services sees is stable over time.
-Also depending on underlying cloud infrastructure, the IP might also not be exclusive for your Compliant Kubernetes environment, so traffic from that IP could originate from other servers that is not related to your environment.
+Depending on the underlying Cloud Infrastructure Provider and their features, we cannot guarantee that the IP the external services sees is stable over time.
+Also depending on underlying cloud infrastructure, the IP might not be exclusive for your Compliant Kubernetes environment, so traffic from that IP could originate from other servers that are not related to your environment.
 
 !!!note
+
     Elastisys will look into the possibility of getting a stable egress IP for Application Developers that really need it.
 
-All ingress traffic will go through load balancers and there will not be any major differences for the ingress traffic.
+All Ingress traffic will go through load balancers and there will not be any major differences for the Ingress traffic.
 
 ## Cluster autoscaling
 
@@ -55,4 +61,4 @@ In turn, this means the autoscaler cannot prevent Nodes from running out of CPU 
 The autoscaler will scale down a Cluster if there are unneeded nodes for more than 10 minutes.
 A node is unneeded if it has less than cpu and memory requests less that 50% of its capacity and all pods running there can be moved to other nodes (refer to [this documentation](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#how-does-scale-down-work) for more information)
 
-Cluster autoscaling will not be needed for everyone and might not be available on all cloud providers, contact your Kubernetes administrator to see if it could be possible to enable for you.
+Cluster autoscaling will not be needed for everyone and might not be available on all Infrastructure Providers, contact your Platform Administrator to see if it could be possible to enable for you.

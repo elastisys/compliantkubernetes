@@ -1,13 +1,16 @@
 ---
 description: How to prepare your application for Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+search:
+  boost: 2
 tags:
-- ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
-- BSI IT-Grundschutz APP.4.4.A21
+  - ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
+  - BSI IT-Grundschutz APP.4.4.A21
 ---
 
 # Prepare Your Application
 
 <!--user-demo-overview-start-->
+
 To make the most out of Compliant Kubernetes, prepare your application so it features:
 
 - some REST endpoints: [NodeJS](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L38), [.NET](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Program.cs#L19);
@@ -37,6 +40,7 @@ cd compliantkubernetes/user-demo
 ```
 
 ## Make Sure Your Application Tolerates Nodes Replacement
+
 !!!important
 
     This section helps you implement ISO 27001, specifically:
@@ -47,6 +51,6 @@ Compliant Kubernetes recommends **against** [PodDisruptionBudgets (PDBs)](https:
 
 Further reading:
 
-* [Dealing with Disruptions](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/#dealing-with-disruptions)
+- [Dealing with Disruptions](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/#dealing-with-disruptions)
 
 <!--user-demo-overview-end-->

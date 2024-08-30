@@ -1,11 +1,14 @@
 ---
 tags:
-- ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
-- BSI IT-Grundschutz APP.4.4.A21
-- HIPAA S16 - Security Awareness and Training - Security Reminders - § 164.308(a)(5)(ii)(A)
-- MSBFS 2020:7 4 kap. 12 §
+  - ISO 27001 A.12.6.1 Management of Technical Vulnerabilities
+  - BSI IT-Grundschutz APP.4.4.A21
+  - HIPAA S16 - Security Awareness and Training - Security Reminders - § 164.308(a)(5)(ii)(A)
+  - MSBFS 2020:7 4 kap. 12 §
+  - NIST SP 800-171 3.4.5
+  - NIST SP 800-171 3.7.1
 ---
-# Maintaining and Upgrading your Compliant Kubernetes environment.
+
+# Maintaining and Upgrading your Compliant Kubernetes environment
 
 In order to keep your Compliant Kubernetes environment running smoothly, and to assure that you are up to date with the latest patches you need to perform regular maintenance on it.
 
@@ -70,7 +73,7 @@ When a new version is released, it becomes available as a [tagged release](https
 velero get backup
 ```
 
-- [ ] Silence the notifications for the alerts. e.g you can use [alertmanager silences](https://prometheus.io/docs/alerting/latest/alertmanager/#silences);
+- [ ] Silence the notifications for the alerts. e.g you can use [Alertmanager silences](https://prometheus.io/docs/alerting/latest/alertmanager/#silences);
 
 ### Upgrading compliantkubernetes-apps
 
@@ -96,7 +99,7 @@ Then check the release notes for each version in between to see if there are any
     ```
 
 1. Check if there is a [migration document](https://github.com/elastisys/compliantkubernetes-apps/tree/main/migration) for the release you want to upgrade to, (e.g. [for upgrade to 0.11.0](https://github.com/elastisys/compliantkubernetes-apps/blob/5d8f4f1b3cc053b3b515711549ab80df9617f2f4/migration/v0.10.x-v0.11.x/upgrade-apps.md) ) and follow the instructions there.
-Note that you should check the documentation at the release tag instead of `main` to be sure that it's correct.
+    Note that you should check the documentation at the release tag instead of `main` to be sure that it's correct.
 
 1. If there is no relevant migration document, first do a dry-run.
 
@@ -113,12 +116,12 @@ Note that you should check the documentation at the release tag instead of `main
     ```
 
 1. Verify that everything is running after the upgrade.
-At the minimum, at least run the tests in compliantkubernetes-apps.
+    At the minimum, at least run the tests in compliantkubernetes-apps.
 
-    ```bash
-    ./bin/ck8s test sc
-    ./bin/ck8s test wc
-    ```
+        ```bash
+        ./bin/ck8s test sc
+        ./bin/ck8s test wc
+        ```
 
 1. Go back to step 1 and repeat one new release of compliantkubernetes-apps at a time until you are at the latest release.
 
@@ -127,12 +130,12 @@ At the minimum, at least run the tests in compliantkubernetes-apps.
 All clusters should stay up to date with the latest Kubespray version used in [compliantkubernetes-kubespray](https://github.com/elastisys/compliantkubernetes-kubespray).
 
 1. Note what version of Kubespray that is currently used in the cluster and the Kubespray version we want to upgrade to.
-Then check the release notes for each version in between to see if there are anything that might cause any problems, if so then consult the rest of the operations team before proceeding.
-Also check if the newer Kubespray version would upgrade Kubernetes to a new minor version, if so then the Application Developer should get a notice of x weeks before proceeding to let them check for any deprecated APIs that they might be using.
-You should never upgrade more than one patch version of Kubespray at a time.
-E.g. if you are at Kubespray version 2.13.3 and are going to 2.15.0 then the upgrade path would be 2.13.3 -> 2.13.4 -> 2.14.0 -> 2.14.1 -> 2.14.2 -> 2.15.0.
-Patches that are released to an older minor version can be skipped, e.g. new patches to 2.14 after 2.15 has been released.
-Read more about Kubespray upgrades in their [documentation](https://kubespray.io/#/docs/upgrades).
+    Then check the release notes for each version in between to see if there are anything that might cause any problems, if so then consult the rest of the operations team before proceeding.
+    Also check if the newer Kubespray version would upgrade Kubernetes to a new minor version, if so then the Application Developer should get a notice of x weeks before proceeding to let them check for any deprecated APIs that they might be using.
+    You should never upgrade more than one patch version of Kubespray at a time.
+    E.g. if you are at Kubespray version 2.13.3 and are going to 2.15.0 then the upgrade path would be 2.13.3 -> 2.13.4 -> 2.14.0 -> 2.14.1 -> 2.14.2 -> 2.15.0.
+    Patches that are released to an older minor version can be skipped, e.g. new patches to 2.14 after 2.15 has been released.
+    Read more about Kubespray upgrades in their [documentation](https://kubespray.io/#/docs/upgrades).
 
 1. Checkout the next Kubespray version by checking out the last compliantkubernetes-kubespray commit (the commit is `next-version` in the snippet below) that used that version and updating the submodule.
 
@@ -172,7 +175,7 @@ Read more about Kubespray upgrades in their [documentation](https://kubespray.io
 ```
 
 - [ ] Check if any alerts generated by the upgrade didn't close;
-- [ ] Check if you can login to Grafana, Opensearch or Harbor;
+- [ ] Check if you can login to Grafana, OpenSearch or Harbor;
 - [ ] Enable the notifications for the alerts;
 - [ ] Notify the users (if any) when the upgrade is complete;
 - [ ] Check that you can see fresh metrics and logs.
