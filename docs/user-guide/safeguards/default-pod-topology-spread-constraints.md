@@ -24,7 +24,7 @@ A healthy security posture requires you to ensure your application tolerates fai
 This involves two things:
 
 1. Running your application replicated with at least two Pods. Specifically, this implies that your Deployment has `.spec.replicas` of at least 2.
-2. Ensuring that the Pods are spread across failure domains. The latter was usually achieved by setting correct `topologySpreadConstraints`.
+1. Ensuring that the Pods are spread across failure domains. The latter was usually achieved by setting correct `topologySpreadConstraints`.
 
 In Compliant Kubernetes, dealing with (1) above is still the Application Developer's responsibility.
 
