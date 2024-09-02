@@ -54,7 +54,7 @@ In particular, production data should not be compromised, no matter what happens
 Similarly, some regulations -- such as Medical Devices Regulation (MDR) -- require you to take a risk-based approach to changing the tech stack.
 Depending on your risk assessment, this implies **verifying** changes in a non-production Application Deployment before going into production.
 
-Some regulations, such as [NIS2](../ciso-guide/nis2.md), require that the organization takes measures related to "security in network and information systems acquisition, development and maintenance, including vulnerability handling and disclosure".
+Some regulations, such as [NIS2](../ciso-guide/controls/nis2.md), require that the organization takes measures related to "security in network and information systems acquisition, development and maintenance, including vulnerability handling and disclosure".
 This is commonly implemented using a concept called Security Zones.
 If two applications are in different Security Zones, then Cluster isolation might be required.
 

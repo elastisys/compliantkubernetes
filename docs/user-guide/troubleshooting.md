@@ -2,6 +2,8 @@
 description: Troubleshooting help for Application Developers on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
 search:
   boost: 2
+tags:
+  - NIS2 Minimum Requirement (b) Incident Handling
 ---
 
 # Troubleshooting for Application Developers

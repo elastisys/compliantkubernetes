@@ -17,6 +17,7 @@ tags:
   - HSLF-FS 2016:40 3 kap. 14 § Fysiskt skydd av informationssystem
   - GDPR Art. 28 Processor
   - NIST SP 800-171 3.13.16
+  - NIS2 Minimum Requirement (d) Security of direct suppliers
 ---
 
 # Infrastructure Provider Audit

@@ -18,7 +18,7 @@ We've drawn inspiration from, and based architectural decision on information ga
 Resources for the Chief Information Security Officer (CISO) or similar:
 
 - [ISO 27001](./controls/iso-27001.md)
-- [NIS2](./nis2.md)
+- [NIS2](./controls/nis2.md)
 
 Resources for the Data Protection Officers (DPO) or similar:
 

@@ -4,6 +4,7 @@ search:
   boost: 2
 tags:
   - ISO 27001 A.16 Information Security Incident Management
+  - NIS2 Minimum Requirement (b) Incident Handling
 ---
 
 # Alerts via Alertmanager

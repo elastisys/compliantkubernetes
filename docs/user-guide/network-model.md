@@ -18,7 +18,8 @@ tags:
   - NIST SP 800-171 3.4.7
   - NIST SP 800-171 3.13.1
   - NIST SP 800-171 3.13.6
-  - NIST SP 800-171 3.13.8
+  - NIS2 Minimum Requirement (e) Security in Network
+  - NIS2 Minimum Requirement (h) Encryption-in-transit
 ---
 
 # Network Model

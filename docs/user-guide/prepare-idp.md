@@ -7,6 +7,8 @@ tags:
   - MSBFS 2020:7 4 kap. 5 §
   - NIST SP 800-171 3.1.1
   - NIST SP 800-171 3.3.2
+  - NIS2 Minimum Requirement (i) Access Control
+  - NIS2 Minimum Requirement (j) Multi-Factor Authentication
 ---
 
 # Prepare your Identity Provider (IdP)

@@ -231,7 +231,7 @@ nav:
       - "Public sector":
           - "MSBFS 2020:7 (SE)": "ciso-guide/controls/msbfs-20207.md"
       - "NIS2":
-          - "Overview": "ciso-guide/nis2.md"
+          - "Overview": "ciso-guide/controls/nis2.md"
           - "KRITIS (DE)": "ciso-guide/controls/kritis.md"
           - "BSI IT-Grundschutz (DE)": "ciso-guide/controls/bsi-it-grundschutz.md"
           - "MSBFS 2018:8 (SE)": "ciso-guide/controls/msbfs-20188.md"

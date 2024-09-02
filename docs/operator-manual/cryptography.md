@@ -5,6 +5,7 @@ tags:
   - HIPAA S47 - Access Control - Encryption and Decryption - § 164.312(a)(2)(iv)
   - NIST SP 800-171 3.13.10
   - NIST SP 800-171 3.13.11
+  - NIS2 Minimum Requirement (h) Cryptography
 ---
 
 # Use of Cryptography
