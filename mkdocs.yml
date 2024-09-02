@@ -84,6 +84,7 @@ plugins:
         "operator-manual/safespring.md": "operator-manual/on-prem-standard.md"
         "operator-manual/qa.md": "quality-criteria.md"
         "operator-manual/air-gapped-environment.md": "operator-manual/air-gapped.md"
+        "ciso-guide/nis2.md": "ciso-guide/controls/nis2.md"
 
 markdown_extensions:
   - attr_list
