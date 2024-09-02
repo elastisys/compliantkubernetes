@@ -127,6 +127,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 - [ADR-0048](0048-access-management-for-AMS-with-network-policies.md) - Access Management for Additional Managed Services (AMS-es)
 - [ADR-0049](0049-run-ingress-nginx-in-chroot.md) - Running NGINX with Chroot Option
 - [ADR-0050](0050-use-cluster-isolation.md) - Use Cluster Isolation to separate the application and its traces from its logs and metrics
+- [ADR-0051](0051-open-cert-manager-netpols.md) - Open cert-manager Network Policies
 
 <!-- adrlogstop -->
 
