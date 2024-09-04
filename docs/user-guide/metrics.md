@@ -99,6 +99,8 @@ Configuring Prometheus to collect metrics from an application requires either a 
 
 In Compliant Kubernetes the Prometheus Operator in the Workload Cluster is configured to pick up all ServiceMonitors and PodMonitors, regardless in which namespace they are or which labels they have.
 
+The default scrape interval is 30 seconds, this is how often Prometheus will gather metrics from the Pods. The default scrape timeout is 10 seconds, this is how long Prometheus will wait after starting a scrape before it considers the scrape to have failed. These can be configured in your ServiceMonitor or PodMonitor, but we do recommend you to keep the default.
+
 ### Running Example
 
 <!--user-demo-metrics-start-->
