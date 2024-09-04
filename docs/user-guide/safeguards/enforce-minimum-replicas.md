@@ -6,6 +6,10 @@ tags: []
 
 # Avoid Downtime with Replicas
 
+!!!important
+
+    - This safeguard is enabled by default and will warn on violations. As a result, resources that violate this policy will generate warning messages, but will still be created.
+
 Compliant Kubernetes by default recommends a minimum of 2 replicas for Deployments and StatefulSets.
 
 Therefore a warning will be issued when you add or update a Deployment or StatefulSet where the number of replicas is less than 2.

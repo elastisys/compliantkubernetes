@@ -7,6 +7,10 @@ tags:
 
 # Reduce blast radius: Enforcing restricted privileges
 
+!!!important
+
+    - This group of safeguards are enabled by default and will deny or mutate on violations. As a result, resources that violate this policy will either not be created or they will be mutated to conform to the policy, depending on the type of violation.
+
 This page helps you understand why warnings are emitted when deploying workloads similar to:
 
 ```console
@@ -164,6 +168,10 @@ Certain applications may need more privileges than what is allowed from the rest
 
 To do so application developers should put together a Pod Security Policy to be evaluated and accepted by the platform administrator, which then can allow access to these privileges in a certain namespace for resources with a certain label.
 The format should be as follows:
+
+!!! elastisys "For Elastisys Managed Services Customers"
+
+    Please file a [service ticket](https://elastisys.atlassian.net/servicedesk/) and we will review and discuss your request for increased privileges. We will try to find a solution that works for you, but there is no guarantee that your request will be approved.
 
 ```yaml
 podSelectorLabels: # Must be provided

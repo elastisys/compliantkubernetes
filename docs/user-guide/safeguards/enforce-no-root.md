@@ -18,6 +18,10 @@ tags:
     - A.12.6.1 Management of Technical Vulnerabilities
     - A.14.2.5 Secure System Engineering Principles
 
+!!!important
+
+    This safeguard is enabled by default and will deny violations. As a result, resources that violate this policy will not be created.
+
 Many container runtimes and operating system vulnerabilities need code running as root to become a threat. To minimize this risk, application should only run as root when strictly necessary.
 
 Unfortunately, many Dockerfiles -- and container base images -- today are shipped running as root by default. This makes it easy to slip code running as root into production, exposing data to unnecessary risks.
