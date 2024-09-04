@@ -28,8 +28,7 @@ Note to contributors: Aim for the following format.
 
 !!!important
 
-    - This safeguard is enabled by default with the enforcement action `deny` since [Compliant Kubernetes apps v0.19.0](../../release-notes/ck8s.md#v0190). As a result, resources that violate this policy will not be created.
-    - The default enforcement action for this safeguard has been changed to `warn` instead of `deny` since [Compliant Kubernetes apps v0.29.0](../../release-notes/ck8s.md#v0290). As a result, resources that violate this policy will generate warning messages, but will still be created.
+    - This safeguard is enabled by default and will warn on violations. As a result, resources that violate this policy will generate warning messages, but will still be created.
 
 ## Problem
 
