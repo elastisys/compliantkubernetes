@@ -62,7 +62,6 @@ Note that, some requirements are out-of-scope for Compliant Kubernetes, as liste
 | (f) policies and procedures to assess the effectiveness of cybersecurity risk-management measures | This is a requirement on the management team, which a container platform product, like Compliant Kubernetes, cannot fulfill.             |
 | (g) basic cyber hygiene practices and cybersecurity training                                      | Compliant Kubernetes is not a training solution. However, Elastisys can help. Check out [our training](https://elastisys.com/training/). |
 
-
 ## Country- and Sector-Specific Requirements
 
 Please see the following pages, also linked in the side bar, for country- and sector-specific rules on top of the NIS2 minimum requirements.
