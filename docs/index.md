@@ -93,7 +93,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
 ## Elastisys Compliant Kubernetes is trusted by industry leaders
 
 <ul class="columns-always">
-    <li><img src="img/logos/orgs/telia.png" alt="Logo of Telia" /></li>
+    <li><img src="img/logos/orgs/telia.svg" alt="Logo of Telia" /></li>
     <li><img src="img/logos/orgs/carasent.png" alt="Logo of Carasent" /></li>
     <li><img src="img/logos/orgs/prorenata.svg" alt="Logo of Prorenata" /></li>
     <li><img src="img/logos/orgs/tempus.png" alt="Logo of Tempus" /></li>
