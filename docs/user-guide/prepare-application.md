@@ -39,6 +39,31 @@ git clone https://github.com/elastisys/compliantkubernetes/
 cd compliantkubernetes/user-demo
 ```
 
+## Make Sure Your Application Can Terminate Gracefully
+
+In Kubernetes Pods and their Containers will sometimes be terminated.
+The cause can differ a lot, everything from you updating your application to a new version, to a Node being replaced or the Node running out of memory.
+Regardless of the cause, your application needs to be able to handle terminations unexpectedly.
+
+When a Pod termination is started there is usually a grace period where the Pod can clean up and then shut down gracefully.
+This grace period is usually 30 seconds, but can sometimes differ.
+If the Pod is not done shutting down at the end of this period, then it will be forcefully shut down.
+This process usually looks something like this:
+
+1. Something triggers the Pod termination
+1. Any `preStop` [hooks](https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/) in the Pod are triggered.
+1. TERM signal is sent to each Container in the Pod.
+1. If the `preStop` hook or the Pod has not terminated gracefully within the grace period, then the KILL signal is sent to all processes in the Pod.
+
+Your application might need to do some cleanup before terminating, like finishing transactions, closing connections, writing data to disk, etc.
+If that is the case, then you have two options to utilize the grace period before the Pod is forcefully terminated.
+You can utilize the `preStop` hook to start a script in a container or it can make a HTTP call to a container.
+You can have one `preStop` hook per Container in your Pod.
+You can also utilize the TERM signal that is sent to the containers by catching them in you application and having that trigger a graceful shutdown.
+You can both have `preStop` hooks and catch the TERM signal for the same container.
+
+You can read more about the Pod termination process in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination).
+
 ## Make Sure Your Application Tolerates Nodes Replacement
 
 !!!important
@@ -47,7 +72,11 @@ cd compliantkubernetes/user-demo
 
     * A.12.6.1 Management of Technical Vulnerabilities
 
-Compliant Kubernetes recommends **against** [PodDisruptionBudgets (PDBs)](https://kubernetes.io/docs/tasks/run-application/configure-pdb/). PDBs can easily be misconfigured to block draining Nodes, which interferes with automatic OS patching and compromises the security posture of the environment. Instead, prefer engineering your application to deal with disruptions. The user demo already showcases how to achieve this with replication and topologySpreadConstraints. Make sure to move state, even soft state, to [specialized services](additional-services/index.md).
+Compliant Kubernetes recommends **against** [PodDisruptionBudgets (PDBs)](https://kubernetes.io/docs/tasks/run-application/configure-pdb/).
+PDBs can easily be misconfigured to block draining Nodes, which interferes with automatic OS patching and compromises the security posture of the environment.
+Instead, prefer engineering your application to deal with disruptions.
+The user demo already showcases how to achieve this with replication and topologySpreadConstraints.
+Make sure to move state, even soft state, to [specialized services](additional-services/index.md).
 
 Further reading:
 
