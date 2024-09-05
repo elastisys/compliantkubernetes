@@ -4,6 +4,7 @@
 
 <!-- BEGIN TOC -->
 
+- [v2.25.0-ck8s4](#v2250-ck8s4) - 2024-09-04
 - [v2.25.0-ck8s3](#v2250-ck8s3) - 2024-07-26
 - [v2.24.1-ck8s4](#v2241-ck8s4) - 2024-07-25
 - [v2.25.0-ck8s2](#v2250-ck8s2) - 2024-07-23
@@ -33,6 +34,13 @@
 !!!note
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/changelog/).
+
+### v2.25.0-ck8s4
+
+#### Improvement(s)
+
+- Update calico to v3.27.4 to fix high cpu issues
+- Multiple tunnels per connection in UpCloud Gateways
 
 ### v2.25.0-ck8s3
 
