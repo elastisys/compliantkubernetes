@@ -1,3 +1,7 @@
+---
+tags:
+  - NIS2 Minimum Requirement (b) Incident Handling
+---
 # Troubleshooting for Platform Administrators
 
 {%

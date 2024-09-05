@@ -8,7 +8,7 @@ description: Overview of what the Network and Information Security Directive 2 (
 # Network and Information Security Directive 2 (NIS2)
 
 {%
-   include-markdown './controls/_common.include'
+   include-markdown './_common.include'
    start='<!--legal-disclaimer-start-->'
    end='<!--legal-disclaimer-end-->'
 %}
@@ -30,6 +30,8 @@ These sectors include energy, transport, water, banking, financial market infras
 To uphold the directive's objectives, businesses identified by Member States as operators of essential services in the specified sectors must implement suitable security measures and promptly report significant incidents to relevant national authorities.
 Similarly, key digital service providers, such as search engines, cloud computing services, and online marketplaces, are obligated to adhere to the security and notification requirements outlined in the directive.
 
+The NIS2 Directive shares a strong connection with two additional initiatives: the Critical Entities Resilience (CER) Directive and the Regulation for Digital Operational Resilience in the Financial Sector, commonly known as the Digital Operational Resilience Act (DORA).
+
 ## Which sectors are covered by the NIS2 Directive?
 
 A lot more sectors than in the previous iteration.
@@ -44,11 +46,27 @@ The [official FAQ](https://digital-strategy.ec.europa.eu/en/faqs/directive-measu
 
 ## How does the NIS2 Directive relate to Compliant Kubernetes?
 
-The NIS2 Directive shares a strong connection with two additional initiatives: the Critical Entities Resilience (CER) Directive and the Regulation for Digital Operational Resilience in the Financial Sector, commonly known as the Digital Operational Resilience Act (DORA).
+NIS2 Article 21(2) lists 10 so-called minimum requirements.
+These minimum requirements need to be translated into policies for your organization, which can then be technically implemented.
+Below is a list of pages, which help you translate such policies into implementation on top of Compliant Kubernetes.
 
-The directives and regulations affect how Compliant Kubernetes is composed on an architectural level and configured for specific use-cases, depending on industry needs.
-Please see the following pages, also linked in the side bar, for specific implementations made to meet these demands:
+[TAGS]
 
-- [KRITIS](controls/kritis.md) (Germany)
-- [BSI IT Grundschutz](controls/bsi-it-grundschutz.md) (Germany)
-- [MSBFS 2018:8](controls/msbfs-20188.md) (Sweden)
+### Out of Scope NIS2 Requirements
+
+Note that, some requirements are out-of-scope for Compliant Kubernetes, as listed below:
+
+|                                      NIS2 Minimum Requirement                                     |                                                        Justification for Exclusion                                                       |
+|:-------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------:|
+| (a) policies on risk analysis and information system security                                     | This is a requirement on the management team, which a container platform product, like Compliant Kubernetes, cannot fulfill.             |
+| (f) policies and procedures to assess the effectiveness of cybersecurity risk-management measures | This is a requirement on the management team, which a container platform product, like Compliant Kubernetes, cannot fulfill.             |
+| (g) basic cyber hygiene practices and cybersecurity training                                      | Compliant Kubernetes is not a training solution. However, Elastisys can help. Check out [our training](https://elastisys.com/training/). |
+
+## Country- and Sector-Specific Requirements
+
+Please see the following pages, also linked in the side bar, for country- and sector-specific rules on top of the NIS2 minimum requirements.
+Note that these rules were enacted under NIS1, as NIS2 still needs to be implemented in some EU Member States:
+
+- [KRITIS](kritis.md) (Germany)
+- [BSI IT Grundschutz](bsi-it-grundschutz.md) (Germany)
+- [MSBFS 2018:8](msbfs-20188.md) (Sweden)

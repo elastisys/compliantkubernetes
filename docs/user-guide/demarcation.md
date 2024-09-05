@@ -12,6 +12,7 @@ tags:
   - HSLF-FS 2016:40 4 kap. 3 § Styrning av behörigheter
   - NIST SP 800-171 3.1.15
   - NIST SP 800-171 3.13.3
+  - NIS2 Minimum Requirement (i) Access Control
 ---
 
 <!-- markdownlint-disable-file first-line-h1 -->

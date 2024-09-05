@@ -10,6 +10,7 @@ tags:
   - MSBFS 2020:7 4 kap. 15 §
   - HSLF-FS 2016:40 3 kap. 12 § Säkerhetskopiering
   - GDPR Art. 17 Right to erasure ("right to be forgotten")
+  - NIS2 Minimum Requirement (c) Backup Management
 ---
 
 # Backups
