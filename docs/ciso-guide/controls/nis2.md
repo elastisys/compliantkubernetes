@@ -49,9 +49,19 @@ The [official FAQ](https://digital-strategy.ec.europa.eu/en/faqs/directive-measu
 NIS2 Article 21(2) lists 10 so-called minimum requirements.
 These minimum requirements need to be translated into policies for your organization, which can then be technically implemented.
 Below is a list of pages, which help you translate such policies into implementation on top of Compliant Kubernetes.
-Note that, some requirements, such as "basic cyber hygiene practices and cybersecurity training" are out-of-scope for Compliant Kubernetes, hence absent from the list below.
 
 [TAGS]
+
+### Out of Scope NIS2 Requirements
+
+Note that, some requirements are out-of-scope for Compliant Kubernetes, as listed below:
+
+|                                      NIS2 Minimum Requirement                                     |                                                        Justification for Exclusion                                                       |
+|:-------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------:|
+| (a) policies on risk analysis and information system security                                     | This is a requirement on the management team, which a container platform product, like Compliant Kubernetes, cannot fulfill.             |
+| (f) policies and procedures to assess the effectiveness of cybersecurity risk-management measures | This is a requirement on the management team, which a container platform product, like Compliant Kubernetes, cannot fulfill.             |
+| (g) basic cyber hygiene practices and cybersecurity training                                      | Compliant Kubernetes is not a training solution. However, Elastisys can help. Check out [our training](https://elastisys.com/training/). |
+
 
 ## Country- and Sector-Specific Requirements
 
