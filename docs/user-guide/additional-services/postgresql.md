@@ -11,6 +11,7 @@ search:
     * **Business continuity**:
         * Standard Plan is configured with two replicas (one primary and one standby).
         * Premium Plan is configured with three replicas (one primary and two standby-s).
+        * Both plans come with a [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) to minimize downtime.
     * **Disaster recovery**:
         * Backup scope includes user definitions, data definitions, and the data per-se.
         * A full backup is taken every day between 0:00 am and 6:00 am CET. The backup retention period is 30 days unless otherwise requested by the customer.
