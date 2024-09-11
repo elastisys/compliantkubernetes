@@ -78,8 +78,19 @@ Instead, prefer engineering your application to deal with disruptions.
 The user demo already showcases how to achieve this with replication and topologySpreadConstraints.
 Make sure to move state, even soft state, to [specialized services](additional-services/index.md).
 
-Further reading:
+## Further reading
 
 - [Dealing with Disruptions](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/#dealing-with-disruptions)
 
 <!--user-demo-overview-end-->
+
+## List of Non-Functional Requirements
+
+In some contexts, it is useful to have a more-or-less exhaustive list of [non-functional requirements](https://en.wikipedia.org/wiki/Non-functional_requirement) which the application needs to fulfill to make the best use of the underlying platform.
+Sometimes, these may loosely be called "IT requirements".
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
+
+{%
+    include "./list-of-non-functional-application-requirements.html"
+%}
