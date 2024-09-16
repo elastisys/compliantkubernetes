@@ -129,6 +129,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 - [ADR-0050](0050-use-cluster-isolation.md) - Use Cluster Isolation to separate the application and its traces from its logs and metrics
 - [ADR-0051](0051-open-cert-manager-netpols.md) - Open cert-manager Network Policies
 - [ADR-0052](0052-azure-encryption-at-rest.md) - Azure encryption-at-rest
+- [ADR-0054](0054-allow-write-access-to-endpoints-and-endpointslices-after-risk-acceptance.md)- Allow Application Developer write access to Endpoints and EndpointSlices after Proper Risk Acceptance
 
 <!-- adrlogstop -->
 
