@@ -6,6 +6,7 @@
 
 <!-- BEGIN TOC -->
 
+- [v0.40.1](#v0401) - 2024-09-18
 - [v0.40.0](#v0400) - 2024-08-21
 - [v0.39.2](#v0392) - 2024-09-04
 - [v0.39.1](#v0391) - 2024-07-15
@@ -53,6 +54,20 @@
 !!!note
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
+
+## v0.40.1
+
+Released 2024-09-18
+
+### Improvement(s)
+
+- Ingress-NGINX was upgraded to v1.11.2 and NGINX itself to v1.25.5.
+- Grafana was upgraded to v10.4.7.
+
+### Other(s)
+
+- Fix for install-requirements script.
+- Fixed a broken cluster status dashboard.
 
 ## v0.40.0
 
