@@ -59,6 +59,12 @@
 
 Released 2024-09-18
 
+!!! danger "Security Notice(s)"
+
+    - This patch release mitigates the following high and medium severity vulnerabilities:
+        - Ingress-NGINX [CVE-2024-7646](https://github.com/kubernetes/kubernetes/issues/126744)
+        - Grafana [CVE-2024-6837](https://grafana.com/blog/2024/08/14/grafana-security-release-medium-severity-security-fix-for-cve-2024-6837/)
+
 ### Improvement(s)
 
 - Ingress-NGINX was upgraded to v1.11.2 and NGINX itself to v1.25.5.
