@@ -224,7 +224,9 @@ nav:
       - "GDPR (EU)": "ciso-guide/controls/gdpr.md"
       - "ISO 27001 (EU)": "ciso-guide/controls/iso-27001.md"
       - "NIST SP 800-171": "ciso-guide/controls/nist-sp-800-171.md"
-      - "DoD Enterprise DevSecOps Reference Design": "ciso-guide/information-security/dod-enterprise-devsecops-reference-design-kubernetes.md"
+      - "Information Security":
+          - "Overview": "ciso-guide/information-security/index.md"
+          - "DoD Enterprise DevSecOps Reference Design": "ciso-guide/information-security/dod-enterprise-devsecops-reference-design-kubernetes.md"
       - "Healthcare":
           - "HSLF-FS 2016:40 (SE)": "ciso-guide/controls/hslf-fs-201640.md"
           - "HIPAA (US)": "ciso-guide/controls/hipaa.md"
