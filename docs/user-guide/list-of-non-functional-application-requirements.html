@@ -1,0 +1,750 @@
+<!--
+This document was generated from an internal document using the
+`./scripts/requirements-tsv-to-table.py` script.
+-->
+<table>
+<tr>
+<th scope="col">Code</th>
+<th scope="col">Requirement</th>
+<th scope="col">
+    Justification for exclusion
+    <br>OR<br>
+    Evidence
+    <br>OR<br>
+    Comment
+</th>
+</tr>
+
+<tr>
+<th scope="col">R1</td>
+<th scope="col">
+    Architectural requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R1.1</td>
+<td>
+    Application components MUST be loosely coupled. Data sharing MUST happen exclusively via versioned APIs.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to scale. Each application developer only needs to work within a bounded context, reducing cognitive load.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R1.2</td>
+<td>
+    The application MUST use separate containers for synchronous API requests and running asynchronous batch jobs.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application to make better use of resources and better tolerate failures. Being more exposed, synchronous code needs to be better tested and more secure than it's asynchronous counterpart. Furthermore, the asynchronous code may be managed by a queue to better handle spikes in work. The synchronous code can then focus on quick response times and good interaction with the user, without having to block for things such as sending a confirmation email.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R1.3</td>
+<td>
+    The application SHOULD crash if a fatal condition is encountered, such as bad configuration or inability to connect to a downstream service.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows Kubernetes to stop a rolling update before end-user traffic is impacted.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R2</td>
+<th scope="col">
+    API requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R2.1</td>
+<td>
+    The application SHOULD accept inbound requests using the RESTful API.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application to take advantage of the Ingress Controller for improved security via HTTPS, HSTS, IP allowlisting, rate-limiting, etc.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R2.2</td>
+<td>
+    All application APIs, internally and externally facing, synchronous (i.e. REST) and asynchronous (i.e. messages) MUST be versioned, and components MUST be able to process old API calls for as long as there are producers of these calls in production.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows each application component to be release independently with zero downtime via a rolling update strategy.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R2.3</td>
+<td>
+    The application MUST validate all incoming API requests as well as responses to outgoing API requests.
+    <details>
+        <summary>Why is this important?</summary>
+        This is good security hygiene.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R2.4</td>
+<td>
+    If the application has asynchronous parts, then the application MUST use the message queue provided by the platform for communicating between its synchronous and asynchronous parts.
+    <details>
+        <summary>Why is this important?</summary>
+        The platform team will have put a lot of effort into making sure that the message queue is fault-tolerant. The application team can build upon this to improve application fault-tolerance, as opposed to reinventing the wheel.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R2.5</td>
+<td>
+    The asynchronous components in the application that consume messages MUST be compatible with old message formats until no producers of the old message format remain deployed.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application to employ rolling update between components which communicate via the message queue.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R2.6</td>
+<td>
+    The application MUST set reasonable TTL for all messages sent via the platform-provide message queue.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensures that messages don't accumulate in the message queue in case of application bugs, potentially leading to capacity issues. In best case, such capacity issues lead to unnecessary costs. In worst case, such capacity issues can lead to new messages not being accepted and application malfunctioning.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R2.7</td>
+<td>
+    The application MUST gracefully handle connection resets (e.g., due to fail-over) of downstream components.
+    <details>
+        <summary>Why is this important?</summary>
+        Sometimes the platform team needs to migrate Pods from one Node to another, e.g., for maintenance. The application component consuming a Pod which moved needs to tolerate this.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R3</td>
+<th scope="col">
+    State management requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R3.1</td>
+<th scope="col">
+    Database requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.1.1</td>
+<td>
+    The application MUST store structured state in an PostgreSQL-compatible database provided by the platform.
+    <details>
+        <summary>Why is this important?</summary>
+        The platform team will have invested a lot of effort in making sure that the database is fault-tolerant, backed up, etc. Instead of reinventing the wheel, the application team can build upon this.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.1.2</td>
+<td>
+    The application MUST perform database migration in a backwards-compatible manner.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to rollback a buggy application. Despite best QA, some bugs may only manifest with production data and real users.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.1.3</td>
+<td>
+    The application MUST have a plan for rolling back changes, including dealing with database migrations.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to rollback a buggy application. Despite best QA, some bugs may only manifest with production data and real users.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.1.4</td>
+<td>
+    The application MAY perform database migration in a Kubernetes init container.
+    <details>
+        <summary>Why is this important?</summary>
+        Database migration may take a long time. It's better to separate this from the container which is providing the actual service.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R3.2</td>
+<th scope="col">
+    Non-persistant state requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.2.1</td>
+<td>
+    The application MUST store non-persistant data, such as session information and cache, in the Redis-compatible key-value store provided by the platform.
+    <details>
+        <summary>Why is this important?</summary>
+        The platform team will have invested a lot of effort in making the key-value store fault-tolerant. By moving session state into the key-value store, each application replica is equal. No sticky load-balancing is needed and rolling updates are possible without disturbing the end-user.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.2.2</td>
+<td>
+    The application MUST set reasonable TTL for all key-value pairs.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensures that the key-value store does not get filled with keys which are no longer in use, e.g., due to lack of cleanup or application crash.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.2.3</td>
+<td>
+    The application MUST gracefully tolerate loss of non-persistant data, e.g., ask the user to re-login.
+    <details>
+        <summary>Why is this important?</summary>
+        This is really a test for "is this session data"?
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.2.4</td>
+<td>
+    The application SHOULD use the Redis Sentinel protocol to facilitate a highly available key-value store.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensure the application can take advantage of the fault-tolerant key-value store provided by the platform.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R3.3</td>
+<th scope="col">
+    Object storage requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.3.1</td>
+<td>
+    The application MUST store large and/or unstructured data, like images, videos and PDF reports, in an S3-compatible object storage provided by the platform.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensures the application is stateless. This in turn means that the application can be updated at will, without needing to implement a complicated data replication protocol.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R4</td>
+<th scope="col">
+    Configuration management requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R4.1</td>
+<td>
+    The application MUST accept configuration only via clearly documented configuration files and environment variables.
+    <details>
+        <summary>Why is this important?</summary>
+        This is good practice. It allows a container image to be built once and configured in many different ways.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R4.2</td>
+<td>
+    The application MUST separate secret from non-secret configuration information. Examples of secret configuration includes API keys and database access password.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows tighter access control around secret configuration via Kubernetes RBAC.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R5</td>
+<th scope="col">
+    Observability requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R5.1</td>
+<th scope="col">
+    Observability requirements (metrics)
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.1.1</td>
+<td>
+    The application SHOULD provide a metrics endpoint exposing application metrics in Prometheus Exposition format.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application to take advantage of the observability stack provided by the platform.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.1.2</td>
+<td>
+    The metrics provided by the application SHOULD allow the application team to understand if it functions correctly.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to close the DevOps loop and understand how their code runs in production.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.1.3</td>
+<td>
+    The application SHOULD provide alerting rules based on threshold on metrics.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to discover issues with the application in production, before they are noticed by end-users.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.1.4</td>
+<td>
+    The application SHOULD provide metrics to understand if its deprecated APIs are still in use.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to safely remove deprecated APIs, reducing technical debt without fear of disappointing end-users.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R5.2</td>
+<th scope="col">
+    Observability requirements (logs)
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.2.1</td>
+<td>
+    The application MUST produce structured logs in multi-line JSON format on stdout.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application to take advantage of the observability stack provided by the platform.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.2.2</td>
+<td>
+    The application MUST log exceptions and errors.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to understand if something is malfunctioning with their application in production and issue bugfixes.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.2.3</td>
+<td>
+    The application SHOULD log all major boundary events, e.g., incoming and outgoing API requests.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to understand how their application is working in production.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.2.4</td>
+<td>
+    The application MUST mark each log record with the relevant log level, e.g., debug, info, warn, error, exception.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to filter log records based on importance and direct their attention to where it is needed.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R5.3</td>
+<th scope="col">
+    Observability requirements (tracing)
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.3.1</td>
+<td>
+    The application SHOULD push traces to an endpoint provided by the platform using the OpenTelemetry standard.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team the finest possible observability of their application. They could, for example, determine which particular function is slow in some hard-to-replicate conditions, paving the path to a bugfix.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R5.4</td>
+<th scope="col">
+    Observability requirements (probes)
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.4.1</td>
+<td>
+    The application MUST provide startup, readiness and liveliness probes, as relevant to the application component.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows Kubernetes to understand if the container of the application is running proparly and issue corrective actions, such as directing traffic to a different replica or restarting the container.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.4.2</td>
+<td>
+    The application MUST fail its startup probe during database migration.
+    <details>
+        <summary>Why is this important?</summary>
+        If application initialization takes a long time, then a startup probe allows the application team to specify a different timeout for that phase.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.4.3</td>
+<td>
+    The application SHOULD fail its readiness probe if a downstream service is unavailable.
+    <details>
+        <summary>Why is this important?</summary>
+        This is readiness probe best practice. If the application cannot deliver a useful service, it should make this clear to the outside world to allow Kubernetes to take corrective actions.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.4.4</td>
+<td>
+    The application MUST handle SIGTERM by failing its readiness probe, draining connections and exiting gracefully.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows "hitless" rolling updates.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R6</td>
+<th scope="col">
+    Build requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R6.1</td>
+<td>
+    The application MUST be containerized according to the OCI standard.
+    <details>
+        <summary>Why is this important?</summary>
+        This is pretty much a given nowadays, but is specified just to make sure.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R6.2</td>
+<td>
+    The application MUST run on linux/amd64 OCI platform.
+    <details>
+        <summary>Why is this important?</summary>
+        Compliant Kubernetes only supports Linux Nodes.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R6.3</td>
+<td>
+    The application MUST run as non-root.
+    <details>
+        <summary>Why is this important?</summary>
+        This is a security safeguard provided with Compliant Kubernetes. It improves security by ensuring that the application runs according to the least privilege principle.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R7</td>
+<th scope="col">
+    Deployment requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R7.1</td>
+<td>
+    Applications consisting of multiple components SHOULD be packaged in a versioned way (e.g., via Helm Chart).
+    <details>
+        <summary>Why is this important?</summary>
+        This ensure that the application is tested and deployed as a whole.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R7.2</td>
+<td>
+    The application SHOULD scale horizontally, i.e., its throughput should increase as more replicas are added.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensure that the application can handle load spikes in a cost-efficient manner.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R7.3</td>
+<td>
+    The application MUST specify resource requests and limits for CPU and memory, and make suitable runtime configuration.
+    <details>
+        <summary>Why is this important?</summary>
+        This is a security safeguard provided with Compliant Kubernetes. It enforces good capacity management practices and reduces the risk of downtime due to capacity exhaustion.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R7.4</td>
+<td>
+    The application MUST adhere to the principle of least privilege in terms of network communication, and have the strictest possible set of firewall rules (i.e. Kubernetes Network Policies) in place.
+    <details>
+        <summary>Why is this important?</summary>
+        This is a security safeguard provided with Compliant Kubernetes. Good NetworkPolicies reduce the success of exploiting some vulnerabilities.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R7.5</td>
+<td>
+    The application SHOULD use a Blue/Green or Canary deployment strategy.
+    <details>
+        <summary>Why is this important?</summary>
+        This gives the application team a chance to detect a bug before it affects too many end-users and rollback.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R7.6</td>
+<td>
+    The application SHOULD use HorizontalPodAutoscaler to scale the number of replicas, as needed to react to load spikes.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensure that the application can handle load spikes in a cost-efficient manner.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R7.8</td>
+<td>
+    The application MAY use a rolling upgrade strategy to ensure it can be upgraded with zero downtime.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to deliver new features at high velocity, without worrying about downtime.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R8</td>
+<th scope="col">
+    Availability requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R8.1</td>
+<td>
+    The application MUST follow the "rule of 2". Every container needs to have at least two replicas.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensures the application team cannot introduce bugs, e.g., state management via global variables, which compromise application high-availability and scalability.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R8.2</td>
+<td>
+    The application MUST tolerate its replicas running in different datacenters with latencies of up to 10 ms.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensure the application can tolerate a datacenter failure, if this is a requirement.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R8.3</td>
+<td>
+    The application MUST tolerate the failure of a replica.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensures the application is highly available and can tolerate the failure of a Node or (if needed) datacenter.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+</table>

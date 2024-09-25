@@ -279,6 +279,7 @@ nav:
 
 not_in_nav: |
   adr/*.md
+  user-guide/list-of-non-functional-application-requirements.html
   operator-manual/common.md
   operator-manual/schema/config-additionalproperties.md
   operator-manual/schema/config-defs*
