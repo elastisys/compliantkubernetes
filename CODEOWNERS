@@ -14,7 +14,44 @@
 /linkchecker.conf                   @elastisys/goto-public-docs @elastisys/qa
 /package.json                       @elastisys/goto-public-docs @elastisys/qa
 /requirements-linkchecker.txt       @elastisys/goto-public-docs @elastisys/qa
+/docs/quality-criteria.md           @elastisys/goto-public-docs @elastisys/qa
+/docs/release-notes/                @elastisys/goto-public-docs @elastisys/qa
 
 # Architectural decisions MUST be reviewed by the product team
 /docs/architecture.md               @elastisys/product-team
 /docs/adr/                          @elastisys/product-team
+
+# Pages which fall onto GOTO areas
+# Ordered by `find . -name '*.md' | sort`
+/docs/ciso-guide/audit-logs.md                        @elastisys/goto-logging-stack
+/docs/ciso-guide/backup.md                            @elastisys/goto-security
+/docs/ciso-guide/capacity-management.md               @elastisys/goto-kubernetes
+/docs/ciso-guide/cryptography.md                      @elastisys/goto-ingress-auth @elastisys/goto-security
+/docs/ciso-guide/intrusion-detection.md               @elastisys/goto-security
+/docs/ciso-guide/log-review.md                        @elastisys/goto-security
+/docs/ciso-guide/network-security.md                  @elastisys/goto-security
+/docs/ciso-guide/policy-as-code.md                    @elastisys/goto-security
+/docs/ciso-guide/vulnerability.md                     @elastisys/goto-security
+/docs/operator-manual/                                @elastisys/goto-internal-docs
+/docs/user-guide/additional-services/argocd.md        @elastisys/goto-argocd
+/docs/user-guide/additional-services/postgresql.md    @elastisys/goto-postgresql
+/docs/user-guide/additional-services/rabbitmq.md      @elastisys/goto-rabbitmq
+/docs/user-guide/additional-services/redis.md         @elastisys/goto-redis
+/docs/user-guide/additional-services/timescaledb.md   @elastisys/goto-postgresql
+/docs/user-guide/alerts.md                            @elastisys/goto-monitoring-stack
+/docs/user-guide/backup.md                            @elastisys/goto-security
+/docs/user-guide/ci-cd.md                             @elastisys/goto-appdev-experience
+/docs/user-guide/cluster-api.md                       @elastisys/goto-kubernetes
+/docs/user-guide/kubernetes*.md                       @elastisys/goto-kubernetes
+/docs/user-guide/log*.md                              @elastisys/goto-logging-stack
+/docs/user-guide/long-term-log-retention.md           @elastisys/goto-logging-stack
+/docs/user-guide/maintenance.md                       @elastisys/goto-continous-delivery
+/docs/user-guide/metrics.md                           @elastisys/goto-monitoring-stack
+/docs/user-guide/network-model.md                     @elastisys/goto-ingress-auth @elastisys/goto-security
+/docs/user-guide/operate.md                           @elastisys/goto-appdev-experience
+/docs/user-guide/prepare-application.md               @elastisys/goto-appdev-experience
+/docs/user-guide/prepare-idp.md                       @elastisys/goto-ingress-auth
+/docs/user-guide/prepare.md                           @elastisys/goto-appdev-experience
+/docs/user-guide/registry.md                          @elastisys/goto-container-registry
+/docs/user-guide/safeguards/                          @elastisys/goto-security
+/docs/user-guide/troubleshooting.md                   @elastisys/goto-appdev-experience
