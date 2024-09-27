@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:lts-alpine
 
 WORKDIR /home/node/app
 
@@ -11,4 +11,4 @@ COPY . ./
 # non-numeric user (node), cannot verify user is non-root'
 USER 1000
 EXPOSE 3000
-CMD npm start
+CMD [ "npm", "start" ]

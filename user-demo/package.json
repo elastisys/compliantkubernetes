@@ -1,6 +1,6 @@
 {
   "name": "node-hostname",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -17,7 +17,7 @@
     "@opentelemetry/semantic-conventions": "^1.4.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "express": "~4.19.2",
+    "express": "^4.21.0",
     "express-prom-bundle": "^6.4.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
