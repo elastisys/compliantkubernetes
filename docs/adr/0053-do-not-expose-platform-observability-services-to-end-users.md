@@ -97,5 +97,5 @@ We recommend that Application Developers route observability data through a secu
 - [opentelemetry-collector](https://medium.com/opentelemetry/securing-your-opentelemetry-collector-1a4f9fa5bd6f)
 - [k8s-otel-expose](https://opentelemetry.io/blog/2022/k8s-otel-expose/)
 - [deployment](https://opentelemetry.io/docs/collector/deployment/)
-- [Data-leakage](https://www.oxeye.io/resources/how-insecure-application-tracing-and-telemetry-may-lead-to-sensitive-data-and-pii-leakage)
+- [Data-leakage](https://www.fortinet.com/resources/cyberglossary/data-leak)
 - [ToS-A5.3 As a whole, for the intended use-case](https://elastisys.com/legal/terms-of-service/#a53-as-a-whole-for-the-intended-use-case)
