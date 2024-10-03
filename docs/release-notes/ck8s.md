@@ -6,6 +6,7 @@
 
 <!-- BEGIN TOC -->
 
+- [v0.41.0](#v0410) - 2024-10-02
 - [v0.40.1](#v0401) - 2024-09-18
 - [v0.40.0](#v0400) - 2024-08-21
 - [v0.39.2](#v0392) - 2024-09-04
@@ -54,6 +55,30 @@
 !!!note
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
+
+## v0.41.0
+
+Released 2024-10-02
+
+### Feature(s)
+
+- Added option to use Velero CSI volume snapshot.
+
+### Improvement(s)
+
+- Added NetworkPolicies for Tekton to reduce blast radius.
+- Enabled matchConditions for HNC webhook by default.
+    - This is used to allow Velero to restore certain resources managed by HNC.
+- Fixed deprecated Grafana dashboards.
+- Improved support for logging stack on Azure.
+- Fixed a bug with Harbor restore on Azure.
+- Improvements to automated testing.
+- Node-local-dns was upgraded to v1.23.1.
+- Added a flag to include config files for diagnostics script.
+
+### Other(s)
+
+- Calico-accountant image and chart was upgraded.
 
 ## v0.40.1
 
