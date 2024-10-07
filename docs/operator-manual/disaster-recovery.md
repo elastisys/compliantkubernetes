@@ -320,13 +320,13 @@ Read more about those labels and annotations [here](../user-guide/backup.md#back
 
 It is also possible to take on-demand backups.
 Then you can freely chose what to backup and do not have to base it on the same labels.
-A basic example to use Velero to take a backup of all Kubernetes resources (though not the data in the volumes by default).
+Here is a basic example to use Velero to take a backup of all Kubernetes resources (though not the data in the volumes by default):
 
 ```bash
 ./bin/ck8s ops velero wc backup create manual-backup
 ```
 
-If you want to create a latest backup from existing schedule , Velero CLI would be ``.
+If you want to create from the latest backup from existing schedule you can run the following:
 
 ```bash
 ./bin/ck8s ops velero wc backup create --from-schedule velero-daily-backup --wait
@@ -338,7 +338,7 @@ If you want to create a latest backup from existing schedule , Velero CLI would 
 ### Restore
 
 > [!NOTE]
-> If you are restoring an environment under a new domain name then there is a possibility to reconfigure image references with [Velero](https://velero.io/docs/main/restore-reference/#changing-poddeploymentstatefulsetdaemonsetreplicasetreplicationcontrollerjobcronjob-image-repositories), but other resources that might contain domain names such as Ingresses, ConfigMaps and Secrets used for pulling images must be updated manually.
+> If you are restoring an environment under a new domain name then there is a possibility to reconfigure image references with [Velero](https://velero.io/docs/main/restore-reference/#changing-poddeploymentstatefulsetdaemonsetreplicasetreplicationcontrollerjobcronjob-image-repositories), but other resources that might contain domain names such as Ingresses, ConfigMaps and Secrets must be updated manually.
 >
 > If you are restoring an environment and want or need to change the StorageClass of PersistentVolumes then it is possible to configure a StorageClass mapping, see [this](https://velero.io/docs/main/restore-reference/#changing-pvpvc-storage-classes).
 
