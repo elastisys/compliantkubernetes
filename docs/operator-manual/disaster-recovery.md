@@ -32,7 +32,7 @@ If these are **encrypted** then these off-site backups must first be restored th
 
 If these are **unencrypted** then these off-site backups can be used directly to restore other services by reconfiguring which object storage service they are using.
 
-See [the instructions in `compliantkubernetes-apps` for how to restore off-site backups](https://github.com/elastisys/compliantkubernetes-apps/blob/main/docs/restore/rclone.md).
+See [the instructions in `compliantkubernetes-apps` for how to restore off-site backups](https://github.com/elastisys/compliantkubernetes-apps/blob/main/restore/rclone/README.md).
 
 ## When a new region/Infrastructure Provider is used
 
@@ -303,7 +303,7 @@ To take a backup on-demand, execute
 
     Since Harbor stores both database backups and images in the same bucket it is recommended to restore the off-site backup into the main S3 service first, reconfigure Harbor to use it, then restore the database from it.
 
-Instructions for how to restore Harbor can be found in `compliantkubernetes-apps`: <https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts/restore#restore-harbor>
+Instructions for how to restore Harbor can be found in `compliantkubernetes-apps`: <https://github.com/elastisys/compliantkubernetes-apps/blob/main/restore/harbor/README.md>
 
 ## Velero
 
