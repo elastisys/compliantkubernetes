@@ -374,6 +374,88 @@ Any other files will be left as they were before the restoration started.
 So a restore will not wipe the volume clean and then restore.
 If a clean wipe is the desired behavior, then the volume must be wiped manually before restoring.
 
+### Example restoring a volume in WaitForFirstConsumer mode
+
+Restoring volumes with the volume binding mode `WaitForFirstConsumer` requires some extra steps, as Velero will not restore the data until a Pod binds the volume.
+
+So by either manually creating a Pod of the kind that normally binds the volume
+or creating a special purpose Pod that only binds the volume, we can let Velero complete the restoration.
+
+For the second case, the following method can be used to get the restore to proceed to completion without starting the actual pods that use them.
+
+Check if there are any volumes stuck in Pending.
+
+```bash
+kubectl get pvc -A | sed -n '1p;/Pending/p'
+```
+
+If there were no stuck volumes then you are done.
+
+Save the following as: `volume-restorer-pod.yaml`
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volume-restore-helper
+  namespace: default
+spec:
+  automountServiceAccountToken: false
+  containers:
+    - image: busybox:stable
+      imagePullPolicy: IfNotPresent
+      name: sleeper
+      resources:
+        limits:
+          cpu: 10m
+          memory: 5Mi
+        requests:
+          cpu: 10m
+          memory: 5Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        privileged: false
+        runAsGroup: 1
+        runAsNonRoot: true
+        runAsUser: 10000
+        runAsGroup: 10000
+        seccompProfile:
+          type: RuntimeDefault
+      volumeMounts:
+        # Adjust this `mountPath` to match the real pod.
+        - mountPath: /mnt
+          name: restore-me
+      args: # Do nothing while Velero restores data.
+        - sleep
+        - inf
+  tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+  volumes:
+    - name: restore-me
+      persistentVolumeClaim:
+        claimName: some-data # Enter the volume you want to restore
+  securityContext:
+    fsGroup: 10000
+```
+
+</details>
+
+1. Fill in the volume based on `kubectl get pvc` or `kubectl get pv`.
+1. Adjust the `mountPath` to match what the original Pod uses.
+1. Create Pod using `kubectl apply -f volume-restorer-pod.yaml`.
+1. Watch `velero restore get` for Velero to finish.
+1. Finally, delete the restorer Pod using `kubectl delete -f volume-restorer-pod.yaml`.
+
 ### Example restoring a partially failed backup
 
 A backup that has status `PartiallyFailed` can be restored by using `--allow-partially-failed` flag
