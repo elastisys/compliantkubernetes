@@ -4,6 +4,7 @@
 
 <!-- BEGIN TOC -->
 
+- [v7.2.5-ck8s1](#v725-ck8s1) - 2024-10-07
 - [v6.2.6-ck8s4](#v626-ck8s4) - 2024-05-03
 - [v6.2.6-ck8s1](#v626-ck8s1) - 2023-05-10
 - [v1.1.1-ck8s4](#v111-ck8s4) - 2022-12-09
@@ -16,6 +17,29 @@
 !!!note
 
     These are only the user-facing changes.
+
+## v7.2.5-ck8s1
+
+Released 2024-10-07
+
+### Release highlights
+
+- Redis version will be upgraded from v6.2.6 to v7.2.5
+
+### Feature(s)
+
+- Added netpolicy for Harbor HA
+
+### Improvement(s)
+
+- Split CPU usage alert by container (Redis and sentinel)
+- Update Redis image to 7.2.5
+    - Redis version will be upgraded from v6.2.6 to v7.2.5
+
+### Other(s)
+
+- Add Redis_CLUSTER_NAME to user-access-ConfigMap
+- Fixed the sentinel metrics port
 
 ## v6.2.6-ck8s4
 
