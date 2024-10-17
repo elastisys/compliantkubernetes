@@ -45,7 +45,7 @@ tags:
 
 ![Backup Dashboard](img/backup.png)
 
-The Compliant Kubernetes Backup Dashboard allows to quickly audit the status of backups and ensure the [Recovery Point Objective](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective) are met.
+The Compliant Kubernetes Backup Dashboard allows to quickly audit the status of backups and ensure the [Recovery Point Objective](https://en.wikipedia.org/wiki/IT_disaster_recovery#Recovery_Point_Objective) are met.
 
 ## Handling Non-Compliance
 
