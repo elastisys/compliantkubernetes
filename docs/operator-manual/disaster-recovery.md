@@ -374,6 +374,73 @@ Any other files will be left as they were before the restoration started.
 So a restore will not wipe the volume clean and then restore.
 If a clean wipe is the desired behavior, then the volume must be wiped manually before restoring.
 
+### Example restoring a volume in WaitForFirstConsumer mode
+
+Restoring volumes with the volume binding mode `WaitForFirstConsumer` reqires some extra steps, as Velero will not restore the data until a Pod binds the volume.
+So create a pod that mounts the volume and waits for Velero to restore the data.
+
+Save the following as:
+
+<details><summary> `volume-restorer-pod.yaml` </summary>
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volume-restore-helper
+  namespace: default
+spec:
+  automountServiceAccountToken: false
+  containers:
+    - image: busybox
+      imagePullPolicy: IfNotPresent
+      name: sleeper
+      resources:
+        limits:
+          cpu: 10m
+          memory: 5Mi
+        requests:
+          cpu: 10m
+          memory: 5Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        privileged: false
+        runAsGroup: 1
+        runAsNonRoot: true
+        runAsUser: 10000
+        runAsGroup: 10000
+        seccompProfile:
+          type: RuntimeDefault
+      volumeMounts:
+        - mountPath: /mnt
+          name: restore-me
+      args: # sleep for a bit to wait for velero to do its job
+        - sleep
+        - "6m"
+  tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+  volumes:
+    - name: restore-me
+      persistentVolumeClaim:
+        claimName: some-data # Enter the volume you want to restore
+  securityContext:
+    fsGroup: 10000
+```
+
+</details>
+
+Fill in the volume based on `kubectl get pvc` or `kubectl get pv` (?)
+
 ### Example restoring a partially failed backup
 
 A backup that has status `PartiallyFailed` can be restored by using `--allow-partially-failed` flag
