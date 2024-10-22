@@ -4375,7 +4375,7 @@ kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="
 </li>
 </ol>
 <h2 id="argo-cd-notifications">Argo CD Notifications<a class="headerlink" href="#argo-cd-notifications" title="Permanent link">&para;</a></h2>
-<p>Argo CD Notifications continuously monitors Argo CD applications and provides a flexible way to notify users about important changes in the application state. Using a flexible mechanism of <a href="https://argocd-notifications.readthedocs.io/en/stable/triggers/">triggers</a> and <a href="https://argocd-notifications.readthedocs.io/en/stable/templates/">templates</a> you can configure when the notification should be sent as well as notification content.</p>
+<p>Argo CD Notifications continuously monitors Argo CD applications and provides a flexible way to notify users about important changes in the application state. Using a flexible mechanism of <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/triggers/">triggers</a> and <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/templates/">templates</a> you can configure when the notification should be sent as well as notification content.</p>
 <p>To configure Argo CD notifications, make sure you are allowed to update the current Kubernetes objects:</p>
 <ul>
 <li><code>secret/argocd-notifications-secret</code></li>
@@ -4387,7 +4387,7 @@ kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="
 <p>The trigger defines the condition when the notification should be sent. The definition includes name, condition and notification templates reference.</p>
 <p>The notification template is used to generate the notification content. Templates are meant to be reusable and can be referenced by multiple triggers.</p>
 <p>Both triggers &amp; notification templates can be configured in <code>argocd-notifications-cm</code> ConfigMap.</p>
-<p>Argo CD Notifications includes the <a href="https://argocd-notifications.readthedocs.io/en/stable/catalog/">catalog</a> of useful triggers and templates. So you can just use them instead of reinventing new ones.</p>
+<p>Argo CD Notifications includes the <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/catalog/">catalog</a> of useful triggers and templates. So you can just use them instead of reinventing new ones.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The catalog triggers and templates can be found in the <strong>argocd-notifications-cm</strong> ConfigMap.</p>
@@ -4427,7 +4427,7 @@ kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="
 </div>
 <h3 id="notification-services">Notification Services<a class="headerlink" href="#notification-services" title="Permanent link">&para;</a></h3>
 <p>The notification services represent integration with services such as Slack, email or custom webhook. Services are configured in <code>argocd-notifications-cm</code> ConfigMap using <code>service.&lt;type&gt;.(&lt;custom-name&gt;)</code> keys and might reference sensitive data from <code>argocd-notifications-secret</code> Secret.</p>
-<p>Argo CD Notifications support multiple <a href="https://argocd-notifications.readthedocs.io/en/stable/services/overview/#service-types">service types</a>, and provide detailed steps on how to configure each service. To learn more, see <a href="https://argocd-notifications.readthedocs.io/en/stable/services/overview/">Notification services</a>.</p>
+<p>Argo CD Notifications support multiple <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/services/overview/#service-types">service types</a>, and provide detailed steps on how to configure each service. To learn more, see <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/services/overview/">Notification services</a>.</p>
 <h3 id="subscriptions">Subscriptions<a class="headerlink" href="#subscriptions" title="Permanent link">&para;</a></h3>
 <p>The subscription to Argo CD application events can be defined using <code>notifications.argoproj.io/subscribe.&lt;trigger&gt;.&lt;service&gt;: &lt;recipient&gt;</code> annotation. For example, the following annotation subscribes two Slack channels to notifications about every successful synchronization of the Argo CD application:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>edit<span class="w"> </span>Application<span class="w"> </span>my-argo-application
