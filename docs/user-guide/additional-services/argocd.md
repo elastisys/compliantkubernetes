@@ -240,7 +240,7 @@ If you want to use [vals](https://github.com/helmfile/vals) with [Vault](https:/
 
 ## Argo CD Notifications
 
-Argo CD Notifications continuously monitors Argo CD applications and provides a flexible way to notify users about important changes in the application state. Using a flexible mechanism of [triggers](https://argocd-notifications.readthedocs.io/en/stable/triggers/) and [templates](https://argocd-notifications.readthedocs.io/en/stable/templates/) you can configure when the notification should be sent as well as notification content.
+Argo CD Notifications continuously monitors Argo CD applications and provides a flexible way to notify users about important changes in the application state. Using a flexible mechanism of [triggers](https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/triggers/) and [templates](https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/templates/) you can configure when the notification should be sent as well as notification content.
 
 To configure Argo CD notifications, make sure you are allowed to update the current Kubernetes objects:
 
@@ -259,7 +259,7 @@ The notification template is used to generate the notification content. Template
 
 Both triggers & notification templates can be configured in `argocd-notifications-cm` ConfigMap.
 
-Argo CD Notifications includes the [catalog](https://argocd-notifications.readthedocs.io/en/stable/catalog/) of useful triggers and templates. So you can just use them instead of reinventing new ones.
+Argo CD Notifications includes the [catalog](https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/catalog/) of useful triggers and templates. So you can just use them instead of reinventing new ones.
 
 !!! note
 
@@ -307,7 +307,7 @@ Argo CD Notifications includes the [catalog](https://argocd-notifications.readth
 
 The notification services represent integration with services such as Slack, email or custom webhook. Services are configured in `argocd-notifications-cm` ConfigMap using `service.<type>.(<custom-name>)` keys and might reference sensitive data from `argocd-notifications-secret` Secret.
 
-Argo CD Notifications support multiple [service types](https://argocd-notifications.readthedocs.io/en/stable/services/overview/#service-types), and provide detailed steps on how to configure each service. To learn more, see [Notification services](https://argocd-notifications.readthedocs.io/en/stable/services/overview/).
+Argo CD Notifications support multiple [service types](https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/services/overview/#service-types), and provide detailed steps on how to configure each service. To learn more, see [Notification services](https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/services/overview/).
 
 ### Subscriptions
 
