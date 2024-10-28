@@ -18,7 +18,7 @@ search:
         * RPO: daily, 3 backups
     * **Monitoring, security patching and incident management**: included.
 
-    For more information, please read [ToS Appendix 2 Managed Compliant Kubernetes Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-2-managed-compliant-kubernetes-service-specification-managed-services-only).
+    For more information, please read [ToS Appendix 2 Managed Compliant Kubernetes Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-2-managed-welkin-service-specification-managed-services-only).
 
 # Step 1: Prepare
 
