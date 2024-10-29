@@ -1,6 +1,9 @@
-site_name: Elastisys Compliant Kubernetes
+---
+site_name: Welkin
 site_url: https://elastisys.io/
-site_description: "Compliant Kubernetes, the Kubernetes platform for software critical to our society. NIS2, ISO-27001, etc."
+site_description: >
+  Welkin, the Kubernetes platform for software critical to our society.
+  NIS2, ISO-27001, etc.
 site_author: Elastisys AB
 copyright: >-
   Copyright © Elastisys AB
@@ -261,7 +264,7 @@ nav:
       - "Quality Criteria": "quality-criteria.md"
   - "Release Notes":
       - "Release Cycle": "release-notes/index.md"
-      - "Compliant Kubernetes": "release-notes/ck8s.md"
+      - "Welkin": "release-notes/welkin.md"
       - "CK8S Kubespray": "release-notes/kubespray.md"
       - "CK8S Cluster API": "release-notes/capi.md"
       - "CK8S PostgreSQL": "release-notes/postgres.md"
@@ -270,8 +273,8 @@ nav:
       - "CK8S Jaeger": "release-notes/jaeger.md"
       - "CK8S Argo CD": "release-notes/argocd.md"
   - "Glossary": "glossary.md"
-  - "Fully Managed Compliant Kubernetes": "https://elastisys.com/managed-services/"
-  - "Support for Self-Managed Compliant Kubernetes": "https://elastisys.com/self-managed/"
+  - "Fully Managed Welkin": "https://elastisys.com/managed-services/"
+  - "Support for Self-Managed Welkin": "https://elastisys.com/self-managed/"
   - "Consulting": "https://elastisys.com/consulting/"
   - "Official Training": "https://elastisys.com/training/"
   - "Blog": "https://elastisys.com/blog/"
