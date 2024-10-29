@@ -4,7 +4,7 @@ This plugin is similar to the [tags plugin](https://squidfunk.github.io/mkdocs-m
 However, it allows to generate separate tags index pages, depending on the prefix of the tag.
 
 It aims to solve the following use-case.
-The Compliant Kubernetes documentation uses tags to capture various Information Security Management System (ISMS) controls.
+The Welkin documentation uses tags to capture various Information Security Management System (ISMS) controls.
 This plugin will:
 
 1. Create tags indexes for each requirement source.
