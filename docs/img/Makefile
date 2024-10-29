@@ -1,6 +1,5 @@
 all: \
 		welkin-c4model-level2.png \
-		user-overview.png \
 		harbor-usage.png
 
 preview:
