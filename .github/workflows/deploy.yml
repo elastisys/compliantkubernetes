@@ -1,6 +1,7 @@
-name: deploy-main
+---
+name: deploy
 
-on:
+'on':
   push:
     branches:
       - main
@@ -8,6 +9,7 @@ on:
   schedule:
     # At 03:45 each day
     - cron: "45 3 * * *"
+  workflow_dispatch: {}
 
 jobs:
   deploy:
