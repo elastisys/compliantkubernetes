@@ -43,7 +43,7 @@ In contrast, Security Zones in a lower protection class may be accessed by the s
 
 ### Technological Landscape
 
-Somewhat simplified, a containerized platform, such as Compliant Kubernetes, hosts the application stack and observability stack.
+Somewhat simplified, a containerized platform, such as Welkin, hosts the application stack and observability stack.
 The [three pillars of observability](https://www.oreilly.com/library/view/distributed-systems-observability/9781492033431/ch04.html) are metrics, logs and traces.
 Metrics and logs are rather "explicit" in nature, i.e., the application developer usually add code to their application to explicitly decide what metrics and what log lines the application produces.
 Traces are rather "implicit" in nature, i.e., the application developer [includes a library in their application and some code snippet](https://opentelemetry.io/docs/zero-code/python/example/), which automatically produces traces of all function calls and returns, including invoked parameters.
@@ -53,7 +53,7 @@ See [Levels of Isolation](../user-guide/how-many-environments.md#levels-of-isola
 
 ## Problem Statement
 
-Given the regulatory and information security landscape above, what level of isolation should Compliant Kubernetes employ between the application stack and observability stack?
+Given the regulatory and information security landscape above, what level of isolation should Welkin employ between the application stack and observability stack?
 
 ## Decision Drivers
 
@@ -90,14 +90,14 @@ Chosen option: "Option 4: Host the application and its traces in one Cluster, wh
 
 ## Other Considerations
 
-### Glossary used in Compliant Kubernetes
+### Glossary used in Welkin
 
-Compliant Kubernetes uses the following glossary:
+Welkin uses the following glossary:
 
 - The Cluster hosting the application and traces is called the [Workload Cluster](../glossary.md#workload-cluster).
 - The Cluster hosting logs and metrics is called the [Management Cluster](../glossary.md#management-cluster).
 
-The pair of Cluster form a Compliant Kubernetes [Environment](../glossary.md#environment).
+The pair of Cluster form a Welkin [Environment](../glossary.md#environment).
 
 ### Automated Platform Updates via Tekton
 
@@ -114,7 +114,7 @@ This goes against [ADR-0033 Run Cluster API controllers on Management Cluster](0
 
 Some regulations and information security standards require tamper-proof logging.
 In other words, a compromise of the application deployment should not enable an attacker to remove their trails and hinder forensics.
-Compliant Kubernetes already observes this principle for its observability stack, e.g., the access that the Workload Cluster has to the Service Cluster cannot be used to remove old log entries.
+Welkin already observes this principle for its observability stack, e.g., the access that the Workload Cluster has to the Service Cluster cannot be used to remove old log entries.
 (Of course, garbage new log entries may be created, but that only makes an attack more obvious during [log review](../ciso-guide/log-review.md).
 
 Cluster isolation between the application and its logs adds another layer of protection:

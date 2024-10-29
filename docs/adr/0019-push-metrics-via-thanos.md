@@ -20,7 +20,7 @@ InfluxDB has served us really well over the years. However, as we enter a new er
 - It is rather capacity hungry, eating as much as 2 CPUs and 15 Gi in a standard package environment.
 - It is unsuitable for long-term metrics storage, which we need -- among others -- for proper capacity management.
 
-We decided to [migrate from InfluxDB to Thanos](https://github.com/elastisys/compliantkubernetes/commit/61ddf81430dc542cf0bed96708a90f3b63ff0ed2), which can both push and pull metrics.
+We decided to [migrate from InfluxDB to Thanos](https://github.com/elastisys/welkin/commit/61ddf81430dc542cf0bed96708a90f3b63ff0ed2), which can both push and pull metrics.
 
 Shall we push or pull metrics using Thanos?
 

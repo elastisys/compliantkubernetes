@@ -1,7 +1,7 @@
 # Configure Alerts in On-call Management Tool (e.g., Opsgenie)
 
 - Status: accepted
-- Deciders: Compliant Kubernetes Architecture Meeting
+- Deciders: Welkin Architecture Meeting
 - Date: 2021-06-03
 
 Technical Story: See "Investigate how to systematically work with alerts"
@@ -34,24 +34,24 @@ Where should alerting be configured, so as to quickly converge to the optimal al
 
 ## Considered Options
 
-- Configure alerting in Compliant Kubernetes, specifically Alertmanager.
+- Configure alerting in Welkin, specifically Alertmanager.
 - Configure alerting in an On-call Management Tool (OMT), e.g., Opsgenie, PagerDuty.
 
 ## Decision Outcome
 
-Chosen option: Compliant Kubernetes “over-alerts”, i.e., forwards all alerts and all relevant information to an On-Call Management Tool (OMT, e.g., Opsgenie).
+Chosen option: Welkin “over-alerts”, i.e., forwards all alerts and all relevant information to an On-Call Management Tool (OMT, e.g., Opsgenie).
 Configuration of alerts happens in the OMT.
 
 ### Positive Consequences
 
 - Clear separation of concerns.
-- Alerting does not require per-customer configuration of Compliant Kubernetes.
+- Alerting does not require per-customer configuration of Welkin.
 - Leverages existing tools and processes.
-- We do not need to implement complex alert filtering in Compliant Kubernetes, e.g., silence alerts during maintenance windows, silence alerts during Swedish holidays, etc.
+- We do not need to implement complex alert filtering in Welkin, e.g., silence alerts during maintenance windows, silence alerts during Swedish holidays, etc.
 
 ### Negative Consequences
 
-- Does not capture alerting know-how in Compliant Kubernetes.
+- Does not capture alerting know-how in Welkin.
 - Migration to a new OMT means all alerting configuration needs to be migrated to the new tool. Fortunately, this can be done incrementally.
 
 ## Recommendations to Platform Administrators

@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-Compliant Kubernetes has the vision to reduce the compliance burden on multiple clouds ("Multi-cloud. Open source. Compliant."). Many of the Infrastructure Providers we target do not have a storage provider or do not have a storage provider that integrates with Kubernetes. How should we support PersistentVolumeClaims in such cases?
+Welkin has the vision to reduce the compliance burden on multiple clouds ("Multi-cloud. Open source. Compliant."). Many of the Infrastructure Providers we target do not have a storage provider or do not have a storage provider that integrates with Kubernetes. How should we support PersistentVolumeClaims in such cases?
 
 ## Decision Drivers
 

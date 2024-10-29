@@ -1,4 +1,4 @@
-# Use Probe to Measure Uptime of Internal Compliant Kubernetes Services
+# Use Probe to Measure Uptime of Internal Welkin Services
 
 - Status: accepted
 - Deciders: Cristian, Lucian, Ravi
@@ -27,7 +27,7 @@ How exactly should we measure uptime?
 
 ## Decision Outcome
 
-Chosen option: "use Probe for measuring uptime of internal Compliant Kubernetes services", because it measures uptime as observed by a consumer. Although this requires a bit of extra capacity for running Blackbox, the costs are worth the benefits.
+Chosen option: "use Probe for measuring uptime of internal Welkin services", because it measures uptime as observed by a consumer. Although this requires a bit of extra capacity for running Blackbox, the costs are worth the benefits.
 
 Instead of configuring Blackbox directly, `Probe` is a cleaner abstraction provided by the Prometheus Operator.
 

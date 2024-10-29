@@ -16,16 +16,16 @@ RUN chgrp -R 0 /some/directory && chmod -R g=u /some/directory
 
 During execution, OpenShift assigns `gid=0` as a supplementary group to containers, so as to give them access to the required files.
 
-In contrast to OpenShift, Compliant Kubernetes is not a multi-tenant solution. Given previous vulnerabilities in Kubernetes that affected tenant isolation (e.g., [CVE-2020-8554][cve]
+In contrast to OpenShift, Welkin is not a multi-tenant solution. Given previous vulnerabilities in Kubernetes that affected tenant isolation (e.g., [CVE-2020-8554][cve]
 ), we believe that non-trusting users should not share a Workload Cluster. Hence, we do not assign arbitrary UIDs to containers and do not need to assign `gid=0` as a supplementary group.
 
 The `gid=0` practice above seems to have made its way in [quite a few Dockerfiles][github-search], however, it is far from being the default outside OpenShift.
 
-What should Compliant Kubernetes do with the `gid=0` practice?
+What should Welkin do with the `gid=0` practice?
 
 ## Decision Drivers
 
-- For user expectations, we want to make it easy to start with Compliant Kubernetes.
+- For user expectations, we want to make it easy to start with Welkin.
 - For better security and easier audits, we do not want to add unnecessary permissions.
 - [ID mapping in mounts][idmapping] has landed in Linux 5.12. Once this feature is used in container runtimes and Kubernetes, the `gid=0` problem will go away.
 

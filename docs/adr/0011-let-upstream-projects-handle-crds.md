@@ -1,7 +1,7 @@
 # [Superseded by [ADR-0046](0046-handle-crds.md)] Let upstream projects handle CRDs
 
 - Status: superseded by [ADR-0046](0046-handle-crds.md)
-- Deciders: Compliant Kubernetes Arch Meeting
+- Deciders: Arch Meeting
 - Date: 2021-04-29
 
 Technical Story: [#446](https://github.com/elastisys/compliantkubernetes-apps/pull/446) [#369](https://github.com/elastisys/compliantkubernetes-apps/issues/369) [#391](https://github.com/elastisys/compliantkubernetes-apps/issues/391) [#402](https://github.com/elastisys/compliantkubernetes-apps/issues/402) [#436](https://github.com/elastisys/compliantkubernetes-apps/pull/436).
@@ -45,7 +45,7 @@ grep -R 'kind: CustomResourceDefinition'
 
 ## Detailed Audit
 
-A detailed audit was performed of all CRDs in Compliant Kubernetes on 2021-04-27.
+A detailed audit was performed of all CRDs in Welkin on 2021-04-27.
 
 As a summary, all projects encourage installing CRDs as part of standard `helm install`. Most projects encourage following manual migration steps to handle CRDs. Some projects handle CRD upgrades.
 

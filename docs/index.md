@@ -18,7 +18,7 @@ Welkin enables organizations across Europe to accelerate innovation through open
       For application developers
     </dt>
     <dd class="grow-me">
-      Learn how Compliant Kubernetes helps you deploy and observe your application in production.
+      Learn how Welkin helps you deploy and observe your application in production.
     </dd>
     <dd><a role="button" href="./user-guide/">Get started</a></dd>
   </div>
@@ -29,7 +29,7 @@ Welkin enables organizations across Europe to accelerate innovation through open
       For CISOs and DPOs
     </dt>
     <dd class="grow-me">
-      Learn how Compliant Kubernetes helps you comply with European regulations, such as NIS2 and GDPR.
+      Learn how Welkin helps you comply with European regulations, such as NIS2 and GDPR.
     </dd>
     <dd><a role="button" href="./ciso-guide/">Help me comply</a></dd>
   </div>
@@ -40,9 +40,9 @@ Welkin enables organizations across Europe to accelerate innovation through open
       For platform administrators
     </dt>
     <dd class="grow-me">
-      Learn how to set up Compliant Kubernetes on any cloud provider or on-prem.
+      Learn how to set up Welkin on any cloud provider or on-prem.
     </dd>
-    <dd><a role="button" href="./operator-manual/">Set up Compliant Kubernetes</a></dd>
+    <dd><a role="button" href="./operator-manual/">Set up Welkin</a></dd>
   </div>
 </ul>
 </nav>

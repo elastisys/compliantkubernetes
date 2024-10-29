@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-In the context of this ADR, **forwarders** refers to any components that are necessary to forward monitoring information -- specifically traces, metrics and logs -- to some monitoring database. As of February 2021, Compliant Kubernetes employs two projects as forwarders:
+In the context of this ADR, **forwarders** refers to any components that are necessary to forward monitoring information -- specifically traces, metrics and logs -- to some monitoring database. As of February 2021, Welkin employs two projects as forwarders:
 
 - [Prometheus](https://prometheus.io/) for metrics forwarding;
 - [Fluentd](https://www.fluentd.org/) for log forwarding.

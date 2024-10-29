@@ -1,12 +1,12 @@
 # Use Standard Kubeconfig Mechanisms
 
 - Status: accepted
-- Deciders: Compliant Kubernetes Architecture Meeing
+- Deciders: Architecture Meeing
 - Date: 2021-02-02
 
 ## Context and Problem Statement
 
-To increase adoption of Compliant Kubernetes, we were asked to observe the [Principle of Least Astonishment](https://en.wikipedia.org/wiki/Principle_of_least_astonishment). Currently, Compliant Kubernetes's handing of kubeconfig is astonishing. Most tools in the ecosystem use the standard `KUBECONFIG` environment variable and kubecontext implemented in the client-go library. These tools leave it up to the user to set `KUBECONFIG` or use the default `~/.kube/config`. Similarly, there is a default kubecontext which can be overwritten via command-line. Tools that get cluster credentials generate a context related to the name of the cluster.
+To increase adoption of Welkin, we were asked to observe the [Principle of Least Astonishment](https://en.wikipedia.org/wiki/Principle_of_least_astonishment). Currently, Welkin's handing of kubeconfig is astonishing. Most tools in the ecosystem use the standard `KUBECONFIG` environment variable and kubecontext implemented in the client-go library. These tools leave it up to the user to set `KUBECONFIG` or use the default `~/.kube/config`. Similarly, there is a default kubecontext which can be overwritten via command-line. Tools that get cluster credentials generate a context related to the name of the cluster.
 
 Tools that behave as such include:
 
@@ -20,9 +20,9 @@ Tools that behave as such include:
 
 ## Decision Drivers
 
-- Compliant Kubernetes needs to observe the Principle of Least Astonishment.
-- Compliant Kubernetes needs to be compatible with various "underlying" vanilla Kubernetes tools.
-- Compliant Kubernetes needs to be usable with various tools "on top".
+- Welkin needs to observe the Principle of Least Astonishment.
+- Welkin needs to be compatible with various "underlying" vanilla Kubernetes tools.
+- Welkin needs to be usable with various tools "on top".
 
 ## Considered Options
 
@@ -32,7 +32,7 @@ Tools that behave as such include:
 
 ## Decision Outcome
 
-We chose using standard kubeconfig mechanism, because it improves integration both with tools "below" Compliant Kubernetas and "on top" of Compliant Kubernetes.
+We chose using standard kubeconfig mechanism, because it improves integration both with tools "below" Welkin and "on top" of Welkin.
 
 Tools that produce Kubernetes contexts are expected to use an approach similar to `kubectl config set-cluster`, `set-credentials` and `set-context`. The name of the cluster, user and context should be derived from the name of the cluster.
 
