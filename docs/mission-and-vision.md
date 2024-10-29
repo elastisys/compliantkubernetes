@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The Compliant Kubernetes Mission and Vision statements support [Elastisys' Mission and Vision](https://elastisys.com/about/).
+The Welkin Mission and Vision statements support [Elastisys' Mission and Vision](https://elastisys.com/about/).
 They provide a "northern star" to orient development.
 
 ## Statements
@@ -80,12 +80,12 @@ The platform should help an organization comply with various regulatory requirem
 
 ## Supporting Pillars
 
-In order to support the mission and vision, Compliant Kubernetes needs the following supporting pillars.
+In order to support the mission and vision, Welkin needs the following supporting pillars.
 
 ### Quality Assurance
 
-It should be easy to release a new version of Compliant Kubernetes which meets the target quality standards.
+It should be easy to release a new version of Welkin which meets the target quality standards.
 
 ### Contributor Experience
 
-It should be easy to contribute improvements and new features to Compliant Kubernetes.
+It should be easy to contribute improvements and new features to Welkin.

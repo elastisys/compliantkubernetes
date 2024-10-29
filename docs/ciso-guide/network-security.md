@@ -31,11 +31,11 @@ tags:
 
 - [A.13 Communications Security](https://www.isms.online/iso-27001/annex-a-13-communications-security/)
 
-## Compliant Kubernetes Network Security Dashboard
+## Welkin Network Security Dashboard
 
 ![Network Security Dashboard](img/network-security.png)
 
-The Compliant Kubernetes Network Security Dashboard allows to audit violations of NetworkPolicies (i.e., "firewall rules"). In the best case, denied traffic indicates a misconfiguration. In worst case, denied traffic indicates an ongoing security attack.
+The Welkin Network Security Dashboard allows to audit violations of NetworkPolicies (i.e., "firewall rules"). In the best case, denied traffic indicates a misconfiguration. In worst case, denied traffic indicates an ongoing security attack.
 
 Significant or unexpected increases of allowed traffic should also be closely monitored. In best case, these may indicate inefficient application code which may cause capacity issues later. In worst case, these may indicate an attempt to exfiltrate large amounts of data or to use the cluster as a reflector for an [amplification attack](https://en.wikipedia.org/wiki/Denial-of-service_attack#Amplification).
 

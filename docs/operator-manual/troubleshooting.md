@@ -260,7 +260,7 @@ If the infrastructure is not managed by terraform you can skip to step 3:
 1. Re-apply Kubespray only for the new node.
 
     ```bash
-    cd [compliantkubernetes-kubespray-root-dir]
+    cd [welkin-kubespray-root-dir]
 
     CLUSTER=[sc | wc]
 
@@ -277,7 +277,7 @@ If the infrastructure is not managed by terraform you can skip to step 3:
 1. Update Network Policies
 
     ```bash
-    cd [compliatkubernetes-apps-root-dir]
+    cd [welkin-apps-root-dir]
 
     ./bin/ck8s update-ips sc update
     ./bin/ck8s update-ips wc update
