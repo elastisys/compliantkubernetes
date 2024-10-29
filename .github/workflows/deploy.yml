@@ -67,14 +67,14 @@ jobs:
       - name: Deploy with mike
         run: |
           if [ "$GITHUB_REF_NAME" == "main" ]; then
-              # Latest version of the docs goes under https://elastisys.io/compliantkubernetes
+              # Latest version of the docs goes under https://elastisys.io/welkin
               VERSION_TITLE="main"
-              VERSION="compliantkubernetes ck8s"
+              VERSION="welkin compliantkubernetes ck8s"
           else
-              # Other versions go under https://elastisys.io/compliantkubernetes-v0.25/
+              # Other versions go under https://elastisys.io/welkin-v0.42/
               VERSION_TITLE=$(echo "$GITHUB_REF_NAME" | cut -d- -f2)
-              VERSION="compliantkubernetes-${VERSION_TITLE}"
+              VERSION="welkin-${VERSION_TITLE} compliantkubernetes-${VERSION_TITLE}"
           fi
           echo version: $VERSION version-title: $VERSION_TITLE
           mike deploy $VERSION -t $VERSION_TITLE --template overrides/redirect.html
-          mike set-default compliantkubernetes --push --template overrides/redirect.html
+          mike set-default welkin --push --template overrides/redirect.html
