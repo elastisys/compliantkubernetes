@@ -1,6 +1,6 @@
 # Release Notes
 
-## Compliant Kubernetes PostgreSQL
+## Welkin PostgreSQL
 
 <!-- BEGIN TOC -->
 

@@ -1,7 +1,7 @@
-# GitHub Action to build and deploy the user demo to Compliant Kubernetes
+# GitHub Action to build and deploy the user demo to Welkin
 #
 # This file serves as an example on how to integrate GitHub Actions with
-# Compliant Kubernetes for push-style Continuous Delivery.
+# Welkin for push-style Continuous Delivery.
 #
 # This action needs container registry credentials and Kubernetes credentials.
 #
@@ -21,7 +21,7 @@
 #
 # Further reading:
 # - https://goharbor.io/docs/2.4.0/working-with-projects/project-configuration/create-robot-accounts/
-# - https://elastisys.io/compliantkubernetes/user-guide/ci-cd/#push-style-cicd
+# - https://elastisys.io/welkin/user-guide/ci-cd/#push-style-cicd
 # - https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-secrets
 
 name: app-deploy
@@ -65,8 +65,8 @@ jobs:
     - name: Build and push container image
       working-directory: user-demo
       run: |-
-        docker build -t harbor.$DOMAIN/$REGISTRY_PROJECT/ck8s-user-demo:$TAG .
-        docker push harbor.$DOMAIN/$REGISTRY_PROJECT/ck8s-user-demo:$TAG
+        docker build -t harbor.$DOMAIN/$REGISTRY_PROJECT/welkin-user-demo:$TAG .
+        docker push harbor.$DOMAIN/$REGISTRY_PROJECT/welkin-user-demo:$TAG
 
     - name: Deploy
       working-directory: user-demo
@@ -74,7 +74,7 @@ jobs:
         helm upgrade \
             --install \
             myapp \
-            deploy/ck8s-user-demo/ \
-            --set image.repository=harbor.$DOMAIN/$REGISTRY_PROJECT/ck8s-user-demo \
+            deploy/welkin-user-demo/ \
+            --set image.repository=harbor.$DOMAIN/$REGISTRY_PROJECT/welkin-user-demo \
             --set image.tag=$TAG \
             --set ingress.hostname=demo.$DOMAIN

@@ -1,6 +1,6 @@
 # Release Notes
 
-## Compliant Kubernetes Cluster API
+## Welkin Cluster API
 
 <!-- BEGIN TOC -->
 

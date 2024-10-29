@@ -1,6 +1,6 @@
 ---
 name: New page request
-about: Suggest a new page for clarifying a new angle to Compliant Kubernetes or a
+about: Suggest a new page for clarifying a new angle to Welkin or a
   new feature
 title: ""
 labels: documentation, enhancement
@@ -13,7 +13,7 @@ A clear and concise description of what the problem is. Ex. I'm always frustrate
 **Describe the solution you'd like**
 A clear and concise description of what you want to happen.
 
-When I search for `ServiceMonitor` or navigate to "For Application Developer -> Getting Started" I expect to see a page entitled "Hello" which describes how to make Compliant Kubernetes output "hello".
+When I search for `ServiceMonitor` or navigate to "For Application Developer -> Getting Started" I expect to see a page entitled "Hello" which describes how to make Welkin output "hello".
 
 **Describe alternatives you've considered**
 A clear and concise description of any alternative solutions or features you've considered.

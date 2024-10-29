@@ -97,7 +97,7 @@ Files ending in `*.drawio.svg` are produced using [diagrams.net](https://www.dia
 1. Select "Links: In new window".
 1. Leave everything else as default.
 
-To facilitate editing architecture diagrams, import the [Compliant Kubernetes DrawIO library](docs/img/ck8s-library.drawio.xml).
+To facilitate editing architecture diagrams, import the [Welkin DrawIO library](docs/img/welkin-library.drawio.xml).
 
 ### From graphviz
 
@@ -117,7 +117,7 @@ The viewer's output should be updated live as you save the source `dot` file.
 
 ## Auto-generated documentation
 
-Compliant Kubernetes Apps config and secrets have auto-generated documentation from [the JSON schemas defined in it repository](https://github.com/elastisys/compliantkubernetes-apps/tree/main/config/schemas).
+Welkin Apps config and secrets have auto-generated documentation from [the JSON schemas defined in it repository](https://github.com/elastisys/compliantkubernetes-apps/tree/main/config/schemas).
 
 This is driven via a script using [adobe/jsonschema2md](https://github.com/adobe/jsonschema2md).
 

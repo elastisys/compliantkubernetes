@@ -132,7 +132,7 @@ user:
 
 ## Users onboarding
 
-This describes how to configure Compliant Kubernetes with the Application Developers who should be OpenSearch, Grafana or Harbor Administrators.
+This describes how to configure Welkin with the Application Developers who should be OpenSearch, Grafana or Harbor Administrators.
 
 ### OpenSearch
 

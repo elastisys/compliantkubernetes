@@ -16,7 +16,7 @@ tags:
 
 ## What are architectural decisions?
 
-Architectural decisions are high-level technical decisions that affect most stakeholders, in particular Compliant Kubernetes developers, administrators and users.
+Architectural decisions are high-level technical decisions that affect most stakeholders, in particular Welkin developers, administrators and users.
 A non-exhaustive list of architectural decisions is as follows:
 
 - adding or removing tools;
@@ -51,11 +51,11 @@ Architectural decisions need to mitigate the following information security risk
 - a component might not take security seriously;
 - a component might change its license, prohibiting its reuse or making its use expensive.
 
-The Compliant Kubernetes architect is overall responsible for this risk.
+The Welkin architect is overall responsible for this risk.
 
 ## How are these risks mitigated?
 
-Before taking in any new component to Compliant Kubernetes, we investigate and evaluate them. We prefer components that are:
+Before taking in any new component to Welkin, we investigate and evaluate them. We prefer components that are:
 
 - **community-driven open-source projects**, to reduce the risk of a component becoming abandoned, changing its license or changing direction in the interest of a single entity; as far as possible, we choose [CNCF projects](https://landscape.cncf.io/?project=hosted) (preferably graduated ones) or projects which are governed by at least 3 different entities;
 - **projects with a good security track record**, to avoid unexpected security vulnerabilities or delays in fixing security vulnerabilities; as far as possible, we choose projects with a clear security disclosure process and a clear security announcement process;
@@ -72,7 +72,7 @@ These mitigations may be relaxed for components that are part of alpha or beta f
 
 ## ADRs
 
-This log lists the architectural decisions for Compliant Kubernetes.
+This log lists the architectural decisions for Welkin.
 
 <!-- adrlog -- Regenerate the content by using "adr-log -i". You can install it via "npm install -g adr-log" -->
 
@@ -94,7 +94,7 @@ This log lists the architectural decisions for Compliant Kubernetes.
 - [ADR-0015](0015-we-believe-in-community-driven-open-source.md) - We believe in community-driven open source
 - [ADR-0016](0016-gid-0-is-okey-but-not-by-default.md) - [Superseded by [ADR-0040](0040-allow-group-id-0.md)] gid=0 is okay, but not by default
 - [ADR-0017](0017-persist-dex.md) - Persist Dex
-- [ADR-0018](0018-use-probe-to-measure-internal-uptime.md) - Use Probe to Measure Uptime of Internal Compliant Kubernetes Services
+- [ADR-0018](0018-use-probe-to-measure-internal-uptime.md) - Use Probe to Measure Uptime of Internal Welkin Services
 - [ADR-0019](0019-push-metrics-via-thanos.md) - Push Metrics via Thanos
 - [ADR-0020](0020-filter-by-cluster-label-then-data-source.md) - Filter by cluster label then data source
 - [ADR-0021](0021-tls-for-additional-services.md) - Default to TLS for performance-insensitive additional services

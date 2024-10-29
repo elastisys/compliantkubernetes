@@ -1,8 +1,8 @@
-# Removing Compliant Kubernetes Apps from your cluster
+# Removing Welkin Apps from your cluster
 
 <!--clean-up-start-->
 
-To remove the applications added by Compliant Kubernetes you can use the two scripts `clean-sc.sh` and `clean-wc.sh`, they are located here in the [scripts folder](https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts).
+To remove the applications added by Welkin you can use the two scripts `clean-sc.sh` and `clean-wc.sh`, they are located here in the [scripts folder](https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts).
 
 They perform the following actions:
 
@@ -13,6 +13,6 @@ They perform the following actions:
 
 !!!note
 
-    If user namespaces are managed by Compliant Kubernetes apps then they will also be deleted if you clean up the Workload Cluster.
+    If user namespaces are managed by Welkin apps then they will also be deleted if you clean up the Workload Cluster.
 
 <!--clean-up-stop-->

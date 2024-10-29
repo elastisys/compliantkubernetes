@@ -13,11 +13,11 @@ tags:
 
 # Disaster Recovery
 
-This document details disaster recovery procedures for Compliant Kubernetes.
+This document details disaster recovery procedures for Welkin.
 These procedures must be executed by the administrator.
 Most commands found in these instructions are expected to be run from the [compliantkubernetes-apps repository](https://github.com/elastisys/compliantkubernetes-apps).
 
-## Compliant Need
+## Compliance Need
 
 Disaster recovery is mandated by several regulations and information security standards. For example, in ISO 27001:2013, the annexes that mostly concerns disaster recovery are:
 
@@ -311,7 +311,7 @@ These instructions focuses on backups for the Workload Cluster using the Velero 
 For instructions on using Velero in the Management Cluster see the [Grafana section](#grafana).
 
 > [!NOTE]
-> The steps for running Velero in this document assumes `v0.39` or later of Compliant Kubernetes, as the Velero CLI is now part of the `ck8s ops` CLI making it easier to operate on both clusters with Velero without having to manually set `KUBECONFIG`, as long as `CK8S_CONFIG_PATH` points to the correct environment.
+> The steps for running Velero in this document assumes `v0.39` or later of Welkin, as the Velero CLI is now part of the `ck8s ops` CLI making it easier to operate on both clusters with Velero without having to manually set `KUBECONFIG`, as long as `CK8S_CONFIG_PATH` points to the correct environment.
 
 Read more about Velero [here](../user-guide/backup.md).
 

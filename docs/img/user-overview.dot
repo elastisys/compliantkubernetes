@@ -13,8 +13,8 @@ digraph compliance_basics {
 
     idp[label="Identity Provider\n(IdP)",shape=box];
 
-    subgraph cluster_compliant_kubernetes {
-        label="Compliant Kubernetes"
+    subgraph cluster_welkin_kubernetes {
+        label="Welkin"
 
         node[
             shape=none,

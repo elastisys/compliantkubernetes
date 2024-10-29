@@ -1,6 +1,6 @@
 # Ingress
 
-Compliant Kubernetes (CK8s) uses the Ingress NGINX Controller to route external traffic to the correct Service inside the cluster. CK8s can configure the Ingress Controller in two different ways depending on the underlying infrastructure.
+Welkin uses the Ingress NGINX Controller to route external traffic to the correct Service inside the cluster. CK8s can configure the Ingress Controller in two different ways depending on the underlying infrastructure.
 
 ## Using a Service of type LoadBalancer
 

@@ -2,7 +2,7 @@
 
 # Release Notes
 
-## Compliant Kubernetes
+## Welkin
 
 <!-- BEGIN TOC -->
 

@@ -8,20 +8,20 @@ tags:
   - NIST SP 800-171 3.7.1
 ---
 
-# Maintaining and Upgrading your Compliant Kubernetes environment
+# Maintaining and Upgrading your Welkin environment
 
-In order to keep your Compliant Kubernetes environment running smoothly, and to assure that you are up to date with the latest patches you need to perform regular maintenance on it.
+In order to keep your Welkin environment running smoothly, and to assure that you are up to date with the latest patches you need to perform regular maintenance on it.
 
 This guide assumes that:
 
-- Your Compliant Kubernetes environment is running normally, if not, please see the [Troubleshooting guide](troubleshooting.md).
-- Your Compliant Kubernetes environment is properly [sized](cluster-sizing.md)
+- Your Welkin environment is running normally, if not, please see the [Troubleshooting guide](troubleshooting.md).
+- Your Welkin environment is properly [sized](cluster-sizing.md)
 - You have performed the actions in the [Go-live Checklist](../user-guide/go-live.md) as failure to do so might cause downtime during maintenance.
 
 ## Compliance needs
 
 Many regulations require you to secure your information system against unauthorized access, data loss, and breaches.
-An important part of this is keeping your Compliant Kubernetes environment up to date with the latest security patches not run outdated versions of components that are no longer supported.
+An important part of this is keeping your Welkin environment up to date with the latest security patches not run outdated versions of components that are no longer supported.
 This maps to objectives in ISO Annex [A.12.6.1 Management of Technical Vulnerabilities](https://www.isms.online/iso-27001/annex-a-12-operations-security/).
 
 ## What maintenance do I need to do and how?
@@ -29,14 +29,14 @@ This maps to objectives in ISO Annex [A.12.6.1 Management of Technical Vulnerabi
 In short, there are three levels of maintenance that should be performed on a regular basis.
 
 - Patching the underlying OS on the nodes
-- Upgrading the Compliant Kubernetes application stack
-- Upgrading Compliant Kubernetes-Kubespray
+- Upgrading the Welkin application stack
+- Upgrading Welkin-Kubespray
 
 Let's go through them one by one.
 
 ### Patching the nodes
 
-Security patches for the underlying OS on the nodes is constantly being released, and to ensure your environment is secured, the nodes that run Compliant Kubernetes must be updated with these patches.
+Security patches for the underlying OS on the nodes is constantly being released, and to ensure your environment is secured, the nodes that run Welkin must be updated with these patches.
 We recommend that you use the [AutomaticSecurityUpdates](https://help.ubuntu.com/community/AutomaticSecurityUpdates) feature that is available in Ubuntu (similar feature exist in other distros) to install these updates.
 Note that the nodes still need to be rebooted for some of these updates to be applied.
 In order to reboot the nodes, you can either use a tool like [kured](https://github.com/kubereboot/kured) or you can do it manually by logging on to the nodes and rebooting them manually.
@@ -49,9 +49,9 @@ It will cordon and reboot the nodes one by one.
 ./bin/ck8s-kubespray reboot-nodes <wc|sc> [--extra-vars manual_prompt=true] [<options>]
 ```
 
-### Upgrading the Compliant Kubernetes application stack
+### Upgrading the Welkin application stack
 
-Compliant Kubernetes consists of a multitude of open source components that interact to form a smooth End User experience.
+Welkin consists of a multitude of open source components that interact to form a smooth End User experience.
 In order to free you of the burden of keeping track of when to upgrade the various components, new versions of Complaint Kubernetes are regularly release.
 When a new version is released, it becomes available as a [tagged release](https://github.com/elastisys/compliantkubernetes-apps/tags) in the GitHub repo.
 

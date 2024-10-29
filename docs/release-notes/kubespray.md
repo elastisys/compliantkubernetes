@@ -1,6 +1,6 @@
 # Release Notes
 
-## Compliant Kubernetes Kubespray
+## Welkin Kubespray
 
 <!-- BEGIN TOC -->
 
