@@ -7,7 +7,7 @@ tags:
 
 # Clock Synchronization
 
-Compliant Kubernetes follows [best practices from ntp.se](https://www.netnod.se/blog/best-practices-connecting-ntp-servers) regarding clock synchronization by default. This ensures reliable synchronization with at least two clock sources using NTP servers.
+Welkin follows [best practices from ntp.se](https://www.netnod.se/blog/best-practices-connecting-ntp-servers) regarding clock synchronization by default. This ensures reliable synchronization with at least two clock sources using NTP servers.
 
 Clock synchronization is important for the following reasons:
 
