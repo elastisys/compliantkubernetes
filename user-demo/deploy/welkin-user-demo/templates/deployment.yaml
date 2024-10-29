@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "ck8s-user-demo.fullname" . }}
+  name: {{ include "welkin-user-demo.fullname" . }}
   labels:
-    {{- include "ck8s-user-demo.labels" . | nindent 4 }}
+    {{- include "welkin-user-demo.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
 {{- end }}
   selector:
     matchLabels:
-      {{- include "ck8s-user-demo.selectorLabels" . | nindent 6 }}
+      {{- include "welkin-user-demo.selectorLabels" . | nindent 6 }}
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "ck8s-user-demo.selectorLabels" . | nindent 8 }}
+        {{- include "welkin-user-demo.selectorLabels" . | nindent 8 }}
     spec:
       automountServiceAccountToken: false
       {{- with .Values.imagePullSecrets }}
@@ -61,7 +61,7 @@ spec:
         - {{- toYaml $c | nindent 10 }}
           labelSelector:
             matchLabels:
-              {{- include "ck8s-user-demo.selectorLabels" $ | nindent 14 }}
+              {{- include "welkin-user-demo.selectorLabels" $ | nindent 14 }}
         {{- end }}
       {{- end }}
       {{- with .Values.tolerations }}

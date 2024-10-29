@@ -1,6 +1,6 @@
-# Compliant Kubernetes User Demo
+# Welkin User Demo
 
-To make the most out of Compliant Kubernetes, this documentation features a minimalistic NodeJS application. It allows you to explore all Compliant Kubernetes benefits, including, such as HTTPS Ingresses, logging, metrics and user alerts.
+To make the most out of Welkin, this documentation features a minimalistic NodeJS application. It allows you to explore all Welkin benefits, including, such as HTTPS Ingresses, logging, metrics and user alerts.
 
 The application provides:
 
@@ -19,7 +19,7 @@ Furthermore, the application caters to a security-hardened environment, and addi
 
 The `scripts` folder should have self-describing scripts on how to build, test locally and deploy the application.
 
-For examples on using the application with Compliant Kubernetes, check the user guide in the `/docs` folder.
+For examples on using the application with Welkin, check the user guide in the `/docs` folder.
 
 ### Run the app with distributed tracing and Jaeger UI
 

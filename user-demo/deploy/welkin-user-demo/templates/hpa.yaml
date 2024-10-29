@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "ck8s-user-demo.fullname" . }}
+  name: {{ include "welkin-user-demo.fullname" . }}
   labels:
-    {{- include "ck8s-user-demo.labels" . | nindent 4 }}
+    {{- include "welkin-user-demo.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "ck8s-user-demo.fullname" . }}
+    name: {{ include "welkin-user-demo.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:

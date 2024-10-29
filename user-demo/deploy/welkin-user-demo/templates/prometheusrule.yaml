@@ -2,9 +2,9 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: {{ include "ck8s-user-demo.fullname" . }}
+  name: {{ include "welkin-user-demo.fullname" . }}
   labels:
-    {{- include "ck8s-user-demo.labels" . | nindent 4 }}
+    {{- include "welkin-user-demo.labels" . | nindent 4 }}
 spec:
   groups:
   - name: ./example.rules

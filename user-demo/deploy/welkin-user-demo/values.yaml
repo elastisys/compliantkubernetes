@@ -1,11 +1,11 @@
-# Default values for ck8s-user-demo.
+# Default values for welkin-user-demo.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 2
 
 image:
-  repository: i-didnt-read-the-docs/ck8s-user-demo
+  repository: i-didnt-read-the-docs/welkin-user-demo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -49,7 +49,7 @@ ingress:
     # nginx.ingress.kubernetes.io/auth-response-headers: "authorization"
 
 resources:
-  # Most Compliant Kubernetes clusters require the application to specify resources.
+  # Most Welkin clusters require the application to specify resources.
   # Otherwise, complying with capacity management policies becomes difficult.
   # Adjust the following two values based on load-testing or production data.
   limits:
@@ -82,9 +82,9 @@ prometheusRule:
 ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
 ##
 #topologySpreadConstraints:
-#  ## Compliant Kubernetes environments come with strong cluster-level default topology constraints.
+#  ## Welkin environments come with strong cluster-level default topology constraints.
 #  ## Only uncomment these lines if you need customization.
-#  ## Ref: https://elastisys.io/compliantkubernetes/user-guide/safeguards/default-pod-topology-spread-constraints/
+#  ## Ref: https://elastisys.io/welkin/user-guide/safeguards/default-pod-topology-spread-constraints/
 #  - maxSkew: 1
 #    whenUnsatisfiable: DoNotSchedule
 #    topologyKey: kubernetes.io/hostname

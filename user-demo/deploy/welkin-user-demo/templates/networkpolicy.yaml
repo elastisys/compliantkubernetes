@@ -2,13 +2,13 @@
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: {{ include "ck8s-user-demo.fullname" . }}
+  name: {{ include "welkin-user-demo.fullname" . }}
   labels:
-    {{- include "ck8s-user-demo.labels" . | nindent 4 }}
+    {{- include "welkin-user-demo.labels" . | nindent 4 }}
 spec:
   podSelector:
     matchLabels:
-    {{- include "ck8s-user-demo.selectorLabels" . | nindent 6 }}
+    {{- include "welkin-user-demo.selectorLabels" . | nindent 6 }}
   policyTypes:
     - Ingress
     - Egress
