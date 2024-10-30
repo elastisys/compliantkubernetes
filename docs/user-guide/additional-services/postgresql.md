@@ -24,7 +24,7 @@ search:
 <figure>
     <img alt="PostgreSQL Deployment Model" src="../img/postgresql.drawio.svg" >
     <figcaption>
-        <strong>PostgreSQL on Compliant Kubernetes Deployment Model</strong>
+        <strong>PostgreSQL on Welkin Deployment Model</strong>
         <br>
         This help you build a mental model on how to access PostgreSQL as an Application Developer and how to connect your application to PostgreSQL.
     </figcaption>
@@ -46,7 +46,7 @@ sudo apt-get install postgresql-client
 
 ## Getting Access
 
-Your administrator will set up a Secret inside Compliant Kubernetes, which contains all information you need to access your PostgreSQL cluster.
+Your administrator will set up a Secret inside Welkin, which contains all information you need to access your PostgreSQL cluster.
 The Secret has the following shape:
 
 ```yaml
@@ -129,7 +129,7 @@ Continue with the second console in the next section to create a Secret with thi
 
 ## Create an Application Secret
 
-First, check that you are on the right Compliant Kubernetes cluster, in the right **application** namespace:
+First, check that you are on the right Welkin cluster, in the right **application** namespace:
 
 ```bash
 kubectl get nodes
@@ -179,7 +179,7 @@ Before going into production, don't forget to go through the [go-live checklist]
 
 ## CK8S PostgreSQL Release Notes
 
-Check out the [release notes](../../release-notes/postgres.md) for the PostgreSQL cluster that runs in Compliant Kubernetes environments!
+Check out the [release notes](../../release-notes/postgres.md) for the PostgreSQL cluster that runs in Welkin environments!
 
 ## Further Reading
 

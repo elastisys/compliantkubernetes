@@ -17,7 +17,7 @@ search:
 <figure>
     <img alt="Jaeger Deployment Model" src="../img/jaeger.drawio.svg" >
     <figcaption>
-        <strong>Jaeger on Compliant Kubernetes Deployment Model</strong>
+        <strong>Jaeger on Welkin Deployment Model</strong>
         <br>
         This help you build a mental model on how to access Jaeger as an Application Developer and how to connect your application to Jaeger.
     </figcaption>
@@ -27,7 +27,7 @@ This page will help you succeed in connecting your application to Jaeger tracing
 
 ## Getting Access
 
-Your administrator will set up the authentication reverse proxy inside Compliant Kubernetes, which will give you access to Jaeger UI.
+Your administrator will set up the authentication reverse proxy inside Welkin, which will give you access to Jaeger UI.
 
 ## Prepare your application
 
@@ -108,7 +108,7 @@ Before going into production, don't forget to go through the [go-live checklist]
 
 ## CK8S Jaeger Release Notes
 
-Check out the [release notes](../../release-notes/jaeger.md) for the Jaeger setup that runs in Compliant Kubernetes environments!
+Check out the [release notes](../../release-notes/jaeger.md) for the Jaeger setup that runs in Welkin environments!
 
 ## Further Reading
 

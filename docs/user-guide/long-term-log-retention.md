@@ -9,10 +9,10 @@ tags:
 
 # Long-term log retention
 
-Compliant Kubernetes by default sets an retention of 30 days for logs.
+Welkin by default sets an retention of 30 days for logs.
 Many regulators, including Swedish Healthcare, require a minimum of 5 year log retention.
 
-This is not provided at the platform level by Compliant Kubernetes as it runs the risk of GDPR non-compliance.
+This is not provided at the platform level by Welkin as it runs the risk of GDPR non-compliance.
 Logs may include sensitive information like personal data, which requires that the the retention scheme is designed together with application-specific knowledge to ensure compliance.
 Specifically, this includes that the retention scheme ensures that erased personal data can not be accidentally restored, as per [Art. 17 GDPR Right to erasure (‘right to be forgotten’)](https://gdpr.fan/a17).
 
@@ -22,7 +22,7 @@ Minimising the kept data, storage costs and storage management.
 ## Exporting logs for long-term storage
 
 To enable long-term log retention we instead recommend using [Elasticdump](https://github.com/elasticsearch-dump/elasticsearch-dump).
-This tool can export logs from OpenSearch within Compliant Kubernetes on a per document basis in either CSV or JSON format, allowing other tools to process the logs and ship them somewhere else.
+This tool can export logs from OpenSearch within Welkin on a per document basis in either CSV or JSON format, allowing other tools to process the logs and ship them somewhere else.
 It can also perform transformations, compress using Gzip, and write them into a file or send them to S3 object storage.
 
 Using this tool, along with the REST API of OpenSearch, then it is possible to create scripts to export logs for long-term storage using a Kubernetes CronJob.
@@ -32,7 +32,7 @@ Down below are some examples how to discover indices to export from OpenSearch, 
 
 !!!info
 
-    To access OpenSearch contact your Compliant Kubernetes administrator and ask them to create a user with suitable permissions listed here below.
+    To access OpenSearch contact your Welkin administrator and ask them to create a user with suitable permissions listed here below.
     For Elastisys managed services customers this can be done by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/).
 
 This is the permissions required for the OpenSearch API snippets and the permissions required by Elasticdump:

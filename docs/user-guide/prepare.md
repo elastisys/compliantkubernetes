@@ -1,5 +1,5 @@
 ---
-description: Learn how to prepare for Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+description: Learn how to prepare for Welkin, the security-hardened Kubernetes distribution
 search:
   boost: 2
 ---
@@ -8,7 +8,7 @@ search:
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
-    You can order Managed Compliant Kubernetes by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/). Here are the highlights:
+    You can order Managed Welkin by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/). Here are the highlights:
 
     * **Infrastructure provider**: You choose it, among the Elastisys Partners.
     * **Business Continuity**: Kubernetes Cluster always feature 3 control plane Nodes.
@@ -18,11 +18,11 @@ search:
         * RPO: daily, 3 backups
     * **Monitoring, security patching and incident management**: included.
 
-    For more information, please read [ToS Appendix 2 Managed Compliant Kubernetes Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-2-managed-welkin-service-specification-managed-services-only).
+    For more information, please read [ToS Appendix 2 Managed Welkin Service Specification](https://elastisys.com/legal/terms-of-service/#appendix-2-managed-welkin-service-specification-managed-services-only).
 
 # Step 1: Prepare
 
-Hi there, Application Developer! Happy to have you on board with Elastisys Compliant Kubernetes!
+Hi there, Application Developer! Happy to have you on board with Welkin!
 
 In this part, you will learn about the things you should do to prepare to get started with the platform.
 
@@ -93,7 +93,7 @@ Optional, but very useful, tools for developers and DevOps engineers:
 
 <!--endpoint-access-start-->
 
-Those URLs that your Elastisys Compliant Kubernetes administrator gave you all have a `$DOMAIN`, which will typically include your company name and perhaps the environment name.
+Those URLs that your Welkin administrator gave you all have a `$DOMAIN`, which will typically include your company name and perhaps the environment name.
 
 Your web portals are available at:
 
@@ -110,11 +110,11 @@ Additional endpoints are also available, depending on if your platform has these
 
 ## Containerize Your Application
 
-Elastisys Compliant Kubernetes runs containerized applications in a Kubernetes platform. It is a Certified Kubernetes distribution, which means that if an application is possible to deploy on a standard Kubernetes environment, it can be deployed on Elastisys Compliant Kubernetes.
+Welkin runs containerized applications in a Kubernetes platform. It is a Certified Kubernetes distribution, which means that if an application is possible to deploy on a standard Kubernetes environment, it can be deployed on Welkin.
 
 However, there are some restrictions in place for security reasons. In particular, **containers cannot be run as root**. Following this [best practice](https://docs.docker.com/develop/develop-images/instructions/#user) is a simple way to ensure additional security for your containerized applications deployed in Kubernetes.
 
-There are additional safeguards in place that reflect the security posture of Elastisys Compliant Kubernetes that impact your application. These prevent users from doing potentially unsafe things. In particular, users are not allowed to:
+There are additional safeguards in place that reflect the security posture of Welkin that impact your application. These prevent users from doing potentially unsafe things. In particular, users are not allowed to:
 
 {%
     include "./demarcation.md"

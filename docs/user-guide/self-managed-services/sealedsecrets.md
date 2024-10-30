@@ -45,7 +45,7 @@ metadata:
 
 Sealed Secrets have a section in their documentation about installing Sealed Secrets into a [restricted environment](https://github.com/bitnami-labs/sealed-secrets/tree/v0.24.2#helm-chart-on-a-restricted-environment), where they give a `config.yaml` that defines what should be installed.
 
-The following `config.yaml` is an example of what is required to install Sealed Secrets into Compliant Kubernetes.
+The following `config.yaml` is an example of what is required to install Sealed Secrets into Welkin.
 
 ```yaml
 serviceAccount:

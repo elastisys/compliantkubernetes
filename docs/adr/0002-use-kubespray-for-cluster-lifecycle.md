@@ -6,12 +6,12 @@
 
 ## Context and Problem Statement
 
-Compliant Kubernetes promises: "Multi-cloud. Open source. Compliant". So far, we delivered on our multi-cloud promise by using our in-house `ck8s-cluster` implementation. This strategy feels unsustainable for two reasons: First, we don't have the resources to catch up and keep up with open source projects in the cluster life-cycle space. Second, we don't want to differentiate on how to set up vanilla Kubernetes cluster, i.e., lower in the Kubernetes stack. Rather we want to differentiate on services on top of vanilla Kubernetes clusters.
+Welkin promises: "Multi-cloud. Open source. Compliant". So far, we delivered on our multi-cloud promise by using our in-house `ck8s-cluster` implementation. This strategy feels unsustainable for two reasons: First, we don't have the resources to catch up and keep up with open source projects in the cluster life-cycle space. Second, we don't want to differentiate on how to set up vanilla Kubernetes cluster, i.e., lower in the Kubernetes stack. Rather we want to differentiate on services on top of vanilla Kubernetes clusters.
 
 ## Decision Drivers
 
 - We want to differentiate on top of vanilla Kubernetes cluster.
-- We want to be able to run Compliant Kubernetes on top of as many Infrastructure Providers as possible.
+- We want to be able to run Welkin on top of as many Infrastructure Providers as possible.
 - We promise building on top of best-of-breeds open source projects.
 - We want to reduce burden with developing and maintaining our in-house tooling for cluster life-cycle management.
 

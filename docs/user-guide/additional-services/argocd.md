@@ -35,7 +35,7 @@ tags:
 <figure>
     <img alt="Argo CD Deployment Model" src="../img/argocd.drawio.svg" >
     <figcaption>
-        <strong>Argo CD on Compliant Kubernetes Deployment Model</strong>
+        <strong>Argo CD on Welkin Deployment Model</strong>
         <br>
         This help you build a mental model of how to levarage Argo CD for deploying your application.
     </figcaption>
@@ -45,7 +45,7 @@ This page will help you succeed in connecting to Argo CD application which meets
 
 ## Getting Access
 
-Your administrator will set up the authentication inside Compliant Kubernetes, which will give you access to Argo CD UI.
+Your administrator will set up the authentication inside Welkin, which will give you access to Argo CD UI.
 
 ## Secret Management
 
@@ -148,7 +148,7 @@ The following steps will show how to get started with encrypting files using `so
 
 ### With SealedSecrets
 
-The following steps assumes SealedSecrets is installed in the cluster. For installing SealedSecrets in a Compliant Kubernetes cluster, refer to [the self-managed guide](../self-managed-services/sealedsecrets.md). You will need to contact your Platform Administrator requesting that you want to use SealedSecrets together with Argo CD.
+The following steps assumes SealedSecrets is installed in the cluster. For installing SealedSecrets in a Welkin cluster, refer to [the self-managed guide](../self-managed-services/sealedsecrets.md). You will need to contact your Platform Administrator requesting that you want to use SealedSecrets together with Argo CD.
 
 1. Create a SealedSecret, the following steps will create a SealedSecret for the namespace in the current Kubernetes context:
 
@@ -407,7 +407,7 @@ Example error:
 
 Our Argo CD installation is using the [namespaced method](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#non-high-availability). This means that Argo CD has access to Roles with permissions to CRUD on objects in the inclusion list. It has a [list of namespaces](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters) that it can look at and reconcile things every few seconds. Any feature that requires Argo CD cluster-wide installation will not be supported with our offering.
 
-The reason for this choice is that, according to the [Compliant Kubernetes mission and vision](../../mission-and-vision.md), the platform should make it hard for Application Developers to do the wrong thing by employing safeguards and secure defaults. With this configuration, we prevent Argo CD from having access to objects in the inclusions list across the entire cluster. This prevents objects from being deployed into namespaces owned by the Platform Administrator, which could compromise platform security and stability. For example, this choice adds another layer of protection, preventing the Application Developer from interfering with backups. Read more about it [here](../demarcation.md#general-principle).
+The reason for this choice is that, according to the [Welkin mission and vision](../../mission-and-vision.md), the platform should make it hard for Application Developers to do the wrong thing by employing safeguards and secure defaults. With this configuration, we prevent Argo CD from having access to objects in the inclusions list across the entire cluster. This prevents objects from being deployed into namespaces owned by the Platform Administrator, which could compromise platform security and stability. For example, this choice adds another layer of protection, preventing the Application Developer from interfering with backups. Read more about it [here](../demarcation.md#general-principle).
 
 Argo CD is not allowed to manage its own namespace. This means that features such as [Apps of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern) does not work by default. Read more about the decision [here](../../adr/0044-argocd-managing-its-own-namespace.md).
 
@@ -438,7 +438,7 @@ Before going into production, don't forget to go through the [go-live checklist]
 
 ## CK8S Argo CD Release Notes
 
-Check out the [release notes](../../release-notes/argocd.md) for the Argo CD setup that runs in Compliant Kubernetes environments!
+Check out the [release notes](../../release-notes/argocd.md) for the Argo CD setup that runs in Welkin environments!
 
 ## Further Reading
 

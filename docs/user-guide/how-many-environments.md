@@ -23,7 +23,7 @@ tags:
 
     For more information, please read [ToS 3.5 Updates and Upgrades](https://elastisys.com/legal/terms-of-service/#35-updates-and-upgrades).
 
-Compliant Kubernetes recommends setting up at least two separate environments: one for non-production use (e.g. development and testing) and one for production use.
+Welkin recommends setting up at least two separate environments: one for non-production use (e.g. development and testing) and one for production use.
 
 ---
 
@@ -34,7 +34,7 @@ Compliant Kubernetes recommends setting up at least two separate environments: o
 For the purpose of this document we use the following distinction:
 
 - **Application Deployment** - One instance of a customer's application. Commonly, multiple application deployments are used in the software development life cycles, such as: local, development, integration, testing, staging, and production.
-- **Environment** - One instance of a Compliant Kubernetes deployment. One Environment is composed of two Kubernetes Clusters, the Management Cluster and Workload Cluster.
+- **Environment** - One instance of a Welkin deployment. One Environment is composed of two Kubernetes Clusters, the Management Cluster and Workload Cluster.
 
 ## Levels of Isolation
 
@@ -42,7 +42,7 @@ Various levels of isolation between Application Deployments can be achieved whil
 
 - **Labels**: in which Application Deployments reside in the same Namespace and are separated "only" by e.g. Helm Releases or Argo CD Application labels. Network Policies can apply here, but e.g. Secrets will be accessible throughout the entire Namespace.
 - **Namespace isolation**: in which Application Deployments share a Workload Cluster, but are separated logically using Namespaces. Network Policies work here, too, and Namespaces are a Kubernetes trust boundary when it comes to access to Secrets. Namespaces can also be used for resource quotas, for soft capacity allocation limitations.
-- **Node isolation**: in which Application Deployments share an environment, but are deployed on different Nodes. On this level, both performance and security isolation is greater than in the previous, since the underlying virtual machines are separate. This is what Compliant Kubernetes does with additional services, such as PostgreSQL and RabbitMQ. Node isolation can be done both with and without Namespace isolation.
+- **Node isolation**: in which Application Deployments share an environment, but are deployed on different Nodes. On this level, both performance and security isolation is greater than in the previous, since the underlying virtual machines are separate. This is what Welkin does with additional services, such as PostgreSQL and RabbitMQ. Node isolation can be done both with and without Namespace isolation.
 - **Cluster isolation**: in which Application Deployments share an Environment, but are deployed on separate Workload Clusters.
 - **Separate Environments**: in which Application Deployments share nothing. This level of isolation is the highest, which implies total isolation for access control, credentials, network traffic, performance, and there are no shared platform components.
 
@@ -60,7 +60,7 @@ If two applications are in different Security Zones, then Cluster isolation migh
 
 ## Recommendations
 
-Taking into account the relevant regulations, Compliant Kubernetes recommends setting up **at least two Environments**:
+Taking into account the relevant regulations, Welkin recommends setting up **at least two Environments**:
 
 - non-production Environment hosting Application Deployments from development up to staging;
 - production Environment hosting the production Application Deployment.

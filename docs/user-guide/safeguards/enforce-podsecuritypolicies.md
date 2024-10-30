@@ -40,14 +40,14 @@ $ kubectl -n <namespace> get events
     If any of these restrictions causes friction when deploying your application, please file a [service ticket](https://elastisys.atlassian.net/servicedesk/) and we'll happily advise you on how to reduce privileges required by your application.
 
 Kubernetes by default allows any Pod to run with any privileges it requests, which easily allows an application to take full control over a cluster and everything in it.
-To minimise this risk Compliant Kubernetes employs two systems to restrict what privileges an application can request:
+To minimise this risk Welkin employs two systems to restrict what privileges an application can request:
 
 - [Kubernetes - Pod Security Admission](https://kubernetes.io/docs/concepts/security/pod-security-admission/) (PSA)
     - Coarse-grained enforcement built into Kubernetes
 - [Open Policy Agent Gatekeeper - Pod Security Policies](https://github.com/open-policy-agent/gatekeeper-library/tree/master/library/pod-security-policy/) (PSP)
     - Fine-grained enforcement built with OPA Gatekeeper
 
-In addition to enforcement Compliant Kubernetes also employ OPA Gatekeeper mutations to modify security contexts of applications to make it easier to comply with the enforced rules.
+In addition to enforcement Welkin also employ OPA Gatekeeper mutations to modify security contexts of applications to make it easier to comply with the enforced rules.
 This modification happens at the stage when Pods are created, which means that their security context may contain additional content compared to the resource they were created for.
 Only fields that are unset can be modified in this way.
 
@@ -64,7 +64,7 @@ Only fields that are unset can be modified in this way.
 
 ## Restricted Pod Security Standard
 
-The default enforcement in Compliant Kubernetes follows the upstream [Restricted Pod Security Standard as defined by Kubernetes](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted).
+The default enforcement in Welkin follows the upstream [Restricted Pod Security Standard as defined by Kubernetes](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted).
 This standard includes the following:
 
 - Escalation and privileged mode are disallowed.

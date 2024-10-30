@@ -10,7 +10,7 @@ search:
    end='<!--disclaimer-end-->'
 %}
 
-JupyterHub brings Jupyter Notebooks to the cloud. It gives the users access to computational environments and resources without burdening users with installation and maintenance tasks. This documents shows a guide on how to setup JupyterHub in a Compliant Kubernetes environment.
+JupyterHub brings Jupyter Notebooks to the cloud. It gives the users access to computational environments and resources without burdening users with installation and maintenance tasks. This documents shows a guide on how to setup JupyterHub in a Welkin environment.
 
 ![Keycloak Image](img/jupyter.gif)
 
@@ -190,7 +190,7 @@ helm upgrade --install jupyterhub jupyterhub/jupyterhub --values values.yaml
 
 ## Known Issues / Limitations
 
-- JupyterHub's custom user scheduler is disabled (which [can help with efficient node downscaling](https://z2jh.jupyter.org/en/latest/administrator/optimization.html#scaling-down-efficiently)). For safety reasons, developers in Compliant Kubernetes do not have the rights required to deploy it.
+- JupyterHub's custom user scheduler is disabled (which [can help with efficient node downscaling](https://z2jh.jupyter.org/en/latest/administrator/optimization.html#scaling-down-efficiently)). For safety reasons, developers in Welkin do not have the rights required to deploy it.
 
 - JupyterHub's Admin functionality is limited since some of the admin functions require container root access. Pre-installed Python packages for users can not be added through the admin interface. They can be added by [modifying the Docker image](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-environment.html#choose-and-use-an-existing-docker-image), pushing it to your image registry and redeploying JupyterHub. **NOTE** Users can still install their own packages.
 

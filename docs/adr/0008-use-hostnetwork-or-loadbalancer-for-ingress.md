@@ -8,7 +8,7 @@ Technical Story: [Ingress configuration](https://github.com/elastisys/compliantk
 
 ## Context and Problem Statement
 
-Many regulations require traffic to be encrypted over public Internet. Compliant Kubernetes solves this problem via an [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) and [cert-manager](https://github.com/cert-manager/cert-manager). As of February 2021, Compliant Kubernetes comes by default with [Ingress-NGINX](https://kubernetes.github.io/ingress-nginx/), but [Ambassador](https://www.getambassador.io/) is planned as an alternative. The question is, how does traffic arrive at the Ingress Controller?
+Many regulations require traffic to be encrypted over public Internet. Welkin solves this problem via an [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) and [cert-manager](https://github.com/cert-manager/cert-manager). As of February 2021, Welkin comes by default with [Ingress-NGINX](https://kubernetes.github.io/ingress-nginx/), but [Ambassador](https://www.getambassador.io/) is planned as an alternative. The question is, how does traffic arrive at the Ingress Controller?
 
 ## Decision Drivers
 
@@ -36,7 +36,7 @@ Chosen options:
 
 1. Use Service type LoadBalancer when available. This includes: AWS, Azure, GCP and CityCloud.
 
-Additional considerations: This means that, generally, it will not be possible to set up the correct DNS entries until _after_ we apply Compliant Kubernetes Apps. There is a risk for "the Internet" -- Let's Encrypt specifically -- to perform DNS lookups too soon and cause negative DNS caches with a long lifetime. Therefore, placeholder IP addresses must be used, e.g.:
+Additional considerations: This means that, generally, it will not be possible to set up the correct DNS entries until _after_ we apply Welkin Apps. There is a risk for "the Internet" -- Let's Encrypt specifically -- to perform DNS lookups too soon and cause negative DNS caches with a long lifetime. Therefore, placeholder IP addresses must be used, e.g.:
 
 ```text
 *.$BASE_DOMAIN     60s A 203.0.113.123

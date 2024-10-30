@@ -1,5 +1,5 @@
 ---
-description: The demarcation between what users can and cannot do in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: The demarcation between what users can and cannot do in Welkin, the security-focused Kubernetes distribution.
 search:
   boost: 2
 tags:
@@ -34,27 +34,27 @@ tags:
 
 # Can I?
 
-Compliant Kubernetes comes with a lot of safeguards to ensure you protect your business reputation and earn the trust of your Application Developers. Furthermore, it is a good idea to keep regulators happy, since they bring public trust into digitalization. Public trust is necessary to shift Application Developers away from pen-and-paper to drive usage of your amazing application.
+Welkin comes with a lot of safeguards to ensure you protect your business reputation and earn the trust of your Application Developers. Furthermore, it is a good idea to keep regulators happy, since they bring public trust into digitalization. Public trust is necessary to shift Application Developers away from pen-and-paper to drive usage of your amazing application.
 
-If you used Kubernetes before, especially if you acted as a Platform Administrator, then being a Compliant Kubernetes user might feel a bit limiting. For example, you might not be able to run containers with root (`uid=0`) as you were used to. Again, these are not limitations, rather safeguards.
+If you used Kubernetes before, especially if you acted as a Platform Administrator, then being a Welkin user might feel a bit limiting. For example, you might not be able to run containers with root (`uid=0`) as you were used to. Again, these are not limitations, rather safeguards.
 
 ## Why?
 
 As previously reported, [Kubernetes is not secure by default, nor by itself](https://www.techtarget.com/searchitoperations/news/252487963/Kubernetes-security-defaults-prompt-upstream-dilemma).
 This is due to the fact that Kubernetes prefers to keep its "wow, it just works" experience. This might be fine for a company that does not process personal data. However, if you are in a regulated industry, for example, because you process personal data or health information, your regulators will be extremely unhappy to learn that your platform does not conform to security best practices.
 
-In case of Compliant Kubernetes this implies a clear separation of roles and responsibilities between Compliant Kubernetes users and administrators.
-The mission of administrators is to make you, the Compliant Kubernetes user, succeed. Besides allowing you to develop features as fast as possible, the administrator also needs to ensure that you build on top of a platform that lives up to regulatory requirements, specifically data privacy and data security regulations.
+In case of Welkin this implies a clear separation of roles and responsibilities between Welkin users and administrators.
+The mission of administrators is to make you, the Welkin user, succeed. Besides allowing you to develop features as fast as possible, the administrator also needs to ensure that you build on top of a platform that lives up to regulatory requirements, specifically data privacy and data security regulations.
 
 ## General Principle
 
-Compliant Kubernetes does not allow users to make any changes which may compromise the security of the platform. This includes compromising or working around access control, logging, monitoring, backups, alerting, etc. For example, accidental deletion of the CustomResourceDefinitions of Prometheus would prevent administrators from getting alerts and fixing cluster issues before your application is impacted. Similarly, accidentally deleting Fluentd Pods would make it impossible to capture the Kubernetes audit log and investigate data breaches.
+Welkin does not allow users to make any changes which may compromise the security of the platform. This includes compromising or working around access control, logging, monitoring, backups, alerting, etc. For example, accidental deletion of the CustomResourceDefinitions of Prometheus would prevent administrators from getting alerts and fixing cluster issues before your application is impacted. Similarly, accidentally deleting Fluentd Pods would make it impossible to capture the Kubernetes audit log and investigate data breaches.
 
 ## Specifics
 
-To stick to the general principles above, Compliant Kubernetes comes with some technical safeguards. These are implemented through [Pod Security Admission](https://kubernetes.io/docs/concepts/security/pod-security-admission/) enforcing that user namespaces adhere to the `restricted` [Pod Security Standard](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted), in combination with OPA Policies and RBAC. This list may be updated in the future to take into account the fast evolving risk and technological landscape.
+To stick to the general principles above, Welkin comes with some technical safeguards. These are implemented through [Pod Security Admission](https://kubernetes.io/docs/concepts/security/pod-security-admission/) enforcing that user namespaces adhere to the `restricted` [Pod Security Standard](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted), in combination with OPA Policies and RBAC. This list may be updated in the future to take into account the fast evolving risk and technological landscape.
 
-More technically, Compliant Kubernetes does not allow users to:
+More technically, Welkin does not allow users to:
 
 <!--safeguards-start-->
 
@@ -68,7 +68,7 @@ More technically, Compliant Kubernetes does not allow users to:
 
 ## But what if I really need to?
 
-Unfortunately, many application asks for more permissions than Compliant Kubernetes allows by default. When looking at the Kubernetes resources, the following are problematic:
+Unfortunately, many application asks for more permissions than Welkin allows by default. When looking at the Kubernetes resources, the following are problematic:
 
 - ClusterRoles, ClusterRoleBindings
 - Too permissive Roles and RoleBindings

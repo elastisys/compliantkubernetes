@@ -1,5 +1,5 @@
 ---
-description: Learn how to operate your application on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+description: Learn how to operate your application on Welkin, the security-hardened Kubernetes distribution
 search:
   boost: 2
 ---
@@ -8,7 +8,7 @@ search:
 
 Welcome to the third and final step, Application Developer!
 
-In this step, you will learn how to operate your application on Elastisys Compliant Kubernetes.
+In this step, you will learn how to operate your application on Welkin.
 
 ## Configure Dashboards and Alerts
 
@@ -16,9 +16,9 @@ In this step, you will learn how to operate your application on Elastisys Compli
 
 To monitor your application, you will log in to your Grafana. Recall how to log in to your web portals from [Step 1: Prepare](prepare.md).
 
-Grafana visually displays the monitoring data that Prometheus has collected on your behalf. A significant amount of metrics are already collected for you, out of the box, on Elastisys Compliant Kubernetes. This means you can visualize data about the cluster immediately.
+Grafana visually displays the monitoring data that Prometheus has collected on your behalf. A significant amount of metrics are already collected for you, out of the box, on Welkin. This means you can visualize data about the cluster immediately.
 
-But Prometheus can also be instructed to collect specific metrics from your own application. Perhaps this is more useful to you than monitoring metrics that relate to cluster health (in particular if somebody else managed Elastisys Compliant Kubernetes for you).
+But Prometheus can also be instructed to collect specific metrics from your own application. Perhaps this is more useful to you than monitoring metrics that relate to cluster health (in particular if somebody else managed Welkin for you).
 
 To instruct Prometheus on how to do this, you create a [ServiceMonitor](https://blog.container-solutions.com/prometheus-operator-beginners-guide). This is a Kubernetes resource that configures Prometheus and specifies how to collect metrics from a particular application.
 
@@ -51,7 +51,7 @@ Go deeper into [metric alerts](alerts.md).
 
 Similar to alerting based on monitoring metrics, you may need to alert based on application log contents. For instance, it might make sense to send any log line of the `FATAL` log level to your Slack channel for immediate attention.
 
-The process of setting up log-based alerts is highly graphical, and supported by your OpenSearch Dashboards that is part of Elastisys Compliant Kubernetes. Recall how to log in to your web portals from [Step 1: Prepare](prepare.md).
+The process of setting up log-based alerts is highly graphical, and supported by your OpenSearch Dashboards that is part of Welkin. Recall how to log in to your web portals from [Step 1: Prepare](prepare.md).
 
 Go deeper into [log-based alerts](log-based-alerts.md).
 
@@ -81,18 +81,18 @@ Go deeper into [backups](backup.md).
 
 Capacity management is about having sufficient capacity for your needs, be they in terms of storage or computational power.
 
-Your Elastisys Compliant Kubernetes administrator should perform capacity management _of the platform_, to ensure that there is a sufficient amount of spare capacity on a cluster level.
+Your Welkin administrator should perform capacity management _of the platform_, to ensure that there is a sufficient amount of spare capacity on a cluster level.
 
-As an Application Developer, you should perform capacity management on a Pod level. This primarily means setting [resource requests](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) correctly for containers inside Pods, making use of multiple instances in your Deployments and Stateful Sets (possibly via [horizontal Pod autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)). The use of resource requests and limits is enforced via an Elastisys Compliant Kubernetes [safeguard](safeguards/enforce-resources.md).
+As an Application Developer, you should perform capacity management on a Pod level. This primarily means setting [resource requests](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) correctly for containers inside Pods, making use of multiple instances in your Deployments and Stateful Sets (possibly via [horizontal Pod autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)). The use of resource requests and limits is enforced via an Welkin [safeguard](safeguards/enforce-resources.md).
 
 ## Automate with CI/CD
 
-Elastisys Compliant Kubernetes comes with [Argo CD](additional-services/argocd.md) as an Additional Service.
+Welkin comes with [Argo CD](additional-services/argocd.md) as an Additional Service.
 
-Compliant Kubernetes can also be integrated with an [external CI/CD](ci-cd.md), such as GitHub Actions.
+Welkin can also be integrated with an [external CI/CD](ci-cd.md), such as GitHub Actions.
 
 ## Next step? Going deeper!
 
 By now, you're fully up and running! You have an application, updating it is a breeze, and you can monitor it and look at its logs. The next step is to open the "Go Deeper" section of this documentation and read up on more topics that interest you.
 
-Thank you for starting your journey beyond the clouds with Elastisys Compliant Kubernetes!
+Thank you for starting your journey beyond the clouds with Welkin!

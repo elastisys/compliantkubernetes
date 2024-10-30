@@ -20,7 +20,7 @@ search:
 <figure>
     <img alt="RabbitMQ Deployment Model" src="../img/rabbitmq.drawio.svg" >
     <figcaption>
-        <strong>RabbitMQ on Compliant Kubernetes Deployment Model</strong>
+        <strong>RabbitMQ on Welkin Deployment Model</strong>
         <br>
         This help you build a mental model on how to access RabbitMQ as an Application Developer and how to connect your application to RabbitMQ.
     </figcaption>
@@ -42,7 +42,7 @@ sudo apt install rabbitmq-server
 
 RabbitMQ provides the management plugin which allows control over everything within it, including messaging topology and access control.
 
-Your administrator will set up a Secret inside Compliant Kubernetes containing the credentials of the default admin user, which is all you need to access your RabbitMQ cluster.
+Your administrator will set up a Secret inside Welkin containing the credentials of the default admin user, which is all you need to access your RabbitMQ cluster.
 The Secret has the following shape:
 
 ```yaml
@@ -97,7 +97,7 @@ To access the management UI, proceed as follows:
 
 ### Create an Application Secret
 
-First, check that you are on the right Compliant Kubernetes cluster, in the right **application** namespace:
+First, check that you are on the right Welkin cluster, in the right **application** namespace:
 
 ```bash
 kubectl get nodes
@@ -127,7 +127,7 @@ To expose the AMQP URL to your application, follow one of the following upstream
 
 ## Using a RabbitMQ Cluster
 
-Best practices for using RabbitMQ in Compliant Kubernetes.
+Best practices for using RabbitMQ in Welkin.
 
 !!!note
 
@@ -204,7 +204,7 @@ Before going into production, don't forget to go through the [go-live checklist]
 
 ## CK8S RabbitMQ Release Notes
 
-Check out the [release notes](../../release-notes/rabbitmq.md) for the RabbitMQ cluster that runs in Compliant Kubernetes environments!
+Check out the [release notes](../../release-notes/rabbitmq.md) for the RabbitMQ cluster that runs in Welkin environments!
 
 ## Further Reading
 

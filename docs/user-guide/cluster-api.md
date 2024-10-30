@@ -12,7 +12,7 @@ search:
     There is no exact schedule for this migration yet, more information will be provided later.
     If you have any questions then contact our support.
 
-This document aims to show what changes to expect as an Application Developer using Compliant Kubernetes when running on Cluster API instead of Kubespray.
+This document aims to show what changes to expect as an Application Developer using Welkin when running on Cluster API instead of Kubespray.
 
 ## What is Cluster API
 
@@ -22,7 +22,7 @@ This means it's very similar to how one normally works with `Pods` and other res
 
 Application Developers don't need a full understanding of Cluster API.
 In fact, Application Developers will not interact directly with Cluster API at all.
-However, Compliant Kubernetes running with Cluster API has a few implications, which Application Developers need to be aware of.
+However, Welkin running with Cluster API has a few implications, which Application Developers need to be aware of.
 These are described below.
 
 ## Node replacement
@@ -45,7 +45,7 @@ Kubernetes Nodes provisioned with Cluster API will by default only have a privat
 This means that egress traffic will use Network Address Translation (NAT) via the Infrastructure Provider, similar to how home networks behind a router work.
 In turn, this removes the possibility to allowlist traffic from specific Kubernetes Nodes in external services based on the source IP that the external service will see.
 Depending on the underlying Cloud Infrastructure Provider and their features, we cannot guarantee that the IP the external services sees is stable over time.
-Also depending on underlying cloud infrastructure, the IP might not be exclusive for your Compliant Kubernetes environment, so traffic from that IP could originate from other servers that are not related to your environment.
+Also depending on underlying cloud infrastructure, the IP might not be exclusive for your Welkin environment, so traffic from that IP could originate from other servers that are not related to your environment.
 
 !!!note
 

@@ -20,7 +20,7 @@ Flux is an open-source tool for continuous delivery (CD) and GitOps in Kubernete
 
 Flux is a [CNCF Graduated project](https://www.cncf.io/projects/flux/).
 
-This page will help you install Flux in a Compliant Kubernetes environment.
+This page will help you install Flux in a Welkin environment.
 
 !!! Note "Supported versions"
     This installation guide has been tested with Flux version [2.1.2](https://github.com/fluxcd/flux2/tree/v2.1.2).
@@ -56,7 +56,7 @@ In Kubernetes you will need to:
 
 #### CRDs
 
-You need to apply the Custom Resource Definitions (CRDs) required by Flux. This is typically not allowed in a Compliant Kubernetes Environment, but with Flux enabled with the self-managed cluster resources feature, this allows you to apply these yourself.
+You need to apply the Custom Resource Definitions (CRDs) required by Flux. This is typically not allowed in a Welkin Environment, but with Flux enabled with the self-managed cluster resources feature, this allows you to apply these yourself.
 
 ```sh
 mkdir crds
@@ -87,7 +87,7 @@ flux create secret git <repo-name>-auth \
 
 You need to create the necessary Roles for Flux to function. This needs to be done in every namespace that you want Flux to work in.
 
-Since Compliant Kubernetes uses the Hierarchical Namespace Controller, the easiest way to achieve this is to place the Roles and RoleBindings in the parent namespace that `flux-system` was created from. By doing so, all namespaces created under the same parent namespace will inherit the Roles and RoleBindings.
+Since Welkin uses the Hierarchical Namespace Controller, the easiest way to achieve this is to place the Roles and RoleBindings in the parent namespace that `flux-system` was created from. By doing so, all namespaces created under the same parent namespace will inherit the Roles and RoleBindings.
 
 If you have multiple namespaces that ought to be targets for Flux, you can add the Roles and RoleBindings to more than one "parent" namespace. For instance, to `staging`, to get Flux to work with the `staging` namespace and any namespace anchored to it.
 
@@ -130,7 +130,7 @@ subjects:
 
 !!! note "Note"
 
-    Installing Flux with `flux bootstrap` command does not work when installing in a Compliant Kubernetes environment, please follow our instructions instead.
+    Installing Flux with `flux bootstrap` command does not work when installing in a Welkin environment, please follow our instructions instead.
 
 The script below can be used to generate Flux manifests and a basic cluster folder structure similar to `flux bootstrap`. Be sure to configure the environment variables in the script.
 
@@ -182,7 +182,7 @@ Simply install by applying the kustomization.
 
 `kubectl apply -k clusters/$CLUSTER_NAME/flux-system`
 
-Now that it has been installed, you are ready to use Flux on Compliant Kubernetes!
+Now that it has been installed, you are ready to use Flux on Welkin!
 
 Read the Further Reading, keep in mind the (updated) list of Known Issues, both of which are found below.
 

@@ -1,5 +1,5 @@
 ---
-description: Overview page for Application Developers in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: Overview page for Application Developers in Welkin, the security-focused Kubernetes distribution.
 search:
   boost: 2
 ---
@@ -12,7 +12,7 @@ Use the navigational bar to the side to jump to the section that interests you t
 
 ## Getting started quickly
 
-Compliant Kubernetes is a Kubernetes distribution that consists of the best (community-driven) open source components in the cloud native space, configured for security and platform stability.
+Welkin is a Kubernetes distribution that consists of the best (community-driven) open source components in the cloud native space, configured for security and platform stability.
 It does not contain any proprietary technology, and no vendor-specific tooling, such as command-line tools or abstractions that only work in this distribution.
 To the greatest extent possible, all technology contained within the distribution is community-driven open source, as in, not under a single vendor's control or governance.
 The distribution is itself open source, and is also designed and developed in a transparent manner (see our [Architectural Decision Records](../adr/index.md)).
@@ -48,7 +48,7 @@ If you are not familiar with Kubernetes since before, following our three-step p
 
 It may be a good idea to **follow along** in all of these, even if you have worked with similar systems before.
 
-If you are familiar with similar systems, a common next step for Application Developers that are already used to Kubernetes is to read up on the [safeguards that Compliant Kubernetes ships with](safeguards/index.md).
+If you are familiar with similar systems, a common next step for Application Developers that are already used to Kubernetes is to read up on the [safeguards that Welkin ships with](safeguards/index.md).
 You may also wish to use the "Go Deeper" link in the site's navigational bar to find more information about specific topics, such as:
 
 - how to set up [log-based](log-based-alerts.md) or [metric-based](alerts.md) alerts,

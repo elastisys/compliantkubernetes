@@ -34,11 +34,11 @@ Each application instance could be installed as a separate Helm Release, perhaps
 If you run several applications -- e.g., frontend, backend, backoffice, database, message queue -- in a single Kubernetes cluster, it is a best practice to segregrate them.
 By segregating your applications and only allowing required Ingress and egress network traffic, you further reduce blast radius in case of an attack.
 
-## Compliant Kubernetes helps enforce segregation
+## Welkin helps enforce segregation
 
-Compliant Kubernetes allows you to segregate applications by installing suitable NetworkPolicies. These are a bit like firewalls, but in the container world: Since containers are supposed to be deleted and recreated frequently, they change IP address a lot. Clearly the old "allow/deny IP" method does not scale. Therefore, NetworkPolicies select source and destination Pods based on labels or namespace labels.
+Welkin allows you to segregate applications by installing suitable NetworkPolicies. These are a bit like firewalls, but in the container world: Since containers are supposed to be deleted and recreated frequently, they change IP address a lot. Clearly the old "allow/deny IP" method does not scale. Therefore, NetworkPolicies select source and destination Pods based on labels or namespace labels.
 
-To make sure you don't forget to configure NetworkPolicies, the administrator can configure Compliant Kubernetes to deny creation of Pods with no matching NetworkPolicies.
+To make sure you don't forget to configure NetworkPolicies, the administrator can configure Welkin to deny creation of Pods with no matching NetworkPolicies.
 
 If you get the following error:
 

@@ -1,6 +1,6 @@
 # Release Notes
 
-## Compliant Kubernetes Jaeger
+## Welkin Jaeger
 
 <!-- BEGIN TOC -->
 

@@ -1,6 +1,6 @@
 # Release Notes
 
-## Compliant Kubernetes Argo CD
+## Welkin Argo CD
 
 <!-- BEGIN TOC -->
 

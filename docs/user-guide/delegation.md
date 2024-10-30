@@ -1,5 +1,5 @@
 ---
-description: How to delegate and work with permissions in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: How to delegate and work with permissions in Welkin, the security-focused Kubernetes distribution.
 search:
   boost: 2
 tags:
@@ -31,18 +31,18 @@ This page shows you how to do that.
 
 ## Authentication vs. Access Control
 
-[Authentication](https://en.wikipedia.org/wiki/Authentication) is the act of proving your identity. Compliant Kubernetes is usually configured to use your organization's Identity Provider (IdP). Examples of supported IdPs include Google, Microsoft Entra ID, and [Jump Cloud](https://jumpcloud.com/). The email and group provided by your IdP are used for access control in various components.
+[Authentication](https://en.wikipedia.org/wiki/Authentication) is the act of proving your identity. Welkin is usually configured to use your organization's Identity Provider (IdP). Examples of supported IdPs include Google, Microsoft Entra ID, and [Jump Cloud](https://jumpcloud.com/). The email and group provided by your IdP are used for access control in various components.
 
-Next sections will explain how to handle access control in each user-facing Compliant Kubernetes component.
+Next sections will explain how to handle access control in each user-facing Welkin component.
 
 ## Container registry (Harbor)
 
-Compliant Kubernetes uses Harbor as container registry. For access control, Harbor defines the concepts of:
+Welkin uses Harbor as container registry. For access control, Harbor defines the concepts of:
 
 - user and group -- for human access;
 - robot account -- for IT system access.
 
-You don't need to create Harbor users or groups. Compliant Kubernetes configures Harbor in "OIDC authentication mode", which means that Harbor will automatically onboard users logging in via your IdP and will automatically get the group from your IdP. In contrast, you need to create robot accounts, as these only exist within Harbor.
+You don't need to create Harbor users or groups. Welkin configures Harbor in "OIDC authentication mode", which means that Harbor will automatically onboard users logging in via your IdP and will automatically get the group from your IdP. In contrast, you need to create robot accounts, as these only exist within Harbor.
 
 Your administrator will have configured one of your IdP groups as the "Harbor system administrator" group.
 Please read the upstream documentation linked below to learn how a Harbor admin can:
@@ -105,7 +105,7 @@ kubectl apply -f my-role-binding.yaml
 
 ### Add a Kubernetes admin
 
-In Compliant Kubernetes, Application Developers who are Kubernetes admins have the ability to add more `Kubernetes admins` themselves.
+In Welkin, Application Developers who are Kubernetes admins have the ability to add more `Kubernetes admins` themselves.
 
 #### Steps
 

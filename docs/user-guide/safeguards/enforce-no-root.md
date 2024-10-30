@@ -26,7 +26,7 @@ Many container runtimes and operating system vulnerabilities need code running a
 
 Unfortunately, many Dockerfiles -- and container base images -- today are shipped running as root by default. This makes it easy to slip code running as root into production, exposing data to unnecessary risks.
 
-To reduce blast radius, Compliant Kubernetes will protect you from accidentally deploying application running as root.
+To reduce blast radius, Welkin will protect you from accidentally deploying application running as root.
 
 ## How to solve: CreateContainerConfigError
 

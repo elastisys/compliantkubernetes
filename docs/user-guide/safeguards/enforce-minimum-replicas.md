@@ -10,12 +10,12 @@ tags: []
 
     - This safeguard is enabled by default and will warn on violations. As a result, resources that violate this policy will generate warning messages, but will still be created.
 
-Compliant Kubernetes by default recommends a minimum of 2 replicas for Deployments and StatefulSets.
+Welkin by default recommends a minimum of 2 replicas for Deployments and StatefulSets.
 
 Therefore a warning will be issued when you add or update a Deployment or StatefulSet where the number of replicas is less than 2.
 
 ```console
-[elastisys-warn-minimum-replicas] The provided number of replicas is low for Deployment: demo-ck8s-user-demo. Elastisys Compliant Kubernetes recommends a minimum of 2 replicas.
+[elastisys-warn-minimum-replicas] The provided number of replicas is low for Deployment: demo-ck8s-user-demo. Welkin recommends a minimum of 2 replicas.
 ```
 
 You can either resolve this by setting the number of replicas to a minimum of 2.

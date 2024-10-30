@@ -13,21 +13,21 @@ Traditionally, when these services are provided as managed services, they are ex
 - [RabbitMQ](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/data-protection.html#data-protection-encryption-in-transit);
 - [PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html).
 
-In Compliant Kubernetes, the network is assumed trusted, either because we performed a [provider audit](../operator-manual/provider-audit.md) or because we enabled Pod-to-Pod encryption via [WireGuard](https://elastisys.com/redundancy-across-data-centers-with-kubernetes-wireguard-and-rook/). Hence, TLS does not improve data security.
+In Welkin, the network is assumed trusted, either because we performed a [provider audit](../operator-manual/provider-audit.md) or because we enabled Pod-to-Pod encryption via [WireGuard](https://elastisys.com/redundancy-across-data-centers-with-kubernetes-wireguard-and-rook/). Hence, TLS does not improve data security.
 
-How should we expose additional services in Compliant Kubernetes? With or without TLS?
+How should we expose additional services in Welkin? With or without TLS?
 
 ## Decision Drivers
 
 - We want to stick to best practices and sane defaults.
-- We want to make it easy to port applications to Compliant Kubernetes and its additional services.
+- We want to make it easy to port applications to Welkin and its additional services.
 - Some services are performance-sensitive: Redis [suffers a significant performance drop with TLS](https://dzone.com/articles/redis-tls-can-significantly-reduce-performance-a-l)
 - The Spotahome Redis Operator [does not support TLS](https://github.com/spotahome/redis-operator/issues/268).
 - Some services are performance-insensitive: PostgreSQL and RabbitMQ feature negligible performance impact with TLS.
 
 ## Considered Options
 
-- Always disable TLS, since the network in Compliant Kubernetes is trusted.
+- Always disable TLS, since the network in Welkin is trusted.
 - Always enable TLS.
 - By default, enable TLS for performance-insensitive services and disable TLS for performance-sensitive services. Allow TLS to be disabled if the user requests it.
 

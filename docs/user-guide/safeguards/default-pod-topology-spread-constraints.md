@@ -16,7 +16,7 @@ Note to contributors: Aim for the following format.
 # Default Pod Topology Spread Constraints
 
 !!!important
-    * This safeguard is enabled by default as since [Compliant Kubernetes Kubespray v2.25.0-ck8s1](../../release-notes/kubespray.md#v2250-ck8s1) and [Compliant Kubernetes Cluster API v0.3.0](../../release-notes/capi.md#v030).
+    * This safeguard is enabled by default as since [Welkin Kubespray v2.25.0-ck8s1](../../release-notes/kubespray.md#v2250-ck8s1) and [Welkin Cluster API v0.3.0](../../release-notes/capi.md#v030).
 
 ## Problem
 
@@ -26,13 +26,13 @@ This involves two things:
 1. Running your application replicated with at least two Pods. Specifically, this implies that your Deployment has `.spec.replicas` of at least 2.
 1. Ensuring that the Pods are spread across failure domains. The latter was usually achieved by setting correct `topologySpreadConstraints`.
 
-In Compliant Kubernetes, dealing with (1) above is still the Application Developer's responsibility.
+In Welkin, dealing with (1) above is still the Application Developer's responsibility.
 
-However, with Compliant Kubernetes, you don't need to deal with (2).
+However, with Welkin, you don't need to deal with (2).
 
 ## Solution
 
-Compliant Kubernetes comes with strong cluster-level default `topologySpreadConstraints`.
+Welkin comes with strong cluster-level default `topologySpreadConstraints`.
 
 ### Single-Zone Clusters
 

@@ -1,5 +1,5 @@
 ---
-description: How to prepare your application for Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: How to prepare your application for Welkin, the security-focused Kubernetes distribution.
 search:
   boost: 2
 tags:
@@ -11,7 +11,7 @@ tags:
 
 <!--user-demo-overview-start-->
 
-To make the most out of Compliant Kubernetes, prepare your application so it features:
+To make the most out of Welkin, prepare your application so it features:
 
 - some REST endpoints: [NodeJS](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L38), [.NET](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Program.cs#L19);
 - structured logging: [NodeJS](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L18), [.NET](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Program.cs#L45);
@@ -72,7 +72,7 @@ You can read more about the Pod termination process in the [official Kubernetes 
 
     * A.12.6.1 Management of Technical Vulnerabilities
 
-Compliant Kubernetes recommends **against** [PodDisruptionBudgets (PDBs)](https://kubernetes.io/docs/tasks/run-application/configure-pdb/).
+Welkin recommends **against** [PodDisruptionBudgets (PDBs)](https://kubernetes.io/docs/tasks/run-application/configure-pdb/).
 PDBs can easily be misconfigured to block draining Nodes, which interferes with automatic OS patching and compromises the security posture of the environment.
 Instead, prefer engineering your application to deal with disruptions.
 The user demo already showcases how to achieve this with replication and topologySpreadConstraints.

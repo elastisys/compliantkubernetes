@@ -1,5 +1,5 @@
 ---
-description: How access to the Kubernetes API works in Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+description: How access to the Kubernetes API works in Welkin, the security-hardened Kubernetes distribution
 search:
   boost: 2
 tags:
@@ -14,13 +14,13 @@ tags:
 # Kubernetes API
 
 The Kubernetes API is the entrypoint to managing your Kubernetes resources.
-Your Compliant Kubernetes administrator will provide you with a kubeconfig file upon onboarding, which is required to access the API.
+Your Welkin administrator will provide you with a kubeconfig file upon onboarding, which is required to access the API.
 
 The following sections describe how to access the cluster in order to manage your Kubernetes resources.
 
-## Authentication and Access Control in Compliant Kubernetes
+## Authentication and Access Control in Welkin
 
-In order to facilitate access control and audit logging, Compliant Kubernetes imposes a certain way to access the Kubernetes API.
+In order to facilitate access control and audit logging, Welkin imposes a certain way to access the Kubernetes API.
 The kubeconfig file provides individual access to the Kubernetes API through [Dex](https://github.com/dexidp/dex).
 Normally, you should authenticate using your organizations identity provider connected to Dex, but it is also possible for your administrator to configure static usernames and passwords.
 

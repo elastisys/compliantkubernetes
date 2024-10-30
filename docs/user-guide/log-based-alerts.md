@@ -1,5 +1,5 @@
 ---
-description: How to work with log-based alerting in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: How to work with log-based alerting in Welkin, the security-focused Kubernetes distribution.
 search:
   boost: 2
 tags:
@@ -11,7 +11,7 @@ tags:
 
 The alerting feature notifies you when data from one or more OpenSearch indices meets certain conditions. For example, you might want to notify a Slack channel if your application logs more than five HTTP 404 errors in one hour/minute, or you might want to page a developer if no new documents have been indexed in the past 20 minutes.
 
-Alerting features have been enabled by default in Elastisys Compliant Kubernetes as of version 0.19.X
+Alerting features have been enabled by default in Welkin as of version 0.19.X
 
 ## OpenSearch Alert Demo
 
@@ -75,7 +75,7 @@ Next, we can proceed with creating a monitor that will use our newly created cha
         - **Run every** - **1 Minutes**
     - **Data source**
 
-        - **Index** where your logs are stored, for instance, `kubernetes*` (per default, Compliant Kubernetes will store all application logs indices that match the `kubernetes*` index pattern)
+        - **Index** where your logs are stored, for instance, `kubernetes*` (per default, Welkin will store all application logs indices that match the `kubernetes*` index pattern)
 
         - **Time field** should be set to `@timestamp`
 

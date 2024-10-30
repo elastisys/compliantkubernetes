@@ -615,12 +615,12 @@ Released 2022-06-01
 - **Added support for Elastx and UpCloud!**<br/>
 
 - **New 'Welcoming' dashboard in OpenSearch and Grafana.**<br/>
-  Users can now access public docs and different urls to the services provided by Compliant Kubernetes.
+  Users can now access public docs and different urls to the services provided by Welkin.
 
 - **Improved availability of metrics and alerting.**<br/>
   Alertmanager now runs with two replicas by default, Prometheus can now be run in HA mode.
 
-- **Added Falco rules to reduce alerts for services in Compliant Kubernetes.**<br/>
+- **Added Falco rules to reduce alerts for services in Welkin.**<br/>
   Falco now alerts less on operations that are expected out of these services.
 
 ### Fixed

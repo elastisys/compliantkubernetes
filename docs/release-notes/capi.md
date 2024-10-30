@@ -34,4 +34,4 @@ First stable release!
 
 !!! warning "Compatibility Notice(s)"
 
-    - This version of Compliant Kubernetes Cluster API only supports Cleura and Elastx as infrastructure providers.
+    - This version of Welkin Cluster API only supports Cleura and Elastx as infrastructure providers.

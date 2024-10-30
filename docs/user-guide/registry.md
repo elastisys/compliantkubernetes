@@ -1,5 +1,5 @@
 ---
-description: How to work with the container registry in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: How to work with the container registry in Welkin, the security-focused Kubernetes distribution.
 search:
   boost: 2
 tags:
@@ -11,7 +11,7 @@ tags:
 
 # Harbor - private container registry
 
-This guide gives an introduction to Harbor and where it fits in Compliant Kubernetes, in terms of reducing the compliance burden.
+This guide gives an introduction to Harbor and where it fits in Welkin, in terms of reducing the compliance burden.
 
 ## What is a container registry and why it is needed?
 
@@ -25,9 +25,9 @@ A common workflow with container registries is to build your images in a CI/CD p
 
 Harbor is an open source container registry tool that allows you to host a registry privately. It also comes with some extra features such as vulnerability scanning and role based access control, this increases security and eases compliance with certain regulations. Harbor is also a [CNCF Graduated project](https://www.cncf.io/projects/), proving that it is widely used and is well supported.
 
-## Why is Harbor used in Compliant Kubernetes?
+## Why is Harbor used in Welkin?
 
-Harbor is used in Compliant Kubernetes to provide a secure container registry and a way to manage container image vulnerabilities. Harbor comes packaged with a container image vulnerability scanner that can check if there are any known vulnerabilities in the images you upload to Harbor. The default scanner is Trivy, which provides a comprehensive vulnerability detection both at the OS package and language-specific package levels.
+Harbor is used in Welkin to provide a secure container registry and a way to manage container image vulnerabilities. Harbor comes packaged with a container image vulnerability scanner that can check if there are any known vulnerabilities in the images you upload to Harbor. The default scanner is Trivy, which provides a comprehensive vulnerability detection both at the OS package and language-specific package levels.
 
 Below you can see both an image that has not been scanned and the same image after it has been scanned. After the image is scanned you can see the description, vulnerable package, and severity of each vulnerability as well as if it has been fixed in a later version. You can either scan the images manually or enable automatic scanning whenever a new image is pushed to Harbor, we recommend automatic scanning.
 

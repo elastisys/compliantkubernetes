@@ -1,5 +1,5 @@
 ---
-description: Checklist before going live on Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: Checklist before going live on Welkin, the security-focused Kubernetes distribution.
 search:
   boost: 2
 tags:
@@ -9,7 +9,7 @@ tags:
 
 # Go-live Checklist
 
-The administrator set up a shiny new Compliant Kubernetes environment.
+The administrator set up a shiny new Welkin environment.
 You containerized your application, deployed it, configured a working CI/CD pipeline, configured application alerts, etc. etc.
 All seems fine, but somehow you feel anxious about going into production 24/7.
 
@@ -45,7 +45,7 @@ To move from production anxiety to production karma, here is a checklist to go t
     - **Why?** This ensures that the application and platform team agreed on who backs up what, instead of ending up thinking that "backing up this thingy" is the other team's problem.
     - **How?** Ask the administrator to destroy the environment and restore from off-site backups. Check if your application is back up and its data is restored as expected.
     - **Desired outcome**: Measured recovery point and recovery time is acceptable.
-    - **Possible resolution**: Ensure you store application either in PersistentVolumes -- these are backed up by default in Compliant Kubernetes -- or a managed database hosted inside Compliant Kubernetes.
+    - **Possible resolution**: Ensure you store application either in PersistentVolumes -- these are backed up by default in Welkin -- or a managed database hosted inside Welkin.
 - [ ] Redeployment of the application from scratch works.
     - **Why?** This ensures that no tribal knowledge exists and your Git repository is truly the only source of truth.
     - **How?** Ask your administrator to "reset" the environment, i.e., remove all container images, remove all cached container images, remove all Kubernetes resources, etc. Redeploy your application.

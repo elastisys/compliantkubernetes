@@ -19,7 +19,7 @@ tags:
 
 We know you care about the security and uptime of your application. But all that effort goes wasted if the platform allows you to make trivial mistakes.
 
-That is why Compliant Kubernetes is built with various safeguards, to allow you to make security and reliability easy for you.
+That is why Welkin is built with various safeguards, to allow you to make security and reliability easy for you.
 Please look through the different pages in this Safeguard section to make yourself familiar with what the safeguards expect from your application.
 
 ## Relevant Regulations

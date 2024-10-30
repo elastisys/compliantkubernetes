@@ -39,9 +39,9 @@ To avoid running into capacity issues, Kubernetes allows Pods to [specify resour
 1. It ensures that Pods are scheduled to Nodes that have the requested resources.
 1. It ensures that a Pod does not exceed its resource limits, hence limiting its blast radius and protecting other application or platform Pods.
 
-## How Does Compliant Kubernetes Help?
+## How Does Welkin Help?
 
-To make sure you don't forget to configure resource requests and limits, the administrator can configure Compliant Kubernetes to deny creation of Pods without explicit resource specifications.
+To make sure you don't forget to configure resource requests and limits, the administrator can configure Welkin to deny creation of Pods without explicit resource specifications.
 
 If you get the following error:
 

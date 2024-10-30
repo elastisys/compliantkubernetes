@@ -1,5 +1,5 @@
 ---
-description: Troubleshooting help for Application Developers on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+description: Troubleshooting help for Application Developers on Welkin, the security-hardened Kubernetes distribution
 search:
   boost: 2
 tags:

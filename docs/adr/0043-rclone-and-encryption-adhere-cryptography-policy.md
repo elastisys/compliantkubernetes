@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-Compliant Kubernetes can be configured to replicate the primary backup to a secondary backup on a second object storage. Under the hood, this is performed using `rclone`. Such replication improves disaster recovery and mitigates ransomware attacks.
+Welkin can be configured to replicate the primary backup to a secondary backup on a second object storage. Under the hood, this is performed using `rclone`. Such replication improves disaster recovery and mitigates ransomware attacks.
 
 However, this second object storage sometimes needs to be on a different Infrastructure Provider and/or in a different country.
 In such cases, it is desirable to make the secondary backup completely opaque to the Infrastructure Provider, so that they do not count as a new data sub-processor.

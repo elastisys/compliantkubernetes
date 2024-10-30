@@ -1,5 +1,5 @@
 ---
-description: How to use Continuous Development in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: How to use Continuous Development in Welkin, the security-focused Kubernetes distribution.
 search:
   boost: 2
 ---

@@ -1,5 +1,5 @@
 ---
-description: Integrating with CI/CD in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: Integrating with CI/CD in Welkin, the security-focused Kubernetes distribution.
 search:
   boost: 2
 tags:
@@ -14,25 +14,25 @@ tags:
 
 !!!tip
 
-    Compliant Kubernetes comes with [Argo CD](additional-services/argocd.md) as an Additional Service.
+    Welkin comes with [Argo CD](additional-services/argocd.md) as an Additional Service.
     Integration with an external CI/CD is non-trivial and time-consuming.
     Therefore, we only recommend to read this page if you have an existing CI/CD solution in place and determined that migrating to Argo CD is impractical.
 
-This page discusses integration between Compliant Kubernetes and external CI/CD solutions.
+This page discusses integration between Welkin and external CI/CD solutions.
 
 !!!important
 
     Access control is an extremely important topic for passing an audit for compliance with data privacy and data security regulations. For example, Swedish patient data law requires all persons to be identified with individual credentials and that logs should capture who did what.
 
-    Therefore, Compliant Kubernetes has put significant thought into how to do proper access control. As a consequence, CI/CD solutions that require cluster-wide permissions and/or introduce their own notion of access control are highly discouraged. Make sure you thoroughly evaluate your CI/CD solution with your CISO before investing in it.
+    Therefore, Welkin has put significant thought into how to do proper access control. As a consequence, CI/CD solutions that require cluster-wide permissions and/or introduce their own notion of access control are highly discouraged. Make sure you thoroughly evaluate your CI/CD solution with your CISO before investing in it.
 
 ## Background
 
 ![Styles of CI/CD pipelines](img/ci-cd.drawio.svg)
 
-For the purpose of Compliant Kubernetes, one can distinguish between two "styles" of CI/CD: push-style and pull-style.
+For the purpose of Welkin, one can distinguish between two "styles" of CI/CD: push-style and pull-style.
 
-**Push-style or external CI/CD** -- like [GitLab CI](https://docs.gitlab.com/ee/ci/) or [GitHub Actions](https://docs.github.com/en/actions) -- means that a commit will trigger some commands on a CI/CD worker, which will push changes into the Compliant Kubernetes cluster. The CI/CD worker generally runs outside the Kubernetes cluster. Push-style CI/CD solutions should work out-of-the-box and require no special considerations for Compliant Kubernetes.
+**Push-style or external CI/CD** -- like [GitLab CI](https://docs.gitlab.com/ee/ci/) or [GitHub Actions](https://docs.github.com/en/actions) -- means that a commit will trigger some commands on a CI/CD worker, which will push changes into the Welkin cluster. The CI/CD worker generally runs outside the Kubernetes cluster. Push-style CI/CD solutions should work out-of-the-box and require no special considerations for Welkin.
 
 **Pull-styles or in-cluster CI/CD** -- like [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) or [Flux](https://fluxcd.io/) -- means that a special controller is installed inside the cluster, which monitors a Git repository. When a change is detected the controller "pulls" changes into the cluster from the Git repository. The special controller often requires considerable permissions and introduces a new notion of access control, which is problematic from a compliance perspective.
 
@@ -40,7 +40,7 @@ Below we show how to use external CI/CD solutions.
 
 ## External CI/CD
 
-External CI/CD works pretty much as if you would access Compliant Kubernetes from your laptop, running `kubectl` or `helm` against the cluster, as required to deploy your application. However, for improved access control, the `KUBECONFIG` provided to your CI/CD pipeline should employ a ServiceAccount which is used only by your CI/CD pipeline. This ServiceAccount should be bound to a Role which gets the least permissions possible. For example, if your application only consists of a Deployment, Service and Ingress, those should be the only resources available to the Role.
+External CI/CD works pretty much as if you would access Welkin from your laptop, running `kubectl` or `helm` against the cluster, as required to deploy your application. However, for improved access control, the `KUBECONFIG` provided to your CI/CD pipeline should employ a ServiceAccount which is used only by your CI/CD pipeline. This ServiceAccount should be bound to a Role which gets the least permissions possible. For example, if your application only consists of a Deployment, Service and Ingress, those should be the only resources available to the Role.
 
 To create a `KUBECONFIG` for your CI/CD pipeline, proceed as shown below.
 
@@ -75,7 +75,7 @@ kubectl apply -f ci-cd-role.yaml
 
     > Error from server (Forbidden): error when creating "STDIN": roles.rbac.authorization.k8s.io "ci-cd" is forbidden: user "demo@example.com" (groups=["system:authenticated"]) is attempting to grant RBAC permissions not currently held:
 
-    If you get an error like the one above, then it means you have insufficient permissions on the Compliant Kubernetes cluster. Contact your administrator.
+    If you get an error like the one above, then it means you have insufficient permissions on the Welkin cluster. Contact your administrator.
 
 ### Create a ServiceAccount
 
