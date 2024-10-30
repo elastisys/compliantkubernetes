@@ -97,3 +97,8 @@ repos:
         entry: "(?i)<a[^>]*>(read more|click here|learn more)</a>"
         language: pygrep
         files: ".*[.]md$"
+      - id: avoid-old-names
+        name: Use Welkin consistently
+        entry: "(Compliant[ ]Kubernetes|C[kK]8[sS][^_])"
+        language: pygrep
+        files: ".*[.]md$"

@@ -27,7 +27,7 @@ In Welkin, OpenSearch is separate from the production workload, hence it complie
 
 ## OpenSearch
 
-Raw logs in CK8s are normalized, filtered, and processed by [Fluentd](https://www.fluentd.org/) and shipped to [OpenSearch](https://opensearch.org/) for storage and analysis. OpenSearch is derived from the fully open source version of Elasticsearch called [Open Distro for Elasticsearch](https://logz.io/blog/open-distro-for-elasticsearch/).
+Raw logs in Welkin are normalized, filtered, and processed by [Fluentd](https://www.fluentd.org/) and shipped to [OpenSearch](https://opensearch.org/) for storage and analysis. OpenSearch is derived from the fully open source version of Elasticsearch called [Open Distro for Elasticsearch](https://logz.io/blog/open-distro-for-elasticsearch/).
 
 OpenSearch provides a powerful, easy-to-use event monitoring and alerting system, enabling you to monitor, search and visualize your data among other things. OpenSearch Dashboards is used as a visualization and analysis interface for OpenSearch for all your logs.
 

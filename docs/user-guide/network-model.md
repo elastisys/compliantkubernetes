@@ -156,7 +156,7 @@ spec:
 
 Let’s Encrypt is a certificate authority that provides free SSL/TLS certificates via an automated process. Their certificates are accepted by most of today’s browsers.
 
-On Welkin, we provide a cert-manager setup which you can use to create, sign, install and renew certificates for your domains/apps running in CK8S.
+On Welkin, we provide a cert-manager setup which you can use to create, sign, install and renew certificates for your domains/apps running in Welkin.
 
 ### Issuing a Certificate
 
