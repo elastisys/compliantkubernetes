@@ -78,5 +78,5 @@ jobs:
               VERSION="welkin-${VERSION_TITLE} compliantkubernetes-${VERSION_TITLE}"
           fi
           echo version: $VERSION version-title: $VERSION_TITLE
-          mike deploy $VERSION -t $VERSION_TITLE --template overrides/redirect.html
+          mike deploy $VERSION -t $VERSION_TITLE --template overrides/redirect.html --alias-type redirect
           mike set-default welkin --push --template overrides/redirect.html
