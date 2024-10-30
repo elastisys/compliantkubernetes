@@ -8,7 +8,7 @@ from diagrams.k8s.controlplane import API
 with Diagram(name="Option-2: Do not expose Jaeger UI", show=False,filename="adr-0029-option2"):
     user = User("Jaeger user")
 
-    with Cluster("ck8s workload cluster"):
+    with Cluster("workload cluster"):
        jaeger_ui = [Custom("Jaeger UI", "./adr-0029-Jaeger-UI.png")]
        kube_api = API("API server")
        svc = SVC("jaeger-query")

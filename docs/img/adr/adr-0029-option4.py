@@ -13,7 +13,7 @@ with Diagram(name="Option-4: Expose Jaeger UI and audit access via request loggi
     user = User("Jaeger user")
     dex = Dex("Dex")
 
-    with Cluster("ck8s workload cluster"):
+    with Cluster("workload cluster"):
        svc = SVC("jaeger-query")
        jaeger_ui = [Custom("", "./adr-0029-Jaeger-UI.png")]
        svc >> Edge(label="5. Jaeger UI",color="darkgreen") >> jaeger_ui
@@ -30,6 +30,6 @@ with Diagram(name="Option-4: Expose Jaeger UI and audit access via request loggi
 
 
        ingress >> Edge(label="4. Allowed request",color="darkorange",fontsize="12") >> svc
-       user >> Edge(label="1. https://jaeger.abc-ck8s.com",color="darkgreen",fontsize="12") >> ingress
+       user >> Edge(label="1. https://jaeger.abc-welkin.com",color="darkgreen",fontsize="12") >> ingress
 
        oauth2Proxy >> Edge(label="Request logging enabled in OAuth2",color="darkorange",style="dashed",fontsize="12") >> logging
