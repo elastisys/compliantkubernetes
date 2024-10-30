@@ -158,7 +158,7 @@ done
 ```
 
 > [!NOTE]
-> The kubeconfig for wc `.state/kube_config_wc.yaml` will not be usable until you have installed Dex in the Management Cluster (by [deploying apps](#deploying-compliant-kubernetes-apps)).
+> The kubeconfig for wc `.state/kube_config_wc.yaml` will not be usable until you have installed Dex in the Management Cluster (by [deploying apps](#deploying-welkin-apps)).
 
 ## Rook Block Storage
 
