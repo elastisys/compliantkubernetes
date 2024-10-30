@@ -13,7 +13,7 @@ tags:
 
 # How do I comply with HSLF-FS 2016:40 4 kap. 9 § Kontroll av åtkomst till uppgifter?
 
-Here is how we recommend to comply with Swedish Patient Data Laws, specifically HSLF-FS 2016:40 4 kap. 9 § if you host your application on Compliant Kubernetes.
+Here is how we recommend to comply with Swedish Patient Data Laws, specifically HSLF-FS 2016:40 4 kap. 9 § if you host your application on Welkin.
 
 ## Legal Context
 

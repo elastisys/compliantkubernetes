@@ -35,11 +35,11 @@ tags:
 
 - [A.10.1.2 Key Management](https://www.isms.online/iso-27001/annex-a-10-cryptography/)
 
-## Compliant Kubernetes Cryptography Dashboard
+## Welkin Cryptography Dashboard
 
 ![Cryptography Dashboard](img/cryptography.png)
 
-The Compliant Kubernetes Cryptography Dashboard allows to quickly audit the status of cryptography. It shows, amongst others, the public Internet endpoints (Ingresses) that are encrypted and the expiry time. Default Compliant Kubernetes configurations automatically renew certificates before expiry.
+The Welkin Cryptography Dashboard allows to quickly audit the status of cryptography. It shows, amongst others, the public Internet endpoints (Ingresses) that are encrypted and the expiry time. Default Welkin configurations automatically renew certificates before expiry.
 
 ## Handling Non-Compliance
 
