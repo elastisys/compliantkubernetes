@@ -34,7 +34,7 @@ The distribution is itself open source, and is also designed and developed in a 
 <!--
 ## Component overview
 
-TODO https://github.com/elastisys/compliantkubernetes/issues/836
+TODO https://github.com/elastisys/welkin/issues/836
 
 -->
 

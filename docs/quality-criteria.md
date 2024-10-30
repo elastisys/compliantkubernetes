@@ -15,7 +15,7 @@ Feature can be delivered ...
 
     - Feature has good developer-facing documentation. The documentation includes:
         - the [happy path](https://en.wikipedia.org/wiki/Happy_path);
-        - a running example based on the [user demo](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo), if applicable;
+        - a running example based on the [user demo](https://github.com/elastisys/welkin/tree/main/user-demo), if applicable;
         - limitations, if applicable;
         - further reading.
     - Feature is self-serviced

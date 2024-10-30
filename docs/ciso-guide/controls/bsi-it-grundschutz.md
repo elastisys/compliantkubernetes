@@ -20,7 +20,7 @@ Application Developers must make sure that initialization happens in [init conta
 
 ### APP.4.4.A11 Überwachung der Container (S)
 
-Application Developers must ensure that their application has a liveliness and readiness probe, which are configured in the Deployment. This is illustrated by our [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/deployment.yaml).
+Application Developers must ensure that their application has a liveliness and readiness probe, which are configured in the Deployment. This is illustrated by our [user demo](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/templates/deployment.yaml).
 
 ### APP.4.4.A12 Absicherung der Infrastruktur-Anwendungen (S)
 

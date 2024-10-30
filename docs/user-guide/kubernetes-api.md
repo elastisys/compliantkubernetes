@@ -116,12 +116,12 @@ kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "pull-se
 
 !!!example
 
-    Here is an [example Helm Chart](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/deploy/ck8s-user-demo) to get you started.
+    Here is an [example Helm Chart](https://github.com/elastisys/welkin/tree/main/user-demo/deploy/ck8s-user-demo) to get you started.
 
 If you haven't done so already, clone the user demo and ensure you are in the right folder:
 
 ```bash
-git clone https://github.com/elastisys/compliantkubernetes/
+git clone https://github.com/elastisys/welkin/
 cd compliantkubernetes/user-demo
 ```
 
@@ -175,7 +175,7 @@ curl --include https://demo.$DOMAIN
 
 !!!important "Use `topologySpreadConstraints` if you want cross-data-center resilience"
 
-    If you want your application to tolerate a whole zone (data-center) to go down, you need to add `topologySpreadConstraints` by uncommenting the relevant section in [values.yaml](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L76-L82).
+    If you want your application to tolerate a whole zone (data-center) to go down, you need to add `topologySpreadConstraints` by uncommenting the relevant section in [values.yaml](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L76-L82).
 
     In order for this to work, your administrator must configure the Nodes with zone labels. You can verify if this was performed correctly typing `kubectl get nodes --show-labels` and checking if Nodes feature the `topology.kubernetes.io/zone` label.
 

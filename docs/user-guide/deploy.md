@@ -14,7 +14,7 @@ In case you are just reading along, or do not already have a [containerized appl
 
 The provided artifacts, including Dockerfile and Helm Chart, allow you to quickly get started on your journey to become an agile organization with zero compromise on compliance with data protection regulations.
 
-We have versions of it for [Node JS](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo) and [.NET](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo-dotnet) available. You will note that once built and containerized, they deploy exactly the same.
+We have versions of it for [Node JS](https://github.com/elastisys/welkin/tree/main/user-demo) and [.NET](https://github.com/elastisys/welkin/tree/main/user-demo-dotnet) available. You will note that once built and containerized, they deploy exactly the same.
 
 ## Push Your Container Images
 

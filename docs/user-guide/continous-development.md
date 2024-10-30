@@ -34,7 +34,7 @@ sudo install skaffold /usr/local/bin/
 If you haven't done so already, clone the user demo:
 
 ```bash
-git clone https://github.com/elastisys/compliantkubernetes/
+git clone https://github.com/elastisys/welkin/
 cd compliantkubernetes/user-demo
 ```
 

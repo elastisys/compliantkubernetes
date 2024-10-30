@@ -61,11 +61,11 @@ kubectl auth can-i --list
 
 !!!note
 
-    What permissions you need depends on your application. For example, the [user demo](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/deploy/ck8s-user-demo/templates) creates Deployments, HorizontalPodAutoscalers, Ingresses, PrometheusRules, Services and ServiceMonitors. If unsure, simply continue. RBAC permissions errors are fairly actionable.
+    What permissions you need depends on your application. For example, the [user demo](https://github.com/elastisys/welkin/tree/main/user-demo/deploy/ck8s-user-demo/templates) creates Deployments, HorizontalPodAutoscalers, Ingresses, PrometheusRules, Services and ServiceMonitors. If unsure, simply continue. RBAC permissions errors are fairly actionable.
 
 ### Create a Role
 
-Next, create a Role for you CI/CD pipeline. If unsure, start from the [example Role](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ci-cd-role.yaml) that the user demo's CI/CD pipeline needs.
+Next, create a Role for you CI/CD pipeline. If unsure, start from the [example Role](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ci-cd-role.yaml) that the user demo's CI/CD pipeline needs.
 
 ```bash
 kubectl apply -f ci-cd-role.yaml
@@ -153,6 +153,6 @@ Note that, `KUBECONFIG`s -- especially the token -- **must** be treated as a sec
 
 ## Example: GitHub Actions
 
-Please find a concrete example for GitHub Actions [here](https://github.com/elastisys/compliantkubernetes/blob/main/.github/workflows/user-demo.yml.example). Below is the produced output:
+Please find a concrete example for GitHub Actions [here](https://github.com/elastisys/welkin/blob/main/.github/workflows/user-demo.yml.example). Below is the produced output:
 
 ![GitHub Actions Example Output](img/github-actions-screenshot.png)

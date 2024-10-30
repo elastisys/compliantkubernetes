@@ -80,7 +80,7 @@ In Welkin the Prometheus Operator in the Workload Cluster is configured to pick 
 
 <!--user-demo-alerts-start-->
 
-The user demo already includes a [PrometheusRule](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/welkin-user-demo/templates/prometheusrule.yaml), to configure an alert:
+The user demo already includes a [PrometheusRule](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/templates/prometheusrule.yaml), to configure an alert:
 
 ```yaml
 --8<---- "user-demo/deploy/welkin-user-demo/templates/prometheusrule.yaml"

@@ -67,7 +67,7 @@ This implies that your application is more likely to tolerate a zone going down.
 ## What if I need to customize my `topologySpreadConstraints`?
 
 Simply override this in your application Helm Chart.
-The [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L84) provides an example on how to achieve this.
+The [user demo](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L84) provides an example on how to achieve this.
 
 ## Further Reading
 

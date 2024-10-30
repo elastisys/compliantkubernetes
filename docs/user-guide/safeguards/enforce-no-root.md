@@ -56,7 +56,7 @@ This means that your Dockerfile has no `USER` directive and your application wou
 
 To ensure your application does not run as root, you have two options:
 
-1. Change the Dockerfile to `USER 1000` or whatever numeric ID corresponds to your user. This is what the [user demo does](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/Dockerfile#L10-L11).
+1. Change the Dockerfile to `USER 1000` or whatever numeric ID corresponds to your user. This is what the [user demo does](https://github.com/elastisys/welkin/blob/main/user-demo/Dockerfile#L10-L11).
 1. Add the following snippet to the `spec` of your Pod manifest:
 
     ```yaml

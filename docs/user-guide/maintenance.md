@@ -36,4 +36,4 @@ The worst case would be if the nodes were almost out of available resources, the
 
 Note that this is not just a problem for Welkin, the same process would need to be followed when upgrading a "vanilla" Kubernetes cluster.
 
-To minimize the impact on the application you should use [two or more replicas](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L5) for your application and also set up [topologySpreadConstraints](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L84) to make sure that the replicas do not get scheduled on the same node.
+To minimize the impact on the application you should use [two or more replicas](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L5) for your application and also set up [topologySpreadConstraints](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L84) to make sure that the replicas do not get scheduled on the same node.

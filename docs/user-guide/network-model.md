@@ -51,7 +51,7 @@ You should use NetworkPolicies to segregate your Pods. This improves your securi
 
 !!!example
 
-    Feel free to take inspiration from the [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/networkpolicy.yaml).
+    Feel free to take inspiration from the [user demo](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/templates/networkpolicy.yaml).
 
     More example recipes for Kubernetes Network Policies that you can just copy paste can be found [here](https://github.com/ahmetb/kubernetes-network-policy-recipes).
 
@@ -111,7 +111,7 @@ metadata:
     # nginx.ingress.kubernetes.io/whitelist-source-range: 98.128.193.2/32
     ## Uncomment the lines below to get OAuth authentication
     ## You will also need to configure and install oauth2-proxy.
-    ## For an example and more details, see https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/oauth2-proxy.yaml
+    ## For an example and more details, see https://github.com/elastisys/welkin/blob/main/user-demo/deploy/oauth2-proxy.yaml
     # nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
     # nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
     # nginx.ingress.kubernetes.io/auth-response-headers: "authorization"
@@ -136,9 +136,9 @@ spec:
 
 !!!example
 
-    Feel free to take inspiration from the [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L34).
+    Feel free to take inspiration from the [user demo](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L34).
 
-    If you want to protect your Ingress with OAuth2-based authentication, check out [oauth2-proxy](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/oauth2-proxy.yaml).
+    If you want to protect your Ingress with OAuth2-based authentication, check out [oauth2-proxy](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/oauth2-proxy.yaml).
 
 !!!important
 
@@ -148,7 +148,7 @@ spec:
 
     Some load-balancers fronting Welkin do not preserve source IP. This makes source IP allowlisting unusable.
 
-    To check if source IP is preserved, check the HTTP request headers received by your application, specifically `x-forwarded-for` and `x-real-ip`. The [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L24) logs all HTTP request headers, as shown in the screenshot below.
+    To check if source IP is preserved, check the HTTP request headers received by your application, specifically `x-forwarded-for` and `x-real-ip`. The [user demo](https://github.com/elastisys/welkin/blob/main/user-demo/app.js#L24) logs all HTTP request headers, as shown in the screenshot below.
 
     ![HTTP request headers shown in the user demo](img/http-request-headers.png)
 
@@ -255,7 +255,7 @@ You are responsible for:
 - segregating the private network via NetworkPolicies;
 - configuring Ingresses as required to enable HTTPS encryption.
 
-The [user demo](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/deploy/ck8s-user-demo) already showcases the above.
+The [user demo](https://github.com/elastisys/welkin/tree/main/user-demo/deploy/ck8s-user-demo) already showcases the above.
 
 The Welkin administrator is responsible for:
 

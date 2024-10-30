@@ -84,7 +84,7 @@ kubectl auth can-i --list
 
 ### Create a Role
 
-Next, create a Role capturing the set of permissions you want to delegate. If unsure, start from the [example Role](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ci-cd-role.yaml) that the user demo's CI/CD pipeline needs.
+Next, create a Role capturing the set of permissions you want to delegate. If unsure, start from the [example Role](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ci-cd-role.yaml) that the user demo's CI/CD pipeline needs.
 
 ```bash
 kubectl apply -f ci-cd-role.yaml

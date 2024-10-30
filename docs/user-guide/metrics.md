@@ -105,7 +105,7 @@ The default scrape interval is 30 seconds, this is how often Prometheus will gat
 
 <!--user-demo-metrics-start-->
 
-The user demo already includes a [ServiceMonitor](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/welkin-user-demo/templates/servicemonitor.yaml), as required for Welkin to collect metrics from its `/metrics` endpoint:
+The user demo already includes a [ServiceMonitor](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/templates/servicemonitor.yaml), as required for Welkin to collect metrics from its `/metrics` endpoint:
 
 ```yaml
 --8<---- "user-demo/deploy/welkin-user-demo/templates/servicemonitor.yaml"

@@ -140,7 +140,7 @@ create_oidc_kubeconfig: true
 kubeconfig_localhost: false
 ```
 
-For more information on managing OIDC kubeconfigs and RBAC, or on running without OIDC, [see the ck8s-Kubespray documentation](https://github.com/elastisys/compliantkubernetes-kubespray#kubeconfig).
+For more information on managing OIDC kubeconfigs and RBAC, or on running without OIDC, [see the Welkin Kubespray documentation](https://github.com/elastisys/compliantkubernetes-kubespray#kubeconfig).
 
 ### Copy the VMs information to the inventory files
 

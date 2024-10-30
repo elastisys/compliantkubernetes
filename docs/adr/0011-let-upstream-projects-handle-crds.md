@@ -58,7 +58,7 @@ A detailed analysis is listed below:
 
 ### Dex
 
-Dex can be configured without CRDs. [ADR-0012](https://github.com/elastisys/compliantkubernetes/pull/134) argues for that approach.
+Dex can be configured without CRDs. [ADR-0012](https://github.com/elastisys/welkin/pull/134) argues for that approach.
 
 ### gatekeeper
 

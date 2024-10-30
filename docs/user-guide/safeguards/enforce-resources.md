@@ -49,7 +49,7 @@ If you get the following error:
 Error: UPGRADE FAILED: failed to create resource: admission webhook "validation.gatekeeper.sh" denied the request: [denied by require-resource-requests] Container "ck8s-user-demo" has no resource requests
 ```
 
-Then you are missing resource requests for some containers of your Pods. The [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L42-L51) gives a good example to get you started.
+Then you are missing resource requests for some containers of your Pods. The [user demo](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L42-L51) gives a good example to get you started.
 
 If your administrator has not enforced this policy yet, you can view current violations of the policy by running:
 
