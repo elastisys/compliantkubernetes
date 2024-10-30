@@ -131,7 +131,7 @@ To configure the Workload Cluster to use Dex running in the Management Cluster f
 - `kube_oidc_auth` should be set to true, this enables OIDC authentication for the api-server
 - `kube_oidc_url` should be set to `https://dex.$DOMAIN`
 - `kube_oidc_client_id` should be set to `kubelogin`
-- `kube_oidc_client_secret` should be set to a Dex client secret generated with the apps config, it can be found in `${CK8S_CONFIG_PATH}/secrets.yaml` under the key `dex.kubeloginClientSecret` after running `ck8s init` (see [instructions on deploying apps](#deploying-compliant-kubernetes-apps)).
+- `kube_oidc_client_secret` should be set to a Dex client secret generated with the apps config, it can be found in `${CK8S_CONFIG_PATH}/secrets.yaml` under the key `dex.kubeloginClientSecret` after running `ck8s init` (see [instructions on deploying apps](#deploying-welkin-apps)).
 
 To generate kubeconfigs that use OIDC for authentication, the following variables should be set in the config files for both clusters (both can't be true):
 

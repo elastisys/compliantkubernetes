@@ -6,7 +6,7 @@ tags:
 
 # Use of Credentials
 
-Compliant Kubernetes interacts with a lot of credentials. This document captures all of them in an orderly fashion, layer-by-layer.
+Welkin interacts with a lot of credentials. This document captures all of them in an orderly fashion, layer-by-layer.
 
 ## Terminology
 
@@ -87,7 +87,7 @@ Compliant Kubernetes interacts with a lot of credentials. This document captures
 - Purpose:
     - Allow backup of various components, e.g., PVCs via Velero, Thanos metrics, OpenSearch Indexes, PostgreSQL databases.
     - Allow long-term logging, e.g., Management Cluster logs
-- Owner: each Compliant Kubernetes cluster should have their own
+- Owner: each Welkin cluster should have their own
 - Type: service account
 - Use for:
     - Backup
@@ -102,7 +102,7 @@ Compliant Kubernetes interacts with a lot of credentials. This document captures
 
 - Purpose:
     - Allow the Cluster to issue alerts to OpsGenie.
-- Owner: each Compliant Kubernetes cluster should have their own
+- Owner: each Welkin cluster should have their own
 - Type: service account
 - Use for: alerting
 - Do not use for:
@@ -113,7 +113,7 @@ Compliant Kubernetes interacts with a lot of credentials. This document captures
 - Purpose:
     - Complete the "OAuth dance" between Grafana, OpenSearch Dashboard, Harbor and kubectl, on one side, and Dex, on the other side.
     - Used both by administrators and users.
-- Owner: each Compliant Kubernetes cluster should have their own
+- Owner: each Welkin cluster should have their own
 - Type: not secret
 - Misc:
     - We have determined that the OpenID client secret should not be treated as a secret. See risk analysis [here](https://github.com/dexidp/dex/issues/469) and [here](https://security.stackexchange.com/questions/225809/what-is-the-worst-i-can-do-if-i-know-openid-connect-client-secret).

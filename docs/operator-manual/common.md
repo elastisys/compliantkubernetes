@@ -66,7 +66,7 @@ done
 
 <!--clone-apps-start-->
 
-Now that the Kubernetes clusters are up and running, we are ready to install Compliant Kubernetes Apps.
+Now that the Kubernetes clusters are up and running, we are ready to install Welkin Apps.
 
 ### Clone `compliantkubernetes-apps` and Install Pre-requisites
 
@@ -145,7 +145,7 @@ The default configuration for the Management Cluster and Workload Cluster are av
 
 <!--install-apps-start-->
 
-### Install Compliant Kubernetes Apps
+### Install Welkin Apps
 
 Start with the Management Cluster:
 
@@ -208,7 +208,7 @@ done
 ```
 
 Done.
-Navigate to the endpoints, for example `grafana.$BASE_DOMAIN`, `kibana.$BASE_DOMAIN`, `harbor.$BASE_DOMAIN`, etc. to discover Compliant Kubernetes's features.
+Navigate to the endpoints, for example `grafana.$BASE_DOMAIN`, `kibana.$BASE_DOMAIN`, `harbor.$BASE_DOMAIN`, etc. to discover Welkin's features.
 
 <!--testing-stop-->
 
@@ -259,7 +259,7 @@ To ensure that you have configured S3 correctly, run the following snippet:
 !!!bug "This page is out of date"
 
     We are currently working on internal documentation to streamline
-    Compliant Kubernetes onboarding for selected Infrastructure Providers. Until
+    Welkin onboarding for selected Infrastructure Providers. Until
     those documents are ready, and until we have capacity to make parts of
     that documentation public, this page is out-of-date.
 

@@ -181,7 +181,7 @@ falco:
     - fileserver.air-gapped.internal:8080/falcoctl/index.yaml
 ```
 
-The default Falco driver in CK8s is `module`. With this driver, Falco will attempt to download the driver from the internet, and if it fails to do so, it will build the module as a fallback, which would be the case in an air-gapped network. Unless you host driver modules yourself and configure Falco to use this file server instead:
+The default Falco driver in Welkin is `module`. With this driver, Falco will attempt to download the driver from the internet, and if it fails to do so, it will build the module as a fallback, which would be the case in an air-gapped network. Unless you host driver modules yourself and configure Falco to use this file server instead:
 
 ```yaml
 falco:
@@ -298,7 +298,7 @@ Signing in with Dex will redirect to the Dex Service Endpoint for authentication
 
 ![Air-gapped Dex](../img/air-gapped-dex.png)
 
-Checking the endpoint of the [user demo](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo) application:
+Checking the endpoint of the [user demo](https://github.com/elastisys/welkin/tree/main/user-demo) application:
 
 ![Air-gapped User Demo](../img/air-gapped-demo.png)
 
