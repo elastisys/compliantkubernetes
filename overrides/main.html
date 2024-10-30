@@ -58,3 +58,48 @@ if(!document.__defineGetter__) {
 We're undergoing a transformation! We're rebranding our platform and changing the name from Compliant Kubernetes to Welkin. As we work on updating our documentation, there may be some temporary inconsistencies in how the platform is referred to. Thank you for your understanding. Read more about it in this <strong><a style="color: var(--elastisys-night-blue);"href="https://elastisys.com/elastisys-compliant-kubernetes-becomes-welkin/">press release</a></strong>.
 </div>
 {% endblock %}
+
+<!-- Sidebars -->
+{% block site_nav %}
+
+  <!-- Navigation -->
+  {% if nav %}
+    {% if page.meta and page.meta.hide %}
+      {% set hidden = "hidden" if "navigation" in page.meta.hide %}
+    {% endif %}
+    <div
+      class="md-sidebar md-sidebar--primary"
+      data-md-component="sidebar"
+      data-md-type="navigation"
+      {{ hidden }}
+    >
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+          {% include "partials/nav.html" %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- Table of contents -->
+  {% if "toc.integrate" not in features %}
+    {% if page.meta and page.meta.hide %}
+      {% set hidden = "hidden" if "toc" in page.meta.hide %}
+    {% endif %}
+    <div
+      class="md-sidebar md-sidebar--secondary"
+      data-md-component="sidebar"
+      data-md-type="toc"
+      {{ hidden }}
+    >
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+          {% include "partials/toc.html" %}
+
+          <br/>
+          <div><img src="{{ base_url }}/img/logos/Welkin_maskot.svg"></div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}
