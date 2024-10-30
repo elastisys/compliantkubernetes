@@ -86,7 +86,7 @@ CREATE EXTENSION IF NOT EXISTS timescaledb;
 You should be all set.
 Before going into production, don't forget to go through the [go-live checklist](../go-live.md).
 
-## CK8S TimescaleDB Release Notes
+## Welkin TimescaleDB Release Notes
 
 Check out the [release notes](../../release-notes/postgres.md) for the TimescaleDB/PostgreSQL cluster that runs in Welkin environments!
 

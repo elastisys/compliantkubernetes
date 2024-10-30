@@ -148,7 +148,7 @@ ingress:
 
 1. The following resources are reused using \*resourceDefaults later in this file
 1. The following containerSecurityContext is reused using \*SCDefaults later in this file
-1. Block set to true will append a privileged initContainer using the iptables to block the sensitive metadata server at the provided ip. Privileged containers are not allowed in ck8s.
+1. Block set to true will append a privileged initContainer using the iptables to block the sensitive metadata server at the provided ip. Privileged containers are not allowed in Welkin.
 1. "type: none" disables persistent storage for the user labs. Consolidate with Platform Administrator before enabling this feature. [for reference](https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/1ebca266bed3e2f38332c5a9a3202f627cba3af0/jupyterhub/values.yaml#L383)
 1. Use [this guide](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google) to get your client_id and client_secret through the [Google API Console](https://console.developers.google.com/).
 1. This should not be treated as a secret. See risk analysis [here](https://github.com/dexidp/dex/issues/469) and [here](https://security.stackexchange.com/questions/225809/what-is-the-worst-i-can-do-if-i-know-openid-connect-client-secret).

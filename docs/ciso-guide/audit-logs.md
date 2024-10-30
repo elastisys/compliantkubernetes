@@ -44,7 +44,7 @@ Further audit logs can be configured on a case-by-case basis, as described below
 The audit logs are stored in the `kubeaudit*` index pattern.
 The audit logs cover calls to the Kubernetes API, specifically **who** did **what** and **when** on **which** Kubernetes cluster.
 
-Thanks to integration with [your Identity Provider](../user-guide/kubernetes-api.md#authentication-and-access-control-in-compliant-kubernetes) (IdP), if who is a person, their email address will be shown. If who is a system -- e.g., a CI/CD pipeline -- the name of the ServiceAccount is recorded.
+Thanks to integration with [your Identity Provider](../user-guide/kubernetes-api.md#authentication-and-access-control-in-welkin) (IdP), if who is a person, their email address will be shown. If who is a system -- e.g., a CI/CD pipeline -- the name of the ServiceAccount is recorded.
 
 Your change management or incident management process should ensure that you also cover **why**.
 

@@ -15,7 +15,7 @@ Welkin by default recommends a minimum of 2 replicas for Deployments and Statefu
 Therefore a warning will be issued when you add or update a Deployment or StatefulSet where the number of replicas is less than 2.
 
 ```console
-[elastisys-warn-minimum-replicas] The provided number of replicas is low for Deployment: demo-ck8s-user-demo. Welkin recommends a minimum of 2 replicas.
+[elastisys-warn-minimum-replicas] The provided number of replicas is low for Deployment: demo-welkin-user-demo. Welkin recommends a minimum of 2 replicas.
 ```
 
 You can either resolve this by setting the number of replicas to a minimum of 2.

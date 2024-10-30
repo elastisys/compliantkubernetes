@@ -77,7 +77,7 @@ If you haven't done so already, clone the user demo:
 
 ```bash
 git clone https://github.com/elastisys/welkin/
-cd compliantkubernetes/user-demo
+cd welkin/user-demo
 ```
 
 ### Build and push the image
@@ -86,8 +86,8 @@ cd compliantkubernetes/user-demo
 REGISTRY_PROJECT=demo  # Name of the project, created above
 TAG=v1                 # Container image tag
 
-docker build -t harbor.$DOMAIN/$REGISTRY_PROJECT/ck8s-user-demo:$TAG .
-docker push harbor.$DOMAIN/$REGISTRY_PROJECT/ck8s-user-demo:$TAG
+docker build -t harbor.$DOMAIN/$REGISTRY_PROJECT/welkin-user-demo:$TAG .
+docker push harbor.$DOMAIN/$REGISTRY_PROJECT/welkin-user-demo:$TAG
 ```
 
 You should see no error message. Note down the `sha256` of the image.

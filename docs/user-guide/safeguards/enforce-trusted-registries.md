@@ -45,7 +45,7 @@ You can designate a set of registries, a project within a registry or specific c
 Your administrator can configure Welkin to technically enforce a set of trusted container registries. This means that if you accidentally reference an image in an untrusted registry, you will get the following error:
 
 ```error
-Error: admission webhook "validation.gatekeeper.sh" denied the request: [denied by require-harbor-repo] container "ck8s-user-demo" has an invalid image repo "harbor.example.com/demo/ck8s-user-demo:1.16.0", allowed repos are ["harbor.cksc.a1ck.io"]
+Error: admission webhook "validation.gatekeeper.sh" denied the request: [denied by require-harbor-repo] container "welkin-user-demo" has an invalid image repo "harbor.example.com/demo/welkin-user-demo:1.16.0", allowed repos are ["harbor.cksc.a1ck.io"]
 ```
 
 The resolution is rather simple. You have two options:

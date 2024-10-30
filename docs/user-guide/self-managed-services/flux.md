@@ -95,9 +95,9 @@ If you have multiple namespaces that ought to be targets for Flux, you can add t
 mkdir roles
 
 # Fetches the necessary Roles and saves it in the roles directory
-curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/user-guide/self-managed-services/flux-files/roles/all-controllers-role.yaml > roles/all-controllers-role.yaml
-curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/user-guide/self-managed-services/flux-files/roles/source-controller-role.yaml > roles/source-controller-role.yaml
-curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/user-guide/self-managed-services/flux-files/roles/kustomization.yaml > roles/kustomization.yaml
+curl https://raw.githubusercontent.com/elastisys/welkin/main/docs/user-guide/self-managed-services/flux-files/roles/all-controllers-role.yaml > roles/all-controllers-role.yaml
+curl https://raw.githubusercontent.com/elastisys/welkin/main/docs/user-guide/self-managed-services/flux-files/roles/source-controller-role.yaml > roles/source-controller-role.yaml
+curl https://raw.githubusercontent.com/elastisys/welkin/main/docs/user-guide/self-managed-services/flux-files/roles/kustomization.yaml > roles/kustomization.yaml
 
 # If you installed Flux in another namespace other than production, edit the namespace in roles/kustomization.yaml
 
@@ -167,7 +167,7 @@ flux create kustomization $REPO_NAME-repo \
     --export >> clusters/$CLUSTER_NAME/flux-system/gotk-sync.yaml
 
 # Fetches our patches and saves them in the clusters/$CLUSTER_NAME/flux-system directory
-curl https://raw.githubusercontent.com/elastisys/compliantkubernetes/main/docs/user-guide/self-managed-services/flux-files/kustomization.yaml > clusters/$CLUSTER_NAME/flux-system/kustomization.yaml
+curl https://raw.githubusercontent.com/elastisys/welkin/main/docs/user-guide/self-managed-services/flux-files/kustomization.yaml > clusters/$CLUSTER_NAME/flux-system/kustomization.yaml
 ```
 
 Commit and push the files to the repository.

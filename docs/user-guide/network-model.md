@@ -51,7 +51,7 @@ You should use NetworkPolicies to segregate your Pods. This improves your securi
 
 !!!example
 
-    Feel free to take inspiration from the [user demo](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/templates/networkpolicy.yaml).
+    Feel free to take inspiration from the [user demo](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/templates/networkpolicy.yaml).
 
     More example recipes for Kubernetes Network Policies that you can just copy paste can be found [here](https://github.com/ahmetb/kubernetes-network-policy-recipes).
 
@@ -102,7 +102,7 @@ For step 2, create an Ingress object with the right `metadata.annotations` and `
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: myapp-ck8s-user-demo
+  name: myapp-welkin-user-demo
   annotations:
     # To list your current ClusterIssuers, simply use 'kubectl get ClusterIssuers'.
     cert-manager.io/cluster-issuer: letsencrypt-prod
@@ -125,7 +125,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: myapp-ck8s-user-demo
+                name: myapp-welkin-user-demo
                 port:
                   number: 3000
   tls:
@@ -136,7 +136,7 @@ spec:
 
 !!!example
 
-    Feel free to take inspiration from the [user demo](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L34).
+    Feel free to take inspiration from the [user demo](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L34).
 
     If you want to protect your Ingress with OAuth2-based authentication, check out [oauth2-proxy](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/oauth2-proxy.yaml).
 
@@ -255,7 +255,7 @@ You are responsible for:
 - segregating the private network via NetworkPolicies;
 - configuring Ingresses as required to enable HTTPS encryption.
 
-The [user demo](https://github.com/elastisys/welkin/tree/main/user-demo/deploy/ck8s-user-demo) already showcases the above.
+The [user demo](https://github.com/elastisys/welkin/tree/main/user-demo/deploy/welkin-user-demo) already showcases the above.
 
 The Welkin administrator is responsible for:
 

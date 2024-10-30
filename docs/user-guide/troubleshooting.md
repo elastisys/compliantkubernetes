@@ -68,7 +68,7 @@ The command below should return `HTTP/2 200`.
 curl --fail --verbose -k https://$loadbalancer_ip_address:6443/healthz
 ```
 
-## Are Compliantkubernetes apps services healthy?
+## Are Welkin Apps services healthy?
 
 All commands below should return `HTTP/2 200`.
 

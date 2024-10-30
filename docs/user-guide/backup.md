@@ -31,7 +31,7 @@ tags:
 
     Make sure you research regulations applicable to your organization to determine if the default backup retention time is suitable for your organization.
 
-Welkin (CK8S) includes backup functionality through Velero, a backup tool for Kubernetes Resources and Persistent Volumes. For backup of container images, Harbor is used instead.
+Welkin includes backup functionality through Velero, a backup tool for Kubernetes Resources and Persistent Volumes. For backup of container images, Harbor is used instead.
 
 ## What is Velero?
 

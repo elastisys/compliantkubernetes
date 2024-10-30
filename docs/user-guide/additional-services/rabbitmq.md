@@ -202,7 +202,7 @@ This is the standard choice for high volume durable queues and messages since th
 You should be all set.
 Before going into production, don't forget to go through the [go-live checklist](../go-live.md).
 
-## CK8S RabbitMQ Release Notes
+## Welkin RabbitMQ Release Notes
 
 Check out the [release notes](../../release-notes/rabbitmq.md) for the RabbitMQ cluster that runs in Welkin environments!
 
