@@ -99,6 +99,6 @@ repos:
         files: ".*[.]md$"
       - id: avoid-old-names
         name: Use Welkin consistently
-        entry: "(Compliant[ ]Kubernetes|C[kK]8[sS][^_])"
+        entry: "(Compliant[ ]Kubernetes|C[kK]8[sS][^_]|Complaint)"
         language: pygrep
         files: ".*[.]md$"
