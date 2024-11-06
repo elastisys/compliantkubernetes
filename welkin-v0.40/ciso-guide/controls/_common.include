@@ -1,0 +1,27 @@
+<!--legal-disclaimer-start-->
+<!--
+    Include this block only for regulations.
+    Do not include this block for Information Security Management Standards (ISMS).
+-->
+!!!danger "We are not lawyers, this is not legal advise."
+    It is your responsibility to discover what law applies to you and how to best comply with it.
+    In case of doubt, consult your Data Protection Officer (DPO) or equivalent.
+<!--legal-disclaimer-end-->
+
+<!--controls-note-start-->
+<!--
+    If a large number of controls cannot be mapped to Compliant Kubernetes,
+    then include this block.
+    If only few controls cannot be mapped to Compliant Kubernetes,
+    prefer listing them under a section entitled "Other Controls".
+-->
+!!!note
+    Controls not covered below are controls which cannot be fulfilled by Compliant Kubernetes.
+    These include requirements such as:
+
+    - Your management team needs to regularly perform various risk analysis.
+    - You need to do background checks when recruiting.
+    - You need to activate multi-factor authentication in your Identity Provider.
+    - You need to have a policy on how to safely use USB sticks.
+    - Requirements which fall under the scope of the application.
+<!--controls-note-end-->

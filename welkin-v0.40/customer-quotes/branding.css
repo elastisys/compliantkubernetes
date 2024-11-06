@@ -1,0 +1,64 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins-Medium.otf") format("opentype");
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Poppins",sans-serif;
+}
+
+:root {
+  --esys-blue-01: #202836;
+  --esys-blue-02: #334768;
+  --esys-blue-03: #536582;
+  --esys-blue-04: #A7B1BF;
+
+  --esys-orange-01: #A86535;
+  --esys-orange-02: #AE8465;
+  --esys-orange-03: #DF8645;
+  --esys-orange-04: #E7AF86;
+
+  --esys-gray-01: #423E57;
+  --esys-gray-02: #716E81;
+  --esys-gray-03: #9CA4C0;
+  --esys-gray-04: #BEC3D6;
+
+  --md-default-bg-color: #f9f9f9;
+
+  --bs-body-font-family: "Roboto",var(--bs-font-sans-serif);
+  --bs-heading-color: var(--esys-blue-01);
+  --bs-body-bg: var(--md-default-bg-color); /*> 🎤 Is it by mistake or design? (Lana del Rey)
+    But seriously, did we mean to use this background color on elastisys.io? */
+}
+
+.blockquote-footer {
+  margin-top: 0; /* no clue why BS sets -1rem here */
+}
+
+.carousel {
+  /* Let the carousel fill the whole vertical space.
+   * Helps with vertical centering later. */
+  height: 100vh;
+}
+
+.carousel-control-next, .carousel-control-prev {
+  /* put controls at the very outside */
+  width: auto;
+}
+.carousel-inner {
+  /* vertically center quotes */
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.carousel-item {
+  /* Don't put quotes over the carousel buttons */
+  padding-left: 3rem;
+  padding-right: 3rem;
+}

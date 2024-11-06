@@ -1,0 +1,105 @@
+.hero-text {
+  font-size: 1.3em;
+  font-family: var(--elastisys-headings-font);
+  font-weight: var(--elastisys-headings-weight);
+}
+
+.menu-callout {
+  background-color: var(--elastisys-northern-lights-3);
+  border: none;
+  color: var(--elastisys-night-blue);
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  transition-duration: 0.4s;
+  font-family: var(--elastisys-details-font);
+  font-weight: var(--elastisys-details-weight);
+}
+
+.menu-callout:hover {
+  background-color: var(--elastisys-hover);
+}
+
+.header-links {
+    display: block;
+    list-style-type: none;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    padding: 0;
+    padding-inline-start: 0;
+}
+
+.header-links li {
+    display: inline;
+}
+
+header .header-links li {
+    margin-left: 2em;
+}
+
+.header-links li:first-child {
+    margin-left: 0px;
+}
+
+/* Highlight external links */
+a[href*="//"]:not([href*="elastisys."])::after {
+    content: ' ↗';
+}
+
+/* Firefox does not support the :has pseudo-selector.
+ * Fortunately, we only have one image link in the docs */
+.header-links a[href*="//"]:not([href*="elastisys."])::after {
+    content: '';
+}
+.header-links a[href*="//"]:not([href*="elastisys."]) {
+    border-bottom: 2px dashed #a8b1be;
+}
+
+/* Configure the `elastisys` custom admonition
+ * https://squidfunk.github.io/mkdocs-material/reference/admonitions/#custom-admonitions
+ */
+.md-typeset .admonition.elastisys,
+.md-typeset details.elastisys {
+  border-color: var(--elastisys-sky-blue-dark);
+}
+.md-typeset .elastisys > .admonition-title,
+.md-typeset .elastisys > summary {
+  background-color: var(--elastisys-sky-blue);
+}
+.md-typeset .elastisys.elastisys > .admonition-title::before,
+.md-typeset .elastisys.elastisys > summary::before {
+  background-image:
+    url('../img/logos/elastisys-logo-icon.svg');
+  background-size: cover;
+  -webkit-mask-image: none;
+  mask-image: none;
+  background-color: inherit;
+}
+
+/* Configure the `elastisys-self-managed` custom admonition
+ * https://squidfunk.github.io/mkdocs-material/reference/admonitions/#custom-admonitions
+ */
+.md-typeset .admonition.elastisys-self-managed,
+.md-typeset details.elastisys-self-managed {
+  border-color: var(--elastisys-northern-lights-2);
+}
+.md-typeset .elastisys-self-managed.elastisys-self-managed > .admonition-title,
+.md-typeset .elastisys-self-managed.elastisys-self-managed > summary {
+  background-color: var(--elastisys-northern-lights-1);
+}
+.md-typeset .elastisys-self-managed.elastisys-self-managed > .admonition-title::before,
+.md-typeset .elastisys-self-managed.elastisys-self-managed > summary::before {
+  background-image:
+    url('../img/logos/elastisys-logo-icon.svg');
+  background-size: cover;
+  -webkit-mask-image: none;
+  mask-image: none;
+  background-color: inherit;
+}
+
+/* Add space around the footer */
+.md-copyright {
+  padding: 24px 0;
+}

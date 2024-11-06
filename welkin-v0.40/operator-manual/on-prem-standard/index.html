@@ -1,0 +1,4634 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Compliant Kubernetes, the Kubernetes platform for software critical to our society. NIS2, ISO-27001, etc.">
+      
+      
+        <meta name="author" content="Elastisys AB">
+      
+      
+        <link rel="canonical" href="https://elastisys.io/compliantkubernetes/operator-manual/on-prem-standard/">
+      
+      
+        <link rel="prev" href="../provider-audit/">
+      
+      
+        <link rel="next" href="../air-gapped/">
+      
+      
+      <link rel="icon" href="https://elastisys.io/compliantkubernetes/img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>Standard Template for on-prem Environment - Elastisys Compliant Kubernetes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/branding.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://matomo.elastisys.com/js/container_fGrcdd2P.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Standard Template for on-prem Environment - Elastisys Compliant Kubernetes" >
+      
+        <meta  property="og:description"  content="Compliant Kubernetes, the Kubernetes platform for software critical to our society. NIS2, ISO-27001, etc." >
+      
+        <meta  property="og:image"  content="https://elastisys.io/compliantkubernetes/assets/images/social/operator-manual/on-prem-standard.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://elastisys.io/compliantkubernetes/operator-manual/on-prem-standard/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Standard Template for on-prem Environment - Elastisys Compliant Kubernetes" >
+      
+        <meta  name="twitter:description"  content="Compliant Kubernetes, the Kubernetes platform for software critical to our society. NIS2, ISO-27001, etc." >
+      
+        <meta  name="twitter:image"  content="https://elastisys.io/compliantkubernetes/assets/images/social/operator-manual/on-prem-standard.png" >
+      
+    
+    
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data:;
+  connect-src 'self' https://matomo.elastisys.com/;
+  script-src 'self' 'unsafe-inline' https://matomo.elastisys.com/;
+">
+
+<!-- Disable localStorage, sessionStorage and cookies -->
+<script>
+if (window.localStorage) {
+  window.localStorage.setItem = function() { };
+  window.localStorage.clear();
+}
+if (window.sessionStorage) {
+  window.sessionStorage.setItem = function() { }
+  window.sessionStorage.clear();
+}
+if(!document.__defineGetter__) {
+  Object.defineProperty(document, 'cookie', {
+    get: function(){return ''},
+    set: function(){return true},
+  });
+} else {
+  document.__defineGetter__("cookie", function() { return '';} );
+  document.__defineSetter__("cookie", function() {} );
+}
+</script>
+
+<!-- See https://realfavicongenerator.net -->
+<link rel="apple-touch-icon" sizes="180x180" href="https://elastisys.io/compliantkubernetes/img/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="https://elastisys.io/compliantkubernetes/img/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="https://elastisys.io/compliantkubernetes/img/favicon-16x16.png?v=1">
+<link rel="manifest" href="https://elastisys.io/compliantkubernetes/img/site.webmanifest?v=1">
+<link rel="mask-icon" href="https://elastisys.io/compliantkubernetes/img/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="https://elastisys.io/compliantkubernetes/img/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="msapplication-config" content="https://elastisys.io/compliantkubernetes/img/browserconfig.xml?v=1">
+<meta name="theme-color" content="#ffffff">
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="elastisys" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#standard-template-for-on-prem-environment" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Elastisys Compliant Kubernetes" class="md-header__button md-logo" aria-label="Elastisys Compliant Kubernetes" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Elastisys Compliant Kubernetes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Standard Template for on-prem Environment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+
+<ul class="header-links">
+  <li>
+    <a href="https://github.com/elastisys/compliantkubernetes/">
+      <img width="25px" src="../../img/git-alt.svg" alt="Git logo" />
+    </a>
+  </li>
+  <li><a href="https://elastisys.com/" class="menu-callout">Try out Managed<br/>Compliant Kubernetes</a></li>
+</ul>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Elastisys Compliant Kubernetes" class="md-nav__button md-logo" aria-label="Elastisys Compliant Kubernetes" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Elastisys Compliant Kubernetes
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+<ul class="header-links">
+  <li>
+    <a href="https://github.com/elastisys/compliantkubernetes/">
+      <img width="25px" src="../../img/git-alt.svg" alt="Git logo" />
+    </a>
+  </li>
+  <li><a href="https://elastisys.com/" class="menu-callout">Try out Managed<br/>Compliant Kubernetes</a></li>
+</ul>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mission-and-vision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mission and Vision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Application Developers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            For Application Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/prepare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 1: Prepare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/deploy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 2: Deploy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/operate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 3: Operate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Go Deeper
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Go Deeper
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/prepare-application/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prepare Your Application
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/prepare-idp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prepare Your Identity Provider (IdP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/registry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container registry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/continous-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Continuous Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/network-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/kubernetes-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/kubernetes-ui/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes UI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/namespaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/log-based-alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log-based Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/long-term-log-retention/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Long-term Log Retention
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metric Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/maintenance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maintenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/ci-cd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/demarcation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Demarcation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/delegation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Delegate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/how-many-environments/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How many environments?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/cluster-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cluster API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Safeguards
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Safeguards
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-no-root/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce No Root
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-podsecuritypolicies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Restricted Privileges
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-networkpolicies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce NetworkPolicies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-trusted-registries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Trusted Registries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-no-latest-tag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce No Latest Tag
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-job-ttl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Job TTL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-no-load-balancer-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce No LoadBalancer Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-minimum-replicas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Minimum Replicas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Additional Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Additional Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/additional-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/additional-services/postgresql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/additional-services/timescaledb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TimescaleDB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/additional-services/redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/additional-services/rabbitmq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RabbitMQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/additional-services/jaeger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jaeger (preview)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/additional-services/argocd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Argo CD (preview)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Self-Managed Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Self-Managed Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/ferretdb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FerretDB (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/keycloak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keycloak (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/jupyterhub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JupyterHub (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/sealedsecrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SealedSecrets (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/sjunet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sjunet (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/flux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flux (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/go-live/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go-live Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Platform Administrators
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            For Platform Administrators
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../provider-audit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Provider Audit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Standard Template for on-prem Environment
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Standard Template for on-prem Environment
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-compliant-kubernetes-using-kubespray" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying Compliant Kubernetes using Kubespray
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Compliant Kubernetes using Kubespray">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init-kubespray-config-in-your-config-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Init Kubespray config in your config path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-oidc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure OIDC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure OIDC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-oidc-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure OIDC endpoint
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-the-vms-information-to-the-inventory-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copy the VMs information to the inventory files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-kubespray-to-deploy-the-kubernetes-clusters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run Kubespray to deploy the Kubernetes clusters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rook-block-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rook Block Storage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rook Block Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploy-rook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Rook
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-rook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Rook
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-compliant-kubernetes-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying Compliant Kubernetes Apps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Compliant Kubernetes Apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialize-the-apps-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialize the apps configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure the apps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-s3-buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create S3 buckets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-compliant-kubernetes-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Compliant Kubernetes Apps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Settling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../air-gapped/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Air-gapped Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Advanced Configuration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cluster-sizing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sizing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ingress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ingress
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access-control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opensearch-mappings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenSearch Mappings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-managed-crds/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Managed CRDs (preview)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../disaster-recovery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Disaster Recovery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../break-glass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Breaking the Glass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cryptography/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use of Cryptography
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../credentials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use of Credentials
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capacity-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Capacity Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clock-synchronization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clock Synchronization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maintenance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maintenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clean-up/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clean Up
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Additional Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_18" id="__nav_4_18_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Configuration Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_18">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema/secrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secrets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For CISOs and DPOs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            For CISOs and DPOs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/gdpr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GDPR (EU)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/iso-27001/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ISO 27001 (EU)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/nist-sp-800-171/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NIST SP 800-171
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/information-security/dod-enterprise-devsecops-reference-design-kubernetes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DoD Enterprise DevSecOps Reference Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Healthcare
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Healthcare
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/hslf-fs-201640/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HSLF-FS 2016:40 (SE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/hipaa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HIPAA (US)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/mdr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MDR (EU)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Public sector
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Public sector
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/msbfs-20207/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MSBFS 2020:7 (SE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    NIS2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            NIS2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/nis2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/kritis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KRITIS (DE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/bsi-it-grundschutz/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BSI IT-Grundschutz (DE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/msbfs-20188/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MSBFS 2018:8 (SE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Industrial control systems
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            Industrial control systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/isa-iec-62443/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ISA/IEC 62443
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CISO Dashboards
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
+            <span class="md-nav__icon md-icon"></span>
+            CISO Dashboards
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/audit-logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audit Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/cryptography/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cryptography Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/intrusion-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intrusion Detection Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/policy-as-code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Policy-as-Code Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/network-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Security Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/capacity-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Capacity Management (Kubernetes Status) Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/vulnerability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vulnerability Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/log-review/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log Review
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/gdpr-art-17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How do I comply with GDPR Art. 17 Right to erasure ("right to be forgotten")?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/pdl-audit-logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How do I comply with HSLF-FS 2016:40 4 kap. 9 § Kontroll av åtkomst till uppgifter?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Contributors
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For Contributors
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributor-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architectural Decision Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tech-radar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech Radar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quality-criteria/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quality Criteria
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Release Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Release Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release Cycle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/ck8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compliant Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/kubespray/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Kubespray
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/capi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Cluster API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/postgres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/rabbitmq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S RabbitMQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/jaeger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Jaeger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/argocd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Argo CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/managed-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fully Managed Compliant Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/self-managed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Support for Self-Managed Compliant Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/consulting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Consulting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/training/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Official Training
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/legal/privacy-policy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Privacy Policy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-compliant-kubernetes-using-kubespray" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying Compliant Kubernetes using Kubespray
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Compliant Kubernetes using Kubespray">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init-kubespray-config-in-your-config-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Init Kubespray config in your config path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-oidc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure OIDC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure OIDC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-oidc-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure OIDC endpoint
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-the-vms-information-to-the-inventory-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copy the VMs information to the inventory files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-kubespray-to-deploy-the-kubernetes-clusters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run Kubespray to deploy the Kubernetes clusters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rook-block-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rook Block Storage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rook Block Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploy-rook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Rook
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-rook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Rook
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-compliant-kubernetes-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying Compliant Kubernetes Apps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Compliant Kubernetes Apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialize-the-apps-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialize the apps configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure the apps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-s3-buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create S3 buckets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-compliant-kubernetes-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Compliant Kubernetes Apps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Settling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../ciso-guide/controls/bsi-it-grundschutz/#bsi-it-grundschutz-app44a13" class="md-tag">BSI IT-Grundschutz APP.4.4.A13</a>
+    
+  
+</nav>
+
+
+  
+  
+
+
+<h1 id="standard-template-for-on-prem-environment">Standard Template for on-prem Environment<a class="headerlink" href="#standard-template-for-on-prem-environment" title="Permanent link">&para;</a></h1>
+<p>This document contains instructions on how to set-up a new Compliant Kubernetes on-prem environment.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Decisions regarding the following items should be made before venturing on deploying Compliant Kubernetes.</p>
+<ul>
+<li>Overall architecture, i.e., VM sizes, load-balancer configuration, storage configuration, etc.</li>
+<li>Identity Provider (IdP) choice and configuration. See <a href="../../user-guide/prepare-idp/">this page</a>.</li>
+<li>On-call Management Tool (OMT) choice and configuration.</li>
+</ul>
+</div>
+<ol>
+<li>
+<p>Make sure you <a href="../getting-started/">install all prerequisites</a> on your computer.</p>
+</li>
+<li>
+<p>Prepare Ubuntu-based VMs:
+    If you are using public clouds, you can create VMs using the scripts included in Kubespray:</p>
+<ul>
+<li>For Azure, use <a href="https://github.com/kubernetes-sigs/kubespray/tree/master/contrib/azurerm">AzureRM scripts</a>.</li>
+<li>For other clouds, use their respective <a href="https://github.com/kubernetes-sigs/kubespray/tree/master/contrib/terraform">Terraform scripts</a>.</li>
+</ul>
+</li>
+<li>
+<p>Create a git working folder to store Compliant Kubernetes configurations in a version-controlled manner. Run the following commands from the root of the config repo.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">CK8S_CONFIG_PATH</span><span class="o">=</span>~/.ck8s/my-cluster-path
+<span class="nb">export</span><span class="w"> </span><span class="nv">CK8S_CLOUD_PROVIDER</span><span class="o">=</span><span class="c1"># run &#39;compliantkubernetes-apps/bin/ck8s providers&#39; to list available providers</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CK8S_ENVIRONMENT_NAME</span><span class="o">=</span>my-environment-name
+<span class="nb">export</span><span class="w"> </span><span class="nv">CK8S_FLAVOR</span><span class="o">=</span><span class="c1"># run &#39;compliantkubernetes-apps/bin/ck8s flavors&#39; to list available flavors</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CK8S_K8S_INSTALLER</span><span class="o">=</span><span class="c1"># run &#39;compliantkubernetes-apps/bin/ck8s k8s-installers&#39; to list available k8s-installers</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CK8S_PGP_FP</span><span class="o">=</span>&lt;your<span class="w"> </span>GPG<span class="w"> </span>key<span class="w"> </span>fingerprint&gt;<span class="w">  </span><span class="c1"># retrieve with gpg --list-secret-keys</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">CLUSTERS</span><span class="o">=(</span><span class="w"> </span><span class="s2">&quot;sc&quot;</span><span class="w"> </span><span class="s2">&quot;wc&quot;</span><span class="w"> </span><span class="o">)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DOMAIN</span><span class="o">=</span>example.com<span class="w"> </span><span class="c1"># your domain</span>
+</code></pre></div>
+</li>
+<li>
+<p>Add the Elastisys Compliant Kubernetes Kubespray repo as a <code>git submodule</code> to the configuration repo and install pre-requisites as follows:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember to switch to the desired version of <code>compliantkubernetes-kubespray</code>.</p>
+</div>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>https://github.com/elastisys/compliantkubernetes-kubespray.git
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+<span class="nb">cd</span><span class="w"> </span>compliantkubernetes-kubespray
+git<span class="w"> </span>switch<span class="w"> </span>-d<span class="w"> </span><span class="k">$(</span>git<span class="w"> </span>tag<span class="w"> </span>--sort<span class="o">=</span>committerdate<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-1<span class="k">)</span><span class="w"> </span><span class="c1"># this will switch to the latest release tag</span>
+pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>kubespray/requirements.txt<span class="w">  </span><span class="c1"># this will install Ansible</span>
+ansible-playbook<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;ansible_python_interpreter=/usr/bin/python3&#39;</span><span class="w"> </span>--ask-become-pass<span class="w"> </span>--connection<span class="w"> </span><span class="nb">local</span><span class="w"> </span>--inventory<span class="w"> </span><span class="m">127</span>.0.0.1,<span class="w"> </span>get-requirements.yaml
+</code></pre></div>
+</li>
+<li>
+<p>Add the Compliant Kubernetes Apps repo as a <code>git submodule</code> to the configuration repo and install pre-requisites as follows:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember to switch to the desired version of <code>compliantkubernetes-apps</code>.</p>
+</div>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>https://github.com/elastisys/compliantkubernetes-apps.git
+<span class="nb">cd</span><span class="w"> </span>compliantkubernetes-apps
+git<span class="w"> </span>switch<span class="w"> </span>-d<span class="w"> </span><span class="k">$(</span>git<span class="w"> </span>tag<span class="w"> </span>--sort<span class="o">=</span>committerdate<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-1<span class="k">)</span><span class="w"> </span><span class="c1"># this will switch to the latest release tag</span>
+./bin/ck8s<span class="w"> </span>install-requirements
+</code></pre></div>
+</li>
+<li>
+<p>Create the domain name.
+    You need to create a domain name to access the different services in your environment. You will need to set up the following DNS entries.</p>
+<ul>
+<li>Point these domains to the Workload Cluster Ingress Controller (this step is done during Compliant Kubernetes Apps installation):</li>
+<li><code>*.$DOMAIN</code></li>
+<li>Point these domains to the Management Cluster Ingress Controller (this step is done during Compliant Kubernetes Apps installation):</li>
+<li><code>*.ops.$DOMAIN</code></li>
+<li><code>dex.$DOMAIN</code></li>
+<li><code>grafana.$DOMAIN</code></li>
+<li><code>harbor.$DOMAIN</code></li>
+<li><code>opensearch.$DOMAIN</code></li>
+</ul>
+<details class="note" open="open">
+<summary>If both Management and Workload Clusters are in the same subnet</summary>
+<p>If both the Management and Workload Clusters are in the same subnet, it would be great to configure the following domain names to the private IP addresses of Management Cluster's worker nodes.</p>
+<ul>
+<li><code>*.thanos.ops.$DOMAIN</code></li>
+<li><code>*.opensearch.ops.$DOMAIN</code></li>
+</ul>
+</details>
+</li>
+<li>
+<p>Create S3 credentials and add them to <code>.state/s3cfg.ini</code>.</p>
+</li>
+<li>
+<p>Set up load balancer</p>
+<p>You need to set up two load balancers, one for the Workload Cluster and one for the Management Cluster.</p>
+</li>
+<li>
+<p>Make sure you have <a href="../getting-started/">all necessary tools</a>.</p>
+</li>
+</ol>
+<h2 id="deploying-compliant-kubernetes-using-kubespray">Deploying Compliant Kubernetes using Kubespray<a class="headerlink" href="#deploying-compliant-kubernetes-using-kubespray" title="Permanent link">&para;</a></h2>
+<details class="note" open="open">
+<summary>How to change Default Kubernetes Subnet Address</summary>
+<p>If  the default IP block ranges used for Docker and Kubernetes are the same as the internal IP ranges used in the company, you can change the values  to resolve the conflict as follows. Note that you can use any valid private IP address range, the values below are put as an example.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">For Kubernetes</label><label for="__tabbed_1_2">For Docker</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">*</span><span class="w"> </span>For Management Cluster: Add <span class="sb">`kube_service_addresses: 10.178.0.0/18`</span> and <span class="sb">`kube_pods_subnet: 10.178.120.0/18`</span> in <span class="sb">`${CK8S_CONFIG_PATH}/sc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml`</span> file.
+<span class="k">*</span><span class="w"> </span>For Workload Cluster:  Add <span class="sb">`kube_service_addresses: 10.178.0.0/18`</span> and <span class="sb">`kube_pods_subnet: 10.178.120.0/18`</span> in <span class="sb">`${CK8S_CONFIG_PATH}/wc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml`</span> file.
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">*</span><span class="w"> </span>For Management Cluster: Added <span class="sb">`docker_options: &quot;--default-address-pool base=10.179.0.0/24,size=24&quot;`</span> in <span class="sb">`${CK8S_CONFIG_PATH}/sc-config/group_vars/all/docker.yml`</span> file.
+<span class="k">*</span><span class="w"> </span>For Workload Cluster:  Added <span class="sb">`docker_options: &quot;--default-address-pool base=10.179.4.0/24,size=24&quot;`</span> in <span class="sb">`${CK8S_CONFIG_PATH}/wc-config/group_vars/all/docker.yml`</span> file.
+</code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="init-kubespray-config-in-your-config-path">Init Kubespray config in your config path<a class="headerlink" href="#init-kubespray-config-in-your-config-path" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>CLUSTER<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;; do</span>
+<span class="s2">    compliantkubernetes-kubespray/ck8s-kubespray init </span><span class="nv">$CLUSTER</span><span class="s2"> </span><span class="nv">$CK8S_CLOUD_PROVIDER</span><span class="s2"> </span><span class="nv">$CK8S_PGP_FP</span>
+<span class="s2">done</span>
+</code></pre></div>
+<h3 id="configure-oidc">Configure OIDC<a class="headerlink" href="#configure-oidc" title="Permanent link">&para;</a></h3>
+<p>To configure OpenID access for Kubernetes API and other services, Dex should be configured with your identity provider (IdP). Check what Dex needs from <a href="https://dexidp.io/docs/connectors/">your identity provider</a>.</p>
+<h4 id="configure-oidc-endpoint">Configure OIDC endpoint<a class="headerlink" href="#configure-oidc-endpoint" title="Permanent link">&para;</a></h4>
+<p>The Management Cluster is recommended to be configured with an external OIDC endpoint provided by the IdP of your choice. This can be configured in <code>${CK8S_CONFIG_PATH}/sc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml</code> by setting the following variables:</p>
+<ul>
+<li><code>kube_oidc_auth</code> should be set to true, this enables OIDC authentication for the api-server</li>
+<li><code>kube_oidc_url</code> should be set to an OIDC endpoint from your IdP (e.g. for Google this would be <code>https://accounts.google.com</code>)</li>
+<li><code>kube_oidc_client_id</code> should be retrieved from your IdP</li>
+<li><code>kube_oidc_client_secret</code> should be retrieved from your IdP</li>
+</ul>
+<p>To configure the Workload Cluster to use Dex running in the Management Cluster for authentication you will also need to configure the following in <code>${CK8S_CONFIG_PATH}/wc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml</code>:</p>
+<ul>
+<li><code>kube_oidc_auth</code> should be set to true, this enables OIDC authentication for the api-server</li>
+<li><code>kube_oidc_url</code> should be set to <code>https://dex.$DOMAIN</code></li>
+<li><code>kube_oidc_client_id</code> should be set to <code>kubelogin</code></li>
+<li><code>kube_oidc_client_secret</code> should be set to a Dex client secret generated with the apps config, it can be found in <code>${CK8S_CONFIG_PATH}/secrets.yaml</code> under the key <code>dex.kubeloginClientSecret</code> after running <code>ck8s init</code> (see <a href="#deploying-compliant-kubernetes-apps">instructions on deploying apps</a>).</li>
+</ul>
+<p>To generate kubeconfigs that use OIDC for authentication, the following variables should be set in the config files for both clusters (both can't be true):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">create_oidc_kubeconfig</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">kubeconfig_localhost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<p>For more information on managing OIDC kubeconfigs and RBAC, or on running without OIDC, <a href="https://github.com/elastisys/compliantkubernetes-kubespray#kubeconfig">see the ck8s-Kubespray documentation</a>.</p>
+<h3 id="copy-the-vms-information-to-the-inventory-files">Copy the VMs information to the inventory files<a class="headerlink" href="#copy-the-vms-information-to-the-inventory-files" title="Permanent link">&para;</a></h3>
+<p>Add the host name, user and IP address of each VM that you prepared above in <code>${CK8S_CONFIG_PATH}/sc-config/inventory.ini</code> for Management Cluster and <code>${CK8S_CONFIG_PATH}/wc-config/inventory.ini</code> for Workload Cluster. Moreover, you also need to add the host names of the master nodes under <code>[kube_control_plane]</code>, etcd nodes under <code>[etcd]</code> and worker nodes under <code>[kube_node]</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure that the user has SSH access to the VMs.</p>
+</div>
+<h3 id="run-kubespray-to-deploy-the-kubernetes-clusters">Run Kubespray to deploy the Kubernetes clusters<a class="headerlink" href="#run-kubespray-to-deploy-the-kubernetes-clusters" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>CLUSTER<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>compliantkubernetes-kubespray/bin/ck8s-kubespray<span class="w"> </span>apply<span class="w"> </span><span class="nv">$CLUSTER</span><span class="w"> </span>--flush-cache
+<span class="k">done</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The kubeconfig for wc <code>.state/kube_config_wc.yaml</code> will not be usable until you have installed Dex in the Management Cluster (by <a href="#deploying-compliant-kubernetes-apps">deploying apps</a>).</p>
+</div>
+<h2 id="rook-block-storage">Rook Block Storage<a class="headerlink" href="#rook-block-storage" title="Permanent link">&para;</a></h2>
+<p>Normally, we want to use block storage solutions provided by the infra provider. However, this is not always available, especially for on-prem environments. In such cases we can partition separate volumes on Nodes in the cluster for Rook-Ceph and use that as a block storage solution.</p>
+<!-- markdownlint-disable-file first-line-h1 -->
+
+<h3 id="deploy-rook">Deploy Rook<a class="headerlink" href="#deploy-rook" title="Permanent link">&para;</a></h3>
+<p>To deploy Rook, go to the <code>compliantkubernetes-kubespray</code> repo, change directory to <code>rook</code> and follow the instructions <a href="https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/rook#rook-ceph">here</a> for each cluster.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the kubeconfig files for the clusters are encrypted with SOPS, you need to decrypt them before using them:</p>
+<div class="highlight"><pre><span></span><code>sops<span class="w"> </span>--decrypt<span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="nv">$CLUSTER</span>.yaml<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$CLUSTER</span>.yaml
+<span class="nb">export</span><span class="w"> </span><span class="nv">KUBECONFIG</span><span class="o">=</span><span class="nv">$CLUSTER</span>.yaml
+</code></pre></div>
+</div>
+<p>Please restart the operator Pod, <code>rook-ceph-operator*</code>, if some pods stalls in initialization state as shown below:</p>
+<div class="highlight"><pre><span></span><code><span class="go">rook-ceph     rook-ceph-crashcollector-minion-0-b75b9fc64-tv2vg    0/1     Init:0/2   0          24m</span>
+<span class="go">rook-ceph     rook-ceph-crashcollector-minion-1-5cfb88b66f-mggrh   0/1     Init:0/2   0          36m</span>
+<span class="go">rook-ceph     rook-ceph-crashcollector-minion-2-5c74ffffb6-jwk55   0/1     Init:0/2   0          14m</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Pods in pending state usually indicate resource shortage. In such cases you need to use bigger instances.</p>
+</div>
+<h3 id="test-rook">Test Rook<a class="headerlink" href="#test-rook" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the Workload Cluster kubeconfig is configured with authentication to Dex running in the Management Cluster, part of apps needs to be deployed before it is possible to run the commands below for <code>wc</code>.</p>
+</div>
+<p>To test Rook, proceed as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>CLUSTER<span class="w"> </span><span class="k">in</span><span class="w"> </span>sc<span class="w"> </span>wc<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>kubectl<span class="w"> </span>--kubeconfig<span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span>.yaml<span class="w"> </span>-n<span class="w"> </span>default<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/rook/rook/v1.11.9/deploy/examples/csi/rbd/pvc.yaml
+<span class="w">    </span>kubectl<span class="w"> </span>--kubeconfig<span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span>.yaml<span class="w"> </span>-n<span class="w"> </span>default<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/rook/rook/v1.11.9/deploy/examples/csi/rbd/pod.yaml
+<span class="k">done</span>
+
+<span class="k">for</span><span class="w"> </span>CLUSTER<span class="w"> </span><span class="k">in</span><span class="w"> </span>sc<span class="w"> </span>wc<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>kubectl<span class="w"> </span>--kubeconfig<span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span>.yaml<span class="w"> </span>-n<span class="w"> </span>default<span class="w"> </span>get<span class="w"> </span>pvc<span class="w"> </span>rbd-pvc
+<span class="w">    </span>kubectl<span class="w"> </span>--kubeconfig<span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span>.yaml<span class="w"> </span>-n<span class="w"> </span>default<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>csirbd-demo-pod
+<span class="k">done</span>
+</code></pre></div>
+<p>You should see PVCs in Bound state, and that the Pods which mounts the volumes are running.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you have taints on certain Nodes which should support running Pods that mounts <code>rook-ceph</code> PVCs, you need to ensure these Nodes are tolerated by the rook-ceph DaemonSet <code>csi-rbdplugin</code>, otherwise, Pods on these Nodes will not be able to attach or mount the volumes.</p>
+</div>
+<p>If you want to clean the previously created PVCs:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>CLUSTER<span class="w"> </span><span class="k">in</span><span class="w"> </span>sc<span class="w"> </span>wc<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>kubectl<span class="w"> </span>--kubeconfig<span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span>.yaml<span class="w"> </span>-n<span class="w"> </span>default<span class="w"> </span>delete<span class="w"> </span>pvc<span class="w"> </span>rbd-pvc
+<span class="w">    </span>kubectl<span class="w"> </span>--kubeconfig<span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/.state/kube_config_<span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span>.yaml<span class="w"> </span>-n<span class="w"> </span>default<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>csirbd-demo-pod
+<span class="k">done</span>
+</code></pre></div>
+<h2 id="deploying-compliant-kubernetes-apps">Deploying Compliant Kubernetes Apps<a class="headerlink" href="#deploying-compliant-kubernetes-apps" title="Permanent link">&para;</a></h2>
+<details class="note" open="open">
+<summary>How to change local DNS IP if you change the default Kubernetes subnet address</summary>
+<p>You need to change the default coreDNS default IP address in <code>common-config.yaml</code> file if  you change the default IP block  used for Kubernetes services above.  To get the coreDNS IP address, run the following commands.</p>
+<p><div class="highlight"><pre><span></span><code><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/compliantkubernetes-apps/bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span>sc<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>coredns
+</code></pre></div>
+Once you get the IP address edit <code>${CK8S_CONFIG_PATH}/common-config.yaml</code> file  and set  the value  to <code>global.clusterDns</code> field.</p>
+</details>
+<details class="note" open="open">
+<summary>Configure the load balancer IP on the loopback interface for each worker node</summary>
+<p>The Kubernetes data plane Nodes (i.e., worker Nodes) cannot connect to themselves with the IP address of the load balancer that fronts them. The easiest is to configure the load balancer's IP address on the loopback interface of each Nodes. Create <code>/etc/netplan/20-eip-fix.yaml</code> file and add the following to it. <code>${loadblancer_ip_address}</code> should be replaced with the IP address of the load balancer for each cluster.</p>
+<p><div class="highlight"><pre><span></span><code><span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">ethernets</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">lo0</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lo</span>
+<span class="w">      </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">addresses</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${loadblancer_ip_address}/32</span>
+</code></pre></div>
+After adding the above content, run the following command in each worker Node:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>netplan<span class="w"> </span>apply
+</code></pre></div>
+</details>
+<h3 id="initialize-the-apps-configuration">Initialize the apps configuration<a class="headerlink" href="#initialize-the-apps-configuration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>compliantkubernetes-apps/bin/ck8s<span class="w"> </span>init<span class="w"> </span>both
+</code></pre></div>
+<p>This will initialise the configuration in the <code>${CK8S_CONFIG_PATH}</code> directory. Generating configuration files <code>sc-config.yaml</code> and <code>wc-config.yaml</code>, as well as secrets with randomly generated passwords in <code>secrets.yaml</code>. This will also generate read-only default configuration under the directory <code>defaults/</code> which can be used as a guide for available and suggested options.</p>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-l<span class="w"> </span><span class="nv">$CK8S_CONFIG_PATH</span>
+</code></pre></div>
+<h3 id="configure-the-apps">Configure the apps<a class="headerlink" href="#configure-the-apps" title="Permanent link">&para;</a></h3>
+<p>Edit the configuration files <code>${CK8S_CONFIG_PATH}/sc-config.yaml</code>, <code>${CK8S_CONFIG_PATH}/wc-config.yaml</code> and <code>${CK8S_CONFIG_PATH}/secrets.yaml</code> and set the appropriate values for some of the configuration fields.
+Note that, the latter is encrypted.</p>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/sc-config.yaml
+
+vim<span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/wc-config.yaml
+
+vim<span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/common-config.yaml
+</code></pre></div>
+<p>Edit the secrets.yaml file and add the credentials for:</p>
+<ul>
+<li>S3 - used for backup storage.</li>
+<li>Dex - connectors -- check <a href="https://dexidp.io/docs/connectors/">your identity provider</a>.</li>
+<li>On-call management tool configurations-- Check <a href="https://prometheus.io/docs/alerting/latest/configuration/">supported on-call management tools</a>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>sops<span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/secrets.yaml
+</code></pre></div>
+<p>The default configuration for the Management Cluster and Workload Cluster are available in the directory <code>${CK8S_CONFIG_PATH}/defaults/</code> and can be used as a reference for available options.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not modify the read-only default configurations files found in the directory <code>${CK8S_CONFIG_PATH}/defaults/</code>. Instead configure the cluster by modifying the regular files <code>${CK8S_CONFIG_PATH}/sc-config.yaml</code> and <code>${CK8S_CONFIG_PATH}/wc-config.yaml</code> as they will override the default options.</p>
+</div>
+<h3 id="create-s3-buckets">Create S3 buckets<a class="headerlink" href="#create-s3-buckets" title="Permanent link">&para;</a></h3>
+<p>You can use the following script to create required S3 buckets.
+The script uses <code>s3cmd</code> in the background and gets configuration and credentials for your S3 provider from <code>${HOME}/.s3cfg</code> file.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Use your default s3cmd config file: ${HOME}/.s3cfg</span>
+scripts/S3/entry.sh<span class="w"> </span>create
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You should not use your own credentials for S3. Rather create a new set of credentials with write-only access, when supported by the object storage provider.</p>
+</div>
+<h3 id="install-compliant-kubernetes-apps">Install Compliant Kubernetes Apps<a class="headerlink" href="#install-compliant-kubernetes-apps" title="Permanent link">&para;</a></h3>
+<p>Start with the Management Cluster:</p>
+<div class="highlight"><pre><span></span><code>compliantkubernetes-apps/bin/ck8s<span class="w"> </span>apply<span class="w"> </span>sc
+</code></pre></div>
+<p>Then the Workload Cluster:</p>
+<div class="highlight"><pre><span></span><code>compliantkubernetes-apps/bin/ck8s<span class="w"> </span>apply<span class="w"> </span>wc
+</code></pre></div>
+<h3 id="settling">Settling<a class="headerlink" href="#settling" title="Permanent link">&para;</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Leave sufficient time for the system to settle, e.g., request TLS certificates from Let's Encrypt, perhaps as much as 20 minutes.</p>
+</div>
+<p>Check if all Helm charts succeeded.</p>
+<div class="highlight"><pre><span></span><code>compliantkubernetes-apps/bin/ck8s<span class="w"> </span>ops<span class="w"> </span>helm<span class="w"> </span>wc<span class="w"> </span>list<span class="w"> </span>-A<span class="w"> </span>--all
+</code></pre></div>
+<p>You can check if the system settled as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>CLUSTER<span class="w"> </span><span class="k">in</span><span class="w"> </span>sc<span class="w"> </span>wc<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>compliantkubernetes-apps/bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span><span class="w"> </span>get<span class="w"> </span>--all-namespaces<span class="w"> </span>pods
+<span class="k">done</span>
+</code></pre></div>
+<p>Check the output of the command above. All Pods needs to be Running or Completed.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>CLUSTER<span class="w"> </span><span class="k">in</span><span class="w"> </span>sc<span class="w"> </span>wc<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>compliantkubernetes-apps/bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span><span class="w"> </span>get<span class="w"> </span>--all-namespaces<span class="w"> </span>issuers,clusterissuers,certificates
+<span class="k">done</span>
+</code></pre></div>
+<p>Check the output of the command above.
+All resources need to have the Ready column True.</p>
+<h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h3>
+<p>After completing the installation step you can test if the apps are properly installed and ready using the commands below:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>CLUSTER<span class="w"> </span><span class="k">in</span><span class="w"> </span>sc<span class="w"> </span>wc<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>compliantkubernetes-apps/bin/ck8s<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span>
+<span class="k">done</span>
+</code></pre></div>
+<p>Done.
+Navigate to the endpoints, for example <code>grafana.$BASE_DOMAIN</code>, <code>kibana.$BASE_DOMAIN</code>, <code>harbor.$BASE_DOMAIN</code>, etc. to discover Compliant Kubernetes's features.</p>
+<h3 id="operate">Operate<a class="headerlink" href="#operate" title="Permanent link">&para;</a></h3>
+<p>The following endpoints can be probed to ensure Compliant Kubernetes services are up and running:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--head<span class="w"> </span>https://dex.<span class="nv">$DOMAIN</span>/healthz
+curl<span class="w"> </span>--head<span class="w"> </span>https://harbor.<span class="nv">$DOMAIN</span>/healthz
+curl<span class="w"> </span>--head<span class="w"> </span>https://grafana.<span class="nv">$DOMAIN</span>/healthz
+curl<span class="w"> </span>--head<span class="w"> </span>https://grafana.ops.<span class="nv">$DOMAIN</span>/healthz
+curl<span class="w"> </span>--head<span class="w"> </span>app.<span class="nv">$DOMAIN</span>/healthz<span class="w">  </span><span class="c1"># Pokes the WC Ingress Controller</span>
+curl<span class="w"> </span>--head<span class="w"> </span>app.ops.<span class="nv">$DOMAIN</span>/healthz<span class="w">  </span><span class="c1"># Pokes the SC Ingress Controller</span>
+<span class="c1"># All commands above should return &#39;HTTP/2 200&#39;</span>
+
+curl<span class="w"> </span>--head<span class="w"> </span>-k<span class="w"> </span>https://kube-apiserver.<span class="nv">$DOMAIN</span>
+curl<span class="w"> </span>--head<span class="w"> </span>https://thanos-receiver.ops.<span class="nv">$DOMAIN</span>
+curl<span class="w"> </span>--head<span class="w"> </span>https://opensearch.ops.<span class="nv">$DOMAIN</span>
+curl<span class="w"> </span>--head<span class="w"> </span>https://opensearch.<span class="nv">$DOMAIN</span>/api/status
+<span class="c1"># The commands above should return &#39;HTTP/2 401&#39;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some of these subdomains can be overwritten in config (see example <a href="https://github.com/elastisys/compliantkubernetes-apps/blob/v0.39.0/config/config/common-config.yaml#L516">here</a>)</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by <a href="https://github.com/elastisys/compliantkubernetes/issues/new/choose" target="_blank">filing an issue</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../provider-audit/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Provider Audit">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Provider Audit
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../air-gapped/" class="md-footer__link md-footer__link--next" aria-label="Next: Air-gapped Network">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Air-gapped Network
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Elastisys AB <br/> The Linux Foundation has the following registered trademarks in the United States and/or other countries: Certified Kubernetes®, containerd®, fluentd®, Helm®, Istio®, K8s®, Kubernetes®, Prometheus®, PromQL®, Rook®, The Linux Foundation®. <br/> The Linux Foundation has registrations pending or trademarks in use for the following marks in the United States and/or other countries: Argo™, CoreDNS™, Falco™, Harbor™, Jaeger™, Linux Foundation™, OpenTelemetry™, OpenTracing™, Open Policy Agent™, Tekton™, Thanos™. <br/> Postgres and PostgreSQL and the Elephant Logo (Slonik) are all registered trademarks of the PostgreSQL Community Association of Canada. <br/> Redis is a trademark of Redis Ltd. Any rights therein are reserved to Redis Ltd. Any use by the Compliant Kubernetes project is for referential purposes only and does not indicate any sponsorship, endorsement or affiliation between Redis and Compliant Kubernetes project. <br/> RabbitMQ is a trademark of VMware, Inc. in the U.S. and other countries. <br/> TimescaleDB and the EON mascot are trademarks of <a href="https://www.timescale.com/">Timescale, Inc.</a> <br/> FerretDB® is a registered trademark of FerretDB, Inc. FerretDB Inc. is not affiliated, associated, authorized, endorsed by, or in any way officially connected with MongoDB Inc., or any of its subsidiaries or its affiliates. <br/> MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc. <br/> Keycloak™ is a trademark of Red Hat Inc. <br/> OpenSearch is a registered trademark of Amazon Web Services. <br/> NGINX is a registered trademark of F5 Inc.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.top"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../javascripts/feedback.js"></script>
+      
+    
+  </body>
+</html>
