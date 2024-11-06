@@ -1,0 +1,4703 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welkin, the Kubernetes platform for software critical to our society. NIS2, ISO-27001, etc.
+">
+      
+      
+        <meta name="author" content="Elastisys AB">
+      
+      
+        <link rel="canonical" href="https://elastisys.io/welkin/ciso-guide/controls/hipaa/">
+      
+      
+        <link rel="prev" href="../hslf-fs-201640/">
+      
+      
+        <link rel="next" href="../mdr/">
+      
+      
+      <link rel="icon" href="https://elastisys.io/welkin/img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>HIPAA (US) - Welkin</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/branding.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/style.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://matomo.elastisys.com/js/container_fGrcdd2P.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="HIPAA (US) - Welkin" >
+      
+        <meta  property="og:description"  content="Welkin, the Kubernetes platform for software critical to our society. NIS2, ISO-27001, etc.
+" >
+      
+        <meta  property="og:image"  content="https://elastisys.io/welkin/assets/images/social/ciso-guide/controls/hipaa.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://elastisys.io/welkin/ciso-guide/controls/hipaa/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="HIPAA (US) - Welkin" >
+      
+        <meta  name="twitter:description"  content="Welkin, the Kubernetes platform for software critical to our society. NIS2, ISO-27001, etc.
+" >
+      
+        <meta  name="twitter:image"  content="https://elastisys.io/welkin/assets/images/social/ciso-guide/controls/hipaa.png" >
+      
+    
+    
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data:;
+  connect-src 'self' https://matomo.elastisys.com/;
+  script-src 'self' 'unsafe-inline' https://matomo.elastisys.com/;
+">
+
+<!-- Disable localStorage, sessionStorage and cookies -->
+<script>
+if (window.localStorage) {
+  window.localStorage.setItem = function() { };
+  window.localStorage.clear();
+}
+if (window.sessionStorage) {
+  window.sessionStorage.setItem = function() { }
+  window.sessionStorage.clear();
+}
+if(!document.__defineGetter__) {
+  Object.defineProperty(document, 'cookie', {
+    get: function(){return ''},
+    set: function(){return true},
+  });
+} else {
+  document.__defineGetter__("cookie", function() { return '';} );
+  document.__defineSetter__("cookie", function() {} );
+}
+</script>
+
+<!-- See https://realfavicongenerator.net/ -->
+<link rel="icon" type="image/png" href="/welkin/img/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/welkin/img/favicon.svg" />
+<link rel="shortcut icon" href="/welkin/img/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/welkin/img/apple-touch-icon.png" />
+<link rel="manifest" href="/welkin/img/site.webmanifest" />
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="elastisys" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hipaa-controls" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<div class="banner">
+We're undergoing a transformation! We're rebranding our platform and changing the name from Compliant Kubernetes to Welkin. As we work on updating our documentation, there may be some temporary inconsistencies in how the platform is referred to. Thank you for your understanding. Read more about it in this <strong><a style="color: var(--elastisys-night-blue);"href="https://elastisys.com/elastisys-compliant-kubernetes-becomes-welkin/">press release</a></strong>.
+</div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Welkin" class="md-header__button md-logo" aria-label="Welkin" data-md-component="logo">
+      
+  <img src="../../../img/favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Welkin
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HIPAA (US)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+
+<ul class="header-links">
+  <li>
+    <a href="https://github.com/elastisys/welkin/">
+      <img width="25px" src="../../../img/git-alt.svg" alt="Git logo" />
+    </a>
+  </li>
+  <li><a href="https://elastisys.com/" class="menu-callout">Try out Managed<br/>Welkin</a></li>
+</ul>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+
+  <!-- Navigation -->
+  
+    
+    <div
+      class="md-sidebar md-sidebar--primary"
+      data-md-component="sidebar"
+      data-md-type="navigation"
+      
+    >
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+          
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Welkin" class="md-nav__button md-logo" aria-label="Welkin" data-md-component="logo">
+      
+  <img src="../../../img/favicon.svg" alt="logo">
+
+    </a>
+    Welkin
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+<ul class="header-links">
+  <li>
+    <a href="https://github.com/elastisys/welkin/">
+      <img width="25px" src="../../../img/git-alt.svg" alt="Git logo" />
+    </a>
+  </li>
+  <li><a href="https://elastisys.com/" class="menu-callout">Try out Managed<br/>Welkin</a></li>
+</ul>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mission-and-vision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mission and Vision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Application Developers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            For Application Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/prepare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 1: Prepare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/deploy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 2: Deploy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/operate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 3: Operate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Go Deeper
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Go Deeper
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/prepare-application/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prepare Your Application
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/prepare-idp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prepare Your Identity Provider (IdP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/registry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container registry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/continous-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Continuous Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/network-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/kubernetes-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/kubernetes-ui/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes UI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/namespaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/log-based-alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log-based Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/long-term-log-retention/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Long-term Log Retention
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metric Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/maintenance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maintenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/ci-cd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/demarcation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Demarcation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/delegation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Delegate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/how-many-environments/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How many environments?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/cluster-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cluster API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Safeguards
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Safeguards
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/safeguards/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/safeguards/enforce-no-root/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce No Root
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/safeguards/enforce-podsecuritypolicies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Restricted Privileges
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/safeguards/enforce-networkpolicies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce NetworkPolicies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/safeguards/enforce-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/safeguards/enforce-trusted-registries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Trusted Registries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/safeguards/enforce-no-latest-tag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce No Latest Tag
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/safeguards/enforce-job-ttl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Job TTL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/safeguards/enforce-no-load-balancer-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce No LoadBalancer Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/safeguards/enforce-minimum-replicas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Minimum Replicas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/safeguards/default-pod-topology-spread-constraints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Default Pod Topology Spread Constraints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Additional Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Additional Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/additional-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/additional-services/postgresql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/additional-services/timescaledb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TimescaleDB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/additional-services/redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/additional-services/rabbitmq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RabbitMQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/additional-services/jaeger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jaeger (preview)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/additional-services/argocd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Argo CD (preview)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Self-Managed Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Self-Managed Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/self-managed-services/ferretdb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FerretDB (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/self-managed-services/keycloak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keycloak (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/self-managed-services/jupyterhub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JupyterHub (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/self-managed-services/sealedsecrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SealedSecrets (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/self-managed-services/mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/self-managed-services/sjunet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sjunet (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/self-managed-services/flux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flux (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/self-managed-services/kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/go-live/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go-live Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Platform Administrators
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            For Platform Administrators
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/provider-audit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Provider Audit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/on-prem-standard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standard Template for on-prem Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/air-gapped/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Air-gapped Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Advanced Configuration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/configure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/cluster-sizing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sizing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/ingress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ingress
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/access-control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/opensearch-mappings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenSearch Mappings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/user-alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/user-managed-crds/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Managed CRDs (preview)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/disaster-recovery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Disaster Recovery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/break-glass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Breaking the Glass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/cryptography/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use of Cryptography
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/credentials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use of Credentials
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/capacity-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Capacity Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/clock-synchronization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clock Synchronization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/maintenance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maintenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/clean-up/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clean Up
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/additional-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Additional Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_18" id="__nav_4_18_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Configuration Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_18">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/schema/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operator-manual/schema/secrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secrets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For CISOs and DPOs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            For CISOs and DPOs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gdpr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GDPR (EU)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iso-27001/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ISO 27001 (EU)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nist-sp-800-171/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NIST SP 800-171
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Information Security
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Information Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../information-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../information-security/dod-enterprise-devsecops-reference-design-kubernetes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DoD Enterprise DevSecOps Reference Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Healthcare
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Healthcare
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hslf-fs-201640/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HSLF-FS 2016:40 (SE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    HIPAA (US)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    HIPAA (US)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s5-security-management-process-information-system-activity-review-164308a1iid" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S5 - Security Management Process - Information System Activity Review - § 164.308(a)(1)(ii)(D)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s12-information-access-management-isolating-healthcare-clearinghouse-functions-164308a4iia" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S12 - Information Access Management - Isolating Healthcare Clearinghouse Functions - § 164.308(a)(4)(ii)(A)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s13-information-access-management-access-authorization-164308a4iib" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S13 - Information Access Management - Access Authorization - § 164.308(a)(4)(ii)(B)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s14-information-access-management-access-establishment-and-modification-164308a4iic" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S14 - Information Access Management - Access Establishment and Modification - § 164.308(a)(4)(ii)(C)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s16-security-awareness-and-training-security-reminders-164308a5iia" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S16 - Security Awareness and Training - Security Reminders - § 164.308(a)(5)(ii)(A)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s17-security-awareness-training-and-tools-protection-from-malicious-software-164308a5iib" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S17 - Security Awareness, Training, and Tools - Protection from Malicious Software - § 164.308(a)(5)(ii)(B)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s18-security-awareness-training-and-tools-log-in-monitoring-164308a5iic" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S18 - Security Awareness, Training, and Tools - Log-in Monitoring - § 164.308(a)(5)(ii)(C)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s20-security-incident-procedures-164308a6" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S20 - Security Incident Procedures - § 164.308(a)(6)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s23-contingency-plan-data-backup-plan-164308a7iia" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S23 - Contingency Plan - Data Backup Plan - § 164.308(a)(7)(ii)(A)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s24-contingency-plan-disaster-recovery-plan-164308a7iib" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S24 - Contingency Plan - Disaster Recovery Plan - § 164.308(a)(7)(ii)(B)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s26-contingency-plan-testing-and-revision-procedure-164308a7iid" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S26 - Contingency Plan - Testing and Revision Procedure - § 164.308(a)(7)(ii)(D)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s29-business-associate-contracts-and-other-arrangements-164308b1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S29 - Business Associate Contracts and Other Arrangements - § 164.308(b)(1)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s31-facility-access-controls-164310a1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S31 - Facility Access Controls - § 164.310(a)(1)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s32-facility-access-controls-contingency-operations-164310a2i" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S32 - Facility Access Controls - Contingency Operations - § 164.310(a)(2)(i)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s33-facility-access-controls-facility-security-plan-164310a2ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S33 - Facility Access Controls - Facility Security Plan - § 164.310(a)(2)(ii)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s34-facility-access-controls-access-control-and-validation-procedures-164310a2iii" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S34 - Facility Access Controls - Access Control and Validation Procedures - § 164.310(a)(2)(iii)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s35-facility-access-controls-maintain-maintenance-records-164310a2iv" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S35 - Facility Access Controls - Maintain Maintenance Records - § 164.310(a)(2)(iv)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s39-device-and-media-controls-disposal-164310d2i" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S39 - Device and Media Controls - Disposal - § 164.310(d)(2)(i)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s43-access-control-164312a1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S43 - Access Control - § 164.312(a)(1)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s44-access-control-unique-user-identification-164312a2i" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s45-access-control-emergency-access-procedure-164312a2ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S45 - Access Control - Emergency Access Procedure - § 164.312(a)(2)(ii)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s47-access-control-encryption-and-decryption-164312a2iv" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S47 - Access Control - Encryption and Decryption - § 164.312(a)(2)(iv)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s48-audit-controls-164312b" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S48 - Audit Controls - § 164.312(b)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s52-transmission-164312e1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S52 - Transmission - § 164.312(e)(1)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s53-transmission-security-integrity-controls-164312e2i" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S53 - Transmission Security - Integrity Controls - § 164.312(e)(2)(i)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s54-transmission-security-encryption-164312e2ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S54 - Transmission Security - Encryption - § 164.312(e)(2)(ii)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-hipaa-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other HIPAA Controls
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mdr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MDR (EU)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Public sector
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Public sector
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msbfs-20207/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MSBFS 2020:7 (SE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    NIS2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            NIS2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nis2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kritis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KRITIS (DE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bsi-it-grundschutz/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BSI IT-Grundschutz (DE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msbfs-20188/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MSBFS 2018:8 (SE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Industrial control systems
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            Industrial control systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../isa-iec-62443/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ISA/IEC 62443
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CISO Dashboards
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
+            <span class="md-nav__icon md-icon"></span>
+            CISO Dashboards
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audit-logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audit Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cryptography/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cryptography Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intrusion-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intrusion Detection Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../policy-as-code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Policy-as-Code Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Security Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capacity-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Capacity Management (Kubernetes Status) Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vulnerability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vulnerability Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../log-review/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log Review
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdpr-art-17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How do I comply with GDPR Art. 17 Right to erasure ("right to be forgotten")?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pdl-audit-logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How do I comply with HSLF-FS 2016:40 4 kap. 9 § Kontroll av åtkomst till uppgifter?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Contributors
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For Contributors
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributor-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architectural Decision Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tech-radar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech Radar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quality-criteria/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quality Criteria
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Release Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Release Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release Cycle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/welkin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welkin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/kubespray/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welkin Kubespray
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/capi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welkin Cluster API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/postgres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welkin PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/rabbitmq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welkin RabbitMQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welkin Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/jaeger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welkin Jaeger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/argocd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welkin Argo CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/managed-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fully Managed Welkin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/self-managed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Support for Self-Managed Welkin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/consulting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Consulting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/training/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Official Training
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/legal/privacy-policy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Privacy Policy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+  
+
+  <!-- Table of contents -->
+  
+    
+    <div
+      class="md-sidebar md-sidebar--secondary"
+      data-md-component="sidebar"
+      data-md-type="toc"
+      
+    >
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+          
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s5-security-management-process-information-system-activity-review-164308a1iid" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S5 - Security Management Process - Information System Activity Review - § 164.308(a)(1)(ii)(D)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s12-information-access-management-isolating-healthcare-clearinghouse-functions-164308a4iia" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S12 - Information Access Management - Isolating Healthcare Clearinghouse Functions - § 164.308(a)(4)(ii)(A)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s13-information-access-management-access-authorization-164308a4iib" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S13 - Information Access Management - Access Authorization - § 164.308(a)(4)(ii)(B)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s14-information-access-management-access-establishment-and-modification-164308a4iic" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S14 - Information Access Management - Access Establishment and Modification - § 164.308(a)(4)(ii)(C)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s16-security-awareness-and-training-security-reminders-164308a5iia" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S16 - Security Awareness and Training - Security Reminders - § 164.308(a)(5)(ii)(A)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s17-security-awareness-training-and-tools-protection-from-malicious-software-164308a5iib" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S17 - Security Awareness, Training, and Tools - Protection from Malicious Software - § 164.308(a)(5)(ii)(B)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s18-security-awareness-training-and-tools-log-in-monitoring-164308a5iic" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S18 - Security Awareness, Training, and Tools - Log-in Monitoring - § 164.308(a)(5)(ii)(C)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s20-security-incident-procedures-164308a6" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S20 - Security Incident Procedures - § 164.308(a)(6)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s23-contingency-plan-data-backup-plan-164308a7iia" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S23 - Contingency Plan - Data Backup Plan - § 164.308(a)(7)(ii)(A)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s24-contingency-plan-disaster-recovery-plan-164308a7iib" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S24 - Contingency Plan - Disaster Recovery Plan - § 164.308(a)(7)(ii)(B)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s26-contingency-plan-testing-and-revision-procedure-164308a7iid" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S26 - Contingency Plan - Testing and Revision Procedure - § 164.308(a)(7)(ii)(D)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s29-business-associate-contracts-and-other-arrangements-164308b1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S29 - Business Associate Contracts and Other Arrangements - § 164.308(b)(1)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s31-facility-access-controls-164310a1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S31 - Facility Access Controls - § 164.310(a)(1)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s32-facility-access-controls-contingency-operations-164310a2i" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S32 - Facility Access Controls - Contingency Operations - § 164.310(a)(2)(i)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s33-facility-access-controls-facility-security-plan-164310a2ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S33 - Facility Access Controls - Facility Security Plan - § 164.310(a)(2)(ii)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s34-facility-access-controls-access-control-and-validation-procedures-164310a2iii" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S34 - Facility Access Controls - Access Control and Validation Procedures - § 164.310(a)(2)(iii)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s35-facility-access-controls-maintain-maintenance-records-164310a2iv" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S35 - Facility Access Controls - Maintain Maintenance Records - § 164.310(a)(2)(iv)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s39-device-and-media-controls-disposal-164310d2i" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S39 - Device and Media Controls - Disposal - § 164.310(d)(2)(i)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s43-access-control-164312a1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S43 - Access Control - § 164.312(a)(1)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s44-access-control-unique-user-identification-164312a2i" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s45-access-control-emergency-access-procedure-164312a2ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S45 - Access Control - Emergency Access Procedure - § 164.312(a)(2)(ii)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s47-access-control-encryption-and-decryption-164312a2iv" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S47 - Access Control - Encryption and Decryption - § 164.312(a)(2)(iv)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s48-audit-controls-164312b" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S48 - Audit Controls - § 164.312(b)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s52-transmission-164312e1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S52 - Transmission - § 164.312(e)(1)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s53-transmission-security-integrity-controls-164312e2i" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S53 - Transmission Security - Integrity Controls - § 164.312(e)(2)(i)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-s54-transmission-security-encryption-164312e2ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA S54 - Transmission Security - Encryption - § 164.312(e)(2)(ii)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-hipaa-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other HIPAA Controls
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+
+          <br/>
+          <div><img id="sidebar-welkin-logo" src="../../../img/logos/Welkin_maskot.svg"></div>
+        </div>
+      </div>
+    </div>
+  
+
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="hipaa-controls">HIPAA Controls<a class="headerlink" href="#hipaa-controls" title="Permanent link">&para;</a></h1>
+<!--
+    Include this block only for regulations.
+    Do not include this block for Information Security Management Standards (ISMS).
+-->
+<div class="admonition danger">
+<p class="admonition-title">We are not lawyers, this is not legal advise.</p>
+<p>It is your responsibility to discover what law applies to you and how to best comply with it.
+In case of doubt, consult your Data Protection Officer (DPO) or equivalent.</p>
+</div>
+<p>Click on the links below to navigate the documentation by control.</p>
+<h2 id="hipaa-s5-security-management-process-information-system-activity-review-164308a1iid"><span class="md-tag">HIPAA S5 - Security Management Process - Information System Activity Review - § 164.308(a)(1)(ii)(D)</span><a class="headerlink" href="#hipaa-s5-security-management-process-information-system-activity-review-164308a1iid" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../log-review/">Log Review</a></li>
+</ul>
+<h2 id="hipaa-s12-information-access-management-isolating-healthcare-clearinghouse-functions-164308a4iia"><span class="md-tag">HIPAA S12 - Information Access Management - Isolating Healthcare Clearinghouse Functions - § 164.308(a)(4)(ii)(A)</span><a class="headerlink" href="#hipaa-s12-information-access-management-isolating-healthcare-clearinghouse-functions-164308a4iia" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../user-guide/how-many-environments/">How many environments?</a></li>
+</ul>
+<h2 id="hipaa-s13-information-access-management-access-authorization-164308a4iib"><span class="md-tag">HIPAA S13 - Information Access Management - Access Authorization - § 164.308(a)(4)(ii)(B)</span><a class="headerlink" href="#hipaa-s13-information-access-management-access-authorization-164308a4iib" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../operator-manual/access-control/">Access Control</a></li>
+<li><a href="../../../user-guide/delegation/">How to Delegate</a></li>
+<li><a href="../../../user-guide/demarcation/">Demarcation</a></li>
+</ul>
+<h2 id="hipaa-s14-information-access-management-access-establishment-and-modification-164308a4iic"><span class="md-tag">HIPAA S14 - Information Access Management - Access Establishment and Modification - § 164.308(a)(4)(ii)(C)</span><a class="headerlink" href="#hipaa-s14-information-access-management-access-establishment-and-modification-164308a4iic" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../operator-manual/access-control/">Access Control</a></li>
+<li><a href="../../../user-guide/delegation/">How to Delegate</a></li>
+<li><a href="../../../user-guide/demarcation/">Demarcation</a></li>
+</ul>
+<h2 id="hipaa-s16-security-awareness-and-training-security-reminders-164308a5iia"><span class="md-tag">HIPAA S16 - Security Awareness and Training - Security Reminders - § 164.308(a)(5)(ii)(A)</span><a class="headerlink" href="#hipaa-s16-security-awareness-and-training-security-reminders-164308a5iia" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../vulnerability/">Vulnerability Dashboard</a></li>
+<li><a href="../../../operator-manual/maintenance/">Maintenance</a></li>
+</ul>
+<h2 id="hipaa-s17-security-awareness-training-and-tools-protection-from-malicious-software-164308a5iib"><span class="md-tag">HIPAA S17 - Security Awareness, Training, and Tools - Protection from Malicious Software - § 164.308(a)(5)(ii)(B)</span><a class="headerlink" href="#hipaa-s17-security-awareness-training-and-tools-protection-from-malicious-software-164308a5iib" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../vulnerability/">Vulnerability Dashboard</a></li>
+<li><a href="../../../user-guide/registry/">Container registry</a></li>
+</ul>
+<h2 id="hipaa-s18-security-awareness-training-and-tools-log-in-monitoring-164308a5iic"><span class="md-tag">HIPAA S18 - Security Awareness, Training, and Tools - Log-in Monitoring - § 164.308(a)(5)(ii)(C)</span><a class="headerlink" href="#hipaa-s18-security-awareness-training-and-tools-log-in-monitoring-164308a5iic" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../audit-logs/">Audit Logs</a></li>
+<li><a href="../../log-review/">Log Review</a></li>
+</ul>
+<h2 id="hipaa-s20-security-incident-procedures-164308a6"><span class="md-tag">HIPAA S20 - Security Incident Procedures - § 164.308(a)(6)</span><a class="headerlink" href="#hipaa-s20-security-incident-procedures-164308a6" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../intrusion-detection/">Intrusion Detection Dashboard</a></li>
+</ul>
+<h2 id="hipaa-s23-contingency-plan-data-backup-plan-164308a7iia"><span class="md-tag">HIPAA S23 - Contingency Plan - Data Backup Plan - § 164.308(a)(7)(ii)(A)</span><a class="headerlink" href="#hipaa-s23-contingency-plan-data-backup-plan-164308a7iia" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../backup/">Backup Dashboard</a></li>
+<li><a href="../../../user-guide/backup/">Backups</a></li>
+</ul>
+<h2 id="hipaa-s24-contingency-plan-disaster-recovery-plan-164308a7iib"><span class="md-tag">HIPAA S24 - Contingency Plan - Disaster Recovery Plan - § 164.308(a)(7)(ii)(B)</span><a class="headerlink" href="#hipaa-s24-contingency-plan-disaster-recovery-plan-164308a7iib" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../operator-manual/disaster-recovery/">Disaster Recovery</a></li>
+</ul>
+<h2 id="hipaa-s26-contingency-plan-testing-and-revision-procedure-164308a7iid"><span class="md-tag">HIPAA S26 - Contingency Plan - Testing and Revision Procedure - § 164.308(a)(7)(ii)(D)</span><a class="headerlink" href="#hipaa-s26-contingency-plan-testing-and-revision-procedure-164308a7iid" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../user-guide/go-live/">Go-live Checklist</a></li>
+</ul>
+<h2 id="hipaa-s29-business-associate-contracts-and-other-arrangements-164308b1"><span class="md-tag">HIPAA S29 - Business Associate Contracts and Other Arrangements - § 164.308(b)(1)</span><a class="headerlink" href="#hipaa-s29-business-associate-contracts-and-other-arrangements-164308b1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../operator-manual/provider-audit/">Provider Audit</a></li>
+</ul>
+<h2 id="hipaa-s31-facility-access-controls-164310a1"><span class="md-tag">HIPAA S31 - Facility Access Controls - § 164.310(a)(1)</span><a class="headerlink" href="#hipaa-s31-facility-access-controls-164310a1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../operator-manual/provider-audit/">Provider Audit</a></li>
+</ul>
+<h2 id="hipaa-s32-facility-access-controls-contingency-operations-164310a2i"><span class="md-tag">HIPAA S32 - Facility Access Controls - Contingency Operations - § 164.310(a)(2)(i)</span><a class="headerlink" href="#hipaa-s32-facility-access-controls-contingency-operations-164310a2i" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../operator-manual/provider-audit/">Provider Audit</a></li>
+</ul>
+<h2 id="hipaa-s33-facility-access-controls-facility-security-plan-164310a2ii"><span class="md-tag">HIPAA S33 - Facility Access Controls - Facility Security Plan - § 164.310(a)(2)(ii)</span><a class="headerlink" href="#hipaa-s33-facility-access-controls-facility-security-plan-164310a2ii" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../operator-manual/provider-audit/">Provider Audit</a></li>
+</ul>
+<h2 id="hipaa-s34-facility-access-controls-access-control-and-validation-procedures-164310a2iii"><span class="md-tag">HIPAA S34 - Facility Access Controls - Access Control and Validation Procedures - § 164.310(a)(2)(iii)</span><a class="headerlink" href="#hipaa-s34-facility-access-controls-access-control-and-validation-procedures-164310a2iii" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../operator-manual/provider-audit/">Provider Audit</a></li>
+</ul>
+<h2 id="hipaa-s35-facility-access-controls-maintain-maintenance-records-164310a2iv"><span class="md-tag">HIPAA S35 - Facility Access Controls - Maintain Maintenance Records - § 164.310(a)(2)(iv)</span><a class="headerlink" href="#hipaa-s35-facility-access-controls-maintain-maintenance-records-164310a2iv" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../operator-manual/provider-audit/">Provider Audit</a></li>
+</ul>
+<h2 id="hipaa-s39-device-and-media-controls-disposal-164310d2i"><span class="md-tag">HIPAA S39 - Device and Media Controls - Disposal - § 164.310(d)(2)(i)</span><a class="headerlink" href="#hipaa-s39-device-and-media-controls-disposal-164310d2i" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../operator-manual/provider-audit/">Provider Audit</a></li>
+</ul>
+<h2 id="hipaa-s43-access-control-164312a1"><span class="md-tag">HIPAA S43 - Access Control - § 164.312(a)(1)</span><a class="headerlink" href="#hipaa-s43-access-control-164312a1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../operator-manual/access-control/">Access Control</a></li>
+<li><a href="../../../user-guide/delegation/">How to Delegate</a></li>
+<li><a href="../../../user-guide/demarcation/">Demarcation</a></li>
+</ul>
+<h2 id="hipaa-s44-access-control-unique-user-identification-164312a2i"><span class="md-tag">HIPAA S44 - Access Control - Unique User Identification - § 164.312(a)(2)(i)</span><a class="headerlink" href="#hipaa-s44-access-control-unique-user-identification-164312a2i" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../operator-manual/access-control/">Access Control</a></li>
+<li><a href="../../../operator-manual/credentials/">Use of Credentials</a></li>
+<li><a href="../../../user-guide/ci-cd/">CI/CD</a></li>
+<li><a href="../../../user-guide/delegation/">How to Delegate</a></li>
+<li><a href="../../../user-guide/kubernetes-api/">Kubernetes API</a></li>
+</ul>
+<h2 id="hipaa-s45-access-control-emergency-access-procedure-164312a2ii"><span class="md-tag">HIPAA S45 - Access Control - Emergency Access Procedure - § 164.312(a)(2)(ii)</span><a class="headerlink" href="#hipaa-s45-access-control-emergency-access-procedure-164312a2ii" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../operator-manual/break-glass/">Breaking the Glass</a></li>
+</ul>
+<h2 id="hipaa-s47-access-control-encryption-and-decryption-164312a2iv"><span class="md-tag">HIPAA S47 - Access Control - Encryption and Decryption - § 164.312(a)(2)(iv)</span><a class="headerlink" href="#hipaa-s47-access-control-encryption-and-decryption-164312a2iv" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../operator-manual/cryptography/">Use of Cryptography</a></li>
+<li><a href="../../../operator-manual/provider-audit/">Provider Audit</a></li>
+<li><a href="../../../user-guide/faq/">FAQ</a></li>
+</ul>
+<h2 id="hipaa-s48-audit-controls-164312b"><span class="md-tag">HIPAA S48 - Audit Controls - § 164.312(b)</span><a class="headerlink" href="#hipaa-s48-audit-controls-164312b" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../audit-logs/">Audit Logs</a></li>
+<li><a href="../../../user-guide/long-term-log-retention/">Long-term Log Retention</a></li>
+</ul>
+<h2 id="hipaa-s52-transmission-164312e1"><span class="md-tag">HIPAA S52 - Transmission - § 164.312(e)(1)</span><a class="headerlink" href="#hipaa-s52-transmission-164312e1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../user-guide/network-model/">Network Model</a></li>
+</ul>
+<h2 id="hipaa-s53-transmission-security-integrity-controls-164312e2i"><span class="md-tag">HIPAA S53 - Transmission Security - Integrity Controls - § 164.312(e)(2)(i)</span><a class="headerlink" href="#hipaa-s53-transmission-security-integrity-controls-164312e2i" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../user-guide/network-model/">Network Model</a></li>
+</ul>
+<h2 id="hipaa-s54-transmission-security-encryption-164312e2ii"><span class="md-tag">HIPAA S54 - Transmission Security - Encryption - § 164.312(e)(2)(ii)</span><a class="headerlink" href="#hipaa-s54-transmission-security-encryption-164312e2ii" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../user-guide/network-model/">Network Model</a></li>
+</ul>
+<h2 id="other-hipaa-controls">Other HIPAA Controls<a class="headerlink" href="#other-hipaa-controls" title="Permanent link">&para;</a></h2>
+<p>HIPAA controls are taken from these documents:</p>
+<ul>
+<li><a href="https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/securityrule/adminsafeguards.pdf">HIPAA Security Series - Security Standards: Administrative Safeguards</a></li>
+<li><a href="https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/securityrule/physsafeguards.pdf">HIPAA Security Series - Security Standards: Physical Safeguards</a></li>
+<li><a href="https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/securityrule/techsafeguards.pdf">HIPAA Security Series - Security Standards: Technical Safeguards</a></li>
+</ul>
+<p>The following controls are outside the scope of Welkin and <strong>need to be implemented by the organization operating Welkin</strong>. ISO-27001-certified Welkin operators, such as <a href="https://elastisys.com">Elastisys</a> already have the right processes in place.</p>
+<ul>
+<li>S1 - Security Management Process - § 164.308(a)(1)</li>
+<li>S2 - Security Management Process - Risk Analysis - § 164.308(a)(1)(ii)(A)</li>
+<li>S3 - Security Management Process - Risk Management - § 164.308(a)(1)(ii)(B)</li>
+<li>S4 - Security Management Process - Sanction Policy - § 164.308(a)(1)(ii)(C)</li>
+<li>S6 - Assigned Security Responsibility - § 164.308(a)(2)</li>
+<li>S7 - Workforce Security - § 164.308(a)(3)</li>
+<li>S8 - Workforce security - Authorization and/or Supervision - § 164.308(a)(3)(ii)(A)</li>
+<li>S9 - Workforce security - Workforce Clearance Procedure - § 164.308(a)(3)(ii)(B)</li>
+<li>S10 - Workforce security - Establish Termination Procedures - § 164.308(a)(3)(ii)(C)</li>
+<li>S11 - Information Access Management - § 164.308(a)(4)</li>
+<li>S15 - Security Awareness and Training - § 164.308(a)(5)</li>
+<li>S19 - Security Awareness, Training, and Tools - Password Management - § 164.308(a)(5)(ii)(D)</li>
+<li>S21 - Security Incident Procedures - Response and Reporting - § 164.308(a)(6)</li>
+<li>S22 - Contingency Plan - § 164.308(a)(7)</li>
+<li>S25 - Contingency Plan - Emergency Mode Operation Plan - § 164.308(a)(7)(ii)(C)</li>
+<li>S27 - Contingency Plan - Application and Data Criticality Analysis - § 164.308(a)(7)(ii)(E)</li>
+<li>S28 - Evaluation - § 164.308(a)(8)</li>
+<li>S30 - Business Associate Contracts and Other Arrangements - Written Contract or Other Arrangement - § 164.308(b)(4)</li>
+<li>S36 - Workstation Use - § 164.310(b)</li>
+<li>S37 - Workstation Security - § 164.310(c)</li>
+<li>S38 - Device and Media Controls - § 164.310(d)(1)</li>
+<li>S40 - Device and Media Controls - Media Re-use - § 164.310(d)(2)(ii)</li>
+<li>S41 - Device and Media Controls - Accountability - § 164.310(d)(2)(iii)</li>
+<li>S42 - Device and Media Controls - Data Backup and Storage Procedures - § 164.310(d)(2)(iv)</li>
+<li>S46 - Access Control - Automatic Logoff - § 164.312(a)(2)(iii)</li>
+</ul>
+<p>!!!important</p>
+<div class="highlight"><pre><span></span><code>  Welkin API access is configured so as to require a new OpenID flow every 12 hours.
+</code></pre></div>
+<ul>
+<li>S49 - Integrity - § 164.312(c)(1)</li>
+<li>S50 - Integrity - Mechanism to Authenticate ePHI - § 164.312(c)(2)</li>
+<li>S51 - Person or Entity Authentication - § 164.312(d)</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by <a href="https://github.com/elastisys/welkin/issues/new/choose" target="_blank">filing an issue</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../hslf-fs-201640/" class="md-footer__link md-footer__link--prev" aria-label="Previous: HSLF-FS 2016:40 (SE)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                HSLF-FS 2016:40 (SE)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../mdr/" class="md-footer__link md-footer__link--next" aria-label="Next: MDR (EU)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                MDR (EU)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Elastisys AB <br/> Elastisys has the following registered trademarks in Europe and/or other countries: Elastisys Welkin®. <br/> Elastisys has registrations pending or trademarks in use for the following marks in Europe and/or other countries: the Welkin logo and Welkin mascot. <br/> The Linux Foundation has the following registered trademarks in the United States and/or other countries: Certified Kubernetes®, containerd®, fluentd®, Helm®, Istio®, K8s®, Kubernetes®, Prometheus®, PromQL®, Rook®, The Linux Foundation®. <br/> The Linux Foundation has registrations pending or trademarks in use for the following marks in the United States and/or other countries: Argo™, CoreDNS™, Falco™, Harbor™, Jaeger™, Linux Foundation™, OpenTelemetry™, OpenTracing™, Open Policy Agent™, Tekton™, Thanos™. <br/> Postgres and PostgreSQL and the Elephant Logo (Slonik) are all registered trademarks of the PostgreSQL Community Association of Canada. <br/> Redis is a trademark of Redis Ltd. Any rights therein are reserved to Redis Ltd. Any use by the Welkin project is for referential purposes only and does not indicate any sponsorship, endorsement or affiliation between Redis and Welkin project. <br/> RabbitMQ is a trademark of VMware, Inc. in the U.S. and other countries. <br/> TimescaleDB and the EON mascot are trademarks of <a href="https://www.timescale.com/">Timescale, Inc.</a> <br/> FerretDB® is a registered trademark of FerretDB, Inc. FerretDB Inc. is not affiliated, associated, authorized, endorsed by, or in any way officially connected with MongoDB Inc., or any of its subsidiaries or its affiliates. <br/> MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc. <br/> Keycloak™ is a trademark of Red Hat Inc. <br/> OpenSearch is a registered trademark of Amazon Web Services. <br/> NGINX is a registered trademark of F5 Inc.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.top"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../javascripts/feedback.js"></script>
+      
+    
+  </body>
+</html>

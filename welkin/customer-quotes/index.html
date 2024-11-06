@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<!--
+  Yup, we are loading 228 KiB of CSS and 79 KiB of JS just to get a carousel.
+  Do I like it? No.
+  But let's be honest.
+  We have zero front-end developers at Elastisys, so any custom CSS and JS will
+  quickly become unmaintainable. Better stick to something battle-tested.
+-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elastisys Customer Quotes</title>
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data:;
+    connect-src 'self' https://matomo.elastisys.com/;
+    script-src 'self' 'unsafe-inline' https://matomo.elastisys.com/;
+  ">
+  <link href="bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link href="branding.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="customerQuotesCarousel"
+  class="carousel slide"
+  data-bs-ride="carousel"
+  data-bs-theme="dark"
+>
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#customerQuotesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#customerQuotesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#customerQuotesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <blockquote class="blockquote">
+        <p class="mb-0">
+          It is extremely valuable for us to have Elastisys support and help/advice available at (almost) all times! Always having an expert at hand that can give us directions on how to manage our K8s resources has been amazing. When we run into issues, we simply send a Slack message and after a couple of minutes we have a pointer that usually helps us accomplish what we need.
+        </p>
+        <footer class="blockquote-footer">
+          <span class="name">Sonja Petrović Lundberg</span>
+          <span class="title">CTO @ Elsa Science</span>
+        </footer>
+      </blockquote>
+    </div>
+    <div class="carousel-item">
+      <blockquote class="blockquote">
+        <p class="mb-0">
+           Elastisys is an important, strategic partner that gives us a flexible, robust and secure platform that makes it possible for us to scale as we grow. Having access to Elastisys' experts is a huge asset.
+        </p>
+        <footer class="blockquote-footer">
+          <span class="name">Niclas Hugosson</span>
+          <span class="title">CTO @ Carasent</span>
+        </footer>
+      </blockquote>
+    </div>
+    <div class="carousel-item">
+      <blockquote class="blockquote">
+        <p class="mb-0">
+          The safety of having an on-going dialogue with your service provider and getting help whenever you need to is in-valuable.
+        </p>
+        <footer class="blockquote-footer">
+          <span class="name">Joel Hörnqvist</span>
+          <span class="title">CEO @ Tempus</span>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#customerQuotesCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#customerQuotesCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<script src="bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
