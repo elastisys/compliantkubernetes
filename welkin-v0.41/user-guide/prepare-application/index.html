@@ -1,0 +1,4929 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How to prepare your application for Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.">
+      
+      
+        <meta name="author" content="Elastisys AB">
+      
+      
+        <link rel="canonical" href="https://elastisys.io/compliantkubernetes/user-guide/prepare-application/">
+      
+      
+        <link rel="prev" href="../operate/">
+      
+      
+        <link rel="next" href="../prepare-idp/">
+      
+      
+      <link rel="icon" href="https://elastisys.io/compliantkubernetes/img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>Prepare Your Application - Elastisys Compliant Kubernetes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/branding.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://matomo.elastisys.com/js/container_fGrcdd2P.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Prepare Your Application - Elastisys Compliant Kubernetes" >
+      
+        <meta  property="og:description"  content="How to prepare your application for Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution." >
+      
+        <meta  property="og:image"  content="https://elastisys.io/compliantkubernetes/assets/images/social/user-guide/prepare-application.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://elastisys.io/compliantkubernetes/user-guide/prepare-application/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Prepare Your Application - Elastisys Compliant Kubernetes" >
+      
+        <meta  name="twitter:description"  content="How to prepare your application for Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution." >
+      
+        <meta  name="twitter:image"  content="https://elastisys.io/compliantkubernetes/assets/images/social/user-guide/prepare-application.png" >
+      
+    
+    
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data:;
+  connect-src 'self' https://matomo.elastisys.com/;
+  script-src 'self' 'unsafe-inline' https://matomo.elastisys.com/;
+">
+
+<!-- Disable localStorage, sessionStorage and cookies -->
+<script>
+if (window.localStorage) {
+  window.localStorage.setItem = function() { };
+  window.localStorage.clear();
+}
+if (window.sessionStorage) {
+  window.sessionStorage.setItem = function() { }
+  window.sessionStorage.clear();
+}
+if(!document.__defineGetter__) {
+  Object.defineProperty(document, 'cookie', {
+    get: function(){return ''},
+    set: function(){return true},
+  });
+} else {
+  document.__defineGetter__("cookie", function() { return '';} );
+  document.__defineSetter__("cookie", function() {} );
+}
+</script>
+
+<!-- See https://realfavicongenerator.net -->
+<link rel="apple-touch-icon" sizes="180x180" href="https://elastisys.io/compliantkubernetes/img/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="https://elastisys.io/compliantkubernetes/img/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="https://elastisys.io/compliantkubernetes/img/favicon-16x16.png?v=1">
+<link rel="manifest" href="https://elastisys.io/compliantkubernetes/img/site.webmanifest?v=1">
+<link rel="mask-icon" href="https://elastisys.io/compliantkubernetes/img/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="https://elastisys.io/compliantkubernetes/img/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="msapplication-config" content="https://elastisys.io/compliantkubernetes/img/browserconfig.xml?v=1">
+<meta name="theme-color" content="#ffffff">
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="elastisys" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#prepare-your-application" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Elastisys Compliant Kubernetes" class="md-header__button md-logo" aria-label="Elastisys Compliant Kubernetes" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Elastisys Compliant Kubernetes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Prepare Your Application
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+
+<ul class="header-links">
+  <li>
+    <a href="https://github.com/elastisys/compliantkubernetes/">
+      <img width="25px" src="../../img/git-alt.svg" alt="Git logo" />
+    </a>
+  </li>
+  <li><a href="https://elastisys.com/" class="menu-callout">Try out Managed<br/>Compliant Kubernetes</a></li>
+</ul>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Elastisys Compliant Kubernetes" class="md-nav__button md-logo" aria-label="Elastisys Compliant Kubernetes" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Elastisys Compliant Kubernetes
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+<ul class="header-links">
+  <li>
+    <a href="https://github.com/elastisys/compliantkubernetes/">
+      <img width="25px" src="../../img/git-alt.svg" alt="Git logo" />
+    </a>
+  </li>
+  <li><a href="https://elastisys.com/" class="menu-callout">Try out Managed<br/>Compliant Kubernetes</a></li>
+</ul>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mission-and-vision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mission and Vision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Application Developers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            For Application Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prepare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 1: Prepare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 2: Deploy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../operate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 3: Operate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Go Deeper
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Go Deeper
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Prepare Your Application
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Prepare Your Application
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#make-sure-your-application-can-terminate-gracefully" class="md-nav__link">
+    <span class="md-ellipsis">
+      Make Sure Your Application Can Terminate Gracefully
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-sure-your-application-tolerates-nodes-replacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Make Sure Your Application Tolerates Nodes Replacement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further reading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-of-non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      List of Non-Functional Requirements
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prepare-idp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prepare Your Identity Provider (IdP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../registry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container registry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../continous-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Continuous Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-ui/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes UI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../log-based-alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log-based Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../long-term-log-retention/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Long-term Log Retention
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metric Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maintenance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maintenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ci-cd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demarcation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Demarcation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../delegation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Delegate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-many-environments/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How many environments?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cluster-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cluster API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Safeguards
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Safeguards
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safeguards/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safeguards/enforce-no-root/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce No Root
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safeguards/enforce-podsecuritypolicies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Restricted Privileges
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safeguards/enforce-networkpolicies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce NetworkPolicies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safeguards/enforce-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safeguards/enforce-trusted-registries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Trusted Registries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safeguards/enforce-no-latest-tag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce No Latest Tag
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safeguards/enforce-job-ttl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Job TTL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safeguards/enforce-no-load-balancer-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce No LoadBalancer Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safeguards/enforce-minimum-replicas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Minimum Replicas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safeguards/default-pod-topology-spread-constraints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Default Pod Topology Spread Constraints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Additional Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Additional Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional-services/postgresql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional-services/timescaledb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TimescaleDB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional-services/redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional-services/rabbitmq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RabbitMQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional-services/jaeger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jaeger (preview)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional-services/argocd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Argo CD (preview)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Self-Managed Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Self-Managed Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-managed-services/ferretdb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FerretDB (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-managed-services/keycloak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keycloak (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-managed-services/jupyterhub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JupyterHub (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-managed-services/sealedsecrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SealedSecrets (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-managed-services/mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-managed-services/sjunet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sjunet (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-managed-services/flux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flux (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-managed-services/kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../go-live/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go-live Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Platform Administrators
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            For Platform Administrators
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/provider-audit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Provider Audit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/on-prem-standard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standard Template for on-prem Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/air-gapped/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Air-gapped Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Advanced Configuration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/configure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/cluster-sizing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sizing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/ingress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ingress
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/access-control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/opensearch-mappings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenSearch Mappings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/user-alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/user-managed-crds/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Managed CRDs (preview)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/disaster-recovery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Disaster Recovery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/break-glass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Breaking the Glass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/cryptography/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use of Cryptography
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/credentials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use of Credentials
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/capacity-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Capacity Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/clock-synchronization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clock Synchronization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/maintenance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maintenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/clean-up/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clean Up
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/additional-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Additional Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_18" id="__nav_4_18_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Configuration Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_18">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/schema/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operator-manual/schema/secrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secrets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For CISOs and DPOs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            For CISOs and DPOs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/gdpr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GDPR (EU)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/iso-27001/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ISO 27001 (EU)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/nist-sp-800-171/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NIST SP 800-171
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Information Security
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Information Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/information-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/information-security/dod-enterprise-devsecops-reference-design-kubernetes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DoD Enterprise DevSecOps Reference Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Healthcare
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Healthcare
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/hslf-fs-201640/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HSLF-FS 2016:40 (SE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/hipaa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HIPAA (US)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/mdr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MDR (EU)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Public sector
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Public sector
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/msbfs-20207/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MSBFS 2020:7 (SE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    NIS2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            NIS2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/nis2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/kritis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KRITIS (DE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/bsi-it-grundschutz/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BSI IT-Grundschutz (DE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/msbfs-20188/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MSBFS 2018:8 (SE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Industrial control systems
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            Industrial control systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/isa-iec-62443/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ISA/IEC 62443
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CISO Dashboards
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
+            <span class="md-nav__icon md-icon"></span>
+            CISO Dashboards
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/audit-logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audit Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/cryptography/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cryptography Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/intrusion-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intrusion Detection Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/policy-as-code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Policy-as-Code Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/network-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Security Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/capacity-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Capacity Management (Kubernetes Status) Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/vulnerability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vulnerability Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/log-review/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log Review
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/gdpr-art-17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How do I comply with GDPR Art. 17 Right to erasure ("right to be forgotten")?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/pdl-audit-logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How do I comply with HSLF-FS 2016:40 4 kap. 9 § Kontroll av åtkomst till uppgifter?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Contributors
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For Contributors
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributor-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architectural Decision Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tech-radar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech Radar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quality-criteria/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quality Criteria
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Release Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Release Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release Cycle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/ck8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compliant Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/kubespray/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Kubespray
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/capi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Cluster API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/postgres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/rabbitmq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S RabbitMQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/jaeger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Jaeger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/argocd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Argo CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/managed-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fully Managed Compliant Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/self-managed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Support for Self-Managed Compliant Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/consulting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Consulting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/training/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Official Training
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/legal/privacy-policy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Privacy Policy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#make-sure-your-application-can-terminate-gracefully" class="md-nav__link">
+    <span class="md-ellipsis">
+      Make Sure Your Application Can Terminate Gracefully
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-sure-your-application-tolerates-nodes-replacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Make Sure Your Application Tolerates Nodes Replacement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further reading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-of-non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      List of Non-Functional Requirements
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../ciso-guide/controls/iso-27001/#iso-27001-a1261-management-of-technical-vulnerabilities" class="md-tag">ISO 27001 A.12.6.1 Management of Technical Vulnerabilities</a>
+    
+  
+    
+    
+    
+      <a href="../../ciso-guide/controls/bsi-it-grundschutz/#bsi-it-grundschutz-app44a21" class="md-tag">BSI IT-Grundschutz APP.4.4.A21</a>
+    
+  
+</nav>
+
+
+  
+  
+
+
+<h1 id="prepare-your-application">Prepare Your Application<a class="headerlink" href="#prepare-your-application" title="Permanent link">&para;</a></h1>
+<!--user-demo-overview-start-->
+
+<p>To make the most out of Compliant Kubernetes, prepare your application so it features:</p>
+<ul>
+<li>some REST endpoints: <a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L38">NodeJS</a>, <a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Program.cs#L19">.NET</a>;</li>
+<li>structured logging: <a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L18">NodeJS</a>, <a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Program.cs#L45">.NET</a>;</li>
+<li>metrics endpoint: <a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/app.js#L34">NodeJS</a>, <a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Program.cs#L44">.NET</a>;</li>
+<li>Dockerfile, which showcases:<ul>
+<li>How to run as non-root: <a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/Dockerfile#L10-L13">NodeJS</a>, <a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo-dotnet/Dockerfile#L17">.NET</a>;</li>
+</ul>
+</li>
+<li><a href="https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/deploy/ck8s-user-demo">Helm Chart</a>, which showcases:<ul>
+<li><a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L37-L40">HTTPS Ingresses</a>;</li>
+<li><a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/servicemonitor.yaml">ServiceMonitor for metrics collection</a>;</li>
+<li><a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/prometheusrule.yaml">PrometheusRule for alerting</a>;</li>
+<li><a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L76-L82">topologySpreadConstraints for tolerating single Node or single Zone failure</a>;</li>
+<li><a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L42-L51">resources for capacity management</a>;</li>
+<li><a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L83-L94">NetworkPolicies for network segmentation</a>;</li>
+</ul>
+</li>
+<li><a href="https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/deploy/ck8s-user-demo/dashboards">Grafana dashboards for metrics visualization</a>;</li>
+<li><a href="https://github.com/elastisys/compliantkubernetes/tree/main/user-demo/scripts">script for local development and testing</a>;</li>
+</ul>
+<p>Bonus:</p>
+<ul>
+<li><a href="https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/routes/crash.js">ability to make it crash</a> (<code>/crash</code>).</li>
+</ul>
+<p>Feel free to clone our user demo for inspiration:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/elastisys/compliantkubernetes/
+<span class="nb">cd</span><span class="w"> </span>compliantkubernetes/user-demo
+</code></pre></div>
+<h2 id="make-sure-your-application-can-terminate-gracefully">Make Sure Your Application Can Terminate Gracefully<a class="headerlink" href="#make-sure-your-application-can-terminate-gracefully" title="Permanent link">&para;</a></h2>
+<p>In Kubernetes Pods and their Containers will sometimes be terminated.
+The cause can differ a lot, everything from you updating your application to a new version, to a Node being replaced or the Node running out of memory.
+Regardless of the cause, your application needs to be able to handle terminations unexpectedly.</p>
+<p>When a Pod termination is started there is usually a grace period where the Pod can clean up and then shut down gracefully.
+This grace period is usually 30 seconds, but can sometimes differ.
+If the Pod is not done shutting down at the end of this period, then it will be forcefully shut down.
+This process usually looks something like this:</p>
+<ol>
+<li>Something triggers the Pod termination</li>
+<li>Any <code>preStop</code> <a href="https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/">hooks</a> in the Pod are triggered.</li>
+<li>TERM signal is sent to each Container in the Pod.</li>
+<li>If the <code>preStop</code> hook or the Pod has not terminated gracefully within the grace period, then the KILL signal is sent to all processes in the Pod.</li>
+</ol>
+<p>Your application might need to do some cleanup before terminating, like finishing transactions, closing connections, writing data to disk, etc.
+If that is the case, then you have two options to utilize the grace period before the Pod is forcefully terminated.
+You can utilize the <code>preStop</code> hook to start a script in a container or it can make a HTTP call to a container.
+You can have one <code>preStop</code> hook per Container in your Pod.
+You can also utilize the TERM signal that is sent to the containers by catching them in you application and having that trigger a graceful shutdown.
+You can both have <code>preStop</code> hooks and catch the TERM signal for the same container.</p>
+<p>You can read more about the Pod termination process in the <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination">official Kubernetes documentation</a>.</p>
+<h2 id="make-sure-your-application-tolerates-nodes-replacement">Make Sure Your Application Tolerates Nodes Replacement<a class="headerlink" href="#make-sure-your-application-tolerates-nodes-replacement" title="Permanent link">&para;</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This section helps you implement ISO 27001, specifically:</p>
+<ul>
+<li>A.12.6.1 Management of Technical Vulnerabilities</li>
+</ul>
+</div>
+<p>Compliant Kubernetes recommends <strong>against</strong> <a href="https://kubernetes.io/docs/tasks/run-application/configure-pdb/">PodDisruptionBudgets (PDBs)</a>.
+PDBs can easily be misconfigured to block draining Nodes, which interferes with automatic OS patching and compromises the security posture of the environment.
+Instead, prefer engineering your application to deal with disruptions.
+The user demo already showcases how to achieve this with replication and topologySpreadConstraints.
+Make sure to move state, even soft state, to <a href="../additional-services/">specialized services</a>.</p>
+<h2 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/pods/disruptions/#dealing-with-disruptions">Dealing with Disruptions</a></li>
+</ul>
+<!--user-demo-overview-end-->
+
+<h2 id="list-of-non-functional-requirements">List of Non-Functional Requirements<a class="headerlink" href="#list-of-non-functional-requirements" title="Permanent link">&para;</a></h2>
+<p>In some contexts, it is useful to have a more-or-less exhaustive list of <a href="https://en.wikipedia.org/wiki/Non-functional_requirement">non-functional requirements</a> which the application needs to fulfill to make the best use of the underlying platform.
+Sometimes, these may loosely be called "IT requirements".</p>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="https://datatracker.ietf.org/doc/html/rfc2119">RFC 2119</a>.</p>
+<!--
+This document was generated from an internal document using the
+`./scripts/requirements-tsv-to-table.py` script.
+-->
+<table>
+<tr>
+<th scope="col">Code</th>
+<th scope="col">Requirement</th>
+<th scope="col">
+    Justification for exclusion
+    <br>OR<br>
+    Evidence
+    <br>OR<br>
+    Comment
+</th>
+</tr>
+
+<tr>
+<th scope="col">R1</td>
+<th scope="col">
+    Architectural requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R1.1</td>
+<td>
+    Application components MUST be loosely coupled. Data sharing MUST happen exclusively via versioned APIs.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to scale. Each application developer only needs to work within a bounded context, reducing cognitive load.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R1.2</td>
+<td>
+    The application MUST use separate containers for synchronous API requests and running asynchronous batch jobs.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application to make better use of resources and better tolerate failures. Being more exposed, synchronous code needs to be better tested and more secure than it's asynchronous counterpart. Furthermore, the asynchronous code may be managed by a queue to better handle spikes in work. The synchronous code can then focus on quick response times and good interaction with the user, without having to block for things such as sending a confirmation email.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R1.3</td>
+<td>
+    The application SHOULD crash if a fatal condition is encountered, such as bad configuration or inability to connect to a downstream service.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows Kubernetes to stop a rolling update before end-user traffic is impacted.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R2</td>
+<th scope="col">
+    API requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R2.1</td>
+<td>
+    The application SHOULD accept inbound requests using the RESTful API.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application to take advantage of the Ingress Controller for improved security via HTTPS, HSTS, IP allowlisting, rate-limiting, etc.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R2.2</td>
+<td>
+    All application APIs, internally and externally facing, synchronous (i.e. REST) and asynchronous (i.e. messages) MUST be versioned, and components MUST be able to process old API calls for as long as there are producers of these calls in production.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows each application component to be release independently with zero downtime via a rolling update strategy.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R2.3</td>
+<td>
+    The application MUST validate all incoming API requests as well as responses to outgoing API requests.
+    <details>
+        <summary>Why is this important?</summary>
+        This is good security hygiene.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R2.4</td>
+<td>
+    If the application has asynchronous parts, then the application MUST use the message queue provided by the platform for communicating between its synchronous and asynchronous parts.
+    <details>
+        <summary>Why is this important?</summary>
+        The platform team will have put a lot of effort into making sure that the message queue is fault-tolerant. The application team can build upon this to improve application fault-tolerance, as opposed to reinventing the wheel.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R2.5</td>
+<td>
+    The asynchronous components in the application that consume messages MUST be compatible with old message formats until no producers of the old message format remain deployed.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application to employ rolling update between components which communicate via the message queue.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R2.6</td>
+<td>
+    The application MUST set reasonable TTL for all messages sent via the platform-provide message queue.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensures that messages don't accumulate in the message queue in case of application bugs, potentially leading to capacity issues. In best case, such capacity issues lead to unnecessary costs. In worst case, such capacity issues can lead to new messages not being accepted and application malfunctioning.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R2.7</td>
+<td>
+    The application MUST gracefully handle connection resets (e.g., due to fail-over) of downstream components.
+    <details>
+        <summary>Why is this important?</summary>
+        Sometimes the platform team needs to migrate Pods from one Node to another, e.g., for maintenance. The application component consuming a Pod which moved needs to tolerate this.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R3</td>
+<th scope="col">
+    State management requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R3.1</td>
+<th scope="col">
+    Database requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.1.1</td>
+<td>
+    The application MUST store structured state in an PostgreSQL-compatible database provided by the platform.
+    <details>
+        <summary>Why is this important?</summary>
+        The platform team will have invested a lot of effort in making sure that the database is fault-tolerant, backed up, etc. Instead of reinventing the wheel, the application team can build upon this.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.1.2</td>
+<td>
+    The application MUST perform database migration in a backwards-compatible manner.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to rollback a buggy application. Despite best QA, some bugs may only manifest with production data and real users.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.1.3</td>
+<td>
+    The application MUST have a plan for rolling back changes, including dealing with database migrations.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to rollback a buggy application. Despite best QA, some bugs may only manifest with production data and real users.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.1.4</td>
+<td>
+    The application MAY perform database migration in a Kubernetes init container.
+    <details>
+        <summary>Why is this important?</summary>
+        Database migration may take a long time. It's better to separate this from the container which is providing the actual service.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R3.2</td>
+<th scope="col">
+    Non-persistant state requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.2.1</td>
+<td>
+    The application MUST store non-persistant data, such as session information and cache, in the Redis-compatible key-value store provided by the platform.
+    <details>
+        <summary>Why is this important?</summary>
+        The platform team will have invested a lot of effort in making the key-value store fault-tolerant. By moving session state into the key-value store, each application replica is equal. No sticky load-balancing is needed and rolling updates are possible without disturbing the end-user.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.2.2</td>
+<td>
+    The application MUST set reasonable TTL for all key-value pairs.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensures that the key-value store does not get filled with keys which are no longer in use, e.g., due to lack of cleanup or application crash.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.2.3</td>
+<td>
+    The application MUST gracefully tolerate loss of non-persistant data, e.g., ask the user to re-login.
+    <details>
+        <summary>Why is this important?</summary>
+        This is really a test for "is this session data"?
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.2.4</td>
+<td>
+    The application SHOULD use the Redis Sentinel protocol to facilitate a highly available key-value store.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensure the application can take advantage of the fault-tolerant key-value store provided by the platform.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R3.3</td>
+<th scope="col">
+    Object storage requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R3.3.1</td>
+<td>
+    The application MUST store large and/or unstructured data, like images, videos and PDF reports, in an S3-compatible object storage provided by the platform.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensures the application is stateless. This in turn means that the application can be updated at will, without needing to implement a complicated data replication protocol.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R4</td>
+<th scope="col">
+    Configuration management requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R4.1</td>
+<td>
+    The application MUST accept configuration only via clearly documented configuration files and environment variables.
+    <details>
+        <summary>Why is this important?</summary>
+        This is good practice. It allows a container image to be built once and configured in many different ways.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R4.2</td>
+<td>
+    The application MUST separate secret from non-secret configuration information. Examples of secret configuration includes API keys and database access password.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows tighter access control around secret configuration via Kubernetes RBAC.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R5</td>
+<th scope="col">
+    Observability requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R5.1</td>
+<th scope="col">
+    Observability requirements (metrics)
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.1.1</td>
+<td>
+    The application SHOULD provide a metrics endpoint exposing application metrics in Prometheus Exposition format.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application to take advantage of the observability stack provided by the platform.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.1.2</td>
+<td>
+    The metrics provided by the application SHOULD allow the application team to understand if it functions correctly.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to close the DevOps loop and understand how their code runs in production.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.1.3</td>
+<td>
+    The application SHOULD provide alerting rules based on threshold on metrics.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to discover issues with the application in production, before they are noticed by end-users.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.1.4</td>
+<td>
+    The application SHOULD provide metrics to understand if its deprecated APIs are still in use.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to safely remove deprecated APIs, reducing technical debt without fear of disappointing end-users.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R5.2</td>
+<th scope="col">
+    Observability requirements (logs)
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.2.1</td>
+<td>
+    The application MUST produce structured logs in multi-line JSON format on stdout.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application to take advantage of the observability stack provided by the platform.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.2.2</td>
+<td>
+    The application MUST log exceptions and errors.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to understand if something is malfunctioning with their application in production and issue bugfixes.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.2.3</td>
+<td>
+    The application SHOULD log all major boundary events, e.g., incoming and outgoing API requests.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to understand how their application is working in production.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.2.4</td>
+<td>
+    The application MUST mark each log record with the relevant log level, e.g., debug, info, warn, error, exception.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to filter log records based on importance and direct their attention to where it is needed.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R5.3</td>
+<th scope="col">
+    Observability requirements (tracing)
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.3.1</td>
+<td>
+    The application SHOULD push traces to an endpoint provided by the platform using the OpenTelemetry standard.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team the finest possible observability of their application. They could, for example, determine which particular function is slow in some hard-to-replicate conditions, paving the path to a bugfix.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R5.4</td>
+<th scope="col">
+    Observability requirements (probes)
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.4.1</td>
+<td>
+    The application MUST provide startup, readiness and liveliness probes, as relevant to the application component.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows Kubernetes to understand if the container of the application is running proparly and issue corrective actions, such as directing traffic to a different replica or restarting the container.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.4.2</td>
+<td>
+    The application MUST fail its startup probe during database migration.
+    <details>
+        <summary>Why is this important?</summary>
+        If application initialization takes a long time, then a startup probe allows the application team to specify a different timeout for that phase.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.4.3</td>
+<td>
+    The application SHOULD fail its readiness probe if a downstream service is unavailable.
+    <details>
+        <summary>Why is this important?</summary>
+        This is readiness probe best practice. If the application cannot deliver a useful service, it should make this clear to the outside world to allow Kubernetes to take corrective actions.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R5.4.4</td>
+<td>
+    The application MUST handle SIGTERM by failing its readiness probe, draining connections and exiting gracefully.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows "hitless" rolling updates.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R6</td>
+<th scope="col">
+    Build requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R6.1</td>
+<td>
+    The application MUST be containerized according to the OCI standard.
+    <details>
+        <summary>Why is this important?</summary>
+        This is pretty much a given nowadays, but is specified just to make sure.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R6.2</td>
+<td>
+    The application MUST run on linux/amd64 OCI platform.
+    <details>
+        <summary>Why is this important?</summary>
+        Compliant Kubernetes only supports Linux Nodes.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R6.3</td>
+<td>
+    The application MUST run as non-root.
+    <details>
+        <summary>Why is this important?</summary>
+        This is a security safeguard provided with Compliant Kubernetes. It improves security by ensuring that the application runs according to the least privilege principle.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R7</td>
+<th scope="col">
+    Deployment requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R7.1</td>
+<td>
+    Applications consisting of multiple components SHOULD be packaged in a versioned way (e.g., via Helm Chart).
+    <details>
+        <summary>Why is this important?</summary>
+        This ensure that the application is tested and deployed as a whole.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R7.2</td>
+<td>
+    The application SHOULD scale horizontally, i.e., its throughput should increase as more replicas are added.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensure that the application can handle load spikes in a cost-efficient manner.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R7.3</td>
+<td>
+    The application MUST specify resource requests and limits for CPU and memory, and make suitable runtime configuration.
+    <details>
+        <summary>Why is this important?</summary>
+        This is a security safeguard provided with Compliant Kubernetes. It enforces good capacity management practices and reduces the risk of downtime due to capacity exhaustion.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R7.4</td>
+<td>
+    The application MUST adhere to the principle of least privilege in terms of network communication, and have the strictest possible set of firewall rules (i.e. Kubernetes Network Policies) in place.
+    <details>
+        <summary>Why is this important?</summary>
+        This is a security safeguard provided with Compliant Kubernetes. Good NetworkPolicies reduce the success of exploiting some vulnerabilities.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R7.5</td>
+<td>
+    The application SHOULD use a Blue/Green or Canary deployment strategy.
+    <details>
+        <summary>Why is this important?</summary>
+        This gives the application team a chance to detect a bug before it affects too many end-users and rollback.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R7.6</td>
+<td>
+    The application SHOULD use HorizontalPodAutoscaler to scale the number of replicas, as needed to react to load spikes.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensure that the application can handle load spikes in a cost-efficient manner.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R7.8</td>
+<td>
+    The application MAY use a rolling upgrade strategy to ensure it can be upgraded with zero downtime.
+    <details>
+        <summary>Why is this important?</summary>
+        This allows the application team to deliver new features at high velocity, without worrying about downtime.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<th scope="col">R8</td>
+<th scope="col">
+    Availability requirements
+</th>
+<th scope="col">&nbsp;</td>
+</tr>
+
+<tr>
+<td>R8.1</td>
+<td>
+    The application MUST follow the "rule of 2". Every container needs to have at least two replicas.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensures the application team cannot introduce bugs, e.g., state management via global variables, which compromise application high-availability and scalability.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R8.2</td>
+<td>
+    The application MUST tolerate its replicas running in different datacenters with latencies of up to 10 ms.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensure the application can tolerate a datacenter failure, if this is a requirement.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>R8.3</td>
+<td>
+    The application MUST tolerate the failure of a replica.
+    <details>
+        <summary>Why is this important?</summary>
+        This ensures the application is highly available and can tolerate the failure of a Node or (if needed) datacenter.
+    </details>
+</td>
+<td>&nbsp;</td>
+</tr>
+
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by <a href="https://github.com/elastisys/compliantkubernetes/issues/new/choose" target="_blank">filing an issue</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../operate/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Step 3: Operate">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Step 3: Operate
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../prepare-idp/" class="md-footer__link md-footer__link--next" aria-label="Next: Prepare Your Identity Provider (IdP)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Prepare Your Identity Provider (IdP)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Elastisys AB <br/> The Linux Foundation has the following registered trademarks in the United States and/or other countries: Certified Kubernetes®, containerd®, fluentd®, Helm®, Istio®, K8s®, Kubernetes®, Prometheus®, PromQL®, Rook®, The Linux Foundation®. <br/> The Linux Foundation has registrations pending or trademarks in use for the following marks in the United States and/or other countries: Argo™, CoreDNS™, Falco™, Harbor™, Jaeger™, Linux Foundation™, OpenTelemetry™, OpenTracing™, Open Policy Agent™, Tekton™, Thanos™. <br/> Postgres and PostgreSQL and the Elephant Logo (Slonik) are all registered trademarks of the PostgreSQL Community Association of Canada. <br/> Redis is a trademark of Redis Ltd. Any rights therein are reserved to Redis Ltd. Any use by the Compliant Kubernetes project is for referential purposes only and does not indicate any sponsorship, endorsement or affiliation between Redis and Compliant Kubernetes project. <br/> RabbitMQ is a trademark of VMware, Inc. in the U.S. and other countries. <br/> TimescaleDB and the EON mascot are trademarks of <a href="https://www.timescale.com/">Timescale, Inc.</a> <br/> FerretDB® is a registered trademark of FerretDB, Inc. FerretDB Inc. is not affiliated, associated, authorized, endorsed by, or in any way officially connected with MongoDB Inc., or any of its subsidiaries or its affiliates. <br/> MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc. <br/> Keycloak™ is a trademark of Red Hat Inc. <br/> OpenSearch is a registered trademark of Amazon Web Services. <br/> NGINX is a registered trademark of F5 Inc.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.top"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../javascripts/feedback.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,119 @@
+/* Regular */
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/poppins/Poppins-Regular.woff2') format('woff2'),
+       url('../fonts/poppins/Poppins-Regular.woff') format('woff');
+}
+
+/* SemiBold */
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/poppins/Poppins-SemiBold.woff2') format('woff2'),
+       url('../fonts/poppins/Poppins-SemiBold.woff') format('woff');
+}
+
+/* Italic */
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/poppins/Poppins-Italic.woff2') format('woff2'),
+       url('../fonts/poppins/Poppins-Italic.woff') format('woff');
+}
+
+/* Bold Italic */
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-style: italic;
+  src: url('../fonts/poppins/Poppins-BoldItalic.woff2') format('woff2'),
+       url('../fonts/poppins/Poppins-BoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  src: url('../fonts/robotomono/RobotoMono-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: italic;
+  src: url('../fonts/robotomono/RobotoMono-Italic-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter/Inter-VariableFont_slnt,wght.ttf');
+}
+
+:root {
+  /* From the Elastisys Brandbook version 1.0 2024 */
+  --elastisys-headings-font: Poppins, Arial, sans-serif;
+  --elastisys-headings-weight: 600; /* SemiBold */
+
+  --elastisys-text-font: Inter, Arial, sans-serif;
+  --elastisys-text-weight: 400; /* Regular */
+
+  --elastisys-details-font: "Roboto Mono", "Courier New", courier;
+  --elastisys-details-weight: 400; /* Regular */
+
+  --elastisys-quotes-font: Poppins, Arial, sans-serif;
+  --elastisys-quotes-weight: 600; /* SemiBold */
+  --elastisys-quotes-style: italic;
+
+  /* Not part of the brandbook */
+  --elastisys-hover: #1E8F63;
+
+  --elastisys-sky-blue: #B8D2FF;
+  --elastisys-sky-blue-dark: #97BEFC;
+  --elastisys-snow: #F7F1ED;
+  --elastisys-snow-light: #FFFBF9;
+  --elastisys-midnight: #3D516E;
+  --elastisys-midnight-dark: #303B54;
+  --elastisys-northern-lights-1: #CBFF8B;
+  --elastisys-northern-lights-2: #22A472;
+  --elastisys-northern-lights-3: #FB8FFC;
+  --elastisys-midnight-sun: #FF9042;
+  --elastisys-night-blue: #192131;
+}
+
+.md-typeset {
+  font-family: var(--elastisys-text-font);
+  font-weight: var(--elastisys-text-weight);
+}
+
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-typeset h5, .md-typeset h6 {
+  font-family: var(--elastisys-headings-font);
+  font-weight: var(--elastisys-headings-weight);
+  color: var(--elastisys-night-blue);
+}
+
+.md-nav__title, .md-header-nav__title, .md-footer-nav__title {
+  font-family: var(--elastisys-headings-font);
+  font-weight: var(--elastisys-headings-weight);
+}
+
+.md-header__topic:first-child {
+  font-weight: 300;
+}
+
+[data-md-color-scheme="elastisys"] {
+  --md-default-fg-color: var(--elastisys-night-blue);
+  --md-default-fg-color--light: var(--elastisys-night-blue);
+  --md-default-bg-color: var(--elastisys-snow-light);
+
+  --md-primary-fg-color: var(--elastisys-night-blue);
+  --md-primary-fg-color--dark: var(--elastisys-night-blue);
+
+  --md-accent-fg-color: var(--elastisys-hover);
+  --md-footer-bg-color: var(--md-primary-fg-color);
+  --md-typeset-a-color: var(--elastisys-northern-lights-2);
+
+  --md-code-fg-color: black;
+  --md-code-bg-color: var(--elastisys-snow);
+}

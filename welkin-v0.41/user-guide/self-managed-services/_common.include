@@ -1,0 +1,23 @@
+<!--disclaimer-start-->
+!!!warning
+    This page provides a starting point for installing an application.
+    The information is useful, but not kept up-to-date.
+    If you struggle, contact [Elastisys Consulting](https://elastisys.com/consulting/).
+
+
+!!!important "This page describes how to install a Customer Application"
+    You are solely responsible for Customer Applications.
+
+    If you are an Elastisys Managed Services customer, please review your responsibilities in [ToS 5.2](https://elastisys.com/legal/terms-of-service/#52-customer-applications).
+
+    Specifically, you are responsible for performing due diligence for the project discussed in this page.
+    At the very least, you must:
+
+    * assess project ownership, governance and licensing;
+    * assess project roadmap and future suitability;
+    * assess project compatibility with your use-case;
+    * assess business continuity, i.e., what will you do if the project is abandoned;
+    * subscribe to security advisories related to the project;
+    * apply security patches and updates, as needed;
+    * regularly test disaster recovery.
+<!--disclaimer-end-->

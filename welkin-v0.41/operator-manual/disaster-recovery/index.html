@@ -1,0 +1,4867 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Compliant Kubernetes, the Kubernetes platform for software critical to our society. NIS2, ISO-27001, etc.">
+      
+      
+        <meta name="author" content="Elastisys AB">
+      
+      
+        <link rel="canonical" href="https://elastisys.io/compliantkubernetes/operator-manual/disaster-recovery/">
+      
+      
+        <link rel="prev" href="../user-managed-crds/">
+      
+      
+        <link rel="next" href="../break-glass/">
+      
+      
+      <link rel="icon" href="https://elastisys.io/compliantkubernetes/img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>Disaster Recovery - Elastisys Compliant Kubernetes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/branding.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://matomo.elastisys.com/js/container_fGrcdd2P.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Disaster Recovery - Elastisys Compliant Kubernetes" >
+      
+        <meta  property="og:description"  content="Compliant Kubernetes, the Kubernetes platform for software critical to our society. NIS2, ISO-27001, etc." >
+      
+        <meta  property="og:image"  content="https://elastisys.io/compliantkubernetes/assets/images/social/operator-manual/disaster-recovery.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://elastisys.io/compliantkubernetes/operator-manual/disaster-recovery/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Disaster Recovery - Elastisys Compliant Kubernetes" >
+      
+        <meta  name="twitter:description"  content="Compliant Kubernetes, the Kubernetes platform for software critical to our society. NIS2, ISO-27001, etc." >
+      
+        <meta  name="twitter:image"  content="https://elastisys.io/compliantkubernetes/assets/images/social/operator-manual/disaster-recovery.png" >
+      
+    
+    
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data:;
+  connect-src 'self' https://matomo.elastisys.com/;
+  script-src 'self' 'unsafe-inline' https://matomo.elastisys.com/;
+">
+
+<!-- Disable localStorage, sessionStorage and cookies -->
+<script>
+if (window.localStorage) {
+  window.localStorage.setItem = function() { };
+  window.localStorage.clear();
+}
+if (window.sessionStorage) {
+  window.sessionStorage.setItem = function() { }
+  window.sessionStorage.clear();
+}
+if(!document.__defineGetter__) {
+  Object.defineProperty(document, 'cookie', {
+    get: function(){return ''},
+    set: function(){return true},
+  });
+} else {
+  document.__defineGetter__("cookie", function() { return '';} );
+  document.__defineSetter__("cookie", function() {} );
+}
+</script>
+
+<!-- See https://realfavicongenerator.net -->
+<link rel="apple-touch-icon" sizes="180x180" href="https://elastisys.io/compliantkubernetes/img/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="https://elastisys.io/compliantkubernetes/img/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="https://elastisys.io/compliantkubernetes/img/favicon-16x16.png?v=1">
+<link rel="manifest" href="https://elastisys.io/compliantkubernetes/img/site.webmanifest?v=1">
+<link rel="mask-icon" href="https://elastisys.io/compliantkubernetes/img/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="https://elastisys.io/compliantkubernetes/img/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="msapplication-config" content="https://elastisys.io/compliantkubernetes/img/browserconfig.xml?v=1">
+<meta name="theme-color" content="#ffffff">
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="elastisys" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#disaster-recovery" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Elastisys Compliant Kubernetes" class="md-header__button md-logo" aria-label="Elastisys Compliant Kubernetes" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Elastisys Compliant Kubernetes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Disaster Recovery
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+
+<ul class="header-links">
+  <li>
+    <a href="https://github.com/elastisys/compliantkubernetes/">
+      <img width="25px" src="../../img/git-alt.svg" alt="Git logo" />
+    </a>
+  </li>
+  <li><a href="https://elastisys.com/" class="menu-callout">Try out Managed<br/>Compliant Kubernetes</a></li>
+</ul>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Elastisys Compliant Kubernetes" class="md-nav__button md-logo" aria-label="Elastisys Compliant Kubernetes" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Elastisys Compliant Kubernetes
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+<ul class="header-links">
+  <li>
+    <a href="https://github.com/elastisys/compliantkubernetes/">
+      <img width="25px" src="../../img/git-alt.svg" alt="Git logo" />
+    </a>
+  </li>
+  <li><a href="https://elastisys.com/" class="menu-callout">Try out Managed<br/>Compliant Kubernetes</a></li>
+</ul>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mission-and-vision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mission and Vision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Application Developers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            For Application Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/prepare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 1: Prepare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/deploy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 2: Deploy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/operate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 3: Operate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Go Deeper
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Go Deeper
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/prepare-application/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prepare Your Application
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/prepare-idp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prepare Your Identity Provider (IdP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/registry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container registry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/continous-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Continuous Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/network-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/kubernetes-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/kubernetes-ui/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes UI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/namespaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/log-based-alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log-based Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/long-term-log-retention/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Long-term Log Retention
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metric Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/maintenance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maintenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/ci-cd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/demarcation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Demarcation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/delegation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Delegate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/how-many-environments/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How many environments?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/cluster-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cluster API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Safeguards
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Safeguards
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-no-root/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce No Root
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-podsecuritypolicies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Restricted Privileges
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-networkpolicies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce NetworkPolicies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-trusted-registries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Trusted Registries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-no-latest-tag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce No Latest Tag
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-job-ttl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Job TTL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-no-load-balancer-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce No LoadBalancer Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/enforce-minimum-replicas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enforce Minimum Replicas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/safeguards/default-pod-topology-spread-constraints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Default Pod Topology Spread Constraints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Additional Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Additional Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/additional-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/additional-services/postgresql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/additional-services/timescaledb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TimescaleDB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/additional-services/redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/additional-services/rabbitmq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RabbitMQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/additional-services/jaeger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jaeger (preview)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/additional-services/argocd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Argo CD (preview)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Self-Managed Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Self-Managed Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/ferretdb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FerretDB (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/keycloak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keycloak (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/jupyterhub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JupyterHub (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/sealedsecrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SealedSecrets (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/sjunet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sjunet (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/flux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flux (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/self-managed-services/kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka (self-managed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/go-live/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go-live Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Platform Administrators
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            For Platform Administrators
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../provider-audit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Provider Audit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../on-prem-standard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standard Template for on-prem Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../air-gapped/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Air-gapped Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Advanced Configuration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cluster-sizing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sizing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ingress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ingress
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access-control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opensearch-mappings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenSearch Mappings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-managed-crds/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Managed CRDs (preview)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Disaster Recovery
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Disaster Recovery
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#compliant-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compliant Need
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-storage-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object storage providers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#off-site-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Off-site backups
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-a-new-regioninfrastructure-provider-is-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      When a new region/Infrastructure Provider is used
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opensearch" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenSearch
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenSearch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-start-new-cluster-from-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional: Start new cluster from snapshot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Restore">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#restoring-opensearch-dashboards-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restoring OpenSearch Dashboards data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#harbor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Harbor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Harbor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#velero" class="md-nav__link">
+    <span class="md-ellipsis">
+      Velero
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Velero">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backup_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-restoring-a-partially-failed-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example restoring a partially failed backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-restoring-a-single-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example restoring a single resource
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore-from-off-site-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore from off-site backup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grafana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grafana
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Grafana">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backup_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../break-glass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Breaking the Glass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cryptography/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use of Cryptography
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../credentials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use of Credentials
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capacity-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Capacity Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clock-synchronization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clock Synchronization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maintenance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maintenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clean-up/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clean Up
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Additional Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_18" id="__nav_4_18_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Configuration Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_18">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema/secrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secrets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For CISOs and DPOs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            For CISOs and DPOs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/gdpr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GDPR (EU)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/iso-27001/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ISO 27001 (EU)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/nist-sp-800-171/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NIST SP 800-171
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Information Security
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Information Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/information-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/information-security/dod-enterprise-devsecops-reference-design-kubernetes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DoD Enterprise DevSecOps Reference Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Healthcare
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Healthcare
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/hslf-fs-201640/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HSLF-FS 2016:40 (SE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/hipaa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HIPAA (US)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/mdr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MDR (EU)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Public sector
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Public sector
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/msbfs-20207/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MSBFS 2020:7 (SE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    NIS2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            NIS2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/nis2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/kritis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KRITIS (DE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/bsi-it-grundschutz/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BSI IT-Grundschutz (DE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/controls/msbfs-20188/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MSBFS 2018:8 (SE)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Industrial control systems
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            Industrial control systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/isa-iec-62443/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ISA/IEC 62443
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CISO Dashboards
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
+            <span class="md-nav__icon md-icon"></span>
+            CISO Dashboards
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/audit-logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audit Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/cryptography/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cryptography Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/intrusion-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intrusion Detection Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/policy-as-code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Policy-as-Code Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/network-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Security Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/capacity-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Capacity Management (Kubernetes Status) Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/vulnerability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vulnerability Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/log-review/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log Review
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/gdpr-art-17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How do I comply with GDPR Art. 17 Right to erasure ("right to be forgotten")?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ciso-guide/pdl-audit-logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How do I comply with HSLF-FS 2016:40 4 kap. 9 § Kontroll av åtkomst till uppgifter?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Contributors
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For Contributors
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributor-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architectural Decision Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tech-radar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech Radar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quality-criteria/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quality Criteria
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Release Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Release Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release Cycle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/ck8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compliant Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/kubespray/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Kubespray
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/capi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Cluster API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/postgres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/rabbitmq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S RabbitMQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/jaeger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Jaeger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/argocd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CK8S Argo CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/managed-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fully Managed Compliant Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/self-managed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Support for Self-Managed Compliant Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/consulting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Consulting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/training/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Official Training
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://elastisys.com/legal/privacy-policy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Privacy Policy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#compliant-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compliant Need
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-storage-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object storage providers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#off-site-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Off-site backups
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-a-new-regioninfrastructure-provider-is-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      When a new region/Infrastructure Provider is used
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opensearch" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenSearch
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenSearch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-start-new-cluster-from-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional: Start new cluster from snapshot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Restore">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#restoring-opensearch-dashboards-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restoring OpenSearch Dashboards data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#harbor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Harbor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Harbor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#velero" class="md-nav__link">
+    <span class="md-ellipsis">
+      Velero
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Velero">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backup_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-restoring-a-partially-failed-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example restoring a partially failed backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-restoring-a-single-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example restoring a single resource
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore-from-off-site-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore from off-site backup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grafana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grafana
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Grafana">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backup_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../ciso-guide/controls/iso-27001/#iso-27001-a1231-information-backup" class="md-tag">ISO 27001 A.12.3.1 Information Backup</a>
+    
+  
+    
+    
+    
+      <a href="../../ciso-guide/controls/iso-27001/#iso-27001-a1711-planning-information-security-continuity" class="md-tag">ISO 27001 A.17.1.1 Planning Information Security Continuity</a>
+    
+  
+    
+    
+    
+      <a href="../../ciso-guide/controls/hipaa/#hipaa-s24-contingency-plan-disaster-recovery-plan-164308a7iib" class="md-tag">HIPAA S24 - Contingency Plan - Disaster Recovery Plan - § 164.308(a)(7)(ii)(B)</a>
+    
+  
+    
+    
+    
+      <a href="../../ciso-guide/controls/msbfs-20207/#msbfs-20207-4-kap-14" class="md-tag">MSBFS 2020:7 4 kap. 14 §</a>
+    
+  
+    
+    
+    
+      <a href="../../ciso-guide/controls/msbfs-20207/#msbfs-20207-4-kap-15" class="md-tag">MSBFS 2020:7 4 kap. 15 §</a>
+    
+  
+    
+    
+    
+      <a href="../../ciso-guide/controls/msbfs-20207/#msbfs-20207-4-kap-22" class="md-tag">MSBFS 2020:7 4 kap. 22 §</a>
+    
+  
+    
+    
+    
+      <a href="../../ciso-guide/controls/hslf-fs-201640/#hslf-fs-201640-3-kap-13-sakerhetskopiering" class="md-tag">HSLF-FS 2016:40 3 kap. 13 § Säkerhetskopiering</a>
+    
+  
+    
+    
+    
+      <a href="../../ciso-guide/controls/nist-sp-800-171/#nist-sp-800-171-363" class="md-tag">NIST SP 800-171 3.6.3</a>
+    
+  
+    
+    
+    
+      <a href="../../ciso-guide/controls/nis2/#nis2-minimum-requirement-c-disaster-recovery" class="md-tag">NIS2 Minimum Requirement (c) Disaster Recovery</a>
+    
+  
+</nav>
+
+
+  
+  
+
+
+<h1 id="disaster-recovery">Disaster Recovery<a class="headerlink" href="#disaster-recovery" title="Permanent link">&para;</a></h1>
+<p>This document details disaster recovery procedures for Compliant Kubernetes. These procedures must be executed by the administrator.</p>
+<h2 id="compliant-need">Compliant Need<a class="headerlink" href="#compliant-need" title="Permanent link">&para;</a></h2>
+<p>Disaster recovery is mandated by several regulations and information security standards. For example, in ISO 27001:2013, the annexes that mostly concerns disaster recovery are:</p>
+<ul>
+<li><a href="https://www.isms.online/iso-27001/annex-a-12-operations-security/">A.12.3.1 Information Backup</a></li>
+<li><a href="https://www.isms.online/iso-27001/annex-a-17-information-security-aspects-of-business-continuity-management/">A.17.1.1 Planning Information Security Continuity</a></li>
+</ul>
+<h2 id="object-storage-providers">Object storage providers<a class="headerlink" href="#object-storage-providers" title="Permanent link">&para;</a></h2>
+<h2 id="off-site-backups">Off-site backups<a class="headerlink" href="#off-site-backups" title="Permanent link">&para;</a></h2>
+<p>Backups can be set up to be replicated off-site using CronJobs.</p>
+<p>If these are <strong>encrypted</strong> then these off-site backups must first be restored themselves before they can be used to restore other services.</p>
+<p>If these are <strong>unencrypted</strong> then these off-site backups can be used directly to restore other services by reconfiguring which object storage service they are using.</p>
+<p>See <a href="https://github.com/elastisys/compliantkubernetes-apps/blob/main/docs/restore/rclone.md">the instructions in <code>compliantkubernetes-apps</code> for how to restore off-site backups</a>.</p>
+<h2 id="when-a-new-regioninfrastructure-provider-is-used">When a new region/Infrastructure Provider is used<a class="headerlink" href="#when-a-new-regioninfrastructure-provider-is-used" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Configure and set base ck8s-configs:</li>
+</ul>
+<p>sc-config.yaml:</p>
+<p><code>harbor.persistence.swift.*</code>,<code>objectStorage.sync.*</code></p>
+<p>common-config.yaml:</p>
+<p><code>objectStorage.s3.region</code>, <code>objectStorage.s3.regionEndpoint</code></p>
+<p>secrets.yaml:</p>
+<p><code>dex.connectors.*</code>, <code>harbor.persistence.swift.username</code>, <code>harbor.persistence.swift.password</code>, <code>objectStorage.s3.accessKey</code>, <code>objectStorage.s3.secretKey</code></p>
+<p>.state/s3cfg.ini:</p>
+<p><code>access_key</code>, <code>secret_key</code>, <code>host_base</code>, <code>host_bucket</code></p>
+<ul>
+<li>Configure and set custom ck8s-configs:</li>
+</ul>
+<p>Examples can be files containing Identity Provider, Infrastructure Provider, or DNS critical information.</p>
+<h2 id="opensearch">OpenSearch<a class="headerlink" href="#opensearch" title="Permanent link">&para;</a></h2>
+<h3 id="backup">Backup<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
+<p>OpenSearch is set up to store backups in an S3 bucket. There is a CronJob called <code>opensearch-backup</code> in the cluster that is invoking the snapshot process in OpenSearch.</p>
+<p>To take a snapshot on-demand, execute</p>
+<div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span>sc<span class="w"> </span>-n<span class="w"> </span>opensearch-system<span class="w"> </span>create<span class="w"> </span>job<span class="w"> </span>--from<span class="o">=</span>cronjob/opensearch-backup<span class="w"> </span>&lt;name-of-job&gt;
+</code></pre></div>
+<h3 id="optional-start-new-cluster-from-snapshot">Optional: Start new cluster from snapshot<a class="headerlink" href="#optional-start-new-cluster-from-snapshot" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only perform the steps in this section if you are starting a new cluster from a snapshot.
+Otherwise, skip ahead to the <strong>Restore</strong> section.</p>
+</div>
+<p>Before you install OpenSearch you should disable the initial index creation to make the restore process leaner by setting the following configuration option:</p>
+<div class="highlight"><pre><span></span><code>opensearch.createIndices:<span class="w"> </span><span class="nb">false</span>
+</code></pre></div>
+<p>Install the OpenSearch suite:</p>
+<div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>helmfile<span class="w"> </span>sc<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>opensearch<span class="w"> </span>apply
+</code></pre></div>
+<p>Wait for the installation to complete.</p>
+<p>After the installation, continue to the <strong>Restore</strong> section to proceed with the restore.
+If you want to restore all indices, use the following <code>indices</code> variable</p>
+<div class="highlight"><pre><span></span><code><span class="nv">indices</span><span class="o">=</span><span class="s2">&quot;kubernetes-*,kubeaudit-*,other-*,authlog-*&quot;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This process assumes that you are using the same S3 bucket as your previous cluster. If you aren't:</p>
+<ul>
+<li>Register a new S3 snapshot repository to the old bucket as <a href="https://opensearch.org/docs/latest/tuning-your-cluster/availability-and-recovery/snapshots/snapshot-restore/#register-repository">described here</a></li>
+<li>Use the newly registered snapshot repository in the restore process</li>
+</ul>
+</div>
+<h3 id="restore">Restore<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h3>
+<p>Set the following variables</p>
+<ol>
+<li>OpenSearch user with permissions to manage snapshots, usually <code>admin</code></li>
+<li>The password for the above user</li>
+<li>The URL to OpenSearch</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nv">user</span><span class="o">=</span>admin
+<span class="nv">password</span><span class="o">=</span><span class="k">$(</span>sops<span class="w"> </span>-d<span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/secrets.yaml<span class="w"> </span><span class="p">|</span><span class="w"> </span>yq4<span class="w"> </span><span class="s1">&#39;.opensearch.adminPassword&#39;</span><span class="k">)</span>
+<span class="nv">os_url</span><span class="o">=</span>https://opensearch.<span class="k">$(</span>yq4<span class="w"> </span><span class="s1">&#39;.global.opsDomain&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/common-config.yaml<span class="k">)</span>
+</code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">Restoring from off-site backup</p>
+<ul>
+<li>
+<p>To restore from an <strong>encrypted</strong> off-site backup:</p>
+<p>First import the backup into the main S3 service and register the restored bucket as a new snapshot repository:
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s2">/_snapshot/backup-repository?pretty&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span>-d<span class="s1">&#39;</span>
+<span class="s1">{</span>
+<span class="s1">  &quot;type&quot;: &quot;s3&quot;,</span>
+<span class="s1">  &quot;settings&quot;: {</span>
+<span class="s1">    &quot;bucket&quot;: &quot;&lt;restored-bucket&gt;&quot;,</span>
+<span class="s1">    &quot;readonly&quot;: true</span>
+<span class="s1">  }</span>
+<span class="s1">}</span>
+<span class="s1">&#39;</span>
+</code></pre></div>
+Then restore from this snapshot repository (<code>backup-repositroy</code>) in OpenSearch.</p>
+</li>
+<li>
+<p>To restore from an <strong>unencrypted</strong> off-site backup:</p>
+<p>Configure the remote and bucket as the main S3 service and bucket for apps and OpenSearch respectively, then update the OpenSearch Helm releases and perform the restore.
+It is recommended to either suspend or remove the OpenSearch backup CronJob to prevent it from running while restoring.</p>
+<p>Remember to revert to the regular S3 service afterwards and reactivate the backup CronJob! <br/>
+Replace the previous snapshot repository if it is unusable.</p>
+</li>
+</ul>
+</div>
+<p>List snapshot repositories</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Simple</span>
+❯<span class="w"> </span>curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s2">/_cat/repositories?v&quot;</span>
+id<span class="w">                   </span><span class="nb">type</span>
+opensearch-snapshots<span class="w">   </span>s3
+
+<span class="c1"># Detailed</span>
+❯<span class="w"> </span>curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s2">/_snapshot/?pretty&quot;</span>
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;opensearch-snapshots&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;s3&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;settings&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;bucket&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;opensearch-backup&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;client&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;default&quot;</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>List available snapshots</p>
+<div class="highlight"><pre><span></span><code><span class="nv">snapshot_repo</span><span class="o">=</span>&lt;name/id<span class="w"> </span>from<span class="w"> </span>previous<span class="w"> </span>step&gt;
+
+<span class="c1"># Simple</span>
+❯<span class="w"> </span>curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s2">/_cat/snapshots/</span><span class="si">${</span><span class="nv">snapshot_repo</span><span class="si">}</span><span class="s2">?v&amp;s=id&quot;</span>
+id<span class="w">                         </span>status<span class="w"> </span>start_epoch<span class="w"> </span>start_time<span class="w"> </span>end_epoch<span class="w">  </span>end_time<span class="w"> </span>duration<span class="w"> </span>indices<span class="w"> </span>successful_shards<span class="w"> </span>failed_shards<span class="w"> </span>total_shards
+snapshot-20211231_120002z<span class="w"> </span>SUCCESS<span class="w"> </span><span class="m">1640952003</span><span class="w">  </span><span class="m">12</span>:00:03<span class="w">   </span><span class="m">1640952082</span><span class="w"> </span><span class="m">12</span>:01:22<span class="w">     </span><span class="m">1</span>.3m<span class="w">      </span><span class="m">54</span><span class="w">                </span><span class="m">54</span><span class="w">             </span><span class="m">0</span><span class="w">           </span><span class="m">54</span>
+snapshot-20220101_000003z<span class="w"> </span>SUCCESS<span class="w"> </span><span class="m">1640995203</span><span class="w">  </span><span class="m">00</span>:00:03<span class="w">   </span><span class="m">1640995367</span><span class="w"> </span><span class="m">00</span>:02:47<span class="w">     </span><span class="m">2</span>.7m<span class="w">      </span><span class="m">59</span><span class="w">                </span><span class="m">59</span><span class="w">             </span><span class="m">0</span><span class="w">           </span><span class="m">59</span>
+snapshot-20220101_120002z<span class="w"> </span>SUCCESS<span class="w"> </span><span class="m">1641038403</span><span class="w">  </span><span class="m">12</span>:00:03<span class="w">   </span><span class="m">1641038533</span><span class="w"> </span><span class="m">12</span>:02:13<span class="w">     </span><span class="m">2</span>.1m<span class="w">      </span><span class="m">57</span><span class="w">                </span><span class="m">57</span><span class="w">             </span><span class="m">0</span><span class="w">           </span><span class="m">57</span>
+...
+
+<span class="c1"># Detailed list of all snapshots</span>
+curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s2">/_snapshot/</span><span class="si">${</span><span class="nv">snapshot_repo</span><span class="si">}</span><span class="s2">/_all?pretty&quot;</span>
+
+<span class="c1"># Detailed list of specific snapshot</span>
+❯<span class="w"> </span>curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s2">/_snapshot/</span><span class="si">${</span><span class="nv">snapshot_repo</span><span class="si">}</span><span class="s2">/snapshot-20220104_120002z?pretty&quot;</span>
+<span class="o">{{</span>
+<span class="w">  </span><span class="s2">&quot;snapshots&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;snapshot&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;snapshot-20220104_120002z&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;uuid&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;oClQdNAyTeiEmZb5dVh0SQ&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;version_id&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">135238127</span>,
+<span class="w">      </span><span class="s2">&quot;version&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;1.2.3&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;indices&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">        </span><span class="s2">&quot;authlog-default-2021.12.20-000001&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;authlog-default-2021.12.30-000011&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;authlog-default-2022.01.03-000015&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;other-default-2021.12.30-000011&quot;</span>,
+<span class="w">        </span>...
+<span class="w">      </span><span class="o">]</span>,
+<span class="w">      </span><span class="s2">&quot;data_streams&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span>,
+<span class="w">      </span><span class="s2">&quot;include_global_state&quot;</span><span class="w"> </span>:<span class="w"> </span>false,
+<span class="w">      </span><span class="s2">&quot;state&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;SUCCESS&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;start_time&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;2022-01-04T12:00:02.596Z&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;start_time_in_millis&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">1641297602596</span>,
+<span class="w">      </span><span class="s2">&quot;end_time&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;2022-01-04T12:01:07.833Z&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;end_time_in_millis&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">1641297667833</span>,
+<span class="w">      </span><span class="s2">&quot;duration_in_millis&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">65237</span>,
+<span class="w">      </span><span class="s2">&quot;failures&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span>,
+<span class="w">      </span><span class="s2">&quot;shards&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;total&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">66</span>,
+<span class="w">        </span><span class="s2">&quot;failed&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">        </span><span class="s2">&quot;successful&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">66</span>
+<span class="w">      </span><span class="o">}</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">  </span><span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>You usually select the latest snapshot containing the indices you want to restore.
+Restore one or multiple indices from a snapshot</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You cannot restore a write index (the latest index) if you already have a write index connected to the same index alias (which will happen if you have started to receive logs).</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="nv">snapshot_name</span><span class="o">=</span>&lt;Snapshot<span class="w"> </span>name<span class="w"> </span>from<span class="w"> </span>previous<span class="w"> </span>step&gt;
+<span class="c1"># Use &quot;-.*&quot; if index per namespace is enabled</span>
+<span class="nv">indices</span><span class="o">=</span><span class="s2">&quot;kubernetes-*,kubeaudit-*,other-*,authlog-*&quot;</span>
+
+curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s2">/_snapshot/</span><span class="si">${</span><span class="nv">snapshot_repo</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">snapshot_name</span><span class="si">}</span><span class="s2">/_restore?pretty&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span>-d<span class="s1">&#39;</span>
+<span class="s1">{</span>
+<span class="s1">  &quot;indices&quot;: &quot;&#39;</span><span class="si">${</span><span class="nv">indices</span><span class="si">}</span><span class="s1">&#39;&quot;</span>
+<span class="s1">}</span>
+<span class="s1">&#39;</span>
+</code></pre></div>
+<p>Read the <a href="https://opensearch.org/docs/latest/opensearch/snapshot-restore/">documentation</a> to see the API, all parameters and their explanations.</p>
+<h4 id="restoring-opensearch-dashboards-data">Restoring OpenSearch Dashboards data<a class="headerlink" href="#restoring-opensearch-dashboards-data" title="Permanent link">&para;</a></h4>
+<p>Data in OpenSearch Dashboards (saved searches, visualizations, dashboards, etc) is stored in the index <code>.opensearch_dashboards_x</code>. To restore that data you first need to delete the index and then do a restore.</p>
+<p>This will overwrite anything in the current <code>.opensearch_dashboards_x</code> index. If there is something new that should be saved, then <a href="https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_export">export</a> the saved objects and <a href="https://www.elastic.co/guide/en/kibana/7.10/managing-saved-objects.html#_import">import</a> them after the restore.</p>
+<p>There can be multiple <code>.opensearch_dashboards</code> indices in OpenSearch, the current index should be the one you want to restore. To view your dashboard indices, follow these steps.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">snapshot_name</span><span class="o">=</span>&lt;Snapshot<span class="w"> </span>name<span class="w"> </span>from<span class="w"> </span>previous<span class="w"> </span>step&gt;
+
+curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s1">&#39;/.opensearch_dashboard*?pretty&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;keys&#39;</span>
+</code></pre></div>
+<p>If multiple <code>.opensearch_dashboards_x</code> indices show up, run this to see the index that the alias is currently looking at.</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s1">&#39;/_alias/.opensearch_dashboard*?pretty&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;keys&#39;</span>
+</code></pre></div>
+<p>Make sure that the index you want to restore also exists on the snapshot. (May be an issue if you are using an old snapshot)</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s2">/_snapshot/</span><span class="si">${</span><span class="nv">snapshot_repo</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">snapshot_name</span><span class="si">}</span><span class="s2">?pretty&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.snapshots[].indices&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>.opensearch_dashboards
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you visit the <code>"&lt;os_url&gt;/app/dashboards"</code> page in the Opensearch GUI after deleting the index and before restoring the index, another empty index <code>.opensearch_dashboards</code> will be created. You need to delete this manually, which can be done with</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s2">/.opensearch_dashboards?pretty&quot;</span>
+</code></pre></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="nv">index_to_restore</span><span class="o">=</span>&lt;Index<span class="w"> </span>name<span class="w"> </span>from<span class="w"> </span>previous<span class="w"> </span>step&gt;
+
+curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">index_to_restore</span><span class="si">}</span><span class="s2">?pretty&quot;</span>
+
+curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s2">/_snapshot/</span><span class="si">${</span><span class="nv">snapshot_repo</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">snapshot_name</span><span class="si">}</span><span class="s2">/_restore?pretty&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span>-d<span class="s1">&#39;</span>
+<span class="s1">{</span>
+<span class="s1">  &quot;indices&quot;: &quot;&#39;</span><span class="si">${</span><span class="nv">index_to_restore</span><span class="si">}</span><span class="s1">&#39;&quot;</span>
+<span class="s1">}</span>
+<span class="s1">&#39;</span>
+</code></pre></div>
+<h2 id="harbor">Harbor<a class="headerlink" href="#harbor" title="Permanent link">&para;</a></h2>
+<h3 id="backup_1">Backup<a class="headerlink" href="#backup_1" title="Permanent link">&para;</a></h3>
+<p>Harbor is set up to store backups of the database in an S3 bucket (note that this does not include the actual images, since those are already stored in S3 by default).
+There is a CronJob called <code>harbor-backup-cronjob</code> in the cluster that is taking a database dump and uploading it to a S3 bucket.</p>
+<p>To take a backup on-demand, execute</p>
+<div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span>sc<span class="w"> </span>-n<span class="w"> </span>harbor<span class="w"> </span>create<span class="w"> </span>job<span class="w"> </span>--from<span class="o">=</span>cronjob/harbor-backup-cronjob<span class="w"> </span>&lt;name-of-job&gt;
+</code></pre></div>
+<h3 id="restore_1">Restore<a class="headerlink" href="#restore_1" title="Permanent link">&para;</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Restoring from off-site backup</p>
+<p>Since Harbor stores both database backups and images in the same bucket it is recommended to restore the off-site backup into the main S3 service first, reconfigure Harbor to use it, then restore the database from it.</p>
+</div>
+<p>Instructions for how to restore Harbor can be found in <code>compliantkubernetes-apps</code>: <a href="https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts/restore#restore-harbor">https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts/restore#restore-harbor</a></p>
+<h2 id="velero">Velero<a class="headerlink" href="#velero" title="Permanent link">&para;</a></h2>
+<p>These instructions make use of the Velero CLI, you can download it <a href="https://github.com/vmware-tanzu/velero/releases/tag/v1.7.1">here</a> (version 1.7.1).
+The CLI needs the env variable <code>KUBECONFIG</code> set to the path of a decrypted kubeconfig.
+Read more about Velero <a href="../../user-guide/backup/">here</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This documentation uses the Velero CLI, as opposed to Velero CRDs, since that is what is encouraged by upstream documentation.</p>
+</div>
+<h3 id="backup_2">Backup<a class="headerlink" href="#backup_2" title="Permanent link">&para;</a></h3>
+<p>Velero is set up to take daily backups and store them in an S3 bucket.
+The daily backup will not take backups of everything in a Kubernetes cluster, it will instead look for certain labels and annotations.
+Read more about those labels and annotations <a href="../../user-guide/backup/#backing-up">here</a>.</p>
+<p>It is also possible to take on-demand backups.
+Then you can freely chose what to backup and do not have to base it on the same labels.
+A basic example with the Velero CLI would be <code>velero backup create manual-backup</code>, which would take a backup of all Kubernetes resources (though not the data in the volumes by default).</p>
+<p>If you want to create a latest backup from existing schedule , Velero CLI would be <code>velero backup create --from-schedule velero-daily-backup --wait</code>.</p>
+<p>Check which arguments you can use by running <code>velero backup create --help</code>.</p>
+<h3 id="restore_2">Restore<a class="headerlink" href="#restore_2" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>If you are restoring an environment under a new domain name then there is a possibility to reconfigure image references with <a href="https://velero.io/docs/main/restore-reference/#changing-poddeploymentstatefulsetdaemonsetreplicasetreplicationcontrollerjobcronjob-image-repositories">Velero</a>, but ingresses must be updated manually.</p>
+<p>Restoring from a backup with Velero is meant to be a type of disaster recovery.
+<strong>Velero will not overwrite existing Resources when restoring.</strong>
+As such, if you want to restore the state of a Resource that is still running, the Resource must be deleted first.</p>
+<p>To restore the state from the latest daily backup, run:</p>
+<div class="highlight"><pre><span></span><code>velero<span class="w"> </span>restore<span class="w"> </span>create<span class="w"> </span>--from-schedule<span class="w"> </span>velero-daily-backup<span class="w"> </span>--wait
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+</div>
+<p>Use <code>velero restore create --help</code> to see available flags and some examples.
+If a backup has a status of PartiallyFailed, the argument <code>--allow-partially-failed</code> can be used to restore from such a backup.
+If a backup or restore gets stuck or has other issues, refer to this <a href="../troubleshooting/#velero-backup-stuck-in-progress">guide</a>.</p>
+<p>This command will wait until the restore has finished.
+You can also do partial restorations, e.g. just restoring one namespace, by using different arguments.
+You can also restore from manual backups by using the flag <code>--from-backup &lt;backup-name&gt;</code></p>
+<p>Persistent Volumes are only restored if a Pod with the backup annotation is restored.
+Multiple Pods can have an annotation for the same Persistent Volume.
+When restoring the Persistent Volume it will overwrite any existing files with the same names as the files to be restored.
+Any other files will be left as they were before the restoration started.
+So a restore will not wipe the volume clean and then restore.
+If a clean wipe is the desired behavior, then the volume must be wiped manually before restoring.</p>
+<h3 id="example-restoring-a-partially-failed-backup">Example restoring a partially failed backup<a class="headerlink" href="#example-restoring-a-partially-failed-backup" title="Permanent link">&para;</a></h3>
+<p>A backup that has status <code>PartiallyFailed</code> can be restored by using <code>--allow-partially-failed</code> flag</p>
+<div class="highlight"><pre><span></span><code>velero<span class="w"> </span>restore<span class="w"> </span>create<span class="w"> </span>&lt;restore-name&gt;<span class="w"> </span>--allow-partially-failed<span class="w"> </span>--from-schedule<span class="w"> </span>velero-daily-backup<span class="w"> </span>--wait
+</code></pre></div>
+<h3 id="example-restoring-a-single-resource">Example restoring a single resource<a class="headerlink" href="#example-restoring-a-single-resource" title="Permanent link">&para;</a></h3>
+<p>You can explore a <code>Completed</code> backup as follows</p>
+<div class="highlight"><pre><span></span><code>velero<span class="w"> </span>backup<span class="w"> </span>describe<span class="w"> </span>--details<span class="w"> </span>&lt;name-of-backup&gt;
+</code></pre></div>
+<p>and you can then use the following to handpick resources from the backup you want restored</p>
+<div class="highlight"><pre><span></span><code>velero<span class="w"> </span>restore<span class="w"> </span>create<span class="w"> </span>&lt;restore-name&gt;<span class="w">  </span>--include-resources<span class="w"> </span>pod,volume<span class="w"> </span>--from-backup<span class="w"> </span>&lt;backup-name&gt;<span class="w"> </span>--include-namespaces<span class="w"> </span>&lt;namespace-name&gt;<span class="w"> </span>--selector<span class="w"> </span>&lt;resource-selector&gt;<span class="w"> </span>--wait
+</code></pre></div>
+<h3 id="restore-from-off-site-backup">Restore from off-site backup<a class="headerlink" href="#restore-from-off-site-backup" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Restoring from <strong>encrypted</strong> off-site backup:</li>
+</ul>
+<p>Recover the encrypted bucket into the main S3 service and reconfigure Velero to use this bucket, then follow the regular instructions.</p>
+<p>The references in Kubernetes might need to be deleted so Velero can resync from the bucket:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Note that this is only backup metadata</span>
+./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span>sc<span class="w"> </span>-n<span class="w"> </span>velero<span class="w"> </span>delete<span class="w"> </span>backups.velero.io<span class="w"> </span>--all
+
+./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span>wc<span class="w"> </span>-n<span class="w"> </span>velero<span class="w"> </span>delete<span class="w"> </span>backups.velero.io<span class="w"> </span>--all
+</code></pre></div>
+<ul>
+<li>Restoring from <strong>unencrypted</strong> off-site backup:</li>
+</ul>
+<p>To recover directly from off-site backup the backup-location must be reconfigured:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">CLUSTER</span><span class="o">=</span><span class="s2">&quot;&lt;sc|wc&gt;&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">S3_BUCKET</span><span class="o">=</span><span class="s2">&quot;&lt;off-site-s3-bucket&gt;&quot;</span><span class="w"> </span><span class="c1"># Do not include s3:// prefix</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">S3_PREFIX</span><span class="o">=</span><span class="s2">&quot;&lt;service-cluster|workload-cluster&gt;&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">S3_ACCESS_KEY</span><span class="o">=</span><span class="k">$(</span>sops<span class="w"> </span>-d<span class="w"> </span>--extract<span class="w"> </span><span class="s1">&#39;[&quot;objectStorage&quot;][&quot;sync&quot;][&quot;s3&quot;][&quot;accessKey&quot;]&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CK8S_CONFIG_PATH</span><span class="s2">/secrets.yaml&quot;</span><span class="k">)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">S3_SECRET_KEY</span><span class="o">=</span><span class="k">$(</span>sops<span class="w"> </span>-d<span class="w"> </span>--extract<span class="w"> </span><span class="s1">&#39;[&quot;objectStorage&quot;][&quot;sync&quot;][&quot;s3&quot;][&quot;secretKey&quot;]&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CK8S_CONFIG_PATH</span><span class="s2">/secrets.yaml&quot;</span><span class="k">)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">S3_REGION</span><span class="o">=</span><span class="k">$(</span>yq<span class="w"> </span>r<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CK8S_CONFIG_PATH</span><span class="s2">/sc-config.yaml&quot;</span><span class="w"> </span><span class="s2">&quot;objectStorage.sync.s3.region&quot;</span><span class="k">)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">S3_ENDPOINT</span><span class="o">=</span><span class="k">$(</span>yq<span class="w"> </span>r<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CK8S_CONFIG_PATH</span><span class="s2">/sc-config.yaml&quot;</span><span class="w"> </span><span class="s2">&quot;objectStorage.sync.s3.regionEndpoint&quot;</span><span class="k">)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">S3_PATH_STYLE</span><span class="o">=</span><span class="k">$(</span>yq<span class="w"> </span>r<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CK8S_CONFIG_PATH</span><span class="s2">/sc-config.yaml&quot;</span><span class="w"> </span><span class="s2">&quot;objectStorage.sync.s3.forcePathStyle&quot;</span><span class="k">)</span>
+
+<span class="c1"># Delete backups from default backup location, note that this is only the backup metadata</span>
+./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-n<span class="w"> </span>velero<span class="w"> </span>delete<span class="w"> </span>backups.velero.io<span class="w"> </span>--all
+
+<span class="c1"># Delete default backup location</span>
+velero<span class="w"> </span>backup-location<span class="w"> </span>delete<span class="w"> </span>default
+
+<span class="c1"># Create off-site credentials</span>
+kubectl<span class="w"> </span>-n<span class="w"> </span>velero<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>velero-backup<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">cloud</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;[default]\naws_access_key_id: </span><span class="si">${</span><span class="nv">S3_ACCESS_KEY</span><span class="si">}</span><span class="s2">\naws_secret_access_key: </span><span class="si">${</span><span class="nv">S3_SECRET_KEY</span><span class="si">}</span><span class="s2">\n&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="c1"># Create off-site backup location</span>
+velero<span class="w"> </span>backup-location<span class="w"> </span>create<span class="w"> </span>backup<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--access-mode<span class="w"> </span>ReadOnly<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--provider<span class="w"> </span>aws<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">S3_BUCKET</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--prefix<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">S3_PREFIX</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--config<span class="o">=</span><span class="s2">&quot;region=</span><span class="si">${</span><span class="nv">S3_REGION</span><span class="si">}</span><span class="s2">,s3Url=</span><span class="si">${</span><span class="nv">S3_ENDPOINT</span><span class="si">}</span><span class="s2">,s3ForcePathStyle=</span><span class="si">${</span><span class="nv">S3_PATH_STYLE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--credential<span class="o">=</span>velero-backup<span class="o">=</span>cloud
+</code></pre></div>
+<p>Check that the backup-location becomes available:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>velero<span class="w"> </span>backup-location<span class="w"> </span>get
+<span class="go">NAME     PROVIDER   BUCKET/PREFIX       PHASE       LAST VALIDATED   ACCESS MODE   DEFAULT</span>
+<span class="go">backup   aws        &lt;bucket&gt;/&lt;prefix&gt;   Available   &lt;timestamp&gt;      ReadOnly</span>
+</code></pre></div>
+<p>Then check that the backups becomes available using <code>velero backup get</code>.
+  When they are available restore one of them using <code>velero restore create &lt;name-of-restore&gt; --from-backup &lt;name-of-backup&gt;</code>.</p>
+<p>After the restore is complete Velero should be reconfigured to use the main S3 service again, with a new bucket if the previous one is unusable.
+  Updating or syncing the Helm chart:</p>
+<div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>helmfile<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-f<span class="w"> </span>helmfile<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>velero<span class="w"> </span>-i<span class="w"> </span>apply
+</code></pre></div>
+<p>The secret and the backup metadata from the off-site backups can be deleted:</p>
+<div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-n<span class="w"> </span>velero<span class="w"> </span>delete<span class="w"> </span>secret<span class="w"> </span>velero-backup
+./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-n<span class="w"> </span>velero<span class="w"> </span>delete<span class="w"> </span>backups.velero.io<span class="w"> </span>--all
+./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-n<span class="w"> </span>velero<span class="w"> </span>delete<span class="w"> </span>backupstoragelocations.velero.io<span class="w"> </span>backup
+</code></pre></div>
+<h2 id="grafana">Grafana<a class="headerlink" href="#grafana" title="Permanent link">&para;</a></h2>
+<p>This refers to the user Grafana, not the ops Grafana.</p>
+<h3 id="backup_3">Backup<a class="headerlink" href="#backup_3" title="Permanent link">&para;</a></h3>
+<p>Grafana is set up to be included in the daily Velero backup.
+We then include the Grafana deployment, Pod, and PVC (including the data).
+Manual backups can be taken using velero (include the same resources).</p>
+<h3 id="restore_3">Restore<a class="headerlink" href="#restore_3" title="Permanent link">&para;</a></h3>
+<p>To restore the Grafana backup you must:</p>
+<ul>
+<li>Have Grafana installed</li>
+<li>Delete the Grafana deployment, PVC and PV</li>
+</ul>
+<div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span>sc<span class="w"> </span>delete<span class="w"> </span>deploy<span class="w"> </span>-n<span class="w"> </span>monitoring<span class="w"> </span>user-grafana
+./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span>sc<span class="w"> </span>delete<span class="w"> </span>pvc<span class="w"> </span>-n<span class="w"> </span>monitoring<span class="w"> </span>user-grafana
+</code></pre></div>
+<ul>
+<li>Restore the velero backup</li>
+</ul>
+<div class="highlight"><pre><span></span><code>velero<span class="w"> </span>restore<span class="w"> </span>create<span class="w"> </span>--from-schedule<span class="w"> </span>velero-daily-backup<span class="w"> </span>--wait
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by <a href="https://github.com/elastisys/compliantkubernetes/issues/new/choose" target="_blank">filing an issue</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../user-managed-crds/" class="md-footer__link md-footer__link--prev" aria-label="Previous: User Managed CRDs (preview)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                User Managed CRDs (preview)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../break-glass/" class="md-footer__link md-footer__link--next" aria-label="Next: Breaking the Glass">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Breaking the Glass
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Elastisys AB <br/> The Linux Foundation has the following registered trademarks in the United States and/or other countries: Certified Kubernetes®, containerd®, fluentd®, Helm®, Istio®, K8s®, Kubernetes®, Prometheus®, PromQL®, Rook®, The Linux Foundation®. <br/> The Linux Foundation has registrations pending or trademarks in use for the following marks in the United States and/or other countries: Argo™, CoreDNS™, Falco™, Harbor™, Jaeger™, Linux Foundation™, OpenTelemetry™, OpenTracing™, Open Policy Agent™, Tekton™, Thanos™. <br/> Postgres and PostgreSQL and the Elephant Logo (Slonik) are all registered trademarks of the PostgreSQL Community Association of Canada. <br/> Redis is a trademark of Redis Ltd. Any rights therein are reserved to Redis Ltd. Any use by the Compliant Kubernetes project is for referential purposes only and does not indicate any sponsorship, endorsement or affiliation between Redis and Compliant Kubernetes project. <br/> RabbitMQ is a trademark of VMware, Inc. in the U.S. and other countries. <br/> TimescaleDB and the EON mascot are trademarks of <a href="https://www.timescale.com/">Timescale, Inc.</a> <br/> FerretDB® is a registered trademark of FerretDB, Inc. FerretDB Inc. is not affiliated, associated, authorized, endorsed by, or in any way officially connected with MongoDB Inc., or any of its subsidiaries or its affiliates. <br/> MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc. <br/> Keycloak™ is a trademark of Red Hat Inc. <br/> OpenSearch is a registered trademark of Amazon Web Services. <br/> NGINX is a registered trademark of F5 Inc.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.top"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../javascripts/feedback.js"></script>
+      
+    
+  </body>
+</html>
