@@ -1,10 +1,17 @@
 [
   {
+    "version": "welkin-v0.39",
+    "title": "v0.39",
+    "aliases": [
+      "compliantkubernetes-v0.39"
+    ]
+  },
+  {
     "version": "welkin",
     "title": "main",
     "aliases": [
-      "compliantkubernetes",
-      "ck8s"
+      "ck8s",
+      "compliantkubernetes"
     ]
   }
 ]

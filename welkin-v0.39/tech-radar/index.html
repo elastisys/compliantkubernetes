@@ -1,0 +1,238 @@
+<html>
+
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<title>Compliant Kubernetes Tech Radar</title>
+<link rel="shortcut icon" href="/compliantkubernetes/img/favicon.ico">
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="radar.js"></script>
+
+<link rel="stylesheet" href="radar.css">
+</head>
+
+<body>
+
+<svg id="radar"></svg>
+
+<script>
+radar_visualization({
+  svg_id: "radar",
+  width: 1450,
+  height: 1000,
+  colors: {
+    background: "#fff",
+    grid: "#bbb",
+    inactive: "#ddd"
+  },
+  title: "Compliant Kubernetes Tech Radar — 2022-09-09",
+  quadrants: [
+    { name: "Languages" },
+    { name: "CNCF Projects" },
+    { name: "Techniques" },
+    { name: "Tools" },
+  ],
+  rings: [
+    { name: "ADOPT", color: "#93c47d" },
+    { name: "TRIAL", color: "#93d2c2" },
+    { name: "ASSESS", color: "#fbdb84" },
+    { name: "HOLD", color: "#efafa9" }
+  ],
+  print_layout: true,
+  // zoomed_quadrant: 0,
+  //ENTRIES
+  entries: [
+    // Keep sorted
+    {
+      quadrant: 3,
+      ring: 0,
+      label: "Ansible",
+      active: false,
+      moved: 0
+    },
+    {
+      quadrant: 0,
+      ring: 0,
+      label: "Bash",
+      active: false,
+      moved: 0
+    },
+    {
+      quadrant: 3,
+      ring: 0,
+      label: "bats",
+      active: false,
+      moved: 0
+    },
+    {
+      quadrant: 1,
+      ring: 0,
+      label: "cert-manager",
+      active: false,
+      moved: 0
+    },
+    {
+      quadrant: 1,
+      ring: 2,
+      label: "Cluster API",
+      active: true,
+      moved: 1
+    },
+    {
+      quadrant: 1,
+      ring: 0,
+      label: "Falco",
+      active: false,
+      moved: 0
+    },
+    {
+      quadrant: 3,
+      ring: 0,
+      label: "Grafana",
+      active: false,
+      moved: 0
+    },
+    {
+      quadrant: 1,
+      ring: 0,
+      label: "Helm",
+      active: false,
+      moved: 0
+    },
+    {
+      quadrant: 2,
+      ring: 0,
+      label: "Infrastructure-as-Code",
+      active: false,
+      moved: 0
+    },
+    {
+      quadrant: 1,
+      ring: 3,
+      label: "jsonnet",
+      active: false,
+      moved: 0
+    },
+    {
+      quadrant: 1,
+      ring: 0,
+      label: "Thanos",
+      active: true,
+      moved: 1
+    },
+    {
+      quadrant: 3,
+      ring: 3,
+      label: "InfluxDB",
+      active: true,
+      moved: 0
+    },
+    {
+      quadrant: 3,
+      ring: 0,
+      label: "jq",
+      active: false,
+      moved: 0
+    },
+    {
+      quadrant: 1,
+      ring: 0,
+      label: "Kubespray",
+      active: true,
+      moved: 0
+    },
+    {
+      quadrant: 1,
+      ring: 0,
+      label: "OPA/Gatekeeper",
+      active: false,
+      moved: 0
+    },
+    {
+      quadrant: 1,
+      ring: 0,
+      label: "Prometheus",
+      active: false,
+      moved: 0
+    },
+    {
+      quadrant: 1,
+      ring: 0,
+      label: "Rook",
+      active: false,
+      moved: 0
+    },
+    {
+      quadrant: 1,
+      ring: 1,
+      label: "Tekton",
+      active: true,
+      moved: 1
+    },
+    {
+      quadrant: 3,
+      ring: 0,
+      label: "Terraform",
+      active: false,
+      moved: 0
+    },
+    {
+      quadrant: 3,
+      ring: 0,
+      label: "yq",
+      active: false,
+      moved: 0
+    },
+]
+//ENTRIES
+});
+</script>
+
+<table>
+<tr>
+<td>
+
+<h3>What is the Tech Radar?</h3>
+
+<p>
+The Compliant Kubernetes Tech Radar is a list of technologies, complemented by an assessment result, called <em>ring assignment</em>. We use four rings with the following semantics:
+</p>
+
+<ul>
+<li><strong>ADOPT</strong> &mdash; Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in Compliant Kubernetes production environments, low risk and recommended to be widely used.</li>
+<li><strong>TRIAL</strong> &mdash; Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations. TRIAL technologies are slightly more risky; some engineers in our organization walked this path and will share knowledge and experiences.</li>
+<li><strong>ASSESS</strong> &mdash; Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.</li>
+<li><strong>HOLD</strong> &mdash; Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. HOLD technologies should not be used for new projects, but usually can be continued for existing projects.</li>
+</ul>
+
+</td><td>
+
+<h3>What is the purpose?</h3>
+
+<p>
+The Tech Radar is a tool to inspire and support engineering teams working with Compliant Kubernetes to pick the best technologies; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape.
+</p>
+
+<h3>Thanks</h3>
+
+<p>
+Based on the <a href="https://www.thoughtworks.com/radar">pioneering work of ThoughtWorks</a>, our Tech Radar sets out the changes in technologies that are interesting in software development &mdash; changes that we think our engineering teams should pay attention to and consider using in their projects.
+</p>
+
+<p>This repo is forked from <a href="https://github.com/zalando/tech-radar">Zalando's tech radar</a>. Special thanks for making the visualization generation code open sourced the code.
+</p>
+
+</td></tr>
+</table>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68368435-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

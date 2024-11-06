@@ -1,0 +1,256 @@
+digraph compliance_basics {
+    splines=false;
+    graph [
+        fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"
+        style=rounded
+    ]
+    node  [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"]
+    edge  [fontname = "Roboto,BlinkMacSystemFont,Helvetica,Arial,sans-serif"]
+
+    compound=true
+    graph[labeljust="l", fontsize=20, ranksep=1]
+
+    node[target="_top"]  // Open links in same tab
+
+    node[target="_blank"]  // Open links in new tab
+    subgraph cluster_personaldata_regulations {
+        label="Personal Data Regulations"
+
+        node[width=1, shape=box, style=rounded]
+
+        alignment_node_1[style=invis,label=""]
+        alignment_node_2[style=invis,label=""]
+        GDPR[URL="https://gdpr.eu/"]
+    }
+
+    subgraph cluster_healthtech_regulations {
+        label="Healthcare Regulations"
+
+        node[width=1.5, shape=box, style=rounded]
+
+        alignment_node_3[width=0.7,style=invis,label=""]
+        PDL[
+            label="Patient data law\n(HSLF-FS 2016:40)"
+            URL="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355"
+        ]
+    }
+
+    subgraph cluster_best_practices {
+        label="Security Best Practices"
+
+        node[width=1.5, shape=box, style=rounded]
+
+        NSA[
+            label="NSA/CISA"
+            URL="https://kubernetes.io/blog/2021/10/05/nsa-cisa-kubernetes-hardening-guidance/"
+        ]
+        EDPB[
+            label="EDPB"
+            URL="https://edpb.europa.eu/system/files/2021-06/edpb_recommendations_202001vo.2.0_supplementarymeasurestransferstools_en.pdf"
+        ]
+    }
+
+    node[target="_top"]  // Open links in same tab
+    subgraph cluster_policies {
+        label="Policies"
+
+        node[width=1, shape=circle, fixedsize=true]
+
+        Controls[
+            label="ISO 27001\nControls"
+            width=1.4
+        ]
+
+        { NSA, EDPB, PDL, GDPR } -> Controls
+
+        node[
+            width=1
+            shape=box
+            style=rounded
+        ]
+        Controls -> {
+            access[label="Access\ncontrol"]
+            logging[
+                label="Logging"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/log-review/"
+                fontcolor="#4651b4"
+            ]
+            backups[
+                label="Backup"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/backup/"
+                fontcolor="#4651b4"
+            ]
+            continuous[
+                label="Continuous\ncompliance"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/policy-as-code/"
+                fontcolor="#4651b4"
+                fontsize=12
+            ]
+            vulnerability[
+                label="Vulnerability\nmanagement"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/vulnerability/"
+                fontcolor="#4651b4"
+                fontsize=12
+            ]
+            intrusion[
+                label="Intrusion\ndetection"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/intrusion-detection/"
+                fontcolor="#4651b4"
+            ]
+            network[
+                label="Network\nsecurity"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/network-security/"
+                fontcolor="#4651b4"
+            ]
+            crypto[
+                label="Use of\ncryptography"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/cryptography/"
+                fontcolor="#4651b4"
+                fontsize=12
+            ]
+            capacity[
+                label="Capacity\nmanagement"
+                URL="https://elastisys.io/compliantkubernetes/ciso-guide/capacity-management/"
+                fontcolor="#4651b4"
+                fontsize=11
+            ]
+        }
+
+        // SPECIAL NODES FOR ALIGNMENT
+        controls2[style=invis]
+    }
+
+    node[target="_blank"]  // Open links in new tab
+    subgraph cluster_implementation {
+        label="Compliant Kubernetes"
+
+        node[
+            shape=none
+            label=""
+            width=1
+            height=1.4
+            labelloc=b
+            fixedsize=true
+            imagescale=true
+            imagepos=tc
+            fontsize=16
+        ]
+
+        access -> { dex[
+            image="logos/project-icons/dex.svg"
+            label="Dex"
+            URL="https://dexidp.io/"
+        ] }
+        backups -> { velero[
+            image="logos/project-icons/velero.svg"
+            label="Velero"
+            URL="https://velero.io"
+        ] }
+        logging -> { opensearch[
+            image="logos/project-icons/opensearch.svg"
+            label="OpenSearch"
+            URL="https://opensearch.org/"
+            fontsize=14
+        ] }
+        continuous -> { opa[
+            image="logos/project-icons/opa.svg"
+            label="OPA"
+            URL="https://open-policy-agent.github.io/gatekeeper/website/docs/"
+        ] }
+        vulnerability -> { trivy[
+            image="logos/project-icons/trivy.svg"
+            label="Trivy"
+            URL="https://github.com/aquasecurity/trivy"
+        ] }
+        intrusion -> { falco[
+            image="logos/project-icons/falco.svg"
+            label="Falco"
+            URL="https://falco.org/"
+        ] }
+        network -> { calico[
+            image="logos/project-icons/calico.svg"
+            label="Calico"
+            URL="https://www.projectcalico.org/"
+        ] }
+        crypto -> { certmanager[
+            image="logos/project-icons/cert-manager.svg"
+            label="Cert Manager"
+            URL="https://cert-manager.io/"
+            fontsize=14
+        ] }
+        capacity -> { kubernetes[
+            image="logos/project-icons/kubernetes.svg"
+            label="Kubernetes"
+            URL="https://kubernetes.io/"
+            fontsize=14
+        ]}
+    }
+
+    subgraph cluster_audit {
+        label="Compliant Kubernetes Visibility and Audit Dashboards"
+        node[
+            shape=none,
+            label="",
+            width=1,
+            height=1.4,
+            labelloc=b,
+            fixedsize=true,
+            imagescale=true,
+            imagepos=tc,
+            fontsize=16,
+        ]
+        prometheus[
+            image="logos/project-icons/prometheus.svg"
+            label="Prometheus"
+            fontsize=12
+            URL="https://prometheus.io/"
+        ]
+        grafana[
+            image="logos/project-icons/grafana.svg"
+            label="Grafana"
+            URL="https://github.com/grafana/grafana"
+        ]
+        alerts[
+            image="alerts.svg"
+            label="Alerts"
+        ]
+
+        edge[lhead=cluster_audit]
+        dex->prometheus
+        opensearch->grafana
+        velero->alerts
+
+        // Alignment: We create a lot of invisible nodes "auditNA*" for alignment.
+        opa->auditNA2
+        trivy->auditNA3
+        falco->auditNA4
+        calico->auditNA5
+        certmanager->auditNA6
+        kubernetes->auditNA7
+    }
+
+    subgraph cluster_footer {
+        style="invis";
+
+        node[shape="none"];
+        //node[shape="box"]; // Use for debugging
+        createdBy[
+            label=""
+            image="logos/created-by.svg"
+            URL="https://elastisys.com"
+            width=3
+        ]
+        title[
+            width=4.3
+            label="https://elastisys.io/compliantkubernetes/"
+            fontcolor="#4651b4"
+            URL="https://elastisys.io/compliantkubernetes/"
+        ]
+        spacing_node_0[width=2,label=""]
+        alignment_node_0[width=1,label=""]
+    }
+
+    // ALIGNMENT
+    edge[weight=1000,style="invis"]
+    GDPR -> controls2 -> access -> dex -> prometheus -> alignment_node_0
+}

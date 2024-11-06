@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="Layer_1"
+   data-name="Layer 1"
+   viewBox="0 0 52.370001 45.349999"
+   version="1.1"
+   sodipodi:docname="exoscale.svg"
+   width="52.369999"
+   height="45.349998"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata31">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Artboard 1</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2757"
+     inkscape:window-height="1690"
+     id="namedview29"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="1.7397228"
+     inkscape:cx="62.346082"
+     inkscape:cy="195.50375"
+     inkscape:window-x="144"
+     inkscape:window-y="68"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="Layer_1" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-1{fill:#da291c;}.cls-2{fill:none;}</style>
+  </defs>
+  <title
+     id="title6">Artboard 1</title>
+  <polygon
+     class="cls-1"
+     points="22.56,56.69 37.52,30.77 37.52,37.25 26.3,56.69 30.04,56.69 37.52,43.73 37.52,50.21 33.78,56.69 37.52,56.69 37.53,56.69 63.71,56.69 37.52,11.34 11.34,56.69 15.08,56.69 37.52,17.82 37.52,24.3 18.82,56.69 "
+     id="polygon8"
+     style="fill:#da291c"
+     transform="translate(-11.34,-11.34)" />
+</svg>
