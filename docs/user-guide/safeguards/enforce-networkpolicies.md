@@ -43,7 +43,7 @@ To make sure you don't forget to configure NetworkPolicies, the administrator ca
 If you get the following error:
 
 ```error
-Error: admission webhook "validation.gatekeeper.sh" denied the request: [denied by require-networkpolicy] No matching networkpolicy found
+Error: admission webhook "validation.gatekeeper.sh" denied the request: [denied by elastisys-require-networkpolicy] No matching networkpolicy found
 ```
 
 Then you are missing NetworkPolicies which select your Pods. The [user demo](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/templates/networkpolicy.yaml) gives a good example to get you started.
@@ -51,7 +51,7 @@ Then you are missing NetworkPolicies which select your Pods. The [user demo](htt
 If your administrator has not enforced this policy yet, you can view current violations of the policy by running:
 
 ```bash
-kubectl get k8srequirenetworkpolicy.constraints.gatekeeper.sh require-networkpolicy -ojson | jq .status.violations
+kubectl get k8srequirenetworkpolicy.constraints.gatekeeper.sh elastisys-require-networkpolicy -ojson | jq .status.violations
 ```
 
 ## Further Reading

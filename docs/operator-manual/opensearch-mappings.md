@@ -57,7 +57,7 @@ Let's check the new dynamic mapping
 
 You can see that OpenSearch choose a type of text for duration, which is technically correct, but it won't be of value especially if we were to run custom queries on the _duration_minutes_ field, for example: Get all movies longer than a certain duration .. etc
 
-We can instruct OpenSearch to detect numeric values, by configuring the Index at creation time. Let' recreate the index and enable numeric detection:
+We can instruct OpenSearch to detect numeric values, by configuring the index at creation time. Let's recreate the index and enable numeric detection:
 
 ![Detect Numeric](../img/dynamic_mapping_5.png)
 
@@ -74,17 +74,17 @@ Although OpenSearch was able to detect the numeric type, **long** in our case is
 
 To learn more, see [Numeric field types](https://opensearch.org/docs/latest/field-types/supported-field-types/numeric/)
 
-Dynamic mappings are fine when you're getting started with elasticsearch or when you're working with a new dataset. Once you have a more concrete idea of how you want to use the data, you want to be much more deliberate with your mappings, this is where an explicit mapping will be beneficial.
+Dynamic mappings are fine when you're getting started with OpenSearch or when you're working with a new dataset. Once you have a more concrete idea of how you want to use the data, you want to be much more deliberate with your mappings, this is where an explicit mapping will be beneficial.
 
 ## Explicit mapping
 
-Explicit mappings allow us to be more precise with our field definitions taking the creative control away from elasticsearch. We describe everything upfront providing the structure of our data and the relevant properties.
+Explicit mappings allow us to be more precise with our field definitions taking the creative control away from OpenSearch. We describe everything upfront providing the structure of our data and the relevant properties.
 
 Here is an example where we define explicitly the fields type of an index:
 
 ![Explicit Mapping](../img/dynamic_mapping_7.png)
 
-An explicit mapping only bypasses the type inference that elasticsearch does for the fields we provide in the explicit mapping. If we index a document with a field not described in the explicit mapping, elasticsearch will still add that new field to the mapping and infer data type to use.
+An explicit mapping only bypasses the type inference that OpenSearch does for the fields we provide in the explicit mapping. If we index a document with a field not described in the explicit mapping, OpenSearch will still add that new field to the mapping and infer data type to use.
 
 Let's index a new document containing a new field `producer`:
 

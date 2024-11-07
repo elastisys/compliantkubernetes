@@ -26,7 +26,7 @@ The following is a generic system context diagram over an air-gapped network con
 
 ## Configuring Air-gapped Welkin Apps
 
-These guidelines will show how to configure Welkin Apps to work in an air-gapped network. For setting up the Kubernetes layer, please refer to the [Kubespray air-gap installation documentation](https://kubespray.io/#/docs/offline-environment) or [Cluster-API documentation](https://cluster-api.sigs.k8s.io/clusterctl/configuration.html?highlight=release#image-overrides) for further instructions.
+These guidelines will show how to configure Welkin Apps to work in an air-gapped network. For setting up the Kubernetes layer, please refer to the [Kubespray air-gap installation documentation](https://kubespray.io/#/docs/operations/offline-environment) or [Cluster-API documentation](https://cluster-api.sigs.k8s.io/clusterctl/configuration.html?highlight=release#image-overrides) for further instructions.
 
 This guide will assume that you have a Platform Administrator Machine that can access both the Internet and the air-gapped network over SSH, this includes SSH access to both the Cluster nodes and hosts for the different offline services described in the system context diagram above. This "Platform Administrator Machine" can be your local machine or a bastion host.
 
@@ -260,7 +260,7 @@ trivy:
 
 ### NetworkPolicies
 
-A note about configuring NetworkPolicies, when using self-hosted file servers for the different services, remember to configure NetworkPolcieis accordingly, i.e. if a self-hosted file server runs on a different port than 443, you will need to override it in the config for each respective service, e.g. for OpenSearch to get plugins from `fileserver.air-gapped.internal:8080`:
+A note about configuring NetworkPolicies, when using self-hosted file servers for the different services, remember to configure NetworkPolicies accordingly, i.e. if a self-hosted file server runs on a different port than 443, you will need to override it in the config for each respective service, e.g. for OpenSearch to get plugins from `fileserver.air-gapped.internal:8080`:
 
 ```yaml
 networkPolicies:
@@ -313,4 +313,4 @@ Seeing logs from the user demo pods in OpenSearch Dashboards:
 ## References
 
 - [Air gap (networking) on Wikipedia](<https://en.wikipedia.org/wiki/Air_gap_(networking)>)
-- [Kubespray offline environment documentation](https://kubespray.io/#/docs/offline-environment)
+- [Kubespray offline environment documentation](https://kubespray.io/#/docs/operations/offline-environment)

@@ -19,7 +19,7 @@ uses the host network instead. This is done by configuring the Ingress Controlle
 is created on each node. The Pods are configured to use the host network, so all traffic received on the node
 on port 80 and 443 will be intercepted by the Ingress Controller Pod and then routed to the desired Service.
 
-On some clouds providers there is load balancing available for the worker nodes. For example Exoscale uses an "elastic ip"
+On some Infrastructure Providers there is load balancing available for the worker nodes. For example Exoscale uses an "elastic ip"
 which provides one external ip which load balances to the available worker nodes. For these Infrastructure Providers this external ip
 of the load balancers should be used as the entry point in the dns.
 
