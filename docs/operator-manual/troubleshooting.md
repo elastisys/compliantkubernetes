@@ -26,7 +26,7 @@ This guide assumes that:
 
 !!!important
 
-    For some of the ansible commands below, you might require root privileges. To run commands as a privileged user with ansible, use the `--become, -b` flag.
+    For some of the Ansible commands below, you might require root privileges. To run commands as a privileged user with Ansible, use the `--become, -b` flag.
 
     Example:
     `ansible -i inventory.ini -b all -m ping`
@@ -268,7 +268,7 @@ If the infrastructure is not managed by terraform you can skip to step 3:
     ./bin/ck8s-kubespray run-playbook $CLUSTER scale.yml -b --limit=[new_node_name]
     ```
 
-1. Add ssh keys to the new node if necessary
+1. Add SSH keys to the new node if necessary
 
     ```bash
     ./bin/ck8s-kubespray apply-ssh $CLUSTER --limit=[new_node_name]

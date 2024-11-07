@@ -6,7 +6,7 @@ Our goal is to help users of Welkin prove to both internal or external auditors 
 The vision of the project is to secure Europe’s digital future for services critical to society.
 One very important aspect in order for us to deliver on that vision is to provide best in class documentation for how we enable users to fulfill their security and compliance requirements, control by control.
 
-From the start, Welkin has been built based on relevant EU regulations and industri best practices.
+From the start, Welkin has been built based on relevant EU regulations and industry best practices.
 We've drawn inspiration from, and based architectural decision on information gathered from GDPR, NIS, NIS2, NIST, ENISA, MSB (Swedish Civil Contingencies Agency), BSI (German Federal Office for Information Security), US Department of Defense, industry specific regulations and much more.
 
 ## Platform architecture influenced by information security best practices

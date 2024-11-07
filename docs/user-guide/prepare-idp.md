@@ -98,12 +98,14 @@ To set up groups follow these steps, note that steps 16-18 below can only be don
 17. Navigate through the menu to **Security > Access and data control > API Controls** and click **Manage Domain Wide Delegation** and then **Add New**.
 18. In the **Client ID** field put the **Unique ID** of the service account from step 4. and in the **Oauth Scopes** field enter this scope: `https://www.googleapis.com/auth/admin.directory.group.readonly`.
 19. Decide on the name of the Google group that should have admin privileges in the Welkin environment.
-20. Finally, securely send, e.g., via [YoPass](https://yopass.elastisys.com), the following information to your Platform Administrators:
+20. Decide on a Google user email for the service account to impersonate when making calls to the admin API. The user would need at least the permission to retrieve a list of groups through the API.
+21. Finally, securely send, e.g., via [YoPass](https://yopass.elastisys.com), the following information to your Platform Administrators:
     <!-- markdownlint-enable ol-prefix -->
     <!-- markdownlint-enable list-marker-space -->
 
     - the JSON file you downloaded;
-    - admin group you decided on.
+    - the admin group you decided on;
+    - the Google email you decided on.
 
 ### Further Reading
 

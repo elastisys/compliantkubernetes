@@ -8,7 +8,9 @@ search:
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
-    You can order Managed Welkin by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/). Here are the highlights:
+    You can ask questions, get additional information, set up a call with our experts or order a managed service environment by emailing **sales@elastisys.com**.
+
+    The highlights of ordering a managed service environment are:
 
     * **Infrastructure provider**: You choose it, among the Elastisys Partners.
     * **Business Continuity**: Kubernetes Cluster always feature 3 control plane Nodes.

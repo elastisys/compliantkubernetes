@@ -24,8 +24,6 @@ Disaster recovery is mandated by several regulations and information security st
 - [A.12.3.1 Information Backup](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
 - [A.17.1.1 Planning Information Security Continuity](https://www.isms.online/iso-27001/annex-a-17-information-security-aspects-of-business-continuity-management/)
 
-## Object storage providers
-
 ## Off-site backups
 
 Backups can be set up to be replicated off-site using CronJobs.
@@ -66,7 +64,7 @@ See [the instructions in `compliantkubernetes-apps` for how to restore off-site 
 
 OpenSearch is set up to store backups in an S3 bucket. There is a CronJob called `opensearch-backup` in the cluster that is invoking the snapshot process in OpenSearch.
 
-To take a snapshot on-demand, execute
+To take a snapshot on-demand, execute:
 
 ```sh
 ./bin/ck8s ops kubectl sc -n opensearch-system create job --from=cronjob/opensearch-backup <name-of-job>
@@ -93,7 +91,7 @@ Install the OpenSearch suite:
 Wait for the installation to complete.
 
 After the installation, continue to the **Restore** section to proceed with the restore.
-If you want to restore all indices, use the following `indices` variable
+If you want to restore all indices, use the following `indices` variable:
 
 ```bash
 indices="kubernetes-*,kubeaudit-*,other-*,authlog-*"
@@ -107,7 +105,7 @@ indices="kubernetes-*,kubeaudit-*,other-*,authlog-*"
 
 ### Restore
 
-Set the following variables
+Set the following variables:
 
 1. OpenSearch user with permissions to manage snapshots, usually `admin`
 1. The password for the above user
@@ -135,7 +133,7 @@ os_url=https://opensearch.$(yq4 '.global.opsDomain' ${CK8S_CONFIG_PATH}/common-c
         }
         '
         ```
-        Then restore from this snapshot repository (`backup-repositroy`) in OpenSearch.
+        Then restore from this snapshot repository (`backup-repository`) in OpenSearch.
 
     - To restore from an **unencrypted** off-site backup:
 
@@ -145,7 +143,7 @@ os_url=https://opensearch.$(yq4 '.global.opsDomain' ${CK8S_CONFIG_PATH}/common-c
         Remember to revert to the regular S3 service afterwards and reactivate the backup CronJob! <br/>
         Replace the previous snapshot repository if it is unusable.
 
-List snapshot repositories
+List snapshot repositories:
 
 ```bash
 # Simple
@@ -166,7 +164,7 @@ opensearch-snapshots   s3
 }
 ```
 
-List available snapshots
+List available snapshots:
 
 ```bash
 snapshot_repo=<name/id from previous step>
@@ -266,7 +264,7 @@ curl -kL -u "${user}:${password}" -X GET "${os_url}/_snapshot/${snapshot_repo}/$
 ```
 
 > [!NOTE]
-> If you visit the `"<os_url>/app/dashboards"` page in the OpenSearch GUI after deleting the index and before restoring the index, another empty index `.opensearch_dashboards` will be created. You need to delete this manually, which can be done with
+> If you visit the `"<os_url>/app/dashboards"` page in the OpenSearch GUI after deleting the index and before restoring the index, another empty index `.opensearch_dashboards` will be created. You need to delete this manually, which can be done with:
 >
 > ```bash
 > curl -kL -u "${user}:${password}" -X DELETE "${os_url}/.opensearch_dashboards?pretty"
@@ -458,7 +456,7 @@ spec:
 
 ### Example restoring a partially failed backup
 
-A backup that has status `PartiallyFailed` can be restored by using `--allow-partially-failed` flag
+A backup that has status `PartiallyFailed` can be restored by using `--allow-partially-failed` flag:
 
 ```bash
 ./bin/ck8s ops velero wc restore create <restore-name> --allow-partially-failed --from-schedule velero-daily-backup --wait
@@ -472,7 +470,7 @@ You can explore a `Completed` backup as follows
 ./bin/ck8s ops velero wc backup describe --details <name-of-backup>
 ```
 
-and you can then use the following to handpick resources from the backup you want restored
+and you can then use the following to handpick resources from the backup you want restored:
 
 ```bash
 ./bin/ck8s ops velero wc restore create <restore-name>  --include-resources pod,volume --from-backup <backup-name> --include-namespaces <namespace-name> --selector <resource-selector> --wait
@@ -590,7 +588,7 @@ To restore the Grafana backup you must:
   ./bin/ck8s ops kubectl sc delete pvc -n monitoring user-grafana
   ```
 
-- Restore the velero backup
+- Restore the Velero backup
 
   ```bash
   ./bin/ck8s ops velero sc restore create --from-schedule velero-daily-backup --wait

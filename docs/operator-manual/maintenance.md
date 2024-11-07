@@ -63,14 +63,15 @@ When a new version is released, it becomes available as a [tagged release](https
 - [ ] Check if there are any pending changes to the environment;
 - [ ] Check the state of the environment, pods, nodes and backup jobs:
 
-> **_NOTE:_** the below steps should be run from compliantkubernetes-apps root directory
+> [!NOTE]
+> the below steps should be run from compliantkubernetes-apps root directory.
 
 ```bash
 ./bin/ck8s test sc|wc
 ./bin/ck8s ops kubectl sc|wc get pods -A -o custom-columns=NAMESPACE:metadata.namespace,POD:metadata.name,READY-false:status.containerStatuses[*].ready,REASON:status.containerStatuses[*].state.terminated.reason | grep false | grep -v Completed
 ./bin/ck8s ops kubectl sc|wc get nodes
 ./bin/ck8s ops kubectl sc|wc get jobs -A
-velero get backup
+./bin/ck8s ops velero sc|wc get backup
 ```
 
 - [ ] Silence the notifications for the alerts. e.g you can use [Alertmanager silences](https://prometheus.io/docs/alerting/latest/alertmanager/#silences);
@@ -132,10 +133,9 @@ All clusters should stay up to date with the latest Kubespray version used in [c
 1. Note what version of Kubespray that is currently used in the cluster and the Kubespray version we want to upgrade to.
     Then check the release notes for each version in between to see if there are anything that might cause any problems, if so then consult the rest of the operations team before proceeding.
     Also check if the newer Kubespray version would upgrade Kubernetes to a new minor version, if so then the Application Developer should get a notice of x weeks before proceeding to let them check for any deprecated APIs that they might be using.
-    You should never upgrade more than one patch version of Kubespray at a time.
-    E.g. if you are at Kubespray version 2.13.3 and are going to 2.15.0 then the upgrade path would be 2.13.3 -> 2.13.4 -> 2.14.0 -> 2.14.1 -> 2.14.2 -> 2.15.0.
-    Patches that are released to an older minor version can be skipped, e.g. new patches to 2.14 after 2.15 has been released.
-    Read more about Kubespray upgrades in their [documentation](https://kubespray.io/#/docs/upgrades).
+    You should never upgrade more than one minor version of Kubespray at a time.
+    E.g. if you are at Kubespray version 2.13.3 and are going to 2.15.0 then the upgrade path would be 2.13.3 -> 2.14.2 -> 2.15.0.
+    Read more about Kubespray upgrades in their [documentation](https://kubespray.io/#/docs/operations/upgrades).
 
 1. Checkout the next Kubespray version by checking out the last compliantkubernetes-kubespray commit (the commit is `next-version` in the snippet below) that used that version and updating the submodule.
 
@@ -148,7 +148,7 @@ All clusters should stay up to date with the latest Kubespray version used in [c
 
 1. Upgrade compliantkubernetes-kubespray by following the relevant [documentation](https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/migration) (e.g. [for upgrade to v2.17.x-ck8s1](https://github.com/elastisys/compliantkubernetes-kubespray/blob/v2.17.1-ck8s1/migration/v2.16.0-ck8s1-v2.17.x-ck8s1/upgrade-cluster.md)).
 
-1. Download the required files on the nodes
+1. Download the required files on the nodes:
 
     ```bash
     ./bin/ck8s-kubespray run-playbook sc upgrade-cluster.yml -b --tags=download
@@ -166,7 +166,8 @@ All clusters should stay up to date with the latest Kubespray version used in [c
 
 - [ ] Check the state of the environment, pods and nodes:
 
-> **_NOTE:_** the below steps should be run from compliantkubernetes-apps root directory
+> [!NOTE]
+> the below steps should be run from compliantkubernetes-apps root directory.
 
 ```bash
 ./bin/ck8s test sc|wc

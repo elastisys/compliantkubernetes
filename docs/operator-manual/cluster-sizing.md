@@ -1,6 +1,6 @@
 # Cluster Sizing
 
-A full Welkin deployment requires a cluster with at least 40 CPUs and 82 GB of memory in total.
+Welkin requires 26 CPUs and 72 GB of memory in addition to the capacity needed by your applications. Which for example could be 2 CPU and 8 GB of memory.
 
 ## Monitoring
 

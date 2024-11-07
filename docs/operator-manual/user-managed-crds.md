@@ -11,6 +11,7 @@ The list of currently supported applications for self-management is:
 - SealedSecrets
 - MongoDB
 - Flux
+- Kafka
 
 ## Limitations
 
@@ -34,6 +35,9 @@ user:
     enabled: true
   # Enable Flux
   fluxv2:
+    enabled: true
+  # Enable Kafka
+  kafka:
     enabled: true
 
 gatekeeper:

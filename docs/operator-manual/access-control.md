@@ -18,7 +18,7 @@ This guide describes how to set up and make use of group claims for applications
 
 !!!note
 
-    This guide assumes your group claim name is `groups`
+    This guide assumes your group claim name is `groups`.
 
 ### Kubernetes
 
@@ -102,8 +102,8 @@ harbor:
 #### OPS Grafana
 
 ```yaml
-prometheus:
-  grafana:
+grafana:
+  ops:
     oidc:
       enabled: true
       userGroups:
@@ -118,16 +118,16 @@ prometheus:
 #### User Grafana
 
 ```yaml
-user:
-  grafana:
+grafana:
+  user:
     oidc:
+      userGroups:
+        grafanaAdmin: my-admin-group
+        grafanaEditor: my-editor-group
+        grafanaViewer: my-viewer-group
       scopes: "... groups" # Add groups to existing
       allowedDomains:
         - my-domain.com
-    userGroups:
-      grafanaAdmin: my-admin-group
-      grafanaEditor: my-editor-group
-      grafanaViewer: my-viewer-group
 ```
 
 ## Users onboarding
@@ -182,7 +182,7 @@ opensearch:
 
         To get the static admin username and password you need to have access to the SC cluster and then run
 
-        `kubectl get secret user-grafana -n monitoring -o json | jq '.data | map_values(@base64d)'`
+        `kubectl get secret user-grafana-env -n monitoring -o json | jq '.data | map_values(@base64d)'`
 
 1. Administrator promotes the OpenID user to Grafana admin at `grafana.domain.tld/admin/users`
 
@@ -196,8 +196,8 @@ opensearch:
 
         To get the static admin username and password you need to have access to the SC cluster and then run
 
-        `kubectl get secret harbor-init-secret -n harbor -o json | jq '.data."harbor-password"'`
+        `kubectl get secret harbor-init-secret -n harbor -o json | jq '.data."harbor-password" | @base64d'`
 
         Username is: admin
 
-1. Administrator promotes the OpenID user to Harbor admin at `grafana.domain.tld/harbor/users`
+1. Administrator promotes the OpenID user to Harbor admin at `harbor.domain.tld/harbor/users`
