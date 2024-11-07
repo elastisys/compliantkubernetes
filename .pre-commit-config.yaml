@@ -92,6 +92,16 @@ repos:
         entry: '\/\/(elastisys.io)\/'
         language: pygrep
         files: ".*[.]md$"
+      - id: avoid-old-website-url
+        name: Avoid old URLs (https://elastisys.io/compliantkubernetes)
+        entry: "elastisys.io/compliantkubernetes"
+        language: pygrep
+        files: ".*[.]md$"
+      - id: avoid-old-github-urls
+        name: Avoid old URLs (https://github.com/elastisys/compliantkubernetes)
+        entry: "github.com/elastisys/compliantkubernetes[^-]"
+        language: pygrep
+        files: ".*[.]md$"
       - id: avoid-non-descriptive-link-text
         name: Avoid non-descriptive link text (see https://developers.google.com/search/docs/crawling-indexing/links-crawlable#write-good-anchor-text)
         entry: "(?i)<a[^>]*>(read more|click here|learn more)</a>"
