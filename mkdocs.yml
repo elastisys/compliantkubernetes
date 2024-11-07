@@ -1,9 +1,16 @@
-site_name: Elastisys Compliant Kubernetes
+---
+site_name: Welkin
 site_url: https://elastisys.io/
-site_description: "Compliant Kubernetes, the Kubernetes platform for software critical to our society. NIS2, ISO-27001, etc."
+site_description: >
+  Welkin, the Kubernetes platform for software critical to our society.
+  NIS2, ISO-27001, etc.
 site_author: Elastisys AB
 copyright: >-
   Copyright © Elastisys AB
+  <br/>
+  Elastisys has the following registered trademarks in Europe and/or other countries: Elastisys Welkin®.
+  <br/>
+  Elastisys has registrations pending or trademarks in use for the following marks in Europe and/or other countries: the Welkin logo and Welkin mascot.
   <br/>
   The Linux Foundation has the following registered trademarks in the United States and/or other countries: Certified Kubernetes®, containerd®, fluentd®, Helm®, Istio®, K8s®, Kubernetes®, Prometheus®, PromQL®, Rook®, The Linux Foundation®.
   <br/>
@@ -11,7 +18,7 @@ copyright: >-
   <br/>
   Postgres and PostgreSQL and the Elephant Logo (Slonik) are all registered trademarks of the PostgreSQL Community Association of Canada.
   <br/>
-  Redis is a trademark of Redis Ltd. Any rights therein are reserved to Redis Ltd. Any use by the Compliant Kubernetes project is for referential purposes only and does not indicate any sponsorship, endorsement or affiliation between Redis and Compliant Kubernetes project.
+  Redis is a trademark of Redis Ltd. Any rights therein are reserved to Redis Ltd. Any use by the Welkin project is for referential purposes only and does not indicate any sponsorship, endorsement or affiliation between Redis and Welkin project.
   <br/>
   RabbitMQ is a trademark of VMware, Inc. in the U.S. and other countries.
   <br/>
@@ -27,7 +34,7 @@ copyright: >-
   <br/>
   NGINX is a registered trademark of F5 Inc.
 
-repo_url: https://github.com/elastisys/compliantkubernetes/
+repo_url: https://github.com/elastisys/welkin/
 edit_uri: edit/main/docs/
 
 strict: true
@@ -35,9 +42,9 @@ strict: true
 theme:
   name: material
   font: false
-  logo: "img/logo.png"
+  logo: "img/favicon.svg"
   # "The Internet" recommends using absolute URLs for favicons.
-  favicon: "https://elastisys.io/compliantkubernetes/img/favicon.ico"
+  favicon: "https://elastisys.io/welkin/img/favicon.ico"
   custom_dir: overrides
   palette:
     scheme: elastisys
@@ -68,7 +75,7 @@ plugins:
       version_selector: true # set to false to leave out the version selector
       css_dir: css # the directory to put the version selector's CSS
       javascript_dir: js # the directory to put the version selector's JS
-      canonical_version: compliantkubernetes
+      canonical_version: welkin
   # See ./mkdocs-ciso-controls/README.md
   - ciso-controls:
       root_url: ciso-guide/controls/
@@ -126,7 +133,7 @@ extra:
           data: 0
           note: >-
             Thanks for your feedback! Help us improve this page by
-            <a href="https://github.com/elastisys/compliantkubernetes/issues/new/choose" target="_blank">filing an issue</a>.
+            <a href="https://github.com/elastisys/welkin/issues/new/choose" target="_blank">filing an issue</a>.
 
 nav:
   - Overview: "index.md"
@@ -261,17 +268,17 @@ nav:
       - "Quality Criteria": "quality-criteria.md"
   - "Release Notes":
       - "Release Cycle": "release-notes/index.md"
-      - "Compliant Kubernetes": "release-notes/ck8s.md"
-      - "CK8S Kubespray": "release-notes/kubespray.md"
-      - "CK8S Cluster API": "release-notes/capi.md"
-      - "CK8S PostgreSQL": "release-notes/postgres.md"
-      - "CK8S RabbitMQ": "release-notes/rabbitmq.md"
-      - "CK8S Redis": "release-notes/redis.md"
-      - "CK8S Jaeger": "release-notes/jaeger.md"
-      - "CK8S Argo CD": "release-notes/argocd.md"
+      - "Welkin": "release-notes/welkin.md"
+      - "Welkin Kubespray": "release-notes/kubespray.md"
+      - "Welkin Cluster API": "release-notes/capi.md"
+      - "Welkin PostgreSQL": "release-notes/postgres.md"
+      - "Welkin RabbitMQ": "release-notes/rabbitmq.md"
+      - "Welkin Redis": "release-notes/redis.md"
+      - "Welkin Jaeger": "release-notes/jaeger.md"
+      - "Welkin Argo CD": "release-notes/argocd.md"
   - "Glossary": "glossary.md"
-  - "Fully Managed Compliant Kubernetes": "https://elastisys.com/managed-services/"
-  - "Support for Self-Managed Compliant Kubernetes": "https://elastisys.com/self-managed/"
+  - "Fully Managed Welkin": "https://elastisys.com/managed-services/"
+  - "Support for Self-Managed Welkin": "https://elastisys.com/self-managed/"
   - "Consulting": "https://elastisys.com/consulting/"
   - "Official Training": "https://elastisys.com/training/"
   - "Blog": "https://elastisys.com/blog/"

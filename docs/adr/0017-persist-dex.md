@@ -1,7 +1,7 @@
 # Persist Dex
 
 - Status: accepted
-- Deciders: Compliant Kubernetes Architecture Meeting
+- Deciders: Architecture Meeting
 - Date: 2021-11-16
 
 Technical Story: [Enable Dex persistence](https://github.com/elastisys/compliantkubernetes-apps/issues/680)

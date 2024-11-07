@@ -4,7 +4,7 @@
 >
 > — Phil Karlton
 
-This page introduces terminology used in the Compliant Kubernetes project.
+This page introduces terminology used in the Welkin project.
 We borrow terminology from:
 
 - [Kubernetes Glossary](https://kubernetes.io/docs/reference/glossary/);
@@ -70,9 +70,9 @@ See also:
 - [Application Developer on Kubernetes Glossary](https://kubernetes.io/docs/reference/glossary/?all=true#term-application-developer)
 - [Certified Kubernetes Application Developer (CKAD)](https://www.cncf.io/certification/ckad/)
 
-## Apps layer (or Compliant Kubernetes layer)
+## Apps layer (or Welkin layer)
 
-Denotes the Compliant Kubernetes components installed on top of a Kubernetes cluster.
+Denotes the Welkin components installed on top of a Kubernetes cluster.
 
 Usage notes:
 
@@ -101,7 +101,7 @@ See also:
 
 ## Contributor
 
-Someone who makes Compliant Kubernetes better by providing code, documentation, feedback. Contributors make their work visible by raising issues and creating pull requests.
+Someone who makes Welkin better by providing code, documentation, feedback. Contributors make their work visible by raising issues and creating pull requests.
 
 See also:
 
@@ -126,14 +126,14 @@ See also:
 
 ## Customer
 
-Someone who benefits from Compliant Kubernetes via a commercial agreement.
+Someone who benefits from Welkin via a commercial agreement.
 
 Usage notes:
 
 - Do NOT use "Customer" to refer figuratively to [Application Developer](#application-developer).
-  Although we are big fans of a customer-driven mindset, there are several way to deliver Compliant Kubernetes commercially. Hence, this usage of the word "Customer" is confusing.
+  Although we are big fans of a customer-driven mindset, there are several way to deliver Welkin commercially. Hence, this usage of the word "Customer" is confusing.
 - Do NOT use "Customer" to refer figuratively to [End User](#end-user).
-  Although we are big fans of a customer-driven mindset, there are several way to deliver Compliant Kubernetes commercially. Hence, this usage of the word "Customer" is confusing.
+  Although we are big fans of a customer-driven mindset, there are several way to deliver Welkin commercially. Hence, this usage of the word "Customer" is confusing.
 - Do NOT use "Data Controller", "Data Processor" or "Data Sub-processor". Determining which entity fulfills these GDPR concepts is usually done via a Data Protection Agreement (DPA). See EDPB [Guidelines 07/2020 on the concepts of controller and processor in the GDPR](https://edpb.europa.eu/our-work-tools/documents/public-consultations/2020/guidelines-072020-concepts-controller-and_en).
 
 See also:
@@ -156,7 +156,7 @@ See also:
 
 ## Environment
 
-One instance of a Compliant Kubernetes deployment. One Environment is composed of two [Kubernetes Clusters](#kubernetes-cluster), the [Management Cluster](#management-cluster) and [Workload Cluster](#workload-cluster).
+One instance of a Welkin deployment. One Environment is composed of two [Kubernetes Clusters](#kubernetes-cluster), the [Management Cluster](#management-cluster) and [Workload Cluster](#workload-cluster).
 
 Usage notes:
 
@@ -243,7 +243,7 @@ See also:
 
 ## Maintainer
 
-"Those [contributors](#contributor) who lead an open source project." [Elastisys](https://elastisys.com) is Maintainer of Compliant Kubernetes.
+"Those [contributors](#contributor) who lead an open source project." [Elastisys](https://elastisys.com) is Maintainer of Welkin.
 
 Usage notes:
 
@@ -289,7 +289,7 @@ See also:
 
 ## Platform Administrator
 
-The people who operate Compliant Kubernetes and Additional Platform Services.
+The people who operate Welkin and Additional Platform Services.
 
 Usage notes:
 
@@ -302,7 +302,7 @@ See also:
 
 ## Service Endpoint
 
-Interface exposed via the network for accessing Compliant Kubernetes functionality. Endpoints include Harbor, OpenSearch, Grafana, Dex and the [Workload Cluster](#workload-cluster) Kubernetes API.
+Interface exposed via the network for accessing Welkin functionality. Endpoints include Harbor, OpenSearch, Grafana, Dex and the [Workload Cluster](#workload-cluster) Kubernetes API.
 
 Usage notes:
 

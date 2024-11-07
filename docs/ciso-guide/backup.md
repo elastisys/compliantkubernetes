@@ -41,11 +41,11 @@ tags:
 - [A.12.3.1 Information Backup](https://www.isms.online/iso-27001/annex-a-12-operations-security/)
 - [A.17.1.1 Planning Information Security Continuity](https://www.isms.online/iso-27001/annex-a-17-information-security-aspects-of-business-continuity-management/)
 
-## Compliant Kubernetes Backup Dashboard
+## Welkin Backup Dashboard
 
 ![Backup Dashboard](img/backup.png)
 
-The Compliant Kubernetes Backup Dashboard allows to quickly audit the status of backups and ensure the [Recovery Point Objective](https://en.wikipedia.org/wiki/IT_disaster_recovery#Recovery_Point_Objective) are met.
+The Welkin Backup Dashboard allows to quickly audit the status of backups and ensure the [Recovery Point Objective](https://en.wikipedia.org/wiki/IT_disaster_recovery#Recovery_Point_Objective) are met.
 
 ## Handling Non-Compliance
 

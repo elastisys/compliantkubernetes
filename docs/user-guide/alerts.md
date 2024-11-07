@@ -1,5 +1,5 @@
 ---
-description: Alerting on metrics with AlertManager in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: Alerting on metrics with AlertManager in Welkin, the security-focused Kubernetes distribution.
 search:
   boost: 2
 tags:
@@ -9,13 +9,13 @@ tags:
 
 # Alerts via Alertmanager
 
-Compliant Kubernetes (CK8S) includes alerts via [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/).
+Welkin includes alerts via [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/).
 
 !!!important
 
-    By default, you will get some platform alerts. This may benefit you, by giving you improved "situational awareness". Please decide if these alerts are of interest to you or not. Feel free to silence them, as the Compliant Kubernetes administrator will take responsibility for them.
+    By default, you will get some platform alerts. This may benefit you, by giving you improved "situational awareness". Please decide if these alerts are of interest to you or not. Feel free to silence them, as the Welkin administrator will take responsibility for them.
 
-    Your focus should be on **user alerts** or **application-level alerts**, i.e., alerts under the control and responsibility of the Compliant Kubernetes user. We will focus on user alerts in this document.
+    Your focus should be on **user alerts** or **application-level alerts**, i.e., alerts under the control and responsibility of the Welkin user. We will focus on user alerts in this document.
 
 ## Compliance needs
 
@@ -42,11 +42,11 @@ Make sure to configure **and test** a receiver for you alerts, e.g., Slack or Op
 
 !!!note
 
-    If you get an access denied error, check with your Compliant Kubernetes administrator.
+    If you get an access denied error, check with your Welkin administrator.
 
 ### Silencing alerts
 
-Compliant Kubernetes comes with a lot of predefined alerts. As a user you might not find all of them relevant and would want to silence/ignore some of them. You can do this by adding new routes in the secret and set `receiver: 'null'`. Here is an example that would drop all alerts from the kube-system namespace (alerts with the label `namespace=kube-system`):
+Welkin comes with a lot of predefined alerts. As a user you might not find all of them relevant and would want to silence/ignore some of them. You can do this by adding new routes in the secret and set `receiver: 'null'`. Here is an example that would drop all alerts from the kube-system namespace (alerts with the label `namespace=kube-system`):
 
 ```yaml
 routes:
@@ -74,16 +74,16 @@ Then create a `PrometheusRule` following the examples below, or the upstream doc
 
 The [API reference for the Prometheus Operator](https://prometheus-operator.dev/docs/api-reference/api/#monitoring.coreos.com/v1.PrometheusRule) describes how the Kubernetes resource is configured, and the [configuration reference for Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) describes the rules themselves.
 
-In Compliant Kubernetes the Prometheus Operator in the Workload Cluster is configured to pick up all PrometheusRules, regardless in which namespace they are or which labels they have.
+In Welkin the Prometheus Operator in the Workload Cluster is configured to pick up all PrometheusRules, regardless in which namespace they are or which labels they have.
 
 ### Running Example
 
 <!--user-demo-alerts-start-->
 
-The user demo already includes a [PrometheusRule](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/prometheusrule.yaml), to configure an alert:
+The user demo already includes a [PrometheusRule](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/templates/prometheusrule.yaml), to configure an alert:
 
 ```yaml
---8<---- "user-demo/deploy/ck8s-user-demo/templates/prometheusrule.yaml"
+--8<---- "user-demo/deploy/welkin-user-demo/templates/prometheusrule.yaml"
 ```
 
 The screenshot below gives an example of the application alert, as seen in Alertmanager.

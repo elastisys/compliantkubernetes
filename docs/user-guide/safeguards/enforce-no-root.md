@@ -26,7 +26,7 @@ Many container runtimes and operating system vulnerabilities need code running a
 
 Unfortunately, many Dockerfiles -- and container base images -- today are shipped running as root by default. This makes it easy to slip code running as root into production, exposing data to unnecessary risks.
 
-To reduce blast radius, Compliant Kubernetes will protect you from accidentally deploying application running as root.
+To reduce blast radius, Welkin will protect you from accidentally deploying application running as root.
 
 ## How to solve: CreateContainerConfigError
 
@@ -35,11 +35,11 @@ You may encounter the following issue:
 ```console
 $ kubectl get pods
 NAME                                   READY   STATUS                       RESTARTS   AGE
-myapp-ck8s-user-demo-564f8dd85-2bs8r   0/1     CreateContainerConfigError   0          84s
-myapp-ck8s-user-demo-bfbf9c459-dmk4l   0/1     CreateContainerConfigError   0          13m
-$ kubectl describe pods myapp-ck8s-user-demo-564f8dd85-2bs8r
+myapp-welkin-user-demo-564f8dd85-2bs8r   0/1     CreateContainerConfigError   0          84s
+myapp-welkin-user-demo-bfbf9c459-dmk4l   0/1     CreateContainerConfigError   0          13m
+$ kubectl describe pods myapp-welkin-user-demo-564f8dd85-2bs8r
 [...]
-Error: container has runAsNonRoot and image has non-numeric user (node), cannot verify user is non-root (pod: "myapp-ck8s-user-demo-bfbf9c459-dmk4l_demo1(1b53b1a8-4845-4db5-aecf-6bebcc54e396)", container: ck8s-user-demo)
+Error: container has runAsNonRoot and image has non-numeric user (node), cannot verify user is non-root (pod: "myapp-welkin-user-demo-bfbf9c459-dmk4l_demo1(1b53b1a8-4845-4db5-aecf-6bebcc54e396)", container: welkin-user-demo)
 ```
 
 This means that your Dockerfile uses a non-numeric user and Kubernetes cannot validate whether the image truly runs as non-root.
@@ -47,16 +47,16 @@ This means that your Dockerfile uses a non-numeric user and Kubernetes cannot va
 Alternatively, you may get:
 
 ```console
-$ kubectl describe pods myapp-ck8s-user-demo-564f8dd85-2bs8r
+$ kubectl describe pods myapp-welkin-user-demo-564f8dd85-2bs8r
 [...]
-Error: container has runAsNonRoot and image will run as root (pod: "myapp-ck8s-user-demo-564f8dd85-2bs8r_demo1(a55a25f3-7b77-4fae-9f92-11e264446ecc)", container: ck8s-user-demo)
+Error: container has runAsNonRoot and image will run as root (pod: "myapp-welkin-user-demo-564f8dd85-2bs8r_demo1(a55a25f3-7b77-4fae-9f92-11e264446ecc)", container: welkin-user-demo)
 ```
 
 This means that your Dockerfile has no `USER` directive and your application would run as root.
 
 To ensure your application does not run as root, you have two options:
 
-1. Change the Dockerfile to `USER 1000` or whatever numeric ID corresponds to your user. This is what the [user demo does](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/Dockerfile#L10-L11).
+1. Change the Dockerfile to `USER 1000` or whatever numeric ID corresponds to your user. This is what the [user demo does](https://github.com/elastisys/welkin/blob/main/user-demo/Dockerfile#L10-L11).
 1. Add the following snippet to the `spec` of your Pod manifest:
 
     ```yaml

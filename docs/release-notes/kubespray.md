@@ -1,6 +1,6 @@
 # Release Notes
 
-## Compliant Kubernetes Kubespray
+## Welkin Kubespray
 
 <!-- BEGIN TOC -->
 
@@ -148,7 +148,7 @@ Released 2023-02-06
 #### Updated
 
 - **Updated Kubespray to `v2.21.0`** <br/>
-  Kubernetes version upgraded to [v1.25.6](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.25.md#v1256) in which Pod Security Policies (PSPs) are removed. You should not upgrade to this version if you are using PSPs. To deploy [Compliant Kubernetes Apps](https://github.com/elastisys/compliantkubernetes-apps) on this version it needs to be on a compatible version which depends on [this issue](https://github.com/elastisys/compliantkubernetes-apps/issues/1218). <br/>
+  Kubernetes version upgraded to [v1.25.6](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.25.md#v1256) in which Pod Security Policies (PSPs) are removed. You should not upgrade to this version if you are using PSPs. To deploy [Welkin Apps](https://github.com/elastisys/compliantkubernetes-apps) on this version it needs to be on a compatible version which depends on [this issue](https://github.com/elastisys/compliantkubernetes-apps/issues/1218). <br/>
   This version requires at least terraform version `0.14.0` in order to provision infrastructure using the Kubespray provided terraform modules.
 - **Upgraded rook-ceph operator to `v1.10.5` and ceph to `v17.2.5`** <br/>
   If you are using the rook-ceph operator you can read the [migration docs](https://github.com/elastisys/compliantkubernetes-kubespray/blob/v2.21.0-ck8s1/rook/migration/rook-1.5.x-rook-1.10.5/upgrade.md) on how to upgrade these components.

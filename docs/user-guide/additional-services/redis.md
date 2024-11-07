@@ -17,7 +17,7 @@ search:
 <figure>
     <img alt="Redis Deployment Model" src="../img/redis.drawio.svg" >
     <figcaption>
-        <strong>Redis on Compliant Kubernetes Deployment Model</strong>
+        <strong>Redis on Welkin Deployment Model</strong>
         <br>
         This help you build a mental model on how to access Redis as an Application Developer and how to connect your application to Redis.
     </figcaption>
@@ -56,7 +56,7 @@ sudo apt install redis-tools
 
 ## Getting Access
 
-Your administrator will set up a ConfigMap inside Compliant Kubernetes, which contains all information you need to access your Redis cluster.
+Your administrator will set up a ConfigMap inside Welkin, which contains all information you need to access your Redis cluster.
 The ConfigMap has the following shape:
 
 ```yaml
@@ -94,7 +94,7 @@ export REDIS_SENTINEL_PORT=$(kubectl -n $NAMESPACE get configmap $CONFIG_MAP -o 
 
 ## Create a ConfigMap
 
-First, check that you are on the right Compliant Kubernetes cluster, in the right **application** namespace:
+First, check that you are on the right Welkin cluster, in the right **application** namespace:
 
 ```bash
 kubectl get nodes
@@ -148,9 +148,9 @@ To expose the Redis cluster to your application, follow one of the following ups
 You should be all set.
 Before going into production, don't forget to go through the [go-live checklist](../go-live.md).
 
-## CK8S Redis Release Notes
+## Welkin Redis Release Notes
 
-Check out the [release notes](../../release-notes/redis.md) for the Redis cluster that runs in Compliant Kubernetes environments!
+Check out the [release notes](../../release-notes/redis.md) for the Redis cluster that runs in Welkin environments!
 
 ## Best Practices Recommended
 

@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t ck8s-user-demo:latest .
+docker build -t welkin-user-demo:latest .

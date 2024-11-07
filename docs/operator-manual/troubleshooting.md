@@ -10,7 +10,7 @@ tags:
     end="<!--for-sme-customers-end-->"
 %}
 
-Help! Something is wrong with my Compliant Kubernetes cluster. Fear no more, this guide will help you make sense.
+Help! Something is wrong with my Welkin cluster. Fear no more, this guide will help you make sense.
 
 This guide assumes that:
 
@@ -260,7 +260,7 @@ If the infrastructure is not managed by terraform you can skip to step 3:
 1. Re-apply Kubespray only for the new node.
 
     ```bash
-    cd [compliantkubernetes-kubespray-root-dir]
+    cd [welkin-kubespray-root-dir]
 
     CLUSTER=[sc | wc]
 
@@ -277,7 +277,7 @@ If the infrastructure is not managed by terraform you can skip to step 3:
 1. Update Network Policies
 
     ```bash
-    cd [compliatkubernetes-apps-root-dir]
+    cd [welkin-apps-root-dir]
 
     ./bin/ck8s update-ips sc update
     ./bin/ck8s update-ips wc update
@@ -478,7 +478,7 @@ velero backup create --from-schedule velero-daily-backup
 
 ## How do I use `kubectl` and `helm` directly?
 
-This guide makes heavy use of the `compliantkubernetes-apps` CLI to access and control Compliant Kubernetes clusters. However, you can use `kubectl` and `helm` directly, by exporting a `KUBECONFIG` like so:
+This guide makes heavy use of the `compliantkubernetes-apps` CLI to access and control Welkin clusters. However, you can use `kubectl` and `helm` directly, by exporting a `KUBECONFIG` like so:
 
 ```bash
 export KUBECONFIG=${CK8S_CONFIG_PATH}/.state/kube_config_${CLUSTER}.yaml

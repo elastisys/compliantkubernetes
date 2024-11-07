@@ -12,12 +12,12 @@ tags:
 
 We often get bombarded with questions like "Why don't you use X?" or "Why don't you build on top of Y?", sometimes preceded by "product/project X already has feature Y". Needless to say, this can cause a ["Simpsons Already Did It"](https://en.wikipedia.org/wiki/Simpsons_Already_Did_It) feeling.
 
-This ADR clarifies one of the core values of the Compliant Kubernetes project, namely our belief in community-driven open source. The ADR is useful to clarify both to internal and external stakeholders the choices we make.
+This ADR clarifies one of the core values of the Welkin project, namely our belief in community-driven open source. The ADR is useful to clarify both to internal and external stakeholders the choices we make.
 
 ## Decision Drivers
 
 - We do not want to depend on the interests of any single company, be it small or large.
-- The Application Developers need to have a business continuity plan, see [ISO 27001, Annex A.17](https://www.isms.online/iso-27001/annex-a-17-information-security-aspects-of-business-continuity-management/). Therefore, we want to make it easy to "exit" Compliant Kubernetes and take over platform management.
+- The Application Developers need to have a business continuity plan, see [ISO 27001, Annex A.17](https://www.isms.online/iso-27001/annex-a-17-information-security-aspects-of-business-continuity-management/). Therefore, we want to make it easy to "exit" Welkin and take over platform management.
 - We want to use the best tools out there.
 
 ## Considered Options

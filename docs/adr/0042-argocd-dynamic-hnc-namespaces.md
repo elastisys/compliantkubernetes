@@ -34,7 +34,7 @@ If yes, how?
 
 1. Use OPA to restrict operations on our namespaces and give customers the ability to create/delete namespaces?
 
-    - Bad, because giving Application developers access to create/delete namespaces has been a no-go since the beginning of Compliant Kubernetes for various security reasons.
+    - Bad, because giving Application developers access to create/delete namespaces has been a no-go since the beginning of Welkin for various security reasons.
     - Bad, because building OPA policies to restrict operations on namespaces, would takes away from how community does things and makes it hard for us to pivot to new big changes in the future.
 
 1. To deploy all the Applications into one big namespace.

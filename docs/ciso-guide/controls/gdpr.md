@@ -15,19 +15,19 @@
     - Writing Privacy Policies;
     - Signing Data Protection Agreements with your suppliers.
 
-    This page only points you to the GDPR concerns relevant for Compliant Kubernetes.
+    This page only points you to the GDPR concerns relevant for Welkin.
 
 If you process [personal data](https://gdpr.fan/a4) in the EU/EEA, you need to follow GDPR.
 
 ## GDPR Art. 32 Security of Processing
 
 When it comes to security, GDPR is rather broad and non-prescriptive.
-Pretty much everything we do in Compliant Kubernetes is done to secure data.
+Pretty much everything we do in Welkin is done to secure data.
 This includes, for instance, that we perform vulnerability scanning both at rest and at runtime, process logs in a separate cluster controlled with restrictive access controls to make them tamper-proof from hacked applications, and that we put safeguards in place to make developers enforce network segregation per application component.
 And much more.
 In fact, we could pretty much link every single page to GDPR Art. 32, but that would be rather noisy!
 
-Hence, if you need a more precise understanding on how Compliant Kubernetes protects personal data as required by GDPR Art. 32, please look at our [ISO 27001 Controls](iso-27001.md), which links to both more technical controls, and continuous confidentiality, integrity, availability and resilience of processing processes, such as our go-live checklist.
+Hence, if you need a more precise understanding on how Welkin protects personal data as required by GDPR Art. 32, please look at our [ISO 27001 Controls](iso-27001.md), which links to both more technical controls, and continuous confidentiality, integrity, availability and resilience of processing processes, such as our go-live checklist.
 
 [TAGS]
 

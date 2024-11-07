@@ -7,12 +7,12 @@ tags:
 
 ## Definition of Done
 
-When working in regulated industries, it is really important to have the bar high for when something can be called "done". In Compliant Kubernetes, we use the following definition of done:
+When working in regulated industries, it is really important to have the bar high for when something can be called "done". In Welkin, we use the following definition of done:
 
-1. **Code and documentation is merged on the main branch of upstream projects.** This may cause time delays which are outside your control. However, if we cannot convince upstream projects to take our contributions, then we better know about this as soon as possible. A Compliant Kubernetes relying on an abandoned upstream branch is unsustainable.
-1. **Code is merged in the Compliant Kubernetes project.**
+1. **Code and documentation is merged on the main branch of upstream projects.** This may cause time delays which are outside your control. However, if we cannot convince upstream projects to take our contributions, then we better know about this as soon as possible. A Welkin relying on an abandoned upstream branch is unsustainable.
+1. **Code is merged in the Welkin project.**
 1. **Documentation is up-to-date.** IT systems used in regulated industries need to have documentation. (See [ISO 27001 A.12.1.1 "Documented Operating Procedures"](https://www.isms.online/iso-27001/annex-a-12-operations-security/)).
-    You may either point to upstream documentation -- if Compliant Kubernetes does not add any specifics -- or write a dedicated section/page. Prefer to refer to upstream documentation -- potentially updating that one -- instead of duplicating it in Compliant Kubernetes.
+    You may either point to upstream documentation -- if Welkin does not add any specifics -- or write a dedicated section/page. Prefer to refer to upstream documentation -- potentially updating that one -- instead of duplicating it in Welkin.
 1. **You provide evidence for completion.** This can be terminal output, screenshot or -- even better, but more time consuming -- a screencast with voice-over explanations. Ideally, these should be attached in the PR to convince the reviewer that the code and documentation are as intended.
 
 ## Submitting PRs
@@ -81,7 +81,7 @@ To make creating and deletion of buckets easy, we've a script to help you with t
 
 ### DNS
 
-These following snippets can be used to setup/remove all DNS records required for Compliant Kubernetes using Exoscale's CLI.
+These following snippets can be used to setup/remove all DNS records required for Welkin using Exoscale's CLI.
 
 Start by setting up some variables:
 
@@ -114,5 +114,5 @@ done
 
 ### Reusing clusters
 
-If you for some reason need to reinstall Compliant Kubernetes from scratch, we have some scripts that removes all objects created by this repo.
+If you for some reason need to reinstall Welkin from scratch, we have some scripts that removes all objects created by this repo.
 The scripts can be found [here](https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts) _(clean-sc.sh and clean-wc.sh)_.

@@ -10,13 +10,13 @@
 
 <!--controls-note-start-->
 <!--
-    If a large number of controls cannot be mapped to Compliant Kubernetes,
+    If a large number of controls cannot be mapped to Welkin,
     then include this block.
-    If only few controls cannot be mapped to Compliant Kubernetes,
+    If only few controls cannot be mapped to Welkin,
     prefer listing them under a section entitled "Other Controls".
 -->
 !!!note
-    Controls not covered below are controls which cannot be fulfilled by Compliant Kubernetes.
+    Controls not covered below are controls which cannot be fulfilled by Welkin.
     These include requirements such as:
 
     - Your management team needs to regularly perform various risk analysis.

@@ -5,13 +5,13 @@ tags:
 
 # Capacity Management
 
-Our users trust us -- the Compliant Kubernetes administrators -- to keep applications up and secure.
+Our users trust us -- the Welkin administrators -- to keep applications up and secure.
 Keeping the application up means that there is sufficient capacity in the environment, both for headroom -- in case the application suddenly gets popular -- and resilience to Node or Zone failure.
 Keeping the application secure means having sufficient capacity in the environment to allow rolling Node restarts -- as required for keeping the base OS up-to-date and secure -- without causing downtime.
 
 ## Types of Failure
 
-Compliant Kubernetes environments are set up to withstand either:
+Welkin environments are set up to withstand either:
 
 - a single Node failure per Node Group (Node resilient); or
 - a single Zone failure (Zone resilient).
@@ -32,18 +32,18 @@ These labels are required for the monitoring and alerting described on this page
 
 ## Upscaling
 
-Compliant Kubernetes uses a combination of alerts for both individual Nodes as well as Node Groups, which are also monitored and visualized in a Grafana dashboard.
+Welkin uses a combination of alerts for both individual Nodes as well as Node Groups, which are also monitored and visualized in a Grafana dashboard.
 
 ### When?
 
-Compliant Kubernetes triggers a P1 alert when:
+Welkin triggers a P1 alert when:
 
 - The average CPU usage for a Node or Node Group, over one hour, is above 95%.
 - The average memory usage for a Node or Node Group, over one hour, is above 85%.
 
 - **Why a P1 alert?** P1 alerts are events that need immediate attention, which makes them suitable for scenarios with a higher usage threshold over a shorter time-span. If the alert is triggered for a single Node, the administrator can attempt to redistribute the workload more evenly across the Node Group. If the alert is triggered for a Node Group, that Node Group needs to be scaled up.
 
-Compliant Kubernetes triggers a P2 alert when:
+Welkin triggers a P2 alert when:
 
 - The average CPU or memory usage for a Node Group, over 24 hours, is above 75%.
 
@@ -66,7 +66,7 @@ Compliant Kubernetes triggers a P2 alert when:
 
 !!!note
 
-    Compliant Kubernetes can be configured to [require resource requests](../user-guide/safeguards/enforce-resources.md) for all Pods.
+    Welkin can be configured to [require resource requests](../user-guide/safeguards/enforce-resources.md) for all Pods.
 
 !!!important
 

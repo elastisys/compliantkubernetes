@@ -18,7 +18,7 @@ search:
 
     Make sure to load-test your application with FerretDB before going into production.
 
-[FerretDB](https://www.ferretdb.com/) is a database that is an open-source alternative to MongoDB that uses PostgreSQL as its backend database. This documentation details how to run FerretDB in a Compliant Kubernetes cluster using the Managed [PostgreSQL service](../additional-services/postgresql.md).
+[FerretDB](https://www.ferretdb.com/) is a database that is an open-source alternative to MongoDB that uses PostgreSQL as its backend database. This documentation details how to run FerretDB in a Welkin cluster using the Managed [PostgreSQL service](../additional-services/postgresql.md).
 
 ## Pushing FerretDB image to Harbor
 
@@ -36,7 +36,7 @@ docker push $REGISTRY/$REGISTRY_PROJECT/ferretdb:$TAG
 
 ## Install
 
-In a managed CK8s environment, follow [these instructions](../additional-services/postgresql.md#getting-access) on how to access the Managed PostgreSQL service and how to create an application user and database.
+In a managed Welkin environment, follow [these instructions](../additional-services/postgresql.md#getting-access) on how to access the Managed PostgreSQL service and how to create an application user and database.
 
 Create secret containing a PostgreSQL URL to authenticate to the Managed PostgreSQL service and newly created database with the application user credentials:
 

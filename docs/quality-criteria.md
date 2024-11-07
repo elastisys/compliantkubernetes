@@ -5,7 +5,7 @@ tags:
 
 # Quality Criteria
 
-Compliant Kubernetes provides a stable and secure platform for containerized applications.
+Welkin provides a stable and secure platform for containerized applications.
 To achieve this, quality assurance is an integral part of development.
 When we say "quality", we really refer to the following quality criteria.
 
@@ -15,7 +15,7 @@ Feature can be delivered ...
 
     - Feature has good developer-facing documentation. The documentation includes:
         - the [happy path](https://en.wikipedia.org/wiki/Happy_path);
-        - a running example based on the [user demo](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo), if applicable;
+        - a running example based on the [user demo](https://github.com/elastisys/welkin/tree/main/user-demo), if applicable;
         - limitations, if applicable;
         - further reading.
     - Feature is self-serviced
@@ -61,9 +61,9 @@ It is the role of our Quality Assurance Engineer (QAE) to decide how to apply th
 
 ## Quality Assurance (QA)
 
-Each release of Compliant Kubernetes is quality assured.
+Each release of Welkin is quality assured.
 Some, but not all, of the quality assurance steps are public.
 Please find them linked below:
 
-- [Compliant Kubernetes Kubespray Release Checklist](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/.github/ISSUE_TEMPLATE/release.md)
-- [Compliant Kubernetes Apps Release Checklist](https://github.com/elastisys/compliantkubernetes-apps/blob/main/.github/ISSUE_TEMPLATE/release.md)
+- [Welkin Kubespray Release Checklist](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/.github/ISSUE_TEMPLATE/release.md)
+- [Welkin Apps Release Checklist](https://github.com/elastisys/compliantkubernetes-apps/blob/main/.github/ISSUE_TEMPLATE/release.md)

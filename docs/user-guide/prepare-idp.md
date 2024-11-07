@@ -1,5 +1,5 @@
 ---
-description: How to configure your Identity Provider (IdP) for Single Sign-on (SSO) use in Compliant Kubernetes
+description: How to configure your Identity Provider (IdP) for Single Sign-on (SSO) use in Welkin
 search:
   boost: 2
 tags:
@@ -15,17 +15,17 @@ tags:
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
-    Please follow these steps to configure your IdP so that we can connect a new Compliant Kubernetes environment to it.
+    Please follow these steps to configure your IdP so that we can connect a new Welkin environment to it.
 
     To share credentials with Elastisys, please use our [YoPass service](https://yopass.elastisys.com).
 
     If you get stuck, get in touch with your contact person at Elastisys.
 
-To help you comply with various data protection regulations, Compliant Kubernetes only allows access to service endpoints (i.e., Kubernetes API, Harbor, Grafana and OpenSearch) via an IdP.
+To help you comply with various data protection regulations, Welkin only allows access to service endpoints (i.e., Kubernetes API, Harbor, Grafana and OpenSearch) via an IdP.
 Your organization's IdP acts as the single point to decide who gets access to what.
 
-This page describes how to configure Google Identity and Microsoft Entra ID so that Platform Administrators can connect a Compliant Kubernetes environment to them.
-Note, however, that Compliant Kubernetes supports any OpenID-compatible IdP, including GitHub and GitLab.
+This page describes how to configure Google Identity and Microsoft Entra ID so that Platform Administrators can connect a Welkin environment to them.
+Note, however, that Welkin supports any OpenID-compatible IdP, including GitHub and GitLab.
 
 This page show what information you need to send to Platform Administrators and where to find it.
 
@@ -45,7 +45,7 @@ This page show what information you need to send to Platform Administrators and 
 1. Create a secret by going to **Certificates & secrets**.
 1. Select the tab **Client secret** and click **New client secret**.
 1. Set **expiry date** to **24 months**.
-1. For improved security, navigate to **Overview** and note down **the tenant ID**. This limits who can authenticate to your Compliant Kubernetes environment.
+1. For improved security, navigate to **Overview** and note down **the tenant ID**. This limits who can authenticate to your Welkin environment.
 1. Decide the **name of the Microsoft Entra ID group** that should have admin privileges in the environment.
 1. Securely send, e.g., via [YoPass](https://yopass.elastisys.com), the following information to your Platform Administrators:
     <!-- markdownlint-enable ol-prefix -->
@@ -97,7 +97,7 @@ To set up groups follow these steps, note that steps 16-18 below can only be don
 16. You need to give the service account read access to groups. Go to the [Google admin console](https://admin.google.com).
 17. Navigate through the menu to **Security > Access and data control > API Controls** and click **Manage Domain Wide Delegation** and then **Add New**.
 18. In the **Client ID** field put the **Unique ID** of the service account from step 4. and in the **Oauth Scopes** field enter this scope: `https://www.googleapis.com/auth/admin.directory.group.readonly`.
-19. Decide on the name of the Google group that should have admin privileges in the Compliant Kubernetes environment.
+19. Decide on the name of the Google group that should have admin privileges in the Welkin environment.
 20. Finally, securely send, e.g., via [YoPass](https://yopass.elastisys.com), the following information to your Platform Administrators:
     <!-- markdownlint-enable ol-prefix -->
     <!-- markdownlint-enable list-marker-space -->
@@ -112,7 +112,7 @@ To set up groups follow these steps, note that steps 16-18 below can only be don
 
 ## OpenID Providers
 
-Compliant Kubernetes should be compatible with any OpenID provider, although full compatibility cannot be guaranteed.
+Welkin should be compatible with any OpenID provider, although full compatibility cannot be guaranteed.
 
 The general instructions are as follows:
 

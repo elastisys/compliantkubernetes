@@ -1,5 +1,5 @@
 ---
-description: FAQ for Application Developers on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+description: FAQ for Application Developers on Welkin, the security-hardened Kubernetes distribution
 search:
   boost: 2
 tags:
@@ -64,11 +64,11 @@ If your image runs as root by defaults, but can handle running as another user, 
 [harbor-oidc-docker]: https://goharbor.io/docs/1.10/administration/configure-authentication/oidc-auth/#using-oidc-from-the-docker-or-helm-cli
 [docker-user]: https://docs.docker.com/develop/develop-images/instructions/#user
 
-## How do I give access to a new Application Developer to a Compliant Kubernetes environment?
+## How do I give access to a new Application Developer to a Welkin environment?
 
-Add the new user to the correct **group via your Identity Provider (IdP)**, and Compliant Kubernetes will automatically pick it up.
+Add the new user to the correct **group via your Identity Provider (IdP)**, and Welkin will automatically pick it up.
 
-Feeling lost? To find out what users and groups currently have access to your Compliant Kubernetes environment, type:
+Feeling lost? To find out what users and groups currently have access to your Welkin environment, type:
 
 ```bash
 kubectl get rolebindings.rbac.authorization.k8s.io workload-admin -o yaml
@@ -119,11 +119,11 @@ You can read more about this issue [here](https://github.com/kubernetes/kubernet
 
 ## What is encrypted at rest?
 
-Compliant Kubernetes encrypts everything at rest, including Kubernetes resources, PersistentVolumeClaims, logs, metrics and backups, **if the underlying Infrastructure Provider supports it**.
+Welkin encrypts everything at rest, including Kubernetes resources, PersistentVolumeClaims, logs, metrics and backups, **if the underlying Infrastructure Provider supports it**.
 
 Get in touch with your administrator to check the status. They are responsible for performing a [provider audit](../operator-manual/provider-audit.md).
 
-!!!important "Why does Compliant Kubernetes not offer encryption-at-rest at the platform level?"
+!!!important "Why does Welkin not offer encryption-at-rest at the platform level?"
 
     **TL;DR**: operational scalability and to avoid [security theatre](https://en.wikipedia.org/wiki/Security_theater).
 
@@ -133,13 +133,13 @@ Get in touch with your administrator to check the status. They are responsible f
 
     At any rate, if encryption-at-rest is deployed it must: (a) actually safeguard data confidentiality; (b) without prohibitive costs in terms of administration.
 
-    A Compliant Kubernetes environment may comprise as many as 10 Nodes, i.e., VMs. These Nodes need to be frequently rebooted, to ensure Operating System (OS) security patches are applied. This is especially important for Linux kernel, container runtime (Docker) and Kubernetes security patches. Thanks to the power of Kubernetes, a carefully engineered and deployed application can tolerate such reboots with zero downtime. (See the [go-live checklist](go-live.md).)
+    A Welkin environment may comprise as many as 10 Nodes, i.e., VMs. These Nodes need to be frequently rebooted, to ensure Operating System (OS) security patches are applied. This is especially important for Linux kernel, container runtime (Docker) and Kubernetes security patches. Thanks to the power of Kubernetes, a carefully engineered and deployed application can tolerate such reboots with zero downtime. (See the [go-live checklist](go-live.md).)
 
     The challenge is how to deliver the disk encryption key to the VM when they are booting. Let us explore a few options:
 
     * Non-option 1: Store the encryption key on the VM's `/boot` disk. This is obvious security theatre. For example, if server disks are stolen, the VM's data is in the hands of the thiefs.
 
-    * Non-option 2: Let admins type the encryption key on the VM's console. Asking admins to do this is time-consuming, error-prone, effectivly jeopardizing uptime. Instead, Compliant Kubernetes recommends automatic VM reboots during application "quiet times", such as at night, to ensure the OS is patched without sacrificing uptime.
+    * Non-option 2: Let admins type the encryption key on the VM's console. Asking admins to do this is time-consuming, error-prone, effectivly jeopardizing uptime. Instead, Welkin recommends automatic VM reboots during application "quiet times", such as at night, to ensure the OS is patched without sacrificing uptime.
 
     * Non-option 3: Let the VM pull the encryption key via instance metadata or [instance configuration](https://cloudinit.readthedocs.io/en/latest/explanation/format.html#cloud-config-data). This would imply storing the encryption key on the Infrastructure Provider. If the Infrastructure Provider doesn't have encryption-at-rest, then the encryption key is also stored unencrypted, likely on the same server as the VM is running. Hence, this quickly ends up being security theatre.
 
@@ -149,7 +149,7 @@ Get in touch with your administrator to check the status. They are responsible f
 
     The only real option is to rely on support from the Infrastructure Provider. The latest generation (physical) servers feature a [TPM](https://en.wikipedia.org/wiki/Trusted_Platform_Module) to store the disk encryption key. This can be [securely release to the Linux kernel](https://en.wikipedia.org/wiki/Disk_encryption#Full_disk_encryption) thanks to [pre-boot authentication](https://en.wikipedia.org/wiki/Pre-boot_authentication). This process is performance-neutral and fully transparent to the VMs running on top of the servers.
 
-    And that is why Compliant Kubernetes encrypts everything at rest, **only if the underlying Infrastructure Provider supports it**.
+    And that is why Welkin encrypts everything at rest, **only if the underlying Infrastructure Provider supports it**.
 
 ## What are preview features?
 

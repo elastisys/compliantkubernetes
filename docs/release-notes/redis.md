@@ -1,6 +1,6 @@
 # Release Notes
 
-## Compliant Kubernetes Redis
+## Welkin Redis
 
 <!-- BEGIN TOC -->
 

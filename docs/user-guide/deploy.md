@@ -1,20 +1,20 @@
 ---
-description: Learn how to deploy your application on Elastisys Compliant Kubernetes, the security-hardened Kubernetes distribution
+description: Learn how to deploy your application on Welkin, the security-hardened Kubernetes distribution
 search:
   boost: 2
 ---
 
 # Step 2: Deploy
 
-Hello again, Application Developer! In this step, we will walk you through what is needed to deploy your application on Elastisys Compliant Kubernetes.
+Hello again, Application Developer! In this step, we will walk you through what is needed to deploy your application on Welkin.
 
 ## Demo Application Available
 
-In case you are just reading along, or do not already have a [containerized application prepared](prepare.md), we have developed a demo application which allows you to quickly explore the benefits of Elastisys Compliant Kubernetes.
+In case you are just reading along, or do not already have a [containerized application prepared](prepare.md), we have developed a demo application which allows you to quickly explore the benefits of Welkin.
 
 The provided artifacts, including Dockerfile and Helm Chart, allow you to quickly get started on your journey to become an agile organization with zero compromise on compliance with data protection regulations.
 
-We have versions of it for [Node JS](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo) and [.NET](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo-dotnet) available. You will note that once built and containerized, they deploy exactly the same.
+We have versions of it for [Node JS](https://github.com/elastisys/welkin/tree/main/user-demo) and [.NET](https://github.com/elastisys/welkin/tree/main/user-demo-dotnet) available. You will note that once built and containerized, they deploy exactly the same.
 
 ## Push Your Container Images
 

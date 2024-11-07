@@ -15,7 +15,7 @@ There are two ways to configure Let's Encrypt as an issuers for cert-manager: [I
 ## Decision Drivers
 
 - We want to make compliantkubernetes-apps less fragile, and Let's Encrypt ratelimiting is a cause of fragility.
-- We want to make it easy for users to get started with Compliant Kubernetes in a "secure by default" manner.
+- We want to make it easy for users to get started with Welkin in a "secure by default" manner.
 - We want to have a clear separation between user and administrator resources, responsibilities and privileges.
 - We want to keep the option open for "light" renderings, i.e., a single Kubernetes clusters that hosts both Management Cluster and Workload Cluster components.
 
@@ -35,7 +35,7 @@ Each cluster is configured with an optional ClusterIssuer called `letsencrypt-pr
 
 ### Direct Let's Encrypt emails to a "logging" mailbox
 
-Although Let's Encrypt does not require an email address, cert-managers seems to require all ClusterIssuers/Issuers to be configured with a syntactically valid email address. Said email address will receive notifications when certificates are close to expiry. Given that Compliant Kubernetes comes with [Cryptography](../ciso-guide/cryptography.md) dashboards, these emails do not seem useful. **Hence, ClusterIssuer emails should be directed to an address that has "logging" but not "alerting" status.**
+Although Let's Encrypt does not require an email address, cert-managers seems to require all ClusterIssuers/Issuers to be configured with a syntactically valid email address. Said email address will receive notifications when certificates are close to expiry. Given that Welkin comes with [Cryptography](../ciso-guide/cryptography.md) dashboards, these emails do not seem useful. **Hence, ClusterIssuer emails should be directed to an address that has "logging" but not "alerting" status.**
 
 ### Separate registered domains
 

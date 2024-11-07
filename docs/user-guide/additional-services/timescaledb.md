@@ -36,7 +36,7 @@ search:
 <figure>
     <img alt="TimescaleDB Deployment Model" src="../img/timescaledb.drawio.svg" >
     <figcaption>
-        <strong>TimescaleDB on Compliant Kubernetes Deployment Model</strong>
+        <strong>TimescaleDB on Welkin Deployment Model</strong>
         <br>
         This help you build a mental model on how to access TimescaleDB as an Application Developer and how to connect your application to TimescaleDB.
     </figcaption>
@@ -57,7 +57,7 @@ This means that your administrator will be setting up a complete PostgreSQL clus
     Due to very different performance-tuning characteristics, Timescale and PostgreSQL databases should never run on the same PostgreSQL cluster.
     To comply with this, it is essential that every PostgreSQL database that gets created on the PostgreSQL cluster also has the Timescale extension created for it.
 
-If you want to use TimescaleDB on your Compliant Kubernetes cluster, ask your administrator to provision a new PostgreSQL cluster inside your Compliant Kubernetes environment. Then set up the TimescaleDB extension.
+If you want to use TimescaleDB on your Welkin cluster, ask your administrator to provision a new PostgreSQL cluster inside your Welkin environment. Then set up the TimescaleDB extension.
 
 <!-- markdownlint-disable MD044 -->
 {%
@@ -86,9 +86,9 @@ CREATE EXTENSION IF NOT EXISTS timescaledb;
 You should be all set.
 Before going into production, don't forget to go through the [go-live checklist](../go-live.md).
 
-## CK8S TimescaleDB Release Notes
+## Welkin TimescaleDB Release Notes
 
-Check out the [release notes](../../release-notes/postgres.md) for the TimescaleDB/PostgreSQL cluster that runs in Compliant Kubernetes environments!
+Check out the [release notes](../../release-notes/postgres.md) for the TimescaleDB/PostgreSQL cluster that runs in Welkin environments!
 
 ## Further Reading
 

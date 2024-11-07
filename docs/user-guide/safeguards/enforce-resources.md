@@ -39,17 +39,17 @@ To avoid running into capacity issues, Kubernetes allows Pods to [specify resour
 1. It ensures that Pods are scheduled to Nodes that have the requested resources.
 1. It ensures that a Pod does not exceed its resource limits, hence limiting its blast radius and protecting other application or platform Pods.
 
-## How Does Compliant Kubernetes Help?
+## How Does Welkin Help?
 
-To make sure you don't forget to configure resource requests and limits, the administrator can configure Compliant Kubernetes to deny creation of Pods without explicit resource specifications.
+To make sure you don't forget to configure resource requests and limits, the administrator can configure Welkin to deny creation of Pods without explicit resource specifications.
 
 If you get the following error:
 
 ```error
-Error: UPGRADE FAILED: failed to create resource: admission webhook "validation.gatekeeper.sh" denied the request: [denied by require-resource-requests] Container "ck8s-user-demo" has no resource requests
+Error: UPGRADE FAILED: failed to create resource: admission webhook "validation.gatekeeper.sh" denied the request: [denied by require-resource-requests] Container "welkin-user-demo" has no resource requests
 ```
 
-Then you are missing resource requests for some containers of your Pods. The [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L42-L51) gives a good example to get you started.
+Then you are missing resource requests for some containers of your Pods. The [user demo](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L42-L51) gives a good example to get you started.
 
 If your administrator has not enforced this policy yet, you can view current violations of the policy by running:
 

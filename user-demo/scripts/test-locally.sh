@@ -2,11 +2,11 @@
 
 IP_ADDRESS=$(docker inspect \
     -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' \
-    ck8s-user-demo
+    welkin-user-demo
 )
 
 if [ -z "$IP_ADDRESS" ]; then
-    echo "Could not find ck8s-user-demo container." >&2
+    echo "Could not find welkin-user-demo container." >&2
     exit 1
 fi
 

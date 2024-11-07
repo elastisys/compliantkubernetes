@@ -10,7 +10,7 @@ search:
    end='<!--disclaimer-end-->'
 %}
 
-JupyterHub brings Jupyter Notebooks to the cloud. It gives the users access to computational environments and resources without burdening users with installation and maintenance tasks. This documents shows a guide on how to setup JupyterHub in a Compliant Kubernetes environment.
+JupyterHub brings Jupyter Notebooks to the cloud. It gives the users access to computational environments and resources without burdening users with installation and maintenance tasks. This documents shows a guide on how to setup JupyterHub in a Welkin environment.
 
 ![Keycloak Image](img/jupyter.gif)
 
@@ -148,7 +148,7 @@ ingress:
 
 1. The following resources are reused using \*resourceDefaults later in this file
 1. The following containerSecurityContext is reused using \*SCDefaults later in this file
-1. Block set to true will append a privileged initContainer using the iptables to block the sensitive metadata server at the provided ip. Privileged containers are not allowed in ck8s.
+1. Block set to true will append a privileged initContainer using the iptables to block the sensitive metadata server at the provided ip. Privileged containers are not allowed in Welkin.
 1. "type: none" disables persistent storage for the user labs. Consolidate with Platform Administrator before enabling this feature. [for reference](https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/1ebca266bed3e2f38332c5a9a3202f627cba3af0/jupyterhub/values.yaml#L383)
 1. Use [this guide](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google) to get your client_id and client_secret through the [Google API Console](https://console.developers.google.com/).
 1. This should not be treated as a secret. See risk analysis [here](https://github.com/dexidp/dex/issues/469) and [here](https://security.stackexchange.com/questions/225809/what-is-the-worst-i-can-do-if-i-know-openid-connect-client-secret).
@@ -190,7 +190,7 @@ helm upgrade --install jupyterhub jupyterhub/jupyterhub --values values.yaml
 
 ## Known Issues / Limitations
 
-- JupyterHub's custom user scheduler is disabled (which [can help with efficient node downscaling](https://z2jh.jupyter.org/en/latest/administrator/optimization.html#scaling-down-efficiently)). For safety reasons, developers in Compliant Kubernetes do not have the rights required to deploy it.
+- JupyterHub's custom user scheduler is disabled (which [can help with efficient node downscaling](https://z2jh.jupyter.org/en/latest/administrator/optimization.html#scaling-down-efficiently)). For safety reasons, developers in Welkin do not have the rights required to deploy it.
 
 - JupyterHub's Admin functionality is limited since some of the admin functions require container root access. Pre-installed Python packages for users can not be added through the admin interface. They can be added by [modifying the Docker image](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-environment.html#choose-and-use-an-existing-docker-image), pushing it to your image registry and redeploying JupyterHub. **NOTE** Users can still install their own packages.
 

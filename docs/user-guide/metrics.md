@@ -1,5 +1,5 @@
 ---
-description: How to work with monitoring metrics on Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: How to work with monitoring metrics on Welkin, the security-focused Kubernetes distribution.
 search:
   boost: 2
 tags:
@@ -10,7 +10,7 @@ tags:
 
 # Metrics
 
-This guide gives an introduction to Prometheus and Grafana and where they fit in Compliant Kubernetes, in terms of reducing the compliance burden.
+This guide gives an introduction to Prometheus and Grafana and where they fit in Welkin, in terms of reducing the compliance burden.
 
 ## Why Prometheus and Grafana?
 
@@ -42,11 +42,11 @@ Prometheus and Grafana can help with this by making it easier to:
 - conduct an information security forensics analysis.
 - communicate the existence of the information security incident or any relevant details to the leadership.
 
-## Prometheus and Grafana in Compliant Kubernetes
+## Prometheus and Grafana in Welkin
 
 ### Prometheus
 
-Compliant Kubernetes installs the prometheus-operator by default. The Prometheus Operator for Kubernetes provides easy monitoring definitions for Kubernetes services and deployment and management of Prometheus instances as it can create/configure/manage Prometheus clusters atop Kubernetes. The following CRDs are installed by default.
+Welkin installs the prometheus-operator by default. The Prometheus Operator for Kubernetes provides easy monitoring definitions for Kubernetes services and deployment and management of Prometheus instances as it can create/configure/manage Prometheus clusters atop Kubernetes. The following CRDs are installed by default.
 
 | crd             | apigroup              | kind           | can be used by users |
 | :-------------- | :-------------------- | :------------- | :------------------- |
@@ -70,16 +70,16 @@ If you want to access the web interface of Prometheus, proceed as follows:
 
     This is an optional feature that is disabled by default to reduce the attack surface and improve security. You can contact your Platform Administrator to enable it.
 
-There is a feature to grant certain Pods access to the Prometheus API, e.g. for the purpose of setting up your own Prometheus instance with [remote read](https://prometheus.io/docs/prometheus/latest/querying/remote_read_api/) or [federation](https://prometheus.io/docs/prometheus/latest/federation/) against the Prometheus instance that is part of Compliant Kubernetes. This feature is disabled by default, but can be enabled by your Platform Administrator.
+There is a feature to grant certain Pods access to the Prometheus API, e.g. for the purpose of setting up your own Prometheus instance with [remote read](https://prometheus.io/docs/prometheus/latest/querying/remote_read_api/) or [federation](https://prometheus.io/docs/prometheus/latest/federation/) against the Prometheus instance that is part of Welkin. This feature is disabled by default, but can be enabled by your Platform Administrator.
 
 In order to use this feature, you will need you to provide a list of allowed namespaces, in addition to you labeling any Pod within those namespaces that should have access with `elastisys.io/prometheus-access: allow`.
 
 ### Grafana
 
-Grafana can be accessed at the endpoint provided by the Compliant Kubernetes install scripts.
+Grafana can be accessed at the endpoint provided by the Welkin install scripts.
 If you have configured Dex you can login with a connected account, which can be limited to specific email domains.
 
-Compliant Kubernetes deploys Grafana with a selection of dashboards by default. Dashboards are accessed by clicking the Dashboard icon (four squares) at the lefthand side of the Grafana window and selecting Browse. Some examples of useful dashboards are listed below.
+Welkin deploys Grafana with a selection of dashboards by default. Dashboards are accessed by clicking the Dashboard icon (four squares) at the lefthand side of the Grafana window and selecting Browse. Some examples of useful dashboards are listed below.
 
 #### Node health
 
@@ -97,7 +97,7 @@ The Pods dashboard (Kubernetes/Compute resources/Pods) gives a quick overview of
 
 Configuring Prometheus to collect metrics from an application requires either a ServiceMonitor or a PodMonitor, targeting a Kubernetes Service or Pod respectively. They are both described upstream in the [API reference for Prometheus Operator](https://prometheus-operator.dev/docs/api-reference/api/). In general ServiceMonitors are recommended over PodMonitors, and it is the most common way to configure metrics collection.
 
-In Compliant Kubernetes the Prometheus Operator in the Workload Cluster is configured to pick up all ServiceMonitors and PodMonitors, regardless in which namespace they are or which labels they have.
+In Welkin the Prometheus Operator in the Workload Cluster is configured to pick up all ServiceMonitors and PodMonitors, regardless in which namespace they are or which labels they have.
 
 The default scrape interval is 30 seconds, this is how often Prometheus will gather metrics from the Pods. The default scrape timeout is 10 seconds, this is how long Prometheus will wait after starting a scrape before it considers the scrape to have failed. These can be configured in your ServiceMonitor or PodMonitor, but we do recommend you to keep the default.
 
@@ -105,10 +105,10 @@ The default scrape interval is 30 seconds, this is how often Prometheus will gat
 
 <!--user-demo-metrics-start-->
 
-The user demo already includes a [ServiceMonitor](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/servicemonitor.yaml), as required for Compliant Kubernetes to collect metrics from its `/metrics` endpoint:
+The user demo already includes a [ServiceMonitor](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/templates/servicemonitor.yaml), as required for Welkin to collect metrics from its `/metrics` endpoint:
 
 ```yaml
---8<---- "user-demo/deploy/ck8s-user-demo/templates/servicemonitor.yaml"
+--8<---- "user-demo/deploy/welkin-user-demo/templates/servicemonitor.yaml"
 ```
 
 The screenshot below shows Grafana in "Explore" mode (the compass icon to the left) featuring the query `rate(http_request_duration_seconds_count[1m])`. It shows the request rate for the user demo application for each path and status code. As can be seen in the graph, the `/users` endpoint is getting more traffic than the other endpoints.
@@ -119,7 +119,7 @@ The "Explore" mode is great for developing queries and exploring the data set. I
 
 !!!note
 
-    You may want to save frequently used Dashboards. Compliant Kubernetes saves and backs these up for you.
+    You may want to save frequently used Dashboards. Welkin saves and backs these up for you.
 
 <!--user-demo-metrics-end-->
 

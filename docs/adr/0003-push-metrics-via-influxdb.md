@@ -38,7 +38,7 @@ We chose to push metrics from the Workload Cluster to the Management Cluster via
 
 ### Negative Consequences
 
-- Existing Compliant Kubernetes clusters will need some manual migration steps, in particular changing the `prometheus.$opsDomain` DNS entry.
+- Existing Welkin clusters will need some manual migration steps, in particular changing the `prometheus.$opsDomain` DNS entry.
 - The Management Cluster exposes yet another endpoint, which should only be available to Workload Clusters and not the Internet. HTTP authentication (over HTTPS) feels sufficient for now, but we need a follow-up decision on how to add another layer of protection to these endpoints.
 - The Workload Clusters will have to properly label their metrics.
 - Although not easy, metrics can be overwritten from the Workload Cluster. We will improve on this when (a) demand for closing this risk increases, (b) we re-evaluate long-term metrics storage.

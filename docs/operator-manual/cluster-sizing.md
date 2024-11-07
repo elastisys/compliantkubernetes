@@ -1,6 +1,6 @@
 # Cluster Sizing
 
-A full Compliant Kubernetes deployment requires a cluster with at least 40 CPUs and 82 GB of memory in total.
+A full Welkin deployment requires a cluster with at least 40 CPUs and 82 GB of memory in total.
 
 ## Monitoring
 

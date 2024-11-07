@@ -84,7 +84,7 @@ repos:
         files: ".*[.]md$"
       - id: capitalize-common-names
         name: Please capitalize common names
-        entry: "^[^`]{0,100} (git[Hh]ub|kubernetes|trivy|starboard|compliantkubernetes|compliant [Kk]ubernetes|ck8s)( |, |[.] )"
+        entry: "^[^`]{0,100} (git[Hh]ub|kubernetes|trivy|starboard|welkin)( |, |[.] )"
         language: pygrep
         files: ".*[.]md$"
       - id: avoid-absolute-urls-for-internal-links
@@ -92,13 +92,13 @@ repos:
         entry: '\/\/(elastisys.io)\/'
         language: pygrep
         files: ".*[.]md$"
-      - id: avoid-old-urls
-        name: Avoid old URLs (https://compliantkubernetes.io)
-        entry: 'compliantkubernetes.io(?!\/nobackup)'
-        language: pygrep
-        files: ".*[.]md$"
       - id: avoid-non-descriptive-link-text
         name: Avoid non-descriptive link text (see https://developers.google.com/search/docs/crawling-indexing/links-crawlable#write-good-anchor-text)
         entry: "(?i)<a[^>]*>(read more|click here|learn more)</a>"
+        language: pygrep
+        files: ".*[.]md$"
+      - id: avoid-old-names
+        name: Use Welkin consistently
+        entry: "(Compliant[ ]Kubernetes|C[kK]8[sS][^_]|Complaint)"
         language: pygrep
         files: ".*[.]md$"

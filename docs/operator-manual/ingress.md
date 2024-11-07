@@ -1,6 +1,6 @@
 # Ingress
 
-Compliant Kubernetes (CK8s) uses the Ingress NGINX Controller to route external traffic to the correct Service inside the cluster. CK8s can configure the Ingress Controller in two different ways depending on the underlying infrastructure.
+Welkin uses the Ingress NGINX Controller to route external traffic to the correct Service inside the cluster. Welkin can configure the Ingress Controller in two different ways depending on the underlying infrastructure.
 
 ## Using a Service of type LoadBalancer
 
@@ -10,7 +10,7 @@ provider with an external ip-address. Any dns records should be pointed to the i
 
 !!!note
 
-    This is only currently supported in CK8s for AWS. It is however possible to configure this for Azure and Google cloud as well but it's not done by default
+    This is only currently supported in Welkin for AWS. It is however possible to configure this for Azure and Google cloud as well but it's not done by default
 
 ## Using the host network
 

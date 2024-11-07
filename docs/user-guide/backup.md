@@ -1,5 +1,5 @@
 ---
-description: Backing up data in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: Backing up data in Welkin, the security-focused Kubernetes distribution.
 search:
   boost: 2
 tags:
@@ -17,7 +17,7 @@ tags:
 
 !!!important
 
-    Compliant Kubernetes comes with a default backup retention time of 30 days, which was assessed suitable for most use-cases.
+    Welkin comes with a default backup retention time of 30 days, which was assessed suitable for most use-cases.
 
     You should be aware that some data protection regulations put a **minimum requirement** on backup retention time, while some data protection regulations put a **maximum requirement** on backup retention time.
 
@@ -31,7 +31,7 @@ tags:
 
     Make sure you research regulations applicable to your organization to determine if the default backup retention time is suitable for your organization.
 
-Compliant Kubernetes (CK8S) includes backup functionality through Velero, a backup tool for Kubernetes Resources and Persistent Volumes. For backup of container images, Harbor is used instead.
+Welkin includes backup functionality through Velero, a backup tool for Kubernetes Resources and Persistent Volumes. For backup of container images, Harbor is used instead.
 
 ## What is Velero?
 
@@ -45,7 +45,7 @@ The following are instructions for backing up and restoring resources.
 
 <!--user-demo-backup-start-->
 
-Compliant Kubernetes takes a daily backup of all Kubernetes Resources in all user namespaces. Persistent Volumes will be backed up if they are tied to a Pod. If backups are not wanted the label `compliantkubernetes.io/nobackup` can be added to opt-out of the daily backups.
+Welkin takes a daily backup of all Kubernetes Resources in all user namespaces. Persistent Volumes will be backed up if they are tied to a Pod. If backups are not wanted the label `compliantkubernetes.io/nobackup` can be added to opt-out of the daily backups.
 
 Application metrics (Grafana) and application log (OpenSearch) dashboards are also backed up by default.
 
@@ -59,13 +59,13 @@ By default, backups are stored for 720 hours (30 days).
 
 Restoring from a backup with Velero is meant to be a type of disaster recovery. **Velero will not overwrite existing Resources when restoring.** As such, if you want to restore the state of a Resource that is still running, the Resource must be deleted first.
 
-To restore a backup on demand, contact your Compliant Kubernetes administrator.
+To restore a backup on demand, contact your Welkin administrator.
 
 <!--user-demo-restore-end-->
 
 ## Protection of Backups
 
-The Compliant Kubernetes administrator will take the following measure to ensure backups are protected:
+The Welkin administrator will take the following measure to ensure backups are protected:
 
 1. Backups are encrypted at rest, if the underlying infrastructure provider supports it.
 
@@ -82,5 +82,5 @@ The Compliant Kubernetes administrator will take the following measure to ensure
 
 3. The buckets holding the backups are configured with [object lock](https://docs.safespring.com/storage/object-locking/), if the underlying cloud provider supports it. This means that backups cannot be modified or erase until a given retention time, even with privileged credentials.
 
-    **Why?** This ensures backups are available -- though unlikely confidential -- even if the whole Compliant Kubernetes environment is compromised.
+    **Why?** This ensures backups are available -- though unlikely confidential -- even if the whole Welkin environment is compromised.
 -->

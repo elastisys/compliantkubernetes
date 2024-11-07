@@ -109,3 +109,9 @@ a[href*="//"]:not([href*="elastisys."])::after {
   background-color: var(--elastisys-northern-lights-1);
   color: var(--elastisys-night-blue);
 }
+
+#sidebar-welkin-logo {
+  height: 180px;
+  text-align: center;
+  margin-top: 3em;
+}

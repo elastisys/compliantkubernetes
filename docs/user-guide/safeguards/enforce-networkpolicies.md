@@ -34,11 +34,11 @@ Each application instance could be installed as a separate Helm Release, perhaps
 If you run several applications -- e.g., frontend, backend, backoffice, database, message queue -- in a single Kubernetes cluster, it is a best practice to segregrate them.
 By segregating your applications and only allowing required Ingress and egress network traffic, you further reduce blast radius in case of an attack.
 
-## Compliant Kubernetes helps enforce segregation
+## Welkin helps enforce segregation
 
-Compliant Kubernetes allows you to segregate applications by installing suitable NetworkPolicies. These are a bit like firewalls, but in the container world: Since containers are supposed to be deleted and recreated frequently, they change IP address a lot. Clearly the old "allow/deny IP" method does not scale. Therefore, NetworkPolicies select source and destination Pods based on labels or namespace labels.
+Welkin allows you to segregate applications by installing suitable NetworkPolicies. These are a bit like firewalls, but in the container world: Since containers are supposed to be deleted and recreated frequently, they change IP address a lot. Clearly the old "allow/deny IP" method does not scale. Therefore, NetworkPolicies select source and destination Pods based on labels or namespace labels.
 
-To make sure you don't forget to configure NetworkPolicies, the administrator can configure Compliant Kubernetes to deny creation of Pods with no matching NetworkPolicies.
+To make sure you don't forget to configure NetworkPolicies, the administrator can configure Welkin to deny creation of Pods with no matching NetworkPolicies.
 
 If you get the following error:
 
@@ -46,7 +46,7 @@ If you get the following error:
 Error: admission webhook "validation.gatekeeper.sh" denied the request: [denied by require-networkpolicy] No matching networkpolicy found
 ```
 
-Then you are missing NetworkPolicies which select your Pods. The [user demo](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/deploy/ck8s-user-demo/templates/networkpolicy.yaml) gives a good example to get you started.
+Then you are missing NetworkPolicies which select your Pods. The [user demo](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/templates/networkpolicy.yaml) gives a good example to get you started.
 
 If your administrator has not enforced this policy yet, you can view current violations of the policy by running:
 

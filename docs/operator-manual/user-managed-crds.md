@@ -1,6 +1,6 @@
 # Self-managed cluster resources (Preview)
 
-Adding certain cluster-wide resources, such as CustomResourceDefinitions, are cluster-wide settings that are prohibited by Compliant Kubernetes [for security purposes](../user-guide/demarcation.md).
+Adding certain cluster-wide resources, such as CustomResourceDefinitions, are cluster-wide settings that are prohibited by Welkin [for security purposes](../user-guide/demarcation.md).
 However, many popular applications, in particular ones with Operators, require cluster-wide resources to be installed.
 This preview feature enables application developers to self-manage a **predefined** set of such cluster-wide resources.
 This trade-off means that application developers get the ability to install and manage such popular applications, but without compromising the security posture of the cluster.
@@ -14,7 +14,7 @@ The list of currently supported applications for self-management is:
 
 ## Limitations
 
-Compliant Kubernetes does not allow application developers to install ClusterRoles and ClusterRoleBindings.
+Welkin does not allow application developers to install ClusterRoles and ClusterRoleBindings.
 For pre-approved operators that require ClusterRoles and ClusterRoleBindings.
 They are installed during enabling of self-managed-CRDs feature.
 The installation of self-managed cluster resources can be limited to a pre-defined Namespace. For example, Sealed Secrets is required to be installed in the namespace `sealed-secrets`. This to correctly bind a cluster role to the service account.

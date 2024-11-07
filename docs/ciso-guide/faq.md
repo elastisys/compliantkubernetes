@@ -5,13 +5,13 @@ tags:
 
 # CISO FAQ
 
-## Do we need to make our application source code public when using Compliant Kubernetes?
+## Do we need to make our application source code public when using Welkin?
 
 !!!note "TL;DR"
 
     **Definitely NOT**, you own your application source code and you decide what to do with it.
 
-Elastisys hereby confirms that Compliant Kubernetes and its Additional Managed Services (AMS) are NOT putting Application Developers (users) in a situation which obliges them to make their software or source code running on Compliant Kubernetes available to the public.
+Elastisys hereby confirms that Welkin and its Additional Managed Services (AMS) are NOT putting Application Developers (users) in a situation which obliges them to make their software or source code running on Welkin available to the public.
 
 Should we at Elastisys become aware of such an issue existing, we will immediately rectify the situation by replacing problematic components. You can read more about how we take architectural decisions [here](../adr/index.md).
 
@@ -24,33 +24,33 @@ As evidence, that the architectural decision process works – in particular whe
 
 You can read more about our commitment to community-driven open-source [by opening this link](../adr/0015-we-believe-in-community-driven-open-source.md).
 
-## Will GrafanaLabs change to AGPL licenses affect Compliant Kubernetes?
+## Will GrafanaLabs change to AGPL licenses affect Welkin?
 
 !!!note "TL;DR"
 
-    Users and administrators of Compliant Kubernetes are unaffected.
+    Users and administrators of Welkin are unaffected.
 
-Part of Compliant Kubernetes -- specifically the CISO dashboards -- are built on top of Grafana, which recently [changed its license to AGPLv3](https://grafana.com/blog/2021/04/20/grafana-loki-tempo-relicensing-to-agplv3/). In brief, if Grafana is exposed via a network connection -- as is the case with Compliant Kubernetes -- then AGPLv3 requires all source code including modifications to be made available.
+Part of Welkin -- specifically the CISO dashboards -- are built on top of Grafana, which recently [changed its license to AGPLv3](https://grafana.com/blog/2021/04/20/grafana-loki-tempo-relicensing-to-agplv3/). In brief, if Grafana is exposed via a network connection -- as is the case with Welkin -- then AGPLv3 requires all source code including modifications to be made available.
 
-The exact difference between "aggregate" and "modified version" is [somewhat unclear](https://www.gnu.org/licenses/gpl-faq.en.html#MereAggregation). Compliant Kubernetes only configures Grafana and does not change its source code. Hence, we determined that Compliant Kubernetes is an "aggregate" work and is unaffected by the ["viral" clauses](https://en.wikipedia.org/wiki/Viral_license) of AGPLv3.
+The exact difference between "aggregate" and "modified version" is [somewhat unclear](https://www.gnu.org/licenses/gpl-faq.en.html#MereAggregation). Welkin only configures Grafana and does not change its source code. Hence, we determined that Welkin is an "aggregate" work and is unaffected by the ["viral" clauses](https://en.wikipedia.org/wiki/Viral_license) of AGPLv3.
 
-As a result, Compliant Kubernetes continues to be distributed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) as before.
+As a result, Welkin continues to be distributed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) as before.
 
-## Will Min.io change to AGPL licenses affect Compliant Kubernetes?
+## Will Min.io change to AGPL licenses affect Welkin?
 
 !!!note "TL;DR"
 
-    Users and administrators of Compliant Kubernetes are unaffected.
+    Users and administrators of Welkin are unaffected.
 
 Min.io recently changed its license to [AGPLv3](https://blog.min.io/from-open-source-to-free-and-open-source-minio-is-now-fully-licensed-under-gnu-agplv3/).
 
-Certain installations of Compliant Kubernetes may use Min.io for accessing object storage on Azure or GCP. However, Compliant Kubernetes does not currently include Min.io. In brief, if Min.io is exposed via a network connection, then AGPLv3 requires all source code including modifications to be made available.
+Certain installations of Welkin may use Min.io for accessing object storage on Azure or GCP. However, Welkin does not currently include Min.io. In brief, if Min.io is exposed via a network connection, then AGPLv3 requires all source code including modifications to be made available.
 
-The exact difference between "aggregate" and "modified version" is [somewhat unclear](https://www.gnu.org/licenses/gpl-faq.en.html#MereAggregation). When using Min.io with Compliant Kubernetes, we only use Min.io via its S3-compatible API. Hence, we determined that Compliant Kubernetes is an "aggregate" work and is unaffected by the ["viral" clauses](https://en.wikipedia.org/wiki/Viral_license) of AGPLv3.
+The exact difference between "aggregate" and "modified version" is [somewhat unclear](https://www.gnu.org/licenses/gpl-faq.en.html#MereAggregation). When using Min.io with Welkin, we only use Min.io via its S3-compatible API. Hence, we determined that Welkin is an "aggregate" work and is unaffected by the ["viral" clauses](https://en.wikipedia.org/wiki/Viral_license) of AGPLv3.
 
-As a result, Compliant Kubernetes continues to be distributed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) as before.
+As a result, Welkin continues to be distributed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) as before.
 
-## Can I use Datadog/Logz.io/Elastic Cloud with Compliant Kubernetes?
+## Can I use Datadog/Logz.io/Elastic Cloud with Welkin?
 
 !!!note "TL;DR"
 
@@ -59,7 +59,7 @@ As a result, Compliant Kubernetes continues to be distributed under [Apache 2.0]
     * Logs contain personal data.
     * Personal data should NOT be shipped to US cloud providers.
 
-    Use Compliant Kubernetes's [built-in OpenSearch](../user-guide/logs.md) instead.
+    Use Welkin's [built-in OpenSearch](../user-guide/logs.md) instead.
 
 Application and platform logs are highly likely to contain personal data.
 Note that, according to [GDPR Art. 4](https://gdpr.fan/a4) any information that can be directly or indirectly related to an individual is personal data.
@@ -75,4 +75,4 @@ Furthermore, according to a [French court ruling](https://iapp.org/news/a/why-th
 
 Most Software-as-a-Service log management platforms -- like Datadog, Logz.io and Elastic Cloud -- are operated by US entities and run on US clouds. Hence, using them to process logs poses a high risk that personal data ends up being processed on a US cloud. Therefore, personal data is at risk of US CLOUD Act and US FISA, which is incompatible with GDPR.
 
-Fortunately, Compliant Kubernetes comes with [OpenSearch built-in](../user-guide/logs.md), so you can benefit from full-text search over your application logs while complying with GDPR.
+Fortunately, Welkin comes with [OpenSearch built-in](../user-guide/logs.md), so you can benefit from full-text search over your application logs while complying with GDPR.

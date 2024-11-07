@@ -1,7 +1,7 @@
 # Use bats for testing bash wrappers
 
 - Status: accepted
-- Deciders: Compliant Kubernetes Architecture Meeting
+- Deciders: Architecture Meeting
 - Date: 2021-06-03
 
 ## Context and Problem Statement

@@ -1,7 +1,7 @@
 # [Superseded by [ADR-0017](0017-persist-dex.md)] Do not persist Dex
 
 - Status: superseded by [ADR-0017](0017-persist-dex.md)
-- Deciders: Compliant Kubernetes Architecture Meeting
+- Deciders: Architecture Meeting
 - Date: 2021-04-29
 
 Technical Story: [Reduce Helmfile concurrency for improved predictability](https://github.com/elastisys/compliantkubernetes-apps/issues/402#issuecomment-827476433)

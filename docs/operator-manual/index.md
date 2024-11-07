@@ -7,11 +7,11 @@ hide:
 
 <div class="landing-page" markdown="1">
 
-Compliant Kubernetes abstracts away a lot of complexity from Application Developers.
+Welkin abstracts away a lot of complexity from Application Developers.
 Unfortunately, someone somewhere needs to take care of that complexity.
 That person is you, the Platform Administrator.
 
-Setting up Compliant Kubernetes is not for the faint hearted.
+Setting up Welkin is not for the faint hearted.
 We recommend you to proceed in 4 steps as shown below:
 
 <nav markdown="1">
@@ -23,7 +23,7 @@ We recommend you to proceed in 4 steps as shown below:
     </dt>
     <dd>
         Validate that the application team's needs will be satisfied.
-        Start with Compliant Kubernetes managed by an experienced platform team on a trusted EU cloud infrastructure.
+        Start with Welkin managed by an experienced platform team on a trusted EU cloud infrastructure.
     </dd>
     <dd>
       <a role="button" href="https://elastisys.com/managed-services/">Go to Managed Services</a>
@@ -44,13 +44,13 @@ We recommend you to proceed in 4 steps as shown below:
   <div markdown="span">
     <dt markdown="span">
       :fontawesome-solid-gears:
-      Phase 3: Compliant Kubernetes setup
+      Phase 3: Welkin setup
     </dt>
     <dd class="grow-me">
-      Now that the infrastructure is in place, you're ready to configure and install Compliant Kubernetes.
+      Now that the infrastructure is in place, you're ready to configure and install Welkin.
     </dd>
     <dd>
-      <a role="button" href="./on-prem-standard/">Setup Compliant Kubernetes</a>
+      <a role="button" href="./on-prem-standard/">Setup Welkin</a>
     </dd>
   </div>
   <div markdown="span">

@@ -1,5 +1,5 @@
 ---
-description: Documentation for Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: Documentation for Welkin, the security-focused Kubernetes distribution.
 ---
 
 <!-- markdownlint-disable-file first-line-h1 -->
@@ -8,7 +8,7 @@ description: Documentation for Elastisys Compliant Kubernetes, the security-focu
 
 # Innovate at speed in regulated industries
 
-Elastisys Compliant Kubernetes enables organizations across Europe to accelerate innovation through open source cloud-native technology, while ensuring security and regulatory compliance.
+Welkin enables organizations across Europe to accelerate innovation through open source cloud-native technology, while ensuring security and regulatory compliance.
 
 <nav markdown="1">
 <dl class="columns-1" markdown="1">
@@ -18,7 +18,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
       For application developers
     </dt>
     <dd class="grow-me">
-      Learn how Compliant Kubernetes helps you deploy and observe your application in production.
+      Learn how Welkin helps you deploy and observe your application in production.
     </dd>
     <dd><a role="button" href="./user-guide/">Get started</a></dd>
   </div>
@@ -29,7 +29,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
       For CISOs and DPOs
     </dt>
     <dd class="grow-me">
-      Learn how Compliant Kubernetes helps you comply with European regulations, such as NIS2 and GDPR.
+      Learn how Welkin helps you comply with European regulations, such as NIS2 and GDPR.
     </dd>
     <dd><a role="button" href="./ciso-guide/">Help me comply</a></dd>
   </div>
@@ -40,18 +40,18 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
       For platform administrators
     </dt>
     <dd class="grow-me">
-      Learn how to set up Compliant Kubernetes on any cloud provider or on-prem.
+      Learn how to set up Welkin on any cloud provider or on-prem.
     </dd>
-    <dd><a role="button" href="./operator-manual/">Set up Compliant Kubernetes</a></dd>
+    <dd><a role="button" href="./operator-manual/">Set up Welkin</a></dd>
   </div>
 </ul>
 </nav>
 
-## What is Elastisys Compliant Kubernetes?
+## What is Welkin?
 
-<img src="img/marchitecture.svg" alt="Components of Elastisys Compliant Kubernetes" />
+<img src="img/marchitecture.svg" alt="Components of Welkin" />
 
-## Benefits of Elastisys Compliant Kubernetes
+## Benefits of Welkin
 
 <dl class="columns-1" markdown="1">
   <div markdown="span">
@@ -90,7 +90,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
   </div>
 </dl>
 
-## Elastisys Compliant Kubernetes is trusted by industry leaders
+## Welkin is trusted by industry leaders
 
 <ul class="columns-always">
     <li><img src="img/logos/orgs/telia.svg" alt="Logo of Telia" /></li>
@@ -175,7 +175,7 @@ Elastisys Compliant Kubernetes enables organizations across Europe to accelerate
       Self-Managed
     </dt>
     <dd class="grow-me">
-      Leverage Elastisys Compliant Kubernetes on-prem with implementation and continuous support.
+      Leverage Welkin on-prem with implementation and continuous support.
     </dd>
     <dd>
       <a role="button" href="https://elastisys.com/self-managed/">Go to Self-Managed</a>

@@ -45,20 +45,61 @@ if(!document.__defineGetter__) {
 }
 </script>
 
-<!-- See https://realfavicongenerator.net -->
-<link rel="apple-touch-icon" sizes="180x180" href="https://elastisys.io/compliantkubernetes/img/apple-touch-icon.png?v=1">
-<link rel="icon" type="image/png" sizes="32x32" href="https://elastisys.io/compliantkubernetes/img/favicon-32x32.png?v=1">
-<link rel="icon" type="image/png" sizes="16x16" href="https://elastisys.io/compliantkubernetes/img/favicon-16x16.png?v=1">
-<link rel="manifest" href="https://elastisys.io/compliantkubernetes/img/site.webmanifest?v=1">
-<link rel="mask-icon" href="https://elastisys.io/compliantkubernetes/img/safari-pinned-tab.svg?v=1" color="#5bbad5">
-<link rel="shortcut icon" href="https://elastisys.io/compliantkubernetes/img/favicon.ico?v=1">
-<meta name="msapplication-TileColor" content="#2b5797">
-<meta name="msapplication-config" content="https://elastisys.io/compliantkubernetes/img/browserconfig.xml?v=1">
-<meta name="theme-color" content="#ffffff">
+<!-- See https://realfavicongenerator.net/ -->
+<link rel="icon" type="image/png" href="/welkin/img/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/welkin/img/favicon.svg" />
+<link rel="shortcut icon" href="/welkin/img/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/welkin/img/apple-touch-icon.png" />
+<link rel="manifest" href="/welkin/img/site.webmanifest" />
 {% endblock %}
 
 {% block announce %}
 <div class="banner">
 We're undergoing a transformation! We're rebranding our platform and changing the name from Compliant Kubernetes to Welkin. As we work on updating our documentation, there may be some temporary inconsistencies in how the platform is referred to. Thank you for your understanding. Read more about it in this <strong><a style="color: var(--elastisys-night-blue);"href="https://elastisys.com/elastisys-compliant-kubernetes-becomes-welkin/">press release</a></strong>.
 </div>
+{% endblock %}
+
+<!-- Sidebars -->
+{% block site_nav %}
+
+  <!-- Navigation -->
+  {% if nav %}
+    {% if page.meta and page.meta.hide %}
+      {% set hidden = "hidden" if "navigation" in page.meta.hide %}
+    {% endif %}
+    <div
+      class="md-sidebar md-sidebar--primary"
+      data-md-component="sidebar"
+      data-md-type="navigation"
+      {{ hidden }}
+    >
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+          {% include "partials/nav.html" %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- Table of contents -->
+  {% if "toc.integrate" not in features %}
+    {% if page.meta and page.meta.hide %}
+      {% set hidden = "hidden" if "toc" in page.meta.hide %}
+    {% endif %}
+    <div
+      class="md-sidebar md-sidebar--secondary"
+      data-md-component="sidebar"
+      data-md-type="toc"
+      {{ hidden }}
+    >
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+          {% include "partials/toc.html" %}
+
+          <br/>
+          <div><img id="sidebar-welkin-logo" src="{{ base_url }}/img/logos/Welkin_maskot.svg"></div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
 {% endblock %}

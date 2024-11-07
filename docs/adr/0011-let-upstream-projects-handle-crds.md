@@ -1,7 +1,7 @@
 # [Superseded by [ADR-0046](0046-handle-crds.md)] Let upstream projects handle CRDs
 
 - Status: superseded by [ADR-0046](0046-handle-crds.md)
-- Deciders: Compliant Kubernetes Arch Meeting
+- Deciders: Arch Meeting
 - Date: 2021-04-29
 
 Technical Story: [#446](https://github.com/elastisys/compliantkubernetes-apps/pull/446) [#369](https://github.com/elastisys/compliantkubernetes-apps/issues/369) [#391](https://github.com/elastisys/compliantkubernetes-apps/issues/391) [#402](https://github.com/elastisys/compliantkubernetes-apps/issues/402) [#436](https://github.com/elastisys/compliantkubernetes-apps/pull/436).
@@ -26,7 +26,7 @@ How should we handle CRDs?
 
 Chosen option: "Rely on upstream", because it trims fat and reduces astonishment.
 
-At installation, rely on upstream's approach to install CRDs (see below). At upgrade, propagate upstream migration steps in CK8s migration steps in each release notes. An [issue template](https://github.com/elastisys/compliantkubernetes-apps/pull/436) was created to ensure we won't forget.
+At installation, rely on upstream's approach to install CRDs (see below). At upgrade, propagate upstream migration steps in Welkin migration steps in each release notes. An [issue template](https://github.com/elastisys/compliantkubernetes-apps/pull/436) was created to ensure we won't forget.
 
 Since we "vendor in" all Charts, CRDs can be discovered using:
 
@@ -45,7 +45,7 @@ grep -R 'kind: CustomResourceDefinition'
 
 ## Detailed Audit
 
-A detailed audit was performed of all CRDs in Compliant Kubernetes on 2021-04-27.
+A detailed audit was performed of all CRDs in Welkin on 2021-04-27.
 
 As a summary, all projects encourage installing CRDs as part of standard `helm install`. Most projects encourage following manual migration steps to handle CRDs. Some projects handle CRD upgrades.
 
@@ -58,7 +58,7 @@ A detailed analysis is listed below:
 
 ### Dex
 
-Dex can be configured without CRDs. [ADR-0012](https://github.com/elastisys/compliantkubernetes/pull/134) argues for that approach.
+Dex can be configured without CRDs. [ADR-0012](https://github.com/elastisys/welkin/pull/134) argues for that approach.
 
 ### gatekeeper
 

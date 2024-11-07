@@ -1,4 +1,4 @@
-# CK8s in Air-gapped Network
+# Welkin in Air-gapped Network
 
 !!!warning
 
@@ -12,11 +12,11 @@
 
 ## Background
 
-In an air-gapped network, machines are isolated from insecure networks such as the public Internet. Air-gapping is used for networks that handle highly confidential data such as military or governmental systems, or in life-critical systems, for example, in nuclear power plants or for medical equipment. This document provides guidelines on how to configure Compliant Kubernetes Apps to work inside an air-gapped network.
+In an air-gapped network, machines are isolated from insecure networks such as the public Internet. Air-gapping is used for networks that handle highly confidential data such as military or governmental systems, or in life-critical systems, for example, in nuclear power plants or for medical equipment. This document provides guidelines on how to configure Welkin Apps to work inside an air-gapped network.
 
 ## System Context Diagram
 
-The following is a generic system context diagram over an air-gapped network consisting of a Compliant Kubernetes Environment. The diagram shows the Platform Administrator Machine that has access to both the Internet and the air-gapped network. Inside the air-gapped network, Compliant Kubernetes Clusters can access other services residing on the same private network such as an object storage for long-term storage, a container registry mirror, DNS and NTP servers, etc.
+The following is a generic system context diagram over an air-gapped network consisting of a Welkin Environment. The diagram shows the Platform Administrator Machine that has access to both the Internet and the air-gapped network. Inside the air-gapped network, Welkin Clusters can access other services residing on the same private network such as an object storage for long-term storage, a container registry mirror, DNS and NTP servers, etc.
 
 ![Diagram](../img/air-gapped.drawio.png)
 
@@ -24,13 +24,13 @@ The following is a generic system context diagram over an air-gapped network con
 
     \* For Certificate Provisioning, you may want to allow DNS01 or HTTP01 challenges to a public certificate authority, such as [Let's Encrypt](https://letsencrypt.org/). However, if you want the whole network to be truly air-gapped, then you need to figure out an air-gapped solution for PKI.
 
-## Configuring Air-gapped Compliant Kubernetes Apps
+## Configuring Air-gapped Welkin Apps
 
-These guidelines will show how to configure Compliant Kubernetes Apps to work in an air-gapped network. For setting up the Kubernetes layer, please refer to the [Kubespray air-gap installation documentation](https://kubespray.io/#/docs/offline-environment) or [Cluster-API documentation](https://cluster-api.sigs.k8s.io/clusterctl/configuration.html?highlight=release#image-overrides) for further instructions.
+These guidelines will show how to configure Welkin Apps to work in an air-gapped network. For setting up the Kubernetes layer, please refer to the [Kubespray air-gap installation documentation](https://kubespray.io/#/docs/offline-environment) or [Cluster-API documentation](https://cluster-api.sigs.k8s.io/clusterctl/configuration.html?highlight=release#image-overrides) for further instructions.
 
 This guide will assume that you have a Platform Administrator Machine that can access both the Internet and the air-gapped network over SSH, this includes SSH access to both the Cluster nodes and hosts for the different offline services described in the system context diagram above. This "Platform Administrator Machine" can be your local machine or a bastion host.
 
-Start by initializing your Compliant Kubernetes Apps config (see the quickstart section [here](https://github.com/elastisys/compliantkubernetes-apps?tab=readme-ov-file#quickstart) for more info on initializing and deploying Compliant Kubernetes Apps) with the `air-gapped` flavor by setting the `CK8S_FLAVOR` environment variable:
+Start by initializing your Welkin Apps config (see the quickstart section [here](https://github.com/elastisys/compliantkubernetes-apps?tab=readme-ov-file#quickstart) for more info on initializing and deploying Welkin Apps) with the `air-gapped` flavor by setting the `CK8S_FLAVOR` environment variable:
 
 ```bash
 export CK8S_FLAVOR=air-gapped
@@ -38,15 +38,15 @@ export CK8S_FLAVOR=air-gapped
 
 ### Container Images and Registry Mirroring
 
-All container images used for the Kubernetes layer and for Compliant Kubernetes Apps needs to be available in the air-gapped network. This can be done by setting up a private container registry (e.g. `Harbor`) that can act as a [registry mirror or registry cache](https://docs.docker.com/docker-hub/mirror/). But first these images need to be added to the private container registry. The following sections describes ways of getting images used by Compliant Kubernetes Apps.
+All container images used for the Kubernetes layer and for Welkin Apps needs to be available in the air-gapped network. This can be done by setting up a private container registry (e.g. `Harbor`) that can act as a [registry mirror or registry cache](https://docs.docker.com/docker-hub/mirror/). But first these images need to be added to the private container registry. The following sections describes ways of getting images used by Welkin Apps.
 
 #### Migrating Images From a Running Environment with Script
 
-There is [a useful script](https://kubespray.io/#/contrib/offline/README?id=manage-offline-container-imagessh) in the upstream Kubespray repository that you can use to get all images from existing Compliant Kubernetes Clusters by simply pointing the `KUBECONFIG` environment variable to the correct Cluster(s). If possible it is recommended to use this script for migrating images to a container registry mirror.
+There is [a useful script](https://kubespray.io/#/contrib/offline/README?id=manage-offline-container-imagessh) in the upstream Kubespray repository that you can use to get all images from existing Welkin Clusters by simply pointing the `KUBECONFIG` environment variable to the correct Cluster(s). If possible it is recommended to use this script for migrating images to a container registry mirror.
 
 #### Migrating Images Manually
 
-If getting images from a running Cluster is not desirable, use the following commands to get **most** of the images used in Compliant Kubernetes Apps:
+If getting images from a running Cluster is not desirable, use the following commands to get **most** of the images used in Welkin Apps:
 
 ```bash
 export KUBE_VERSION=# e.g. 1.27.5
@@ -71,7 +71,7 @@ sudo ${RUNTIME} save -o ${IMAGE_FILE_NAME}.tar ${REGISTRY}/${IMAGE_NAME}
 
 !!!note
 
-    Be wary of images with digests as tags, as when saving the container image when using the `docker` or `podman` runtime and then loading it, the image will lose its digest (see issue discussing this [here](https://github.com/moby/moby/issues/22011)). If you use this approach, you may need to override the digest or image tag used in the Compliant Kubernetes Apps config. Using a tool like `nerdctl` will however preserve the correct image digest.
+    Be wary of images with digests as tags, as when saving the container image when using the `docker` or `podman` runtime and then loading it, the image will lose its digest (see issue discussing this [here](https://github.com/moby/moby/issues/22011)). If you use this approach, you may need to override the digest or image tag used in the Welkin Apps config. Using a tool like `nerdctl` will however preserve the correct image digest.
 
 !!!tip
 
@@ -181,7 +181,7 @@ falco:
     - fileserver.air-gapped.internal:8080/falcoctl/index.yaml
 ```
 
-The default Falco driver in CK8s is `module`. With this driver, Falco will attempt to download the driver from the internet, and if it fails to do so, it will build the module as a fallback, which would be the case in an air-gapped network. Unless you host driver modules yourself and configure Falco to use this file server instead:
+The default Falco driver in Welkin is `module`. With this driver, Falco will attempt to download the driver from the internet, and if it fails to do so, it will build the module as a fallback, which would be the case in an air-gapped network. Unless you host driver modules yourself and configure Falco to use this file server instead:
 
 ```yaml
 falco:
@@ -205,7 +205,7 @@ falco:
 
 ### OpenSearch
 
-Compliant Kubernetes is configured to store OpenSearch data in Object storage which is configured with plugins. Normally, OpenSearch attempts to download plugins from the Internet. In an air-gapped network, you can download plugins for OpenSearch manually and host them on a file server inside the air-gapped network. To download the S3 plugin run:
+Welkin is configured to store OpenSearch data in Object storage which is configured with plugins. Normally, OpenSearch attempts to download plugins from the Internet. In an air-gapped network, you can download plugins for OpenSearch manually and host them on a file server inside the air-gapped network. To download the S3 plugin run:
 
 ```bash
 OPENSEARCH_VERSION=2.8.0  # set the opensearch version of the cluster
@@ -290,7 +290,7 @@ alerts:
 
 ## Demo
 
-Following are some screenshots of an air-gapped Compliant Kubernetes Environment, accessing Service Endpoints on the local air-gapped domain by using a [SOCKS proxy](https://en.wikipedia.org/wiki/SOCKS) in Firefox over an SSH tunnel. Accessing Grafana Dashboards:
+Following are some screenshots of an air-gapped Welkin Environment, accessing Service Endpoints on the local air-gapped domain by using a [SOCKS proxy](https://en.wikipedia.org/wiki/SOCKS) in Firefox over an SSH tunnel. Accessing Grafana Dashboards:
 
 ![Air-gapped Grafana](../img/air-gapped-grafana.png)
 
@@ -298,7 +298,7 @@ Signing in with Dex will redirect to the Dex Service Endpoint for authentication
 
 ![Air-gapped Dex](../img/air-gapped-dex.png)
 
-Checking the endpoint of the [user demo](https://github.com/elastisys/compliantkubernetes/tree/main/user-demo) application:
+Checking the endpoint of the [user demo](https://github.com/elastisys/welkin/tree/main/user-demo) application:
 
 ![Air-gapped User Demo](../img/air-gapped-demo.png)
 

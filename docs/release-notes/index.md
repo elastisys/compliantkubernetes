@@ -1,18 +1,18 @@
-# Compliant Kubernetes Release Cycle
+# Welkin Release Cycle
 
-Compliant Kubernetes consists of several layers each with their own release cycles.
+Welkin consists of several layers each with their own release cycles.
 
 > [!IMPORTANT]
 > Patch versions may be released at any time if Customer systems and Customer Data is at risk.
 >
 > For more details, see [ToS 3.6 Vulnerability Management](https://elastisys.com/legal/terms-of-service/#36-vulnerability-management).
 
-## Compliant Kubernetes Apps
+## Welkin Apps
 
 For the [Apps layer](https://github.com/elastisys/compliantkubernetes-apps/), we aim to release 10 times per year.
 This corresponds to approximately once a month except for Swedish holiday months, i.e., July and December.
 
-## Compliant Kubernetes Kubespray
+## Welkin Kubespray
 
 For the [Kubespray layer](https://github.com/elastisys/compliantkubernetes-kubespray/), we aim to release as soon as there is a new upstream release.
 

@@ -1,6 +1,6 @@
 # Release Notes
 
-## Compliant Kubernetes RabbitMQ
+## Welkin RabbitMQ
 
 <!-- BEGIN TOC -->
 

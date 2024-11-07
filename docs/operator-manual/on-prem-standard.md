@@ -5,12 +5,12 @@ tags:
 
 # Standard Template for on-prem Environment
 
-This document contains instructions on how to set-up a new Compliant Kubernetes on-prem environment.
+This document contains instructions on how to set-up a new Welkin on-prem environment.
 
 ## Prerequisites
 
 > [!IMPORTANT]
-> Decisions regarding the following items should be made before venturing on deploying Compliant Kubernetes.
+> Decisions regarding the following items should be made before venturing on deploying Welkin.
 >
 > - Overall architecture, i.e., VM sizes, load-balancer configuration, storage configuration, etc.
 > - Identity Provider (IdP) choice and configuration. See [this page](../user-guide/prepare-idp.md).
@@ -24,7 +24,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     - For Azure, use [AzureRM scripts](https://github.com/kubernetes-sigs/kubespray/tree/master/contrib/azurerm).
     - For other clouds, use their respective [Terraform scripts](https://github.com/kubernetes-sigs/kubespray/tree/master/contrib/terraform).
 
-1. Create a git working folder to store Compliant Kubernetes configurations in a version-controlled manner. Run the following commands from the root of the config repo.
+1. Create a git working folder to store Welkin configurations in a version-controlled manner. Run the following commands from the root of the config repo.
 
     {%
         include "./common.md"
@@ -32,7 +32,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
         end="<!--export-variables-stop-->"
     %}
 
-1. Add the Elastisys Compliant Kubernetes Kubespray repo as a `git submodule` to the configuration repo and install pre-requisites as follows:
+1. Add the Welkin Kubespray repo as a `git submodule` to the configuration repo and install pre-requisites as follows:
 
     > [!NOTE]
     > Remember to switch to the desired version of `compliantkubernetes-kubespray`.
@@ -46,7 +46,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
     ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' --ask-become-pass --connection local --inventory 127.0.0.1, get-requirements.yaml
     ```
 
-1. Add the Compliant Kubernetes Apps repo as a `git submodule` to the configuration repo and install pre-requisites as follows:
+1. Add the Welkin Apps repo as a `git submodule` to the configuration repo and install pre-requisites as follows:
 
     > [!NOTE]
     > Remember to switch to the desired version of `compliantkubernetes-apps`.
@@ -61,9 +61,9 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 1. Create the domain name.
     You need to create a domain name to access the different services in your environment. You will need to set up the following DNS entries.
 
-    - Point these domains to the Workload Cluster Ingress Controller (this step is done during Compliant Kubernetes Apps installation):
+    - Point these domains to the Workload Cluster Ingress Controller (this step is done during Welkin Apps installation):
       - `*.$DOMAIN`
-    - Point these domains to the Management Cluster Ingress Controller (this step is done during Compliant Kubernetes Apps installation):
+    - Point these domains to the Management Cluster Ingress Controller (this step is done during Welkin Apps installation):
       - `*.ops.$DOMAIN`
       - `dex.$DOMAIN`
       - `grafana.$DOMAIN`
@@ -85,7 +85,7 @@ This document contains instructions on how to set-up a new Compliant Kubernetes 
 
 1. Make sure you have [all necessary tools](getting-started.md).
 
-## Deploying Compliant Kubernetes using Kubespray
+## Deploying Welkin using Kubespray
 
 ???+note "How to change Default Kubernetes Subnet Address"
 
@@ -131,7 +131,7 @@ To configure the Workload Cluster to use Dex running in the Management Cluster f
 - `kube_oidc_auth` should be set to true, this enables OIDC authentication for the api-server
 - `kube_oidc_url` should be set to `https://dex.$DOMAIN`
 - `kube_oidc_client_id` should be set to `kubelogin`
-- `kube_oidc_client_secret` should be set to a Dex client secret generated with the apps config, it can be found in `${CK8S_CONFIG_PATH}/secrets.yaml` under the key `dex.kubeloginClientSecret` after running `ck8s init` (see [instructions on deploying apps](#deploying-compliant-kubernetes-apps)).
+- `kube_oidc_client_secret` should be set to a Dex client secret generated with the apps config, it can be found in `${CK8S_CONFIG_PATH}/secrets.yaml` under the key `dex.kubeloginClientSecret` after running `ck8s init` (see [instructions on deploying apps](#deploying-welkin-apps)).
 
 To generate kubeconfigs that use OIDC for authentication, the following variables should be set in the config files for both clusters (both can't be true):
 
@@ -140,7 +140,7 @@ create_oidc_kubeconfig: true
 kubeconfig_localhost: false
 ```
 
-For more information on managing OIDC kubeconfigs and RBAC, or on running without OIDC, [see the ck8s-Kubespray documentation](https://github.com/elastisys/compliantkubernetes-kubespray#kubeconfig).
+For more information on managing OIDC kubeconfigs and RBAC, or on running without OIDC, [see the Welkin Kubespray documentation](https://github.com/elastisys/compliantkubernetes-kubespray#kubeconfig).
 
 ### Copy the VMs information to the inventory files
 
@@ -158,7 +158,7 @@ done
 ```
 
 > [!NOTE]
-> The kubeconfig for wc `.state/kube_config_wc.yaml` will not be usable until you have installed Dex in the Management Cluster (by [deploying apps](#deploying-compliant-kubernetes-apps)).
+> The kubeconfig for wc `.state/kube_config_wc.yaml` will not be usable until you have installed Dex in the Management Cluster (by [deploying apps](#deploying-welkin-apps)).
 
 ## Rook Block Storage
 
@@ -176,7 +176,7 @@ Normally, we want to use block storage solutions provided by the infra provider.
     end="<!--test-rook-stop-->"
 %}
 
-## Deploying Compliant Kubernetes Apps
+## Deploying Welkin Apps
 
 ???+note "How to change local DNS IP if you change the default Kubernetes subnet address"
 
@@ -246,7 +246,7 @@ Normally, we want to use block storage solutions provided by the infra provider.
 
 ### Operate
 
-The following endpoints can be probed to ensure Compliant Kubernetes services are up and running:
+The following endpoints can be probed to ensure Welkin services are up and running:
 
 ```bash
 curl --head https://dex.$DOMAIN/healthz

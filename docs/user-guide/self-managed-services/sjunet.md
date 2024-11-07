@@ -14,9 +14,9 @@ The Swedish [Sjunet](https://www.inera.se/tjanster/alla-tjanster-a-o/sjunet/) is
 
 Sjunet is for actors that are working with the Swedish healthcare system that require a high available, stable and secure network. Today there are over 100 services, such as Nationell patientöversikt, Intygstjänster and Födelseanmälan, using Sjunet to be reliably available for hospital and healthcare centers.
 
-## How Compliant Kubernetes connects to Sjunet
+## How Welkin connects to Sjunet
 
-The architecture diagram below shows how Compliant Kubernetes connects to Sjunet and who is responsible for what.
+The architecture diagram below shows how Welkin connects to Sjunet and who is responsible for what.
 
 The Platform Administrator configures NodeLocalDNS to use Sjunet's DNS to resolve Sjunet domains. Together with static routes, network traffic heading to Sjunet is routed to a virtual machine acting as a gateway. The gateway will be co-located within the same security group as the cluster to ensure that traffic between the cluster and the gateway is secure and closed off from the outside.
 
@@ -26,7 +26,7 @@ The Application Developer is responsible to install a supported VPN client on th
 
 ![Architectural diagram](img/sjunet.svg)
 
-_![Compliant Kubernetes](img/bac8d3.png) `Platform Administrators` area of responsibility ![Application Developer](img/b1ddf0.png) `Application Developers` area of responsibility ![Inera](img/76608a.png) `Ineras` area of responsibility_
+_![Welkin](img/bac8d3.png) `Platform Administrators` area of responsibility ![Application Developer](img/b1ddf0.png) `Application Developers` area of responsibility ![Inera](img/76608a.png) `Ineras` area of responsibility_
 
 !!! elastisys "For Elastisys Managed Services Customers"
 

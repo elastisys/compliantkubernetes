@@ -1,5 +1,5 @@
 ---
-description: How to use Continuous Development in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: How to use Continuous Development in Welkin, the security-focused Kubernetes distribution.
 search:
   boost: 2
 ---
@@ -34,8 +34,8 @@ sudo install skaffold /usr/local/bin/
 If you haven't done so already, clone the user demo:
 
 ```bash
-git clone https://github.com/elastisys/compliantkubernetes/
-cd compliantkubernetes/user-demo
+git clone https://github.com/elastisys/welkin/
+cd welkin/user-demo
 ```
 
 ### Initialize Skaffold
@@ -69,16 +69,16 @@ The `skaffold.yaml` must then be configured to use the correct domain and projec
 ```diff
 build:
   artifacts:
-- - image: i-didnt-read-the-docs/ck8s-user-demo
-+ - image: <DOMAIN>/<REGISTRY_PROJECT>/ck8s-user-demo
+- - image: i-didnt-read-the-docs/welkin-user-demo
++ - image: <DOMAIN>/<REGISTRY_PROJECT>/welkin-user-demo
     docker:
       dockerfile: Dockerfile
 ...
   valuesFiles:
-  - deploy/ck8s-user-demo/values.yaml
+  - deploy/welkin-user-demo/values.yaml
   version: 0.1.0
 + setValues:
-+   image.repository: <DOMAIN>/<REGISTRY_PROJECT>/ck8s-user-demo
++   image.repository: <DOMAIN>/<REGISTRY_PROJECT>/welkin-user-demo
 +   ingress.hostname: demo.<DOMAIN>     # (Optional)
 ```
 
@@ -118,7 +118,7 @@ shows the logs of the application, and starts listening for changes in the sourc
 When visiting the URL to the application or the portforwarded URL the following output can be seen:
 
 ```json
-{ "hostname": "ck8s-user-demo-dd9c58979-rm9rv", "version": "0.0.1" }
+{ "hostname": "welkin-user-demo-dd9c58979-rm9rv", "version": "0.0.1" }
 ```
 
 If you inside the `routes/index.js` file add the following:
@@ -137,7 +137,7 @@ And then save the file, Skaffold will automatically detect the change, build a n
 to the cluster. After the deployment has stabilized, when visiting the same URL, the output is now:
 
 ```json
-{ "hostname": "ck8s-user-demo-54bbdcf6fc-gthsc", "version": "0.0.1", "hello": "world" }
+{ "hostname": "welkin-user-demo-54bbdcf6fc-gthsc", "version": "0.0.1", "hello": "world" }
 ```
 
 ### Configuration updates
@@ -147,11 +147,11 @@ To see the amount of pods, run (inside another terminal):
 ```bash
 $ kubectl get pods
 NAME                              READY   STATUS    RESTARTS   AGE
-ck8s-user-demo-7645db4f5c-h4xks   1/1     Running   0          45s
-ck8s-user-demo-7645db4f5c-svqfs   1/1     Running   0          35s
+welkin-user-demo-7645db4f5c-h4xks   1/1     Running   0          45s
+welkin-user-demo-7645db4f5c-svqfs   1/1     Running   0          35s
 ```
 
-There are two pods running. To change this, edit the file `deploy/ck8s-user-demo/values.yaml`:
+There are two pods running. To change this, edit the file `deploy/welkin-user-demo/values.yaml`:
 
 ```diff
 - replicaCount: 2
@@ -167,7 +167,7 @@ Once the deployments have stabilized the amount of pods can be inspected again:
 ```bash
 $ kubectl get pods
 NAME                              READY   STATUS    RESTARTS   AGE
-ck8s-user-demo-7645db4f5c-svqfs   1/1     Running   0          4m45s
+welkin-user-demo-7645db4f5c-svqfs   1/1     Running   0          4m45s
 ```
 
 ## Clean-up

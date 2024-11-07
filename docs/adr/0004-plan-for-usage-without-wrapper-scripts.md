@@ -23,7 +23,7 @@ Unfortunately, wrapper scripts can also bring disadvantages:
 
 - We want to make operations simple, predictable, resilient to human error and scalable.
 - We want to have some predictability in how an environment is set up.
-- We want to make Compliant Kubernetes flexible and agile.
+- We want to make Welkin flexible and agile.
 
 ## Considered Options
 

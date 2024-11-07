@@ -15,7 +15,7 @@ with Diagram(
     dex = Dex("Dex")
 
 
-    with Cluster("ck8s workload cluster"):
+    with Cluster("workload cluster"):
        jaeger_ui = [Custom("", "./0029-Jaeger-UI.png")]
        ingress_label = ("IP allowlist\n managed at\n Ingress")
        oauth2_label = ("OAuth2 Additional\n protection like\n Domain,Groups,Request\n logging")
@@ -38,5 +38,5 @@ with Diagram(
          oauth2Proxy >> Edge(label="4. Upstream jaeger internal service",color="darkorange",fontsize="12") >> svc
 
          oauth2Proxy >> Edge(label="",style="dashed") >> oauth2_node
-         user >> Edge(label="1. https://jaeger.abc-ck8s.com",color="darkgreen",fontsize="12") >> ingress
+         user >> Edge(label="1. https://jaeger.abc-welkin.com",color="darkgreen",fontsize="12") >> ingress
          ingress >> Edge(label="",style="dashed") >> ingress_node

@@ -1,6 +1,6 @@
 ---
 title: NIS2 Overview
-description: Overview of what the Network and Information Security Directive 2 (NIS2) is and how it relates to Compliant Kubernetes
+description: Overview of what the Network and Information Security Directive 2 (NIS2) is and how it relates to Welkin
 ---
 
 <!-- markdownlint-disable-file single-h1 -->
@@ -36,7 +36,7 @@ The NIS2 Directive shares a strong connection with two additional initiatives: t
 
 A lot more sectors than in the previous iteration.
 Society has become more digital, and as a result, more vulnerable to cyberattacks.
-It is clear that many use-cases where Compliant Kubernetes has been successfully used in the past are in scope for NIS2, including sectors of high criticality, healthcare, banking and the financial market, and general public administration.
+It is clear that many use-cases where Welkin has been successfully used in the past are in scope for NIS2, including sectors of high criticality, healthcare, banking and the financial market, and general public administration.
 
 The [official FAQ](https://digital-strategy.ec.europa.eu/en/faqs/directive-measures-high-common-level-cybersecurity-across-union-nis2-directive-faqs){:target="\_blank"} lists the sectors in scope as follows:
 
@@ -44,23 +44,23 @@ The [official FAQ](https://digital-strategy.ec.europa.eu/en/faqs/directive-measu
 >
 > Other critical sectors: postal and courier services; waste management; chemicals; food; manufacturing of medical devices, computers and electronics, machinery and equipment, motor vehicles, trailers and semi-trailers and other transport equipment; digital providers (online market places, online search engines, and social networking service platforms) and research organisations.
 
-## How does the NIS2 Directive relate to Compliant Kubernetes?
+## How does the NIS2 Directive relate to Welkin?
 
 NIS2 Article 21(2) lists 10 so-called minimum requirements.
 These minimum requirements need to be translated into policies for your organization, which can then be technically implemented.
-Below is a list of pages, which help you translate such policies into implementation on top of Compliant Kubernetes.
+Below is a list of pages, which help you translate such policies into implementation on top of Welkin.
 
 [TAGS]
 
 ### Out of Scope NIS2 Requirements
 
-Note that, some requirements are out-of-scope for Compliant Kubernetes, as listed below:
+Note that, some requirements are out-of-scope for Welkin, as listed below:
 
 |                                      NIS2 Minimum Requirement                                     |                                                        Justification for Exclusion                                                       |
 |:-------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------:|
-| (a) policies on risk analysis and information system security                                     | This is a requirement on the management team, which a container platform product, like Compliant Kubernetes, cannot fulfill.             |
-| (f) policies and procedures to assess the effectiveness of cybersecurity risk-management measures | This is a requirement on the management team, which a container platform product, like Compliant Kubernetes, cannot fulfill.             |
-| (g) basic cyber hygiene practices and cybersecurity training                                      | Compliant Kubernetes is not a training solution. However, Elastisys can help. Check out [our training](https://elastisys.com/training/). |
+| (a) policies on risk analysis and information system security                                     | This is a requirement on the management team, which a container platform product, like Welkin, cannot fulfill.             |
+| (f) policies and procedures to assess the effectiveness of cybersecurity risk-management measures | This is a requirement on the management team, which a container platform product, like Welkin, cannot fulfill.             |
+| (g) basic cyber hygiene practices and cybersecurity training                                      | Welkin is not a training solution. However, Elastisys can help. Check out [our training](https://elastisys.com/training/). |
 
 ## Country- and Sector-Specific Requirements
 

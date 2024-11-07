@@ -8,7 +8,7 @@ Technical Story: <https://github.com/elastisys/compliantkubernetes-apps/issues/7
 
 ## Context and Problem Statement
 
-Compliant Kubernetes allows multiple Workload Clusters to be connected to a single Management Cluster.
+Welkin allows multiple Workload Clusters to be connected to a single Management Cluster.
 This allows the metrics of multiple Workload Clusters to be inspected via the same dashboards.
 
 How should we organise metrics to allow users and admins to select for which clusters they want to see metrics?

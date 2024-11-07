@@ -12,7 +12,7 @@ with Diagram(name="Option-1: Expose Jaeger UI via ingress in wc cluster and use 
     user = User("Jaeger user")
     dex = Dex("Dex")
 
-    with Cluster("ck8s workload cluster"):
+    with Cluster("workload cluster"):
        svc = SVC("jaeger-query")
        jaeger_ui = [Custom("", "./adr-0029-Jaeger-UI.png")]
        svc >> Edge(label="5. Jaeger UI",color="darkgreen") >> jaeger_ui
@@ -27,4 +27,4 @@ with Diagram(name="Option-1: Expose Jaeger UI via ingress in wc cluster and use 
 
 
        ingress >> Edge(label="4. Allowed request",color="darkorange") >> svc
-       user >> Edge(label="1. https://jaeger.abc-ck8s.com",color="darkgreen") >> ingress
+       user >> Edge(label="1. https://jaeger.abc-welkin.com",color="darkgreen") >> ingress

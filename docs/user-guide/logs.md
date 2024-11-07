@@ -1,5 +1,5 @@
 ---
-description: How to work with logs in Elastisys Compliant Kubernetes, the security-focused Kubernetes distribution.
+description: How to work with logs in Welkin, the security-focused Kubernetes distribution.
 search:
   boost: 2
 tags:
@@ -12,9 +12,9 @@ tags:
 
 # Logging
 
-Compliant Kubernetes (CK8S) provides the mechanism to manage your cluster as well as the lifecycle of thousands of containerized applications deployed in the cluster. The resources managed by CK8S are expected to be highly distributed with dynamic behaviors. A CK8S environment involves several components with nodes that host hundreds of containers that are constantly being spun up and destroyed based on workloads.
+Welkin provides the mechanism to manage your cluster as well as the lifecycle of thousands of containerized applications deployed in the cluster. The resources managed by Welkin are expected to be highly distributed with dynamic behaviors. A Welkin environment involves several components with nodes that host hundreds of containers that are constantly being spun up and destroyed based on workloads.
 
-When dealing with a large pool of containerized applications and workloads in CK8S, it is imperative to be proactive with continuous monitoring and debugging information in order to observe what is going on in the cluster. This information can be seen at the container, node, or cluster level. Logging as one of the [three pillars of observability](https://www.oreilly.com/library/view/distributed-systems-observability/9781492033431/ch04.html#:~:text=Logs%2C%20metrics%2C%20and%20traces%20are,ability%20to%20build%20better%20systems.) is a crucial element to manage and monitor services and infrastructure. It allows you to track debugging information at different levels of granularity.
+When dealing with a large pool of containerized applications and workloads in Welkin, it is imperative to be proactive with continuous monitoring and debugging information in order to observe what is going on in the cluster. This information can be seen at the container, node, or cluster level. Logging as one of the [three pillars of observability](https://www.oreilly.com/library/view/distributed-systems-observability/9781492033431/ch04.html#:~:text=Logs%2C%20metrics%2C%20and%20traces%20are,ability%20to%20build%20better%20systems.) is a crucial element to manage and monitor services and infrastructure. It allows you to track debugging information at different levels of granularity.
 
 ## Compliance needs
 
@@ -23,11 +23,11 @@ The requirements to comply with ISO 27001 are stated in ISO [27001:2013](https:/
 - [Annex 12](https://www.isms.online/iso-27001/annex-a-12-operations-security/), article A.12.4.1 "Event Logging" and A.12.4.3 "Administrator and Operator Logs".
 - [Annex 16](https://www.isms.online/iso-27001/annex-a-16-information-security-incident-management/) which deals with incident management.
 
-In Compliant Kubernetes, OpenSearch is separate from the production workload, hence it complies with A.12.4.2 "Protection of Log Information". The Infrastructure Provider should ensure that the clock of Kubernetes nodes is synchronized, hence complying with A.12.4.4 "Clock Synchronisation".
+In Welkin, OpenSearch is separate from the production workload, hence it complies with A.12.4.2 "Protection of Log Information". The Infrastructure Provider should ensure that the clock of Kubernetes nodes is synchronized, hence complying with A.12.4.4 "Clock Synchronisation".
 
 ## OpenSearch
 
-Raw logs in CK8s are normalized, filtered, and processed by [Fluentd](https://www.fluentd.org/) and shipped to [OpenSearch](https://opensearch.org/) for storage and analysis. OpenSearch is derived from the fully open source version of Elasticsearch called [Open Distro for Elasticsearch](https://logz.io/blog/open-distro-for-elasticsearch/).
+Raw logs in Welkin are normalized, filtered, and processed by [Fluentd](https://www.fluentd.org/) and shipped to [OpenSearch](https://opensearch.org/) for storage and analysis. OpenSearch is derived from the fully open source version of Elasticsearch called [Open Distro for Elasticsearch](https://logz.io/blog/open-distro-for-elasticsearch/).
 
 OpenSearch provides a powerful, easy-to-use event monitoring and alerting system, enabling you to monitor, search and visualize your data among other things. OpenSearch Dashboards is used as a visualization and analysis interface for OpenSearch for all your logs.
 
@@ -45,13 +45,13 @@ From here click "Visualize & analyze" to continue and you will be greeted with t
 
 Since we are concerned with searching logs and their visualization, we will focus on these three features indicated by the red rectangle in the figure above. If you are interested to know more about the rest please visit the [official OpenSearch Dashboards documentation](https://opensearch.org/docs/latest/dashboards/index/).
 
-Before we dive in further, let us discuss the type of logs ingested into OpenSearch. Logs in CK8S cluster are filtered and indexed by Fluentd into four categories.
+Before we dive in further, let us discuss the type of logs ingested into OpenSearch. Logs in Welkin cluster are filtered and indexed by Fluentd into four categories.
 
 **Application level logs**:
 
 - **Kubeaudit logs** related to [Kubernetes audits](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/) to provide a security-relevant chronological set of records documenting the sequence of activities that have affected the system by individual users, administrators or other components of the system. This is mostly related to the ISO 27001 requirement A.12.4.3 "Administrator and Operator Logs".
 
-- **Kubernetes logs** that provide insight into CK8S resources such as Nodes, Pods, Containers, Deployments and ReplicaSets. This allows you to observe the interactions between those resources and see the effects that one action has on another. Generally, logs in the CK8S ecosystem can be divided into the cluster level (logs outputted by components such as the kubelet, the API server, the scheduler) and the application level (logs generated by pods and containers). This is mostly related to the ISO 27001 requirement A.12.4.3 "Administrator and Operator Logs".
+- **Kubernetes logs** that provide insight into Welkin resources such as Nodes, Pods, Containers, Deployments and ReplicaSets. This allows you to observe the interactions between those resources and see the effects that one action has on another. Generally, logs in the Welkin ecosystem can be divided into the cluster level (logs outputted by components such as the kubelet, the API server, the scheduler) and the application level (logs generated by pods and containers). This is mostly related to the ISO 27001 requirement A.12.4.3 "Administrator and Operator Logs".
 
 **Platform level logs**:
 
@@ -196,7 +196,7 @@ For example, if you index an integer field without pre-defining the mapping, Ope
 
 Importantly, a field can only be of _one_ type, sending data of another type can result in a _mapping conflict_ and data being rejected.
 
-In Compliant Kubernetes, index mappings are dynamically created from the data you send in.
+In Welkin, index mappings are dynamically created from the data you send in.
 To set explicit mappings, reach out to your Platform Administrator.
 A mapping conflict occurs when you try to send data into a field that already has a mapping created but the data doesn't meet the same type (date, integer, string, etc.)
 
@@ -253,7 +253,7 @@ Second, ask your administrator to re-index the affected indices.
 
 <!--user-demo-logs-start-->
 
-The user demo application already includes structured logging: For each HTTP request, it logs the URL, the user agent, etc. Compliant Kubernetes further adds the Pod name, Helm Chart name, Helm Release name, etc. to each log entry.
+The user demo application already includes structured logging: For each HTTP request, it logs the URL, the user agent, etc. Welkin further adds the Pod name, Helm Chart name, Helm Release name, etc. to each log entry.
 
 The screenshot below gives an example of log entries produced by the user demo application. It was obtained by using the index pattern `kubernetes*` and the filter `kubernetes.labels.app_kubernetes_io/instance:myapp`.
 
@@ -261,7 +261,7 @@ The screenshot below gives an example of log entries produced by the user demo a
 
 !!!note
 
-    You may want to save frequently used searches as dashboards. Compliant Kubernetes saves and backs these up for you.
+    You may want to save frequently used searches as dashboards. Welkin saves and backs these up for you.
 
 <!--user-demo-logs-end-->
 
@@ -280,7 +280,7 @@ docker pull elasticdump/elasticsearch-dump
 mkdir opensearch-dump
 
 # OpenSearch username and password
-# This will be handed out from your Compliant Kubernetes administrator
+# This will be handed out from your Welkin administrator
 OPENSEARCH_USERNAME="your-username"
 OPENSEARCH_PASSWORD="your-password"
 

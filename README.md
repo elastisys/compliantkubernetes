@@ -1,8 +1,8 @@
-# Compliant Kubernetes Documentation
+# Welkin Documentation
 
-[![Regularly check links](https://github.com/elastisys/compliantkubernetes/actions/workflows/checklinks.yml/badge.svg)](https://github.com/elastisys/compliantkubernetes/actions/workflows/checklinks.yml)
+[![Regularly check links](https://github.com/elastisys/welkin/actions/workflows/checklinks.yml/badge.svg)](https://github.com/elastisys/welkin/actions/workflows/checklinks.yml)
 
-This is the main repository for documentation about the Compliant Kubernetes project. For Compliant Kubernetes code, please refer to:
+This is the main repository for documentation about the Welkin project. For Welkin code, please refer to:
 
 - [`compliantkubernetes-kubespray`](https://github.com/elastisys/compliantkubernetes-kubespray) for setting up a vanilla Kubernetes cluster on top of a compliant cloud provider;
 - [`compliantkubernetes-apps`](https://github.com/elastisys/compliantkubernetes-apps) for augmenting a vanilla Kubernetes cluster with security and observability.
@@ -46,7 +46,7 @@ mkdocs serve
 > The command `mike serve` also works to preview a page, but it does not seem to support live preview.
 > This means that you need to restart `mike serve` after every file change, which is not really productive
 
-- To view locally: `mike deploy compliantkubernetes ck8s -t 'main'` and then `mike serve`.
+- To view locally: `mike deploy welkin -t 'main'` and then `mike serve`.
 - To re-generate figures: `make -C docs/img`. **For simplicity, please commit generated figures. Prefer PNG (width == 1200px), to facilitate embedded logos.**
 - For continuous preview of figures: `make -C docs/img preview`.
 - To generate `docs/stylesheets/style.css`, please use `sass extra_sass/style.css.scss > docs/stylesheets/style.css`.

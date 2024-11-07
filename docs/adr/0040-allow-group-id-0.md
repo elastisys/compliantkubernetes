@@ -20,7 +20,7 @@ Should we with the introduction of Pod Security admission follow the new standar
 ## Decision Drivers
 
 - We want to maintain platform security.
-- For user expectations, we want to make it easy to start with Compliant Kubernetes.
+- For user expectations, we want to make it easy to start with Welkin.
 
 ## Considered Options
 

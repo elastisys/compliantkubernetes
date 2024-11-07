@@ -14,11 +14,11 @@ Where should these run?
 
 - Some of these services are chatty and need low latency.
 - Some of these services might assume trusted clients over a trusted network.
-- We want to make it easy to run these services with regulatory compliance in mind, e.g., we should be able to reuse Compliant Kubernetes features around monitoring, logging, access control and network segregation.
-- We want to make it difficult for Compliant Kubernetes users to negatively affect managed services.
+- We want to make it easy to run these services with regulatory compliance in mind, e.g., we should be able to reuse Welkin features around monitoring, logging, access control and network segregation.
+- We want to make it difficult for Welkin users to negatively affect managed services.
 - We want to keep support for multiple Workload Cluster, i.e., application multi-tenancy.
 - Many Infrastructure Providers do not support Service type LoadBalancer, which complicates exposing non-HTTP services outside a Kubernetes cluster.
-- Management Cluster might not exist in a future packaging of Compliant Kubernetes.
+- Management Cluster might not exist in a future packaging of Welkin.
 
 ## Considered Options
 

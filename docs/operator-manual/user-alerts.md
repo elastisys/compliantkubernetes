@@ -16,7 +16,7 @@ For v0.18 and below include the following changes:
 1. Update the `user.namespaces` list to include `alertmanager`.
 1. Set `user.alertmanager.namespace=alertmanager`.
 
-Then apply ck8s-apps.
+Then apply Welkin Apps.
 
 ## Example
 

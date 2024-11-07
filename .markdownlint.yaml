@@ -51,7 +51,7 @@ MD044: # proper-names
     - cert-manager
     - Cleura
     - Cluster API
-    - Compliant Kubernetes Apps
+    - Welkin Apps
     - compliantkubernetes-apps
     - compliantkubernetes-kubespray
     - compliantkubernetes-postgresql

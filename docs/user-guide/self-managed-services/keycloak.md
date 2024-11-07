@@ -18,9 +18,9 @@ Keycloak is a widely recognized open-source Identity and Access Management (IAM)
 
 As of May 2023, Keycloak is a [CNCF Incubating project](https://www.cncf.io/blog/2023/04/11/keycloak-joins-cncf-as-an-incubating-project/).
 
-In this guide we outline the necessary steps to configure and deploy a Keycloak instance on a Compliant Kubernetes cluster that is using the [managed PostgreSQL service](../additional-services/postgresql.md).
+In this guide we outline the necessary steps to configure and deploy a Keycloak instance on a Welkin cluster that is using the [managed PostgreSQL service](../additional-services/postgresql.md).
 
-This will provide you with a robust and secure IAM solution to manage user access and authorization for your applications running on Compliant Kubernetes.
+This will provide you with a robust and secure IAM solution to manage user access and authorization for your applications running on Welkin.
 
 ## Initial preparation
 

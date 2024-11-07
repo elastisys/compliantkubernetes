@@ -11,7 +11,7 @@ tags:
 
 # Audit Logs
 
-To help comply with various data protection regulations, Compliant Kubernetes comes built-in with audit logs, which can be accessed via [OpenSearch Dashboard](../user-guide/logs.md).
+To help comply with various data protection regulations, Welkin comes built-in with audit logs, which can be accessed via [OpenSearch Dashboard](../user-guide/logs.md).
 
 ## What are audit logs?
 
@@ -26,7 +26,7 @@ Audit logs help both with proactive and reactive security:
 
 ## What audit logs are included?
 
-Compliant Kubernetes follow a risk-based approach to audit logs.
+Welkin follow a risk-based approach to audit logs.
 We enable audit logs on all APIs which can be used to compromise data security.
 Then we filter high-volume low-risk audit logs.
 Don't forget that, at the end of the day, logs are only as useful as someone looks at them.
@@ -44,11 +44,11 @@ Further audit logs can be configured on a case-by-case basis, as described below
 The audit logs are stored in the `kubeaudit*` index pattern.
 The audit logs cover calls to the Kubernetes API, specifically **who** did **what** and **when** on **which** Kubernetes cluster.
 
-Thanks to integration with [your Identity Provider](../user-guide/kubernetes-api.md#authentication-and-access-control-in-compliant-kubernetes) (IdP), if who is a person, their email address will be shown. If who is a system -- e.g., a CI/CD pipeline -- the name of the ServiceAccount is recorded.
+Thanks to integration with [your Identity Provider](../user-guide/kubernetes-api.md#authentication-and-access-control-in-welkin) (IdP), if who is a person, their email address will be shown. If who is a system -- e.g., a CI/CD pipeline -- the name of the ServiceAccount is recorded.
 
 Your change management or incident management process should ensure that you also cover **why**.
 
-Both users (Application Developers) and administrators will show in the audit log. The former will change resources related to their application, whereas the latter will change Compliant Kubernetes system components.
+Both users (Application Developers) and administrators will show in the audit log. The former will change resources related to their application, whereas the latter will change Welkin system components.
 
 The exact configuration of the Kubernetes audit logs can be found [here](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/config/common/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml).
 
@@ -62,7 +62,7 @@ To view the audit logs for a specific user:
 
 ## SSH Access Logs
 
-Compliant Kubernetes also captures highly privileged SSH access to the worker Nodes in the `authlog*` index pattern. Only administrators should have such access.
+Welkin also captures highly privileged SSH access to the worker Nodes in the `authlog*` index pattern. Only administrators should have such access.
 
 ![Example of SSH Access Logs](img/authlog.png)
 
