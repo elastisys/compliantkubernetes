@@ -128,9 +128,10 @@ This log lists the architectural decisions for Welkin.
 - [ADR-0049](0049-run-ingress-nginx-in-chroot.md) - Running NGINX with Chroot Option
 - [ADR-0050](0050-use-cluster-isolation.md) - Use Cluster Isolation to separate the application and its traces from its logs and metrics
 - [ADR-0051](0051-open-cert-manager-netpols.md) - Open cert-manager Network Policies
-- [ADR-0052](0052-azure-encryption-at-rest.md) - Azure encryption-at-rest
+- [ADR-0052](0052-azure-encryption-at-rest.md) - Azure Encryption-at-Rest for Object Storage and Block Storage
 - [ADR-0053](0053-do-not-expose-platform-observability-services-to-end-users.md) - Do not expose platform observability services to end-users
-- [ADR-0054](0054-allow-write-access-to-endpoints-and-endpointslices-after-risk-acceptance.md)- Allow Application Developer write access to Endpoints and EndpointSlices after Proper Risk Acceptance
+- [ADR-0054](0054-allow-write-access-to-endpoints-and-endpointslices-after-risk-acceptance.md) - Allow Application Developer write access to Endpoints and EndpointSlices after Proper Risk Acceptance
+- [ADR-0055](0055-welkin-to-consist-of-both-public-and-private-open-source.md) - Welkin to consist of both public and private open source
 
 <!-- adrlogstop -->
 
