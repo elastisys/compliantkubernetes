@@ -4011,7 +4011,7 @@ By segregating your applications and only allowing required Ingress and egress n
 <p>If you get the following error:</p>
 <div class="highlight"><pre><span></span><code>Error: admission webhook &quot;validation.gatekeeper.sh&quot; denied the request: [denied by require-networkpolicy] No matching networkpolicy found
 </code></pre></div>
-<p>Then you are missing NetworkPolicies which select your Pods. The <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/templates/networkpolicy.yaml">user demo</a> gives a good example to get you started.</p>
+<p>Then you are missing NetworkPolicies which select your Pods. The <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/templates/networkpolicy.yaml">user demo</a> gives a good example to get you started.</p>
 <p>If your administrator has not enforced this policy yet, you can view current violations of the policy by running:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>k8srequirenetworkpolicy.constraints.gatekeeper.sh<span class="w"> </span>require-networkpolicy<span class="w"> </span>-ojson<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.status.violations
 </code></pre></div>

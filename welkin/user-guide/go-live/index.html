@@ -3871,7 +3871,7 @@ All seems fine, but somehow you feel anxious about going into production 24/7.</
 <li><strong>Why?</strong> This ensures that enough capacity was allocated for the environment.</li>
 <li><strong>How?</strong> Set up a synthetic workload generator or replay a relevant workload. Ask the administrator to monitor your environment's capacity usage, including that related to components necessary for application logs and application metrics.</li>
 <li><strong>Desired outcome</strong>: Allocated capacity is sufficient.</li>
-<li><strong>Possible resolution</strong>: Ensure the application has proper resource requests and limits (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L51-L60">user demo as an example</a>).</li>
+<li><strong>Possible resolution</strong>: Ensure the application has proper resource requests and limits (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L51-L60">user demo as an example</a>).</li>
 </ul>
 </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Load testing was performed while updating the application.<ul>
@@ -3886,9 +3886,9 @@ All seems fine, but somehow you feel anxious about going into production 24/7.</
 <li><strong>How?</strong> As above, but now ask the administrator to perform a rolling reboot of Nodes.</li>
 <li><strong>Desired outcome</strong>: The measured downtime (due to Pod migration) during Node failure or drain is acceptable. Capacity is sufficient to tolerate one Node failure or drain.</li>
 <li><strong>Possible resolution</strong>:<ul>
-<li>Ensure the application has proper resource requests and limits (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L51-L60">user demo for an example</a>).</li>
-<li>Ensure the application has at least two replicas (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L5">user demo for an example</a>).</li>
-<li>Ensure the application has <code>topologySpreadConstraints</code> to ensure Pods do not end up on the same Node (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L84-L90">user demo for an example</a>).</li>
+<li>Ensure the application has proper resource requests and limits (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L51-L60">user demo for an example</a>).</li>
+<li>Ensure the application has at least two replicas (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L5">user demo for an example</a>).</li>
+<li>Ensure the application has <code>topologySpreadConstraints</code> to ensure Pods do not end up on the same Node (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L84-L90">user demo for an example</a>).</li>
 </ul>
 </li>
 </ul>
@@ -3898,9 +3898,9 @@ All seems fine, but somehow you feel anxious about going into production 24/7.</
 <li><strong>How?</strong> As above, but now ask the administrator to fail an entire Zone.</li>
 <li><strong>Desired outcome</strong>: The measured downtime (due to Pod migration) during Zode failure is acceptable. Capacity is sufficient to tolerate one Zode failure.</li>
 <li><strong>Possible resolution</strong>:<ul>
-<li>Ensure the application has proper resource requests and limits (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L51-L60">user demo for an example</a>).</li>
-<li>Ensure the application has at least two replicas (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L5">user demo for an example</a>).</li>
-<li>Ensure the application has <code>topologySpreadConstraints</code> to ensure Pods do not end up on the same Zone (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L84-L90">user demo for an example</a>).</li>
+<li>Ensure the application has proper resource requests and limits (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L51-L60">user demo for an example</a>).</li>
+<li>Ensure the application has at least two replicas (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L5">user demo for an example</a>).</li>
+<li>Ensure the application has <code>topologySpreadConstraints</code> to ensure Pods do not end up on the same Zone (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L84-L90">user demo for an example</a>).</li>
 </ul>
 </li>
 </ul>

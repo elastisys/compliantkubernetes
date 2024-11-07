@@ -4005,7 +4005,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <p>If parts of your application is running on just one node, then service disruptions are to be expected, and parts of the application may become unreachable for short periods during the maintenance window.</p>
 <p>The worst case would be if the nodes were almost out of available resources, then the pods may not be schedulable on another node while getting evicted. This would mean that the pods running on that node would need to wait for its node to be ready again before it can be scheduled, which could result in minutes of downtime.</p>
 <p>Note that this is not just a problem for Welkin, the same process would need to be followed when upgrading a "vanilla" Kubernetes cluster.</p>
-<p>To minimize the impact on the application you should use <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L5">two or more replicas</a> for your application and also set up <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/ck8s-user-demo/values.yaml#L84">topologySpreadConstraints</a> to make sure that the replicas do not get scheduled on the same node.</p>
+<p>To minimize the impact on the application you should use <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L5">two or more replicas</a> for your application and also set up <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L84">topologySpreadConstraints</a> to make sure that the replicas do not get scheduled on the same node.</p>
 
 
 
