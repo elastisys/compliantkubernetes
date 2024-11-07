@@ -62,3 +62,4 @@ Once a company stops paying for up to date open source access and product suppor
 
 - Bad, because a public open source distribution is easier to show every single detail about, as all details are laid out in public anyway.
 - Bad, because there may be a general perception that "open source" loosely means _public_ open source, and that it should all be available on e.g. GitHub.
+- Bad, because there is no way for community contributions.
