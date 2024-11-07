@@ -40,8 +40,8 @@ Should the additional components of Welkin's source code be open or closed sourc
 ## Considered Options
 
 1. Offer everything as public open source.
-2. Keep the core open and public, other parts as private and open.
-3. Keep the core open and public, other parts as private and proprietary (open core model).
+1. Keep the core open and public, other parts as private and open.
+1. Keep the core open and public, other parts as private and proprietary (open core model).
 
 ## Decision Outcome
 
