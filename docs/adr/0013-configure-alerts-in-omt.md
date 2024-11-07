@@ -1,7 +1,7 @@
 # Configure Alerts in On-call Management Tool (e.g., Opsgenie)
 
 - Status: accepted
-- Deciders: Welkin Architecture Meeting
+- Deciders: Architecture Meeting
 - Date: 2021-06-03
 
 Technical Story: See "Investigate how to systematically work with alerts"
