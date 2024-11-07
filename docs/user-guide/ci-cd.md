@@ -61,7 +61,7 @@ kubectl auth can-i --list
 
 !!!note
 
-    What permissions you need depends on your application. For example, the [user demo](https://github.com/elastisys/welkin/tree/main/user-demo/deploy/ck8s-user-demo/templates) creates Deployments, HorizontalPodAutoscalers, Ingresses, PrometheusRules, Services and ServiceMonitors. If unsure, simply continue. RBAC permissions errors are fairly actionable.
+    What permissions you need depends on your application. For example, the [user demo](https://github.com/elastisys/welkin/tree/main/user-demo/deploy/welkin-user-demo/templates) creates Deployments, HorizontalPodAutoscalers, Ingresses, PrometheusRules, Services and ServiceMonitors. If unsure, simply continue. RBAC permissions errors are fairly actionable.
 
 ### Create a Role
 
