@@ -2737,10 +2737,6 @@
          <lastmod>2024-11-08</lastmod>
     </url>
     <url>
-         <loc>https://elastisys.io/welkin/operator-manual/schema/config-properties-global-options-properties-compliant-kubernetes-apps-version/</loc>
-         <lastmod>2024-11-08</lastmod>
-    </url>
-    <url>
          <loc>https://elastisys.io/welkin/operator-manual/schema/config-properties-global-options-properties-container-runtime/</loc>
          <lastmod>2024-11-08</lastmod>
     </url>
@@ -2782,6 +2778,10 @@
     </url>
     <url>
          <loc>https://elastisys.io/welkin/operator-manual/schema/config-properties-global-options-properties-verifytls/</loc>
+         <lastmod>2024-11-08</lastmod>
+    </url>
+    <url>
+         <loc>https://elastisys.io/welkin/operator-manual/schema/config-properties-global-options-properties-welkin-apps-version/</loc>
          <lastmod>2024-11-08</lastmod>
     </url>
     <url>
