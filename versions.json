@@ -24,8 +24,8 @@
     "version": "welkin",
     "title": "main",
     "aliases": [
-      "compliantkubernetes",
-      "ck8s"
+      "ck8s",
+      "compliantkubernetes"
     ]
   }
 ]
