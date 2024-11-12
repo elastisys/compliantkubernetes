@@ -2269,6 +2269,15 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </li>
         
           <li class="md-nav__item">
+  <a href="#example-restoring-a-volume-in-waitforfirstconsumer-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example restoring a volume in WaitForFirstConsumer mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#example-restoring-a-partially-failed-backup" class="md-nav__link">
     <span class="md-ellipsis">
       Example restoring a partially failed backup
@@ -4238,6 +4247,15 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </li>
         
           <li class="md-nav__item">
+  <a href="#example-restoring-a-volume-in-waitforfirstconsumer-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example restoring a volume in WaitForFirstConsumer mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#example-restoring-a-partially-failed-backup" class="md-nav__link">
     <span class="md-ellipsis">
       Example restoring a partially failed backup
@@ -4664,6 +4682,77 @@ When restoring the Persistent Volume it will overwrite any existing files with t
 Any other files will be left as they were before the restoration started.
 So a restore will not wipe the volume clean and then restore.
 If a clean wipe is the desired behavior, then the volume must be wiped manually before restoring.</p>
+<h3 id="example-restoring-a-volume-in-waitforfirstconsumer-mode">Example restoring a volume in WaitForFirstConsumer mode<a class="headerlink" href="#example-restoring-a-volume-in-waitforfirstconsumer-mode" title="Permanent link">&para;</a></h3>
+<p>Restoring volumes with the volume binding mode <code>WaitForFirstConsumer</code> requires some extra steps, as Velero will not restore the data until a Pod binds the volume.</p>
+<p>So by either manually creating a Pod of the kind that normally binds the volume
+or creating a special purpose Pod that only binds the volume, we can let Velero complete the restoration.</p>
+<p>For the second case, the following method can be used to get the restore to proceed to completion without starting the actual pods that use them.</p>
+<p>Check if there are any volumes stuck in Pending.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pvc<span class="w"> </span>-A<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;1p;/Pending/p&#39;</span>
+</code></pre></div>
+<p>If there were no stuck volumes then you are done.</p>
+<p>Save the following as: <code>volume-restorer-pod.yaml</code></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume-restore-helper</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">automountServiceAccountToken</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox:stable</span>
+<span class="w">      </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeper</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10m</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5Mi</span>
+<span class="w">        </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10m</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5Mi</span>
+<span class="w">      </span><span class="nt">securityContext</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">capabilities</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">drop</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALL</span>
+<span class="w">        </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">runAsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="nt">runAsNonRoot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10000</span>
+<span class="w">        </span><span class="nt">runAsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10000</span>
+<span class="w">        </span><span class="nt">seccompProfile</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RuntimeDefault</span>
+<span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># Adjust this `mountPath` to match the real pod.</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">restore-me</span>
+<span class="w">      </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="c1"># Do nothing while Velero restores data.</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleep</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inf</span>
+<span class="w">  </span><span class="nt">tolerations</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NoExecute</span>
+<span class="w">      </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.kubernetes.io/not-ready</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Exists</span>
+<span class="w">      </span><span class="nt">tolerationSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NoExecute</span>
+<span class="w">      </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.kubernetes.io/unreachable</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Exists</span>
+<span class="w">      </span><span class="nt">tolerationSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">restore-me</span>
+<span class="w">      </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">some-data</span><span class="w"> </span><span class="c1"># Enter the volume you want to restore</span>
+<span class="w">  </span><span class="nt">securityContext</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10000</span>
+</code></pre></div>
+</details>
+<ol>
+<li>Fill in the volume based on <code>kubectl get pvc</code> or <code>kubectl get pv</code>.</li>
+<li>Adjust the <code>mountPath</code> to match what the original Pod uses.</li>
+<li>Create Pod using <code>kubectl apply -f volume-restorer-pod.yaml</code>.</li>
+<li>Watch <code>velero restore get</code> for Velero to finish.</li>
+<li>Finally, delete the restorer Pod using <code>kubectl delete -f volume-restorer-pod.yaml</code>.</li>
+</ol>
 <h3 id="example-restoring-a-partially-failed-backup">Example restoring a partially failed backup<a class="headerlink" href="#example-restoring-a-partially-failed-backup" title="Permanent link">&para;</a></h3>
 <p>A backup that has status <code>PartiallyFailed</code> can be restored by using <code>--allow-partially-failed</code> flag</p>
 <div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>velero<span class="w"> </span>wc<span class="w"> </span>restore<span class="w"> </span>create<span class="w"> </span>&lt;restore-name&gt;<span class="w"> </span>--allow-partially-failed<span class="w"> </span>--from-schedule<span class="w"> </span>velero-daily-backup<span class="w"> </span>--wait
