@@ -4,6 +4,8 @@
 
 # Innovate at speed in regulated industries
 
+Welcome to Welkin, the Kubernetes platform for software critical to our society!
+
 Welkin enables organizations across Europe to accelerate innovation through open source cloud-native technology, while ensuring security and regulatory compliance.
 
 <nav markdown="1">
