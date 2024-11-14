@@ -155,6 +155,21 @@ if(!document.__defineGetter__) {
     </div>
     <div data-md-component="announce">
       
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<div class="banner">
+We renamed Compliant Kubernetes to Welkin.
+Since this is an older version of the documentation, you will see references to "Compliant Kubernetes".
+Read more about Welkin in our <strong><a style="color: var(--elastisys-night-blue);"href="https://elastisys.com/elastisys-compliant-kubernetes-becomes-welkin/">press release</a></strong>.
+If you want to see Welkin, check out <strong><a style="color: var(--elastisys-night-blue);"href="https://elastisys.io/welkin/">the latest documentation</a></strong>.
+</div>
+
+          </div>
+          
+        </aside>
+      
     </div>
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden>
@@ -3688,6 +3703,15 @@ if(!document.__defineGetter__) {
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#clusterapimetrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      clusterAPIMetrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
       resources
@@ -3720,7 +3744,7 @@ if(!document.__defineGetter__) {
 <p>This is auto-generated documentation from a JSON schema that is under construction, this will improve over time.</p>
 </div>
 <p><a href="../config/">Return to the root config schema</a></p>
-<div class="highlight"><pre><span></span><code>https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/kubeStateMetrics
+<div class="highlight"><pre><span></span><code>https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/kubeStateMetrics
 </code></pre></div>
 <p>Configure the kube-state-metrics exporter.</p>
 <table>
@@ -3745,7 +3769,7 @@ if(!document.__defineGetter__) {
 <td style="text-align: left;">Forbidden</td>
 <td style="text-align: left;">Forbidden</td>
 <td style="text-align: left;">none</td>
-<td style="text-align: left;"><a href="https://github.com/elastisys/compliantkubernetes-apps/blob/main/config/schemas/config.yaml" title="open original schema">config/schemas/config.yaml*</a></td>
+<td style="text-align: left;"><a href="https://github.com/elastisys/compliantkubernetes-apps/blob/v0.39.2/config/schemas/config.yaml" title="open original schema">config/schemas/config.yaml*</a></td>
 </tr>
 </tbody>
 </table>
@@ -3764,14 +3788,40 @@ if(!document.__defineGetter__) {
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;"><a href="#clusterapimetrics">clusterAPIMetrics</a></td>
+<td style="text-align: left;"><code>object</code></td>
+<td style="text-align: left;">Optional</td>
+<td style="text-align: left;">cannot be null</td>
+<td style="text-align: left;"><a href="../config-properties-kube-state-metrics-properties-cluster-api-metrics/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/kubeStateMetrics/properties/clusterAPIMetrics">Compliant Kubernetes Apps Config</a></td>
+</tr>
+<tr>
 <td style="text-align: left;"><a href="#resources">resources</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-defs-kubernetes-resource-requirements/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/kubeStateMetrics/properties/resources">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-defs-kubernetes-resource-requirements/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/kubeStateMetrics/properties/resources">Compliant Kubernetes Apps Config</a></td>
 </tr>
 </tbody>
 </table>
+<h2 id="clusterapimetrics">clusterAPIMetrics<a class="headerlink" href="#clusterapimetrics" title="Permanent link">&para;</a></h2>
+<p>Configure collection of Cluster API metrics.</p>
+<p><code>clusterAPIMetrics</code></p>
+<ul>
+<li>
+<p>is optional</p>
+</li>
+<li>
+<p>Type: <code>object</code> (<a href="../config-properties-kube-state-metrics-properties-cluster-api-metrics/">Cluster API Metrics</a>)</p>
+</li>
+<li>
+<p>cannot be null</p>
+</li>
+<li>
+<p>defined in: <a href="../config-properties-kube-state-metrics-properties-cluster-api-metrics/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/kubeStateMetrics/properties/clusterAPIMetrics">Compliant Kubernetes Apps Config</a></p>
+</li>
+</ul>
+<p><strong>TYPE</strong>:</p>
+<p><code>object</code> (<a href="../config-properties-kube-state-metrics-properties-cluster-api-metrics/">Cluster API Metrics</a>)</p>
 <h2 id="resources">resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
 <p>Resource requests are used by the kube-scheduler to pick a node to schedule pods on.</p>
 <p>Limits are enforced. Resources are commonly 'cpu' and 'memory'.</p>
@@ -3787,7 +3837,7 @@ if(!document.__defineGetter__) {
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-defs-kubernetes-resource-requirements/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/kubeStateMetrics/properties/resources">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-defs-kubernetes-resource-requirements/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/kubeStateMetrics/properties/resources">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -3802,7 +3852,7 @@ if(!document.__defineGetter__) {
 </code></pre></div>
 <p><a href="../config/">Return to the root config schema</a></p>
 <hr />
-<p>Generated Wed Nov  6 11:39:12 AM CET 2024 from <a href="https://github.com/elastisys/compliantkubernetes-apps/commit/c2191f17532fefca955f533d2f6e754e1493fdc0">elastisys/compliantkubernetes-apps@main</a></p>
+<p>Generated Thu Nov 14 16:06:44 UTC 2024 from <a href="https://github.com/elastisys/compliantkubernetes-apps/commit/0fbd6e72e76498234261c86c4df6ade2a56d2eba">elastisys/compliantkubernetes-apps@v0.39.2</a></p>
 
 
 

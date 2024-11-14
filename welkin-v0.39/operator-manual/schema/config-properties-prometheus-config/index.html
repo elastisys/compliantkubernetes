@@ -155,6 +155,21 @@ if(!document.__defineGetter__) {
     </div>
     <div data-md-component="announce">
       
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<div class="banner">
+We renamed Compliant Kubernetes to Welkin.
+Since this is an older version of the documentation, you will see references to "Compliant Kubernetes".
+Read more about Welkin in our <strong><a style="color: var(--elastisys-night-blue);"href="https://elastisys.com/elastisys-compliant-kubernetes-becomes-welkin/">press release</a></strong>.
+If you want to see Welkin, check out <strong><a style="color: var(--elastisys-night-blue);"href="https://elastisys.io/welkin/">the latest documentation</a></strong>.
+</div>
+
+          </div>
+          
+        </aside>
+      
     </div>
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden>
@@ -4095,7 +4110,7 @@ if(!document.__defineGetter__) {
 <p>This is auto-generated documentation from a JSON schema that is under construction, this will improve over time.</p>
 </div>
 <p><a href="../config/">Return to the root config schema</a></p>
-<div class="highlight"><pre><span></span><code>https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus
+<div class="highlight"><pre><span></span><code>https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus
 </code></pre></div>
 <p>Configure Prometheus.</p>
 <p>Prometheus automatically collects metrics via ServiceMonitors, PodMonitors, and Probes, and pushes metrics to Thanos for long term storage.
@@ -4126,7 +4141,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <td style="text-align: left;">Forbidden</td>
 <td style="text-align: left;">Forbidden</td>
 <td style="text-align: left;">none</td>
-<td style="text-align: left;"><a href="https://github.com/elastisys/compliantkubernetes-apps/blob/main/config/schemas/config.yaml" title="open original schema">config/schemas/config.yaml*</a></td>
+<td style="text-align: left;"><a href="https://github.com/elastisys/compliantkubernetes-apps/blob/v0.39.2/config/schemas/config.yaml" title="open original schema">config/schemas/config.yaml*</a></td>
 </tr>
 </tbody>
 </table>
@@ -4149,98 +4164,98 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <td style="text-align: left;"><code>number</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-prometheus-relicas/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/replicas">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-prometheus-relicas/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/replicas">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#storage">storage</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-prometheus-storage/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/storage">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-prometheus-storage/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/storage">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#retention">retention</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-prometheus-retention/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/retention">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-prometheus-retention/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/retention">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#additionalscrapeconfigs">additionalScrapeConfigs</a></td>
 <td style="text-align: left;"><code>array</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-prometheus-additional-scrape-configs/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/additionalScrapeConfigs">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-prometheus-additional-scrape-configs/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/additionalScrapeConfigs">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#alertmanagerspec">alertmanagerSpec</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-alertmanager-config/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/alertmanagerSpec">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-alertmanager-config/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/alertmanagerSpec">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#capacitymanagementalerts">capacityManagementAlerts</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-capacity-management-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/capacityManagementAlerts">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-capacity-management-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/capacityManagementAlerts">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#diskalerts">diskAlerts</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-disk-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/diskAlerts">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-disk-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/diskAlerts">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#s3bucketalerts">s3BucketAlerts</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-s3-bucket-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/s3BucketAlerts">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-s3-bucket-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/s3BucketAlerts">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#webhookalerts">webhookAlerts</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-webhook-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/webhookAlerts">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-properties-webhook-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/webhookAlerts">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#resources">resources</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-defs-kubernetes-resource-requirements/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/resources">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-defs-kubernetes-resource-requirements/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/resources">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#tolerations">tolerations</a></td>
 <td style="text-align: left;"><code>array</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-defs-kubernetes-tolerations/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/tolerations">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-defs-kubernetes-tolerations/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/tolerations">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#topologyspreadconstraints">topologySpreadConstraints</a></td>
 <td style="text-align: left;"><code>array</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-defs-kubernetes-topology-spread-constraints/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/topologySpreadConstraints">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-defs-kubernetes-topology-spread-constraints/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/topologySpreadConstraints">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#nodeselector">nodeSelector</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-defs-kubernetes-node-selector/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/nodeSelector">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-defs-kubernetes-node-selector/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/nodeSelector">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#affinity">affinity</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-defs-affinity/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/affinity">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-defs-affinity/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/affinity">Compliant Kubernetes Apps Config</a></td>
 </tr>
 </tbody>
 </table>
@@ -4257,7 +4272,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-properties-prometheus-relicas/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/replicas">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-properties-prometheus-relicas/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/replicas">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4280,7 +4295,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-properties-prometheus-storage/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/storage">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-properties-prometheus-storage/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/storage">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4299,7 +4314,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-properties-prometheus-retention/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/retention">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-properties-prometheus-retention/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/retention">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4322,7 +4337,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-properties-prometheus-additional-scrape-configs/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/additionalScrapeConfigs">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-properties-prometheus-additional-scrape-configs/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/additionalScrapeConfigs">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4346,7 +4361,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-properties-alertmanager-config/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/alertmanagerSpec">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-properties-alertmanager-config/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/alertmanagerSpec">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4365,7 +4380,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-properties-capacity-management-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/capacityManagementAlerts">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-properties-capacity-management-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/capacityManagementAlerts">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4384,7 +4399,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-properties-disk-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/diskAlerts">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-properties-disk-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/diskAlerts">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4403,7 +4418,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-properties-s3-bucket-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/s3BucketAlerts">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-properties-s3-bucket-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/s3BucketAlerts">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4422,7 +4437,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-properties-webhook-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/webhookAlerts">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-properties-webhook-alerts/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/webhookAlerts">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4442,7 +4457,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-defs-kubernetes-resource-requirements/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/resources">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-defs-kubernetes-resource-requirements/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/resources">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4470,7 +4485,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-defs-kubernetes-tolerations/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/tolerations">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-defs-kubernetes-tolerations/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/tolerations">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4489,7 +4504,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-defs-kubernetes-topology-spread-constraints/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/topologySpreadConstraints">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-defs-kubernetes-topology-spread-constraints/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/topologySpreadConstraints">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4509,7 +4524,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-defs-kubernetes-node-selector/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/nodeSelector">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-defs-kubernetes-node-selector/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/nodeSelector">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4531,7 +4546,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-defs-affinity/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/properties/affinity">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-defs-affinity/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/properties/affinity">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4539,7 +4554,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <h2 id="definitions">Definitions<a class="headerlink" href="#definitions" title="Permanent link">&para;</a></h2>
 <h3 id="capacitymanagementalerts_1">capacityManagementAlerts<a class="headerlink" href="#capacitymanagementalerts_1" title="Permanent link">&para;</a></h3>
 <p>Reference this group by using</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="s2">&quot;https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts&quot;</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="s2">&quot;https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts&quot;</span><span class="p">}</span>
 </code></pre></div>
 <table>
 <thead>
@@ -4557,49 +4572,49 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-persistent-volumes/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/persistentVolume">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-persistent-volumes/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/persistentVolume">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#persistentvolumeenabled">persistentVolumeEnabled</a></td>
 <td style="text-align: left;"><code>boolean</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-persistent-volumes-enabled/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/persistentVolumeEnabled">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-persistent-volumes-enabled/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/persistentVolumeEnabled">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#persistentvolumelimit">persistentVolumeLimit</a></td>
 <td style="text-align: left;"><code>number</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-persistent-volumes-enabled-1/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/persistentVolumeLimit">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-persistent-volumes-enabled-1/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/persistentVolumeLimit">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#disklimit">disklimit</a></td>
 <td style="text-align: left;"><code>number</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-disk-limit/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/disklimit">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-disk-limit/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/disklimit">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#requestlimit">requestlimit</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-request-limit/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/requestlimit">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-request-limit/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/requestlimit">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#requestlimitlist">requestlimitList</a></td>
 <td style="text-align: left;"><code>array</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-request-limit-list/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/requestlimitList">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-request-limit-list/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/requestlimitList">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#requestlimitterm">requestlimitTerm</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-request-limit-term/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/requestlimitTerm">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-request-limit-term/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/requestlimitTerm">Compliant Kubernetes Apps Config</a></td>
 </tr>
 </tbody>
 </table>
@@ -4617,7 +4632,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-persistent-volumes/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/persistentVolume">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-persistent-volumes/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/persistentVolume">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4635,7 +4650,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-persistent-volumes-enabled/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/persistentVolumeEnabled">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-persistent-volumes-enabled/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/persistentVolumeEnabled">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4658,7 +4673,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-persistent-volumes-enabled-1/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/persistentVolumeLimit">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-persistent-volumes-enabled-1/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/persistentVolumeLimit">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4681,7 +4696,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-disk-limit/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/disklimit">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-disk-limit/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/disklimit">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4704,7 +4719,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-request-limit/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/requestlimit">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-request-limit/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/requestlimit">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4723,7 +4738,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-request-limit-list/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/requestlimitList">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-request-limit-list/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/requestlimitList">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4742,14 +4757,14 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-request-limit-term/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/requestlimitTerm">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-request-limit-term/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/capacityManagementAlerts/properties/requestlimitTerm">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
 <p><code>object</code> (<a href="../config-properties-prometheus-config-defs-capacity-management-alerts-properties-capacity-management-alerts-request-limit-term/">Capacity Management Alerts Request Limit Term</a>)</p>
 <h3 id="diskalerts_1">diskAlerts<a class="headerlink" href="#diskalerts_1" title="Permanent link">&para;</a></h3>
 <p>Reference this group by using</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="s2">&quot;https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts&quot;</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="s2">&quot;https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts&quot;</span><span class="p">}</span>
 </code></pre></div>
 <table>
 <thead>
@@ -4767,77 +4782,77 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-storage/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/storage">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-storage/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/storage">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#inode">inode</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-inode/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/inode">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-inode/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/inode">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#patternrules">patternRules</a></td>
 <td style="text-align: left;"><code>array</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-pattern-rules/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/patternRules">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-pattern-rules/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/patternRules">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#patternrule">patternRule</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-pattern-rule/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/patternRule">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-pattern-rule/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/patternRule">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#patterns">patterns</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-patterns/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/patterns">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-patterns/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/patterns">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#pattern">pattern</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-pattern/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/pattern">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-pattern/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/pattern">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#perf">perf</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perf">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perf">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#perfenabled">perfEnabled</a></td>
 <td style="text-align: left;"><code>boolean</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-enabled/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfEnabled">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-enabled/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfEnabled">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#perfqueuesizethreshold">perfQueueSizeThreshold</a></td>
 <td style="text-align: left;"><code>number</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-queue-size/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfQueueSizeThreshold">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-queue-size/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfQueueSizeThreshold">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#perfreadwaittimethreshold">perfReadWaitTimeThreshold</a></td>
 <td style="text-align: left;"><code>number</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-read-wait/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfReadWaitTimeThreshold">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-read-wait/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfReadWaitTimeThreshold">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#perfwritewaittimethreshold">perfWriteWaitTimeThreshold</a></td>
 <td style="text-align: left;"><code>number</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-write-wait/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfWriteWaitTimeThreshold">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-write-wait/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfWriteWaitTimeThreshold">Compliant Kubernetes Apps Config</a></td>
 </tr>
 </tbody>
 </table>
@@ -4855,7 +4870,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-storage/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/storage">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-storage/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/storage">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4874,7 +4889,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-inode/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/inode">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-inode/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/inode">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4893,7 +4908,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-pattern-rules/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/patternRules">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-pattern-rules/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/patternRules">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4913,7 +4928,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-pattern-rule/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/patternRule">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-pattern-rule/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/patternRule">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4932,7 +4947,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-patterns/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/patterns">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-patterns/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/patterns">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4951,7 +4966,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-pattern/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/pattern">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alert-pattern/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/pattern">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4970,7 +4985,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perf">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perf">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -4988,7 +5003,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-enabled/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfEnabled">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-enabled/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfEnabled">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -5006,7 +5021,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-queue-size/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfQueueSizeThreshold">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-queue-size/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfQueueSizeThreshold">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -5028,7 +5043,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-read-wait/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfReadWaitTimeThreshold">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-read-wait/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfReadWaitTimeThreshold">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -5050,7 +5065,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-write-wait/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfWriteWaitTimeThreshold">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-disk-alerts-properties-disk-alerts-perf-write-wait/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/diskAlerts/properties/perfWriteWaitTimeThreshold">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -5061,7 +5076,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 </code></pre></div>
 <h3 id="s3bucketalerts_1">s3BucketAlerts<a class="headerlink" href="#s3bucketalerts_1" title="Permanent link">&para;</a></h3>
 <p>Reference this group by using</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="s2">&quot;https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts&quot;</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="s2">&quot;https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts&quot;</span><span class="p">}</span>
 </code></pre></div>
 <table>
 <thead>
@@ -5079,28 +5094,28 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-objects/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/objects">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-objects/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/objects">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#size">size</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-size/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/size">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-size/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/size">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#totalsize">totalSize</a></td>
 <td style="text-align: left;"><code>object</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-total-size/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/totalSize">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-total-size/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/totalSize">Compliant Kubernetes Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#exclude">exclude</a></td>
 <td style="text-align: left;"><code>array</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-exclude/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/exclude">Compliant Kubernetes Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-exclude/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/exclude">Compliant Kubernetes Apps Config</a></td>
 </tr>
 </tbody>
 </table>
@@ -5118,7 +5133,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-objects/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/objects">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-objects/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/objects">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -5137,7 +5152,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-size/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/size">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-size/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/size">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -5156,7 +5171,7 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-total-size/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/totalSize">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-total-size/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/totalSize">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
@@ -5175,14 +5190,14 @@ Additionally Prometheus evaluates recording rules for both service and workload 
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-exclude/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/exclude">Compliant Kubernetes Apps Config</a></p>
+<p>defined in: <a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-exclude/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.39.2/config/schemas/config.yaml#/properties/prometheus/$defs/s3BucketAlerts/properties/exclude">Compliant Kubernetes Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
 <p><code>string[]</code> (<a href="../config-properties-prometheus-config-defs-s3-bucket-alerts-properties-s3-bucket-alerts-exclude-s3-bucket-name/">S3 Bucket Name</a>)</p>
 <p><a href="../config/">Return to the root config schema</a></p>
 <hr />
-<p>Generated Wed Nov  6 11:39:12 AM CET 2024 from <a href="https://github.com/elastisys/compliantkubernetes-apps/commit/c2191f17532fefca955f533d2f6e754e1493fdc0">elastisys/compliantkubernetes-apps@main</a></p>
+<p>Generated Thu Nov 14 16:06:44 UTC 2024 from <a href="https://github.com/elastisys/compliantkubernetes-apps/commit/0fbd6e72e76498234261c86c4df6ade2a56d2eba">elastisys/compliantkubernetes-apps@v0.39.2</a></p>
 
 
 
