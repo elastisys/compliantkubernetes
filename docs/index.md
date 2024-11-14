@@ -135,7 +135,7 @@ Welkin enables organizations across Europe to accelerate innovation through open
       Managed Services
     </dt>
     <dd>
-      A full Kubernetes platform, with logging, monitoring, and more. PostgreSQL, RabbitMQ, and Redis on top. All secure and fully managed by us.
+      A secure and fully managed Kubernetes platform for organizations that build and operate applications critical to our society.
     </dd>
     <dd>
       <a role="button" href="https://elastisys.com/managed-services/">Go to Managed Services</a>
