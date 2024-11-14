@@ -26,7 +26,8 @@ The following is a generic system context diagram over an air-gapped network con
 
 ## Configuring Air-gapped Welkin Apps
 
-These guidelines will show how to configure Welkin Apps to work in an air-gapped network. For setting up the Kubernetes layer, please refer to the [Kubespray air-gap installation documentation](https://kubespray.io/#/docs/operations/offline-environment) or [Cluster-API documentation](https://cluster-api.sigs.k8s.io/clusterctl/configuration.html?highlight=release#image-overrides) for further instructions.
+These guidelines show how to configure Welkin Apps to work in an air-gapped network.
+For setting up the Kubernetes layer, please refer to the [Kubespray air-gap installation documentation](https://kubespray.io/#/docs/operations/offline-environment) or [Cluster-API documentation](https://cluster-api.sigs.k8s.io/clusterctl/configuration.html?highlight=release#image-overrides) for further instructions.
 
 This guide will assume that you have a Platform Administrator Machine that can access both the Internet and the air-gapped network over SSH, this includes SSH access to both the Cluster nodes and hosts for the different offline services described in the system context diagram above. This "Platform Administrator Machine" can be your local machine or a bastion host.
 
