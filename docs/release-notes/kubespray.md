@@ -4,6 +4,7 @@
 
 <!-- BEGIN TOC -->
 
+- [v2.26.0-ck8s1](#v2260-ck8s1) - 2024-11-08
 - [v2.25.0-ck8s4](#v2250-ck8s4) - 2024-09-04
 - [v2.25.0-ck8s3](#v2250-ck8s3) - 2024-07-26
 - [v2.24.1-ck8s4](#v2241-ck8s4) - 2024-07-25
@@ -34,6 +35,18 @@
 !!!note
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/changelog/).
+
+### v2.26.0-ck8s1
+
+#### Updated
+
+- **Updated Kubespray to `v2.26.0`** <br/>
+  Kubernetes version upgraded to [v1.30.4](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.30.md#changelog-since-v1290). <br/>
+
+#### Feature(s)
+
+- Support for using existing floating IPs when provisioning nodes with the Openstack terraform module.
+- Support for provisioning nodes without public IPs with the Upcloud terraform module.
 
 ### v2.25.0-ck8s4
 
