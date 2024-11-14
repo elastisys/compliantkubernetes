@@ -1,5 +1,5 @@
 ---
-description: Learn how to prepare for Welkin, the security-hardened Kubernetes distribution
+description: Learn how to prepare for Welkin, the Kubernetes platform for software critical to our society
 search:
   boost: 2
 ---

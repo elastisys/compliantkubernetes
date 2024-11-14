@@ -1,7 +1,3 @@
----
-description: Documentation for Welkin, the security-focused Kubernetes distribution.
----
-
 <!-- markdownlint-disable-file first-line-h1 -->
 
 <div class="landing-page" markdown="1">

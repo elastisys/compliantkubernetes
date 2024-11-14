@@ -1,5 +1,5 @@
 ---
-description: Overview page for Application Developers in Welkin, the security-focused Kubernetes distribution.
+description: Overview page for Application Developers in Welkin, the Kubernetes platform for software critical to our society
 search:
   boost: 2
 ---

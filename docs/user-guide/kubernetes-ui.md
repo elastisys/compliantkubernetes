@@ -1,5 +1,5 @@
 ---
-description: How to work with Monokle or VSCode and Welkin, the security-focused Kubernetes distribution.
+description: How to work with Monokle or VSCode and Welkin, the Kubernetes platform for software critical to our society
 search:
   boost: 2
 ---

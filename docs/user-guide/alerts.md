@@ -1,5 +1,5 @@
 ---
-description: Alerting on metrics with AlertManager in Welkin, the security-focused Kubernetes distribution.
+description: Alerting on metrics with AlertManager in Welkin, the Kubernetes platform for software critical to our society
 search:
   boost: 2
 tags:

@@ -1,5 +1,5 @@
 ---
-description: How to prepare your application for Welkin, the security-focused Kubernetes distribution.
+description: How to prepare your application for Welkin, the Kubernetes platform for software critical to our society
 search:
   boost: 2
 tags:
