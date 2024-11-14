@@ -103,3 +103,9 @@ a[href*="//"]:not([href*="elastisys."])::after {
 .md-copyright {
   padding: 24px 0;
 }
+
+.banner {
+  text-align: center;
+  background-color: var(--elastisys-northern-lights-1);
+  color: var(--elastisys-night-blue);
+}
