@@ -155,6 +155,21 @@ if(!document.__defineGetter__) {
     </div>
     <div data-md-component="announce">
       
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<div class="banner">
+We renamed Compliant Kubernetes to Welkin.
+Since this is an older version of the documentation, you will see references to "Compliant Kubernetes".
+Read more about Welkin in our <strong><a style="color: var(--elastisys-night-blue);"href="https://elastisys.com/elastisys-compliant-kubernetes-becomes-welkin/">press release</a></strong>.
+If you want to see Welkin, check out <strong><a style="color: var(--elastisys-night-blue);"href="https://elastisys.io/welkin/">the latest documentation</a></strong>.
+</div>
+
+          </div>
+          
+        </aside>
+      
     </div>
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden>
@@ -3724,7 +3739,7 @@ if(!document.__defineGetter__) {
 <p>This is auto-generated documentation from a JSON schema that is under construction, this will improve over time.</p>
 </div>
 <p><a href="../config/">Return to the root config schema</a></p>
-<div class="highlight"><pre><span></span><code>https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/$defs/io.k8s.api.core.v1.TopologySpreadConstraint/properties/minDomains
+<div class="highlight"><pre><span></span><code>https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/v0.40.1/config/schemas/config.yaml#/$defs/io.k8s.api.core.v1.TopologySpreadConstraint/properties/minDomains
 </code></pre></div>
 <p>MinDomains indicates a minimum number of eligible domains. When the number of eligible domains with matching topology keys is less than minDomains, Pod Topology Spread treats "global minimum" as 0, and then the calculation of Skew is performed. And when the number of eligible domains with matching topology keys equals or greater than minDomains, this value has no effect on scheduling. As a result, when the number of eligible domains is less than minDomains, scheduler won't schedule more than maxSkew Pods to those domains. If value is nil, the constraint behaves as if MinDomains is equal to 1. Valid values are integers greater than 0. When value is not nil, WhenUnsatisfiable must be DoNotSchedule.</p>
 <p>For example, in a 3-zone cluster, MaxSkew is set to 2, MinDomains is set to 5 and pods with the same labelSelector spread as 2/2/2: | zone1 | zone2 | zone3 | |  P P  |  P P  |  P P  | The number of domains is less than 5(MinDomains), so "global minimum" is treated as 0. In this situation, new pod with the same labelSelector cannot be scheduled, because computed skew will be 3(3 - 0) if new Pod is scheduled to any of the three zones, it will violate MaxSkew.</p>
@@ -3750,7 +3765,7 @@ if(!document.__defineGetter__) {
 <td style="text-align: left;">Forbidden</td>
 <td style="text-align: left;">Allowed</td>
 <td style="text-align: left;">none</td>
-<td style="text-align: left;"><a href="https://github.com/elastisys/compliantkubernetes-apps/blob/main/config/schemas/config.yaml" title="open original schema">config/schemas/config.yaml*</a></td>
+<td style="text-align: left;"><a href="https://github.com/elastisys/compliantkubernetes-apps/blob/v0.40.1/config/schemas/config.yaml" title="open original schema">config/schemas/config.yaml*</a></td>
 </tr>
 </tbody>
 </table>
@@ -3760,7 +3775,7 @@ if(!document.__defineGetter__) {
 <p><strong>unknown format</strong>: the value of this string must follow the format: <code>int32</code></p>
 <p><a href="../config/">Return to the root config schema</a></p>
 <hr />
-<p>Generated Wed Nov  6 11:41:03 AM CET 2024 from <a href="https://github.com/elastisys/compliantkubernetes-apps/commit/c2191f17532fefca955f533d2f6e754e1493fdc0">elastisys/compliantkubernetes-apps@main</a></p>
+<p>Generated Thu Nov 14 16:18:57 UTC 2024 from <a href="https://github.com/elastisys/compliantkubernetes-apps/commit/68fe318eb0d754c016eae4cd36220c31fa401f27">elastisys/compliantkubernetes-apps@v0.40.1</a></p>
 
 
 
