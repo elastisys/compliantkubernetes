@@ -6,6 +6,7 @@
 
 <!-- BEGIN TOC -->
 
+- [v0.42.0](#v0420) - 2024-11-14
 - [v0.41.0](#v0410) - 2024-10-02
 - [v0.40.1](#v0401) - 2024-09-18
 - [v0.40.0](#v0400) - 2024-08-21
@@ -55,6 +56,21 @@
 !!!note
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
+
+## v0.42.0
+
+Released 2024-11-14
+
+### Feature(s)
+
+- Added Prometheus metrics to the diagnostics script
+
+### Improvement(s)
+
+- Upgraded Grafana to v11.2.3.
+    - Drops support for dashboards using Angular plugins. See [here](https://grafana.com/docs/grafana/latest/developers/angular_deprecation/) for more information.
+- Upgraded Falco to v0.38.2.
+- Fix deprecated Grafana dashboards
 
 ## v0.41.0
 
