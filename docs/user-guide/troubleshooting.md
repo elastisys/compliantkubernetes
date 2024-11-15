@@ -1,5 +1,5 @@
 ---
-description: Troubleshooting help for Application Developers on Welkin, the security-hardened Kubernetes distribution
+description: Troubleshooting help for Application Developers on Welkin, the Kubernetes platform for software critical to our society
 search:
   boost: 2
 tags:

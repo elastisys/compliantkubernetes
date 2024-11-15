@@ -1,5 +1,7 @@
 ---
-description: How to use Continuous Development in Welkin, the security-focused Kubernetes distribution.
+description: >
+  How to use Continuous Development in Welkin,
+  the Kubernetes platform for software critical to our society
 search:
   boost: 2
 ---

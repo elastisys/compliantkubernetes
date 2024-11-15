@@ -1,12 +1,10 @@
----
-description: Documentation for Welkin, the security-focused Kubernetes distribution.
----
-
 <!-- markdownlint-disable-file first-line-h1 -->
 
 <div class="landing-page" markdown="1">
 
 # Innovate at speed in regulated industries
+
+Welcome to Welkin, the Kubernetes platform for software critical to our society!
 
 Welkin enables organizations across Europe to accelerate innovation through open source cloud-native technology, while ensuring security and regulatory compliance.
 
@@ -139,7 +137,7 @@ Welkin enables organizations across Europe to accelerate innovation through open
       Managed Services
     </dt>
     <dd>
-      A full Kubernetes platform, with logging, monitoring, and more. PostgreSQL, RabbitMQ, and Redis on top. All secure and fully managed by us.
+      A secure and fully managed Kubernetes platform for organizations that build and operate applications critical to our society.
     </dd>
     <dd>
       <a role="button" href="https://elastisys.com/managed-services/">Go to Managed Services</a>

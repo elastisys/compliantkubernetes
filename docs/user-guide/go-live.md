@@ -1,5 +1,5 @@
 ---
-description: Checklist before going live on Welkin, the security-focused Kubernetes distribution.
+description: Checklist before going live on Welkin, the Kubernetes platform for software critical to our society
 search:
   boost: 2
 tags:

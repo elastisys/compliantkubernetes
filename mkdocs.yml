@@ -1,9 +1,9 @@
 ---
-site_name: Welkin
+site_name: Elastisys Welkin®
 site_url: https://elastisys.io/
 site_description: >
-  Welkin, the Kubernetes platform for software critical to our society.
-  NIS2, ISO-27001, etc.
+  Documentation for Welkin,
+  the Kubernetes platform for software critical to our society
 site_author: Elastisys AB
 copyright: >-
   Copyright © Elastisys AB
