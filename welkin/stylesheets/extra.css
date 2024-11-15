@@ -112,6 +112,6 @@ a[href*="//"]:not([href*="elastisys."])::after {
 
 #sidebar-welkin-logo {
   height: 180px;
-  text-align: center;
-  margin-top: 3em;
+  display: block;
+  margin: 3em auto;
 }
