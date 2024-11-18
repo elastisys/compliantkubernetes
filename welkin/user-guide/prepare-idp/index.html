@@ -4156,13 +4156,15 @@ Note, however, that Welkin supports any OpenID-compatible IdP, including GitHub 
 <li>Navigate through the menu to <strong>Security &gt; Access and data control &gt; API Controls</strong> and click <strong>Manage Domain Wide Delegation</strong> and then <strong>Add New</strong>.</li>
 <li>In the <strong>Client ID</strong> field put the <strong>Unique ID</strong> of the service account from step 4. and in the <strong>Oauth Scopes</strong> field enter this scope: <code>https://www.googleapis.com/auth/admin.directory.group.readonly</code>.</li>
 <li>Decide on the name of the Google group that should have admin privileges in the Welkin environment.</li>
+<li>Decide on a Google user email for the service account to impersonate when making calls to the admin API. The user would need at least the permission to retrieve a list of groups through the API.</li>
 <li>
 <p>Finally, securely send, e.g., via <a href="https://yopass.elastisys.com">YoPass</a>, the following information to your Platform Administrators:
     <!-- markdownlint-enable ol-prefix -->
     <!-- markdownlint-enable list-marker-space --></p>
 <ul>
 <li>the JSON file you downloaded;</li>
-<li>admin group you decided on.</li>
+<li>the admin group you decided on;</li>
+<li>the Google email you decided on.</li>
 </ul>
 </li>
 </ol>

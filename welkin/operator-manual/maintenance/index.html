@@ -4125,14 +4125,15 @@ When a new version is released, it becomes available as a <a href="https://githu
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check if there are any pending changes to the environment;</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check the state of the environment, pods, nodes and backup jobs:</li>
 </ul>
-<blockquote>
-<p><strong><em>NOTE:</em></strong> the below steps should be run from compliantkubernetes-apps root directory</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the below steps should be run from compliantkubernetes-apps root directory.</p>
+</div>
 <div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span><span class="nb">test</span><span class="w"> </span>sc<span class="p">|</span>wc
 ./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span>sc<span class="p">|</span>wc<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-A<span class="w"> </span>-o<span class="w"> </span>custom-columns<span class="o">=</span>NAMESPACE:metadata.namespace,POD:metadata.name,READY-false:status.containerStatuses<span class="o">[</span>*<span class="o">]</span>.ready,REASON:status.containerStatuses<span class="o">[</span>*<span class="o">]</span>.state.terminated.reason<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>Completed
 ./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span>sc<span class="p">|</span>wc<span class="w"> </span>get<span class="w"> </span>nodes
 ./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span>sc<span class="p">|</span>wc<span class="w"> </span>get<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>-A
-velero<span class="w"> </span>get<span class="w"> </span>backup
+./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>velero<span class="w"> </span>sc<span class="p">|</span>wc<span class="w"> </span>get<span class="w"> </span>backup
 </code></pre></div>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Silence the notifications for the alerts. e.g you can use <a href="https://prometheus.io/docs/alerting/latest/alertmanager/#silences">Alertmanager silences</a>;</li>
@@ -4191,10 +4192,9 @@ git<span class="w"> </span>switch<span class="w"> </span>-d<span class="w"> </sp
 <p>Note what version of Kubespray that is currently used in the cluster and the Kubespray version we want to upgrade to.
     Then check the release notes for each version in between to see if there are anything that might cause any problems, if so then consult the rest of the operations team before proceeding.
     Also check if the newer Kubespray version would upgrade Kubernetes to a new minor version, if so then the Application Developer should get a notice of x weeks before proceeding to let them check for any deprecated APIs that they might be using.
-    You should never upgrade more than one patch version of Kubespray at a time.
-    E.g. if you are at Kubespray version 2.13.3 and are going to 2.15.0 then the upgrade path would be 2.13.3 -&gt; 2.13.4 -&gt; 2.14.0 -&gt; 2.14.1 -&gt; 2.14.2 -&gt; 2.15.0.
-    Patches that are released to an older minor version can be skipped, e.g. new patches to 2.14 after 2.15 has been released.
-    Read more about Kubespray upgrades in their <a href="https://kubespray.io/#/docs/upgrades">documentation</a>.</p>
+    You should never upgrade more than one minor version of Kubespray at a time.
+    E.g. if you are at Kubespray version 2.13.3 and are going to 2.15.0 then the upgrade path would be 2.13.3 -&gt; 2.14.2 -&gt; 2.15.0.
+    Read more about Kubespray upgrades in their <a href="https://kubespray.io/#/docs/operations/upgrades">documentation</a>.</p>
 </li>
 <li>
 <p>Checkout the next Kubespray version by checking out the last compliantkubernetes-kubespray commit (the commit is <code>next-version</code> in the snippet below) that used that version and updating the submodule.</p>
@@ -4208,7 +4208,7 @@ git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w
 <p>Upgrade compliantkubernetes-kubespray by following the relevant <a href="https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/migration">documentation</a> (e.g. <a href="https://github.com/elastisys/compliantkubernetes-kubespray/blob/v2.17.1-ck8s1/migration/v2.16.0-ck8s1-v2.17.x-ck8s1/upgrade-cluster.md">for upgrade to v2.17.x-ck8s1</a>).</p>
 </li>
 <li>
-<p>Download the required files on the nodes</p>
+<p>Download the required files on the nodes:</p>
 <div class="highlight"><pre><span></span><code>./bin/ck8s-kubespray<span class="w"> </span>run-playbook<span class="w"> </span>sc<span class="w"> </span>upgrade-cluster.yml<span class="w"> </span>-b<span class="w"> </span>--tags<span class="o">=</span>download
 ./bin/ck8s-kubespray<span class="w"> </span>run-playbook<span class="w"> </span>wc<span class="w"> </span>upgrade-cluster.yml<span class="w"> </span>-b<span class="w"> </span>--tags<span class="o">=</span>download
 </code></pre></div>
@@ -4224,9 +4224,10 @@ git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check the state of the environment, pods and nodes:</li>
 </ul>
-<blockquote>
-<p><strong><em>NOTE:</em></strong> the below steps should be run from compliantkubernetes-apps root directory</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the below steps should be run from compliantkubernetes-apps root directory.</p>
+</div>
 <div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span><span class="nb">test</span><span class="w"> </span>sc<span class="p">|</span>wc
 ./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span>sc<span class="p">|</span>wc<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-A<span class="w"> </span>-o<span class="w"> </span>custom-columns<span class="o">=</span>NAMESPACE:metadata.namespace,POD:metadata.name,READY-false:status.containerStatuses<span class="o">[</span>*<span class="o">]</span>.ready,REASON:status.containerStatuses<span class="o">[</span>*<span class="o">]</span>.state.terminated.reason<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>Completed
 ./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span>sc<span class="p">|</span>wc<span class="w"> </span>get<span class="w"> </span>nodes

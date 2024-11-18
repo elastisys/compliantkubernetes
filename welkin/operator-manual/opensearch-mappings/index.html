@@ -3979,7 +3979,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <p>Let's check the new dynamic mapping</p>
 <p><img alt="Get Mapping" src="../../img/dynamic_mapping_4.png" /></p>
 <p>You can see that OpenSearch choose a type of text for duration, which is technically correct, but it won't be of value especially if we were to run custom queries on the <em>duration_minutes</em> field, for example: Get all movies longer than a certain duration .. etc</p>
-<p>We can instruct OpenSearch to detect numeric values, by configuring the Index at creation time. Let' recreate the index and enable numeric detection:</p>
+<p>We can instruct OpenSearch to detect numeric values, by configuring the index at creation time. Let's recreate the index and enable numeric detection:</p>
 <p><img alt="Detect Numeric" src="../../img/dynamic_mapping_5.png" /></p>
 <p>Checking the dynamic mapping again, we can see that OpenSearch was able to detect the numeric, and set the value of field to <strong>long</strong></p>
 <p><img alt="Get Mapping" src="../../img/dynamic_mapping_6.png" /></p>
@@ -4003,12 +4003,12 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </tbody>
 </table>
 <p>To learn more, see <a href="https://opensearch.org/docs/latest/field-types/supported-field-types/numeric/">Numeric field types</a></p>
-<p>Dynamic mappings are fine when you're getting started with elasticsearch or when you're working with a new dataset. Once you have a more concrete idea of how you want to use the data, you want to be much more deliberate with your mappings, this is where an explicit mapping will be beneficial.</p>
+<p>Dynamic mappings are fine when you're getting started with OpenSearch or when you're working with a new dataset. Once you have a more concrete idea of how you want to use the data, you want to be much more deliberate with your mappings, this is where an explicit mapping will be beneficial.</p>
 <h2 id="explicit-mapping">Explicit mapping<a class="headerlink" href="#explicit-mapping" title="Permanent link">&para;</a></h2>
-<p>Explicit mappings allow us to be more precise with our field definitions taking the creative control away from elasticsearch. We describe everything upfront providing the structure of our data and the relevant properties.</p>
+<p>Explicit mappings allow us to be more precise with our field definitions taking the creative control away from OpenSearch. We describe everything upfront providing the structure of our data and the relevant properties.</p>
 <p>Here is an example where we define explicitly the fields type of an index:</p>
 <p><img alt="Explicit Mapping" src="../../img/dynamic_mapping_7.png" /></p>
-<p>An explicit mapping only bypasses the type inference that elasticsearch does for the fields we provide in the explicit mapping. If we index a document with a field not described in the explicit mapping, elasticsearch will still add that new field to the mapping and infer data type to use.</p>
+<p>An explicit mapping only bypasses the type inference that OpenSearch does for the fields we provide in the explicit mapping. If we index a document with a field not described in the explicit mapping, OpenSearch will still add that new field to the mapping and infer data type to use.</p>
 <p>Let's index a new document containing a new field <code>producer</code>:</p>
 <p><img alt="Add new field" src="../../img/explicit_mapping_1.png" /></p>
 <p>The document gets indexed fine, and the mapping now contains the additional field with type text</p>

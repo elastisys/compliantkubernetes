@@ -3943,16 +3943,17 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <li>
 <p>Use <code>/etc/kubernetes/admin.conf</code> and run <code>kubectl</code> commands to check the problem</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">KUBECONFIG</span><span class="o">=</span>/etc/kubernetes/admin.conf
-<span class="c1">#run kubctl command</span>
+<span class="c1">#run kubectl command</span>
 sudo<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>-A
 </code></pre></div>
 </li>
 </ol>
 <h2 id="kubernetes-user-access">Kubernetes User Access<a class="headerlink" href="#kubernetes-user-access" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p><strong><em>NOTE:</em></strong> This is a temporary solution and access should be disabled once the issue with Dex is resolved.</p>
-</blockquote>
-<p>If Dex is broken, you can manually create a <code>kubeconfig</code> file for a user. While there are different ways to create <code>kubeconfig</code> files, we will will use the X.509 client certificates with OpenSSL. Follow the steps below to create a user <code>kubeconfig</code> file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a temporary solution and access should be disabled once the issue with Dex is resolved.</p>
+</div>
+<p>If Dex is broken, you can manually create a <code>kubeconfig</code> file for a user. While there are different ways to create <code>kubeconfig</code> files, we will use the X.509 client certificates with OpenSSL. Follow the steps below to create a user <code>kubeconfig</code> file.</p>
 <ol>
 <li>
 <p>Create a private key:</p>
@@ -3981,7 +3982,7 @@ sudo<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> <
 <span class="s">spec:</span>
 <span class="s">    groups:</span>
 <span class="s">    - system:authenticated</span>
-<span class="s">    request: # put here the  Base64 encoded text for the CRS that you get in step 3</span>
+<span class="s">    request: # put here the Base64 encoded text for the CRS that you get in step 3</span>
 <span class="s">    signerName: kubernetes.io/kube-apiserver-client</span>
 <span class="s">    usages:</span>
 <span class="s">    - client auth</span>
@@ -3998,7 +3999,7 @@ sudo<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> <
     Retrieve the certificate from the CSR:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>csr/user1<span class="w"> </span>-o<span class="w"> </span>yaml
 </code></pre></div>
-<p>The certificate value is in Base64-encoded format under <code>status.certificate</code>. Put the content under <code>client-certificate-data:</code>. And also get the base64 encoded content for the private key and put it under <code>client-key-data:</code>. To get the base64 encoded content <code>cat user1.key | base64 | tr -d '\n'</code>.</p>
+<p>The certificate value is in Base64-encoded format under <code>status.certificate</code>. Put the content under <code>client-certificate-data:</code>. And also get the Base64 encoded content for the private key and put it under <code>client-key-data:</code>. To get the Base64 encoded content <code>cat user1.key | base64 | tr -d '\n'</code>.</p>
 <p>The kubeconfig file for <code>user1</code> user looks like:</p>
 <div class="highlight"><pre><span></span><code>```yaml
 apiVersion: v1

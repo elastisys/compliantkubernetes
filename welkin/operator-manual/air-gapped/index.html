@@ -4202,7 +4202,8 @@ We need to look both at the commands you typed and their output.</p>
 <p>* For Certificate Provisioning, you may want to allow DNS01 or HTTP01 challenges to a public certificate authority, such as <a href="https://letsencrypt.org/">Let's Encrypt</a>. However, if you want the whole network to be truly air-gapped, then you need to figure out an air-gapped solution for PKI.</p>
 </div>
 <h2 id="configuring-air-gapped-welkin-apps">Configuring Air-gapped Welkin Apps<a class="headerlink" href="#configuring-air-gapped-welkin-apps" title="Permanent link">&para;</a></h2>
-<p>These guidelines will show how to configure Welkin Apps to work in an air-gapped network. For setting up the Kubernetes layer, please refer to the <a href="https://kubespray.io/#/docs/offline-environment">Kubespray air-gap installation documentation</a> or <a href="https://cluster-api.sigs.k8s.io/clusterctl/configuration.html?highlight=release#image-overrides">Cluster-API documentation</a> for further instructions.</p>
+<p>These guidelines show how to configure Welkin Apps to work in an air-gapped network.
+For setting up the Kubernetes layer, please refer to the <a href="https://kubespray.io/#/docs/operations/offline-environment">Kubespray air-gap installation documentation</a> or <a href="https://cluster-api.sigs.k8s.io/clusterctl/configuration.html?highlight=release#image-overrides">Cluster-API documentation</a> for further instructions.</p>
 <p>This guide will assume that you have a Platform Administrator Machine that can access both the Internet and the air-gapped network over SSH, this includes SSH access to both the Cluster nodes and hosts for the different offline services described in the system context diagram above. This "Platform Administrator Machine" can be your local machine or a bastion host.</p>
 <p>Start by initializing your Welkin Apps config (see the quickstart section <a href="https://github.com/elastisys/compliantkubernetes-apps?tab=readme-ov-file#quickstart">here</a> for more info on initializing and deploying Welkin Apps) with the <code>air-gapped</code> flavor by setting the <code>CK8S_FLAVOR</code> environment variable:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">CK8S_FLAVOR</span><span class="o">=</span>air-gapped
@@ -4384,7 +4385,7 @@ wget<span class="w"> </span><span class="s2">&quot;https://artifacts.opensearch.
 <p>With this setup it is <strong>your</strong> responsibility to ensure that vulnerability databases are kept up to date.</p>
 </div>
 <h3 id="networkpolicies">NetworkPolicies<a class="headerlink" href="#networkpolicies" title="Permanent link">&para;</a></h3>
-<p>A note about configuring NetworkPolicies, when using self-hosted file servers for the different services, remember to configure NetworkPolcieis accordingly, i.e. if a self-hosted file server runs on a different port than 443, you will need to override it in the config for each respective service, e.g. for OpenSearch to get plugins from <code>fileserver.air-gapped.internal:8080</code>:</p>
+<p>A note about configuring NetworkPolicies, when using self-hosted file servers for the different services, remember to configure NetworkPolicies accordingly, i.e. if a self-hosted file server runs on a different port than 443, you will need to override it in the config for each respective service, e.g. for OpenSearch to get plugins from <code>fileserver.air-gapped.internal:8080</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">networkPolicies</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">opensearch</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">plugins</span><span class="p">:</span>
@@ -4419,7 +4420,7 @@ wget<span class="w"> </span><span class="s2">&quot;https://artifacts.opensearch.
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Air_gap_(networking)">Air gap (networking) on Wikipedia</a></li>
-<li><a href="https://kubespray.io/#/docs/offline-environment">Kubespray offline environment documentation</a></li>
+<li><a href="https://kubespray.io/#/docs/operations/offline-environment">Kubespray offline environment documentation</a></li>
 </ul>
 
 

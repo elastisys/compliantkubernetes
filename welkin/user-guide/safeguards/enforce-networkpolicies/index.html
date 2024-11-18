@@ -4009,11 +4009,11 @@ By segregating your applications and only allowing required Ingress and egress n
 <p>Welkin allows you to segregate applications by installing suitable NetworkPolicies. These are a bit like firewalls, but in the container world: Since containers are supposed to be deleted and recreated frequently, they change IP address a lot. Clearly the old "allow/deny IP" method does not scale. Therefore, NetworkPolicies select source and destination Pods based on labels or namespace labels.</p>
 <p>To make sure you don't forget to configure NetworkPolicies, the administrator can configure Welkin to deny creation of Pods with no matching NetworkPolicies.</p>
 <p>If you get the following error:</p>
-<div class="highlight"><pre><span></span><code>Error: admission webhook &quot;validation.gatekeeper.sh&quot; denied the request: [denied by require-networkpolicy] No matching networkpolicy found
+<div class="highlight"><pre><span></span><code>Error: admission webhook &quot;validation.gatekeeper.sh&quot; denied the request: [denied by elastisys-require-networkpolicy] No matching networkpolicy found
 </code></pre></div>
 <p>Then you are missing NetworkPolicies which select your Pods. The <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/templates/networkpolicy.yaml">user demo</a> gives a good example to get you started.</p>
 <p>If your administrator has not enforced this policy yet, you can view current violations of the policy by running:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>k8srequirenetworkpolicy.constraints.gatekeeper.sh<span class="w"> </span>require-networkpolicy<span class="w"> </span>-ojson<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.status.violations
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>k8srequirenetworkpolicy.constraints.gatekeeper.sh<span class="w"> </span>elastisys-require-networkpolicy<span class="w"> </span>-ojson<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.status.violations
 </code></pre></div>
 <h2 id="further-reading">Further Reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
 <ul>

@@ -4179,7 +4179,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <p>This guide describes how to set up and make use of group claims for applications.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This guide assumes your group claim name is <code>groups</code></p>
+<p>This guide assumes your group claim name is <code>groups</code>.</p>
 </div>
 <h3 id="kubernetes">Kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
 <p>To set up <a href="https://github.com/int128/kubelogin">kubelogin</a> to fetch and use groups make sure that your kubeconfig looks something like this.</p>
@@ -4244,8 +4244,8 @@ Once there is one admin, they can set specific permissions for other users (ther
 </div>
 <h3 id="grafana">Grafana<a class="headerlink" href="#grafana" title="Permanent link">&para;</a></h3>
 <h4 id="ops-grafana">OPS Grafana<a class="headerlink" href="#ops-grafana" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">prometheus</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">grafana</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="nt">grafana</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ops</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">oidc</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">userGroups</span><span class="p">:</span>
@@ -4257,16 +4257,16 @@ Once there is one admin, they can set specific permissions for other users (ther
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-domain.com</span>
 </code></pre></div>
 <h4 id="user-grafana">User Grafana<a class="headerlink" href="#user-grafana" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">user</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">grafana</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="nt">grafana</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">oidc</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">userGroups</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">grafanaAdmin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-admin-group</span>
+<span class="w">        </span><span class="nt">grafanaEditor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-editor-group</span>
+<span class="w">        </span><span class="nt">grafanaViewer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-viewer-group</span>
 <span class="w">      </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;...</span><span class="nv"> </span><span class="s">groups&quot;</span><span class="w"> </span><span class="c1"># Add groups to existing</span>
 <span class="w">      </span><span class="nt">allowedDomains</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-domain.com</span>
-<span class="w">    </span><span class="nt">userGroups</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">grafanaAdmin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-admin-group</span>
-<span class="w">      </span><span class="nt">grafanaEditor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-editor-group</span>
-<span class="w">      </span><span class="nt">grafanaViewer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-viewer-group</span>
 </code></pre></div>
 <h2 id="users-onboarding">Users onboarding<a class="headerlink" href="#users-onboarding" title="Permanent link">&para;</a></h2>
 <p>This describes how to configure Welkin with the Application Developers who should be OpenSearch, Grafana or Harbor Administrators.</p>
@@ -4314,7 +4314,7 @@ Once there is one admin, they can set specific permissions for other users (ther
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To get the static admin username and password you need to have access to the SC cluster and then run</p>
-<p><code>kubectl get secret user-grafana -n monitoring -o json | jq '.data | map_values(@base64d)'</code></p>
+<p><code>kubectl get secret user-grafana-env -n monitoring -o json | jq '.data | map_values(@base64d)'</code></p>
 </div>
 </li>
 <li>
@@ -4331,12 +4331,12 @@ Once there is one admin, they can set specific permissions for other users (ther
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To get the static admin username and password you need to have access to the SC cluster and then run</p>
-<p><code>kubectl get secret harbor-init-secret -n harbor -o json | jq '.data."harbor-password"'</code></p>
+<p><code>kubectl get secret harbor-init-secret -n harbor -o json | jq '.data."harbor-password" | @base64d'</code></p>
 <p>Username is: admin</p>
 </div>
 </li>
 <li>
-<p>Administrator promotes the OpenID user to Harbor admin at <code>grafana.domain.tld/harbor/users</code></p>
+<p>Administrator promotes the OpenID user to Harbor admin at <code>harbor.domain.tld/harbor/users</code></p>
 </li>
 </ol>
 

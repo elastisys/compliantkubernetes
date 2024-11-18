@@ -4448,7 +4448,7 @@ We need to look both at the commands you typed and their output.</p>
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>For some of the ansible commands below, you might require root privileges. To run commands as a privileged user with ansible, use the <code>--become, -b</code> flag.</p>
+<p>For some of the Ansible commands below, you might require root privileges. To run commands as a privileged user with Ansible, use the <code>--become, -b</code> flag.</p>
 <p>Example:
 <code>ansible -i inventory.ini -b all -m ping</code></p>
 </div>
@@ -4593,7 +4593,7 @@ If the infrastructure is not managed by terraform you can skip to step 3:</p>
 </code></pre></div>
 </li>
 <li>
-<p>Add ssh keys to the new node if necessary</p>
+<p>Add SSH keys to the new node if necessary</p>
 <div class="highlight"><pre><span></span><code>./bin/ck8s-kubespray<span class="w"> </span>apply-ssh<span class="w"> </span><span class="nv">$CLUSTER</span><span class="w"> </span>--limit<span class="o">=[</span>new_node_name<span class="o">]</span>
 </code></pre></div>
 </li>

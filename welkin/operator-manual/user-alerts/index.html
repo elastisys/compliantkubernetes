@@ -3909,48 +3909,27 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <p>This is administrator-facing documentation associated with <a href="../../user-guide/alerts/">this user guide</a>. Please read that one first.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Alertmanager should no longer be access via an Ingress, since this circumvents access control and audit logs. Please find the updated access method in the user guide linked above.</p>
+<p>Alertmanager should not be accessed via an Ingress, since this circumvents access control and audit logs. Please find the appropriate access method in the user guide linked above.</p>
 </div>
-<p>Perform the following configuration changes in <code>wc-config.yaml</code>:</p>
+<p>Ensure the following configuration changes are set in <code>wc-config.yaml</code>:</p>
+<!-- markdownlint-disable MD044 -->
 <ol>
-<li>Set <code>user.alertmanager.enabled=true</code>.</li>
-<li>Ensure <code>user.alertmanager.ingress.enabled</code> is <strong>false</strong>.</li>
+<li>Ensure <a href="../schema/config-properties-user-config-properties-alertmanager-config/#enabled">user.alertmanager.enabled</a> is <strong>true</strong>.</li>
+<li>Ensure <a href="../schema/config-properties-user-config-properties-alertmanager-config/#ingress">user.alertmanager.ingress.enabled</a> is <strong>false</strong>.</li>
 </ol>
-<p>For v0.18 and below include the following changes:</p>
-<ol>
-<li>Update the <code>user.namespaces</code> list to include <code>alertmanager</code>.</li>
-<li>Set <code>user.alertmanager.namespace=alertmanager</code>.</li>
-</ol>
+<!-- markdownlint-enable MD044 -->
+
 <p>Then apply Welkin Apps.</p>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<p>Please find below an example taken from <code>wc-config.yaml</code>, which was tested with <a href="https://github.com/elastisys/compliantkubernetes-apps/releases/tag/v0.17.0">compliantkubernetes-apps v0.17.0</a> and also applies to version v0.18:</p>
+<p>Please find below an example taken from <code>wc-config.yaml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">user</span><span class="p">:</span>
-<span class="w">  </span><span class="c1">## This only controls if the namespaces should be created, user RBAC is always created.</span>
-<span class="w">  </span><span class="nt">createNamespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="c1">## List of user namespaces to create.</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alertmanager</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo1</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo2</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo3</span>
-<span class="w">  </span><span class="c1">## List of users to create RBAC rules for.</span>
-<span class="w">  </span><span class="nt">adminUsers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cristian.klein@elastisys.com</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lars.larsson@elastisys.com</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin@example.com</span>
 <span class="w">  </span><span class="c1">## User controlled alertmanager configuration.</span>
 <span class="w">  </span><span class="nt">alertmanager</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="c1">## Namespace in which to install alertmanager</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alertmanager</span>
 <span class="w">    </span><span class="c1">## Create basic-auth protected ingress to alertmanager</span>
 <span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For versions after v0.18 <code>alertmanager</code> may not be listed under <code>user.namespaces</code> and the option <code>user.alertmanager.namespace</code> is deprecated.</p>
-</div>
 
 
 

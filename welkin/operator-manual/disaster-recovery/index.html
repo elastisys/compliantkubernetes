@@ -2124,15 +2124,6 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </li>
       
         <li class="md-nav__item">
-  <a href="#object-storage-providers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Object storage providers
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#off-site-backups" class="md-nav__link">
     <span class="md-ellipsis">
       Off-site backups
@@ -4102,15 +4093,6 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </li>
       
         <li class="md-nav__item">
-  <a href="#object-storage-providers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Object storage providers
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#off-site-backups" class="md-nav__link">
     <span class="md-ellipsis">
       Off-site backups
@@ -4410,7 +4392,6 @@ Most commands found in these instructions are expected to be run from the <a hre
 <li><a href="https://www.isms.online/iso-27001/annex-a-12-operations-security/">A.12.3.1 Information Backup</a></li>
 <li><a href="https://www.isms.online/iso-27001/annex-a-17-information-security-aspects-of-business-continuity-management/">A.17.1.1 Planning Information Security Continuity</a></li>
 </ul>
-<h2 id="object-storage-providers">Object storage providers<a class="headerlink" href="#object-storage-providers" title="Permanent link">&para;</a></h2>
 <h2 id="off-site-backups">Off-site backups<a class="headerlink" href="#off-site-backups" title="Permanent link">&para;</a></h2>
 <p>Backups can be set up to be replicated off-site using CronJobs.</p>
 <p>If these are <strong>encrypted</strong> then these off-site backups must first be restored themselves before they can be used to restore other services.</p>
@@ -4435,7 +4416,7 @@ Most commands found in these instructions are expected to be run from the <a hre
 <h2 id="opensearch">OpenSearch<a class="headerlink" href="#opensearch" title="Permanent link">&para;</a></h2>
 <h3 id="backup">Backup<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
 <p>OpenSearch is set up to store backups in an S3 bucket. There is a CronJob called <code>opensearch-backup</code> in the cluster that is invoking the snapshot process in OpenSearch.</p>
-<p>To take a snapshot on-demand, execute</p>
+<p>To take a snapshot on-demand, execute:</p>
 <div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span>sc<span class="w"> </span>-n<span class="w"> </span>opensearch-system<span class="w"> </span>create<span class="w"> </span>job<span class="w"> </span>--from<span class="o">=</span>cronjob/opensearch-backup<span class="w"> </span>&lt;name-of-job&gt;
 </code></pre></div>
 <h3 id="optional-start-new-cluster-from-snapshot">Optional: Start new cluster from snapshot<a class="headerlink" href="#optional-start-new-cluster-from-snapshot" title="Permanent link">&para;</a></h3>
@@ -4452,7 +4433,7 @@ Otherwise, skip ahead to the <a href="#restore"><strong>Restore</strong></a> sec
 </code></pre></div>
 <p>Wait for the installation to complete.</p>
 <p>After the installation, continue to the <strong>Restore</strong> section to proceed with the restore.
-If you want to restore all indices, use the following <code>indices</code> variable</p>
+If you want to restore all indices, use the following <code>indices</code> variable:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">indices</span><span class="o">=</span><span class="s2">&quot;kubernetes-*,kubeaudit-*,other-*,authlog-*&quot;</span>
 </code></pre></div>
 <div class="admonition note">
@@ -4464,7 +4445,7 @@ If you want to restore all indices, use the following <code>indices</code> varia
 </ul>
 </div>
 <h3 id="restore">Restore<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h3>
-<p>Set the following variables</p>
+<p>Set the following variables:</p>
 <ol>
 <li>OpenSearch user with permissions to manage snapshots, usually <code>admin</code></li>
 <li>The password for the above user</li>
@@ -4490,7 +4471,7 @@ If you want to restore all indices, use the following <code>indices</code> varia
 <span class="s1">}</span>
 <span class="s1">&#39;</span>
 </code></pre></div>
-Then restore from this snapshot repository (<code>backup-repositroy</code>) in OpenSearch.</p>
+Then restore from this snapshot repository (<code>backup-repository</code>) in OpenSearch.</p>
 </li>
 <li>
 <p>To restore from an <strong>unencrypted</strong> off-site backup:</p>
@@ -4501,7 +4482,7 @@ Replace the previous snapshot repository if it is unusable.</p>
 </li>
 </ul>
 </div>
-<p>List snapshot repositories</p>
+<p>List snapshot repositories:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Simple</span>
 ❯<span class="w"> </span>curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s2">/_cat/repositories?v&quot;</span>
 id<span class="w">                   </span><span class="nb">type</span>
@@ -4519,7 +4500,7 @@ opensearch-snapshots<span class="w">   </span>s3
 <span class="w">  </span><span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<p>List available snapshots</p>
+<p>List available snapshots:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">snapshot_repo</span><span class="o">=</span>&lt;name/id<span class="w"> </span>from<span class="w"> </span>previous<span class="w"> </span>step&gt;
 
 <span class="c1"># Simple</span>
@@ -4600,7 +4581,7 @@ curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you visit the <code>"&lt;os_url&gt;/app/dashboards"</code> page in the OpenSearch GUI after deleting the index and before restoring the index, another empty index <code>.opensearch_dashboards</code> will be created. You need to delete this manually, which can be done with</p>
+<p>If you visit the <code>"&lt;os_url&gt;/app/dashboards"</code> page in the OpenSearch GUI after deleting the index and before restoring the index, another empty index <code>.opensearch_dashboards</code> will be created. You need to delete this manually, which can be done with:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-kL<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">os_url</span><span class="si">}</span><span class="s2">/.opensearch_dashboards?pretty&quot;</span>
 </code></pre></div>
 </div>
@@ -4754,14 +4735,14 @@ or creating a special purpose Pod that only binds the volume, we can let Velero 
 <li>Finally, delete the restorer Pod using <code>kubectl delete -f volume-restorer-pod.yaml</code>.</li>
 </ol>
 <h3 id="example-restoring-a-partially-failed-backup">Example restoring a partially failed backup<a class="headerlink" href="#example-restoring-a-partially-failed-backup" title="Permanent link">&para;</a></h3>
-<p>A backup that has status <code>PartiallyFailed</code> can be restored by using <code>--allow-partially-failed</code> flag</p>
+<p>A backup that has status <code>PartiallyFailed</code> can be restored by using <code>--allow-partially-failed</code> flag:</p>
 <div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>velero<span class="w"> </span>wc<span class="w"> </span>restore<span class="w"> </span>create<span class="w"> </span>&lt;restore-name&gt;<span class="w"> </span>--allow-partially-failed<span class="w"> </span>--from-schedule<span class="w"> </span>velero-daily-backup<span class="w"> </span>--wait
 </code></pre></div>
 <h3 id="example-restoring-a-single-resource">Example restoring a single resource<a class="headerlink" href="#example-restoring-a-single-resource" title="Permanent link">&para;</a></h3>
 <p>You can explore a <code>Completed</code> backup as follows</p>
 <div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>velero<span class="w"> </span>wc<span class="w"> </span>backup<span class="w"> </span>describe<span class="w"> </span>--details<span class="w"> </span>&lt;name-of-backup&gt;
 </code></pre></div>
-<p>and you can then use the following to handpick resources from the backup you want restored</p>
+<p>and you can then use the following to handpick resources from the backup you want restored:</p>
 <div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>velero<span class="w"> </span>wc<span class="w"> </span>restore<span class="w"> </span>create<span class="w"> </span>&lt;restore-name&gt;<span class="w">  </span>--include-resources<span class="w"> </span>pod,volume<span class="w"> </span>--from-backup<span class="w"> </span>&lt;backup-name&gt;<span class="w"> </span>--include-namespaces<span class="w"> </span>&lt;namespace-name&gt;<span class="w"> </span>--selector<span class="w"> </span>&lt;resource-selector&gt;<span class="w"> </span>--wait
 </code></pre></div>
 <h3 id="restore-from-off-site-backup">Restore from off-site backup<a class="headerlink" href="#restore-from-off-site-backup" title="Permanent link">&para;</a></h3>
@@ -4846,7 +4827,7 @@ Manual backups can be taken using Velero (include the same resources).</p>
 ./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>kubectl<span class="w"> </span>sc<span class="w"> </span>delete<span class="w"> </span>pvc<span class="w"> </span>-n<span class="w"> </span>monitoring<span class="w"> </span>user-grafana
 </code></pre></div>
 <ul>
-<li>Restore the velero backup</li>
+<li>Restore the Velero backup</li>
 </ul>
 <div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>ops<span class="w"> </span>velero<span class="w"> </span>sc<span class="w"> </span>restore<span class="w"> </span>create<span class="w"> </span>--from-schedule<span class="w"> </span>velero-daily-backup<span class="w"> </span>--wait
 </code></pre></div>
