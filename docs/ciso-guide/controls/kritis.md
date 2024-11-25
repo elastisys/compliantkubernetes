@@ -13,4 +13,4 @@ To learn more about how Welkin can help you implement KRITIS, please see [BSI IT
 
 ## Further Reading
 
-- [BSI: General information on KRITIS](https://www.bsi.bund.de/EN/Themen/KRITIS-und-regulierte-Unternehmen/Kritische-Infrastrukturen/Allgemeine-Infos-zu-KRITIS/allgemeine-infos-zu-kritis_node.html)
+- [BSI: General information on KRITIS](https://www.bsi.bund.de/EN/Themen/KRITIS-und-regulierte-Unternehmen/Kritische-Infrastrukturen/Allgemeine-Infos-zu-KRITIS/allgemeine-infos-zu-kritis.html)
