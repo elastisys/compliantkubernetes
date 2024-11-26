@@ -99,7 +99,7 @@ This log lists the architectural decisions for Welkin.
 - [ADR-0020](0020-filter-by-cluster-label-then-data-source.md) - Filter by cluster label then data source
 - [ADR-0021](0021-tls-for-additional-services.md) - Default to TLS for performance-insensitive additional services
 - [ADR-0022](0022-use-dedicated-nodes-for-additional-services.md) - Use Dedicated Nodes for Additional Services
-- [ADR-0023](0023-allow-snippets-annotations.md) - Only allow Ingress Configuration Snippet Annotations after Proper Risk Acceptance
+- [ADR-0023](0023-allow-snippets-annotations.md) - [Superseded by [ADR-0056](0056-allow-snippets-annotations-after-risk-acceptance.md)] Only allow Ingress Configuration Snippet Annotations after Proper Risk Acceptance
 - [ADR-0024](0024-allow-Harbor-robot-account.md) - Allow a Harbor robot account that can create other robot accounts with full privileges
 - [ADR-0025](0025-local-storage.md) - Use local-volume-provisioner for Managed Services that requires high-speed disks
 - [ADR-0026](0026-hnc.md) - Use `environment-name` as the default root of Hierarchical Namespace Controller (HNC)
@@ -132,6 +132,7 @@ This log lists the architectural decisions for Welkin.
 - [ADR-0053](0053-do-not-expose-platform-observability-services-to-end-users.md) - Do not expose platform observability services to end-users
 - [ADR-0054](0054-allow-write-access-to-endpoints-and-endpointslices-after-risk-acceptance.md) - Allow Application Developer write access to Endpoints and EndpointSlices after Proper Risk Acceptance
 - [ADR-0055](0055-welkin-to-consist-of-both-public-and-private-open-source.md) - Welkin to consist of both public and private open source
+- [ADR-0056](0056-allow-snippets-annotations-after-risk-acceptance.md) - Only allow Ingress Snippet Annotations after Proper Risk Acceptance
 
 <!-- adrlogstop -->
 
