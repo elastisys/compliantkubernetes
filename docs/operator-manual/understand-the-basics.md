@@ -25,7 +25,7 @@ This section provides some useful links to build up this understanding.
 - Logs observability
     - [Fluentd](https://www.fluentd.org/)
         - [S3 plugin for Fluentd](https://docs.fluentd.org/output/s3)
-        - [Opensearch plugin for Fluentd](https://github.com/fluent/fluent-plugin-opensearch)
+        - [OpenSearch plugin for Fluentd](https://github.com/fluent/fluent-plugin-opensearch)
     - [OpenSearch](https://opensearch.org/docs/latest/)
 - Container registries and container vulnerability scanning
     - [Harbor](https://goharbor.io/)
