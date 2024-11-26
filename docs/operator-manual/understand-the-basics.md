@@ -41,7 +41,6 @@ This section provides some useful links to build up this understanding.
 - Kubernetes backups
     - [Velero](https://velero.io/)
     - [Rclone](https://rclone.org/)
-- [Argo CD](https://argo-cd.readthedocs.io/en/stable/getting_started/)
 
 Platform administration, in particular on-call, can be stressful.
 Therefore, familiarize yourself with:
