@@ -199,6 +199,7 @@ nav:
       - "FAQ": "user-guide/faq.md"
   - "For Platform Administrators":
       - "Overview": "operator-manual/index.md"
+      - "Understand the Basics": "operator-manual/understand-the-basics.md"
       - "Getting Started": "operator-manual/getting-started.md"
       - "Provider Audit": "operator-manual/provider-audit.md"
       - "Standard Template for on-prem Environment": "operator-manual/on-prem-standard.md"
