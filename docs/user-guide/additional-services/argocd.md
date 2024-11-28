@@ -49,6 +49,7 @@ To deploy the [user-demo](https://github.com/elastisys/welkin/tree/main/user-dem
 1. In the top bar, click **New app**.
 1. In the right side, click **Edit as YAML**.
 1. Copy-paste the YAML snippet below.
+
     ```yaml
     apiVersion: argoproj.io/v1alpha1
     kind: Application
@@ -75,6 +76,7 @@ To deploy the [user-demo](https://github.com/elastisys/welkin/tree/main/user-dem
           prune: true
           selfHeal: true
     ```
+
 1. Replace `$DOMAIN`, `$REGISTRY_PROJECT` and `$TAG` as appropriate.
 1. Click **Save**, then **Create**.
 1. Wait until Argo CD displays "Status: Healthy Synced", as shown in the picture below. ![Argo CD showing status healthy and synced](img/argocd-healthy-synced.png).
