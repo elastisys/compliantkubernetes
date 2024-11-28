@@ -32,20 +32,53 @@ tags:
 
     Why? See [ADR-0042](../../adr/0042-argocd-dynamic-hnc-namespaces.md)
 
-<figure>
-    <img alt="Argo CD Deployment Model" src="../img/argocd.drawio.svg" >
-    <figcaption>
-        <strong>Argo CD on Welkin Deployment Model</strong>
-        <br>
-        This help you build a mental model of how to levarage Argo CD for deploying your application.
-    </figcaption>
-</figure>
-
 This page will help you succeed in connecting to Argo CD application which meets your security and compliance requirements.
 
 ## Getting Access
 
 Your administrator will set up the authentication inside Welkin, which will give you access to Argo CD UI.
+
+## Running Example
+
+To deploy the [user-demo](https://github.com/elastisys/welkin/tree/main/user-demo), proceed as follows:
+
+1. Create a namespace called `welkin-demo`, as explained in the [Namespaces](../namespaces.md) page.
+1. Type the Argo CD Service Endpoint in the browsers. Generally, this is something like `https://argocd.$DOMAIN`.
+1. Complete the Single sign-on (SSO) authentication.
+1. In the right-hand menu, click **Applications**.
+1. In the top bar, click **New app**.
+1. In the right side, click **Edit as YAML**.
+1. Copy-paste the YAML snippet below.
+    ```yaml
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+      name: demo
+    spec:
+      destination:
+        namespace: welkin-demo
+        server: https://kubernetes.default.svc
+      source:
+        path: user-demo/deploy/welkin-user-demo
+        repoURL: https://github.com/elastisys/welkin
+        targetRevision: main
+        helm:
+          values: |-
+            image:
+              repository: harbor.$DOMAIN/$REGISTRY_PROJECT/welkin-user-demo
+              tag: $TAG
+            ingress:
+              hostname: welkin-demo.$DOMAIN
+      project: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+    ```
+1. Replace `$DOMAIN`, `$REGISTRY_PROJECT` and `$TAG` as appropriate.
+1. Click **Save**, then **Create**.
+1. Wait until Argo CD displays "Status: Healthy Synced", as shown in the picture below. ![Argo CD showing status healthy and synced](img/argocd-healthy-synced.png).
+1. Click on the "external link icon" -- the one with a box and an arrow -- as shown in the image above to access your application.
 
 ## Secret Management
 
