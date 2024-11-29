@@ -1,6 +1,6 @@
-# Only allow Ingress Configuration Snippet Annotations after Proper Risk Acceptance
+# [Superseded by [ADR-0056](0056-allow-snippets-annotations-after-risk-acceptance.md)] Only allow Ingress Configuration Snippet Annotations after Proper Risk Acceptance
 
-- Status: accepted
+- Status: Superseded by [ADR-0056](0056-allow-snippets-annotations-after-risk-acceptance.md)
 - Deciders: architecture meeting
 - Date: 2022-08-11
 
