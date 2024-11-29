@@ -44,6 +44,7 @@ Chosen options: 1 & 3 & 5
 - No changes are needed.
 - More resources are available on the AMS nodes.
 - Reduce complexity.
+- We will now use `externalTrafficPolicy: local` and with this we will reduce latency and preserve the client’s source IP address, which is essential for some applications that rely on knowing the client's IP, such as for logging, security, or geolocation services.
 
 ### Negative Consequences
 
