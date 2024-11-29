@@ -51,6 +51,10 @@ repos:
 
   - repo: local
     hooks:
+      - id: vale
+        name: "Vale: A linter for prose"
+        entry: ./scripts/vale.sh
+        language: script
       - id: svg-must-embed
         name: SVGs must embed all images
         entry: 'image[^>]* xlink:href="https'
