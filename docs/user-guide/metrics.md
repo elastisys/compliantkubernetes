@@ -48,6 +48,7 @@ Prometheus and Grafana can help with this by making it easier to:
 
 Welkin installs the prometheus-operator by default. The Prometheus Operator for Kubernetes provides easy monitoring definitions for Kubernetes services and deployment and management of Prometheus instances as it can create/configure/manage Prometheus clusters atop Kubernetes. The following CRDs are installed by default.
 
+<!-- vale off -->
 | crd             | apigroup              | kind           | can be used by users |
 | :-------------- | :-------------------- | :------------- | :------------------- |
 | alertmanagers   | monitoring.coreos.com | Alertmanager   | NO                   |
@@ -56,6 +57,7 @@ Welkin installs the prometheus-operator by default. The Prometheus Operator for 
 | prometheusrules | monitoring.coreos.com | PrometheusRule | YES                  |
 | servicemonitors | monitoring.coreos.com | ServiceMonitor | YES                  |
 | thanosrulers    | monitoring.coreos.com | ThanosRuler    | NO                   |
+<!-- vale on -->
 
 #### Accessing the Prometheus UI
 
@@ -79,7 +81,7 @@ In order to use this feature, you will need you to provide a list of allowed nam
 Grafana can be accessed at the endpoint provided by the Welkin install scripts.
 If you have configured Dex you can login with a connected account, which can be limited to specific email domains.
 
-Welkin deploys Grafana with a selection of dashboards by default. Dashboards are accessed by clicking the Dashboard icon (four squares) at the lefthand side of the Grafana window and selecting Browse. Some examples of useful dashboards are listed below.
+Welkin deploys Grafana with a selection of dashboards by default. Dashboards are accessed by clicking the Dashboard icon (four squares) at the left-hand side of the Grafana window and selecting Browse. Some examples of useful dashboards are listed below.
 
 #### Node health
 
@@ -212,7 +214,7 @@ Proceed as follows:
 1. Log in to Grafana.
 1. Create an API key, setting it to Editor or Admin.
 1. Provide the API key to Terraform either via the `GRAFANA_AUTH` environment variable or the [auth](https://registry.terraform.io/providers/grafana/grafana/latest/docs#auth) provider variable.
-1. Provide the URL of Grafana (`https://grafana.$DOMAIN`) to Terraform either via the `GRAFANA_URL` environment variable or the [url](https://registry.terraform.io/providers/grafana/grafana/latest/docs#url) provider variable.
+1. Provide the URL of Grafana (`https://grafana.$DOMAIN`) to Terraform either via the `GRAFANA_URL` environment variable or the [`url`](https://registry.terraform.io/providers/grafana/grafana/latest/docs#url) provider variable.
 
 ## Further reading
 

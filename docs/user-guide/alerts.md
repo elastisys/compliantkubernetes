@@ -95,7 +95,7 @@ The screenshot below gives an example of the application alert, as seen in Alert
 ### Detailed example
 
 PrometheusRules have two features, either the rules _alert_ based on an expression, or the rules `record` based on an expression.
-The former is the way to create alerting rules and the latter is a way to precompute complex queries that will be stored as separate metrics:
+The former is the way to create alerting rules and the latter is a way to pre-compute complex queries that will be stored as separate metrics:
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1

@@ -13,6 +13,7 @@ GMail
 IMY
 Inera
 JumpCloud
+Opsgenie
 Prorenata
 Qualys
 Safespring
@@ -23,19 +24,24 @@ Sjunet
 Telavox
 Telia
 Tempus
+vSphere
 Yopass
 Zalando
 
 # Project Names
 Alertmanager
 Ansible
+Bazel
 Ceph
+containerd
 Dex
 etcd
+Elasticdump
 Falco
 Fluentd
 Grafana
 Graphviz
+Gzip
 Helm
 Kafka
 Keycloak
@@ -44,9 +50,12 @@ Kured
 kustomization
 kustomize
 MkDocs
+Monokle
 PGAudit
+pgvector
 Rclone
 Strimzi
+Skaffold
 systemd
 Thanos
 timesyncd
@@ -55,12 +64,15 @@ Trivy
 Velero
 
 # General technical terms
+ADR
 API
+allowlist
 (?i)allowlisting
 allowlisted
 (?i)autoscaling
-colocation
+CI
 CISO
+colocation
 CPU
 cyber
 cybersecurity
@@ -69,21 +81,29 @@ Dockerfile
 downscaling
 DPO
 failover
+Gbps
 hostname
 ICT
 loopback
+lookup
 microsegmentation
 multitenancy
+multitenant
 OAuth
 resync
+runbook
 runtime
 SLA
 setgid
 setuid
 stdout
 subnet
+SVG
+sysctl
 unencrypted
 upscaling
+URI
+UI
 VM
 
 # Kubernetes terms
@@ -94,6 +114,7 @@ kubeconfig
 kubectl
 kubelogin
 Namespace
+PDB
 PVC
 RBAC
 
@@ -128,6 +149,7 @@ midsommarafton
 midsommardagen
 myndigheten
 nationell
+Patientdatalagen
 personuppgifter
 regioner
 skyddsklass
@@ -141,12 +163,37 @@ Informationstechnik
 # No clue why Vale doesn't recognize these words
 approver
 auditability
+digitalization
 exfiltrate
+impactful
 learnings
 misconfiguration
+misconfigured
+mitigation
 onboarding
+rollout
+schedulable
 timepoint
 untrusted
 
 # YAML terms
 frontmatter
+
+# Names used in some place
+Axel
+Cristian
+Ewnetu
+Forsberg
+Fredrik
+Geoff
+Harr
+Johan
+Karlton
+Kashyap
+Larsson
+Lennart
+Liv
+Olle
+Pradyumna
+Prady
+Viktor

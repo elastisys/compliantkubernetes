@@ -18,6 +18,12 @@
 
     These are only the user-facing changes.
 
+<!--
+    Release notes before 2024-11-29 are excluded from spellchecking.
+    Please make sure to put new release notes above this line.
+-->
+<!-- vale off -->
+
 ## v7.2.5-ck8s1
 
 Released 2024-10-07

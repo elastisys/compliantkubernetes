@@ -75,7 +75,7 @@ This standard includes the following:
 
   Usually applications don't need this unless they need to have low-level access to the nodes to access and manage system resources.
 
-- Running with the seccomp profile `Localhost` or `RuntimeDefault` (set by default).
+- Running with the `seccomp` profile `Localhost` or `RuntimeDefault` (set by default).
 
   This restricts the system call applications can make, [the `RuntimeDefault` profile is provided by containerd](https://github.com/containerd/containerd/blob/main/contrib/seccomp/seccomp_default.go#L55), the container runtime, with sane defaults that should not be an issue for most applications.
 
@@ -222,7 +222,7 @@ mutations:
   fsGroup: <GID> # Default 1
 ```
 
-1. Sysctls may still be denied by the kubelet.
+1. Sysctls may still be denied.
 1. Allows both host network and host ports.
 1. Must be configured in the container image or security context.
 

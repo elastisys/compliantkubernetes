@@ -23,7 +23,7 @@
 
 Released 2024-09-25
 
-Default postgres versions:
+Default PostgreSQL versions:
 
 - 16.4
 - 15.8

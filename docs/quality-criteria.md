@@ -29,7 +29,7 @@ Feature can be delivered ...
     - Feature integrates well with application developer observability (alerting, logging, metrics)
     - Feature integrates well with application developer authentication
 
-- ... without ruining admin's life
+- ... without ruining the platform administrator's life
 
     - At least 2 admins have required training
     - Feature has good admin-facing documentation (2nd day ops, all processes in place and documented, etc.)
@@ -45,7 +45,7 @@ Feature can be delivered ...
 - ... without compromising our security posture
 
     - Feature has good and well-understood access control towards Application Developer
-    - Feature does not expose platform to additional risk (needs escalated privilegies that were not analyzed, etc.)
+    - Feature does not expose platform to additional risk (needs escalated privileges that were not analyzed, etc.)
     - Feature has good and well-understood security patching
     - Feature has good and well-understood upgrades
     - Feature has good and well-understood business continuity, i.e., high availability or self-healing

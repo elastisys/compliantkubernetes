@@ -49,7 +49,7 @@ skaffold init
 This command will scan the current project for images to build and Kubernetes manifests to deploy. For each image that
 Skaffold finds you will be prompted to specify how to build them, or if they are not built by the current project.
 
-The first image Skaffold finds is busybox, however this image is not built from this project, so choose:
+The first image Skaffold finds is `busybox`, however this image is not built from this project, so choose:
 `None (image not built from these sources)`
 
 ![Skaffold init Output1](img/skaffold-busybox.png)
@@ -117,7 +117,7 @@ shows the logs of the application, and starts listening for changes in the sourc
 
 ![Skaffold Output1](img/skaffold-output1.png)
 
-When visiting the URL to the application or the portforwarded URL the following output can be seen:
+When visiting the URL to the application or the port-forwarded URL the following output can be seen:
 
 ```json
 { "hostname": "welkin-user-demo-dd9c58979-rm9rv", "version": "0.0.1" }

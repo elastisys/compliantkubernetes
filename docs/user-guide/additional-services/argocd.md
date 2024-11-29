@@ -100,7 +100,7 @@ The following steps will show how to get started with encrypting files using `so
     gpg --output "private.asc" --armor --export-secret-key $fpr
     ```
 
-1. For Argo CD to be able to use this key for decrypting `sops` encrypted values files in your Helm charts, you will need to create a Kubernetes Secret in the `argocd-system` namespace named `helm-secrets-private-keys`. This Secret will then be mounted and read by the Argo CD repo server. Create the Secret using the private key file created in the previous step:
+1. For Argo CD to be able to use this key for decrypting `sops` encrypted values files in your Helm charts, you will need to create a Kubernetes Secret in the `argocd-system` namespace named `helm-secrets-private-keys`. This Secret will then be mounted and read by the Argo CD repository server. Create the Secret using the private key file created in the previous step:
 
     ```bash
     PRIVATE_KEY_FILE="private.asc"
@@ -177,7 +177,7 @@ The following steps will show how to get started with encrypting files using `so
 
 1. In Argo CD, when you create your Application, add the secret values file (`secrets.yaml`) as follow:
 
-    ![`argocd-helm-secrets`](./img/argocd-helm-secrets.png)
+    ![Screenshot of Argo CD with Helm Secrets](./img/argocd-helm-secrets.png)
 
     Here, `secrets.yaml` is the relative path and name of the file containing encrypted values.
 
@@ -204,9 +204,9 @@ The following steps assumes SealedSecrets is installed in the cluster. For insta
 
 1. Deploy the application containing the SealedSecret with Argo CD as any other application.
 
-### Using vals with HashiCorp's Vault
+### Using `vals` with HashiCorp's Vault
 
-If you want to use [vals](https://github.com/helmfile/vals) with [Vault](https://www.vaultproject.io/), you will need to contact your Platform Administrator requesting that you want to use vals with Vault together with Argo CD.
+If you want to use [`vals`](https://github.com/helmfile/vals) with [Vault](https://www.vaultproject.io/), you will need to contact your Platform Administrator requesting that you want to use `vals` with Vault together with Argo CD.
 
 1. Create a Secret in the `argocd-system` namespace called `vals-secret`:
 
@@ -462,7 +462,7 @@ Argo CD cannot create [HNC](https://github.com/kubernetes-sigs/hierarchical-name
 
 - With Argo CD CLI access granted, an issue authenticating via Dex can occur and you will see an error message of
 
-  > failed to get token: oauth2: "invalid_client” “Invalid client credentials."
+  > `failed to get token: oauth2: "invalid_client” “Invalid client credentials."`
 
   This is a known issue in Argo CD and the progress for it can be tracked [here](https://github.com/argoproj/argo-cd/issues/17088). Sometimes, when encountering this login issue, opening a new tab and re-trying the login process after entering the Argo CD homepage URL can resolve the problem.
 

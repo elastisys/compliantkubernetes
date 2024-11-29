@@ -81,13 +81,9 @@ If you are not using groups, contact your administrator.
 
 See [Namespaces](namespaces.md).
 
-## Why can't I access my cluster? 'Bad Request Unregistered redirect_uri ("http://localhost:18000").'
+## "Connection reset by peer" when port-forwarding to PostgreSQL?
 
-Port 8000 is the only allowed port for OpenID callback URL and is needed by the `kubectl` OpenID plugin. If that port is used locally, then `kubectl` will try to bind to port 18000 which is not allowed due to security concerns. Make sure that nothing is running locally that is using port 8000.
-
-## "Connection reset by peer" when port-forwarding to postgres?
-
-You may have seen this error when port-forwarding to postgres:
+You may have seen this error when port-forwarding to PostgreSQL:
 
 ```console
 Forwarding from 127.0.0.1:5432 -> 5432
@@ -100,7 +96,7 @@ portforward.go:234] lost connection to pod
 
 You have two options to resolve this issue:
 
-1. Send a request to your administrator to disable TLS in the postgres cluster. Although it sounds "bad", it does not compromise security, since;
+1. Send a request to your administrator to disable TLS in the PostgreSQL cluster. Although it sounds "bad", it does not compromise security, since;
 
     - Traffic between kubectl and the Kubernetes API is encrypted.
     - In-cluster network is trusted.

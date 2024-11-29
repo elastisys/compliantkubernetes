@@ -144,8 +144,8 @@ General information about architectural decision records is available at <https:
 
 Pre-requisites:
 
-- Install [npm](https://www.npmjs.com/)
-- Install [adr-log](https://github.com/adr/adr-log#install)
-- Install [make](https://packages.ubuntu.com/search?keywords=make)
+- Install [`npm`](https://www.npmjs.com/)
+- Install [`adr-log`](https://github.com/adr/adr-log#install)
+- Install [`make`](https://packages.ubuntu.com/search?keywords=make)
 
 Run `make -C docs/adr`, then run `pre-commit run --all-files`.
