@@ -4,10 +4,23 @@
 
 <!-- BEGIN TOC -->
 
+- [v0.4.0](#v040) - 2024-11-28
 - [v0.3.0](#v030) - 2024-08-23
 - [v0.2.0](#v020) - 2024-06-28
 - [v0.1.0](#v010) - 2024-01-24
 <!-- END TOC -->
+
+## v0.4.0
+
+Released 2024-11-28
+
+### Features(s)
+
+- Azure environments now only use one resource group.
+
+### Improvement(s)
+
+- `kube-system` pods are now prevented from scheduling on autoscaled nodes, to ensure that the nodes can be automatically scaled down again.
 
 ## v0.3.0
 
