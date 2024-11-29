@@ -3980,6 +3980,7 @@ What do we do for Infra Providers that do not have Service type LoadBalancer?</p
 <li>No changes are needed.</li>
 <li>More resources are available on the AMS nodes.</li>
 <li>Reduce complexity.</li>
+<li>We will now use <code>externalTrafficPolicy: local</code> and with this we will reduce latency and preserve the client’s source IP address, which is essential for some applications that rely on knowing the client's IP, such as for logging, security, or geolocation services.</li>
 </ul>
 <h3 id="negative-consequences">Negative Consequences<a class="headerlink" href="#negative-consequences" title="Permanent link">&para;</a></h3>
 <ul>
