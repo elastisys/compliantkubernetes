@@ -1486,6 +1486,15 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </li>
       
         <li class="md-nav__item">
+  <a href="#running-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#secret-management" class="md-nav__link">
     <span class="md-ellipsis">
       Secret Management
@@ -4044,6 +4053,15 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </li>
       
         <li class="md-nav__item">
+  <a href="#running-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#secret-management" class="md-nav__link">
     <span class="md-ellipsis">
       Secret Management
@@ -4246,18 +4264,53 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <p>You cannot ask Argo CD to create a Namespace. This also means that you cannot template the Namespace in ApplicationSets.</p>
 <p>Why? See <a href="../../../adr/0042-argocd-dynamic-hnc-namespaces/">ADR-0042</a></p>
 </div>
-<figure>
-    <img alt="Argo CD Deployment Model" src="../img/argocd.drawio.svg" >
-    <figcaption>
-        <strong>Argo CD on Welkin Deployment Model</strong>
-        <br>
-        This help you build a mental model of how to levarage Argo CD for deploying your application.
-    </figcaption>
-</figure>
-
 <p>This page will help you succeed in connecting to Argo CD application which meets your security and compliance requirements.</p>
 <h2 id="getting-access">Getting Access<a class="headerlink" href="#getting-access" title="Permanent link">&para;</a></h2>
 <p>Your administrator will set up the authentication inside Welkin, which will give you access to Argo CD UI.</p>
+<h2 id="running-example">Running Example<a class="headerlink" href="#running-example" title="Permanent link">&para;</a></h2>
+<p>To deploy the <a href="https://github.com/elastisys/welkin/tree/main/user-demo">user-demo</a>, proceed as follows:</p>
+<ol>
+<li>Create a namespace called <code>welkin-demo</code>, as explained in the <a href="../../namespaces/">Namespaces</a> page.</li>
+<li>Type the Argo CD Service Endpoint in the browsers. Generally, this is something like <code>https://argocd.$DOMAIN</code>.</li>
+<li>Complete the Single sign-on (SSO) authentication.</li>
+<li>In the right-hand menu, click <strong>Applications</strong>.</li>
+<li>In the top bar, click <strong>New app</strong>.</li>
+<li>In the right side, click <strong>Edit as YAML</strong>.</li>
+<li>
+<p>Copy-paste the YAML snippet below.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">welkin-demo</span>
+<span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://kubernetes.default.svc</span>
+<span class="w">  </span><span class="nt">source</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user-demo/deploy/welkin-user-demo</span>
+<span class="w">    </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/elastisys/welkin</span>
+<span class="w">    </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">    </span><span class="nt">helm</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
+<span class="w">        </span><span class="no">image:</span>
+<span class="w">          </span><span class="no">repository: harbor.$DOMAIN/$REGISTRY_PROJECT/welkin-user-demo</span>
+<span class="w">          </span><span class="no">tag: $TAG</span>
+<span class="w">        </span><span class="no">ingress:</span>
+<span class="w">          </span><span class="no">hostname: welkin-demo.$DOMAIN</span>
+<span class="w">  </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">  </span><span class="nt">syncPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">automated</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">prune</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">selfHeal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+</li>
+<li>
+<p>Replace <code>$DOMAIN</code>, <code>$REGISTRY_PROJECT</code> and <code>$TAG</code> as appropriate.</p>
+</li>
+<li>Click <strong>Save</strong>, then <strong>Create</strong>.</li>
+<li>Wait until Argo CD displays "Status: Healthy Synced", as shown in the picture below. <img alt="Argo CD showing status healthy and synced" src="../img/argocd-healthy-synced.png" />.</li>
+<li>Click on the "external link icon" -- the one with a box and an arrow -- as shown in the image above to access your application.</li>
+</ol>
 <h2 id="secret-management">Secret Management<a class="headerlink" href="#secret-management" title="Permanent link">&para;</a></h2>
 <p>Secret values should never be stored in plain-text in code repositories. The following sections will describe three supported approaches on how Application Developers can do secret management with Elastisys Managed Argo CD.</p>
 <h3 id="with-helm-secrets">With Helm Secrets<a class="headerlink" href="#with-helm-secrets" title="Permanent link">&para;</a></h3>
