@@ -38,4 +38,6 @@ While rather unlikely, you really want to make sure that your software medical d
 ## Further reading
 
 - [Regulation (EU) 2017/745 on Medical Devices](https://eur-lex.europa.eu/eli/reg/2017/745/2023-03-20)
+<!-- vale off -->
 - [Medicintekniska produkter on IVO](https://www.ivo.se/vard-omsorgsgivare/anmal-handelse-lamna-underrattelse/medicintekniska-produkter/)
+<!-- vale on -->

@@ -202,7 +202,7 @@ An Identity Provider (IdP) is a system that offers user authentication as a serv
 - [Keycloak](https://www.keycloak.org/)
 - [Microsoft Entra ID](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id) previously known as Azure Active Directory
 - [Google Identity](https://developers.google.com/identity/openid-connect/openid-connect#setredirecturi)
-- [jumpcloud](https://jumpcloud.com/)
+- [JumpCloud](https://jumpcloud.com/)
 
 Usage notes:
 
@@ -306,7 +306,7 @@ Interface exposed via the network for accessing Welkin functionality. Endpoints 
 
 Usage notes:
 
-- Do NOT use "Webportals" or "Service Access Points".
+- Do NOT use "Web portals" or "Service Access Points".
 
 See also:
 

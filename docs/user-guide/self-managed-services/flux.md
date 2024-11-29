@@ -104,7 +104,7 @@ curl https://raw.githubusercontent.com/elastisys/welkin/main/docs/user-guide/sel
 kubectl apply -k roles
 ```
 
-The kustomize and helm controller needs some extra permissions as well since it wants to deploy. The simplest is to add these controller ServiceAccounts to the `extra-workload-admins` RoleBinding in the parent namespace eg. `production`. This will grant Flux the maximum permission an Application Developer can give in the namespaces where it is configured. Edit the RoleBinding and add the lines below.
+The kustomize and Helm controller needs some extra permissions as well since it wants to deploy. The simplest is to add these controller ServiceAccounts to the `extra-workload-admins` RoleBinding in the parent namespace e.g., `production`. This will grant Flux the maximum permission an Application Developer can give in the namespaces where it is configured. Edit the RoleBinding and add the lines below.
 
 ```sh
 kubectl edit rolebindings extra-workload-admins -n production
@@ -206,7 +206,7 @@ There is a [known issue](https://github.com/fluxcd/flux2/discussions/3203) with 
 
 Flux uses the [server-side apply](https://kubernetes.io/docs/reference/using-api/server-side-apply/), which requires the ‘bind’ permission to properly apply RoleBindings. And we cannot give you this due to [privilege escalation issues](https://kubernetes.io/docs/concepts/security/rbac-good-practices/#bind-verb) with this permission.
 
-You can workaround this using the Flux Kustomization [dependsOn](https://fluxcd.io/flux/components/kustomize/kustomizations/#dependencies) functionality. By splitting the Roles and RoleBindings into separate folders and then creating two Kustomizations for them where the RoleBindings will depend on the Roles. Then the Roles will be applied before the RoleBindings and so the issue will not occur. Refer to the previous link for an example.
+You can workaround this using the Flux Kustomization [`dependsOn`](https://fluxcd.io/flux/components/kustomize/kustomizations/#dependencies) functionality. By splitting the Roles and RoleBindings into separate folders and then creating two Kustomizations for them where the RoleBindings will depend on the Roles. Then the Roles will be applied before the RoleBindings and so the issue will not occur. Refer to the previous link for an example.
 
 ## Notes
 

@@ -1,6 +1,6 @@
 # Welkin User Demo
 
-To make the most out of Welkin, this documentation features a minimalistic NodeJS application. It allows you to explore all Welkin benefits, including, such as HTTPS Ingresses, logging, metrics and user alerts.
+To make the most out of Welkin, this documentation features a minimalist NodeJS application. It allows you to explore all Welkin benefits, including, such as HTTPS Ingresses, logging, metrics and user alerts.
 
 The application provides:
 

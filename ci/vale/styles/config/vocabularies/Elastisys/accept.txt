@@ -1,22 +1,58 @@
-# Brands, Organization and Project Names
-Alertmanager
+# Brands and Organization
 Atlassian
-Ceph
+Bitnami
+Carasent
+Datadog
 Datatilsynet
 (?i)Elastisys
 Elementor
+Entra
+Exoscale
+EU
+GMail
+IMY
+Inera
+JumpCloud
+Prorenata
+Qualys
+Safespring
+Schrems
+Socialstyrelsen
+Spotahome
+Sjunet
+Telavox
+Telia
+Tempus
+Yopass
+Zalando
+
+# Project Names
+Alertmanager
+Ansible
+Ceph
+Dex
+etcd
 Falco
 Fluentd
-GMail
 Grafana
-IMY
+Graphviz
+Helm
+Kafka
+Keycloak
 Kubespray
 Kured
+kustomization
+kustomize
+MkDocs
+PGAudit
+Rclone
+Strimzi
+systemd
+Thanos
+timesyncd
 Tekton
-Telavox
 Trivy
 Velero
-Yopass
 
 # General technical terms
 API
@@ -24,26 +60,45 @@ API
 allowlisted
 (?i)autoscaling
 colocation
+CISO
 CPU
 cyber
 cybersecurity
 Dockerfile
 (?i)downsampled
 downscaling
+DPO
 failover
+hostname
+ICT
+loopback
 microsegmentation
+multitenancy
+OAuth
+resync
+runtime
 SLA
 setgid
 setuid
 stdout
+subnet
+unencrypted
 upscaling
 VM
 
 # Kubernetes terms
 Autoscaler
+CRD
+CronJob
 kubeconfig
+kubectl
+kubelogin
 Namespace
+PVC
 RBAC
+
+# OpenSearch terms
+Configurer
 
 # RabbitMQ terms
 vhost
@@ -54,24 +109,44 @@ alia
 decompile
 DPA
 facto
+# MDR class IIa
+IIa
 jure
 (?i)majeure
 kap
+nonfederal
+rulemaking
 (?i)severability
 subclause
 sublicense
 (?i)subprocessor
 
 # Swedish terms
+julafton
+kommuner
 midsommarafton
 midsommardagen
-julafton
+myndigheten
+nationell
+personuppgifter
+regioner
 skyddsklass
 
 # German terms
 Grundschutz
+Bundesamt
+Sicherheit
+Informationstechnik
 
 # No clue why Vale doesn't recognize these words
 approver
 auditability
+exfiltrate
 learnings
+misconfiguration
+onboarding
+timepoint
+untrusted
+
+# YAML terms
+frontmatter

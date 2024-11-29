@@ -11,7 +11,9 @@ tags:
    end='<!--legal-disclaimer-end-->'
 %}
 
+<!-- vale off -->
 # How do I comply with HSLF-FS 2016:40 4 kap. 9 § Kontroll av åtkomst till uppgifter?
+<!-- vale on -->
 
 Here is how we recommend to comply with Swedish Patient Data Laws, specifically HSLF-FS 2016:40 4 kap. 9 § if you host your application on Welkin.
 
@@ -19,6 +21,7 @@ Here is how we recommend to comply with Swedish Patient Data Laws, specifically 
 
 Swedish Patient Data Laws mandate having audit logs (who did what and when) for accesses to healthcare data. Socialstyrelsen has rulemaking power. Their regulation, HSLF-FS 2016:40, states the following:
 
+<!-- vale off -->
 > 9 § Vårdgivaren ska ansvara för att
 >
 > 1. det av dokumentationen av åtkomsten (loggar) framgår vilka åtgärder som har vidtagits med uppgifter om en patient,
@@ -28,6 +31,7 @@ Swedish Patient Data Laws mandate having audit logs (who did what and when) for 
 > 1. systematiska och återkommande stickprovskontroller av loggarna görs,
 > 1. kontroller av loggarna dokumenteras, och
 > 1. loggarna sparas minst fem år för att möjliggöra kontroll av åtkomsten till uppgifter om en patient.
+<!-- vale on -->
 
 ## Technical Context
 
@@ -54,4 +58,6 @@ We recommend you set up long-term log retention (5 years) for relevant applicati
 
 - [Audit Logs](audit-logs.md)
 - [Long-term Log Retention](../user-guide/long-term-log-retention.md)
+<!-- vale off -->
 - [Senaste version av HSLF-FS 2016:40 Socialstyrelsens föreskrifter och allmänna råd om journalföring och behandling av personuppgifter i hälso- och sjukvården](https://www.socialstyrelsen.se/kunskapsstod-och-regler/regler-och-riktlinjer/foreskrifter-och-allmanna-rad/konsoliderade-foreskrifter/201640-om-journalforing-och-behandling-av-personuppgifter-i-halso--och-sjukvarden/)
+<!-- vale on -->

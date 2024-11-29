@@ -50,7 +50,7 @@ Your cluster management software of choice, of which you can choose either or bo
 Optional, but very useful, tools for developers and DevOps engineers:
 
 - [docker](https://docs.docker.com/get-docker/), if you want to build (Docker) container images locally
-- [helm](https://helm.sh/docs/intro/install/), if you want to manage your application with the Helm package manager
+- [Helm](https://helm.sh/docs/intro/install/), if you want to manage your application with the Helm package manager
 
 ??? tip "You can verify that configuration is correct by issuing the following simple commands"
 

@@ -87,5 +87,5 @@ helm upgrade --install sealed-secrets -n sealed-secrets --version 2.13.1 sealed-
 Please refer to the official documentation how to operate and use Sealed Secrets.
 
 - [Documentation](https://github.com/bitnami-labs/sealed-secrets/tree/release/v0.24.2#usage)
-- [Crypto](https://github.com/bitnami-labs/sealed-secrets/blob/release/v0.24.2/docs/developer/crypto.md)
+- [Cryptographic documentation](https://github.com/bitnami-labs/sealed-secrets/blob/release/v0.24.2/docs/developer/crypto.md)
 - [SealedSecrets with Elastisys Managed Argo CD](../additional-services/argocd.md#with-sealedsecrets)

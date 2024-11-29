@@ -31,7 +31,7 @@ For setting up the Kubernetes layer, please refer to the [Kubespray air-gap inst
 
 This guide will assume that you have a Platform Administrator Machine that can access both the Internet and the air-gapped network over SSH, this includes SSH access to both the Cluster nodes and hosts for the different offline services described in the system context diagram above. This "Platform Administrator Machine" can be your local machine or a bastion host.
 
-Start by initializing your Welkin Apps config (see the quickstart section [here](https://github.com/elastisys/compliantkubernetes-apps?tab=readme-ov-file#quickstart) for more info on initializing and deploying Welkin Apps) with the `air-gapped` flavor by setting the `CK8S_FLAVOR` environment variable:
+Start by initializing your Welkin Apps configuration (see the quickstart section [here](https://github.com/elastisys/compliantkubernetes-apps?tab=readme-ov-file#quickstart) for more info on initializing and deploying Welkin Apps) with the `air-gapped` flavor by setting the `CK8S_FLAVOR` environment variable:
 
 ```bash
 export CK8S_FLAVOR=air-gapped
@@ -72,7 +72,7 @@ sudo ${RUNTIME} save -o ${IMAGE_FILE_NAME}.tar ${REGISTRY}/${IMAGE_NAME}
 
 !!!note
 
-    Be wary of images with digests as tags, as when saving the container image when using the `docker` or `podman` runtime and then loading it, the image will lose its digest (see issue discussing this [here](https://github.com/moby/moby/issues/22011)). If you use this approach, you may need to override the digest or image tag used in the Welkin Apps config. Using a tool like `nerdctl` will however preserve the correct image digest.
+    Be wary of images with digests as tags, as when saving the container image when using the `docker` or `podman` runtime and then loading it, the image will lose its digest (see issue discussing this [here](https://github.com/moby/moby/issues/22011)). If you use this approach, you may need to override the digest or image tag used in the Welkin Apps configuration. Using a tool like `nerdctl` will however preserve the correct image digest.
 
 !!!tip
 
@@ -261,7 +261,7 @@ trivy:
 
 ### NetworkPolicies
 
-A note about configuring NetworkPolicies, when using self-hosted file servers for the different services, remember to configure NetworkPolicies accordingly, i.e. if a self-hosted file server runs on a different port than 443, you will need to override it in the config for each respective service, e.g. for OpenSearch to get plugins from `fileserver.air-gapped.internal:8080`:
+A note about configuring NetworkPolicies, when using self-hosted file servers for the different services, remember to configure NetworkPolicies accordingly, i.e. if a self-hosted file server runs on a different port than 443, you will need to override it in the configuration for each respective service, e.g. for OpenSearch to get plugins from `fileserver.air-gapped.internal:8080`:
 
 ```yaml
 networkPolicies:

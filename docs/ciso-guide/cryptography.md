@@ -24,12 +24,14 @@ tags:
 
 [HSLF-FS 2016:40](https://www.socialstyrelsen.se/globalassets/sharepoint-dokument/artikelkatalog/foreskrifter-och-allmanna-rad/2016-4-44.pdf):
 
+<!-- vale off -->
 > **Behandling av personuppgifter i öppna nät**
 >
 > 15 § Om vårdgivaren använder öppna nät vid behandling av personuppgifter, ska denne ansvara för att
 >
 > 1. överföring av uppgifterna görs på ett sådant sätt att inte obehöriga kan ta del av dem, och
 > 1. elektronisk åtkomst eller direktåtkomst till uppgifterna föregås av stark autentisering.
+<!-- vale on -->
 
 ## Mapping to ISO 27001 Controls
 

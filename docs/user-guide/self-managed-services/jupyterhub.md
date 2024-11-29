@@ -148,9 +148,9 @@ ingress:
 
 1. The following resources are reused using \*resourceDefaults later in this file
 1. The following containerSecurityContext is reused using \*SCDefaults later in this file
-1. Block set to true will append a privileged initContainer using the iptables to block the sensitive metadata server at the provided ip. Privileged containers are not allowed in Welkin.
+1. Block set to true will append a privileged Init Container using `iptables` to block the sensitive metadata server at the provided IP. Privileged containers are not allowed in Welkin.
 1. "type: none" disables persistent storage for the user labs. Consolidate with Platform Administrator before enabling this feature. [for reference](https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/1ebca266bed3e2f38332c5a9a3202f627cba3af0/jupyterhub/values.yaml#L383)
-1. Use [this guide](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google) to get your client_id and client_secret through the [Google API Console](https://console.developers.google.com/).
+1. Use [this guide](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google) to get your `client_id` and `client_secret` through the [Google API Console](https://console.developers.google.com/).
 1. This should not be treated as a secret. See risk analysis [here](https://github.com/dexidp/dex/issues/469) and [here](https://security.stackexchange.com/questions/225809/what-is-the-worst-i-can-do-if-i-know-openid-connect-client-secret).
 
 ### Pushing the JupyterHub Images to Harbor
@@ -194,7 +194,7 @@ helm upgrade --install jupyterhub jupyterhub/jupyterhub --values values.yaml
 
 - JupyterHub's Admin functionality is limited since some of the admin functions require container root access. Pre-installed Python packages for users can not be added through the admin interface. They can be added by [modifying the Docker image](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-environment.html#choose-and-use-an-existing-docker-image), pushing it to your image registry and redeploying JupyterHub. **NOTE** Users can still install their own packages.
 
-- Persistent storage is currently disabled for Jypyter lab instances but [can be enabled](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-storage.html). It is disabled since Jupyter will allocate new storage for each user and should be carefully considered before it is enabled. This means that the workspace will be reset when the Pod crashes or is scaled down from not being used. This includes code added to the lab and installed packages.
+- Persistent storage is currently disabled for Jupyter lab instances but [can be enabled](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-storage.html). It is disabled since Jupyter will allocate new storage for each user and should be carefully considered before it is enabled. This means that the workspace will be reset when the Pod crashes or is scaled down from not being used. This includes code added to the lab and installed packages.
 
 - GPU is not enabled currently but [can be enabled](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-resources.html#set-user-gpu-guarantees-limits) depending on your infrastructure provider.
 

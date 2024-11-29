@@ -8,7 +8,7 @@ search:
 
     You can ask for this feature to be enabled by filing a [service ticket](https://elastisys.atlassian.net/servicedesk/customer/portals).
 
-The Swedish [Sjunet](https://www.inera.se/tjanster/alla-tjanster-a-o/sjunet/) is a private network, managed by Inera, designed for healthcare systems with strict requirements. It is used by regioner, kommuner and private actors with in the healthcare system. As the healthcare system has high requirements when it comes to distributing sensitive information. Sjunet as a private network, means they can validate that the strict requirements, such as high availability, stability and bandwidth, are meet. Also, that only authorized and audited users are allowed to use it.
+The Swedish [Sjunet](https://www.inera.se/tjanster/alla-tjanster-a-o/sjunet/) is a private network, managed by Inera, designed for healthcare systems with strict requirements. It is used by regions (regioner), municipalities (kommuner) and private actors with in the healthcare system. As the healthcare system has high requirements when it comes to distributing sensitive information. Sjunet as a private network, means they can validate that the strict requirements, such as high availability, stability and bandwidth, are meet. Also, that only authorized and audited users are allowed to use it.
 
 ## Who is Sjunet for?
 

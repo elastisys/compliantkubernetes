@@ -4,7 +4,7 @@
 
 ### Deploy Rook
 
-To deploy Rook, go to the `compliantkubernetes-kubespray` repo, change directory to `rook` and follow the instructions [here](https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/rook#rook-ceph) for each cluster.
+To deploy Rook, go to the `compliantkubernetes-kubespray` repository, change directory to `rook` and follow the instructions [here](https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/rook#rook-ceph) for each cluster.
 
 > [!NOTE]
 > If the kubeconfig files for the clusters are encrypted with SOPS, you need to decrypt them before using them:
@@ -70,7 +70,7 @@ Now that the Kubernetes clusters are up and running, we are ready to install Wel
 
 ### Clone `compliantkubernetes-apps` and Install Pre-requisites
 
-If you haven't done so already, clone the `compliantkubernetes-apps` repo and install pre-requisites.
+If you haven't done so already, clone the `compliantkubernetes-apps` repository and install pre-requisites.
 
 ```bash
 git clone https://github.com/elastisys/compliantkubernetes-apps.git

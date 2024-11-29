@@ -6,7 +6,7 @@ Welkin uses the Ingress NGINX Controller to route external traffic to the correc
 
 When using a Infrastructure Provider with a Kubernetes cloud integration such as AWS, Azure and Google cloud the Ingress
 controller can be exposed with a Service of type LoadBalancer. This will create an external load balancer in the cloud
-provider with an external ip-address. Any dns records should be pointed to the ip-address of the load balancer.
+provider with an external ip-address. Any DNS records should be pointed to the IP address of the load balancer.
 
 !!!note
 
@@ -19,13 +19,13 @@ uses the host network instead. This is done by configuring the Ingress Controlle
 is created on each node. The Pods are configured to use the host network, so all traffic received on the node
 on port 80 and 443 will be intercepted by the Ingress Controller Pod and then routed to the desired Service.
 
-On some Infrastructure Providers there is load balancing available for the worker nodes. For example Exoscale uses an "elastic ip"
-which provides one external ip which load balances to the available worker nodes. For these Infrastructure Providers this external ip
-of the load balancers should be used as the entry point in the dns.
+On some Infrastructure Providers there is load balancing available for the worker nodes. For example Exoscale uses an "elastic IP"
+which provides one external IP which load balances to the available worker nodes. For these Infrastructure Providers this external IP
+of the load balancers should be used as the entry point in the DNS.
 
-For the Infrastructure Providers where this is not available the easiest option is to just point the dns to the ip of any, or all, of
+For the Infrastructure Providers where this is not available the easiest option is to just point the DNS to the IP of any, or all, of
 the worker nodes. This is of course not a optimal solution because it adds a single point of failure on the worker node which
-is selected by the dns. Another option is to use any existing load balancer service if this is available.
+is selected by the DNS. Another option is to use any existing load balancer service if this is available.
 
 ## Installation
 
@@ -43,7 +43,7 @@ ingressNginx:
     type: ""
 ```
 
-If the apps repository is initiated with the correct Infrastructure Provider these config options will get the
+If the apps repository is initiated with the correct Infrastructure Provider these configuration options will get the
 correct defaults.
 
 For more ways to install the Ingress NGINX Controller see [the upstream documentation](https://kubernetes.github.io/ingress-nginx/deploy/).

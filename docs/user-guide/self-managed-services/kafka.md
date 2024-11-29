@@ -101,7 +101,7 @@ kubectl apply -f sa-cm/kafka-sa-cm.yaml
 
 With the initial prep done, you are now ready to deploy the operator.
 
-You can find the deployment manifest [here](https://raw.githubusercontent.com/strimzi/strimzi-kafka-operator/0.38.0/install/cluster-operator/060-Deployment-strimzi-cluster-operator.yaml). Deploying this on Welkin does require some securityContext to be added.
+You can find the deployment manifest [here](https://raw.githubusercontent.com/strimzi/strimzi-kafka-operator/0.38.0/install/cluster-operator/060-Deployment-strimzi-cluster-operator.yaml). Deploying this on Welkin does require a Security Context to be added.
 
 Edit the manifest and add this under `spec.template.spec.containers[0]`:
 
