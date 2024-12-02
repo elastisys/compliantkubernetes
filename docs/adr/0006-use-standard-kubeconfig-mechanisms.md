@@ -1,12 +1,12 @@
 # Use Standard Kubeconfig Mechanisms
 
 - Status: accepted
-- Deciders: Architecture Meeing
+- Deciders: Architecture Meeting
 - Date: 2021-02-02
 
 ## Context and Problem Statement
 
-To increase adoption of Welkin, we were asked to observe the [Principle of Least Astonishment](https://en.wikipedia.org/wiki/Principle_of_least_astonishment). Currently, Welkin's handing of kubeconfig is astonishing. Most tools in the ecosystem use the standard `KUBECONFIG` environment variable and kubecontext implemented in the client-go library. These tools leave it up to the user to set `KUBECONFIG` or use the default `~/.kube/config`. Similarly, there is a default kubecontext which can be overwritten via command-line. Tools that get cluster credentials generate a context related to the name of the cluster.
+To increase adoption of Welkin, we were asked to observe the [Principle of Least Astonishment](https://en.wikipedia.org/wiki/Principle_of_least_astonishment). Currently, Welkin's handing of kubeconfig is astonishing. Most tools in the ecosystem use the standard `KUBECONFIG` environment variable and KUBECONFIG context implemented in the client-go library. These tools leave it up to the user to set `KUBECONFIG` or use the default `~/.kube/config`. Similarly, there is a default KUBECONFIG context which can be overwritten via command-line. Tools that get cluster credentials generate a context related to the name of the cluster.
 
 Tools that behave as such include:
 
@@ -41,4 +41,4 @@ Tools that consume Kubernetes contexts are expected to use an approach similar t
 ## Links
 
 - [Organizing Cluster Access Using kubeconfig Files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
-- [kubectx / kubens](https://github.com/ahmetb/kubectx)
+- [`kubectx` / `kubens`](https://github.com/ahmetb/kubectx)

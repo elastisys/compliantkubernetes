@@ -14,7 +14,7 @@ There are two ways to configure Let's Encrypt as an issuers for cert-manager: [I
 
 ## Decision Drivers
 
-- We want to make compliantkubernetes-apps less fragile, and Let's Encrypt ratelimiting is a cause of fragility.
+- We want to make compliantkubernetes-apps less fragile, and Let's Encrypt rate limiting is a cause of fragility.
 - We want to make it easy for users to get started with Welkin in a "secure by default" manner.
 - We want to have a clear separation between user and administrator resources, responsibilities and privileges.
 - We want to keep the option open for "light" renderings, i.e., a single Kubernetes clusters that hosts both Management Cluster and Workload Cluster components.

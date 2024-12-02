@@ -32,6 +32,7 @@ Zalando
 Alertmanager
 Ansible
 Bazel
+Blackbox
 Ceph
 containerd
 Dex
@@ -53,6 +54,7 @@ MkDocs
 Monokle
 PGAudit
 pgvector
+Pulumni
 Rclone
 Strimzi
 Skaffold
@@ -76,6 +78,7 @@ colocation
 CPU
 cyber
 cybersecurity
+discoverability
 Dockerfile
 (?i)downsampled
 downscaling
@@ -102,6 +105,7 @@ SVG
 sysctl
 unencrypted
 upscaling
+upstreaming
 URI
 UI
 VM
@@ -110,6 +114,8 @@ VM
 Autoscaler
 CRD
 CronJob
+kops
+kubeadm
 kubeconfig
 kubectl
 kubelogin
@@ -170,6 +176,7 @@ learnings
 misconfiguration
 misconfigured
 mitigation
+offboarding
 onboarding
 rollout
 schedulable
@@ -186,6 +193,7 @@ Ewnetu
 Forsberg
 Fredrik
 Geoff
+Gunda
 Harr
 Johan
 Karlton
@@ -196,4 +204,5 @@ Liv
 Olle
 Pradyumna
 Prady
+Ravi
 Viktor
