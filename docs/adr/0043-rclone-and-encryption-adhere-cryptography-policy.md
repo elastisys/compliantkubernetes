@@ -63,4 +63,6 @@ Chosen option:
 - [XSalsa20 with 192-bit nonce](https://en.wikipedia.org/wiki/Salsa20#XSalsa20_with_192-bit_nonce)
 - [ECRYPT-CSA report](https://ec.europa.eu/research/participants/documents/downloadPublic?documentIds=080166e5ba203b9b&appId=PPGMS)
 - [Configuration Encryption](https://rclone.org/docs/#configuration-encryption)
+<!-- vale off -->
 - [secretbox](https://pkg.go.dev/golang.org/x/crypto/nacl/secretbox)
+<!-- vale on -->

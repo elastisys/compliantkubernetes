@@ -12,7 +12,7 @@ Where should we run the csi-cinder-controllerplugin?
 ## Decision Drivers
 
 - We want to deliver a stable and secure platform.
-- Want want to keep application Nodes "light", so the application team knows what capacity is available for their application.
+- We want to keep application Nodes "light", so the application team knows what capacity is available for their application.
 
 ## Considered Options
 

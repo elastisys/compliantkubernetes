@@ -39,7 +39,7 @@ In general, we will aim to fix dashboards missing the `cluster` variable upstrea
 ### Positive Consequences
 
 - We support both dashboards with `cluster` filter and without
-- We can enforce metrics multi-tenancy, i.e., map Grafana users/orgs to datasources, to filter some metrics out.
+- We can enforce metrics multi-tenancy, i.e., map Grafana users/orgs to data sources, to filter some metrics out.
 
 ### Negative Consequences
 

@@ -22,11 +22,11 @@ Should we increase the boot disk size to a bigger size?
 - Keep boot disk size to 50Gb and increase boot disk size only where is needed
 - Increase the boot disk size to 100GB for all nodes irrespective of node size
 - Increase the boot disk size to 100GB only for nodes that are bigger than 4C8GB
-- Use local disk of 100GB size for controlplane nodes
+- Use local disk of 100GB size for control plane Nodes
 
 ## Decision Outcome
 
-Chosen option: Increase the boot disk size to 100GB for all nodes irrespective of node size & Use local disk of 100GB size for controlplane nodes
+Chosen option: Increase the boot disk size to 100GB for all nodes irrespective of node size & Use local disk of 100GB size for control plane Nodes
 
 ### Positive Consequences
 
@@ -42,9 +42,9 @@ Chosen option: Increase the boot disk size to 100GB for all nodes irrespective o
 ## Recommendation to Platform Administrators
 
 - Try to use same VM flavors on all environments
-- Use VM flavor with local disk of 100GB or whichever is closest to this size depending on Infrastructure Provider for controlplane nodes.
+- Use VM flavor with local disk of 100GB or whichever is closest to this size depending on Infrastructure Provider for control plane Nodes.
 - For worker nodes use 100GB boot disk size on Infrastructure Providers that allow it and on the ones that we can't use the VM flavor with the closest disk size.
 
 ## Links
 
-- [Some recomandations](https://serverfault.com/questions/977871/recommended-disk-size-for-gke-nodes)
+- [Some recommendations](https://serverfault.com/questions/977871/recommended-disk-size-for-gke-nodes)

@@ -61,7 +61,7 @@ Before we dive in further, let us discuss the type of logs ingested into OpenSea
 
 !!!note
 
-    **Users** can only view the logs of **kubernetes** and **kubeaudit**. **authlog** and **others** are for Platform Administrators.
+    **Users** can only view the logs of **Kubernetes** and **kubeaudit**. **authlog** and **others** are for Platform Administrators.
 
 Let us dive into it then.
 
@@ -295,7 +295,7 @@ docker run --rm -ti -v $(pwd)/opensearch-dump:/tmp elasticdump/elasticsearch-dum
   --searchBody='{"query":{......}}'
 ```
 
-For more examples and how to use the tool, read the documentation [in the repo](https://github.com/elasticsearch-dump/elasticsearch-dump#use).
+For more examples and how to use the tool, read the documentation [in the repository](https://github.com/elasticsearch-dump/elasticsearch-dump#use).
 
 ## Log review dashboard
 

@@ -26,7 +26,7 @@ When you add the document to an index, OpenSearch adds some metadata, such as th
 
 Indexes also contain mappings and settings:
 
-- A mapping is the collection of fields that documents in the index have. In this case, those fields are title and release_date.
+- A mapping is the collection of fields that documents in the index have. In this case, those fields are `title` and `release_date`.
 - Settings include data like the index name, creation date, and number of shards.
 
 You can define how documents and their fields are stored and indexed by creating a mapping. The mapping specifies the list of fields for a document. Every field in the document has a field type, which corresponds to the type of data the field contains. For example, you may want to specify that the `release_date` field should be of type `date`. To learn more, see [Supported field types](https://opensearch.org/docs/latest/field-types/supported-field-types/index/).
@@ -43,9 +43,9 @@ We can see the dynamic mapping of all the document fields:
 
 ![Get Mapping](../img/dynamic_mapping_2.png)
 
-OpenSearch was able to infere that **release_date** is of type **date**, and **title** is of type **text**.
+OpenSearch was able to infer that `release_date` is of type `date`, and `title` is of type `text`.
 
-You should be aware that OpenSearch type detection is based on some Internal rules, which by no means will infere the correct type for every field. Let's take this example:
+You should be aware that OpenSearch type detection is based on some Internal rules, which by no means will infer the correct type for every field. Let's take this example:
 
 We will recreate the **movies** index, and add a new field called `duration_minutes`, and wrap the value in quotes:
 
@@ -55,7 +55,7 @@ Let's check the new dynamic mapping
 
 ![Get Mapping](../img/dynamic_mapping_4.png)
 
-You can see that OpenSearch choose a type of text for duration, which is technically correct, but it won't be of value especially if we were to run custom queries on the _duration_minutes_ field, for example: Get all movies longer than a certain duration .. etc
+You can see that OpenSearch choose a type of text for duration, which is technically correct, but it won't be of value especially if we were to run custom queries on the `duration_minutes` field, for example: Get all movies longer than a certain duration .. etc
 
 We can instruct OpenSearch to detect numeric values, by configuring the index at creation time. Let's recreate the index and enable numeric detection:
 
@@ -96,7 +96,7 @@ The document gets indexed fine, and the mapping now contains the additional fiel
 
 But now if start adding all sorts of fields we don't know about, we're going to start having problems, and will probably end up with bad quality data, which will make it more difficult to work with.
 
-There are some options on how to deal when documents contains new fields that were not explicitly defined in the mapping. We can tell Elastisearch to either reject the document completely or we can allow the document to be indexed but ignore fields not in the explicit mapping.
+There are some options on how to deal when documents contains new fields that were not explicitly defined in the mapping. We can tell OpenSearch to either reject the document completely or we can allow the document to be indexed but ignore fields not in the explicit mapping.
 
 Let's configure the index to reject documents that contains fields not defined in the explicit mapping, to do this we set _dynamic_ to _strict_:
 

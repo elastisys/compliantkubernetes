@@ -46,15 +46,19 @@ Gzip
 Helm
 Kafka
 Keycloak
+Kibana
 Kubespray
 Kured
 kustomization
 kustomize
 MkDocs
 Monokle
+NGINX
+OpenStack
 PGAudit
 pgvector
 Pulumni
+Pushgateway
 Rclone
 Strimzi
 Skaffold
@@ -73,6 +77,7 @@ allowlist
 (?i)allowlisting
 allowlisted
 (?i)autoscaling
+burstable
 CI
 CISO
 colocation
@@ -94,12 +99,16 @@ microsegmentation
 multitenancy
 multitenant
 OAuth
+overcommitted
 resync
 runbook
 runtime
 SLA
 setgid
 setuid
+# `snowflakiness` is rather informal, but it's rather used, so let's admit it.
+# See https://martinfowler.com/bliki/SnowflakeServer.html
+snowflakiness
 stdout
 subnet
 SVG
@@ -115,15 +124,19 @@ VM
 Autoscaler
 CRD
 CronJob
+finalizer
 kops
 kubeadm
 kubeconfig
 kubectl
+kubelet
 kubelogin
 Namespace
 PDB
+prober
 PVC
 RBAC
+toleration
 
 # OpenSearch terms
 Configurer
@@ -179,6 +192,7 @@ misconfigured
 mitigation
 offboarding
 onboarding
+onwards
 rollout
 schedulable
 timepoint
