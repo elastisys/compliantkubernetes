@@ -46,13 +46,13 @@ To make your life easier we suggest to use language server for the language that
 
 E.g.
 
-- terraform: [terraform-ls](https://github.com/hashicorp/terraform-ls)
-- yaml: [yaml-language-server](https://github.com/redhat-developer/yaml-language-server)
+- Terraform: [`terraform-ls`](https://github.com/hashicorp/terraform-ls)
+- YAML: [`yaml-language-server`](https://github.com/redhat-developer/yaml-language-server)
 
 To catch pre-commit errors early, direct in your editor, it's also suggested to install plugins for these tools.
 
-- [markdownlint](https://github.com/markdownlint/markdownlint/)
-- [shellcheck](https://github.com/koalaman/shellcheck/)
+- [`markdownlint`](https://github.com/markdownlint/markdownlint/)
+- [`shellcheck`](https://github.com/koalaman/shellcheck/)
 
 When developing and you only working on a single application it will be faster to only deploy that application instead of applying all charts.
 This can be done by figuring out the app label for the application in question by running:
@@ -68,7 +68,7 @@ bin/ck8s ops helmfile {wc|sc} -l app=dex diff
 ```
 
 Instead of running `helmfile apply`, it might be useful to run `helmfile sync`.
-This will do a 3-way upgrade and make sure that the helm state matches the objects actually running in Kubernetes.
+This will do a 3-way upgrade and make sure that the Helm state matches the objects actually running in Kubernetes.
 This will make sure that you haven't manually edited something for debugging and forgot about it.
 
 ```console
@@ -114,5 +114,5 @@ done
 
 ### Reusing clusters
 
-If you for some reason need to reinstall Welkin from scratch, we have some scripts that removes all objects created by this repo.
+If you for some reason need to reinstall Welkin from scratch, we have some scripts that removes all objects created by this repository.
 The scripts can be found [here](https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts) _(clean-sc.sh and clean-wc.sh)_.

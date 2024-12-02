@@ -59,6 +59,7 @@ Rclone
 Strimzi
 Skaffold
 systemd
+Terraform
 Thanos
 timesyncd
 Tekton

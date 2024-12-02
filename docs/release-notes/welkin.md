@@ -57,6 +57,12 @@
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog).
 
+<!--
+    Release notes before 2024-11-29 are excluded from spellchecking.
+    Please make sure to put new release notes above this line.
+-->
+<!-- vale off -->
+
 ## v0.42.0
 
 Released 2024-11-14
