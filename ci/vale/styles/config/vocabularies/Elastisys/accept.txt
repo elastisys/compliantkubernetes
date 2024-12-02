@@ -130,6 +130,7 @@ VM
 
 # Kubernetes terms
 Autoscaler
+autoscaled
 CRD
 CronJob
 finalizer
