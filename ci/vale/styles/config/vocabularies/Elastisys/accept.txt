@@ -36,6 +36,8 @@ Blackbox
 Ceph
 containerd
 Dex
+# 'Distro' as in 'Open Distro for Elasticsearch'
+Distro
 etcd
 Elasticdump
 Falco
@@ -93,6 +95,7 @@ downscaling
 DPO
 failover
 Gbps
+geospatial
 hostname
 ICT
 loopback
@@ -102,6 +105,7 @@ multitenancy
 multitenant
 OAuth
 overcommitted
+queryable
 resync
 runbook
 runtime
