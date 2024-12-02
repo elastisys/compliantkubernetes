@@ -78,10 +78,12 @@ allowlist
 allowlisted
 (?i)autoscaling
 burstable
+chroot
 CI
 CISO
 colocation
 CPU
+CVE
 cyber
 cybersecurity
 discoverability
@@ -103,15 +105,17 @@ overcommitted
 resync
 runbook
 runtime
-SLA
+seccomp
 setgid
 setuid
+SLA
 # `snowflakiness` is rather informal, but it's rather used, so let's admit it.
 # See https://martinfowler.com/bliki/SnowflakeServer.html
 snowflakiness
 stdout
 subnet
 SVG
+syscall
 sysctl
 unencrypted
 upscaling
