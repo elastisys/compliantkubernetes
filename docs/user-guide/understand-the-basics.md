@@ -1,6 +1,6 @@
 # Understand the Basics
 
-!!!elastisys "For Elastisys Managed Services Customers"
+!!!Elastisys "For Elastisys Managed Services Customers"
     Elastisys is an Authorized Linux Foundation Training Partner and CNCF Certified Kubernetes Training Partner (KTP).
     Consider leveraging [Elastisys Training](https://elastisys.com/training/) to quickly get your application team up-to-speed.
 
