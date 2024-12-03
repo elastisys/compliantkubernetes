@@ -83,8 +83,6 @@ This document contains instructions on how to set-up a new Welkin on-prem enviro
 
     You need to set up two load balancers, one for the Workload Cluster and one for the Management Cluster.
 
-1. Make sure you have [all necessary tools](getting-started.md).
-
 ## Deploying Welkin using Kubespray
 
 ???+note "How to change Default Kubernetes Subnet Address"
