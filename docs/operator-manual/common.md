@@ -172,6 +172,7 @@ Check if all Helm charts succeeded.
 
 ```bash
 compliantkubernetes-apps/bin/ck8s ops helm wc list -A --all
+compliantkubernetes-apps/bin/ck8s ops helm sc list -A --all
 ```
 
 You can check if the system settled as follows:
