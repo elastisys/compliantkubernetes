@@ -13,7 +13,7 @@
         <meta name="author" content="Elastisys AB">
       
       
-        <link rel="canonical" href="https://elastisys.io/welkin/operator-manual/schema/config-properties-velero-config-properties-velero-backup-schedule/">
+        <link rel="canonical" href="https://elastisys.io/welkin/operator-manual/schema/config-defs-cronschedule/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Velero Backup Schedule Schema - Elastisys Welkin®</title>
+        <title>OpenSearch Retention CronJob Schedule Schema - Elastisys Welkin®</title>
       
     
     
@@ -68,12 +68,12 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Velero Backup Schedule Schema - Elastisys Welkin®" >
+        <meta  property="og:title"  content="OpenSearch Retention CronJob Schedule Schema - Elastisys Welkin®" >
       
         <meta  property="og:description"  content="Documentation for Welkin, the Kubernetes platform for software critical to our society
 " >
       
-        <meta  property="og:image"  content="https://elastisys.io/welkin/assets/images/social/operator-manual/schema/config-properties-velero-config-properties-velero-backup-schedule.png" >
+        <meta  property="og:image"  content="https://elastisys.io/welkin/assets/images/social/operator-manual/schema/config-defs-cronschedule.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -81,16 +81,16 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://elastisys.io/welkin/operator-manual/schema/config-properties-velero-config-properties-velero-backup-schedule/" >
+        <meta  property="og:url"  content="https://elastisys.io/welkin/operator-manual/schema/config-defs-cronschedule/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Velero Backup Schedule Schema - Elastisys Welkin®" >
+        <meta  name="twitter:title"  content="OpenSearch Retention CronJob Schedule Schema - Elastisys Welkin®" >
       
         <meta  name="twitter:description"  content="Documentation for Welkin, the Kubernetes platform for software critical to our society
 " >
       
-        <meta  name="twitter:image"  content="https://elastisys.io/welkin/assets/images/social/operator-manual/schema/config-properties-velero-config-properties-velero-backup-schedule.png" >
+        <meta  name="twitter:image"  content="https://elastisys.io/welkin/assets/images/social/operator-manual/schema/config-defs-cronschedule.png" >
       
     
     
@@ -147,7 +147,7 @@ if(!document.__defineGetter__) {
     <div data-md-component="skip">
       
         
-        <a href="#velero-backup-schedule-schema" class="md-skip">
+        <a href="#opensearch-retention-cronjob-schedule-schema" class="md-skip">
           Skip to content
         </a>
       
@@ -198,7 +198,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Velero Backup Schedule Schema
+              OpenSearch Retention CronJob Schedule Schema
             
           </span>
         </div>
@@ -3852,14 +3852,16 @@ We're undergoing a transformation! We're rebranding our platform and changing th
   
 
 
-<h1 id="velero-backup-schedule-schema">Velero Backup Schedule Schema<a class="headerlink" href="#velero-backup-schedule-schema" title="Permanent link">&para;</a></h1>
+<h1 id="opensearch-retention-cronjob-schedule-schema">OpenSearch Retention CronJob Schedule Schema<a class="headerlink" href="#opensearch-retention-cronjob-schedule-schema" title="Permanent link">&para;</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is auto-generated documentation from a JSON schema that is under construction, this will improve over time.</p>
 </div>
 <p><a href="../config/">Return to the root config schema</a></p>
-<div class="highlight"><pre><span></span><code>https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/velero/properties/schedule
+<div class="highlight"><pre><span></span><code>https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/opensearch/properties/snapshot/properties/retentionSchedule
 </code></pre></div>
+<p>Schedule to check for and remove old snapshots.
+Uses the Cron format, see <a href="https://en.wikipedia.org/wiki/Cron">https://en.wikipedia.org/wiki/Cron</a>.</p>
 <table>
 <thead>
 <tr>
@@ -3887,14 +3889,19 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </tbody>
 </table>
 <p><strong>TYPE</strong>:</p>
-<p><code>string</code> (<a href="./">Velero Backup Schedule</a>)</p>
+<p><code>string</code> (<a href="./">OpenSearch Retention CronJob Schedule</a>)</p>
+<p><strong>CONSTRAINTS</strong>:</p>
+<p><strong>pattern</strong>: the string must match the following regular expression:&#x20;</p>
+<div class="highlight"><pre><span></span><code>^(((\*\/)?([0-5]?[0-9])((\,|\-|\/)([0-5]?[0-9]))*|\*)[^\S\r\n]+((\*\/)?((2[0-3]|1[0-9]|[0-9]|00))((\,|\-|\/)(2[0-3]|1[0-9]|[0-9]|00))*|\*)[^\S\r\n]+((\*\/)?([1-9]|[12][0-9]|3[01])((\,|\-|\/)([1-9]|[12][0-9]|3[01]))*|\*)[^\S\r\n]+((\*\/)?([1-9]|1[0-2])((\,|\-|\/)([1-9]|1[0-2]))*|\*|(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec))[^\S\r\n]+((\*\/)?[0-6]((\,|\-|\/)[0-6])*|\*|00|(sun|mon|tue|wed|thu|fri|sat)))$|^@(annually|yearly|monthly|weekly|daily|hourly|reboot)$
+</code></pre></div>
+<p><a href="https://regexr.com/?expression=%5E(((%5C*%5C%2F)%3F(%5B0-5%5D%3F%5B0-9%5D)((%5C%2C%7C%5C-%7C%5C%2F)(%5B0-5%5D%3F%5B0-9%5D))*%7C%5C*)%5B%5E%5CS%5Cr%5Cn%5D%2B((%5C*%5C%2F)%3F((2%5B0-3%5D%7C1%5B0-9%5D%7C%5B0-9%5D%7C00))((%5C%2C%7C%5C-%7C%5C%2F)(2%5B0-3%5D%7C1%5B0-9%5D%7C%5B0-9%5D%7C00))*%7C%5C*)%5B%5E%5CS%5Cr%5Cn%5D%2B((%5C*%5C%2F)%3F(%5B1-9%5D%7C%5B12%5D%5B0-9%5D%7C3%5B01%5D)((%5C%2C%7C%5C-%7C%5C%2F)(%5B1-9%5D%7C%5B12%5D%5B0-9%5D%7C3%5B01%5D))*%7C%5C*)%5B%5E%5CS%5Cr%5Cn%5D%2B((%5C*%5C%2F)%3F(%5B1-9%5D%7C1%5B0-2%5D)((%5C%2C%7C%5C-%7C%5C%2F)(%5B1-9%5D%7C1%5B0-2%5D))*%7C%5C*%7C(jan%7Cfeb%7Cmar%7Capr%7Cmay%7Cjun%7Cjul%7Caug%7Csep%7Coct%7Cnov%7Cdec))%5B%5E%5CS%5Cr%5Cn%5D%2B((%5C*%5C%2F)%3F%5B0-6%5D((%5C%2C%7C%5C-%7C%5C%2F)%5B0-6%5D)*%7C%5C*%7C00%7C(sun%7Cmon%7Ctue%7Cwed%7Cthu%7Cfri%7Csat)))%24%7C%5E%40(annually%7Cyearly%7Cmonthly%7Cweekly%7Cdaily%7Chourly%7Creboot)%24" title="try regular expression with regexr.com">try pattern</a></p>
 <p><strong>DEFAULTS</strong>:</p>
 <p>The default value is:</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;0 0 * * *&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;@daily&quot;</span>
 </code></pre></div>
 <p><a href="../config/">Return to the root config schema</a></p>
 <hr />
-<p>Generated Mon Dec  2 09:51:43 UTC 2024 from <a href="https://github.com/elastisys/compliantkubernetes-apps/commit/be09a959f1b1cfec469f0183767714873cd5fcb9">elastisys/compliantkubernetes-apps@main</a></p>
+<p>Generated Tue Dec  3 03:53:02 UTC 2024 from <a href="https://github.com/elastisys/compliantkubernetes-apps/commit/4d8183470bfcfb7d1517798af0d1528fe503a777">elastisys/compliantkubernetes-apps@main</a></p>
 
 
 

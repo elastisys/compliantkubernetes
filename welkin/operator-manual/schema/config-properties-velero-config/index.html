@@ -4044,7 +4044,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <td style="text-align: left;"><code>string</code></td>
 <td style="text-align: left;">Optional</td>
 <td style="text-align: left;">cannot be null</td>
-<td style="text-align: left;"><a href="../config-properties-velero-config-properties-velero-backup-schedule/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/velero/properties/schedule">Welkin Apps Config</a></td>
+<td style="text-align: left;"><a href="../config-defs-cronschedule/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/velero/properties/schedule">Welkin Apps Config</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#retentionperiod">retentionPeriod</a></td>
@@ -4183,23 +4183,30 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <p><strong>TYPE</strong>:</p>
 <p><code>boolean</code> (<a href="../config-properties-velero-config-properties-velero-use-volume-snapshots/">Velero Use Volume Snapshots</a>)</p>
 <h2 id="schedule">schedule<a class="headerlink" href="#schedule" title="Permanent link">&para;</a></h2>
+<p>Schedule for Velero backup schedule "velero-daily-backup"
+Uses the Cron format, see <a href="https://en.wikipedia.org/wiki/Cron">https://en.wikipedia.org/wiki/Cron</a>.</p>
 <p><code>schedule</code></p>
 <ul>
 <li>
 <p>is optional</p>
 </li>
 <li>
-<p>Type: <code>string</code> (<a href="../config-properties-velero-config-properties-velero-backup-schedule/">Velero Backup Schedule</a>)</p>
+<p>Type: <code>string</code> (<a href="../config-defs-cronschedule/">Velero Backup Schedule</a>)</p>
 </li>
 <li>
 <p>cannot be null</p>
 </li>
 <li>
-<p>defined in: <a href="../config-properties-velero-config-properties-velero-backup-schedule/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/velero/properties/schedule">Welkin Apps Config</a></p>
+<p>defined in: <a href="../config-defs-cronschedule/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/velero/properties/schedule">Welkin Apps Config</a></p>
 </li>
 </ul>
 <p><strong>TYPE</strong>:</p>
-<p><code>string</code> (<a href="../config-properties-velero-config-properties-velero-backup-schedule/">Velero Backup Schedule</a>)</p>
+<p><code>string</code> (<a href="../config-defs-cronschedule/">Velero Backup Schedule</a>)</p>
+<p><strong>CONSTRAINTS</strong>:</p>
+<p><strong>pattern</strong>: the string must match the following regular expression:&#x20;</p>
+<div class="highlight"><pre><span></span><code>^(((\*\/)?([0-5]?[0-9])((\,|\-|\/)([0-5]?[0-9]))*|\*)[^\S\r\n]+((\*\/)?((2[0-3]|1[0-9]|[0-9]|00))((\,|\-|\/)(2[0-3]|1[0-9]|[0-9]|00))*|\*)[^\S\r\n]+((\*\/)?([1-9]|[12][0-9]|3[01])((\,|\-|\/)([1-9]|[12][0-9]|3[01]))*|\*)[^\S\r\n]+((\*\/)?([1-9]|1[0-2])((\,|\-|\/)([1-9]|1[0-2]))*|\*|(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec))[^\S\r\n]+((\*\/)?[0-6]((\,|\-|\/)[0-6])*|\*|00|(sun|mon|tue|wed|thu|fri|sat)))$|^@(annually|yearly|monthly|weekly|daily|hourly|reboot)$
+</code></pre></div>
+<p><a href="https://regexr.com/?expression=%5E(((%5C*%5C%2F)%3F(%5B0-5%5D%3F%5B0-9%5D)((%5C%2C%7C%5C-%7C%5C%2F)(%5B0-5%5D%3F%5B0-9%5D))*%7C%5C*)%5B%5E%5CS%5Cr%5Cn%5D%2B((%5C*%5C%2F)%3F((2%5B0-3%5D%7C1%5B0-9%5D%7C%5B0-9%5D%7C00))((%5C%2C%7C%5C-%7C%5C%2F)(2%5B0-3%5D%7C1%5B0-9%5D%7C%5B0-9%5D%7C00))*%7C%5C*)%5B%5E%5CS%5Cr%5Cn%5D%2B((%5C*%5C%2F)%3F(%5B1-9%5D%7C%5B12%5D%5B0-9%5D%7C3%5B01%5D)((%5C%2C%7C%5C-%7C%5C%2F)(%5B1-9%5D%7C%5B12%5D%5B0-9%5D%7C3%5B01%5D))*%7C%5C*)%5B%5E%5CS%5Cr%5Cn%5D%2B((%5C*%5C%2F)%3F(%5B1-9%5D%7C1%5B0-2%5D)((%5C%2C%7C%5C-%7C%5C%2F)(%5B1-9%5D%7C1%5B0-2%5D))*%7C%5C*%7C(jan%7Cfeb%7Cmar%7Capr%7Cmay%7Cjun%7Cjul%7Caug%7Csep%7Coct%7Cnov%7Cdec))%5B%5E%5CS%5Cr%5Cn%5D%2B((%5C*%5C%2F)%3F%5B0-6%5D((%5C%2C%7C%5C-%7C%5C%2F)%5B0-6%5D)*%7C%5C*%7C00%7C(sun%7Cmon%7Ctue%7Cwed%7Cthu%7Cfri%7Csat)))%24%7C%5E%40(annually%7Cyearly%7Cmonthly%7Cweekly%7Cdaily%7Chourly%7Creboot)%24" title="try regular expression with regexr.com">try pattern</a></p>
 <p><strong>DEFAULTS</strong>:</p>
 <p>The default value is:</p>
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;0 0 * * *&quot;</span>
@@ -4391,7 +4398,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </code></pre></div>
 <p><a href="../config/">Return to the root config schema</a></p>
 <hr />
-<p>Generated Mon Dec  2 09:51:43 UTC 2024 from <a href="https://github.com/elastisys/compliantkubernetes-apps/commit/be09a959f1b1cfec469f0183767714873cd5fcb9">elastisys/compliantkubernetes-apps@main</a></p>
+<p>Generated Tue Dec  3 03:53:02 UTC 2024 from <a href="https://github.com/elastisys/compliantkubernetes-apps/commit/4d8183470bfcfb7d1517798af0d1528fe503a777">elastisys/compliantkubernetes-apps@main</a></p>
 
 
 
