@@ -210,7 +210,7 @@ spec:
 
 1. Annotation indicating the issuer to use.
 1. Target namespace where the object will be created.
-1. Placing a host in the TLS config will determine what ends up in the cert’s subjectAltNames.
+1. Placing a host in the TLS configuration will determine what ends up in the cert’s subjectAltNames.
 1. The created certificate is stored in this secret.
 
 !!!important

@@ -13,7 +13,7 @@ Welkin by default sets an retention of 30 days for logs.
 Many regulators, including Swedish Healthcare, require a minimum of 5 year log retention.
 
 This is not provided at the platform level by Welkin as it runs the risk of GDPR non-compliance.
-Logs may include sensitive information like personal data, which requires that the the retention scheme is designed together with application-specific knowledge to ensure compliance.
+Logs may include sensitive information like personal data, which requires that the retention scheme is designed together with application-specific knowledge to ensure compliance.
 Specifically, this includes that the retention scheme ensures that erased personal data can not be accidentally restored, as per [Art. 17 GDPR Right to erasure (‘right to be forgotten’)](https://gdpr.fan/a17).
 
 Using application-specific knowledge would also make it possible to reduce the amount of logs stored, by filtering out so only the required logs are kept.
@@ -268,7 +268,7 @@ The simplest way to prepare this for deployment is to build a container image in
 
 Here are some examples of how to build and deploy them:
 
-!!!example "Example: Containerfile / Dockerfile"
+!!!example "Example: `Containerfile` / `Dockerfile`"
 
     ```Dockerfile
     FROM docker.io/library/ubuntu:jammy

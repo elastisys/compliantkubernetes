@@ -63,7 +63,7 @@ Chosen option: option 1 and option 2.
 
 - The Network Policy for cert-manager will be more permissive.
     - This would add unrestricted egress on `:80/tcp`, `:53/tcp`, and `:53/udp`.
-    - This is somewhat offset by the fact that cert-manager is normally configured by default to allow egress to `0.0.0.0:443/tcp` to connect to Let's Encrypt as they by choice do not provide list of IPs to allowlist.
+    - This is somewhat offset by the fact that cert-manager is normally configured by default to allow egress to `0.0.0.0:443/tcp` to connect to Let's Encrypt as they by choice do not provide list of IP addresses to allowlist.
 
 ## Pros and Cons of the Options <!-- optional -->
 

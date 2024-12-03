@@ -57,13 +57,15 @@ A person who writes an application that runs in a Kubernetes cluster.
 
 Usage notes:
 
-- It's okay to use "app dev", "dev" or "developer", if it's clear from the context that we refer to an Application Developer.
+- It's okay to use "developer", if it's clear from the context that we refer to an Application Developer.
 - If you need more precision, use:
     - "Application Developers who are Grafana administrators" (see [Grafana Roles](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/))
     - "Application Developers who are Harbor system administrators" (see [Harbor Managing Users](https://goharbor.io/docs/2.8.0/administration/managing-users/))
     - "Application Developers who are Kubernetes admins" (see [Kubernetes user-facing roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles))
     - "Application Developers with Kubernetes edit permissions" (see [Kubernetes user-facing roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles))
-- Do NOT use "Super Application Developer", "user-admin", "user-view", etc.
+<!-- vale off -->
+- Do NOT use "Super Application Developer", "user-admin", "user-view", "app dev", "dev", etc.
+<!-- vale on -->
 
 See also:
 
@@ -202,7 +204,7 @@ An Identity Provider (IdP) is a system that offers user authentication as a serv
 - [Keycloak](https://www.keycloak.org/)
 - [Microsoft Entra ID](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id) previously known as Azure Active Directory
 - [Google Identity](https://developers.google.com/identity/openid-connect/openid-connect#setredirecturi)
-- [jumpcloud](https://jumpcloud.com/)
+- [JumpCloud](https://jumpcloud.com/)
 
 Usage notes:
 
@@ -306,7 +308,7 @@ Interface exposed via the network for accessing Welkin functionality. Endpoints 
 
 Usage notes:
 
-- Do NOT use "Webportals" or "Service Access Points".
+- Do NOT use "Web portals" or "Service Access Points".
 
 See also:
 

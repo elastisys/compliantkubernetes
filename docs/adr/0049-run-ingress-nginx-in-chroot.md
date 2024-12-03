@@ -27,16 +27,16 @@ Should we consider using `Role-Based Access Control (RBAC)` and potentially runn
     - `Good` because it automatically applies RBAC policies, reducing manual configuration and potential errors.
     - `Bad`, because it requires development and maintenance of a custom operator, which is complex and time-consuming.
 
-1. Use Namespaced Rolebindings
+1. Use Namespaced RoleBindings
 
     - `Good`, because it is easier and faster to implement compared to developing an operator.
-    - `Bad`, because it requires manual configuration of rolebindings, which can be cumbersome in large environments and prone to human error.
+    - `Bad`, because it requires manual configuration of RoleBindings, which can be cumbersome in large environments and prone to human error.
     - `Bad`, because it increases overhead as namespaces need to be manually managed and updated.
 
 1. Run Ingress-NGINX in chroot with custom seccomp profile
 
     - `Good`, because attackers can not exploit recent CVEs to access secrets cluster-wide.
-    - `Bad`, because if someone were to break out of the chroot and attack the controller itself, they would have access to the clone and unshare syscalls on the host. This allows the attacker to create threads on the host as well as any type of namespace. It is not entirely clear what kind of harm this could cause.
+    - `Bad`, because if someone were to break out of the chroot and attack the controller itself, they would have access to the `clone` and `unshare` syscalls on the host. This allows the attacker to create threads on the host as well as any type of namespace. It is not entirely clear what kind of harm this could cause.
 
 ## Decision Outcome
 

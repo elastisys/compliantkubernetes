@@ -36,6 +36,12 @@
 
     For a more detailed look check out the full [changelog](https://github.com/elastisys/compliantkubernetes-kubespray/blob/main/changelog/).
 
+<!--
+    Release notes before 2024-11-29 are excluded from spellchecking.
+    Please make sure to put new release notes above this line.
+-->
+<!-- vale off -->
+
 ### v2.26.0-ck8s1
 
 #### Updated

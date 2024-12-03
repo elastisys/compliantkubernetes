@@ -34,9 +34,11 @@ This document highlights the risks that can be mitigated by regularly reviewing 
 [HSLF-FS 2016:40](https://www.socialstyrelsen.se/kunskapsstod-och-regler/regler-och-riktlinjer/foreskrifter-och-allmanna-rad/konsoliderade-foreskrifter/201640-om-journalforing-och-behandling-av-personuppgifter-i-halso--och-sjukvarden/)
 
 <!-- prettier-ignore-start -->
+<!-- vale off -->
 > 2 § Vårdgivaren ska genom ledningssystemet säkerställa att
 > [...]
 > 4. åtgärder kan härledas till en användare (spårbarhet) i informationssystem som är helt eller delvis automatiserade.
+<!-- vale on -->
 <!-- prettier-ignore-end -->
 
 ## Mapping to ISO 27001 Controls

@@ -13,7 +13,7 @@ How should we expose local storage to Managed Services?
 ## Decision Drivers
 
 - We want to best serve the Application Developer needs.
-- We want to offer fast performant Managed Services.
+- We want to offer fast performance for Managed Services.
 - We want to find a solution which is scalable and minimizes administrator burden.
 - We want to find a future-proof solution, which exposes local disks to any application.
 
@@ -22,12 +22,12 @@ How should we expose local storage to Managed Services?
 - Use the fastest network storage with dedicated IOPS.
 - Use local storage with [local-volume-provisioner](https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner).
 - Use local storage with [local-path-provisioner](https://github.com/rancher/local-path-provisioner)
-- Use [hostPath](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
+- Use [`hostPath`](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
 - Use [local](https://kubernetes.io/docs/concepts/storage/volumes/#local)
 
 ## Decision Outcome
 
-Chosen option: Use local storage with local-volume-provisioner and move the code within the Kubespray repo.
+Chosen option: Use local storage with local-volume-provisioner and move the code within the Kubespray repository.
 
 ### Positive Consequences
 
@@ -47,5 +47,5 @@ When using the local-volume-provisioner please create dedicated partitions and m
 
 - [local-volume-provisioner](https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner/tree/v2.5.0)
 - [local-path-provisioner](https://github.com/rancher/local-path-provisioner)
-- [hostPath](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
+- [`hostPath`](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
 - [local](https://kubernetes.io/docs/concepts/storage/volumes/#local)

@@ -9,7 +9,7 @@
 We want to support workload multi-tenancy, i.e., one Management Cluster -- hosting the tamper-proof logging environment -- and multiple Workload Clusters. Currently, the Management Cluster exposes two end-points for Workload Clusters:
 
 - Dex, for authentication;
-- Elastisearch, for pushing logs (append-only).
+- Elasticsearch, for pushing logs (append-only).
 
 Currently, the Management Cluster pulls metrics from the Workload Cluster. This makes it difficult to have multiple Workload Clusters connected to the same Management Cluster.
 

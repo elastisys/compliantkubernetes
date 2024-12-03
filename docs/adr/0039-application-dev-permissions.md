@@ -6,12 +6,12 @@
 
 ## Context and Problem Statement
 
-Kubernetes comes with a set of default clusterRoles that are meant to be user-facing.
-One such clusterRole is `admin`.
+Kubernetes comes with a set of default ClusterRoles that are meant to be user-facing.
+One such ClusterRole is `admin`.
 It is meant to be granted on a per namespace basis, and it grants read and write permissions on _most_ of the default namespaced resources.
-Welkin grants the `admin` clusterRole in the appropriate namespaces to application developers.
-The `admin` clusterRole is elevated with additional privileges through the use of the clusterRole aggregation feature.
-Application developers are granted additional permissions for some cluster-wide resources through the use of extra clusterRoles and clusterRoleBindings.
+Welkin grants the `admin` ClusterRole in the appropriate namespaces to application developers.
+The `admin` ClusterRole is elevated with additional privileges through the use of the ClusterRole aggregation feature.
+Application developers are granted additional permissions for some cluster-wide resources through the use of extra ClusterRoles and clusterRoleBindings.
 
 At times, application developers request access to additional resources not yet granted by Welkin, both concerning namespaced and cluster-scoped resources.
 How should we manage such requests and when should the core permissions granted by Welkin be elevated?

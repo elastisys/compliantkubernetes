@@ -10,7 +10,7 @@ Currently, the Management Cluster exposes several end-points for Workload Cluste
 
 - Dex, for authentication;
 - OpenSearch, for pushing logs (append-only);
-- InfluxDB, for pusing metrics;
+- InfluxDB, for pushing metrics;
 - Harbor, for pulling container images.
 
 InfluxDB has served us really well over the years. However, as we enter a new era of growth, it no longer satisfies our needs. In particular:
@@ -37,8 +37,7 @@ Shall we push or pull metrics using Thanos?
 
 ## Decision Outcome
 
-We chose to push metrics from the Workload Cluster to the Management Cluster via
-via [Thanos Receive](https://thanos.io/tip/components/receive.md/),
+We chose to push metrics from the Workload Cluster to the Management Cluster via [Thanos Receive](https://thanos.io/tip/components/receive.md/),
 because it keeps the "direction" of metrics flow.
 Hence, we keep support for multiple Workload Clusters without any changes.
 

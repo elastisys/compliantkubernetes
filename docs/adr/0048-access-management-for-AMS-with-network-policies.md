@@ -8,7 +8,7 @@
 
 Elastisys is working around the clock to improve the security of our platform, so as to allow Application Developers to better protect Personal Data. Currently, we don't have the access management for the AMS-es i.e how these are supposed to be accessed by pods that are deployed by Application Developers.
 
-We are considering Network Policies for AMS-es to enhance security and control. A key aspect of this change concerns how these services, such as our additional managed Redis or Postgres etc instances, interact with applications deployed by Application Developers.
+We are considering Network Policies for AMS-es to enhance security and control. A key aspect of this change concerns how these services, such as our additional managed Redis or PostgreSQL, etc. instances, interact with applications deployed by Application Developers.
 
 How should the access be managed and how should it be communicated to the Application Developers so that we have a smooth transition?
 

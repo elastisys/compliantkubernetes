@@ -23,9 +23,11 @@ tags:
 
 [HSLF-FS 2016:40](https://www.socialstyrelsen.se/globalassets/sharepoint-dokument/artikelkatalog/foreskrifter-och-allmanna-rad/2016-4-44.pdf):
 
+<!-- vale off -->
 > **Utvärdering av skyddet mot olovlig åtkomst**
 >
 > 18 § Vårdgivaren ska årligen utvärdera skyddet mot såväl intern som extern olovlig åtkomst till datornätverk och informationssystem som används för behandling av personuppgifter.
+<!-- vale on -->
 
 ## Mapping to ISO 27001 Controls
 

@@ -1,49 +1,154 @@
-# Brands, Organization and Project Names
-Alertmanager
+# Brands and Organization
 Atlassian
-Ceph
+Bitnami
+Carasent
+Datadog
 Datatilsynet
 (?i)Elastisys
 Elementor
+Entra
+Exoscale
+EU
+GMail
+IMY
+Inera
+JumpCloud
+Opsgenie
+Prorenata
+Qualys
+Safespring
+Schrems
+Socialstyrelsen
+Spotahome
+Sjunet
+Telavox
+Telia
+Tempus
+vSphere
+Yopass
+Zalando
+
+# Project Names
+Alertmanager
+Ansible
+Bazel
+Blackbox
+Ceph
+containerd
+Dex
+# 'Distro' as in 'Open Distro for Elasticsearch'
+Distro
+etcd
+Elasticdump
 Falco
 Fluentd
-GMail
 Grafana
-IMY
+Graphviz
+Gzip
+Helm
+Kafka
+Keycloak
+Kibana
 Kubespray
 Kured
+kustomization
+kustomize
+MkDocs
+Monokle
+NGINX
+OpenStack
+PGAudit
+pgvector
+Pulumni
+Pushgateway
+Rclone
+Strimzi
+Skaffold
+systemd
+Terraform
+Thanos
+timesyncd
 Tekton
-Telavox
 Trivy
 Velero
-Yopass
 
 # General technical terms
+ADR
 API
+allowlist
 (?i)allowlisting
 allowlisted
 (?i)autoscaling
+burstable
+chroot
+CI
+CISO
 colocation
 CPU
+CVE
 cyber
 cybersecurity
+discoverability
 Dockerfile
 (?i)downsampled
 downscaling
+DPO
 failover
+Gbps
+geospatial
+hostname
+ICT
+loopback
+lookup
 microsegmentation
-SLA
+multitenancy
+multitenant
+OAuth
+overcommitted
+queryable
+resync
+runbook
+runtime
+seccomp
 setgid
 setuid
+SLA
+# `snowflakiness` is rather informal, but it's rather used, so let's admit it.
+# See https://martinfowler.com/bliki/SnowflakeServer.html
+snowflakiness
 stdout
+subnet
+SVG
+syscall
+sysctl
+unencrypted
 upscaling
+upstreaming
+URI
+UI
 VM
 
 # Kubernetes terms
 Autoscaler
+autoscaled
+CRD
+CronJob
+finalizer
+kops
+kubeadm
 kubeconfig
+kubectl
+kubelet
+kubelogin
 Namespace
+PDB
+prober
+PVC
 RBAC
+toleration
+
+# OpenSearch terms
+Configurer
 
 # RabbitMQ terms
 vhost
@@ -54,24 +159,74 @@ alia
 decompile
 DPA
 facto
+# MDR class IIa
+IIa
 jure
 (?i)majeure
 kap
+nonfederal
+rulemaking
 (?i)severability
 subclause
 sublicense
 (?i)subprocessor
 
 # Swedish terms
+julafton
+kommuner
 midsommarafton
 midsommardagen
-julafton
+myndigheten
+nationell
+Patientdatalagen
+personuppgifter
+regioner
 skyddsklass
 
 # German terms
 Grundschutz
+Bundesamt
+Sicherheit
+Informationstechnik
 
 # No clue why Vale doesn't recognize these words
 approver
 auditability
+digitalization
+exfiltrate
+impactful
 learnings
+misconfiguration
+misconfigured
+mitigation
+offboarding
+onboarding
+onwards
+rollout
+schedulable
+timepoint
+untrusted
+
+# YAML terms
+frontmatter
+
+# Names used in some place
+Axel
+Cristian
+Ewnetu
+Forsberg
+Fredrik
+Geoff
+Gunda
+Harr
+Johan
+Karlton
+Kashyap
+Larsson
+Lennart
+Liv
+Olle
+Pradyumna
+Prady
+Ravi
+Viktor

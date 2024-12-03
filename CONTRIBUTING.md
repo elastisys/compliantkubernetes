@@ -30,9 +30,9 @@ Please observe a stable URL policy. This means:
 
 ## Code Snippets
 
-Code snippets should be written in a way that is transparent, predictable and flexible. They should be written with two roles in mind: devs and ops. Devs need commands that "mostly work", but need access to the underlying tools to select only the component they currently work on (e.g., Ansible `-t` or Helmfile `-l`). Ops need access to dry-run. Both these roles will be called "administrator" below.
+Code snippets should be written in a way that is transparent, predictable and flexible. They should be written with two roles in mind: contributors and platform administrators. Contributors need commands that "mostly work", but need access to the underlying tools to select only the component they currently work on (e.g., Ansible `-t` or Helmfile `-l`). Platform administrators need access to dry-run.
 
-- Separate pre-requisite installation snippets, config snippets (which includes init snippets), apply snippets and test snippets.
+- Separate pre-requisite installation snippets, configuration snippets (which includes init snippets), apply snippets and test snippets.
 - Apply snippets should not execute when copy-pasted, e.g., do not add a final newline. They should allow the administrator to review the command, potentially edit the command, before confirming execution by typing ENTER.
 - Apply snippets should be idempotent, i.e., running apply multiple times should give the same result as applying only once.
 - Avoid auto-approve in apply snippets. Encourage (but don't force) dry-running.
@@ -85,7 +85,7 @@ kubectl delete all --all --all-namespaces
 
 ## Diagrams
 
-### From diagrams.net (source of truth in this repo)
+### From diagrams.net (source of truth in this repository)
 
 Files ending in `*.drawio.svg` are produced using [diagrams.net](https://www.diagrams.net/). They are exported as follows:
 
@@ -107,7 +107,7 @@ Other diagrams are produced in graphviz. To regenerate them, edit the relevant `
 make -C docs/img
 ```
 
-For "live preview" open the output file (e.g., SVG or PNG) in a viewer supporting live refresh (e.g., eog), then type:
+For "live preview" open the output file (e.g., SVG or PNG) in a viewer supporting live refresh (e.g., `eog`), then type:
 
 ```bash
 make -C docs/img preview
@@ -117,7 +117,7 @@ The viewer's output should be updated live as you save the source `dot` file.
 
 ## Auto-generated documentation
 
-Welkin Apps config and secrets have auto-generated documentation from [the JSON schemas defined in it repository](https://github.com/elastisys/compliantkubernetes-apps/tree/main/config/schemas).
+Welkin Apps configuration and secrets have auto-generated documentation from [the JSON schemas defined in it repository](https://github.com/elastisys/compliantkubernetes-apps/tree/main/config/schemas).
 
 This is driven via a script using [adobe/jsonschema2md](https://github.com/adobe/jsonschema2md).
 

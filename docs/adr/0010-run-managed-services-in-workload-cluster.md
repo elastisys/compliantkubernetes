@@ -1,6 +1,8 @@
 # Run managed services in Workload Cluster
 
+<!-- vale off -->
 - Status: proposed. **This ADR did not reach consensus, with strong arguments on both sides.** However, due to needing a decision in a timely manner, this ADR is actually followed. Therefore, this ADR serves both for visibility and to document a _[fait accompli](https://en.wikipedia.org/wiki/Glossary_of_French_expressions_in_English#F)_.
+<!-- vale on -->
 - Deciders: Cristian
 - Date: 2021-04-29
 

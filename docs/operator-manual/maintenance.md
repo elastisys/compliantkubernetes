@@ -37,12 +37,12 @@ Let's go through them one by one.
 ### Patching the nodes
 
 Security patches for the underlying OS on the nodes is constantly being released, and to ensure your environment is secured, the nodes that run Welkin must be updated with these patches.
-We recommend that you use the [AutomaticSecurityUpdates](https://help.ubuntu.com/community/AutomaticSecurityUpdates) feature that is available in Ubuntu (similar feature exist in other distros) to install these updates.
+We recommend that you use the [AutomaticSecurityUpdates](https://help.ubuntu.com/community/AutomaticSecurityUpdates) feature that is available in Ubuntu (similar feature exist in other Linux distributions) to install these updates.
 Note that the nodes still need to be rebooted for some of these updates to be applied.
 In order to reboot the nodes, you can either use a tool like [kured](https://github.com/kubereboot/kured) or you can do it manually by logging on to the nodes and rebooting them manually.
 When doing that, reboot one node at the time and make sure that the rebooted node is 'Ready' and that pods are scheduled to it before you move on to the next, or you risk downtime.
 
-There is a playbook in the compliantkubernetes-kubespray repo that can assist with the reboot of nodes.
+There is a playbook in the compliantkubernetes-kubespray repository that can assist with the reboot of nodes.
 It will cordon and reboot the nodes one by one.
 
 ```bash
@@ -53,7 +53,7 @@ It will cordon and reboot the nodes one by one.
 
 Welkin consists of a multitude of open source components that interact to form a smooth End User experience.
 In order to free you of the burden of keeping track of when to upgrade the various components, new versions of Welkin are regularly release.
-When a new version is released, it becomes available as a [tagged release](https://github.com/elastisys/compliantkubernetes-apps/tags) in the GitHub repo.
+When a new version is released, it becomes available as a [tagged release](https://github.com/elastisys/compliantkubernetes-apps/tags) in the GitHub repository.
 
 > Before upgrading to a new release, please review the [changelog](https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog) if possible, apply the upgrade to a staging environment before upgrading any environments with production data.
 

@@ -36,14 +36,14 @@ Hence, forwarders are subject to the following tensions:
 
 - Use underlying storage provider for increased buffering resilience ([current approach](https://github.com/elastisys/compliantkubernetes-apps/blob/v0.9.0/helmfile/values/kube-prometheus-stack-wc.yaml.gotmpl#L100)).
 - Use [Local Persistent Volumes](https://kubernetes.io/blog/2018/04/13/local-persistent-volumes-beta/).
-- Use [emptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir) volumes.
-- Use [hostPath](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath) volumes.
+- Use [`emptyDir`](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir) volumes.
+- Use [`hostPath`](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath) volumes.
 
 ## Decision Outcome
 
-Chosen option: emptyDir for Prometheus as forwarder, because it allows monitoring of the storage system in some cases (e.g. Rook) and can redeploy automatically after node failure. It also keeps the complexity down without much risk of data loss.
+Chosen option: `emptyDir` for Prometheus as forwarder, because it allows monitoring of the storage system in some cases (e.g. Rook) and can redeploy automatically after node failure. It also keeps the complexity down without much risk of data loss.
 
-Fluentd as forwarder is deployed via DaemonSet. Both, emptyDir and hostPath can be used.
+Fluentd as forwarder is deployed via DaemonSet. Both, `emptyDir` and `hostPath` can be used.
 
 ### Positive Consequences
 
@@ -54,7 +54,7 @@ Fluentd as forwarder is deployed via DaemonSet. Both, emptyDir and hostPath can 
 ### Negative Consequences
 
 - Buffered monitoring information is lost if node is lost.
-- emptyDir can cause disk pressure. This can be handled by alerting on low disk space.
+- `emptyDir` can cause disk pressure. This can be handled by alerting on low disk space.
 
 ## Pros and Cons of the Options
 
@@ -81,7 +81,7 @@ Fluentd as forwarder is deployed via DaemonSet. Both, emptyDir and hostPath can 
 - Bad, because local persistent storage requires an additional configuration step.
 - Bad, because setting right ownership requires init containers or [alpha features](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#configure-volume-permission-and-ownership-change-policy-for-pods).
 
-### Use emptyDir
+### Use `emptyDir`
 
 - Good, because the forwarder can be restarted on any node without manual action.
 - Bad, because the amount of forwarding depends on the node's local disk size.
@@ -93,7 +93,7 @@ Fluentd as forwarder is deployed via DaemonSet. Both, emptyDir and hostPath can 
 - Good, because works out of the box.
 - Good, because it integrates nicely with `securityContext`.
 
-### Use hostPath
+### Use `hostPath`
 
 Similar to Local Persistent Volumes, but
 

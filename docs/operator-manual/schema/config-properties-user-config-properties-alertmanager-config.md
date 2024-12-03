@@ -1,4 +1,4 @@
-# Alertmanager Config Schema
+# Alertmanager Configuration Schema
 
 > [!note]
 >

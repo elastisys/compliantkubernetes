@@ -10,6 +10,12 @@
 - [v1.39.0-ck8s1](#v1390-ck8s1) - 2023-03-07
 <!-- END TOC -->
 
+<!--
+    Release notes before 2024-11-29 are excluded from spellchecking.
+    Please make sure to put new release notes above this line.
+-->
+<!-- vale off -->
+
 ## v1.52.0-ck8s1
 
 Released 2024-04-26

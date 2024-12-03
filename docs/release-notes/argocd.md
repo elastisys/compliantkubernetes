@@ -11,6 +11,12 @@
 - [v2.4.20-ck8s1](#v2420-ck8s1) - 2023-03-29
 <!-- END TOC -->
 
+<!--
+    Release notes before 2024-11-29 are excluded from spellchecking.
+    Please make sure to put new release notes above this line.
+-->
+<!-- vale off -->
+
 ### v2.12.0-ck8s1
 
 Released 2024-09-02

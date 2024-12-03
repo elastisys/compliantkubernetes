@@ -9,9 +9,9 @@
 A reason why people want encryption-at-rest is to add another safeguard to data confidentiality.
 Encryption-at-rest is a must have for phones and laptops as they can easily be stolen or get lost.
 However, in our opinion, it is a nice-to-have addition for servers, which are supposed to be in a physically protected and secure data-center, with the disks being safely disposed.
-The same should be true if the Infrastructure Provideroffers object storage - the disks comprising the storage layer should be nicely tucked away deep inside a secure data-center.
+The same should be true if the Infrastructure Provider offers object storage - the disks comprising the storage layer should be nicely tucked away deep inside a secure data-center.
 
-Anyhow, we are sometimes asked by Application Developers on why we don't simply do full-disk encryption at the VM level, using something like [cryptsetup](https://linux.die.net/man/8/cryptsetup), or why we don't always encrypt data before it is shipped to object storage.
+Anyhow, we are sometimes asked by Application Developers on why we don't simply do full-disk encryption at the VM level, using something like [`cryptsetup`](https://linux.die.net/man/8/cryptsetup), or why we don't always encrypt data before it is shipped to object storage.
 Furthermore, some Application Developers require that _all_ data is encrypted-at-rest.
 How should we in Welkin handle encryption-at-rest both for VMs and object storage?
 

@@ -8,7 +8,7 @@
 
 We previously decided to allow [configuration snippet annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#configuration-snippet) for Ingress NGINX, but only after formal risk acceptance from the Application Developer. However, we had not yet decided on handling specific use cases, such as whether [server snippets](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#server-snippet) should have stricter controls due to their higher risk profile.
 
-The difference is that config snippets allows to configure for whole location blocks and are validated by the Ingress Controller, while server snippets allows to configure for whole server block and are not validated by the Ingress Controller, they are passed directly to NGINX, which increases the vulnerability exposure area.
+The difference is that configuration snippets allows to configure for whole location blocks and are validated by the Ingress Controller, while server snippets allows to configure for whole server block and are not validated by the Ingress Controller, they are passed directly to NGINX, which increases the vulnerability exposure area.
 
 [Snippet Annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/) are a powerful tool to allow injecting custom configurations, including both configuration and server snippets, into the Ingress NGINX Controller. For example, it allows things such as header renaming, custom authentication, or other advanced use cases etc.
 

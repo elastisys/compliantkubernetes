@@ -27,6 +27,7 @@ tags:
 
 [HSLF-FS 2016:40](https://www.socialstyrelsen.se/globalassets/sharepoint-dokument/artikelkatalog/foreskrifter-och-allmanna-rad/2016-4-44.pdf):
 
+<!-- vale off -->
 > **Säkerhetskopiering**
 >
 > 12 § Vårdgivaren ska säkerställa att personuppgifter som behandlas i informationssystem säkerhetskopieras med en fastställd periodicitet.
@@ -35,6 +36,7 @@ tags:
 > 13 § Vårdgivaren ska besluta om hur länge säkerhetskopiorna ska sparas och hur ofta återläsningstester av kopiorna ska göras.
 >
 > Allmänna råd: Hur ofta återläsningstester ska göras bör styras av resultaten av återkommande riskanalyser.
+<!-- vale on -->
 
 ## Mapping to ISO 27001 Controls
 

@@ -22,7 +22,7 @@ To move from production anxiety to production karma, here is a checklist to go t
     - **Possible resolution**: Ensure the application has proper resource requests and limits (see our [user demo as an example](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L51-L60)).
 - [ ] Load testing was performed while updating the application.
     - **Why?** This ensures that the application can be updated without downtime.
-    - **How?** Make a trivial change to your application, e.g., add "Lorem ipsum" in the output of some API, and redeploy.
+    - **How?** Make a trivial change to your application, e.g., add `Lorem ipsum` in the output of some API, and redeploy.
     - **Desired outcome**: Measured downtime is acceptable.
     - **Possible resolutions**: Make sure you have the right [deployment strategy](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/). Prefer `RollingUpdate` over `Recreate`. Ensure other parameters of the deployment strategy are tuned as needed.
 - [ ] Load testing was performed while doing a rolling reboot of Nodes:
@@ -36,7 +36,7 @@ To move from production anxiety to production karma, here is a checklist to go t
 - [ ] [For multi-Zone environments] Load testing was performed while failing an entire Zone:
     - **Why?** If a multi-Zone environment was requested, then the additional resilience must be tested. Otherwise, Zone failure may cause application downtime.
     - **How?** As above, but now ask the administrator to fail an entire Zone.
-    - **Desired outcome**: The measured downtime (due to Pod migration) during Zode failure is acceptable. Capacity is sufficient to tolerate one Zode failure.
+    - **Desired outcome**: The measured downtime (due to Pod migration) during Zone failure is acceptable. Capacity is sufficient to tolerate one Zone failure.
     - **Possible resolution**:
         - Ensure the application has proper resource requests and limits (see our [user demo for an example](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L51-L60)).
         - Ensure the application has at least two replicas (see our [user demo for an example](https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L5)).

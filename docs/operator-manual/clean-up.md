@@ -6,7 +6,7 @@ To remove the applications added by Welkin you can use the two scripts `clean-sc
 
 They perform the following actions:
 
-1. Delete the added helm charts
+1. Delete the added Helm charts
 1. Delete the added namespaces
 1. Delete any remaining PersistentVolumes
 1. Delete the added CustomResourceDefinitions

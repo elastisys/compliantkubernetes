@@ -80,7 +80,7 @@ The Kubernetes Audit Logs capture user access to additional services, i.e., `kub
 
 **Prefer audit logs in your application to capture audit-worthy events**, such as login, logout, patient record access, patient record change, etc. Resist the temptation to enable audit logging too "low" in the stack. Messages like "Redis client connected" are plenty and add little value to your data protection posture.
 
-Out of all additional services, audit logging for the [database](../user-guide/additional-services/postgresql.md) makes the most sense. It can be enabled via [pgaudit](https://github.com/pgaudit/pgaudit/blob/master/README.md). Make sure you discuss your auditing requirements with the service-specific administrator, to ensure you find the best risk-reduction-to-implementation-cost trade-off. Typically, you want to discuss:
+Out of all additional services, audit logging for the [database](../user-guide/additional-services/postgresql.md) makes the most sense. It can be enabled via [PGAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md). Make sure you discuss your auditing requirements with the service-specific administrator, to ensure you find the best risk-reduction-to-implementation-cost trade-off. Typically, you want to discuss:
 
 - which databases and tables are audited: e.g., audit `app.users`, but not `app.emailsSent`;
 - what operations are audited: e.g., audit `INSERT/UPDATE/DELETE`, but not `SELECT`;
@@ -89,4 +89,4 @@ Out of all additional services, audit logging for the [database](../user-guide/a
 ## Further Reading
 
 - [Kubernetes Auditing](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/)
-- [pgaudit](https://www.pgaudit.org/)
+- [PGAudit](https://www.pgaudit.org/)

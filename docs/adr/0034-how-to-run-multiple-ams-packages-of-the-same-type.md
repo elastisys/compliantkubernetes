@@ -20,7 +20,7 @@ How can we overcome this issue? Should we add a `elastisys.io/ams-cluster-name` 
 
 ## Considered Options
 
-1. Always scale the nodes vertically and fit multiple postgres packages on the same pair of nodes.
+1. Always scale the nodes vertically and fit multiple PostgreSQL packages on the same pair of nodes.
 
     - but how many packages should we place on the same pair of nodes? max 3 packages? max 5 packages?
     - up to what node sizes?
@@ -52,16 +52,16 @@ Chosen options: 2
 - The platform stability and scalability is improved.
 - We provide extra isolation of the AMS.
 - Being able to choose from options of scaling the nodes both vertically and horizontally shows that we are flexible and we can satisfy more of the Application Developer needs.
-- We can add more labels that will better describe and schedulle our AMS services, like `local-disk` and others.
+- We can add more labels that will better describe and schedule our AMS services, like `local-disk` and others.
 - With options 1 and 3 more resources are available to the Application Developer.
 
 ### Negative Consequences
 
-- For option 2 we need to add the new label to the AMS repo and update documentation.
+- For option 2 we need to add the new label to the AMS repository and update documentation.
 - The infrastructure footprint is increased for option 2.
 - With options 1 and 3 the stability of the AMS package is reduced, because if 1 node is unresponsive then it will affect not 1 AMS package, but multiple AMS packages.
 
 ## Recommendations to Platform Administrators
 
 - Use label like: `elastisys.io/ams-cluster-name`
-- Update the AMS repo and documentation with this and set it by default to automatically picked up from kubectl
+- Update the AMS repository and documentation with this and set it by default to automatically picked up from kubectl

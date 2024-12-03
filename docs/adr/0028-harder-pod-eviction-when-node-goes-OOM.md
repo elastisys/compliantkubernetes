@@ -20,7 +20,7 @@ Should we enable kubelet hard eviction so as to behold the vital components?
 - Enable kubelet hard eviction.
 - Adjust OOM score so that kernel does not OOM critical Pods
 - Setup priority class for all our apps
-- Do not make any changes and reinforce the responsibility to the custmer for not overloading the nodes.
+- Do not make any changes and reinforce the responsibility to the customer for not overloading the nodes.
 
 ## Decision Outcome
 
@@ -39,4 +39,4 @@ The option `Adjust OOM score so that kernel does not OOM critical Pods` is not v
 
 ## Recommendation to Platform Administrators
 
-Test multiple comfigurations using kubelet hard eviction, priotiry classes and other option to obtain the desired behaviour where the nodes do not become unresponsive and our components are not getting evicted when the node is overcommitted by the Application Developer.
+Test multiple configurations using kubelet hard eviction, priority classes and other option to obtain the desired behaviour where the nodes do not become unresponsive and our components are not getting evicted when the node is overcommitted by the Application Developer.

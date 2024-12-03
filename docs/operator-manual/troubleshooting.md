@@ -16,7 +16,7 @@ This guide assumes that:
 
 - You have [pre-requisites](getting-started.md) installed.
 - Your environment variables, in particular `CK8S_CONFIG_PATH` is set, and `CLUSTER` set to either `sc` or `wc`.
-- Your config folder is available.
+- Your configuration folder is available.
 - `compliantkubernetes-apps` and `compliantkubernetes-kubespray` is available.
 
 !!!important
@@ -43,7 +43,7 @@ ansible -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini all -m ping
 
 ### Are the Nodes "doing fine"?
 
-Dmesg should not display unexpected messages. [OOM](https://en.wikipedia.org/wiki/Out_of_memory) will show up here.
+`dmesg` should not display unexpected messages. [OOM](https://en.wikipedia.org/wiki/Out_of_memory) will show up here.
 
 ```bash
 ansible -i ${CK8S_CONFIG_PATH}/${CLUSTER}-config/inventory.ini all -m shell -a 'echo; hostname; dmesg | tail -n 10'
@@ -252,7 +252,7 @@ Prefer this option if you "quickly" need to add CPU, memory or storage (i.e., Ro
 First, check for infrastructure drift, as shown [here](#how-do-i-check-if-infrastructure-drifted-due-to-manual-intervention).
 
 Depending on your provider:
-If the infrastructure is not managed by terraform you can skip to step 3:
+If the infrastructure is not managed by Terraform you can skip to step 3:
 
 1. Add a new Node by editing the `*.tfvars`.
 1. Re-apply Terraform.

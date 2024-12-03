@@ -127,7 +127,7 @@ pod/ferretdb-5887cc848c-brwjf   1/1     Running   0          75s
 
 The Deployment should show `STATUS` is `Running`. The Pod(s) should have `STATUS` is `Running`.
 
-To try out access to FerretDB, you can port-forward the Service to localhost and connect using mongosh:
+To try out access to FerretDB, you can port-forward the Service to localhost and connect using `mongosh`:
 
 ```sh
 kubectl port-forward svc/ferretdb-service 27017
@@ -160,10 +160,10 @@ collection.insert_one(mydict)
 print(collection.find_one())
 ```
 
-See the following `pg_dump` below to see how the example above is mapped in the actual backend Postgres database.
+See the following `pg_dump` below to see how the example above is mapped in the actual backend PostgreSQL database.
 
 <details>
-<summary>pg_dump</summary>
+<summary>`pg_dump`</summary>
 
 ```sql
 --
@@ -276,4 +276,4 @@ FerretDB supports securing connections between FerretDB and client with TLS. All
 - [FerretDB GitHub](https://github.com/FerretDB/FerretDB)
 - [FerretDB documentation](https://docs.ferretdb.io/)
 - [FerretDB supported commands](https://docs.ferretdb.io/reference/supported-commands/)
-- [MongoDB Shell (mongosh)](https://www.mongodb.com/docs/mongodb-shell/)
+- [MongoDB Shell (`mongosh`)](https://www.mongodb.com/docs/mongodb-shell/)

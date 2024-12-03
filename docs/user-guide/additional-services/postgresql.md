@@ -138,7 +138,7 @@ kubectl get nodes
 kubectl config view --minify --output 'jsonpath={..namespace}'; echo
 ```
 
-Now, create a Kubernetes Secret in your application namespace to store the PostgreSQL application username and password. For consistency, prefer sticking to naming connection parameters as the [environment variables consumed by psql](https://www.postgresql.org/docs/13/libpq-envars.html).
+Now, create a Kubernetes Secret in your application namespace to store the PostgreSQL application username and password. For consistency, prefer sticking to naming connection parameters as the [environment variables consumed by `psql`](https://www.postgresql.org/docs/13/libpq-envars.html).
 
 ```bash
 cat <<EOF | kubectl apply -f -

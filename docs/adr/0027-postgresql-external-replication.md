@@ -37,8 +37,8 @@ The diagram of the solution looks like this:
 
 ### Positive Consequences
 
-- We make the Platform Administrators life easier by offering them a possibility to clone/replicate their PostgreSQL cluster from the S3 bucket containing the basebackup and WAL files.
-- Platform Administrators can now use 3rd party tools that can pull the basebackup and WAL files and clone the PostgreSQL cluster in another location.
+- We make the Platform Administrators life easier by offering them a possibility to clone/replicate their PostgreSQL cluster from the S3 bucket containing the base backup and WAL files.
+- Platform Administrators can now use 3rd party tools that can pull the base backup and WAL files and clone the PostgreSQL cluster in another location.
 - Increase Application Developer autonomy
 
 ### Negative Consequences
@@ -68,7 +68,7 @@ Offer this only on request.
 
 ### [option 3] - Allow read access to the S3 bucket containing the files that can mimic the replication
 
-- Good, we can satisfy the custmer need and demonstrate we are flexible and Application Developer oriented.
+- Good, we can satisfy the customer need and demonstrate we are flexible and Application Developer oriented.
 - Good, because we keep the platform stability and integrity intact.
 - Bad, because it involves extra work and some snowflakiness.
 
