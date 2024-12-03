@@ -4142,9 +4142,11 @@ The Secret has the following shape:</p>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$SECRET</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$NAMESPACE</span>
 <span class="nt">stringData</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># PGHOST represents a cluster-scoped DNS name or IP, which only makes sense inside the Kubernetes cluster.</span>
+<span class="w">  </span><span class="c1"># PGHOST represents a cluster-scoped DNS name, which only makes sense inside the Kubernetes cluster.</span>
 <span class="w">  </span><span class="c1"># E.g., postgresql1.postgres-system.svc.cluster.local</span>
 <span class="w">  </span><span class="nt">PGHOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$PGHOST</span>
+<span class="w">  </span><span class="c1"># PGHOST_REPLICA represents a cluster-scoped DNS name that references the replica, can be used for read-only queries.</span>
+<span class="w">  </span><span class="nt">PGHOST_REPLICA</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$PGHOST_REPLICA</span>
 
 <span class="w">  </span><span class="c1"># These fields map to the environment variables consumed by psql.</span>
 <span class="w">  </span><span class="c1"># Ref https://www.postgresql.org/docs/13/libpq-envars.html</span>
