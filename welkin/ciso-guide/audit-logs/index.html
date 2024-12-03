@@ -4131,7 +4131,7 @@ The audit logs cover calls to the Kubernetes API, specifically <strong>who</stro
 <h2 id="audit-logs-for-additional-services">Audit Logs for Additional Services<a class="headerlink" href="#audit-logs-for-additional-services" title="Permanent link">&para;</a></h2>
 <p>The Kubernetes Audit Logs capture user access to additional services, i.e., <code>kubectl exec</code> or <code>kubectl port-forward</code> commands. Additional services usually do not have audit logging enabled, since that generates a lot of log entries. Too often the extra bandwidth, storage capacity, performance loss comes with little benefit to data security.</p>
 <p><strong>Prefer audit logs in your application to capture audit-worthy events</strong>, such as login, logout, patient record access, patient record change, etc. Resist the temptation to enable audit logging too "low" in the stack. Messages like "Redis client connected" are plenty and add little value to your data protection posture.</p>
-<p>Out of all additional services, audit logging for the <a href="../../user-guide/additional-services/postgresql/">database</a> makes the most sense. It can be enabled via <a href="https://github.com/pgaudit/pgaudit/blob/master/README.md">pgaudit</a>. Make sure you discuss your auditing requirements with the service-specific administrator, to ensure you find the best risk-reduction-to-implementation-cost trade-off. Typically, you want to discuss:</p>
+<p>Out of all additional services, audit logging for the <a href="../../user-guide/additional-services/postgresql/">database</a> makes the most sense. It can be enabled via <a href="https://github.com/pgaudit/pgaudit/blob/master/README.md">PGAudit</a>. Make sure you discuss your auditing requirements with the service-specific administrator, to ensure you find the best risk-reduction-to-implementation-cost trade-off. Typically, you want to discuss:</p>
 <ul>
 <li>which databases and tables are audited: e.g., audit <code>app.users</code>, but not <code>app.emailsSent</code>;</li>
 <li>what operations are audited: e.g., audit <code>INSERT/UPDATE/DELETE</code>, but not <code>SELECT</code>;</li>
@@ -4140,7 +4140,7 @@ The audit logs cover calls to the Kubernetes API, specifically <strong>who</stro
 <h2 id="further-reading">Further Reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/">Kubernetes Auditing</a></li>
-<li><a href="https://www.pgaudit.org/">pgaudit</a></li>
+<li><a href="https://www.pgaudit.org/">PGAudit</a></li>
 </ul>
 
 

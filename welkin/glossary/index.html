@@ -4314,7 +4314,7 @@ See also:
 <p>A person who writes an application that runs in a Kubernetes cluster.</p>
 <p>Usage notes:</p>
 <ul>
-<li>It's okay to use "app dev", "dev" or "developer", if it's clear from the context that we refer to an Application Developer.</li>
+<li>It's okay to use "developer", if it's clear from the context that we refer to an Application Developer.</li>
 <li>If you need more precision, use:<ul>
 <li>"Application Developers who are Grafana administrators" (see <a href="https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/">Grafana Roles</a>)</li>
 <li>"Application Developers who are Harbor system administrators" (see <a href="https://goharbor.io/docs/2.8.0/administration/managing-users/">Harbor Managing Users</a>)</li>
@@ -4322,8 +4322,13 @@ See also:
 <li>"Application Developers with Kubernetes edit permissions" (see <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles">Kubernetes user-facing roles</a>)</li>
 </ul>
 </li>
-<li>Do NOT use "Super Application Developer", "user-admin", "user-view", etc.</li>
 </ul>
+<!-- vale off -->
+<ul>
+<li>Do NOT use "Super Application Developer", "user-admin", "user-view", "app dev", "dev", etc.</li>
+</ul>
+<!-- vale on -->
+
 <p>See also:</p>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/glossary/?all=true#term-application-developer">Application Developer on Kubernetes Glossary</a></li>
@@ -4438,7 +4443,7 @@ As an example on how this process could look like, please refer to the NIS-era <
 <li><a href="https://www.keycloak.org/">Keycloak</a></li>
 <li><a href="https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id">Microsoft Entra ID</a> previously known as Azure Active Directory</li>
 <li><a href="https://developers.google.com/identity/openid-connect/openid-connect#setredirecturi">Google Identity</a></li>
-<li><a href="https://jumpcloud.com/">jumpcloud</a></li>
+<li><a href="https://jumpcloud.com/">JumpCloud</a></li>
 </ul>
 <p>Usage notes:</p>
 <ul>
@@ -4528,7 +4533,7 @@ As an example on how this process could look like, please refer to the NIS-era <
 <p>Interface exposed via the network for accessing Welkin functionality. Endpoints include Harbor, OpenSearch, Grafana, Dex and the <a href="#workload-cluster">Workload Cluster</a> Kubernetes API.</p>
 <p>Usage notes:</p>
 <ul>
-<li>Do NOT use "Webportals" or "Service Access Points".</li>
+<li>Do NOT use "Web portals" or "Service Access Points".</li>
 </ul>
 <p>See also:</p>
 <ul>

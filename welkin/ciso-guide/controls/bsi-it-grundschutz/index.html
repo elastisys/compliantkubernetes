@@ -4333,17 +4333,32 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <li><a href="../../../user-guide/prepare-application/">Prepare Your Application</a></li>
 </ul>
 <h2 id="other-it-grundschutz-controls">Other IT-Grundschutz Controls<a class="headerlink" href="#other-it-grundschutz-controls" title="Permanent link">&para;</a></h2>
+<!-- vale off -->
 <h3 id="app44a17-attestierung-von-nodes-h">APP.4.4.A17 Attestierung von Nodes (H)<a class="headerlink" href="#app44a17-attestierung-von-nodes-h" title="Permanent link">&para;</a></h3>
+<!-- vale on -->
+
 <p>The Kubespray layer in Welkin ensures that Data Plane Nodes and Control Plane Nodes are mutually authenticated via mutual TLS.</p>
 <h2 id="bsi-it-grundschutz-controls-outside-the-scope-of-welkin">BSI IT-Grundschutz Controls outside the scope of Welkin<a class="headerlink" href="#bsi-it-grundschutz-controls-outside-the-scope-of-welkin" title="Permanent link">&para;</a></h2>
 <p>Pending official translation into English, the controls are written in German.</p>
+<!-- vale off -->
 <h3 id="app44a6-initialisierung-von-pods-s">APP.4.4.A6 Initialisierung von Pods (S)<a class="headerlink" href="#app44a6-initialisierung-von-pods-s" title="Permanent link">&para;</a></h3>
+<!-- vale on -->
+
 <p>Application Developers must make sure that initialization happens in <a href="https://kubernetes.io/docs/concepts/workloads/pods/init-containers/">init containers</a>.</p>
+<!-- vale off -->
 <h3 id="app44a11-uberwachung-der-container-s">APP.4.4.A11 Überwachung der Container (S)<a class="headerlink" href="#app44a11-uberwachung-der-container-s" title="Permanent link">&para;</a></h3>
+<!-- vale on -->
+
 <p>Application Developers must ensure that their application has a liveliness and readiness probe, which are configured in the Deployment. This is illustrated by our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/templates/deployment.yaml">user demo</a>.</p>
+<!-- vale off -->
 <h3 id="app44a12-absicherung-der-infrastruktur-anwendungen-s">APP.4.4.A12 Absicherung der Infrastruktur-Anwendungen (S)<a class="headerlink" href="#app44a12-absicherung-der-infrastruktur-anwendungen-s" title="Permanent link">&para;</a></h3>
+<!-- vale on -->
+
 <p>This requirement essentially states that the Welkin environments are only as secure as the infrastructure around them. Make sure you have a proper IT policy in place. Regularly review the systems where you store backups and configuration of Welkin.</p>
+<!-- vale off -->
 <h3 id="app44a20-verschlusselte-datenhaltung-bei-pods-h">APP.4.4.A20 Verschlüsselte Datenhaltung bei Pods (H)<a class="headerlink" href="#app44a20-verschlusselte-datenhaltung-bei-pods-h" title="Permanent link">&para;</a></h3>
+<!-- vale on -->
+
 <p>Welkin recommends disk encryption to be provided at the infrastructure level. If you have this requirement, check for full-disk encryption via the <a href="../../../operator-manual/provider-audit/">provider audit</a>.</p>
 
 

@@ -3951,7 +3951,7 @@ Should we allow the root of the HNC to be configurable? What default value shoul
 <ul>
 <li>We want to reduce the number of tickets related to namespace creation.</li>
 <li>We want to make the Platform Administrators life easier.</li>
-<li>HNC recommends against using default, as the user could edit the Kubernetes svc in the default namespace.</li>
+<li>HNC recommends against using default, as the user could edit the Kubernetes Service in the default namespace.</li>
 </ul>
 <h2 id="considered-options">Considered Options<a class="headerlink" href="#considered-options" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3974,12 +3974,12 @@ Should we allow the root of the HNC to be configurable? What default value shoul
 <li>Some Application Developers might get confused at the beginning by not knowing which namespaces are HNC and which are non-HNC.</li>
 </ul>
 <h2 id="recommendation-to-platform-administrators">Recommendation to Platform Administrators<a class="headerlink" href="#recommendation-to-platform-administrators" title="Permanent link">&para;</a></h2>
-<p>Do not use the "default" namespace as the name of the default root HNC namespace because the user could edit the Kubernetes svc in the default namespace.
+<p>Do not use the "default" namespace as the name of the default root HNC namespace because the user could edit the Kubernetes Service in the default namespace.
 Exclude the core and the AMS namespaces from HNC as we do not want those to be managed by HNC.
 Do not migrate Application Developer to the new default root Hierarchical Namespace, but do inform the Application Developers that they have the choice to migrate to it, if desired.</p>
 <h2 id="links">Links <!-- optional --><a class="headerlink" href="#links" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://github.com/kubernetes-sigs/hierarchical-namespaces">HNC repo</a></li>
+<li><a href="https://github.com/kubernetes-sigs/hierarchical-namespaces">HNC repository on GitHub</a></li>
 <li><a href="https://kubernetes.io/blog/2020/08/14/introducing-hierarchical-namespaces/">HNC</a></li>
 </ul>
 

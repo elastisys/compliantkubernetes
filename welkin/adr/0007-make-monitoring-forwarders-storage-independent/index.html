@@ -4017,12 +4017,12 @@ Hence, forwarders are subject to the following tensions:</p>
 <ul>
 <li>Use underlying storage provider for increased buffering resilience (<a href="https://github.com/elastisys/compliantkubernetes-apps/blob/v0.9.0/helmfile/values/kube-prometheus-stack-wc.yaml.gotmpl#L100">current approach</a>).</li>
 <li>Use <a href="https://kubernetes.io/blog/2018/04/13/local-persistent-volumes-beta/">Local Persistent Volumes</a>.</li>
-<li>Use <a href="https://kubernetes.io/docs/concepts/storage/volumes/#emptydir">emptyDir</a> volumes.</li>
-<li>Use <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath">hostPath</a> volumes.</li>
+<li>Use <a href="https://kubernetes.io/docs/concepts/storage/volumes/#emptydir"><code>emptyDir</code></a> volumes.</li>
+<li>Use <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath"><code>hostPath</code></a> volumes.</li>
 </ul>
 <h2 id="decision-outcome">Decision Outcome<a class="headerlink" href="#decision-outcome" title="Permanent link">&para;</a></h2>
-<p>Chosen option: emptyDir for Prometheus as forwarder, because it allows monitoring of the storage system in some cases (e.g. Rook) and can redeploy automatically after node failure. It also keeps the complexity down without much risk of data loss.</p>
-<p>Fluentd as forwarder is deployed via DaemonSet. Both, emptyDir and hostPath can be used.</p>
+<p>Chosen option: <code>emptyDir</code> for Prometheus as forwarder, because it allows monitoring of the storage system in some cases (e.g. Rook) and can redeploy automatically after node failure. It also keeps the complexity down without much risk of data loss.</p>
+<p>Fluentd as forwarder is deployed via DaemonSet. Both, <code>emptyDir</code> and <code>hostPath</code> can be used.</p>
 <h3 id="positive-consequences">Positive Consequences<a class="headerlink" href="#positive-consequences" title="Permanent link">&para;</a></h3>
 <ul>
 <li>We can monitor the storage system.</li>
@@ -4032,7 +4032,7 @@ Hence, forwarders are subject to the following tensions:</p>
 <h3 id="negative-consequences">Negative Consequences<a class="headerlink" href="#negative-consequences" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Buffered monitoring information is lost if node is lost.</li>
-<li>emptyDir can cause disk pressure. This can be handled by alerting on low disk space.</li>
+<li><code>emptyDir</code> can cause disk pressure. This can be handled by alerting on low disk space.</li>
 </ul>
 <h2 id="pros-and-cons-of-the-options">Pros and Cons of the Options<a class="headerlink" href="#pros-and-cons-of-the-options" title="Permanent link">&para;</a></h2>
 <h3 id="use-underlying-storage-provider">Use underlying storage provider<a class="headerlink" href="#use-underlying-storage-provider" title="Permanent link">&para;</a></h3>
@@ -4058,7 +4058,7 @@ Hence, forwarders are subject to the following tensions:</p>
 <li>Bad, because local persistent storage requires an additional configuration step.</li>
 <li>Bad, because setting right ownership requires init containers or <a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#configure-volume-permission-and-ownership-change-policy-for-pods">alpha features</a>.</li>
 </ul>
-<h3 id="use-emptydir">Use emptyDir<a class="headerlink" href="#use-emptydir" title="Permanent link">&para;</a></h3>
+<h3 id="use-emptydir">Use <code>emptyDir</code><a class="headerlink" href="#use-emptydir" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Good, because the forwarder can be restarted on any node without manual action.</li>
 <li>Bad, because the amount of forwarding depends on the node's local disk size.</li>
@@ -4070,7 +4070,7 @@ Hence, forwarders are subject to the following tensions:</p>
 <li>Good, because works out of the box.</li>
 <li>Good, because it integrates nicely with <code>securityContext</code>.</li>
 </ul>
-<h3 id="use-hostpath">Use hostPath<a class="headerlink" href="#use-hostpath" title="Permanent link">&para;</a></h3>
+<h3 id="use-hostpath">Use <code>hostPath</code><a class="headerlink" href="#use-hostpath" title="Permanent link">&para;</a></h3>
 <p>Similar to Local Persistent Volumes, but</p>
 <ul>
 <li>Worse, because if the forwarder is redeployed on a new node, buffering information may appear/disappear.</li>

@@ -4079,7 +4079,7 @@ The mission of administrators is to make you, the Welkin user, succeed. Besides 
 
 <ul>
 <li>change the Kubernetes API through <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">CustomResourceDefinitions</a> or <a href="https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#what-are-admission-webhooks">Dynamic Webhooks</a>;</li>
-<li>run container images as root or mount <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath">hostPaths</a>;</li>
+<li>run container images as root or mount <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath"><code>hostPath</code>s</a>;</li>
 <li>mutate ClusterRoles or Roles so as to <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping">escalate privileges</a>;</li>
 <li>mutate Kubernetes resources in administrator-owned namespaces, such as <code>monitoring</code> or <code>kube-system</code>;</li>
 <li>re-configure system Pods, such as Prometheus or Fluentd;</li>

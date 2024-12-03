@@ -4021,7 +4021,7 @@ This standard includes the following:</p>
 </ul>
 <p>Usually applications don't need this unless they need to have low-level access to the nodes to access and manage system resources.</p>
 <ul>
-<li>Running with the seccomp profile <code>Localhost</code> or <code>RuntimeDefault</code> (set by default).</li>
+<li>Running with the <code>seccomp</code> profile <code>Localhost</code> or <code>RuntimeDefault</code> (set by default).</li>
 </ul>
 <p>This restricts the system call applications can make, <a href="https://github.com/containerd/containerd/blob/main/contrib/seccomp/seccomp_default.go#L55">the <code>RuntimeDefault</code> profile is provided by containerd</a>, the container runtime, with sane defaults that should not be an issue for most applications.</p>
 <ul>
@@ -4162,7 +4162,7 @@ The format should be as follows:</p>
 <span class="w">  </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;GID&gt;</span><span class="w"> </span><span class="c1"># Default 1</span>
 </code></pre></div>
 <ol>
-<li>Sysctls may still be denied by the kubelet.</li>
+<li>Sysctls may still be denied.</li>
 <li>Allows both host network and host ports.</li>
 <li>Must be configured in the container image or security context.</li>
 </ol>

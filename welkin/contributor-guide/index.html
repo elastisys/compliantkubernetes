@@ -4090,13 +4090,13 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <p>To make your life easier we suggest to use language server for the language that you're editing.</p>
 <p>E.g.</p>
 <ul>
-<li>terraform: <a href="https://github.com/hashicorp/terraform-ls">terraform-ls</a></li>
-<li>yaml: <a href="https://github.com/redhat-developer/yaml-language-server">yaml-language-server</a></li>
+<li>Terraform: <a href="https://github.com/hashicorp/terraform-ls"><code>terraform-ls</code></a></li>
+<li>YAML: <a href="https://github.com/redhat-developer/yaml-language-server"><code>yaml-language-server</code></a></li>
 </ul>
 <p>To catch pre-commit errors early, direct in your editor, it's also suggested to install plugins for these tools.</p>
 <ul>
-<li><a href="https://github.com/markdownlint/markdownlint/">markdownlint</a></li>
-<li><a href="https://github.com/koalaman/shellcheck/">shellcheck</a></li>
+<li><a href="https://github.com/markdownlint/markdownlint/"><code>markdownlint</code></a></li>
+<li><a href="https://github.com/koalaman/shellcheck/"><code>shellcheck</code></a></li>
 </ul>
 <p>When developing and you only working on a single application it will be faster to only deploy that application instead of applying all charts.
 This can be done by figuring out the app label for the application in question by running:</p>
@@ -4106,7 +4106,7 @@ This can be done by figuring out the app label for the application in question b
 <div class="highlight"><pre><span></span><code><span class="go">bin/ck8s ops helmfile {wc|sc} -l app=dex diff</span>
 </code></pre></div>
 <p>Instead of running <code>helmfile apply</code>, it might be useful to run <code>helmfile sync</code>.
-This will do a 3-way upgrade and make sure that the helm state matches the objects actually running in Kubernetes.
+This will do a 3-way upgrade and make sure that the Helm state matches the objects actually running in Kubernetes.
 This will make sure that you haven't manually edited something for debugging and forgot about it.</p>
 <div class="highlight"><pre><span></span><code><span class="go">bin/ck8s ops helmfile {wc|sc} -l app=dex sync</span>
 </code></pre></div>
@@ -4137,7 +4137,7 @@ This will make sure that you haven't manually edited something for debugging and
 <span class="go">done</span>
 </code></pre></div>
 <h3 id="reusing-clusters">Reusing clusters<a class="headerlink" href="#reusing-clusters" title="Permanent link">&para;</a></h3>
-<p>If you for some reason need to reinstall Welkin from scratch, we have some scripts that removes all objects created by this repo.
+<p>If you for some reason need to reinstall Welkin from scratch, we have some scripts that removes all objects created by this repository.
 The scripts can be found <a href="https://github.com/elastisys/compliantkubernetes-apps/tree/main/scripts">here</a> <em>(clean-sc.sh and clean-wc.sh)</em>.</p>
 
 

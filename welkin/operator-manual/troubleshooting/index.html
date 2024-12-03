@@ -4459,7 +4459,7 @@ We need to look both at the commands you typed and their output.</p>
 <ul>
 <li>You have <a href="../getting-started/">pre-requisites</a> installed.</li>
 <li>Your environment variables, in particular <code>CK8S_CONFIG_PATH</code> is set, and <code>CLUSTER</code> set to either <code>sc</code> or <code>wc</code>.</li>
-<li>Your config folder is available.</li>
+<li>Your configuration folder is available.</li>
 <li><code>compliantkubernetes-apps</code> and <code>compliantkubernetes-kubespray</code> is available.</li>
 </ul>
 <div class="admonition important">
@@ -4479,7 +4479,7 @@ We need to look both at the commands you typed and their output.</p>
 <div class="highlight"><pre><span></span><code>ansible<span class="w"> </span>-i<span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/<span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span>-config/inventory.ini<span class="w"> </span>all<span class="w"> </span>-m<span class="w"> </span>ping
 </code></pre></div>
 <h3 id="are-the-nodes-doing-fine">Are the Nodes "doing fine"?<a class="headerlink" href="#are-the-nodes-doing-fine" title="Permanent link">&para;</a></h3>
-<p>Dmesg should not display unexpected messages. <a href="https://en.wikipedia.org/wiki/Out_of_memory">OOM</a> will show up here.</p>
+<p><code>dmesg</code> should not display unexpected messages. <a href="https://en.wikipedia.org/wiki/Out_of_memory">OOM</a> will show up here.</p>
 <div class="highlight"><pre><span></span><code>ansible<span class="w"> </span>-i<span class="w"> </span><span class="si">${</span><span class="nv">CK8S_CONFIG_PATH</span><span class="si">}</span>/<span class="si">${</span><span class="nv">CLUSTER</span><span class="si">}</span>-config/inventory.ini<span class="w"> </span>all<span class="w"> </span>-m<span class="w"> </span>shell<span class="w"> </span>-a<span class="w"> </span><span class="s1">&#39;echo; hostname; dmesg | tail -n 10&#39;</span>
 </code></pre></div>
 <p>Uptime should show high uptime (e.g., days) and low load (e.g., less than 3):</p>
@@ -4598,7 +4598,7 @@ ssh<span class="w"> </span>ubuntu@<span class="nv">$UNHEALTHY_NODE</span><span c
 <p>Prefer this option if you "quickly" need to add CPU, memory or storage (i.e., Rook) capacity.</p>
 <p>First, check for infrastructure drift, as shown <a href="#how-do-i-check-if-infrastructure-drifted-due-to-manual-intervention">here</a>.</p>
 <p>Depending on your provider:
-If the infrastructure is not managed by terraform you can skip to step 3:</p>
+If the infrastructure is not managed by Terraform you can skip to step 3:</p>
 <ol>
 <li>Add a new Node by editing the <code>*.tfvars</code>.</li>
 <li>Re-apply Terraform.</li>

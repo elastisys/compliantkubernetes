@@ -3950,7 +3950,7 @@ How can we overcome this issue? Should we add a <code>elastisys.io/ams-cluster-n
 <h2 id="considered-options">Considered Options<a class="headerlink" href="#considered-options" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Always scale the nodes vertically and fit multiple postgres packages on the same pair of nodes.</p>
+<p>Always scale the nodes vertically and fit multiple PostgreSQL packages on the same pair of nodes.</p>
 <ul>
 <li>but how many packages should we place on the same pair of nodes? max 3 packages? max 5 packages?</li>
 <li>up to what node sizes?</li>
@@ -3987,19 +3987,19 @@ How can we overcome this issue? Should we add a <code>elastisys.io/ams-cluster-n
 <li>The platform stability and scalability is improved.</li>
 <li>We provide extra isolation of the AMS.</li>
 <li>Being able to choose from options of scaling the nodes both vertically and horizontally shows that we are flexible and we can satisfy more of the Application Developer needs.</li>
-<li>We can add more labels that will better describe and schedulle our AMS services, like <code>local-disk</code> and others.</li>
+<li>We can add more labels that will better describe and schedule our AMS services, like <code>local-disk</code> and others.</li>
 <li>With options 1 and 3 more resources are available to the Application Developer.</li>
 </ul>
 <h3 id="negative-consequences">Negative Consequences<a class="headerlink" href="#negative-consequences" title="Permanent link">&para;</a></h3>
 <ul>
-<li>For option 2 we need to add the new label to the AMS repo and update documentation.</li>
+<li>For option 2 we need to add the new label to the AMS repository and update documentation.</li>
 <li>The infrastructure footprint is increased for option 2.</li>
 <li>With options 1 and 3 the stability of the AMS package is reduced, because if 1 node is unresponsive then it will affect not 1 AMS package, but multiple AMS packages.</li>
 </ul>
 <h2 id="recommendations-to-platform-administrators">Recommendations to Platform Administrators<a class="headerlink" href="#recommendations-to-platform-administrators" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Use label like: <code>elastisys.io/ams-cluster-name</code></li>
-<li>Update the AMS repo and documentation with this and set it by default to automatically picked up from kubectl</li>
+<li>Update the AMS repository and documentation with this and set it by default to automatically picked up from kubectl</li>
 </ul>
 
 

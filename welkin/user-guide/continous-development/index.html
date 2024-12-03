@@ -4109,7 +4109,7 @@ sudo<span class="w"> </span>install<span class="w"> </span>skaffold<span class="
 </code></pre></div>
 <p>This command will scan the current project for images to build and Kubernetes manifests to deploy. For each image that
 Skaffold finds you will be prompted to specify how to build them, or if they are not built by the current project.</p>
-<p>The first image Skaffold finds is busybox, however this image is not built from this project, so choose:
+<p>The first image Skaffold finds is <code>busybox</code>, however this image is not built from this project, so choose:
 <code>None (image not built from these sources)</code></p>
 <p><img alt="Skaffold init Output1" src="../img/skaffold-busybox.png" /></p>
 <p>The second image Skaffold finds is the user-demo image and this image is built from the Dockerfile.</p>
@@ -4155,7 +4155,7 @@ to the local workstation:</p>
 <p>When the application has been built and deployed to the cluster Skaffold shows which URL to access,
 shows the logs of the application, and starts listening for changes in the source-files.</p>
 <p><img alt="Skaffold Output1" src="../img/skaffold-output1.png" /></p>
-<p>When visiting the URL to the application or the portforwarded URL the following output can be seen:</p>
+<p>When visiting the URL to the application or the port-forwarded URL the following output can be seen:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;welkin-user-demo-dd9c58979-rm9rv&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.0.1&quot;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>If you inside the <code>routes/index.js</code> file add the following:</p>

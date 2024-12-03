@@ -3927,12 +3927,12 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <li>Date: 2023-04-11</li>
 </ul>
 <h2 id="context-and-problem-statement">Context and Problem Statement<a class="headerlink" href="#context-and-problem-statement" title="Permanent link">&para;</a></h2>
-<p>Kubernetes comes with a set of default clusterRoles that are meant to be user-facing.
-One such clusterRole is <code>admin</code>.
+<p>Kubernetes comes with a set of default ClusterRoles that are meant to be user-facing.
+One such ClusterRole is <code>admin</code>.
 It is meant to be granted on a per namespace basis, and it grants read and write permissions on <em>most</em> of the default namespaced resources.
-Welkin grants the <code>admin</code> clusterRole in the appropriate namespaces to application developers.
-The <code>admin</code> clusterRole is elevated with additional privileges through the use of the clusterRole aggregation feature.
-Application developers are granted additional permissions for some cluster-wide resources through the use of extra clusterRoles and clusterRoleBindings.</p>
+Welkin grants the <code>admin</code> ClusterRole in the appropriate namespaces to application developers.
+The <code>admin</code> ClusterRole is elevated with additional privileges through the use of the ClusterRole aggregation feature.
+Application developers are granted additional permissions for some cluster-wide resources through the use of extra ClusterRoles and clusterRoleBindings.</p>
 <p>At times, application developers request access to additional resources not yet granted by Welkin, both concerning namespaced and cluster-scoped resources.
 How should we manage such requests and when should the core permissions granted by Welkin be elevated?</p>
 <h2 id="decision-drivers">Decision Drivers<a class="headerlink" href="#decision-drivers" title="Permanent link">&para;</a></h2>

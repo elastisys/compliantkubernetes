@@ -4125,18 +4125,18 @@ This maps to objectives in ISO Annex <a href="https://www.isms.online/iso-27001/
 <p>Let's go through them one by one.</p>
 <h3 id="patching-the-nodes">Patching the nodes<a class="headerlink" href="#patching-the-nodes" title="Permanent link">&para;</a></h3>
 <p>Security patches for the underlying OS on the nodes is constantly being released, and to ensure your environment is secured, the nodes that run Welkin must be updated with these patches.
-We recommend that you use the <a href="https://help.ubuntu.com/community/AutomaticSecurityUpdates">AutomaticSecurityUpdates</a> feature that is available in Ubuntu (similar feature exist in other distros) to install these updates.
+We recommend that you use the <a href="https://help.ubuntu.com/community/AutomaticSecurityUpdates">AutomaticSecurityUpdates</a> feature that is available in Ubuntu (similar feature exist in other Linux distributions) to install these updates.
 Note that the nodes still need to be rebooted for some of these updates to be applied.
 In order to reboot the nodes, you can either use a tool like <a href="https://github.com/kubereboot/kured">kured</a> or you can do it manually by logging on to the nodes and rebooting them manually.
 When doing that, reboot one node at the time and make sure that the rebooted node is 'Ready' and that pods are scheduled to it before you move on to the next, or you risk downtime.</p>
-<p>There is a playbook in the compliantkubernetes-kubespray repo that can assist with the reboot of nodes.
+<p>There is a playbook in the compliantkubernetes-kubespray repository that can assist with the reboot of nodes.
 It will cordon and reboot the nodes one by one.</p>
 <div class="highlight"><pre><span></span><code>./bin/ck8s-kubespray<span class="w"> </span>reboot-nodes<span class="w"> </span>&lt;wc<span class="p">|</span>sc&gt;<span class="w"> </span><span class="o">[</span>--extra-vars<span class="w"> </span><span class="nv">manual_prompt</span><span class="o">=</span>true<span class="o">]</span><span class="w"> </span><span class="o">[</span>&lt;options&gt;<span class="o">]</span>
 </code></pre></div>
 <h3 id="upgrading-the-welkin-application-stack">Upgrading the Welkin application stack<a class="headerlink" href="#upgrading-the-welkin-application-stack" title="Permanent link">&para;</a></h3>
 <p>Welkin consists of a multitude of open source components that interact to form a smooth End User experience.
 In order to free you of the burden of keeping track of when to upgrade the various components, new versions of Welkin are regularly release.
-When a new version is released, it becomes available as a <a href="https://github.com/elastisys/compliantkubernetes-apps/tags">tagged release</a> in the GitHub repo.</p>
+When a new version is released, it becomes available as a <a href="https://github.com/elastisys/compliantkubernetes-apps/tags">tagged release</a> in the GitHub repository.</p>
 <blockquote>
 <p>Before upgrading to a new release, please review the <a href="https://github.com/elastisys/compliantkubernetes-apps/tree/main/changelog">changelog</a> if possible, apply the upgrade to a staging environment before upgrading any environments with production data.</p>
 </blockquote>

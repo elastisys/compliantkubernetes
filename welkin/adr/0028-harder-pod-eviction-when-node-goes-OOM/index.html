@@ -3949,7 +3949,7 @@ Should we enable kubelet hard eviction so as to behold the vital components?</p>
 <li>Enable kubelet hard eviction.</li>
 <li>Adjust OOM score so that kernel does not OOM critical Pods</li>
 <li>Setup priority class for all our apps</li>
-<li>Do not make any changes and reinforce the responsibility to the custmer for not overloading the nodes.</li>
+<li>Do not make any changes and reinforce the responsibility to the customer for not overloading the nodes.</li>
 </ul>
 <h2 id="decision-outcome">Decision Outcome<a class="headerlink" href="#decision-outcome" title="Permanent link">&para;</a></h2>
 <p>Chosen options: <code>Enable kubelet hard eviction</code> &amp; <code>Setup priority class for all our apps</code> .</p>
@@ -3964,7 +3964,7 @@ Should we enable kubelet hard eviction so as to behold the vital components?</p>
 <li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#kubelet-may-not-observe-memory-pressure-right-away">kubectl may not observe pressure right away</a></li>
 </ul>
 <h2 id="recommendation-to-platform-administrators">Recommendation to Platform Administrators<a class="headerlink" href="#recommendation-to-platform-administrators" title="Permanent link">&para;</a></h2>
-<p>Test multiple comfigurations using kubelet hard eviction, priotiry classes and other option to obtain the desired behaviour where the nodes do not become unresponsive and our components are not getting evicted when the node is overcommitted by the Application Developer.</p>
+<p>Test multiple configurations using kubelet hard eviction, priority classes and other option to obtain the desired behaviour where the nodes do not become unresponsive and our components are not getting evicted when the node is overcommitted by the Application Developer.</p>
 
 
 

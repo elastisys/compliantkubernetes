@@ -1923,9 +1923,9 @@ We're undergoing a transformation! We're rebranding our platform and changing th
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#init-kubespray-config-in-your-config-path" class="md-nav__link">
+  <a href="#init-kubespray-configuration-in-your-configuration-path" class="md-nav__link">
     <span class="md-ellipsis">
-      Init Kubespray config in your config path
+      Init Kubespray configuration in your configuration path
     </span>
   </a>
   
@@ -4091,9 +4091,9 @@ We're undergoing a transformation! We're rebranding our platform and changing th
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#init-kubespray-config-in-your-config-path" class="md-nav__link">
+  <a href="#init-kubespray-configuration-in-your-configuration-path" class="md-nav__link">
     <span class="md-ellipsis">
-      Init Kubespray config in your config path
+      Init Kubespray configuration in your configuration path
     </span>
   </a>
   
@@ -4314,7 +4314,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </ul>
 </li>
 <li>
-<p>Create a git working folder to store Welkin configurations in a version-controlled manner. Run the following commands from the root of the config repo.</p>
+<p>Create a git working folder to store Welkin configurations in a version-controlled manner. Run the following commands from the root of the configuration repository.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">CK8S_CONFIG_PATH</span><span class="o">=</span>~/.ck8s/my-cluster-path
 <span class="nb">export</span><span class="w"> </span><span class="nv">CK8S_CLOUD_PROVIDER</span><span class="o">=</span><span class="c1"># run &#39;compliantkubernetes-apps/bin/ck8s providers&#39; to list available providers</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">CK8S_ENVIRONMENT_NAME</span><span class="o">=</span>my-environment-name
@@ -4327,7 +4327,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </code></pre></div>
 </li>
 <li>
-<p>Add the Welkin Kubespray repo as a <code>git submodule</code> to the configuration repo and install pre-requisites as follows:</p>
+<p>Add the Welkin Kubespray repository as a <code>git submodule</code> to the configuration repository and install pre-requisites as follows:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Remember to switch to the desired version of <code>compliantkubernetes-kubespray</code>.</p>
@@ -4341,7 +4341,7 @@ ansible-playbook<span class="w"> </span>-e<span class="w"> </span><span class="s
 </code></pre></div>
 </li>
 <li>
-<p>Add the Welkin Apps repo as a <code>git submodule</code> to the configuration repo and install pre-requisites as follows:</p>
+<p>Add the Welkin Apps repository as a <code>git submodule</code> to the configuration repository and install pre-requisites as follows:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Remember to switch to the desired version of <code>compliantkubernetes-apps</code>.</p>
@@ -4404,7 +4404,7 @@ git<span class="w"> </span>switch<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </details>
-<h3 id="init-kubespray-config-in-your-config-path">Init Kubespray config in your config path<a class="headerlink" href="#init-kubespray-config-in-your-config-path" title="Permanent link">&para;</a></h3>
+<h3 id="init-kubespray-configuration-in-your-configuration-path">Init Kubespray configuration in your configuration path<a class="headerlink" href="#init-kubespray-configuration-in-your-configuration-path" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>CLUSTER<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTERS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;; do</span>
 <span class="s2">    compliantkubernetes-kubespray/ck8s-kubespray init </span><span class="nv">$CLUSTER</span><span class="s2"> </span><span class="nv">$CK8S_CLOUD_PROVIDER</span><span class="s2"> </span><span class="nv">$CK8S_PGP_FP</span>
 <span class="s2">done</span>
@@ -4424,9 +4424,9 @@ git<span class="w"> </span>switch<span class="w"> </span>-d<span class="w"> </sp
 <li><code>kube_oidc_auth</code> should be set to true, this enables OIDC authentication for the api-server</li>
 <li><code>kube_oidc_url</code> should be set to <code>https://dex.$DOMAIN</code></li>
 <li><code>kube_oidc_client_id</code> should be set to <code>kubelogin</code></li>
-<li><code>kube_oidc_client_secret</code> should be set to a Dex client secret generated with the apps config, it can be found in <code>${CK8S_CONFIG_PATH}/secrets.yaml</code> under the key <code>dex.kubeloginClientSecret</code> after running <code>ck8s init</code> (see <a href="#deploying-welkin-apps">instructions on deploying apps</a>).</li>
+<li><code>kube_oidc_client_secret</code> should be set to a Dex client secret generated with the apps configuration, it can be found in <code>${CK8S_CONFIG_PATH}/secrets.yaml</code> under the key <code>dex.kubeloginClientSecret</code> after running <code>ck8s init</code> (see <a href="#deploying-welkin-apps">instructions on deploying apps</a>).</li>
 </ul>
-<p>To generate kubeconfigs that use OIDC for authentication, the following variables should be set in the config files for both clusters (both can't be true):</p>
+<p>To generate kubeconfigs that use OIDC for authentication, the following variables should be set in the configuration files for both clusters (both can't be true):</p>
 <div class="highlight"><pre><span></span><code><span class="nt">create_oidc_kubeconfig</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">kubeconfig_localhost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
@@ -4444,14 +4444,14 @@ git<span class="w"> </span>switch<span class="w"> </span>-d<span class="w"> </sp
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The kubeconfig for wc <code>.state/kube_config_wc.yaml</code> will not be usable until you have installed Dex in the Management Cluster (by <a href="#deploying-welkin-apps">deploying apps</a>).</p>
+<p>The kubeconfig for the Workload Cluster (<code>.state/kube_config_wc.yaml</code>) will not be usable until you have installed Dex in the Management Cluster (by <a href="#deploying-welkin-apps">deploying apps</a>).</p>
 </div>
 <h2 id="rook-block-storage">Rook Block Storage<a class="headerlink" href="#rook-block-storage" title="Permanent link">&para;</a></h2>
 <p>Normally, we want to use block storage solutions provided by the infra provider. However, this is not always available, especially for on-prem environments. In such cases we can partition separate volumes on Nodes in the cluster for Rook-Ceph and use that as a block storage solution.</p>
 <!-- markdownlint-disable-file first-line-h1 -->
 
 <h3 id="deploy-rook">Deploy Rook<a class="headerlink" href="#deploy-rook" title="Permanent link">&para;</a></h3>
-<p>To deploy Rook, go to the <code>compliantkubernetes-kubespray</code> repo, change directory to <code>rook</code> and follow the instructions <a href="https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/rook#rook-ceph">here</a> for each cluster.</p>
+<p>To deploy Rook, go to the <code>compliantkubernetes-kubespray</code> repository, change directory to <code>rook</code> and follow the instructions <a href="https://github.com/elastisys/compliantkubernetes-kubespray/tree/main/rook#rook-ceph">here</a> for each cluster.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If the kubeconfig files for the clusters are encrypted with SOPS, you need to decrypt them before using them:</p>
@@ -4611,7 +4611,7 @@ curl<span class="w"> </span>--head<span class="w"> </span>https://opensearch.<sp
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Some of these subdomains can be overwritten in config (see example <a href="https://github.com/elastisys/compliantkubernetes-apps/blob/v0.39.0/config/config/common-config.yaml#L516">here</a>)</p>
+<p>Some of these subdomains can be overwritten in configuration (see example <a href="https://github.com/elastisys/compliantkubernetes-apps/blob/v0.39.0/config/config/common-config.yaml#L516">here</a>)</p>
 </div>
 
 

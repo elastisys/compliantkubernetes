@@ -3941,7 +3941,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <p>There are two ways to configure Let's Encrypt as an issuers for cert-manager: <a href="https://cert-manager.io/docs/concepts/issuer/">Issuer and ClusterIssuer</a>. The former is namespaced, whereas the latter is cluster-wide. Should we use Issuer or ClusterIssuer?</p>
 <h2 id="decision-drivers">Decision Drivers<a class="headerlink" href="#decision-drivers" title="Permanent link">&para;</a></h2>
 <ul>
-<li>We want to make compliantkubernetes-apps less fragile, and Let's Encrypt ratelimiting is a cause of fragility.</li>
+<li>We want to make compliantkubernetes-apps less fragile, and Let's Encrypt rate limiting is a cause of fragility.</li>
 <li>We want to make it easy for users to get started with Welkin in a "secure by default" manner.</li>
 <li>We want to have a clear separation between user and administrator resources, responsibilities and privileges.</li>
 <li>We want to keep the option open for "light" renderings, i.e., a single Kubernetes clusters that hosts both Management Cluster and Workload Cluster components.</li>

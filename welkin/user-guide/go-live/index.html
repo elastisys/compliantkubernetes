@@ -3897,7 +3897,7 @@ All seems fine, but somehow you feel anxious about going into production 24/7.</
 </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Load testing was performed while updating the application.<ul>
 <li><strong>Why?</strong> This ensures that the application can be updated without downtime.</li>
-<li><strong>How?</strong> Make a trivial change to your application, e.g., add "Lorem ipsum" in the output of some API, and redeploy.</li>
+<li><strong>How?</strong> Make a trivial change to your application, e.g., add <code>Lorem ipsum</code> in the output of some API, and redeploy.</li>
 <li><strong>Desired outcome</strong>: Measured downtime is acceptable.</li>
 <li><strong>Possible resolutions</strong>: Make sure you have the right <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/">deployment strategy</a>. Prefer <code>RollingUpdate</code> over <code>Recreate</code>. Ensure other parameters of the deployment strategy are tuned as needed.</li>
 </ul>
@@ -3917,7 +3917,7 @@ All seems fine, but somehow you feel anxious about going into production 24/7.</
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> [For multi-Zone environments] Load testing was performed while failing an entire Zone:<ul>
 <li><strong>Why?</strong> If a multi-Zone environment was requested, then the additional resilience must be tested. Otherwise, Zone failure may cause application downtime.</li>
 <li><strong>How?</strong> As above, but now ask the administrator to fail an entire Zone.</li>
-<li><strong>Desired outcome</strong>: The measured downtime (due to Pod migration) during Zode failure is acceptable. Capacity is sufficient to tolerate one Zode failure.</li>
+<li><strong>Desired outcome</strong>: The measured downtime (due to Pod migration) during Zone failure is acceptable. Capacity is sufficient to tolerate one Zone failure.</li>
 <li><strong>Possible resolution</strong>:<ul>
 <li>Ensure the application has proper resource requests and limits (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L51-L60">user demo for an example</a>).</li>
 <li>Ensure the application has at least two replicas (see our <a href="https://github.com/elastisys/welkin/blob/main/user-demo/deploy/welkin-user-demo/values.yaml#L5">user demo for an example</a>).</li>

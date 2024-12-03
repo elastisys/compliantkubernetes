@@ -3953,7 +3953,7 @@ What do we do for Infra Providers that do not have Service type LoadBalancer?</p
 <h2 id="decision-drivers">Decision Drivers<a class="headerlink" href="#decision-drivers" title="Permanent link">&para;</a></h2>
 <ul>
 <li>We want to deliver a stable and secure platform.</li>
-<li>Want want to keep application Nodes "light", so the application team knows what capacity is available for their application.</li>
+<li>We want to keep application Nodes "light", so the application team knows what capacity is available for their application.</li>
 <li>We want to find a solution which is scalable and minimizes administrator burden.</li>
 <li>We don't want to waste infrastructure.</li>
 <li>We want to keep things simple.</li>
@@ -3971,7 +3971,7 @@ What do we do for Infra Providers that do not have Service type LoadBalancer?</p
 <ul>
 <li>"Keep running Ingress-NGINX as a DaemonSet."</li>
 <li>"Do not run Ingress-NGINX on the AMS nodes."</li>
-<li>"For Infra Providers without Service type LoadBalancer start using Service type NodePort for NGINX and also use the external load balancer to route traffic from ports 80/443 to node ports 30080/30443" -&gt; This superseeds adr0008.</li>
+<li>"For Infra Providers without Service type LoadBalancer start using Service type NodePort for NGINX and also use the external load balancer to route traffic from ports 80/443 to node ports 30080/30443" -&gt; This supersedes adr0008.</li>
 </ul>
 <h3 id="positive-consequences">Positive Consequences<a class="headerlink" href="#positive-consequences" title="Permanent link">&para;</a></h3>
 <ul>

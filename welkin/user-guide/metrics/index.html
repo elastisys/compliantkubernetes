@@ -4303,6 +4303,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <h2 id="prometheus-and-grafana-in-welkin">Prometheus and Grafana in Welkin<a class="headerlink" href="#prometheus-and-grafana-in-welkin" title="Permanent link">&para;</a></h2>
 <h3 id="prometheus">Prometheus<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h3>
 <p>Welkin installs the prometheus-operator by default. The Prometheus Operator for Kubernetes provides easy monitoring definitions for Kubernetes services and deployment and management of Prometheus instances as it can create/configure/manage Prometheus clusters atop Kubernetes. The following CRDs are installed by default.</p>
+<!-- vale off -->
 <table>
 <thead>
 <tr>
@@ -4351,6 +4352,8 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </tr>
 </tbody>
 </table>
+<!-- vale on -->
+
 <h4 id="accessing-the-prometheus-ui">Accessing the Prometheus UI<a class="headerlink" href="#accessing-the-prometheus-ui" title="Permanent link">&para;</a></h4>
 <p>If you want to access the web interface of Prometheus, proceed as follows:</p>
 <ol>
@@ -4367,7 +4370,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <h3 id="grafana">Grafana<a class="headerlink" href="#grafana" title="Permanent link">&para;</a></h3>
 <p>Grafana can be accessed at the endpoint provided by the Welkin install scripts.
 If you have configured Dex you can login with a connected account, which can be limited to specific email domains.</p>
-<p>Welkin deploys Grafana with a selection of dashboards by default. Dashboards are accessed by clicking the Dashboard icon (four squares) at the lefthand side of the Grafana window and selecting Browse. Some examples of useful dashboards are listed below.</p>
+<p>Welkin deploys Grafana with a selection of dashboards by default. Dashboards are accessed by clicking the Dashboard icon (four squares) at the left-hand side of the Grafana window and selecting Browse. Some examples of useful dashboards are listed below.</p>
 <h4 id="node-health">Node health<a class="headerlink" href="#node-health" title="Permanent link">&para;</a></h4>
 <p>The Nodes dashboard (Node Exporter / Nodes) gives a quick overview of the status (health) of a node in the cluster. By selecting an instance in the "instance" dropdown metrics for CPU, Load, Memory, Disk and Network I/O is showed for that node. The time frame can be changed either by using the time dropdown or selecting directly in the graphs.</p>
 <p><img alt="Node Health" src="../../img/node_health.png" title="Nodes dashboard" /></p>
@@ -4486,7 +4489,7 @@ spec:
 <li>Log in to Grafana.</li>
 <li>Create an API key, setting it to Editor or Admin.</li>
 <li>Provide the API key to Terraform either via the <code>GRAFANA_AUTH</code> environment variable or the <a href="https://registry.terraform.io/providers/grafana/grafana/latest/docs#auth">auth</a> provider variable.</li>
-<li>Provide the URL of Grafana (<code>https://grafana.$DOMAIN</code>) to Terraform either via the <code>GRAFANA_URL</code> environment variable or the <a href="https://registry.terraform.io/providers/grafana/grafana/latest/docs#url">url</a> provider variable.</li>
+<li>Provide the URL of Grafana (<code>https://grafana.$DOMAIN</code>) to Terraform either via the <code>GRAFANA_URL</code> environment variable or the <a href="https://registry.terraform.io/providers/grafana/grafana/latest/docs#url"><code>url</code></a> provider variable.</li>
 </ol>
 <h2 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
 <ul>

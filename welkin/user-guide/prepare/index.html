@@ -4020,7 +4020,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <p>Optional, but very useful, tools for developers and DevOps engineers:</p>
 <ul>
 <li><a href="https://docs.docker.com/get-docker/">docker</a>, if you want to build (Docker) container images locally</li>
-<li><a href="https://helm.sh/docs/intro/install/">helm</a>, if you want to manage your application with the Helm package manager</li>
+<li><a href="https://helm.sh/docs/intro/install/">Helm</a>, if you want to manage your application with the Helm package manager</li>
 </ul>
 <details class="tip">
 <summary>You can verify that configuration is correct by issuing the following simple commands</summary>
@@ -4073,7 +4073,7 @@ curl<span class="w"> </span>--insecure<span class="w"> </span>--head<span class=
 <p>There are additional safeguards in place that reflect the security posture of Welkin that impact your application. These prevent users from doing potentially unsafe things. In particular, users are not allowed to:</p>
 <ul>
 <li>change the Kubernetes API through <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">CustomResourceDefinitions</a> or <a href="https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#what-are-admission-webhooks">Dynamic Webhooks</a>;</li>
-<li>run container images as root or mount <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath">hostPaths</a>;</li>
+<li>run container images as root or mount <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath"><code>hostPath</code>s</a>;</li>
 <li>mutate ClusterRoles or Roles so as to <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping">escalate privileges</a>;</li>
 <li>mutate Kubernetes resources in administrator-owned namespaces, such as <code>monitoring</code> or <code>kube-system</code>;</li>
 <li>re-configure system Pods, such as Prometheus or Fluentd;</li>

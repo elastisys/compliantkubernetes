@@ -3960,10 +3960,10 @@ Should we increase the boot disk size to a bigger size?</p>
 <li>Keep boot disk size to 50Gb and increase boot disk size only where is needed</li>
 <li>Increase the boot disk size to 100GB for all nodes irrespective of node size</li>
 <li>Increase the boot disk size to 100GB only for nodes that are bigger than 4C8GB</li>
-<li>Use local disk of 100GB size for controlplane nodes</li>
+<li>Use local disk of 100GB size for control plane Nodes</li>
 </ul>
 <h2 id="decision-outcome">Decision Outcome<a class="headerlink" href="#decision-outcome" title="Permanent link">&para;</a></h2>
-<p>Chosen option: Increase the boot disk size to 100GB for all nodes irrespective of node size &amp; Use local disk of 100GB size for controlplane nodes</p>
+<p>Chosen option: Increase the boot disk size to 100GB for all nodes irrespective of node size &amp; Use local disk of 100GB size for control plane Nodes</p>
 <h3 id="positive-consequences">Positive Consequences<a class="headerlink" href="#positive-consequences" title="Permanent link">&para;</a></h3>
 <ul>
 <li>There will be more available space for pulling images</li>
@@ -3978,12 +3978,12 @@ Should we increase the boot disk size to a bigger size?</p>
 <h2 id="recommendation-to-platform-administrators">Recommendation to Platform Administrators<a class="headerlink" href="#recommendation-to-platform-administrators" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Try to use same VM flavors on all environments</li>
-<li>Use VM flavor with local disk of 100GB or whichever is closest to this size depending on Infrastructure Provider for controlplane nodes.</li>
+<li>Use VM flavor with local disk of 100GB or whichever is closest to this size depending on Infrastructure Provider for control plane Nodes.</li>
 <li>For worker nodes use 100GB boot disk size on Infrastructure Providers that allow it and on the ones that we can't use the VM flavor with the closest disk size.</li>
 </ul>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://serverfault.com/questions/977871/recommended-disk-size-for-gke-nodes">Some recomandations</a></li>
+<li><a href="https://serverfault.com/questions/977871/recommended-disk-size-for-gke-nodes">Some recommendations</a></li>
 </ul>
 
 

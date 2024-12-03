@@ -3931,7 +3931,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <ul>
 <li>Dex, for authentication;</li>
 <li>OpenSearch, for pushing logs (append-only);</li>
-<li>InfluxDB, for pusing metrics;</li>
+<li>InfluxDB, for pushing metrics;</li>
 <li>Harbor, for pulling container images.</li>
 </ul>
 <p>InfluxDB has served us really well over the years. However, as we enter a new era of growth, it no longer satisfies our needs. In particular:</p>
@@ -3955,8 +3955,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <li>Pull metrics from Workload Cluster to Management Cluster.</li>
 </ol>
 <h2 id="decision-outcome">Decision Outcome<a class="headerlink" href="#decision-outcome" title="Permanent link">&para;</a></h2>
-<p>We chose to push metrics from the Workload Cluster to the Management Cluster via
-via <a href="https://thanos.io/tip/components/receive.md/">Thanos Receive</a>,
+<p>We chose to push metrics from the Workload Cluster to the Management Cluster via <a href="https://thanos.io/tip/components/receive.md/">Thanos Receive</a>,
 because it keeps the "direction" of metrics flow.
 Hence, we keep support for multiple Workload Clusters without any changes.</p>
 <p>At the time of this writing, pulling metrics via <a href="https://thanos.io/tip/thanos/quick-tutorial.md/#components">Thanos sidecar</a> seems to be the preferred way to deploy Thanos. We will monitor the ecosystem and our needs, and -- if needed -- move to pulling metrics.</p>

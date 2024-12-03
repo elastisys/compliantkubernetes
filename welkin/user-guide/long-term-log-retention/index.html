@@ -4025,7 +4025,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <p>Welkin by default sets an retention of 30 days for logs.
 Many regulators, including Swedish Healthcare, require a minimum of 5 year log retention.</p>
 <p>This is not provided at the platform level by Welkin as it runs the risk of GDPR non-compliance.
-Logs may include sensitive information like personal data, which requires that the the retention scheme is designed together with application-specific knowledge to ensure compliance.
+Logs may include sensitive information like personal data, which requires that the retention scheme is designed together with application-specific knowledge to ensure compliance.
 Specifically, this includes that the retention scheme ensures that erased personal data can not be accidentally restored, as per <a href="https://gdpr.fan/a17">Art. 17 GDPR Right to erasure (‘right to be forgotten’)</a>.</p>
 <p>Using application-specific knowledge would also make it possible to reduce the amount of logs stored, by filtering out so only the required logs are kept.
 Minimising the kept data, storage costs and storage management.</p>
@@ -4239,7 +4239,7 @@ perform_export<span class="o">()</span><span class="w"> </span><span class="o">{
 <p>The simplest way to prepare this for deployment is to build a container image including Bash, Elasticdump and s3cmd, and set up a CronJob to run this on a preferred schedule.</p>
 <p>Here are some examples of how to build and deploy them:</p>
 <div class="admonition example">
-<p class="admonition-title">Example: Containerfile / Dockerfile</p>
+<p class="admonition-title">Example: <code>Containerfile</code> / <code>Dockerfile</code></p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">docker.io/library/ubuntu:jammy</span>
 
 <span class="k">ARG</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive

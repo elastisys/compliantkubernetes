@@ -4140,7 +4140,7 @@ docker<span class="w"> </span>push<span class="w"> </span><span class="nv">$REGI
 <span class="go">pod/ferretdb-5887cc848c-brwjf   1/1     Running   0          75s</span>
 </code></pre></div>
 <p>The Deployment should show <code>STATUS</code> is <code>Running</code>. The Pod(s) should have <code>STATUS</code> is <code>Running</code>.</p>
-<p>To try out access to FerretDB, you can port-forward the Service to localhost and connect using mongosh:</p>
+<p>To try out access to FerretDB, you can port-forward the Service to localhost and connect using <code>mongosh</code>:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/ferretdb-service<span class="w"> </span><span class="m">27017</span>
 
 mongosh<span class="w"> </span>mongodb://localhost:27017
@@ -4166,9 +4166,9 @@ mongosh<span class="w"> </span>mongodb://localhost:27017
 <span class="n">collection</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="n">mydict</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">find_one</span><span class="p">())</span>
 </code></pre></div>
-<p>See the following <code>pg_dump</code> below to see how the example above is mapped in the actual backend Postgres database.</p>
+<p>See the following <code>pg_dump</code> below to see how the example above is mapped in the actual backend PostgreSQL database.</p>
 <details>
-<summary>pg_dump</summary>
+<summary>`pg_dump`</summary>
 
 <div class="highlight"><pre><span></span><code><span class="c1">--</span>
 <span class="c1">-- PostgreSQL database dump</span>
@@ -4279,7 +4279,7 @@ As of May 2023, the project was recently released to its first major version (v1
 <li><a href="https://github.com/FerretDB/FerretDB">FerretDB GitHub</a></li>
 <li><a href="https://docs.ferretdb.io/">FerretDB documentation</a></li>
 <li><a href="https://docs.ferretdb.io/reference/supported-commands/">FerretDB supported commands</a></li>
-<li><a href="https://www.mongodb.com/docs/mongodb-shell/">MongoDB Shell (mongosh)</a></li>
+<li><a href="https://www.mongodb.com/docs/mongodb-shell/">MongoDB Shell (<code>mongosh</code>)</a></li>
 </ul>
 
 

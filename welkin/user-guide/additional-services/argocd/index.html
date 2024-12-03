@@ -4325,7 +4325,7 @@ gpg<span class="w"> </span>--output<span class="w"> </span><span class="s2">&quo
 </code></pre></div>
 </li>
 <li>
-<p>For Argo CD to be able to use this key for decrypting <code>sops</code> encrypted values files in your Helm charts, you will need to create a Kubernetes Secret in the <code>argocd-system</code> namespace named <code>helm-secrets-private-keys</code>. This Secret will then be mounted and read by the Argo CD repo server. Create the Secret using the private key file created in the previous step:</p>
+<p>For Argo CD to be able to use this key for decrypting <code>sops</code> encrypted values files in your Helm charts, you will need to create a Kubernetes Secret in the <code>argocd-system</code> namespace named <code>helm-secrets-private-keys</code>. This Secret will then be mounted and read by the Argo CD repository server. Create the Secret using the private key file created in the previous step:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">PRIVATE_KEY_FILE</span><span class="o">=</span><span class="s2">&quot;private.asc&quot;</span>
 kubectl<span class="w"> </span>-n<span class="w"> </span>argocd-system<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>helm-secrets-private-keys<span class="w"> </span>--from-file<span class="o">=</span>key.asc<span class="o">=</span><span class="nv">$PRIVATE_KEY_FILE</span><span class="w"> </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-oyaml<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>kubectl<span class="w"> </span>label<span class="w"> </span>-f-<span class="w"> </span>-oyaml<span class="w"> </span>argocd.argoproj.io/secret-type<span class="o">=</span>repository<span class="w"> </span>--dry-run<span class="o">=</span>client<span class="w"> </span>--local<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
@@ -4383,7 +4383,7 @@ kubectl<span class="w"> </span>-n<span class="w"> </span>argocd-system<span clas
 </li>
 <li>
 <p>In Argo CD, when you create your Application, add the secret values file (<code>secrets.yaml</code>) as follow:</p>
-<p><img alt="argocd-helm-secrets" src="../img/argocd-helm-secrets.png" /></p>
+<p><img alt="Screenshot of Argo CD with Helm Secrets" src="../img/argocd-helm-secrets.png" /></p>
 <p>Here, <code>secrets.yaml</code> is the relative path and name of the file containing encrypted values.</p>
 </li>
 </ol>
@@ -4411,8 +4411,8 @@ kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="
 <p>Deploy the application containing the SealedSecret with Argo CD as any other application.</p>
 </li>
 </ol>
-<h3 id="using-vals-with-hashicorps-vault">Using vals with HashiCorp's Vault<a class="headerlink" href="#using-vals-with-hashicorps-vault" title="Permanent link">&para;</a></h3>
-<p>If you want to use <a href="https://github.com/helmfile/vals">vals</a> with <a href="https://www.vaultproject.io/">Vault</a>, you will need to contact your Platform Administrator requesting that you want to use vals with Vault together with Argo CD.</p>
+<h3 id="using-vals-with-hashicorps-vault">Using <code>vals</code> with HashiCorp's Vault<a class="headerlink" href="#using-vals-with-hashicorps-vault" title="Permanent link">&para;</a></h3>
+<p>If you want to use <a href="https://github.com/helmfile/vals"><code>vals</code></a> with <a href="https://www.vaultproject.io/">Vault</a>, you will need to contact your Platform Administrator requesting that you want to use <code>vals</code> with Vault together with Argo CD.</p>
 <ol>
 <li>
 <p>Create a Secret in the <code>argocd-system</code> namespace called <code>vals-secret</code>:</p>
@@ -4627,7 +4627,7 @@ kubectl<span class="w"> </span>edit<span class="w"> </span>-n<span class="w"> </
 <li>With Argo CD CLI access granted, an issue authenticating via Dex can occur and you will see an error message of</li>
 </ul>
 <blockquote>
-<p>failed to get token: oauth2: "invalid_client” “Invalid client credentials."</p>
+<p><code>failed to get token: oauth2: "invalid_client” “Invalid client credentials."</code></p>
 </blockquote>
 <p>This is a known issue in Argo CD and the progress for it can be tracked <a href="https://github.com/argoproj/argo-cd/issues/17088">here</a>. Sometimes, when encountering this login issue, opening a new tab and re-trying the login process after entering the Argo CD homepage URL can resolve the problem.</p>
 <h2 id="follow-the-go-live-checklist">Follow the Go-Live Checklist<a class="headerlink" href="#follow-the-go-live-checklist" title="Permanent link">&para;</a></h2>

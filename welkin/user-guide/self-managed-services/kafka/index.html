@@ -4199,7 +4199,7 @@ kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> <
 </code></pre></div>
 <h2 id="install-strimzi-kafka-operator">Install Strimzi Kafka Operator<a class="headerlink" href="#install-strimzi-kafka-operator" title="Permanent link">&para;</a></h2>
 <p>With the initial prep done, you are now ready to deploy the operator.</p>
-<p>You can find the deployment manifest <a href="https://raw.githubusercontent.com/strimzi/strimzi-kafka-operator/0.38.0/install/cluster-operator/060-Deployment-strimzi-cluster-operator.yaml">here</a>. Deploying this on Welkin does require some securityContext to be added.</p>
+<p>You can find the deployment manifest <a href="https://raw.githubusercontent.com/strimzi/strimzi-kafka-operator/0.38.0/install/cluster-operator/060-Deployment-strimzi-cluster-operator.yaml">here</a>. Deploying this on Welkin does require a Security Context to be added.</p>
 <p>Edit the manifest and add this under <code>spec.template.spec.containers[0]</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">securityContext</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>

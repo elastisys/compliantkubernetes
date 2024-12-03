@@ -4180,9 +4180,9 @@ helm<span class="w"> </span>repo<span class="w"> </span>update
 <ol>
 <li>The following resources are reused using *resourceDefaults later in this file</li>
 <li>The following containerSecurityContext is reused using *SCDefaults later in this file</li>
-<li>Block set to true will append a privileged initContainer using the iptables to block the sensitive metadata server at the provided ip. Privileged containers are not allowed in Welkin.</li>
+<li>Block set to true will append a privileged Init Container using <code>iptables</code> to block the sensitive metadata server at the provided IP. Privileged containers are not allowed in Welkin.</li>
 <li>"type: none" disables persistent storage for the user labs. Consolidate with Platform Administrator before enabling this feature. <a href="https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/1ebca266bed3e2f38332c5a9a3202f627cba3af0/jupyterhub/values.yaml#L383">for reference</a></li>
-<li>Use <a href="https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google">this guide</a> to get your client_id and client_secret through the <a href="https://console.developers.google.com/">Google API Console</a>.</li>
+<li>Use <a href="https://z2jh.jupyter.org/en/stable/administrator/authentication.html#google">this guide</a> to get your <code>client_id</code> and <code>client_secret</code> through the <a href="https://console.developers.google.com/">Google API Console</a>.</li>
 <li>This should not be treated as a secret. See risk analysis <a href="https://github.com/dexidp/dex/issues/469">here</a> and <a href="https://security.stackexchange.com/questions/225809/what-is-the-worst-i-can-do-if-i-know-openid-connect-client-secret">here</a>.</li>
 </ol>
 <h3 id="pushing-the-jupyterhub-images-to-harbor">Pushing the JupyterHub Images to Harbor<a class="headerlink" href="#pushing-the-jupyterhub-images-to-harbor" title="Permanent link">&para;</a></h3>
@@ -4221,7 +4221,7 @@ sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s|nam
 <p>JupyterHub's Admin functionality is limited since some of the admin functions require container root access. Pre-installed Python packages for users can not be added through the admin interface. They can be added by <a href="https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-environment.html#choose-and-use-an-existing-docker-image">modifying the Docker image</a>, pushing it to your image registry and redeploying JupyterHub. <strong>NOTE</strong> Users can still install their own packages.</p>
 </li>
 <li>
-<p>Persistent storage is currently disabled for Jypyter lab instances but <a href="https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-storage.html">can be enabled</a>. It is disabled since Jupyter will allocate new storage for each user and should be carefully considered before it is enabled. This means that the workspace will be reset when the Pod crashes or is scaled down from not being used. This includes code added to the lab and installed packages.</p>
+<p>Persistent storage is currently disabled for Jupyter lab instances but <a href="https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-storage.html">can be enabled</a>. It is disabled since Jupyter will allocate new storage for each user and should be carefully considered before it is enabled. This means that the workspace will be reset when the Pod crashes or is scaled down from not being used. This includes code added to the lab and installed packages.</p>
 </li>
 <li>
 <p>GPU is not enabled currently but <a href="https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-resources.html#set-user-gpu-guarantees-limits">can be enabled</a> depending on your infrastructure provider.</p>

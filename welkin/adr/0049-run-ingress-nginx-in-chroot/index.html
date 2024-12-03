@@ -3957,10 +3957,10 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </ul>
 </li>
 <li>
-<p>Use Namespaced Rolebindings</p>
+<p>Use Namespaced RoleBindings</p>
 <ul>
 <li><code>Good</code>, because it is easier and faster to implement compared to developing an operator.</li>
-<li><code>Bad</code>, because it requires manual configuration of rolebindings, which can be cumbersome in large environments and prone to human error.</li>
+<li><code>Bad</code>, because it requires manual configuration of RoleBindings, which can be cumbersome in large environments and prone to human error.</li>
 <li><code>Bad</code>, because it increases overhead as namespaces need to be manually managed and updated.</li>
 </ul>
 </li>
@@ -3968,7 +3968,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <p>Run Ingress-NGINX in chroot with custom seccomp profile</p>
 <ul>
 <li><code>Good</code>, because attackers can not exploit recent CVEs to access secrets cluster-wide.</li>
-<li><code>Bad</code>, because if someone were to break out of the chroot and attack the controller itself, they would have access to the clone and unshare syscalls on the host. This allows the attacker to create threads on the host as well as any type of namespace. It is not entirely clear what kind of harm this could cause.</li>
+<li><code>Bad</code>, because if someone were to break out of the chroot and attack the controller itself, they would have access to the <code>clone</code> and <code>unshare</code> syscalls on the host. This allows the attacker to create threads on the host as well as any type of namespace. It is not entirely clear what kind of harm this could cause.</li>
 </ul>
 </li>
 </ol>

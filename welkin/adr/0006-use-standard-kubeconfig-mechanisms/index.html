@@ -3908,11 +3908,11 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <h1 id="use-standard-kubeconfig-mechanisms">Use Standard Kubeconfig Mechanisms<a class="headerlink" href="#use-standard-kubeconfig-mechanisms" title="Permanent link">&para;</a></h1>
 <ul>
 <li>Status: accepted</li>
-<li>Deciders: Architecture Meeing</li>
+<li>Deciders: Architecture Meeting</li>
 <li>Date: 2021-02-02</li>
 </ul>
 <h2 id="context-and-problem-statement">Context and Problem Statement<a class="headerlink" href="#context-and-problem-statement" title="Permanent link">&para;</a></h2>
-<p>To increase adoption of Welkin, we were asked to observe the <a href="https://en.wikipedia.org/wiki/Principle_of_least_astonishment">Principle of Least Astonishment</a>. Currently, Welkin's handing of kubeconfig is astonishing. Most tools in the ecosystem use the standard <code>KUBECONFIG</code> environment variable and kubecontext implemented in the client-go library. These tools leave it up to the user to set <code>KUBECONFIG</code> or use the default <code>~/.kube/config</code>. Similarly, there is a default kubecontext which can be overwritten via command-line. Tools that get cluster credentials generate a context related to the name of the cluster.</p>
+<p>To increase adoption of Welkin, we were asked to observe the <a href="https://en.wikipedia.org/wiki/Principle_of_least_astonishment">Principle of Least Astonishment</a>. Currently, Welkin's handing of kubeconfig is astonishing. Most tools in the ecosystem use the standard <code>KUBECONFIG</code> environment variable and KUBECONFIG context implemented in the client-go library. These tools leave it up to the user to set <code>KUBECONFIG</code> or use the default <code>~/.kube/config</code>. Similarly, there is a default KUBECONFIG context which can be overwritten via command-line. Tools that get cluster credentials generate a context related to the name of the cluster.</p>
 <p>Tools that behave as such include:</p>
 <ul>
 <li><code>gcloud container clusters get-credentials</code></li>
@@ -3942,7 +3942,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Organizing Cluster Access Using kubeconfig Files</a></li>
-<li><a href="https://github.com/ahmetb/kubectx">kubectx / kubens</a></li>
+<li><a href="https://github.com/ahmetb/kubectx"><code>kubectx</code> / <code>kubens</code></a></li>
 </ul>
 
 

@@ -1781,18 +1781,9 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-cant-i-access-my-cluster-bad-request-unregistered-redirect_uri-httplocalhost18000" class="md-nav__link">
+  <a href="#connection-reset-by-peer-when-port-forwarding-to-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
-      Why can't I access my cluster? 'Bad Request Unregistered redirect_uri ("http://localhost:18000").'
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connection-reset-by-peer-when-port-forwarding-to-postgres" class="md-nav__link">
-    <span class="md-ellipsis">
-      "Connection reset by peer" when port-forwarding to postgres?
+      "Connection reset by peer" when port-forwarding to PostgreSQL?
     </span>
   </a>
   
@@ -3982,18 +3973,9 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-cant-i-access-my-cluster-bad-request-unregistered-redirect_uri-httplocalhost18000" class="md-nav__link">
+  <a href="#connection-reset-by-peer-when-port-forwarding-to-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
-      Why can't I access my cluster? 'Bad Request Unregistered redirect_uri ("http://localhost:18000").'
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connection-reset-by-peer-when-port-forwarding-to-postgres" class="md-nav__link">
-    <span class="md-ellipsis">
-      "Connection reset by peer" when port-forwarding to postgres?
+      "Connection reset by peer" when port-forwarding to PostgreSQL?
     </span>
   </a>
   
@@ -4116,10 +4098,8 @@ Here is an example command (please replace the <code>$MY_HARBOR_IMAGE</code>):</
 <p>If you are not using groups, contact your administrator.</p>
 <h2 id="how-do-i-add-a-new-namespace">How do I add a new namespace?<a class="headerlink" href="#how-do-i-add-a-new-namespace" title="Permanent link">&para;</a></h2>
 <p>See <a href="../namespaces/">Namespaces</a>.</p>
-<h2 id="why-cant-i-access-my-cluster-bad-request-unregistered-redirect_uri-httplocalhost18000">Why can't I access my cluster? 'Bad Request Unregistered redirect_uri ("http://localhost:18000").'<a class="headerlink" href="#why-cant-i-access-my-cluster-bad-request-unregistered-redirect_uri-httplocalhost18000" title="Permanent link">&para;</a></h2>
-<p>Port 8000 is the only allowed port for OpenID callback URL and is needed by the <code>kubectl</code> OpenID plugin. If that port is used locally, then <code>kubectl</code> will try to bind to port 18000 which is not allowed due to security concerns. Make sure that nothing is running locally that is using port 8000.</p>
-<h2 id="connection-reset-by-peer-when-port-forwarding-to-postgres">"Connection reset by peer" when port-forwarding to postgres?<a class="headerlink" href="#connection-reset-by-peer-when-port-forwarding-to-postgres" title="Permanent link">&para;</a></h2>
-<p>You may have seen this error when port-forwarding to postgres:</p>
+<h2 id="connection-reset-by-peer-when-port-forwarding-to-postgresql">"Connection reset by peer" when port-forwarding to PostgreSQL?<a class="headerlink" href="#connection-reset-by-peer-when-port-forwarding-to-postgresql" title="Permanent link">&para;</a></h2>
+<p>You may have seen this error when port-forwarding to PostgreSQL:</p>
 <div class="highlight"><pre><span></span><code><span class="go">Forwarding from 127.0.0.1:5432 -&gt; 5432</span>
 <span class="go">Forwarding from [::1]:5432 -&gt; 5432</span>
 <span class="go">Handling connection for 5432</span>
@@ -4130,7 +4110,7 @@ Here is an example command (please replace the <code>$MY_HARBOR_IMAGE</code>):</
 <p>You have two options to resolve this issue:</p>
 <ol>
 <li>
-<p>Send a request to your administrator to disable TLS in the postgres cluster. Although it sounds "bad", it does not compromise security, since;</p>
+<p>Send a request to your administrator to disable TLS in the PostgreSQL cluster. Although it sounds "bad", it does not compromise security, since;</p>
 <ul>
 <li>Traffic between kubectl and the Kubernetes API is encrypted.</li>
 <li>In-cluster network is trusted.</li>

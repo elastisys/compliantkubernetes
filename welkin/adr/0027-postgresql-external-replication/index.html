@@ -4013,8 +4013,8 @@ The diagram of the solution looks like this:
 <img alt="Diagram" src="../../img/adr-0027.drawio.svg" /></p>
 <h3 id="positive-consequences">Positive Consequences<a class="headerlink" href="#positive-consequences" title="Permanent link">&para;</a></h3>
 <ul>
-<li>We make the Platform Administrators life easier by offering them a possibility to clone/replicate their PostgreSQL cluster from the S3 bucket containing the basebackup and WAL files.</li>
-<li>Platform Administrators can now use 3rd party tools that can pull the basebackup and WAL files and clone the PostgreSQL cluster in another location.</li>
+<li>We make the Platform Administrators life easier by offering them a possibility to clone/replicate their PostgreSQL cluster from the S3 bucket containing the base backup and WAL files.</li>
+<li>Platform Administrators can now use 3rd party tools that can pull the base backup and WAL files and clone the PostgreSQL cluster in another location.</li>
 <li>Increase Application Developer autonomy</li>
 </ul>
 <h3 id="negative-consequences">Negative Consequences<a class="headerlink" href="#negative-consequences" title="Permanent link">&para;</a></h3>
@@ -4041,7 +4041,7 @@ Offer this only on request.</p>
 </ul>
 <h3 id="option-3-allow-read-access-to-the-s3-bucket-containing-the-files-that-can-mimic-the-replication">[option 3] - Allow read access to the S3 bucket containing the files that can mimic the replication<a class="headerlink" href="#option-3-allow-read-access-to-the-s3-bucket-containing-the-files-that-can-mimic-the-replication" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Good, we can satisfy the custmer need and demonstrate we are flexible and Application Developer oriented.</li>
+<li>Good, we can satisfy the customer need and demonstrate we are flexible and Application Developer oriented.</li>
 <li>Good, because we keep the platform stability and integrity intact.</li>
 <li>Bad, because it involves extra work and some snowflakiness.</li>
 </ul>

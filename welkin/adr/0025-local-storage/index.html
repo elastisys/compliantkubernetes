@@ -3951,7 +3951,7 @@ How should we expose local storage to Managed Services?</p>
 <h2 id="decision-drivers">Decision Drivers<a class="headerlink" href="#decision-drivers" title="Permanent link">&para;</a></h2>
 <ul>
 <li>We want to best serve the Application Developer needs.</li>
-<li>We want to offer fast performant Managed Services.</li>
+<li>We want to offer fast performance for Managed Services.</li>
 <li>We want to find a solution which is scalable and minimizes administrator burden.</li>
 <li>We want to find a future-proof solution, which exposes local disks to any application.</li>
 </ul>
@@ -3960,11 +3960,11 @@ How should we expose local storage to Managed Services?</p>
 <li>Use the fastest network storage with dedicated IOPS.</li>
 <li>Use local storage with <a href="https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner">local-volume-provisioner</a>.</li>
 <li>Use local storage with <a href="https://github.com/rancher/local-path-provisioner">local-path-provisioner</a></li>
-<li>Use <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath">hostPath</a></li>
+<li>Use <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath"><code>hostPath</code></a></li>
 <li>Use <a href="https://kubernetes.io/docs/concepts/storage/volumes/#local">local</a></li>
 </ul>
 <h2 id="decision-outcome">Decision Outcome<a class="headerlink" href="#decision-outcome" title="Permanent link">&para;</a></h2>
-<p>Chosen option: Use local storage with local-volume-provisioner and move the code within the Kubespray repo.</p>
+<p>Chosen option: Use local storage with local-volume-provisioner and move the code within the Kubespray repository.</p>
 <h3 id="positive-consequences">Positive Consequences<a class="headerlink" href="#positive-consequences" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Services using the local storage are performing better.</li>
@@ -3981,7 +3981,7 @@ How should we expose local storage to Managed Services?</p>
 <ul>
 <li><a href="https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner/tree/v2.5.0">local-volume-provisioner</a></li>
 <li><a href="https://github.com/rancher/local-path-provisioner">local-path-provisioner</a></li>
-<li><a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath">hostPath</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath"><code>hostPath</code></a></li>
 <li><a href="https://kubernetes.io/docs/concepts/storage/volumes/#local">local</a></li>
 </ul>
 

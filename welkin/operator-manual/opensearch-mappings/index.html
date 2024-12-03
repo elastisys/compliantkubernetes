@@ -3983,7 +3983,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 </code></pre></div>
 <p>Indexes also contain mappings and settings:</p>
 <ul>
-<li>A mapping is the collection of fields that documents in the index have. In this case, those fields are title and release_date.</li>
+<li>A mapping is the collection of fields that documents in the index have. In this case, those fields are <code>title</code> and <code>release_date</code>.</li>
 <li>Settings include data like the index name, creation date, and number of shards.</li>
 </ul>
 <p>You can define how documents and their fields are stored and indexed by creating a mapping. The mapping specifies the list of fields for a document. Every field in the document has a field type, which corresponds to the type of data the field contains. For example, you may want to specify that the <code>release_date</code> field should be of type <code>date</code>. To learn more, see <a href="https://opensearch.org/docs/latest/field-types/supported-field-types/index/">Supported field types</a>.</p>
@@ -3993,13 +3993,13 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <p><img alt="Create Index" src="../../img/dynamic_mapping_1.png" /></p>
 <p>We can see the dynamic mapping of all the document fields:</p>
 <p><img alt="Get Mapping" src="../../img/dynamic_mapping_2.png" /></p>
-<p>OpenSearch was able to infere that <strong>release_date</strong> is of type <strong>date</strong>, and <strong>title</strong> is of type <strong>text</strong>.</p>
-<p>You should be aware that OpenSearch type detection is based on some Internal rules, which by no means will infere the correct type for every field. Let's take this example:</p>
+<p>OpenSearch was able to infer that <code>release_date</code> is of type <code>date</code>, and <code>title</code> is of type <code>text</code>.</p>
+<p>You should be aware that OpenSearch type detection is based on some Internal rules, which by no means will infer the correct type for every field. Let's take this example:</p>
 <p>We will recreate the <strong>movies</strong> index, and add a new field called <code>duration_minutes</code>, and wrap the value in quotes:</p>
 <p><img alt="Add Fields" src="../../img/dynamic_mapping_3.png" /></p>
 <p>Let's check the new dynamic mapping</p>
 <p><img alt="Get Mapping" src="../../img/dynamic_mapping_4.png" /></p>
-<p>You can see that OpenSearch choose a type of text for duration, which is technically correct, but it won't be of value especially if we were to run custom queries on the <em>duration_minutes</em> field, for example: Get all movies longer than a certain duration .. etc</p>
+<p>You can see that OpenSearch choose a type of text for duration, which is technically correct, but it won't be of value especially if we were to run custom queries on the <code>duration_minutes</code> field, for example: Get all movies longer than a certain duration .. etc</p>
 <p>We can instruct OpenSearch to detect numeric values, by configuring the index at creation time. Let's recreate the index and enable numeric detection:</p>
 <p><img alt="Detect Numeric" src="../../img/dynamic_mapping_5.png" /></p>
 <p>Checking the dynamic mapping again, we can see that OpenSearch was able to detect the numeric, and set the value of field to <strong>long</strong></p>
@@ -4035,7 +4035,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <p>The document gets indexed fine, and the mapping now contains the additional field with type text</p>
 <p><img alt="Get Mapping" src="../../img/explicit_mapping_2.png" /></p>
 <p>But now if start adding all sorts of fields we don't know about, we're going to start having problems, and will probably end up with bad quality data, which will make it more difficult to work with.</p>
-<p>There are some options on how to deal when documents contains new fields that were not explicitly defined in the mapping. We can tell Elastisearch to either reject the document completely or we can allow the document to be indexed but ignore fields not in the explicit mapping.</p>
+<p>There are some options on how to deal when documents contains new fields that were not explicitly defined in the mapping. We can tell OpenSearch to either reject the document completely or we can allow the document to be indexed but ignore fields not in the explicit mapping.</p>
 <p>Let's configure the index to reject documents that contains fields not defined in the explicit mapping, to do this we set <em>dynamic</em> to <em>strict</em>:</p>
 <p><img alt="Strict Dynamic" src="../../img/explicit_mapping_3.png" /></p>
 <p>If we try now to index a document with a field not in the explicit mapping, we'll get an error:</p>
