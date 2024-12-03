@@ -1,5 +1,9 @@
 # Understand the Basics
 
+!!!elastisys "For Elastisys Managed Services Customers"
+    Elastisys is an Authorized Linux Foundation Training Partner and CNCF Certified Kubernetes Training Partner (KTP).
+    Consider leveraging [Elastisys Training](https://elastisys.com/training/) to quickly get your application team up-to-speed.
+
 Before effectively using Welkin, you need to understand some basics.
 This section provides some useful links to build up this understanding.
 
