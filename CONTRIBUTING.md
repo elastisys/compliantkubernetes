@@ -3,7 +3,9 @@
 - Done today is better than perfect tomorrow.
 - Write for the project, not the company.
 - A picture is worth 1000 words. Use Graphviz, Terminal screenshots, or GIFs. Focus on the content, leave aesthetics for another day. Prefer PNG with a width of 1200px.
-- Perspective: Put yourself in the shoes of the user or administrator. What documentation would you like to read as a newcomer?
+- Perspective: Put yourself in the shoes of the application developer or administrator. What documentation would you like to read as a newcomer?
+    - We expect application developers to [understand the basics](docs/user-guide/understand-the-basics.md).
+    - We expect platform administrators to [understand the basics](docs/operator-manual/understand-the-basics.md).
 - Use "we" for the writer(s). Use "you" for the reader.
 - Write in [plain English](http://www.plainenglish.co.uk/how-to-write-in-plain-english.html).
 - Ordering of ideas: Aim for the happy flow: How would a first-time user/administrator interact with the system? In what order would they do things?

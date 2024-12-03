@@ -23,7 +23,7 @@ How should we expose local storage to Managed Services?
 - Use local storage with [local-volume-provisioner](https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner).
 - Use local storage with [local-path-provisioner](https://github.com/rancher/local-path-provisioner)
 - Use [`hostPath`](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
-- Use [local](https://kubernetes.io/docs/concepts/storage/volumes/#local)
+- Use [`local`](https://kubernetes.io/docs/concepts/storage/volumes/#local)
 
 ## Decision Outcome
 
@@ -48,4 +48,4 @@ When using the local-volume-provisioner please create dedicated partitions and m
 - [local-volume-provisioner](https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner/tree/v2.5.0)
 - [local-path-provisioner](https://github.com/rancher/local-path-provisioner)
 - [`hostPath`](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
-- [local](https://kubernetes.io/docs/concepts/storage/volumes/#local)
+- [`local`](https://kubernetes.io/docs/concepts/storage/volumes/#local)
