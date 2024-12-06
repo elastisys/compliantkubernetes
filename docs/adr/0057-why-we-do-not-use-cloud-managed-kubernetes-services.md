@@ -1,4 +1,4 @@
-# Why we don't use cloud-managed Kubernetes services
+# Do Not Use Managed Kubernetes Services
 
 - Status: Accepted
 - Deciders: Product Team
