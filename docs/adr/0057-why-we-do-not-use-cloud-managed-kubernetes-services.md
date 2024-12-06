@@ -38,4 +38,4 @@ There are several advantages of using installer included in our open source proj
 
 ### Negative Consequences
 
-- Perhaps we actually do want to use e.g. Azure's managed service (AKS) at some point? An ADR that says otherwise may add friction and make such a decision more difficult to change.
+- This means we don't leverage reduced operational burden which comes with mature Kubernetes offerings, such as Azure Kubernetes Service (AKS). However, we see this as a price worth paying for a portable platform.
