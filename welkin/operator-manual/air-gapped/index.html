@@ -4212,21 +4212,30 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <p class="admonition-title">For Elastisys Self-Managed Customers</p>
 <p>Please start by running <a href="../troubleshooting/#i-have-no-clue-where-to-start">these commands</a>.</p>
 <p>If you are struggling, don't hesitate to <a href="https://elastisys.atlassian.net/servicedesk/customer/portals">file a ticket</a>.</p>
-<p>You can run the following command from the <a href="https://github.com/elastisys/compliantkubernetes-apps">compliantkubernetes-apps</a> repository to collect diagnostic information that will help us support you.</p>
-<p><code>CK8S_PGP_FP=&lt;fingerprint provided during onboarding&gt; ./bin/ck8s diagnostics &lt;wc|sc&gt;</code></p>
+<p>You can run the following command from the <a href="https://github.com/elastisys/compliantkubernetes-apps">compliantkubernetes-apps</a> repository to collect diagnostic information that will help us support you.
+Ensure that you have put fingerprints received from Elastisys in a file named <code>${CK8S_CONFIG_PATH}/diagnostics_receiver.gpg</code>.</p>
+<div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>diagnostics<span class="w"> </span>&lt;wc<span class="p">|</span>sc&gt;
+</code></pre></div>
 <p><details><summary>Show more examples on using the diagnostics command</summary>
 The command <code>ck8s diagnostics</code> can be provided with different flags to gather additional information from your environment, to see all available options run:</p>
-<p><code>./bin/ck8s diagnostics &lt;wc|sc&gt; --help</code></p>
+<div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>diagnostics<span class="w"> </span>&lt;wc<span class="p">|</span>sc&gt;<span class="w"> </span>--help
+</code></pre></div>
 <p>Some example use cases:</p>
 <ul>
 <li>
 <p>To include config files found in <code>CK8S_CONFIG_PATH</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">CK8S_PGP_FP</span><span class="o">=</span>&lt;fingerprints&gt;<span class="w"> </span>./bin/ck8s<span class="w"> </span>diagnostics<span class="w"> </span>&lt;wc<span class="p">|</span>sc&gt;<span class="w"> </span>--include-config
+<div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>diagnostics<span class="w"> </span>&lt;wc<span class="p">|</span>sc&gt;<span class="w"> </span>--include-config
 </code></pre></div>
 </li>
 <li>
 <p>To retrieve more information such as YAML manifests for resources in a specific namespace, in this example <code>ingress-nginx</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">CK8S_PGP_FP</span><span class="o">=</span>&lt;fingerprints&gt;<span class="w"> </span>./bin/ck8s<span class="w"> </span>diagnostics<span class="w"> </span>&lt;wc<span class="p">|</span>sc&gt;<span class="w"> </span>--namespace<span class="w"> </span>ingress-nginx
+<div class="highlight"><pre><span></span><code>./bin/ck8s<span class="w"> </span>diagnostics<span class="w"> </span>&lt;wc<span class="p">|</span>sc&gt;<span class="w"> </span>namespace<span class="w"> </span>ingress-nginx
+</code></pre></div>
+</li>
+<li>
+<p>It is also possible to set which GPG keys should be used by setting <code>CK8S_PGP_FP</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">CK8S_PGP_FP</span><span class="o">=</span>&lt;gpg-fingerprint1&gt;,&lt;gpg-fingerprint2&gt;
+./bin/ck8s<span class="w"> </span>diagnostics<span class="w"> </span>&lt;wc<span class="p">|</span>sc&gt;<span class="w"> </span>namespace<span class="w"> </span>ingress-nginx
 </code></pre></div>
 </li>
 </ul>
