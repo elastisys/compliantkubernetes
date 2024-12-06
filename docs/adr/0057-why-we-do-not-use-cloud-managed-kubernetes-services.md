@@ -34,7 +34,7 @@ There are several advantages of using installer included in our open source proj
 
 - Quality Assurance: When we release an upgraded platform version, you get a well-tested package of up-to-date versions of Kubernetes and other platform level components, which we confirmed that are compatible with each other.
 - Regulatory Compliance: You get the Kubernetes cluster which is configured according to the relevant EU Regulations and Directives, Best Security Practices, Industry Specific Regulations applicable in Sweden, as documented here, e.g., we use ntp.se for time synchronization.
-- Platform Portability: You can install the very same Kubernetes Platform on any cloud infrastructure, which supports Cluster API. This could become important when your customer would require installation of your software on their on-prem infrastructure or cloud within a specific geographical location or jurisdiction.
+- Platform Portability: You can install the very same Kubernetes Platform on any Infrastructure Provider, either via a Cluster API provider or Kubespray. This means that a Welkin environment looks and feels the same, no matter if its hosted on Azure, EU cloud or on-prem. Customer Application can run as required within a specific geographical location or jurisdiction, with differences being hidden away by the platform.
 
 ### Negative Consequences
 
