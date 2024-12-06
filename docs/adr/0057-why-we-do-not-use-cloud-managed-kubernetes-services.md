@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-Some of our Infra Provider partners offer managed Kubernetes services.
+Some of our Infrastructure Providers offer managed Kubernetes services.
 Customers of the self-managed service have already asked why, if they are going to manage the entire stack on a modern cloud (AWS in this case), they can't use the managed Kubernetes control plane to make things easier for them.
 We know we have a lot of good reasons for why we don't (loss of fine-grained control, not equivalent offerings means a huge test matrix, etc.), and e.g. bare metal deployments would be impossible if we always assumed a managed Kubernetes Service existing underneath.
 We need to provide solid reasoning toward, in particular, self-managed customers (managed service ones obviously shouldn't have to care how we do what we do).
