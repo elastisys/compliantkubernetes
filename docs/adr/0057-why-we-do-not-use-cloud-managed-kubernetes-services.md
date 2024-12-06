@@ -22,7 +22,7 @@ Should we use cloud-managed Kubernetes services with Welkin?
 ## Considered Options
 
 - Yes
-- No
+- No, do not use Managed Kubernetes services and always rely on Kubespray or a Cluster API provider for Kubernetes Cluster life-cycle management.
 
 ## Decision Outcome
 
