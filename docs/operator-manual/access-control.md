@@ -201,3 +201,48 @@ opensearch:
         Username is: admin
 
 1. Administrator promotes the OpenID user to Harbor admin at `harbor.domain.tld/harbor/users`
+
+## Index Per Namespace
+
+This section defines how to enable indices for Kubernetes namespaces.
+
+### OpenSearch
+
+To enable logging and control indices per namespace in OpenSearch, this is configured in `common-config.yaml` as follows:
+
+```yaml
+opensearch:
+  indexPerNamespace: true
+```
+
+## Defining Access Control Per Index
+
+This section describes how to define access control for specific indices in OpenSearch.
+
+### OpenSearch
+
+This is configured via `sc-config.yaml`
+
+```yaml
+
+opensearch:
+  extraRoleMappings:
+    - mapping_name: namespace1_reader
+      definition:
+        users:
+          - user1@domain.tld
+        index_permissions:
+          - index_patterns:
+              - "namespace1-*"
+            allowed_actions:
+              - read
+    - mapping_name: namespace2_reader
+      definition:
+        users:
+          - user2@domain.tld
+        index_permissions:
+          - index_patterns:
+              - "namespace2-*"
+            allowed_actions:
+              - read
+```
