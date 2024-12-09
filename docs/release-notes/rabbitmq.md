@@ -4,6 +4,7 @@
 
 <!-- BEGIN TOC -->
 
+- [v3.13.7-ck8s1](#v3137-ck8s1) - 2024-12-09
 - [v3.12.6-ck8s1](#v3126-ck8s1) - 2024-01-17
 - [v3.11.18-ck8s1](#v31118-ck8s1) - 2023-07-03
 - [v3.10.7-ck8s1](#v3107-ck8s1) - 2022-09-21
@@ -21,6 +22,16 @@
     Please make sure to put new release notes above this line.
 -->
 <!-- vale off -->
+
+### v3.13.7-ck8s1
+
+Released 2024-12-09
+
+#### Improvement(s)
+
+- Updated cluster operator to `2.9.0`, updated server to `3.13.7` and monitoring to `2.9.0`.
+- Updated the backup process to use `rabbitmqctl` for improved reliability and compatibility.
+- Added a `LICENSE` file to the repository to provide clarity on usage and distribution.
 
 ### v3.12.6-ck8s1
 
