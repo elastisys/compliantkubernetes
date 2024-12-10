@@ -24,7 +24,7 @@ This page will show you how to install Strimzi Kafka Operator on Welkin. You can
 
 !!! Note "Supported versions"
 
-    This installation guide has been tested with Strimzi Kafka Operator version [0.38.0](https://github.com/strimzi/strimzi-kafka-operator/tree/0.38.0).
+    This installation guide has been tested with Strimzi Kafka Operator version [0.44.0](https://github.com/strimzi/strimzi-kafka-operator/tree/0.44.0).
 
 ## Enable Self-Managed Kafka
 
@@ -51,8 +51,8 @@ You need to apply the Custom Resource Definitions (CRDs) required by Strimzi Kaf
 ```bash
 mkdir crds
 
-# Fetches Strimzi Kafka Operator CRDs for v0.38.0 and saves it in the crds directory
-curl -L https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.38.0/strimzi-crds-0.38.0.yaml > crds/kafka-crds.yaml
+# Fetches Strimzi Kafka Operator CRDs for v0.44.0 and saves it in the crds directory
+curl -L https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.44.0/strimzi-crds-0.44.0.yaml > crds/kafka-crds.yaml
 
 kubectl apply -f crds/kafka-crds.yaml
 ```
@@ -75,9 +75,9 @@ If you have multiple namespaces that ought to be targets for Strimzi Kafka Opera
 mkdir roles
 
 # Fetches the necessary Roles and saves it in the roles directory
-curl https://raw.githubusercontent.com/elastisys/welkinmain/docs/user-guide/self-managed-services/kafka-files/roles/kafka-role.yaml > roles/kafka-role.yaml
-curl https://raw.githubusercontent.com/elastisys/welkinmain/docs/user-guide/self-managed-services/kafka-files/roles/kafka-rolebinding.yaml > roles/kafka-rolebinding.yaml
-curl https://raw.githubusercontent.com/elastisys/welkinmain/docs/user-guide/self-managed-services/kafka-files/roles/kustomization.yaml > roles/kustomization.yaml
+curl https://raw.githubusercontent.com/elastisys/welkin/main/docs/user-guide/self-managed-services/kafka-files/roles/kafka-role.yaml > roles/kafka-role.yaml
+curl https://raw.githubusercontent.com/elastisys/welkin/main/docs/user-guide/self-managed-services/kafka-files/roles/kafka-rolebinding.yaml > roles/kafka-rolebinding.yaml
+curl https://raw.githubusercontent.com/elastisys/welkin/main/docs/user-guide/self-managed-services/kafka-files/roles/kustomization.yaml > roles/kustomization.yaml
 
 # If you created the namespace kafka from another namespace other than production, edit the namespace in roles/kustomization.yaml
 
@@ -92,7 +92,7 @@ You need to create the ServiceAccount and ConfigMap that Strimzi Kafka Operator 
 mkdir sa-cm
 
 # Fetches the ServiceAccount and ConfigMap and saves it in the sa-cm directory
-curl https://raw.githubusercontent.com/elastisys/welkinmain/docs/user-guide/self-managed-services/kafka-files/sa-cm/kafka-sa-cm.yaml > sa-cm/kafka-sa-cm.yaml
+curl https://raw.githubusercontent.com/elastisys/welkin/main/docs/user-guide/self-managed-services/kafka-files/sa-cm/kafka-sa-cm.yaml > sa-cm/kafka-sa-cm.yaml
 
 kubectl apply -f sa-cm/kafka-sa-cm.yaml
 ```
@@ -101,7 +101,7 @@ kubectl apply -f sa-cm/kafka-sa-cm.yaml
 
 With the initial prep done, you are now ready to deploy the operator.
 
-You can find the deployment manifest [here](https://raw.githubusercontent.com/strimzi/strimzi-kafka-operator/0.38.0/install/cluster-operator/060-Deployment-strimzi-cluster-operator.yaml). Deploying this on Welkin does require a Security Context to be added.
+You can find the deployment manifest [here](https://raw.githubusercontent.com/strimzi/strimzi-kafka-operator/0.44.0/install/cluster-operator/060-Deployment-strimzi-cluster-operator.yaml). Deploying this on Welkin does require a Security Context to be added.
 
 Edit the manifest and add this under `spec.template.spec.containers[0]`:
 
@@ -125,7 +125,7 @@ Alternatively you can fetch an already edited file:
 mkdir deployment
 
 # Fetches the edited operator Deployment and saves it in the deployment directory
-curl https://raw.githubusercontent.com/elastisys/welkinmain/docs/user-guide/self-managed-services/kafka-files/deployment/kafka-operator-deployment.yaml > deployment/kafka-operator-deployment.yaml
+curl https://raw.githubusercontent.com/elastisys/welkin/main/docs/user-guide/self-managed-services/kafka-files/deployment/kafka-operator-deployment.yaml > deployment/kafka-operator-deployment.yaml
 
 kubectl apply -f deployment/kafka-operator-deployment.yaml
 ```
@@ -136,7 +136,7 @@ To configure the Strimzi Kafka Operator to watch multiple namespaces (e.g. runni
 
 You are now ready to deploy your Kafka cluster!
 
-The example files provided by Strimzi [here](https://github.com/strimzi/strimzi-kafka-operator/tree/0.38.0/examples/kafka) serves as a good starting point.
+The example files provided by Strimzi [here](https://github.com/strimzi/strimzi-kafka-operator/tree/0.44.0/examples/kafka) serves as a good starting point.
 
 Welkin requires that resource requests are specified for all containers. By default, the Strimzi Cluster Operator does not specify CPU and memory resource requests and limits for its deployed operands.
 
@@ -148,7 +148,7 @@ You can fetch a modified persistent-single example that includes resource reques
 mkdir kafka-cluster
 
 # Fetches the edited kafka cluster example and saves it in the kafka-cluster directory
-curl https://raw.githubusercontent.com/elastisys/welkinmain/docs/user-guide/self-managed-services/kafka-files/kafka-cluster/persistent-single.yaml > kafka-cluster/persistent-single.yaml
+curl https://raw.githubusercontent.com/elastisys/welkin/main/docs/user-guide/self-managed-services/kafka-files/kafka-cluster/persistent-single.yaml > kafka-cluster/persistent-single.yaml
 
 kubectl apply -f kafka-cluster/persistent-single.yaml
 ```
@@ -165,7 +165,7 @@ After you have deployed your Kafka cluster, you can test sending and receiving m
 
 To do this, you can use a producer and consumer as seen [here](https://strimzi.io/quickstarts/), under the section "Send and receive messages". But since Welkin requires resource requests to be specified, just copy pasting those commands will not work.
 
-You need to create a Pod manifest using the image `quay.io/strimzi/kafka:0.38.0-kafka-3.6.0`, and then you need to add your resource requests to this manifest. You also need to have an initial sleep command in the Pod manifest, to sleep the container for a while, this is to avoid the Pod going into the "Completed" stage instantly.
+You need to create a Pod manifest using the image `quay.io/strimzi/kafka:0.44.0-kafka-3.8.0`, and then you need to add your resource requests to this manifest. You also need to have an initial sleep command in the Pod manifest, to sleep the container for a while, this is to avoid the Pod going into the "Completed" stage instantly.
 
 Alternatively you can download a ready to use producer and consumer Pod manifests:
 
@@ -173,8 +173,8 @@ Alternatively you can download a ready to use producer and consumer Pod manifest
 mkdir kafka-testing
 
 # Fetches Pod manifests for a producer and consumer and saves it in the kafka-testing directory
-curl https://raw.githubusercontent.com/elastisys/welkinmain/docs/user-guide/self-managed-services/kafka-files/kafka-testing/kafka-producer.yaml > kafka-testing/kafka-producer.yaml
-curl https://raw.githubusercontent.com/elastisys/welkinmain/docs/user-guide/self-managed-services/kafka-files/kafka-testing/kafka-consumer.yaml > kafka-testing/kafka-consumer.yaml
+curl https://raw.githubusercontent.com/elastisys/welkin/main/docs/user-guide/self-managed-services/kafka-files/kafka-testing/kafka-producer.yaml > kafka-testing/kafka-producer.yaml
+curl https://raw.githubusercontent.com/elastisys/welkin/main/docs/user-guide/self-managed-services/kafka-files/kafka-testing/kafka-consumer.yaml > kafka-testing/kafka-consumer.yaml
 
 kubectl apply -f kafka-testing/kafka-producer.yaml
 kubectl apply -f kafka-testing/kafka-consumer.yaml
@@ -194,16 +194,16 @@ kubectl exec -it kafka-consumer -- bin/kafka-console-consumer.sh --bootstrap-ser
 
 ## Further reading
 
-- [Strimzi Overview](https://strimzi.io/docs/operators/0.38.0/overview)
+- [Strimzi Overview](https://strimzi.io/docs/operators/0.44.0/overview)
 
-- [Deploying and Upgrading](https://strimzi.io/docs/operators/0.38.0/deploying)
+- [Deploying and Upgrading](https://strimzi.io/docs/operators/0.44.0/deploying)
 
-- [API Reference](https://strimzi.io/docs/operators/0.38.0/configuring)
+- [API Reference](https://strimzi.io/docs/operators/0.44.0/configuring)
 
-- [Configure Operator to watch multiple namespaces](https://strimzi.io/docs/operators/0.38.0/deploying#deploying-cluster-operator-to-watch-multiple-namespaces-str)
+- [Configure Operator to watch multiple namespaces](https://strimzi.io/docs/operators/0.44.0/deploying#deploying-cluster-operator-to-watch-multiple-namespaces-str)
 
-- [About resources for Strimzi containers](https://strimzi.io/docs/operators/0.38.0/configuring#con-common-configuration-resources-reference)
+- [About resources for Strimzi containers](https://strimzi.io/docs/operators/0.44.0/configuring#con-common-configuration-resources-reference)
 
-- [Configuring Kafka](https://strimzi.io/docs/operators/0.38.0/deploying#con-config-kafka-str)
+- [Configuring Kafka](https://strimzi.io/docs/operators/0.44.0/deploying#con-config-kafka-str)
 
-- [Configuring Kafka and ZooKeeper storage](https://strimzi.io/docs/operators/0.38.0/deploying#assembly-storage-str)
+- [Configuring Kafka and ZooKeeper storage](https://strimzi.io/docs/operators/0.44.0/deploying#assembly-storage-str)
