@@ -5,7 +5,7 @@ metadata:
   namespace: kafka
 spec:
   containers:
-    - image: quay.io/strimzi/kafka:0.38.0-kafka-3.6.0
+    - image: quay.io/strimzi/kafka:0.44.0-kafka-3.8.0
       name: kafka-producer
       resources:
         requests:
