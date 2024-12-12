@@ -13,7 +13,7 @@
         <meta name="author" content="Elastisys AB">
       
       
-        <link rel="canonical" href="https://elastisys.io/welkin/operator-manual/schema/config-properties-network-policies-config-properties-network-policies-tekton-piepline-properties-network-policies-tekton-enabled/">
+        <link rel="canonical" href="https://elastisys.io/welkin/operator-manual/schema/config-properties-network-policies-config-properties-network-policies-tekton-pipeline/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Network Policies Tekton Enabled Schema - Elastisys Welkin®</title>
+        <title>Network Policies Tekton Pipeline Schema - Elastisys Welkin®</title>
       
     
     
@@ -68,12 +68,12 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Network Policies Tekton Enabled Schema - Elastisys Welkin®" >
+        <meta  property="og:title"  content="Network Policies Tekton Pipeline Schema - Elastisys Welkin®" >
       
         <meta  property="og:description"  content="Documentation for Welkin, the Kubernetes platform for software critical to our society
 " >
       
-        <meta  property="og:image"  content="https://elastisys.io/welkin/assets/images/social/operator-manual/schema/config-properties-network-policies-config-properties-network-policies-tekton-piepline-properties-network-policies-tekton-enabled.png" >
+        <meta  property="og:image"  content="https://elastisys.io/welkin/assets/images/social/operator-manual/schema/config-properties-network-policies-config-properties-network-policies-tekton-pipeline.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -81,16 +81,16 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://elastisys.io/welkin/operator-manual/schema/config-properties-network-policies-config-properties-network-policies-tekton-piepline-properties-network-policies-tekton-enabled/" >
+        <meta  property="og:url"  content="https://elastisys.io/welkin/operator-manual/schema/config-properties-network-policies-config-properties-network-policies-tekton-pipeline/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Network Policies Tekton Enabled Schema - Elastisys Welkin®" >
+        <meta  name="twitter:title"  content="Network Policies Tekton Pipeline Schema - Elastisys Welkin®" >
       
         <meta  name="twitter:description"  content="Documentation for Welkin, the Kubernetes platform for software critical to our society
 " >
       
-        <meta  name="twitter:image"  content="https://elastisys.io/welkin/assets/images/social/operator-manual/schema/config-properties-network-policies-config-properties-network-policies-tekton-piepline-properties-network-policies-tekton-enabled.png" >
+        <meta  name="twitter:image"  content="https://elastisys.io/welkin/assets/images/social/operator-manual/schema/config-properties-network-policies-config-properties-network-policies-tekton-pipeline.png" >
       
     
     
@@ -147,7 +147,7 @@ if(!document.__defineGetter__) {
     <div data-md-component="skip">
       
         
-        <a href="#network-policies-tekton-enabled-schema" class="md-skip">
+        <a href="#network-policies-tekton-pipeline-schema" class="md-skip">
           Skip to content
         </a>
       
@@ -198,7 +198,7 @@ We're undergoing a transformation! We're rebranding our platform and changing th
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Network Policies Tekton Enabled Schema
+              Network Policies Tekton Pipeline Schema
             
           </span>
         </div>
@@ -3854,6 +3854,32 @@ We're undergoing a transformation! We're rebranding our platform and changing th
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#enabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      enabled
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      pipeline
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
 
           <br/>
@@ -3873,14 +3899,15 @@ We're undergoing a transformation! We're rebranding our platform and changing th
   
 
 
-<h1 id="network-policies-tekton-enabled-schema">Network Policies Tekton Enabled Schema<a class="headerlink" href="#network-policies-tekton-enabled-schema" title="Permanent link">&para;</a></h1>
+<h1 id="network-policies-tekton-pipeline-schema">Network Policies Tekton Pipeline Schema<a class="headerlink" href="#network-policies-tekton-pipeline-schema" title="Permanent link">&para;</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is auto-generated documentation from a JSON schema that is under construction, this will improve over time.</p>
 </div>
 <p><a href="../config/">Return to the root config schema</a></p>
-<div class="highlight"><pre><span></span><code>https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/networkPolicies/properties/tektonPipelines/properties/enabled
+<div class="highlight"><pre><span></span><code>https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/networkPolicies/properties/tektonPipelines
 </code></pre></div>
+<p>Enable network policies for tekton and the pipeline.</p>
 <table>
 <thead>
 <tr>
@@ -3899,23 +3926,104 @@ We're undergoing a transformation! We're rebranding our platform and changing th
 <td style="text-align: left;">Can be instantiated</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">Unknown status</td>
-<td style="text-align: left;">Unknown identifiability</td>
+<td style="text-align: left;">No</td>
 <td style="text-align: left;">Forbidden</td>
-<td style="text-align: left;">Allowed</td>
+<td style="text-align: left;">Forbidden</td>
 <td style="text-align: left;">none</td>
 <td style="text-align: left;"><a href="https://github.com/elastisys/compliantkubernetes-apps/blob/main/config/schemas/config.yaml" title="open original schema">config/schemas/config.yaml*</a></td>
 </tr>
 </tbody>
 </table>
 <p><strong>TYPE</strong>:</p>
-<p><code>boolean</code> (<a href="./">Network Policies Tekton Enabled</a>)</p>
+<p><code>object</code> (<a href="./">Network Policies Tekton Pipeline</a>)</p>
+<p><strong>PROPERTIES</strong>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Required</th>
+<th style="text-align: left;">Nullable</th>
+<th style="text-align: left;">Defined by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="#enabled">enabled</a></td>
+<td style="text-align: left;"><code>boolean</code></td>
+<td style="text-align: left;">Optional</td>
+<td style="text-align: left;">cannot be null</td>
+<td style="text-align: left;"><a href="../config-properties-network-policies-config-properties-network-policies-tekton-pipeline-properties-network-policies-tekton-enabled/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/networkPolicies/properties/tektonPipelines/properties/enabled">Welkin Apps Config</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#pipeline">pipeline</a></td>
+<td style="text-align: left;"><code>object</code></td>
+<td style="text-align: left;">Optional</td>
+<td style="text-align: left;">cannot be null</td>
+<td style="text-align: left;"><a href="../config-properties-network-policies-config-properties-network-policies-tekton-pipeline-properties-network-policies-tekton-pipeline/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/networkPolicies/properties/tektonPipelines/properties/pipeline">Welkin Apps Config</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="enabled">enabled<a class="headerlink" href="#enabled" title="Permanent link">&para;</a></h2>
+<p><code>enabled</code></p>
+<ul>
+<li>
+<p>is optional</p>
+</li>
+<li>
+<p>Type: <code>boolean</code> (<a href="../config-properties-network-policies-config-properties-network-policies-tekton-pipeline-properties-network-policies-tekton-enabled/">Network Policies Tekton Enabled</a>)</p>
+</li>
+<li>
+<p>cannot be null</p>
+</li>
+<li>
+<p>defined in: <a href="../config-properties-network-policies-config-properties-network-policies-tekton-pipeline-properties-network-policies-tekton-enabled/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/networkPolicies/properties/tektonPipelines/properties/enabled">Welkin Apps Config</a></p>
+</li>
+</ul>
+<p><strong>TYPE</strong>:</p>
+<p><code>boolean</code> (<a href="../config-properties-network-policies-config-properties-network-policies-tekton-pipeline-properties-network-policies-tekton-enabled/">Network Policies Tekton Enabled</a>)</p>
 <p><strong>DEFAULTS</strong>:</p>
 <p>The default value is:</p>
 <div class="highlight"><pre><span></span><code><span class="kc">true</span>
 </code></pre></div>
+<h2 id="pipeline">pipeline<a class="headerlink" href="#pipeline" title="Permanent link">&para;</a></h2>
+<p>Add required networkpolicies for the pipeline under the section pipeline.</p>
+<p>The networkpolicies should follow the network policies generator.
+As such, it is possible to use pre-defined network policies rules.
+The pre-defined rules can be found <a href="https://github.com/elastisys/compliantkubernetes-apps/blob/main/helmfile.d/values/networkpolicies/common/common.yaml.gotmpl">here</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">pipeline</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">clone-config-pod</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">podSelectorLabels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tekton.dev/pipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">upgrade-pipeline</span>
+<span class="w">      </span><span class="nt">ingress</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">egress</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">rule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">egress-rule-dns</span><span class="w"> </span><span class="c1"># pre-defined network policies rule.</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">egress-rule-config-access</span>
+<span class="w">          </span><span class="nt">peers</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cidr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.3.4/32</span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tcp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">22</span>
+</code></pre></div>
+<p><code>pipeline</code></p>
+<ul>
+<li>
+<p>is optional</p>
+</li>
+<li>
+<p>Type: <code>object</code> (<a href="../config-properties-network-policies-config-properties-network-policies-tekton-pipeline-properties-network-policies-tekton-pipeline/">Network Policies Tekton Pipeline</a>)</p>
+</li>
+<li>
+<p>cannot be null</p>
+</li>
+<li>
+<p>defined in: <a href="../config-properties-network-policies-config-properties-network-policies-tekton-pipeline-properties-network-policies-tekton-pipeline/" title="https://raw.githubusercontent.com/elastisys/compliantkubernetes-apps/main/config/schemas/config.yaml#/properties/networkPolicies/properties/tektonPipelines/properties/pipeline">Welkin Apps Config</a></p>
+</li>
+</ul>
+<p><strong>TYPE</strong>:</p>
+<p><code>object</code> (<a href="../config-properties-network-policies-config-properties-network-policies-tekton-pipeline-properties-network-policies-tekton-pipeline/">Network Policies Tekton Pipeline</a>)</p>
 <p><a href="../config/">Return to the root config schema</a></p>
 <hr />
-<p>Generated Thu Dec 12 03:52:40 UTC 2024 from <a href="https://github.com/elastisys/compliantkubernetes-apps/commit/5048f03261b9c1b2b9a3028a17091ce475fa7140">elastisys/compliantkubernetes-apps@main</a></p>
+<p>Generated Thu Dec 12 10:53:08 UTC 2024 from <a href="https://github.com/elastisys/compliantkubernetes-apps/commit/c5350f524d47054cf360d8c0136e38afffd94d4a">elastisys/compliantkubernetes-apps@main</a></p>
 
 
 
