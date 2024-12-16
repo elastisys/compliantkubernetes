@@ -7,16 +7,16 @@ For a basic understanding of Welkin from the point-of-view of the Application De
 
 To begin with, you should familiarize yourself with [Welkin's architecture](../architecture.md).
 It describes what components are part of Welkin and what component talks to which other components.
-It allows you to create a mental model and reason about complex failure modes, such as "a buffer overflow in fluentd may be caused by OpenSearch lacking sufficient capacity to ingest all logs".
+It allows you to create a mental model and reason about complex failure modes, such as "a buffer overflow in Fluentd may be caused by OpenSearch lacking sufficient capacity to ingest all logs".
 
 In particular, notice that:
 
 - Welkin is composed of at least two Kubernetes clusters:
-  - at least one Workload Cluster: this hosts the application(s) of the Application Developer; and
-  - one Service Cluster: this provides several [Service Endpoints](../glossary.md#service-endpoint) to the Application Developers, in particular around authentication and observability.
+    - at least one Workload Cluster: this hosts the application(s) of the Application Developer; and
+    - one Service Cluster: this provides several [Service Endpoints](../glossary.md#service-endpoint) to the Application Developers, in particular around authentication and observability.
 - Welkin is composed of two layers:
-  - The Kubernetes-lifecycle layer sets up rather vanilla Kubernetes Clusters which some security defaults. This layer is implemented either via Kubespray or Cluster API.
-  - The Welkin Apps layer augments the two Kubernetes Clusters with projects around security and observability. This layers has a single implementation.
+    - The Kubernetes-lifecycle layer sets up rather vanilla Kubernetes Clusters which some security defaults. This layer is implemented either via Kubespray or Cluster API.
+    - The Welkin Apps layer augments the two Kubernetes Clusters with projects around security and observability. This layers has a single implementation.
 
 ## Kubespray vs Cluster API
 
