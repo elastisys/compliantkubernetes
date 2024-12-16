@@ -53,11 +53,25 @@ if(!document.__defineGetter__) {
 <link rel="manifest" href="/welkin/img/site.webmanifest" />
 {% endblock %}
 
+<!--
+  In case you want to make a public announcement of a major change or incident:
+
+  - Remove the Jinja comments around `block` and `endblock`.
+  - Adjust the text accordingly.
+  - Note that live reload does not pick this change up.
+    You need to re-run `mkdocs serve`.
+
+  Further reading:
+  - https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/#announcement-bar
+  - https://jinja.palletsprojects.com/en/stable/templates/#comments
+-->
+{#
 {% block announce %}
 <div class="banner">
-We're undergoing a transformation! We're rebranding our platform and changing the name from Compliant Kubernetes to Welkin. As we work on updating our documentation, there may be some temporary inconsistencies in how the platform is referred to. Thank you for your understanding. Read more about it in this <strong><a style="color: var(--elastisys-night-blue);"href="https://elastisys.com/elastisys-compliant-kubernetes-becomes-welkin/">press release</a></strong>.
+This space will be used to make important public announcements, such as a major change or incident.
 </div>
 {% endblock %}
+#}
 
 <!-- Sidebars -->
 {% block site_nav %}
