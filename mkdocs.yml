@@ -150,6 +150,7 @@ nav:
           - "Prepare Your Identity Provider (IdP)": "user-guide/prepare-idp.md"
           - "Container registry": "user-guide/registry.md"
           - "Continuous Development": "user-guide/continous-development.md"
+          - "GPU": "user-guide/gpu.md"
           - "Network Model": "user-guide/network-model.md"
           - "Kubernetes API": "user-guide/kubernetes-api.md"
           - "Kubernetes UI": "user-guide/kubernetes-ui.md"
