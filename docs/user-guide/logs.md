@@ -267,7 +267,7 @@ The screenshot below gives an example of log entries produced by the user demo a
 
 ## Exporting logs
 
-At the moment the reporting feature in OpenSearch doesn't work so instead we recommend you to use [elasticsearch-dump](https://github.com/elasticsearch-dump/elasticsearch-dump).
+OpenSearch has a [reporting feature](https://opensearch.org/docs/latest/reporting/report-dashboard-index/) which facilitates creating different types of reports in PNG, PDF and CSV format. If you want an alternative to the reporting feature in OpenSearch we recommend you to use [elasticsearch-dump](https://github.com/elasticsearch-dump/elasticsearch-dump).
 
 !!! elastisys "For Elastisys Managed Services Customers"
 
