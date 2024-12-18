@@ -111,8 +111,8 @@ The Welkin Apps layer initializes and reads the following configuration files an
 
 - `backups` is a folder in which Welkin stores copies of previous configurations.
 See this as a convenience, given that all configuration is already in git.
-- `common-config.yaml` contains configuration common to both the Service Cluster and the Workload Cluster.
-- `wc-config.yaml` and `sc-config.yaml` contains configuration specific to the Service Cluster and the Workload Cluster, respectively.
+- `common-config.yaml` contains override configuration common to both the Service Cluster and the Workload Cluster.
+- `wc-config.yaml` and `sc-config.yaml` contains override configuration specific to the Service Cluster and the Workload Cluster, respectively.
 - `secrets.yaml` contains secrets, both for the Workload Cluster and Service Cluster.
 This file is encrypted using the information in `.sops.yaml`.
 You should only edit this file using sops to make sure secrets never end up in plain text in the configuration repository.
