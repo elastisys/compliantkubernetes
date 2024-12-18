@@ -41,7 +41,7 @@ Welkin abides to the configuration-as-code and infrastructure-as-code principles
 In essence, all Welkin configuration is stored in text files (most frequently YAML).
 Welkin expects you to stores these files in a git repository, which is why we refer to Welkin configuration as configuration repository.
 
-A typical configuration repository looks as follows:
+A typical configuration repository when using [Welkin Kubespray](https://github.com/elastisys/compliantkubernetes-kubespray) looks as follows:
 
 ```
 my-welkin-environment
