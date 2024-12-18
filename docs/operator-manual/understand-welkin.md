@@ -15,8 +15,8 @@ In particular, notice that:
     - at least one Workload Cluster: this hosts the application(s) of the Application Developer; and
     - one Service Cluster: this provides several [Service Endpoints](../glossary.md#service-endpoint) to the Application Developers, in particular around authentication and observability.
 - Welkin is composed of two layers:
-    - The Kubernetes-lifecycle layer sets up rather vanilla Kubernetes Clusters which some security defaults. This layer is implemented either via Kubespray or Cluster API.
-    - The Welkin Apps layer augments the two Kubernetes Clusters with projects around security and observability. This layers has a single implementation.
+    - The Kubernetes-lifecycle layer sets up rather vanilla Kubernetes Clusters with some security defaults. This layer is implemented either via Kubespray or Cluster API.
+    - The Welkin Apps layer augments the two Kubernetes Clusters with projects around security and observability. This layer has a single implementation.
 
 ## Kubespray vs Cluster API
 
@@ -111,12 +111,14 @@ The Welkin Apps layer initializes and reads the following configuration files an
 
 - `backups` is a folder in which Welkin stores copies of previous configurations.
 See this as a convenience, given that all configuration is already in git.
+- `defaults` is a folder which contains the default `common-config.yaml`, `sc-config.yaml` and `wc-config.yaml` for the infrastructure provider and flavor you chose when you initialized the configuration repository using Welkin.
+Do not change these files, as they may be overridden by Welkin.
+Instead, override configuration values with the files described below.
 - `common-config.yaml` contains override configuration common to both the Service Cluster and the Workload Cluster.
 - `wc-config.yaml` and `sc-config.yaml` contains override configuration specific to the Service Cluster and the Workload Cluster, respectively.
 - `secrets.yaml` contains secrets, both for the Workload Cluster and Service Cluster.
 This file is encrypted using the information in `.sops.yaml`.
 You should only edit this file using sops to make sure secrets never end up in plain text in the configuration repository.
-- `defaults` is a folder which contains the default `common-config.yaml`, `sc-config.yaml` and `wc-config.yaml` for the infrastructure provider and flavor you chose when you initialized the configuration repository using Welkin.
 
 Except for `init` sub-commands and configuration migration steps, the files above are only consumed by Welkin.
 They only take as input explicit choices that you made and describe how an Environment should be.
