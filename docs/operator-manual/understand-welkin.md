@@ -43,7 +43,7 @@ Welkin expects you to stores these files in a git repository, which is why we re
 
 A typical configuration repository when using [Welkin Kubespray](https://github.com/elastisys/compliantkubernetes-kubespray) looks as follows:
 
-```
+```console
 my-welkin-environment
 |-- adminlog
 |   `-- changes
