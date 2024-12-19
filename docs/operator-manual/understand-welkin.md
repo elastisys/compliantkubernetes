@@ -30,7 +30,7 @@ Not all infrastructure providers have a mature Cluster API provider.
 
 Therefore, Welkin Environments can also be set up using Kubespray.
 Kubespray runs on pretty much any infrastructure you throw at it.
-However, it lacks support for Cluster autoscaling and Kubernetes upgrades are slow (albeit reliable).
+However, it lacks support for Cluster autoscaling and Kubernetes upgrades are slower (albeit reliable).
 
 For both Cluster API and Kubespray, the infrastructure provider might come with its own limitations, such as lack of load-balancers and/or of block storage which integrate with Kubernetes.
 The [provider audit](provider-audit.md) is a systematic way to discover and understand these differences, so as to configure Welkin properly.
